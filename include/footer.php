@@ -59,18 +59,23 @@
                     <div class="m-footer-menu__content-inner m-accordion__content-inner js-accordion-content-inner">
                         <ul class="m-footer-menu__list">
                             <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="/co-op-market-faqs">
+                                <a class="m-footer-menu__link" href="/faqs.php">
                                     FAQs
                                 </a>
                             </li>
                             <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="https://shop.coopmarket.com/customer/account/index/referer/aHR0cHM6Ly9zaG9wLmNvb3BtYXJrZXQuY29tL2N1c3RvbWVyL2FjY291bnQvaW5kZXgv">
+                                <a class="m-footer-menu__link" href="/login.php">
                                     My Account
                                 </a>
                             </li>
                             <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="https://shop.coopmarket.com/contact/index/index/source/coopMarket/">
+                                <a class="m-footer-menu__link" href="/contact.php">
                                     Contact Us
+                                </a>
+                            </li>
+                            <li class="m-footer-menu__item">
+                                <a class="m-footer-menu__link" href="/find_store.php">
+                                    Find Store
                                 </a>
                             </li>
                         </ul>

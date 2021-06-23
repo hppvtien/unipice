@@ -138,7 +138,7 @@
                     <div class="c-header__promo">
                         <a href="tel:0969938801" class="m-account-menu__link">
                             <span class="m-account-menu__link-text a-promo-message">
-                            Hotline: 0969938801
+                                Hotline: 0969938801
                             </span>
                         </a>
 
@@ -156,6 +156,13 @@
                                 <a href="https://shop.coopmarket.com/wishlist/" class="m-account-menu__link">
                                     <span class="m-account-menu__link-text">
                                         B2B
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="m-account-menu__item">
+                                <a href="/associate-member-landing" class="m-account-menu__link">
+                                    <span class="m-account-menu__link-text">
+                                        Spice club
                                     </span>
                                 </a>
                             </li>

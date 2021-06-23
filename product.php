@@ -137,7 +137,7 @@
                                                         </a>
                                                         <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="/cdn-cgi/l/email-protection#dbe4a8aeb9b1beb8afe697b4a9beb6fee9ebb2aba8aeb6fdbab6abe0b9b4bfa2e697b4a9beb6fee9ebb2aba8aeb6fee9ebb3afafaba8fee89afee99dfee99dacacacf5b8b4b4abb6baa9b0beaff5b8b4b6fee99dbab8b8bea8a8b4a9b2bea8fee99da8afb4a9babcbefee99db9b4afafb7bea8fee99dbaafb4b6b2a1bea9f6acb2afb3f6eaf6e9f6e8f6b4a1f6bab6b9bea9f6b4b2b7f6b9b4afafb7bef5" target="_blank">
                                                             <span class="a-icon-text-btn__icon" aria-hidden="true">
-                                                                <img src="/themes/custom/frontierbase/dist/frontiercoop/images/email.svg" alt="Email icon" height="25" width="25">
+                                                                <img src="https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop/images/email.svg" alt="Email icon" height="25" width="25">
                                                             </span>
                                                         </a>
 
