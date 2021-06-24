@@ -3,6 +3,7 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\Category;
 use App\Models\Education\SeoEdutcation;
 use App\Service\Seo\RenderUrlSeoCourseService;
 use Carbon\Carbon;
@@ -18,11 +19,8 @@ class AdminApMenuController extends AdminController
     }
 
     public function ajax_load(){
-        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-          $lang_code = $this->input->post('lang_code');
-          $data['lang_code'] = !empty($lang_code)?$lang_code:$this->session->admin_lang;
-          $groupCategory = $this->_categoryModel->getDataGroupBy();
-          $allCategory = $this->_categoryModel->getAll($lang_code);
+       
+          $Category = Category::get();
           $list_name_category = [
             'post'=>'Danh mục bài viết',
             'product'=>'Danh mục sản phẩm',
@@ -86,8 +84,9 @@ class AdminApMenuController extends AdminController
           // ];
           $data['list_tabs'] = $list_tabs;
           echo $this->load->view($this->template_path . 'menus/_ajax_load_data', $data, TRUE);
-        }
-        exit;
+        
+     
+      }
       }
     
     // public function create()
