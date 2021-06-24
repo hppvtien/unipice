@@ -1,0 +1,35 @@
+.breadcrumb {
+    background-color: #fafafa;
+    ul {
+        border-radius: 0;
+        padding: 8px 0;
+        margin: 0;
+        background-color: inherit;
+        li {
+            color: #666!important;
+            font-weight: bold;
+            float: left;
+            position: relative;
+            a {
+                color: inherit;
+            }
+        }
+        >li+li::before {
+            padding-right: .5rem;
+            padding-left: .5rem;
+            color: #a0a0a0;
+            content: "»";
+        }
+
+    }
+
+}
+.breadcrumb {
+    margin-top: 160px;
+    display: block;
+}
+@media only screen and (max-width: 768px) {
+    .breadcrumb {
+        margin-top: 50px;
+    }  
+}

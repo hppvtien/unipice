@@ -1,0 +1,13 @@
+ALTER TABLE `contact` ADD `status` TINYINT(1) NOT NULL AUTO_INCREMENT AFTER `content`, ADD PRIMARY KEY (`status`);
+ALTER TABLE `configurations` ADD `idx_map` VARCHAR(255) NOT NULL AFTER `footer_bottom`;
+ALTER TABLE `configurations` ADD `idy_map` VARCHAR(255) NOT NULL AFTER `idx_map`;
+10/4/2021
+ALTER TABLE `free_book` ADD `is_hot` TINYINT(1) NOT NULL AFTER `name`;
+
+18-5-2021
+ 
+thêm cột p_title_seo và p_desscription_seo
+ ALTER TABLE `pages` ADD `p_title_seo` VARCHAR(150) NOT NULL AFTER `p_desscription`, ADD `p_desscription_seo` VARCHAR(255) NOT NULL AFTER `p_title_seo`;
+ 25-5-2021
+ ALTER TABLE `configurations` ADD `name` VARCHAR(100) NOT NULL AFTER `logo`, ADD `address` VARCHAR(150) NOT NULL AFTER `name`, ADD `tax_id` INT(15) NOT NULL AFTER `address`;
+ ALTER TABLE `configurations` ADD `hotline_rp` INT(15) NOT NULL AFTER `hotline`;

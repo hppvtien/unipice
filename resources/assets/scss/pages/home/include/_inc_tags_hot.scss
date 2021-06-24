@@ -1,0 +1,42 @@
+.tags_hot{
+  padding: 80px 0;
+  .lists li{
+    width: 24%;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 20px 0px;
+    text-align: center;
+    border-color: #f3f4f4;
+    background-color: #f3f4f4;
+    a{
+      font-size: 18px;
+    }
+  }
+}
+  .tags_hot .lists li:nth-child(2n+1) a{
+    color: #242f65;
+  }
+  .tags_hot .lists li:nth-child(2n+2) a{
+    color: #ba9e55;
+  }
+  .tags_hot .lists li:nth-child(2n+3) a{
+    color: #e61c23;
+  }
+  .tags_hot .lists li:nth-child(2n+4) a{
+    color: #242f65;
+  }
+  .tags_hot .lists li:nth-child(2n+5) a{
+    color: #ba9e55;
+  }
+  .tags_hot .lists li:nth-child(2n+6) a{
+    color: #e61c23;
+  }
+  @media only screen and (max-width: 768px) {
+    .tags_hot {
+        padding: 0px 0;
+        .lists li{
+          width: 100%;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+@media only screen and (max-width: 1024px) {
+  .pay-process ul li .checkout-span{
+    font-size: 15px;
+  }
+  [class~=header] [class~=header-widget] {
+    background: transparent;
+}
+}

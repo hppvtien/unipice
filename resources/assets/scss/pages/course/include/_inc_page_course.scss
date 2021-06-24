@@ -1,0 +1,74 @@
+.box-section {
+    margin: 15px 0;
+    padding: 1.25rem;
+    border-radius: 5px;
+    border: 1px solid #dbdbdb;
+    position: relative;
+    .box-title {
+        font-size: 18px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #dbdbdb;
+        margin-bottom: 10px;
+        font-weight: 500;
+        a {
+            float: right;
+            font-size: 14px;
+            color: #272727;
+            i {
+                font-size: 11px;
+                font-weight: 400;
+            }
+        }
+    }
+}
+#rightSidebar {
+    position: absolute;
+    top: -170px;
+    right: -15px;
+    width: ceil(100% - 70%);
+}
+.course-thumbnail img{
+    width: 100%;
+}
+
+.teacher {
+    .info {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        a {
+            img {
+                width: 100px;
+                height: 100px;
+                max-width:100%;
+                border-radius: 50%;
+            }
+        }
+        .name {
+            font-weight: 700;
+            margin-bottom: .5rem;
+            color: #272727;
+            margin-top: 0.5rem;
+            transition: all .3s ease;
+        }
+        .job {
+            margin-bottom: 0;
+            color: #878787;
+            i {
+                color: #122a67;
+            }
+        }
+    }
+    .content {
+        .item {
+            margin-bottom: 1rem;
+            p {
+                &:first-child{
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+@import "./../../../components/course_content";

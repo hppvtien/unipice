@@ -1,0 +1,43 @@
+@import "./../../../bases/init";
+@import "~owl.carousel";
+@import "~jquery-modal";
+@import "~toastr";
+@import "./../../components/inc_header";
+@import "./include/inc_banner";
+@import "./include/inc_section_one";
+@import "./include/inc_section_two";
+@import "./include/inc_tags_hot";
+@import "./include/inc_lecture";
+@import "./include/inc_slider_hot";
+@import "./../../components/inc_item_course";
+@import "./../../components/loading/inc_loading";
+@import "../../components/inc_footer";
+@import "../../components/inc_popup";
+@import "../../components/inc_popup_auth";
+
+
+
+  .uni-form {
+    background-color: #00002dd1;
+    padding: 80px;
+    border-radius: 0px 40px 40px 0px;
+  }
+  .uni-p {
+    font-size: 21px;
+    color: #3e416d;
+    font-weight: 600;
+    padding-bottom: 30px;
+  }
+  .uni-span-color{
+    color: #ba9e55;
+   }
+   @media only screen and (max-width: 768px) {
+    .uni-img-form {
+       display: none;
+    }
+    .uni-form {     
+    margin: 0px 0px 0px 30px;
+    border-radius: 20px;
+    padding: 30px;
+    }
+}

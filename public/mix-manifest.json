@@ -1,0 +1,23 @@
+{
+    "/js/cart.js": "/js/cart.js",
+    "/js/category.js": "/js/category.js",
+    "/js/course.js": "/js/course.js",
+    "/js/deletejob.js": "/js/deletejob.js",
+    "/js/frontend_dashboard.js": "/js/frontend_dashboard.js",
+    "/css/frontend_dashboard.css": "/css/frontend_dashboard.css",
+    "/css/home.css": "/css/home.css",
+    "/css/category.css": "/css/category.css",
+    "/css/course.css": "/css/course.css",
+    "/css/teacher.css": "/css/teacher.css",
+    "/css/pay.css": "/css/pay.css",
+    "/css/cart.css": "/css/cart.css",
+    "/css/user.css": "/css/user.css",
+    "/css/blog_home.css": "/css/blog_home.css",
+    "/css/blog_menu.css": "/css/blog_menu.css",
+    "/css/blog_article.css": "/css/blog_article.css",
+    "/css/unistyle.css": "/css/unistyle.css",
+    "/js/home.js": "/js/home.js",
+    "/js/teacher.js": "/js/teacher.js",
+    "/js/unijs.js": "/js/unijs.js",
+    "/js/user.js": "/js/user.js"
+}

@@ -1,0 +1,147 @@
+.modal-auth {
+    padding: 0;
+    .auth-left {
+        background-image: url("/images/bg_left_login.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        .inner {
+            width: 100%;
+            max-width: 300px;
+            flex-wrap: wrap;
+            margin: auto;
+            text-align: center;
+            h4 {
+                font-size: 24px;
+                font-weight: 700;
+                width: 100%;
+                color: #fff;
+            }
+            p {
+                color: #727272;
+                font-size: 14px;
+            }
+        }
+    }
+    .gd-danger{
+        color: #e61c23;
+    }
+    .auth-right {
+        padding-top: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h4 {
+            font-weight: 400;
+            color: #122a67;
+            font-size: 24px;
+        }
+        .social {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+            margin-bottom: 5px;
+            a {
+                width: 100%;
+                display: block;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                color: white;
+                i {
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    align-items: center;
+                    line-height: 30px;
+                    border-radius: 50%;
+                    margin-right: 5px;
+                    color: white;
+                }
+                &.facebook {
+                    background-color: #3B5998;
+                }
+                &.google {
+                    background-color: #e61c23;
+                }
+            }
+        }
+        .remember-login {
+            a {
+                text-decoration: underline!important;
+                font-style: italic;
+                color: #727272;
+            }
+        }
+
+        .form-group {
+            position: relative;
+            input{
+                text-indent: 35px;
+            }
+            .icon {
+                position: absolute;
+                font-size: 20px;
+                height: 40px;
+                width: 50px;
+                text-align: center;
+                color: #878787;
+                z-index: 10;
+                &:before{
+                    font: normal normal normal 14px/1 FontAwesome;
+                }
+            }
+            .icon-mail
+            {
+                &:before
+                {
+                    content: "\f2b6";
+                }
+            }
+            .icon-user
+            {
+                &:before
+                {
+                    content: "\f007";
+                }
+            }
+            .icon-phone
+            {
+                &:before
+                {
+                    content: "\f095";
+                }
+            }
+            .icon-lock{
+                &:before
+                {
+                    content: "\f13e";
+
+                }
+            }
+        }
+        .password-show {
+            position: absolute;
+            top: 50%;
+            z-index: 10;
+            transform: translateY(-50%);
+            right: 16px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 768px) {
+    .modal-auth{
+        .box{
+            display: block;
+            .auth-left{
+                padding: 10px;
+            }
+        }
+    }
+    .box{
+        display: block;      
+    }
+}
