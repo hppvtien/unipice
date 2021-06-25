@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2021 at 01:04 PM
+-- Generation Time: Jun 25, 2021 at 01:01 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -118,6 +118,107 @@ INSERT INTO `answer_to_teacher` (`id`, `asw_teacher`, `asw_content`, `asw_image`
 (14, 4, 'lâu vcl', NULL, '29', 34, 0, '2021-06-01 03:48:26', NULL, 1),
 (15, 4, 'cau hoi thu 4', NULL, '29', 34, 0, '2021-06-01 03:50:27', NULL, NULL),
 (16, 3, 'cho hoi ve ffffff', NULL, '30', 34, 0, '2021-06-01 19:59:41', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ap_category`
+--
+
+CREATE TABLE `ap_category` (
+  `id` int(11) NOT NULL,
+  `parent_id` int(11) NOT NULL DEFAULT 0,
+  `thumbnail` varchar(255) DEFAULT NULL,
+  `banner` varchar(255) DEFAULT NULL,
+  `is_featured` varchar(255) DEFAULT NULL COMMENT 'Background for parent_id = 0',
+  `style` varchar(255) DEFAULT NULL COMMENT 'style html',
+  `class` varchar(100) DEFAULT NULL,
+  `type` varchar(255) DEFAULT 'post' COMMENT 'type theo đúng tên controller',
+  `order` int(3) DEFAULT 0,
+  `is_status` tinyint(2) NOT NULL DEFAULT 1,
+  `created_time` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_time` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_by` varchar(255) NOT NULL,
+  `updated_by` varchar(255) NOT NULL,
+  `album` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `ap_category`
+--
+
+INSERT INTO `ap_category` (`id`, `parent_id`, `thumbnail`, `banner`, `is_featured`, `style`, `class`, `type`, `order`, `is_status`, `created_time`, `updated_time`, `created_by`, `updated_by`, `album`) VALUES
+(1, 1, '', '', NULL, '', NULL, 'post', 3, 1, '2019-10-31 17:00:27', '2019-12-06 14:48:45', '', '', NULL),
+(8, 8, '', '', NULL, '', NULL, 'post', 0, 1, '2019-12-06 15:17:32', '2019-12-06 15:19:40', '', '', NULL),
+(10, 0, '', '', NULL, '', NULL, 'question', 0, 1, '2019-12-09 09:48:56', '2019-12-09 10:18:36', '', '', NULL),
+(11, 0, '', '', NULL, '', NULL, 'question', 2, 1, '2019-12-09 10:18:53', '2020-02-19 09:08:45', '', '', NULL),
+(15, 0, '', '', NULL, NULL, NULL, 'career', 0, 1, '2020-02-13 17:18:29', '2020-02-13 17:18:29', '', '', NULL),
+(16, 0, '', '', NULL, '', NULL, 'project', 0, 1, '2020-02-14 11:50:39', '2020-02-14 11:50:39', '', '', NULL),
+(17, 0, '', '', NULL, '', NULL, 'project', 2, 1, '2020-02-14 11:50:50', '2020-02-19 15:20:03', '', '', NULL),
+(19, 15, '', NULL, NULL, NULL, NULL, 'career', 20, 1, '2020-02-17 15:59:40', '2020-02-17 16:02:25', '', '', NULL),
+(33, 11, '', NULL, NULL, '', NULL, 'question', 1, 1, '2020-02-18 16:20:09', '2020-02-19 09:08:47', '', '', NULL),
+(47, 0, '', NULL, NULL, '', NULL, 'project', 1, 1, '2020-02-19 15:19:56', '2020-02-19 15:20:02', '', '', NULL),
+(48, 47, '', NULL, NULL, '', NULL, 'project', 0, 1, '2020-02-19 15:24:09', '2020-02-19 15:24:09', '', '', NULL),
+(52, 0, '', '', NULL, '', NULL, 'project', 0, 1, '2020-02-19 15:50:34', '2020-02-20 15:57:48', '', '', NULL),
+(60, 0, '', '', NULL, '', NULL, 'document', 0, 1, '2020-02-20 09:05:58', '2020-02-20 09:05:58', '', '', NULL),
+(61, 0, '', '', NULL, '', NULL, 'pro_service', 2, 1, '2020-02-20 09:21:32', '2020-02-22 09:47:36', '', '', NULL),
+(62, 60, '', '', NULL, '', NULL, 'document', 1, 1, '2020-02-20 09:54:59', '2020-02-20 15:49:11', '', '', NULL),
+(64, 0, '', '', NULL, '', NULL, 'pro_service', 1, 1, '2020-02-20 10:02:06', '2020-02-22 09:38:49', '', '', NULL),
+(68, 0, '', '', NULL, '', NULL, 'question', 2, 1, '2020-02-20 16:09:55', '2020-02-22 09:19:04', '', '', NULL),
+(72, 0, '', '', NULL, '', NULL, 'post', 0, 1, '2020-02-20 16:23:10', '2020-02-20 16:23:10', '', '', NULL),
+(73, 0, '', '', NULL, '', NULL, 'post', 1, 1, '2020-02-20 16:23:18', '2020-02-21 14:20:37', '', '', NULL),
+(74, 0, '', '', NULL, '', NULL, 'post', 0, 1, '2020-02-20 16:23:28', '2020-02-20 16:23:28', '', '', NULL),
+(75, 0, '', '', NULL, '', NULL, 'post', 2, 1, '2020-02-20 16:23:42', '2020-02-21 14:20:33', '', '', NULL),
+(79, 0, '', '', NULL, '', NULL, 'question', 8, 1, '2020-02-20 16:42:30', '2020-02-22 09:19:29', '', '', NULL),
+(86, 0, '', '', NULL, '', NULL, 'document', 2, 1, '2020-02-21 10:36:27', '2020-02-21 13:48:41', '', '', NULL),
+(88, 0, 'padlwktevy_1558777957.jpg', 'padlwktevy_1558777957.jpg', NULL, '', NULL, 'document', 0, 1, '2020-02-21 13:43:41', '2020-02-21 13:43:41', '', '', NULL),
+(90, 0, '', '', NULL, '', NULL, 'document', 0, 1, '2020-02-21 15:44:50', '2020-02-21 15:44:50', '', '', NULL),
+(91, 90, '', '', NULL, '', NULL, 'document', 0, 1, '2020-02-21 15:45:16', '2020-02-21 15:45:16', '', '', NULL),
+(95, 0, '', '', NULL, NULL, NULL, 'career', 0, 1, '2020-02-21 16:46:58', '2020-02-21 16:46:58', '', '', NULL),
+(100, 64, '', '', NULL, '', NULL, 'pro_service', 0, 1, '2020-02-22 09:50:15', '2020-02-22 09:50:15', '', '', NULL),
+(103, 0, '', '', NULL, '', NULL, 'product', 0, 1, '2020-03-11 08:48:10', '2020-03-11 08:48:10', '', '', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ap_menus`
+--
+
+CREATE TABLE `ap_menus` (
+  `id` int(4) NOT NULL,
+  `title` varchar(75) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `icon` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '#',
+  `parent_id` int(2) NOT NULL DEFAULT 0,
+  `order` tinyint(2) DEFAULT NULL,
+  `class` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `location_id` smallint(4) NOT NULL,
+  `language_code` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `ap_menus`
+--
+
+INSERT INTO `ap_menus` (`id`, `title`, `icon`, `link`, `parent_id`, `order`, `class`, `location_id`, `language_code`, `type`) VALUES
+(10, 'Sản phẩm', '', 'san-pham', 0, 1, '', 2, 'vi', 'page'),
+(11, 'Khuyến mại', '', 'khuyen-mai', 0, 2, '', 2, 'vi', 'page'),
+(12, 'Hệ thống cửa hàng', '', 'he-thong-cua-hang', 0, 3, '', 2, 'vi', 'page'),
+(13, 'Tư vấn dinh dưỡng', '', 'tu-van-dinh-duong', 0, 4, '', 2, 'vi', 'page'),
+(14, 'Câu hỏi thường gặp', '', 'cau-hoi-thuong-gap', 0, 5, '', 2, 'vi', 'page'),
+(15, 'Hướng dẫn mua hàng', '', 'huong-dan-mua-hang', 0, 1, '', 2, 'vi', 'page'),
+(16, 'Chính sách giao hàng', '', 'chinh-sach-giao-hang', 0, 2, '', 3, 'vi', 'page'),
+(17, 'Chính sách đổi trả', '', 'chinh-sach-doi-tra', 0, 3, '', 3, 'vi', 'page'),
+(18, 'Chính sách giá cả & thanh toán', '', 'chinh-sach-gia-ca-thanh-toan', 0, 4, '', 3, 'vi', 'page'),
+(19, 'Hóa đơn điện tử', '', 'hoa-don-dien-tu', 0, 5, '', 3, 'vi', 'page'),
+(21, 'Liên hệ', '', 'lien-he', 0, 1, '', 4, 'vi', 'page'),
+(22, 'Kiểm tra đơn hàng', '', 'kiem-tra-don-hang', 0, 2, '', 4, 'vi', 'page'),
+(23, 'Sản phẩm', '', 'san-pham', 0, 1, '', 1, 'vi', 'page'),
+(24, 'Khuyến mại', '', 'khuyen-mai', 0, 2, '', 1, 'vi', 'page'),
+(25, 'Hệ thống cửa hàng', '', 'he-thong-cua-hang', 0, 3, '', 1, 'vi', 'page'),
+(26, 'Tư vấn dinh dưỡng', '', 'tu-van-dinh-duong', 0, 4, '', 1, 'vi', 'page'),
+(27, 'Hướng dẫn mua hàng', '', 'huong-dan-mua-hang', 0, 5, '', 1, 'vi', 'page');
 
 -- --------------------------------------------------------
 
@@ -824,15 +925,38 @@ INSERT INTO `keywords_search` (`id`, `ks_name`, `ks_slug`, `ks_count`, `ks_total
 --
 
 CREATE TABLE `menus` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) NOT NULL,
-  `slug` varchar(191) NOT NULL,
-  `url` varchar(191) DEFAULT NULL,
-  `order` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `custom_class` varchar(191) DEFAULT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `m_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `m_slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `m_icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `m_sort` tinyint(4) NOT NULL DEFAULT 0,
+  `m_status` tinyint(4) NOT NULL DEFAULT 1,
+  `m_hot` tinyint(4) NOT NULL DEFAULT 0,
+  `m_position` tinyint(4) NOT NULL DEFAULT 0,
+  `m_parent_id` int(11) NOT NULL DEFAULT 0,
+  `m_child_all` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `m_parent_all` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `m_title_seo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `m_avatar` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `m_keyword_seo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `m_description_seo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`id`, `m_name`, `m_slug`, `m_icon`, `m_sort`, `m_status`, `m_hot`, `m_position`, `m_parent_id`, `m_child_all`, `m_parent_all`, `m_title_seo`, `m_avatar`, `m_keyword_seo`, `m_description_seo`, `created_at`, `updated_at`) VALUES
+(1, 'Góc kiến thức', 'bai-viet', 'fa fa-bandcamp', 0, 1, 0, 0, 0, NULL, NULL, 'Góc kiến thức', NULL, NULL, 'Tin 1', '2020-12-20 08:51:41', '2021-05-05 19:45:45'),
+(2, 'Kiến thức Digital Marketing', 'kien-thuc-digital-marketing', 'fa fa-bandcamp', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức Digital Marketing', NULL, NULL, 'Kiến thức Digital Marketing', '2021-05-05 19:48:29', NULL),
+(3, 'Kiến thức SEO', 'kien-thuc-seo', 'fa fa-bandcamp', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức SEO', NULL, NULL, 'Kiến thức SEO', '2021-05-05 19:49:03', NULL),
+(4, 'Kiến thức Content Marketing', 'kien-thuc-content-marketing', 'blogmenu', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức Content Marketing', NULL, NULL, 'Kiến thức Content Marketing', '2021-05-05 19:49:34', NULL),
+(5, 'Kiến thức Branding', 'kien-thuc-branding', 'fa fa-bandcamp', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức Branding', NULL, NULL, 'Kiến thức Branding', '2021-05-05 19:50:35', NULL),
+(6, 'Kiến thức Website Design', 'kien-thuc-website-design', 'fa fa-bandcamp', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức Website Design', NULL, NULL, 'Kiến thức Website Design', '2021-05-05 19:51:55', NULL),
+(7, 'Kiến thức về quảng cáo số', 'kien-thuc-ve-quang-cao-so', 'fa fa-bandcamp', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức về quảng cáo số', NULL, NULL, 'Kiến thức về quảng cáo số', '2021-05-05 20:03:31', NULL),
+(8, 'Kiến thức Leadership', 'kien-thuc-leadership', 'fa fa-bandcamp', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức Leadership', NULL, NULL, 'Kiến thức Leadership', '2021-05-05 20:03:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -1792,6 +1916,18 @@ ALTER TABLE `answer_to_teacher`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `ap_category`
+--
+ALTER TABLE `ap_category`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `ap_menus`
+--
+ALTER TABLE `ap_menus`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
 -- Indexes for table `articles`
 --
 ALTER TABLE `articles`
@@ -1945,7 +2081,9 @@ ALTER TABLE `keywords_search`
 -- Indexes for table `menus`
 --
 ALTER TABLE `menus`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `menus_m_slug_unique` (`m_slug`),
+  ADD KEY `menus_m_parent_id_index` (`m_parent_id`);
 
 --
 -- Indexes for table `migrations`
@@ -2154,6 +2292,18 @@ ALTER TABLE `answer_to_teacher`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `ap_category`
+--
+ALTER TABLE `ap_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+
+--
+-- AUTO_INCREMENT for table `ap_menus`
+--
+ALTER TABLE `ap_menus`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
@@ -2283,7 +2433,7 @@ ALTER TABLE `keywords_search`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `migrations`
