@@ -54,14 +54,21 @@
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 <script>
+       
+</script>
+<script>
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $(document).ready(function() {
         var updateOutput = function(e) {
             var list = e.length ? e : $(e.target),
                 output = list.data('output');
             if (window.JSON) {
-                return (window.JSON.stringify(list.nestable('serialize'))); //, null, 2));
+                return (window.JSON.stringify(list.nestable('serialize'))); 
             } else {
                 return false;
             }
@@ -75,7 +82,7 @@
             console.log(lang_code);
             $.ajax({
                 type: 'POST',
-                url: url_ajax_load,
+                url:  "{{ route('get_admin.apmenu.ajax_load') }}",
                 data: {
                     location_id: locationId,
                     lang_code: lang_code
@@ -100,18 +107,6 @@
             });
             return false;
         });
-
-        // activate Nestable for list 1
-        /*$('#nestable').nestable({
-            group: 1
-        }).on('change', function(e) {
-            var locationId = $('#menu_locations').val();
-            var lang_code = $('#menu_languages').val();
-            //var structure = updateOutput($('#nestable').data('output', $('#output-menu')));
-            var structure = $('#nestable').nestable('serialize');
-            saveData(structure,locationId,lang_code);
-        });*/
-
         $('#nestable-menu').on('click', function(e) {
             var target = $(e.target),
                 action = target.data('action');
@@ -127,10 +122,6 @@
             var element = $(this).parent().parent();
             element.remove();
             element.find('ol.dd-list').remove();
-            /*var locationId = $('#menu_locations').val();
-            var lang_code = $('#menu_languages').val();
-            var structure = $('#nestable').nestable('serialize');
-            saveData(structure,locationId,lang_code);*/
         });
 
         $(document).on('click', '.addtonavmenu', function() {
@@ -219,13 +210,11 @@
 
 
     function showmenus(locationId, lang_code) {
+        var locationId = $('#menu_locations').val();
+            var lang_code = $('#menu_languages').val();
         $.ajax({
-            type: "GET",
-            url: url_ajax_load_menu,
-            data: {
-                location_id: locationId,
-                lang_code: lang_code
-            },
+            type: "post",
+            url:  "{{ route('get_admin.apmenu.ajax_load_menu') }}",
             dataType: "json",
             cache: "false",
             success: function(result) {

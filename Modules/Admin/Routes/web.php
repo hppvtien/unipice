@@ -176,8 +176,13 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
     // ----------------------------------------------------------------------------------------------------------------
     Route::prefix('apmenu')->group(function (){
         Route::get('/', 'AdminApMenuController@index')->name('get_admin.apmenu.index');
-        Route::get('/', 'AdminApMenuController@ajax_load')->name('get_admin.apmenu.ajax_load');
-        // Route::get('/create', 'AdminApMenuController@create')->name('get_admin.apmenu.create');
+        Route::post('/', 'AdminApMenuController@ajax_load')->name('get_admin.apmenu.ajax_load');
+        Route::any('/', 'AdminApMenuController@ajax_load_menu')->name('get_admin.apmenu.ajax_load_menu');
+        // Route::post('/', 'AdminApMenuController@ajax_save_menu')->name('get_admin.apmenu.ajax_save_menu');
+
+
+
+        
     });
     Route::prefix('bill')->group(function (){
         Route::get('/', 'AdminBillController@index')->name('get_admin.bill.index');

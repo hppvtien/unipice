@@ -8,11 +8,10 @@ use Illuminate\Support\Arr;
 use App\Models\Education\Course;
 
 
-class ApMenu extends Model
+class ApCategory extends Model
 {
     use HasFactory;
-    protected $table = 'ap_menus';
+    protected $table = 'ap_category';
     protected $guarded = [''];
+
 }
-
-

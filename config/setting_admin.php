@@ -37,18 +37,12 @@ return [
                     'route' => 'get_admin.keyword.index'
                 ],
                 [
+                    'name' => 'Menu',
+                    'route' => 'get_admin.menu.index'
+                ],
+                [
                     'name' => 'Bài viết',
                     'route' => 'get_admin.article.index'
-                ],
-            ]
-        ],
-        [
-            'name' => 'Menu',
-            'class-icon' => 'la la-edit',
-            'sub' => [
-                [
-                    'name' => 'Menu',
-                    'route' => 'get_admin.apmenu.index'
                 ],
             ]
         ],
@@ -149,16 +143,6 @@ return [
             ]
         ],
         [
-            'name' => 'Quản lý Menu',
-            'class-icon' => 'la la-database',
-            'sub' => [
-                [
-                    'name' => 'Danh sách',
-                    'route' => 'get_admin.apmenu.index'
-                ],
-            ]
-        ],
-        [
             'name' => 'Thống kê',
             'class-icon' => 'la la-database',
             'sub' => [
@@ -191,6 +175,16 @@ return [
                 [
                     'name' => 'Votes',
                     'route' => 'get_admin.votes.index'
+                ],
+            ]
+        ],
+        [
+            'name' => 'Quản lý Menu',
+            'class-icon' => 'la la-database',
+            'sub' => [
+                [
+                    'name' => 'Danh sách',
+                    'route' => 'get_admin.apmenu.index'
                 ],
             ]
         ],

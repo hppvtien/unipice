@@ -11,10 +11,14 @@
     <!-- Title -->
     <title> Theme Admin </title>
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ asset('css_admin/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/brand/favicon.png') }}" type="image/x-icon"/>
     <link rel="stylesheet" href="{{ asset('css_admin/admin_dashboard.css') }}">
+  
+    <link rel="stylesheet" href="{{ asset('css_admin/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css_admin/custom.css') }}">
     @if(session('toastr'))
         <script>
             var TYPE_MESSAGES = "{{ session('toastr.type') }}"
@@ -149,6 +153,7 @@
 <!-- JQuery min js -->
 
 <script src="{{ asset('js_admin/admin_dashboard.js') }}"></script>
+<script src="{{ asset('js_admin/select2.min.js') }}"></script>
 <script src="{{ asset('js_admin/custom.js') }}"></script>
 @yield('scriptck')
 </body>
