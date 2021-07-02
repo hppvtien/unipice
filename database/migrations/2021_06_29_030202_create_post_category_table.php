@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterBillTable extends Migration
+class CreatePostCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class AlterBillTable extends Migration
      */
     public function up()
     {
-        Schema::table('bill', function (Blueprint $table) {
-            $table->string('method_customer_code')->nullable();
-            $table->string('method_company')->nullable();
-            $table->string('method_paid')->nullable();
+        Schema::create('post_category', function (Blueprint $table) {
+            $table->id();
+            $table->integer('category_id')->nullable();
+            $table->integer('product_id')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ class AlterBillTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('post_category');
     }
 }

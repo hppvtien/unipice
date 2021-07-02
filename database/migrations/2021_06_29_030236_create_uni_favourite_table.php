@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterTransactionsToTableName extends Migration
+class CreateUniFavouriteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AlterTransactionsToTableName extends Migration
      */
     public function up()
     {
-        Schema::table('transactions', function (Blueprint $table) {
-            // $table->string('t_voucher', 32);
+        Schema::create('uni_favourite', function (Blueprint $table) {
+            $table->id();
+            $table->integer('user_id')->nullable();
+            $table->integer('product_id')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AlterTransactionsToTableName extends Migration
      */
     public function down()
     {
-        Schema::table('table_name', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('uni_favourite');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCorrectsAnswersTable extends Migration
+class CreateProductSizeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateCorrectsAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('corrects_answers', function (Blueprint $table) {
+        Schema::create('product_size', function (Blueprint $table) {
             $table->id();
-            $table->integer('ca_course_id')->index()->default(0);
-            $table->integer('ca_answer_id')->index()->default(0);
-            $table->integer('ca_question_id')->index()->default(0);
+            $table->integer('size_id')->nullable();
+            $table->integer('product_id')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateCorrectsAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('corrects_answers');
+        Schema::dropIfExists('product_size');
     }
 }

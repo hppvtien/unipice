@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class JobsTable extends Migration
+class CreateUniSupplierTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class JobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('uni_supplier', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('desscription');
-            $table->string('image');
-            $table->text('content');
-            $table->integer('phone');
             $table->string('email');
-            $table->string('address');
+            $table->string('address')->nullable();
+            $table->integer('phone')->nullable();
             $table->tinyInteger('status');
-            $table->tinyInteger('is_hot');
+            $table->integer('tax_code')->nullable();
+            $table->text('avatar');
             $table->timestamps();
         });
     }
@@ -35,6 +33,6 @@ class JobsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('uni_supplier');
     }
 }

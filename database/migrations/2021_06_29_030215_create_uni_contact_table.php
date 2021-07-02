@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseFaqTable extends Migration
+class CreateUniContactTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateCourseFaqTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_faq', function (Blueprint $table) {
+        Schema::create('uni_contact', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->integer('user_id')->default(0);
+            $table->string('name')->nullable();
             $table->text('content')->nullable();
-            $table->integer('course_id')->nullable();
+            $table->tinyInteger('status')->default(0);
+            $table->string('email')->default(0);
+            $table->integer('phone')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateCourseFaqTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_faq');
+        Schema::dropIfExists('uni_contact');
     }
 }

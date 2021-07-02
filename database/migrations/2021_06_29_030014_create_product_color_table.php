@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionsFromTeacherTable extends Migration
+class CreateProductColorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateQuestionsFromTeacherTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions_from_teacher', function (Blueprint $table) {
+        Schema::create('product_color', function (Blueprint $table) {
             $table->id();
-            $table->integer('qs_answerID')->nullable();
-            $table->string('qs_content')->nullable();
+            $table->integer('color_id')->nullable();
+            $table->integer('product_id')->nullable();
+            $table->text('product_image')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateQuestionsFromTeacherTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions_from_teacher');
+        Schema::dropIfExists('product_color');
     }
 }

@@ -218,6 +218,7 @@
             dataType: "json",
             cache: "false",
             success: function(result) {
+                console.log(result);
                 var webmenus = $('#nestable .dd-list');
                 var contentMenu = _recursive_menu(result, 0);
                 webmenus.html(contentMenu);

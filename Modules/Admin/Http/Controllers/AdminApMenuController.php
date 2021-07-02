@@ -86,9 +86,9 @@ class AdminApMenuController extends AdminController
   public function ajax_load_menu()
   {
       $data = ApMenu::get();
-dd($data);
+// dd($data);
       
-      // return json_encode($data);
+      return json_encode($data);
 
   }
 
