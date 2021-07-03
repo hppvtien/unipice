@@ -61,6 +61,41 @@ return [
             ]
         ],
         [
+            'name' => 'Quản lý sản phẩm',
+            'class-icon' => 'la la-book-open',
+            'sub' => [
+                [
+                    'name' => 'Sản phẩm',
+                    'route' => 'get_admin.tag.index'
+                ],
+                [
+                    'name' => 'Danh mục sản phẩm',
+                    'route' => 'get_admin.uni_category.index'
+                ],
+                [
+                    'name' => 'Thương hiệu',
+                    'route' => 'get_admin.uni_trade.index'
+                ],
+                [
+                    'name' => 'Đóng gói (Size)',
+                    'route' => 'get_admin.uni_size.index'
+                ],
+                [
+                    'name' => 'Màu sắc',
+                    'route' => 'get_admin.uni_color.index'
+                ],
+                [
+                    'name' => 'Nhà cung cấp',
+                    'route' => 'get_admin.uni_supplier.index'
+                ],
+                [
+                    'name' => 'Lô hàng',
+                    'route' => 'get_admin.lot_product.index'
+                ],
+               
+            ]
+        ],
+        [
             'name' => 'Voucher',
             'class-icon' => 'la la-cart-arrow-down',
             'sub' => [
@@ -188,5 +223,6 @@ return [
                 ],
             ]
         ],
+        
     ]
 ];
