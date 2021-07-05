@@ -4,13 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 
-
-class Uni_Tag extends Model
+class ProductLotProduct extends Model
 {
     use HasFactory;
 
+    protected $table = 'product_lotproduct';
     protected $guarded = [''];
-    protected $table = 'uni_tag';
 }

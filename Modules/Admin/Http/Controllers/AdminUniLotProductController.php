@@ -2,43 +2,55 @@
 
 namespace Modules\Admin\Http\Controllers;
 
-use App\Models\Uni_supplier;
+use App\Models\Uni_Supplier;
+use App\Models\Uni_Size;
+use App\Models\Uni_Product;
+use App\Models\Uni_LotProduct;
 use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Modules\Admin\Http\Controllers\AdminController;
-use Modules\Admin\Http\Requests\AdminUniSupplierRequest;
+use Modules\Admin\Http\Requests\AdminUniLotProductRequest;
 
 class AdminUniLotProductController extends AdminController
 {
     public function index()
     {
        
-        $uni_supplier = Uni_supplier::orderByDesc('id')
+        $uni_lotproduct = Uni_LotProduct::orderByDesc('id')
             ->paginate(20);
        
         $viewData = [
-            'uni_supplier' => $uni_supplier
+            'uni_lotproduct' => $uni_lotproduct
         ];
-        return view('admin::pages.uni_supplier.index', $viewData);
+        return view('admin::pages.uni_lotproduct.index', $viewData);
     }
 
     public function create()
     {
-        $uni_supplier = Uni_supplier::orderByDesc('id')->get();
-        return view('admin::pages.uni_supplier.create',compact('uni_supplier'));
+        $uni_lotproduct = Uni_LotProduct::orderByDesc('id')->get();
+        $uni_size = Uni_Size::orderByDesc('id')->get();
+        $uni_product= Uni_Product::orderByDesc('id')->get();
+        $uni_supplier = Uni_Supplier::orderByDesc('id')->get();
+        $viewData = [
+            'uni_lotproduct' => $uni_lotproduct,
+            'uni_size' => $uni_size,
+            'uni_supplier' => $uni_supplier,
+            'uni_product' => $uni_product
+        ];
+        return view('admin::pages.uni_lotproduct.create',$viewData);
     }
 
-    public function store(AdminUniSupplierRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['save','_token']);
         $data['created_at'] = Carbon::now();
-
-        $menuID = Uni_supplier::insertGetId($data);
+        $data['expiry_date'] = Carbon::now();
+        $menuID = Uni_LotProduct::insertGetId($data);
         if($menuID)
         {
             $this->showMessagesSuccess();
-            return redirect()->route('get_admin.uni_supplier.index');
+            return redirect()->route('get_admin.uni_lotproduct.index');
         }
         $this->showMessagesError();
         return  redirect()->back();
@@ -46,28 +58,38 @@ class AdminUniLotProductController extends AdminController
 
     public function edit($id)
     {
-        $supplier = Uni_supplier::findOrFail($id);
-        $uni_supplier = Uni_supplier::orderByDesc('id')->get();
-        return view('admin::pages.uni_supplier.update',compact('supplier','uni_supplier'));
+        $lotproduct = Uni_LotProduct::findOrFail($id);
+        $uni_lotproduct = Uni_LotProduct::orderByDesc('id')->get();
+        $uni_size = Uni_Size::orderByDesc('id')->get();
+        $uni_supplier = Uni_Supplier::orderByDesc('id')->get();
+        $uni_product= Uni_Product::orderByDesc('id')->get();
+        $viewData = [
+            'lotproduct' => $lotproduct,
+            'uni_lotproduct' => $uni_lotproduct,
+            'uni_size' => $uni_size,
+            'uni_supplier' => $uni_supplier,
+            'uni_product' => $uni_product
+        ];
+        return view('admin::pages.uni_lotproduct.update',$viewData);
     }
 
-    public function update(AdminUniSupplierRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $uni_supplier = Uni_supplier::findOrFail($id);
+        $uni_lotproduct = Uni_LotProduct::findOrFail($id);
         $data = $request->except(['avatar','save','_token']);
         $data['updated_at'] = Carbon::now();
 
-        $uni_supplier->fill($data)->save();
+        $uni_lotproduct->fill($data)->save();
         $this->showMessagesSuccess();
-        return redirect()->route('get_admin.uni_supplier.index');
+        return redirect()->route('get_admin.uni_lotproduct.index');
     }
 
 
-    public function delete(AdminUniSupplierRequest $request, $id)
+    public function delete(Request $request, $id)
     {
         if($request->ajax())
         {
-            $menu = Uni_supplier::findOrFail($id);
+            $menu = Uni_LotProduct::findOrFail($id);
             if ($menu)
             {
                 $menu->delete();

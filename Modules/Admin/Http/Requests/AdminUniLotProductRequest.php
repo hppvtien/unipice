@@ -10,11 +10,9 @@ class AdminUniLotProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'qty'=>'required|min:100|max:150',
-            'size'=>'required',
+            'qty'=>'required',
             'barcode'=> 'required',
             'expriry_date' => 'required',
-            'tax_code' => 'required|min:10|max:12',
         ];
     }
 
@@ -22,15 +20,9 @@ class AdminUniLotProductRequest extends FormRequest
     {
         return [
             'name.required' => 'Dữ liệu không được để trống',
-            'qty.min'=> 'Mô tả phải có ít nhất 100 lý tự',
-            'qty.max'=> 'Mô tả chỉ được tối đa 150 ký tự',
             'qty.required'=> 'Dữ liệu không được để trống',
-            'size.required'=> 'Số điện thoại phải có ít nhất 9 lý tự',     
-            'barcode.required'=> 'Bạn chưa nhập email',
+            'barcode.required'=> 'Bạn chưa nhập mã vạch',
             'expriry_date.required' => 'Dữ liệu không được để trống',
-            'tax_code.required' => 'Dữ liệu không được để trống',
-            'tax_code.min'=> 'Mã số thuê phải có ít nhất 10 lý tự',
-            'tax_code.max'=> 'Mã số thuê chỉ được tối đa 12 ký tự',
         ];
     }
 

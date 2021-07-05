@@ -66,7 +66,7 @@ return [
             'sub' => [
                 [
                     'name' => 'Sản phẩm',
-                    'route' => 'get_admin.tag.index'
+                    'route' => 'get_admin.uni_product.index'
                 ],
                 [
                     'name' => 'Danh mục sản phẩm',
@@ -89,8 +89,12 @@ return [
                     'route' => 'get_admin.uni_supplier.index'
                 ],
                 [
+                    'name' => 'Tags',
+                    'route' => 'get_admin.uni_tag.index'
+                ],
+                [
                     'name' => 'Lô hàng',
-                    'route' => 'get_admin.lot_product.index'
+                    'route' => 'get_admin.uni_lotproduct.index'
                 ],
                
             ]

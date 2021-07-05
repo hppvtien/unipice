@@ -23,7 +23,7 @@
                         @endif
                         <span class="text-danger" id="count_des"></span>
                     </div>
-                   
+
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="">Content </label>
                         <textarea name="content" id="article-ckeditor" cols="30" rows="5">{!! old('content',$jobs->content ?? '') !!}</textarea>
@@ -64,55 +64,55 @@
                     </div>
                 </div>
             </div>
-        <div class="card box-shadow-0 ">
-            <div class="card-body pt-3">
-                <div class="form-group">
-                    <label for="exampleInputEmail1"> Hạn nộp CV </span></label>
-                    <input type="date"  class="form-control keypress-count" name="end_date" value="{{ old('end_date',date('Y-m-d', strtotime($jobs->end_date)) ?? '') }}">
-                </div>
-            </div>
-        </div>
-        <div class="card box-shadow-0 ">
-            <div class="card-body pt-3">
-                <div class="form-group">
-                    <label for="exampleInputEmail1"> Ngày tạo <span>(*)</span></label>
-                    <input type="date" disabled class="form-control keypress-count" name="created_at" value="{{ old('created_at',date('Y-m-d', strtotime($jobs->created_at)) ?? '') }}">
-                </div>
-            </div>
-        </div>
-        <div class="card box-shadow-0 ">
-            <div class="card-body pt-3">
-                <div class="form-group">
-                    <label for="exampleInputEmail1"> Status <span>(*)</span></label>
-                    <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                        <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
-                            <option title="Public" value="1" {{ ($jobs->status ?? 0) == 1 ? 'selected' : '' }}>Active</option>
-                            <option title="hide" value="0" {{ ($jobs->status ?? 0) == 0 ? 'selected' : '' }}>No Active</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card box-shadow-0 ">
-            <div class="card-body pt-3">
-                <div class="form-group">
-                    <label class="" for="exampleInputEmail1"> Hot Job </label>
+            <div class="card box-shadow-0 ">
+                <div class="card-body pt-3">
                     <div class="form-group">
-                        <label class="box-checkbox"> Nổi bật
-                            <input type="radio" name="is_hot" {{ ($jobs->is_hot ?? 0) == 1 ? 'checked' : '' }} value="1">
-                            <span class="checkmark"></span>
-                        </label>
+                        <label for="exampleInputEmail1"> Hạn nộp CV </span></label>
+                        <input type="date" class="form-control keypress-count" name="end_date" value="{{ old('end_date',date('Y-m-d', strtotime($jobs->end_date)) ?? '') }}">
                     </div>
+                </div>
+            </div>
+            <div class="card box-shadow-0 ">
+                <div class="card-body pt-3">
                     <div class="form-group">
-                        <label class="box-checkbox"> Không nổi bật
-                            <input type="radio" name="is_hot" {{ ($jobs->is_hot ?? 0) ==  0 ? 'checked' : '' }} value="0">
-                            <span class="checkmark"></span>
-                        </label>
+                        <label for="exampleInputEmail1"> Ngày tạo <span>(*)</span></label>
+                        <input type="date" disabled class="form-control keypress-count" name="created_at" value="{{ old('created_at',date('Y-m-d', strtotime($jobs->created_at)) ?? '') }}">
+                    </div>
+                </div>
+            </div>
+            <div class="card box-shadow-0 ">
+                <div class="card-body pt-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1"> Status <span>(*)</span></label>
+                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                            <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
+                                <option title="Public" value="1" {{ ($jobs->status ?? 0) == 1 ? 'selected' : '' }}>Active</option>
+                                <option title="hide" value="0" {{ ($jobs->status ?? 0) == 0 ? 'selected' : '' }}>No Active</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card box-shadow-0 ">
+                <div class="card-body pt-3">
+                    <div class="form-group">
+                        <label class="" for="exampleInputEmail1"> Hot Job </label>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Nổi bật
+                                <input type="radio" name="is_hot" {{ ($jobs->is_hot ?? 0) == 1 ? 'checked' : '' }} value="1">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="box-checkbox"> Không nổi bật
+                                <input type="radio" name="is_hot" {{ ($jobs->is_hot ?? 0) ==  0 ? 'checked' : '' }} value="0">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </form>
 @section('scriptck')
@@ -130,7 +130,7 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-     $("#desscription_job").keyup(function() {
+    $("#desscription_job").keyup(function() {
         $("#count_des").text("Ký tự: " + (150 - $(this).val().length) + " (Nội dung 100-150 ký tự)");
     });
 </script>

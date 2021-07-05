@@ -198,13 +198,13 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('delete_apply/{id}', 'AdminContactController@delete_apply')->name('get_admin.jobsapply.delete_apply');
     });
 
-    Route::prefix('product')->group(function (){
-        Route::get('/', 'AdminProductController@index')->name('get_admin.product.index');
-        // Route::get('/create', 'AdminProductController@create')->name('get_admin.product.create');
-        // Route::post('/create', 'AdminProductController@store');
-        // Route::get('update/{id}', 'AdminProductController@edit')->name('get_admin.product.edit');
-        // Route::post('update/{id}', 'AdminProductController@update');
-        // Route::get('delete/{id}', 'AdminProductController@delete')->name('get_admin.product.delete');
+    Route::prefix('uni_product')->group(function (){
+        Route::get('/', 'AdminUniProductController@index')->name('get_admin.uni_product.index');
+        Route::get('/create', 'AdminUniProductController@create')->name('get_admin.uni_product.create');
+        Route::post('/create', 'AdminUniProductController@store');
+        Route::get('update/{id}', 'AdminUniProductController@edit')->name('get_admin.uni_product.edit');
+        // Route::post('update/{id}', 'AdminUniProductController@update');
+        Route::get('delete/{id}', 'AdminUniProductController@delete')->name('get_admin.uni_product.delete');
     });
     Route::prefix('uni_category')->group(function (){
         Route::get('/', 'AdminUniCategoryController@index')->name('get_admin.uni_category.index');
@@ -246,13 +246,21 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::post('update/{id}', 'AdminUniSupplierController@update');
         Route::get('delete/{id}', 'AdminUniSupplierController@delete')->name('get_admin.uni_supplier.delete');
     });
-    Route::prefix('lot_product')->group(function (){
-        Route::get('/', 'AdminUniLotProductController@index')->name('get_admin.lot_product.index');
-        Route::get('/create', 'AdminUniLotProductController@create')->name('get_admin.lot_product.create');
+    Route::prefix('uni_lotproduct')->group(function (){
+        Route::get('/', 'AdminUniLotProductController@index')->name('get_admin.uni_lotproduct.index');
+        Route::get('/create', 'AdminUniLotProductController@create')->name('get_admin.uni_lotproduct.create');
         Route::post('/create', 'AdminUniLotProductController@store');
-        Route::get('update/{id}', 'AdminUniLotProductController@edit')->name('get_admin.lot_product.edit');
+        Route::get('update/{id}', 'AdminUniLotProductController@edit')->name('get_admin.uni_lotproduct.edit');
         Route::post('update/{id}', 'AdminUniLotProductController@update');
-        Route::get('delete/{id}', 'AdminUniLotProductController@delete')->name('get_admin.lot_product.delete');
+        Route::get('delete/{id}', 'AdminUniLotProductController@delete')->name('get_admin.uni_lotproduct.delete');
+    });
+    Route::prefix('uni_tag')->group(function (){
+        Route::get('/', 'AdminUniTagController@index')->name('get_admin.uni_tag.index');
+        Route::get('/create', 'AdminUniTagController@create')->name('get_admin.uni_tag.create');
+        Route::post('/create', 'AdminUniTagController@store');
+        Route::get('update/{id}', 'AdminUniTagController@edit')->name('get_admin.uni_tag.edit');
+        Route::post('update/{id}', 'AdminUniTagController@update');
+        Route::get('delete/{id}', 'AdminUniTagController@delete')->name('get_admin.uni_tag.delete');
     });
 
 
