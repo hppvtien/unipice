@@ -17,6 +17,7 @@ use App\Models\ProductSize;
 use App\Models\ProductLotProduct;
 use App\Service\Seo\RenderUrlSeoCourseService;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -54,6 +55,12 @@ class AdminUniProductController extends AdminController
         $uni_tag = Uni_Tag::orderByDesc('id')->get();
         $uni_trade = Uni_Trade::orderByDesc('id')->get();
         $uni_category = Uni_Category::orderByDesc('id')->get();
+        $tagOld = [];
+        $categoryOld = [];
+        $tradeOld = [];
+        $colorOld = [];
+        $sizeOld = [];
+        $uni_product = [];
 
         $viewData = [
             'uni_color' => $uni_color,
@@ -61,7 +68,13 @@ class AdminUniProductController extends AdminController
             'uni_size'       => $uni_size,
             'uni_tag'      => $uni_tag,
             'uni_trade'     => $uni_trade,
-            'uni_category'     => $uni_category
+            'tagOld'     => $tagOld,
+            'tradeOld'     => $tradeOld,
+            'colorOld'     => $colorOld,
+            'sizeOld'     => $sizeOld,
+            'categoryOld'     => $categoryOld,
+            'uni_category'     => $uni_category, 
+            'uni_product'     => $uni_product
         ];
 
         return view('admin::pages.uni_product.create', $viewData);
@@ -69,11 +82,18 @@ class AdminUniProductController extends AdminController
 
     public function store(Request $request)
     {
-
-        $data                 = $request->except(['avatar', 'save', '_token', 'tags']);
+        $data                 = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
         $data['created_at']   = Carbon::now();
         $data['created_by'] = get_data_user('web');
 
+        if ($request->album) {
+            $album = [];
+            foreach ($request->album as $item) {
+                $album[] = $this->processUploadFile($item);
+            }
+        } else {
+            $album = [];
+        }
         $param = [
             'name' => $request->name,
             'slug' => $request->slug,
@@ -87,10 +107,10 @@ class AdminUniProductController extends AdminController
             'is_hot' => $request->is_hot,
             'is_feauture' => $request->is_feauture,
             'order' => $request->order,
-            'thumnail' => $request->avatar,
+            'thumbnail' => $request->thumbnail,
+            'album' => json_encode($album),
             'status' => $request->status,
         ];
-        // dd($param);
         $productID = Uni_Product::insertGetId($param);
 
         if ($productID) {
@@ -105,8 +125,6 @@ class AdminUniProductController extends AdminController
         $this->showMessagesError();
         return redirect()->back();
     }
-
-
     public function edit($id)
     {
         $uni_product     = Uni_Product::findOrFail($id);
@@ -121,9 +139,6 @@ class AdminUniProductController extends AdminController
         $tradeOld = ProductTrade::where('product_id', $id)->pluck('trade_id')->toArray() ?? [];
         $colorOld = ProductColor::where('product_id', $id)->pluck('color_id')->toArray() ?? [];
         $sizeOld = ProductSize::where('product_id', $id)->pluck('size_id')->toArray() ?? [];
-
-
-
         $viewData = [
             'uni_product'       => $uni_product,
             'uni_tag'           => $uni_tag,
@@ -139,33 +154,115 @@ class AdminUniProductController extends AdminController
         ];
         return view('admin::pages.uni_product.update', $viewData);
     }
+    public function importview($id)
+    {
+        $uni_lotproduct     = Uni_LotProduct::get();
 
-    // public function update(AdminCourseRequest $request, $id)
-    // {
-    //     $course             = Course::findOrFail($id);
-    //     $data               = $request->except(['avatar', 'save', '_token', 'c_position_1']);
-    //     $data['updated_at'] = Carbon::now();
+        $viewData = [
+            'uni_lotproduct'       => $uni_lotproduct
+        ];
+        return view('admin::pages.uni_product.import', $viewData);
+    }
+    public function import(Request $request, $id)
+    {
+        dd($request->all());
+        $uni_product             = Uni_Product::findOrFail($id);
+        $data               = $request->except(['save', '_token']);
+        $data['updated_at'] = Carbon::now();
+        $data['updated_by'] = get_data_user('web');
+        if ($request->album) {
+            $album = [];
+            foreach ($request->album as $item) {
+                $album[] = $this->processUploadFile($item);
+            }
+        } else {
+            $album = $request->albumold;
+        }
+        $param = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'desscription' => $request->desscription,
+            'content' => $request->content,
+            'meta_title' => $request->name,
+            'meta_desscription' => $request->desscription,
+            'created_at' => Carbon::now(),
+            'created_by' => get_data_user('web'),
+            'status' => $request->status,
+            'is_hot' => $request->is_hot,
+            'is_feauture' => $request->is_feauture,
+            'order' => $request->order,
+            'thumnail' => $request->thumbnail,
+            'status' => $request->status,
+            'album' => json_encode($album),
+        ];
+        dd($param);
+        // if($request->c_avatar){
+        //     Storage::delete('public/uploads/'.$request->d_avatar);
+        //     $data['c_avatar'] = $uni_product->c_avatar;
+        // } else{
+        //     $data['c_avatar'] = $uni_product->c_avatar;
+        // }
+        $uni_product->fill($param)->save();
+        $this->syncTagProduct($id, $request->tags);
+        $this->syncCatProduct($id, $request->category);
+        $this->syncSizeProduct($id, $request->size);
+        $this->syncColorProduct($id, $request->color);
+        $this->syncTradeProduct($id, $request->trade);
 
-    //     if (!$request->c_title_seo) $data['c_title_seo'] = $request->c_name;
-    //     if (!$request->c_description_seo) $data['c_description_seo'] = $request->c_name;
-    //     if (!$request->c_sale) $data['c_sale'] = 0;
-    //     if (!$request->c_total_time) $data['c_total_time'] = 0;
-    //     if (!$request->c_price) $data['c_price'] = 0;
-    //     if ($request->c_position_1) $data['c_position_1'] = 1;
-    //     $data['c_price'] = str_replace(',', '', $request->c_price);
-    //     if($request->c_avatar){
-    //         Storage::delete('public/uploads/'.$request->d_avatar);
-    //         $data['c_avatar'] = $request->c_avatar;
-    //     } else{
-    //         $data['c_avatar'] = $course->c_avatar;
-    //     }
-    //     $course->fill($data)->save();
-    //     $this->syncTagCourse($id, $request->tags);
+        // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
+        $this->showMessagesSuccess();
+        return redirect()->route('get_admin.uni_product.index');
+    }
 
-    //     RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
-    //     $this->showMessagesSuccess();
-    //     return redirect()->route('get_admin.course.index');
-    // }
+    public function update(Request $request, $id)
+    {
+        $uni_product             = Uni_Product::findOrFail($id);
+        $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
+        $data['updated_at'] = Carbon::now();
+        $data['updated_by'] = get_data_user('web');
+        if ($request->album) {
+            $album = [];
+            foreach ($request->album as $item) {
+                $album[] = $this->processUploadFile($item);
+            }
+        } else {
+            $album = $request->albumold;
+        }
+        $param = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'desscription' => $request->desscription,
+            'content' => $request->content,
+            'meta_title' => $request->name,
+            'meta_desscription' => $request->desscription,
+            'created_at' => Carbon::now(),
+            'created_by' => get_data_user('web'),
+            'status' => $request->status,
+            'is_hot' => $request->is_hot,
+            'is_feauture' => $request->is_feauture,
+            'order' => $request->order,
+            'thumnail' => $request->thumbnail,
+            'status' => $request->status,
+            'album' => json_encode($album),
+        ];
+        dd($param);
+        // if($request->c_avatar){
+        //     Storage::delete('public/uploads/'.$request->d_avatar);
+        //     $data['c_avatar'] = $uni_product->c_avatar;
+        // } else{
+        //     $data['c_avatar'] = $uni_product->c_avatar;
+        // }
+        $uni_product->fill($param)->save();
+        $this->syncTagProduct($id, $request->tags);
+        $this->syncCatProduct($id, $request->category);
+        $this->syncSizeProduct($id, $request->size);
+        $this->syncColorProduct($id, $request->color);
+        $this->syncTradeProduct($id, $request->trade);
+
+        // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
+        $this->showMessagesSuccess();
+        return redirect()->route('get_admin.uni_product.index');
+    }
     protected function syncTagProduct($productID, $tags)
     {
         if (!empty($tags)) {
@@ -226,21 +323,69 @@ class AdminUniProductController extends AdminController
             }
         }
     }
-    // public function delete(Request $request, $id)
-    // {
-    //     if ($request->ajax()) {
-    //         $course = Course::findOrFail($id);
-    //         if ($course) {
-    //             Storage::delete('public/uploads/'.$course->c_avatar);
-    //             $course->delete();
-    //             RenderUrlSeoCourseService::deleteUrlSeo(SeoEdutcation::TYPE_COURSE, $id);
-    //         }
-    //         return response()->json([
-    //             'status'  => 200,
-    //             'message' => 'Xoá dữ liệu thành công'
-    //         ]);
-    //     }
+    public function delete_album(Request $request)
+    {
+        $product = Uni_Product::findOrFail($request->data_id);
+        $uni_product = Uni_Product::where('id', $request->data_id)->pluck('album')->first();
+        $album_product = json_decode($uni_product);
+        if (in_array($request->name_img, $album_product, true)) {
+            $album_product = \array_diff($album_product, [$request->name_img]);
+            Storage::delete('public/uploads_product/' . $request->name_img);
+            $param = [
+                'album' => $album_product,
+            ];
+            $product->fill($param)->save();
+        }
+        return response()->json([
+            'status'  => 200,
+            'message' => 'Xoá dữ liệu thành công'
+        ]);
+    }
+    public function delete(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $product = Uni_Product::findOrFail($id);
+            $uni_product = Uni_Product::where('id', $id)->pluck('album')->first();
+         
+            if ($product && $uni_product) {
+                foreach(json_decode($uni_product) as $item){
+                    Storage::delete('public/uploads_product/'.$item);
+                }
+                Storage::delete('public/uploads_product/'.$product->thumbnail);
+                $product->delete();
+            }
+            return response()->json([
+                'status'  => 200,
+                'message' => 'Xoá dữ liệu thành công'
+            ]);
+        }
 
-    //     return redirect()->to('/');
-    // }
+        return redirect()->to('/');
+    }
+    public function processUploadFile($fileName)
+    {
+        try {
+            $ext = $fileName->getClientOriginalExtension();
+
+            $extension = [
+                'jpg', 'png', 'jpeg'
+            ];
+            $time_img =  Carbon::now();
+            if (!in_array($ext, $extension)) return false;
+
+            $filename = str_replace($ext, '', $fileName->getClientOriginalName());
+            $filename = Str::slug($filename) . '-' . $time_img->getTimestamp() . '.' . $ext;
+            $path = public_path() . '/storage/uploads_Product/';
+
+            if (!\File::exists($path)) mkdir($path, 0777, true);
+
+            $fileName->move($path, $filename);
+
+            return  $filename;
+        } catch (\Exception $exception) {
+            Log::error("[processUploadFile] :" . $exception->getMessage());
+        }
+
+        return  null;
+    }
 }

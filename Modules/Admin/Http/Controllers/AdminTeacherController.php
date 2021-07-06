@@ -92,7 +92,6 @@ class AdminTeacherController extends AdminController
     {
         if ($request->ajax()) {
             $teacher = Teacher::find($id);
-            dd($teacher);
             if ($teacher){
                 Storage::delete('public/uploads/'.$teacher->t_avatar);
                 $teacher->delete();

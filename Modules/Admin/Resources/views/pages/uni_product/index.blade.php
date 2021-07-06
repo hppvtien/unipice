@@ -62,6 +62,7 @@
                                         <td>
                                             <a href="{{ route('get_admin.uni_product.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                             <a href="{{ route('get_admin.uni_product.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
+                                            <a href="{{ route('get_admin.uni_product.import', $item->id) }}" class="btn btn-xs btn-success"><i class="la la-file-import"></i></a>
                                         </td>
                                     </tr>
                                 @empty

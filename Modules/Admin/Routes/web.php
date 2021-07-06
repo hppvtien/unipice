@@ -203,8 +203,11 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('/create', 'AdminUniProductController@create')->name('get_admin.uni_product.create');
         Route::post('/create', 'AdminUniProductController@store');
         Route::get('update/{id}', 'AdminUniProductController@edit')->name('get_admin.uni_product.edit');
-        // Route::post('update/{id}', 'AdminUniProductController@update');
+        Route::post('update/{id}', 'AdminUniProductController@update');
         Route::get('delete/{id}', 'AdminUniProductController@delete')->name('get_admin.uni_product.delete');
+        Route::get('update/{id?}', 'AdminUniProductController@delete_album')->name('get_admin.uni_product.delete_album');
+        Route::get('import/{id}', 'AdminUniProductController@importview')->name('get_admin.uni_product.import');
+        Route::post('import/{id}', 'AdminUniProductController@import');
     });
     Route::prefix('uni_category')->group(function (){
         Route::get('/', 'AdminUniCategoryController@index')->name('get_admin.uni_category.index');

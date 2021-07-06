@@ -30,11 +30,13 @@ class AdminFreeBookController extends AdminController
 
     public function store(AdminFreeBookRequest $request)
     {
+        dd($request->all());
         $data = $request->except(['save', '_token', 'file_fb', 'avatar', 'd_avatar']);
         $data['created_at'] = Carbon::now();
         if ($file_fb = $request->file_fb) {
             $file_fb = $this->processUploadFile($file_fb);
         }
+       
         if (isset($file_fb) && $file_fb) $data['file_fb'] = $file_fb;
 
         $freebookID = Freebook::insertGetId($data);
