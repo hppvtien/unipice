@@ -25,7 +25,7 @@
                             <table class="table mg-b-0 text-md-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>STT</th>
                                         <th>Name</th>
                                         <th>SEO</th>
                                         <th>Số lượng</th>
@@ -36,9 +36,9 @@
                                 </thead>
 
                                 <tbody>
-                                @forelse($uni_product as $item)
+                                @forelse($uni_product as $key => $item)
                                     <tr>
-                                        <th scope="row">{{ $item->id }}</th>
+                                        <th scope="row">{{ $key+1 }}</th>
                                         <td>{{ $item->name }}</td>
                                         <td>
                                             <div class="existed-seo-meta">

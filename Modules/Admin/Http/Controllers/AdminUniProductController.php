@@ -50,7 +50,7 @@ class AdminUniProductController extends AdminController
     public function create()
     {
         $uni_color = Uni_Color::orderByDesc('id')->get();
-        // $uni_lotproduct = Uni_LotProduct::orderByDesc('id')->get();
+        // $uni_product = Uni_Product::orderByDesc('id')->get();
         $uni_size = Uni_Size::orderByDesc('id')->get();
         $uni_tag = Uni_Tag::orderByDesc('id')->get();
         $uni_trade = Uni_Trade::orderByDesc('id')->get();
@@ -64,7 +64,7 @@ class AdminUniProductController extends AdminController
 
         $viewData = [
             'uni_color' => $uni_color,
-            // 'uni_lotproduct'   => $uni_lotproduct,
+            // 'uni_product'   => $uni_product,
             'uni_size'       => $uni_size,
             'uni_tag'      => $uni_tag,
             'uni_trade'     => $uni_trade,
@@ -76,7 +76,7 @@ class AdminUniProductController extends AdminController
             'uni_category'     => $uni_category, 
             'uni_product'     => $uni_product
         ];
-
+// dd($viewData);
         return view('admin::pages.uni_product.create', $viewData);
     }
 
@@ -156,60 +156,38 @@ class AdminUniProductController extends AdminController
     }
     public function importview($id)
     {
-        $uni_lotproduct     = Uni_LotProduct::get();
-
+        $uni_lotproduct     = Uni_LotProduct::where('product_id',$id)->get();
         $viewData = [
-            'uni_lotproduct'       => $uni_lotproduct
+            'uni_lotproduct'       => $uni_lotproduct,
         ];
         return view('admin::pages.uni_product.import', $viewData);
     }
     public function import(Request $request, $id)
     {
-        dd($request->all());
         $uni_product             = Uni_Product::findOrFail($id);
         $data               = $request->except(['save', '_token']);
-        $data['updated_at'] = Carbon::now();
-        $data['updated_by'] = get_data_user('web');
-        if ($request->album) {
-            $album = [];
-            foreach ($request->album as $item) {
-                $album[] = $this->processUploadFile($item);
-            }
+        $qty_import = $request->qty;
+        $qty_product = 0;
+        if($uni_product->qty == 0){
+            $qty_product += $uni_product->qty;
         } else {
-            $album = $request->albumold;
-        }
+            $qty_product = $uni_product->qty + $qty_import;
+        };
         $param = [
-            'name' => $request->name,
-            'slug' => $request->slug,
-            'desscription' => $request->desscription,
-            'content' => $request->content,
-            'meta_title' => $request->name,
-            'meta_desscription' => $request->desscription,
-            'created_at' => Carbon::now(),
-            'created_by' => get_data_user('web'),
-            'status' => $request->status,
-            'is_hot' => $request->is_hot,
-            'is_feauture' => $request->is_feauture,
-            'order' => $request->order,
-            'thumnail' => $request->thumbnail,
-            'status' => $request->status,
-            'album' => json_encode($album),
+            'lotproduct_id' => $request->lotproduct_id,
+            'qty' => $qty_product,
+            'price' => $request->price,
+            'price_sale' => $request->price_sale,
+            'price_sale_store' => $request->price_sale_store,
         ];
-        dd($param);
-        // if($request->c_avatar){
-        //     Storage::delete('public/uploads/'.$request->d_avatar);
-        //     $data['c_avatar'] = $uni_product->c_avatar;
-        // } else{
-        //     $data['c_avatar'] = $uni_product->c_avatar;
-        // }
         $uni_product->fill($param)->save();
-        $this->syncTagProduct($id, $request->tags);
-        $this->syncCatProduct($id, $request->category);
-        $this->syncSizeProduct($id, $request->size);
-        $this->syncColorProduct($id, $request->color);
-        $this->syncTradeProduct($id, $request->trade);
+        $uni_lotproduct     = Uni_LotProduct::findOrFail($request->lotproduct_id);
+        $param_lotproduct = [
+            'qty' => $uni_lotproduct->qty - $qty_import
+        ];
+        $uni_lotproduct->fill($param_lotproduct)->save();
+        $this->syncLotProduct($id, $request->lotproduct_id, $request->qty, $request->price);
 
-        // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.uni_product.index');
     }
@@ -245,7 +223,6 @@ class AdminUniProductController extends AdminController
             'status' => $request->status,
             'album' => json_encode($album),
         ];
-        dd($param);
         // if($request->c_avatar){
         //     Storage::delete('public/uploads/'.$request->d_avatar);
         //     $data['c_avatar'] = $uni_product->c_avatar;
@@ -262,6 +239,19 @@ class AdminUniProductController extends AdminController
         // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.uni_product.index');
+    }
+    protected function syncLotProduct($productID, $lot_product, $product_qty, $price_lotproduct)
+    {
+        if (!empty($lot_product)) {
+                ProductLotProduct::insert([
+                    'product_id' => $productID,
+                    'lotproduct_id'    => $lot_product,
+                    'inventory'    => $product_qty,
+                    'price_lotproduct'    => $price_lotproduct,
+                    'created_at'    => Carbon::now()
+                ]);
+        
+        }
     }
     protected function syncTagProduct($productID, $tags)
     {

@@ -1,3 +1,11 @@
+<style>
+    h3.h3-title {
+        text-transform: uppercase;
+        font-size: 18px;
+        text-align: center;
+        padding: 8px 0;
+    }
+</style>
 <form class="form-horizontal" autocomplete="off" method="POST" action="">
     @csrf
     <div class="row">
@@ -5,7 +13,7 @@
             <div class="card  box-shadow-0">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Tên lô sản phẩm <span>(*)</span></label>
                         <input type="text" class="form-control keypress-count" data-title-seo=".meta_title" value="{{ old('lot_name', $lotproduct->lot_name ?? '') }}" data-slug=".slug" name="lot_name">
                         @if($errors->first('lot_name'))
                         <span class="text-danger">{{ $errors->first('lot_name') }}</span>
@@ -27,11 +35,25 @@
                     <span class="text-danger">{{ $errors->first('sku_lotproduct') }}</span>
                     @endif
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Số lượng <span>(*)</span></label>
-                        <input type="number" class="form-control keypress-count" name="qty" value="{{ old('qty',$lotproduct->qty ?? '') }}">
+                        <label for="exampleInputEmail1" class="required">Số thùng <span>(*)</span></label>
+                        <input type="number" class="form-control keypress-count" name="qty_box" value="{{ old('qty_box',$lotproduct->qty_box ?? '') }}">
                     </div>
-                    @if($errors->first('qty'))
-                    <span class="text-danger">{{ $errors->first('qty') }}</span>
+                    @if($errors->first('qty_box'))
+                    <span class="text-danger">{{ $errors->first('qty_box') }}</span>
+                    @endif
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Số lượng / thùng <span>(*)</span></label>
+                        <input type="number" class="form-control keypress-count" name="size_box" value="{{ old('size_box',$lotproduct->size_box ?? '') }}">
+                    </div>
+                    @if($errors->first('size_box'))
+                    <span class="text-danger">{{ $errors->first('size_box') }}</span>
+                    @endif
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Giá nhập <span>(*)</span></label>
+                        <input type="number" class="form-control keypress-count" name="price_lotproduct" value="{{ old('price_lotproduct',$lotproduct->price_lotproduct ?? '') }}">
+                    </div>
+                    @if($errors->first('price_lotproduct'))
+                    <span class="text-danger">{{ $errors->first('price_lotproduct') }}</span>
                     @endif
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Hạn sử dụng <span>(*)</span></label>
@@ -40,12 +62,32 @@
                     @if($errors->first('expiry_date'))
                     <span class="text-danger">{{ $errors->first('expiry_date') }}</span>
                     @endif
+                    <div class="bg-primary">
+                        <h3 class="text-light h3-title">Chọn sản phẩm</h3>
+                    </div>
                     <div class="form-group">
-                        
-                        @foreach($uni_product as $product)
-                        <label for="exampleInputEmail1" class="required">Sản phẩm <span>(*)</span></label>
-                        <input type="checkbox" class="form-control keypress-count" name="product_id" value="{{ old('id',$product->id ?? '') }}">
-                        @endforeach
+                       
+                        <table class="table table-striped table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Sản Phẩm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($uni_product as $key => $item)
+                                <tr>
+                                    <th scope="row">{{ $key+1 }}</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" {{ $lotproduct->product_id == $item->id ? 'checked':'' }} name="product_id" product-id="{{ $item->id }}" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
+                                            <label class="form-check-label" for="inlineCheckbox{{ $item->id }}">{{ $item->name }}</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                     @if($errors->first('product_id'))
                     <span class="text-danger">{{ $errors->first('product_id') }}</span>

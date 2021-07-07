@@ -45,9 +45,10 @@ class AdminUniLotProductController extends AdminController
     {
         $data = $request->except(['save','_token']);
         $data['created_at'] = Carbon::now();
-        $data['expiry_date'] = Carbon::now();
-        $menuID = Uni_LotProduct::insertGetId($data);
-        if($menuID)
+        $data['expiry_date'] = $request->expiry_date;
+        $data['qty'] = $request->qty_box * $request->size_box;
+        $lotproductID = Uni_LotProduct::insertGetId($data);
+        if($lotproductID)
         {
             $this->showMessagesSuccess();
             return redirect()->route('get_admin.uni_lotproduct.index');
