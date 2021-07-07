@@ -73,10 +73,10 @@ class AdminUniCategoryController extends AdminController
     {
         if($request->ajax())
         {
-            $menu = Uni_Category::findOrFail($id);
-            if ($menu)
+            $uni_category = Uni_Category::findOrFail($id);
+            if ($uni_category)
             {
-                $menu->delete();
+                $uni_category->delete();
             }
             return response()->json([
                 'status' => 200,

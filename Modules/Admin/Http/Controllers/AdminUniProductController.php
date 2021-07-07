@@ -343,6 +343,10 @@ class AdminUniProductController extends AdminController
                 }
                 Storage::delete('public/uploads_product/'.$product->thumbnail);
                 $product->delete();
+                ProductTag::where('product_id', $id)->delete();
+                ProductTrade::where('product_id', $id)->delete();
+                ProductColor::where('product_id', $id)->delete();
+                ProductSize::where('product_id', $id)->delete();
             }
             return response()->json([
                 'status'  => 200,
