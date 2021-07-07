@@ -66,7 +66,7 @@
                         <h3 class="text-light h3-title">Chọn sản phẩm</h3>
                     </div>
                     <div class="form-group">
-                       
+
                         <table class="table table-striped table-bordered">
                             <thead class="thead-dark">
                                 <tr>
@@ -80,7 +80,11 @@
                                     <th scope="row">{{ $key+1 }}</th>
                                     <td>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" {{ $lotproduct->product_id == $item->id ? 'checked':'' }} name="product_id" product-id="{{ $item->id }}" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
+                                            <input class="form-check-input" type="radio" name="product_id" product-id="{{ $item->id }}" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}"  
+                                            @isset($lotproduct)
+                                            {{ $lotproduct->product_id == $item->id ? "checked" : "" }}
+                                            @endisset  
+                                            >
                                             <label class="form-check-label" for="inlineCheckbox{{ $item->id }}">{{ $item->name }}</label>
                                         </div>
                                     </td>

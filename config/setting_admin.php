@@ -100,6 +100,20 @@ return [
             ]
         ],
         [
+            'name' => 'Quản lý tin tức',
+            'class-icon' => 'la la-book-open',
+            'sub' => [
+                [
+                    'name' => 'Danh mục bài viết',
+                    'route' => 'get_admin.post_category.index'
+                ],
+                [
+                    'name' => 'Bài viết',
+                    'route' => 'get_admin.post.index'
+                ],
+            ]
+        ],
+        [
             'name' => 'Voucher',
             'class-icon' => 'la la-cart-arrow-down',
             'sub' => [
@@ -217,16 +231,7 @@ return [
                 ],
             ]
         ],
-        [
-            'name' => 'Quản lý Menu',
-            'class-icon' => 'la la-database',
-            'sub' => [
-                [
-                    'name' => 'Danh sách',
-                    'route' => 'get_admin.apmenu.index'
-                ],
-            ]
-        ],
+        
         
     ]
 ];

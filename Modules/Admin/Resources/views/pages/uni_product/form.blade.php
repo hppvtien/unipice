@@ -53,23 +53,7 @@
                                 </select>
                             </div>
                         </div>
-                        {{-- <div class="form-group">
-                        <label for="exampleInputEmail1" class="required"> Lô sản phẩm <span>(*)</span></label>
-                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                            <select name="parent_i" class="form-control SlectBox SumoUnder " tabindex="-1">
-                                @foreach($uni_lotproduct as $item)
-                                <option value="{{ $item->id }}" {{ ($uni_product->parent_id ?? 0) == $item->id ? "selected" : "" }}>{{ $item->lot_name }}--(Trong kho còn: {{ $item->qty }} sản phẩm)</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="required">Số lượng <span>(*)</span></label>
-                    <input type="number" class="form-control keypress-count" name="qty" value="{{ old('qty', $uni_product->qty ?? '') }}">
-                    @if($errors->first('qty'))
-                    <span class="text-danger">{{ $errors->first('qty') }}</span>
-                    @endif
-                </div> --}}
+                
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="required"> Thương hiệu <span>(*)</span></label>
                     <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
@@ -107,10 +91,10 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Album </label>
-                    <input type="file" class="form-control" name="album[]" value="">
+                    <input type="file" class="form-control" name="album[]" value="" multiple>
                 </div>
                 <input type="hidden" class="form-control" name="albumold" multiple value="{{ old('album', $uni_product->album ?? '') }}">
-                @if ($uni_product->album)
+                @if($uni_product)
                 <div class="row" style="border: 1px solid;padding-top:10px">
                     @forelse (json_decode($uni_product->album) as $item)
                     <div class="col-3" data-rm="{{ $item }}" style="margin-bottom: 10px;position: relative; ">

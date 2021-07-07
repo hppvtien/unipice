@@ -3,6 +3,7 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Uni_Category;
+use App\Models\ProductCategory;
 use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -69,13 +70,14 @@ class AdminUniCategoryController extends AdminController
     }
 
 
-    public function delete(AdminUniCategoryRequest $request, $id)
+    public function delete(Request $request, $id)
     {
         if($request->ajax())
         {
             $uni_category = Uni_Category::findOrFail($id);
             if ($uni_category)
             {
+                ProductCategory::where('category_id', $id)->delete();
                 $uni_category->delete();
             }
             return response()->json([

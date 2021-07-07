@@ -265,7 +265,26 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::post('update/{id}', 'AdminUniTagController@update');
         Route::get('delete/{id}', 'AdminUniTagController@delete')->name('get_admin.uni_tag.delete');
     });
+    Route::prefix('blog-post')->namespace('Blog')->group(function (){
 
+        Route::prefix('post_category')->group(function (){
+            Route::get('/', 'AdminUniPostCategoryController@index')->name('get_admin.post_category.index');
+            Route::get('/create', 'AdminUniPostCategoryController@create')->name('get_admin.post_category.create');
+            Route::post('/create', 'AdminUniPostCategoryController@store');
+            Route::get('update/{id}', 'AdminUniPostCategoryController@edit')->name('get_admin.post_category.edit');
+            Route::post('update/{id}', 'AdminUniPostCategoryController@update');
+            Route::get('delete/{id}', 'AdminUniPostCategoryController@delete')->name('get_admin.post_category.delete');
+        });
+        Route::prefix('post')->group(function (){
+            Route::get('/', 'AdminUniPostController@index')->name('get_admin.post.index');
+            Route::get('/create', 'AdminUniPostController@create')->name('get_admin.post.create');
+            Route::post('/create', 'AdminUniPostController@store');
+            Route::get('update/{id}', 'AdminUniPostController@edit')->name('get_admin.post.edit');
+            Route::post('update/{id}', 'AdminUniPostController@update');
+            Route::get('delete/{id}', 'AdminUniPostController@delete')->name('get_admin.post.delete');
+        });
+        
+    });
 
 
 

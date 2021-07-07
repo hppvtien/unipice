@@ -76,7 +76,6 @@ class AdminUniProductController extends AdminController
             'uni_category'     => $uni_category, 
             'uni_product'     => $uni_product
         ];
-// dd($viewData);
         return view('admin::pages.uni_product.create', $viewData);
     }
 
@@ -221,14 +220,8 @@ class AdminUniProductController extends AdminController
             'order' => $request->order,
             'thumnail' => $request->thumbnail,
             'status' => $request->status,
-            'album' => json_encode($album),
+            'album' => $album,
         ];
-        // if($request->c_avatar){
-        //     Storage::delete('public/uploads/'.$request->d_avatar);
-        //     $data['c_avatar'] = $uni_product->c_avatar;
-        // } else{
-        //     $data['c_avatar'] = $uni_product->c_avatar;
-        // }
         $uni_product->fill($param)->save();
         $this->syncTagProduct($id, $request->tags);
         $this->syncCatProduct($id, $request->category);
@@ -337,13 +330,17 @@ class AdminUniProductController extends AdminController
             $product = Uni_Product::findOrFail($id);
             $uni_product = Uni_Product::where('id', $id)->pluck('album')->first();
          
-            if ($product && $uni_product) {
-                foreach(json_decode($uni_product) as $item){
-                    Storage::delete('public/uploads_product/'.$item);
+            if ($product) {
+                if($uni_product){
+                    foreach(json_decode($uni_product) as $item){
+                        Storage::delete('public/uploads_product/'.$item);
+                    }
                 }
+                
                 Storage::delete('public/uploads_product/'.$product->thumbnail);
                 $product->delete();
                 ProductTag::where('product_id', $id)->delete();
+                ProductCategory::where('product_id', $id)->delete();
                 ProductTrade::where('product_id', $id)->delete();
                 ProductColor::where('product_id', $id)->delete();
                 ProductSize::where('product_id', $id)->delete();
