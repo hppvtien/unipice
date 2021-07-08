@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Models\Blog;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
-class Uni_Post extends Model
+
+class Uni_Store extends Model
 {
     use HasFactory;
-    protected $table = 'uni_post';
+
     protected $guarded = [''];
+    protected $table = 'uni_store';
+
 }

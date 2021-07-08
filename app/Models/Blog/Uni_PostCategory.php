@@ -12,9 +12,4 @@ class Uni_PostCategory extends Model
 
     protected $table = 'uni_post_category';
     protected $guarded = [''];
-
-    public function getStatus()
-    {
-        return Arr::get($this->status, $this->m_status, "[N\A]");
-    }
 }

@@ -38,18 +38,25 @@
                                     <div class="tab-pane active" id="tab1">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
-                                            <input type="text" class="form-control keypress-count" value="{{ old('a_name',$article->a_name ?? '') }}"
-                                                   data-title-seo=".title_seo" data-slug=".slug" name="a_name" >
-                                            @if($errors->first('a_name'))
-                                                <span class="text-danger">{{ $errors->first('a_name') }}</span>
+                                            <input type="text" class="form-control keypress-count" value="{{ old('name',$uni_post->name ?? '') }}"
+                                                   data-title-seo=".meta_title" data-slug=".slug" name="name" >
+                                            @if($errors->first('name'))
+                                                <span class="text-danger">{{ $errors->first('name') }}</span>
                                             @endif
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1" class="required">Slug <span>(*)</span></label>
-                                            <input type="text"  class="form-control slug"  name="a_slug" value="{{ old('c_slug',$article->a_slug ?? '') }}">
-                                            @if($errors->first('a_slug'))
-                                                <span class="text-danger">{{ $errors->first('a_slug') }}</span>
+                                            <input type="text"  class="form-control slug"  name="slug" value="{{ old('slug',$uni_post->slug ?? '') }}">
+                                            @if($errors->first('slug'))
+                                                <span class="text-danger">{{ $errors->first('slug') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" class="required">Order <span>(*)</span></label>
+                                            <input type="number"  class="form-control order"  name="order" value="{{ old('order',$uni_post->order ?? '') }}">
+                                            @if($errors->first('order'))
+                                                <span class="text-danger">{{ $errors->first('order') }}</span>
                                             @endif
                                         </div>
 
@@ -57,63 +64,65 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Keywords </label>
-                                                    <select name="keywords[]" class="form-control js-select2" tabindex="-1" multiple>
-                                                        @foreach($keywords as $keyword)
-                                                            <option title="{{ $keyword->k_name }}" {{ in_array($keyword->id, $keywordsOld ?? []) ? "selected" : "" }} value="{{ $keyword->id }}">{{ $keyword->k_name }}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <label for="exampleInputEmail1" class="required"> Tags <span>(*)</span></label>
+                                                    <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                                                        <select name="tags[]" class="form-control  SumoUnder js-select2" tabindex="-1" multiple>
+                                                            @foreach($uni_tag as $tag)
+                                                            <option title="{{ $tag->name }}" {{ in_array($tag->id, $tagOld) ? "selected" : "" }} value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1" class="required">Category <span>(*)</span></label>
                                                     <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                                                        <select name="a_menu_id" class="form-control SlectBox SumoUnder"  tabindex="-1">
-                                                            @foreach($menus as $menu)
-                                                                <option title="{{ $menu->m_name }}" {{ old('a_menu_id',$article->a_menu_id ?? 0 ) == $menu->id ? "selected" : "" }} value="{{ $menu->id }}">{{ $menu->m_name }}</option>
+                                                        <select name="category_id" class="form-control SlectBox SumoUnder"  tabindex="-1">
+                                                            @foreach($uni_postcategory as $category)
+                                                                <option title="{{ $category->name }}" {{ old('category_id',$uni_post->category_id ?? 0 ) == $category->id ? "selected" : "" }} value="{{ $category->id }}">{{ $category->name }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                    @if($errors->first('a_menu_id'))
-                                                        <span class="text-danger">{{ $errors->first('a_menu_id') }}</span>
+                                                    @if($errors->first('category_id'))
+                                                        <span class="text-danger">{{ $errors->first('category_id') }}</span>
                                                     @endif
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1" class="required">Description <span>(*)</span></label>
-                                            <textarea name="a_description" class="form-control" id="" cols="30" rows="3">{{ old('a_description',$article->a_description ?? '') }}</textarea>
-                                            @if($errors->first('a_description'))
-                                                <span class="text-danger">{{ $errors->first('a_description') }}</span>
+                                            <input type="text" class="form-control keypress-count" data-desscription-seo=".meta_desscription" name="desscription" value="{{ old('desscription', $uni_post->desscription ?? '') }}">
+                                            @if($errors->first('description'))
+                                                <span class="text-danger">{{ $errors->first('description') }}</span>
                                             @endif
                                         </div>
                                         <div class="card  box-shadow-0">
                                             <div class="card-header">
                                                 <h4 class="card-title mb-1">SEO <a href="" class="js-action-seo" style="float: right"><i class="la la-edit"></i> Edit</a></h4>
                                                 <div class="view-seo">
-                                                    <a href="" class="view-seo-title title_seo">It is Very Easy to Customize and it uses in your website apllication.</a>
+                                                    <a href="" class="view-seo-title meta_title">It is Very Easy to Customize and it uses in your website apllication.</a>
                                                     <p class="view-seo-slug">It is Very Easy to Customize and it uses in your website apllication. <span class="slug">121212121</span></p>
-                                                    <p class="mb-2 view-seo-description">It is Very Easy to Customize and it uses in your website apllication.</p>
+                                                    <p class="mb-2 view-seo-description meta_desscription">It is Very Easy to Customize and it uses in your website apllication.</p>
                                                 </div>
                                             </div>
                                             <div class="card-body pt-3 box-seo hide">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Title SEO <span>(*)</span></label>
-                                                    <input type="text" class="form-control title_seo"  value="{{ old('a_title_seo', $article->a_title_seo ?? '') }}" name="a_title_seo" id="inputName" placeholder="">
+                                                    <label for="exampleInputEmail1">Meta Title <span>(*)</span></label>
+                                                    <input type="text" class="form-control meta_title"  value="{{ old('meta_title', $uni_post->meta_title ?? '') }}" name="meta_title" id="inputName" placeholder="">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Description SEO <span>(*)</span></label>
-                                                    <input type="text" class="form-control" name="a_description_seo" value="{{ old('a_description_seo', $article->a_description_seo ?? '') }}" id="inputName" placeholder="">
+                                                    <label for="exampleInputEmail1">Meta Desscription <span>(*)</span></label>
+                                                    <input type="text" class="form-control meta_desscription" name="meta_desscription" value="{{ old('meta_desscription', $uni_post->meta_desscription ?? '') }}" id="inputName" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab3">
                                        
-                                        <textarea name="a_content" class="form-control" id="article-ckeditor" cols="30" rows="10">{{ old('a_content',$article->a_content ?? '') }}</textarea>
-                                        @if($errors->first('a_content'))
-                                            <span class="text-danger">{{ $errors->first('a_content') }}</span>
+                                        <textarea name="content" class="form-control" id="article-ckeditor" cols="30" rows="10">{{ old('content',$uni_post->content ?? '') }}</textarea>
+                                        @if($errors->first('content'))
+                                            <span class="text-danger">{{ $errors->first('content') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -139,9 +148,22 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
+                        <label for="exampleInputEmail1"> Status <span>(*)</span></label>
+                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                            <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
+                                <option title="hide" value="0">No Active</option>
+                                <option title="Public" value="1">Active</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card  box-shadow-0 ">
+                <div class="card-body pt-3">
+                    <div class="form-group">
                         <label for="exampleInputEmail1"> Avatar </label>
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
-                        <input type="hidden" name="a_avatar" value="{{ old('a_avatar',$article->a_avatar ?? '') }}" id="avatar_uploads">
+                        <input type="hidden" name="thumbnail" value="{{ old('thumbnail',$uni_post->thumbnail ?? '') }}" id="avatar_uploads">
                     </div>
                 </div>
             </div>

@@ -153,44 +153,6 @@ class AdminUniProductController extends AdminController
         ];
         return view('admin::pages.uni_product.update', $viewData);
     }
-    public function importview($id)
-    {
-        $uni_lotproduct     = Uni_LotProduct::where('product_id',$id)->get();
-        $viewData = [
-            'uni_lotproduct'       => $uni_lotproduct,
-        ];
-        return view('admin::pages.uni_product.import', $viewData);
-    }
-    public function import(Request $request, $id)
-    {
-        $uni_product             = Uni_Product::findOrFail($id);
-        $data               = $request->except(['save', '_token']);
-        $qty_import = $request->qty;
-        $qty_product = 0;
-        if($uni_product->qty == 0){
-            $qty_product += $uni_product->qty;
-        } else {
-            $qty_product = $uni_product->qty + $qty_import;
-        };
-        $param = [
-            'lotproduct_id' => $request->lotproduct_id,
-            'qty' => $qty_product,
-            'price' => $request->price,
-            'price_sale' => $request->price_sale,
-            'price_sale_store' => $request->price_sale_store,
-        ];
-        $uni_product->fill($param)->save();
-        $uni_lotproduct     = Uni_LotProduct::findOrFail($request->lotproduct_id);
-        $param_lotproduct = [
-            'qty' => $uni_lotproduct->qty - $qty_import
-        ];
-        $uni_lotproduct->fill($param_lotproduct)->save();
-        $this->syncLotProduct($id, $request->lotproduct_id, $request->qty, $request->price);
-
-        $this->showMessagesSuccess();
-        return redirect()->route('get_admin.uni_product.index');
-    }
-
     public function update(Request $request, $id)
     {
         $uni_product             = Uni_Product::findOrFail($id);
@@ -230,6 +192,43 @@ class AdminUniProductController extends AdminController
         $this->syncTradeProduct($id, $request->trade);
 
         // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
+        $this->showMessagesSuccess();
+        return redirect()->route('get_admin.uni_product.index');
+    }
+    public function importview($id)
+    {
+        $uni_lotproduct     = Uni_LotProduct::where('product_id',$id)->get();
+        $viewData = [
+            'uni_lotproduct'       => $uni_lotproduct,
+        ];
+        return view('admin::pages.uni_product.import', $viewData);
+    }
+    public function import(Request $request, $id)
+    {
+        $uni_product             = Uni_Product::findOrFail($id);
+        $data               = $request->except(['save', '_token']);
+        $qty_import = $request->qty;
+        $qty_product = 0;
+        if($uni_product->qty == 0){
+            $qty_product += $uni_product->qty;
+        } else {
+            $qty_product = $uni_product->qty + $qty_import;
+        };
+        $param = [
+            'lotproduct_id' => $request->lotproduct_id,
+            'qty' => $qty_product,
+            'price' => $request->price,
+            'price_sale' => $request->price_sale,
+            'price_sale_store' => $request->price_sale_store,
+        ];
+        $uni_product->fill($param)->save();
+        $uni_lotproduct     = Uni_LotProduct::findOrFail($request->lotproduct_id);
+        $param_lotproduct = [
+            'qty' => $uni_lotproduct->qty - $qty_import
+        ];
+        $uni_lotproduct->fill($param_lotproduct)->save();
+        $this->syncLotProduct($id, $request->lotproduct_id, $request->qty, $request->price);
+
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.uni_product.index');
     }

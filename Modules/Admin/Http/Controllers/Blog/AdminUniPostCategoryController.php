@@ -3,6 +3,7 @@
 namespace Modules\Admin\Http\Controllers\Blog;
 
 use App\Models\Blog\Uni_PostCategory;
+use App\Models\Blog\Uni_Post;
 use App\Models\BLog\SeoBlog;
 use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
@@ -19,7 +20,6 @@ class AdminUniPostCategoryController extends AdminController
     {
         $uni_postcategory = Uni_PostCategory::orderByDesc('id')
             ->paginate(20);
-
         $viewData = [
             'uni_postcategory' => $uni_postcategory
         ];
@@ -29,41 +29,41 @@ class AdminUniPostCategoryController extends AdminController
     public function create()
     {
         $uni_postcategory = Uni_PostCategory::orderByDesc('id')->get();
-        return view('admin::pages.blog_post.uni_post_category.create',compact('uni_postcategory'));
+        return view('admin::pages.blog_post.uni_post_category.create', compact('uni_postcategory'));
     }
 
-    // public function store(AdminMenuRequest  $request)
-    // {
-    //     $data = $request->except(['avatar','save','_token']);
-    //     $data['created_at'] = Carbon::now();
-
-    //     if(!$request->m_title_seo)             $data['m_title_seo'] = $request->m_name;
-    //     if(!$request->m_description_seo) $data['m_description_seo'] = $request->m_name;
-
-    //     $menuID = Uni_PostCategory::insertGetId($data);
-    //     if($menuID)
-    //     {
-    //         $this->showMessagesSuccess();
-    //         RenderUrlSeoBLogService::init($request->m_slug,SeoBlog::TYPE_MENU, $menuID);
-    //         return redirect()->route('get_admin.menu.index');
-    //     }
-    //     $this->showMessagesError();
-    //     return  redirect()->back();
-    // }
     public function store(Request $request)
     {
-        $data = $request->except(['avatar','save','_token','banner']);
-        dd($data);
+        $data = $request->except(['avatar', 'save', '_token', 'banner']);
         $data['created_at'] = Carbon::now();
         $data['created_by'] = get_data_user('web');
         // $banner = $this->processUploadFile($request->banner);
-        if(!$request->meta_title)             $data['meta_title'] = $request->name;
-        if(!$request->meta_description) $data['meta_desscription'] = $request->name;
-        $postCatID = Uni_PostCategory::insertGetId($data);
-        if($postCatID)
-        {
+        if (!$request->meta_title)             $data['meta_title'] = $request->name;
+        if (!$request->meta_description) $data['meta_desscription'] = $request->name;
+        if ($request->banner) {
+            $banner = $this->processUploadFile($request->banner);
+        }
+        $param = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'desscription' => $request->desscription,
+            'content' => $request->content,
+            'meta_title' => $request->name,
+            'meta_desscription' => $request->desscription,
+            'created_at' => Carbon::now(),
+            'created_by' => get_data_user('web'),
+            'status' => $request->status,
+            'parent_id' => $request->parent_id,
+            'order' => $request->order,
+            'order' => $request->order,
+            'thumbnail' => $request->thumbnail,
+            'banner' => $banner,
+            'status' => $request->status,
+        ];
+        $postCatID = Uni_PostCategory::insertGetId($param);
+        if ($postCatID) {
             $this->showMessagesSuccess();
-            return redirect()->route('get_admin.uni_category.index');
+            return redirect()->route('get_admin.post_category.index');
         }
         $this->showMessagesError();
         return  redirect()->back();
@@ -72,43 +72,72 @@ class AdminUniPostCategoryController extends AdminController
     {
         $postcategory = Uni_PostCategory::findOrFail($id);
         $uni_postcategory = Uni_PostCategory::orderByDesc('order')->get();
-        return view('admin::pages.blog.menu.update',compact('postcategory','uni_postcategory'));
+        return view('admin::pages.blog_post.uni_post_category.update', compact('postcategory', 'uni_postcategory'));
     }
 
-    // public function update(AdminMenuRequest $request, $id)
-    // {
-    //     $menu = Menu::findOrFail($id);
-    //     $data = $request->except(['avatar','save','_token','c_position_1']);
-    //     $data['updated_at'] = Carbon::now();
+    public function update(Request $request, $id)
+    {
+        $uni_postcategory = Uni_PostCategory::findOrFail($id);
+        $data = $request->except(['avatar', 'save', '_token', 'banner']);
+        $data['updated_at'] = Carbon::now();
 
-    //     if(!$request->m_title_seo)             $data['m_title_seo'] = $request->m_name;
-    //     if(!$request->m_description_seo) $data['m_description_seo'] = $request->m_name;
+        if (!$request->meta_title)             $data['meta_title'] = $request->name;
+        if (!$request->meta_description) $data['meta_description'] = $request->desscription;
+        if ($request->banner) {
+            Storage::delete('public/uploads_product/' . $uni_postcategory->banner);
+            $banner = $this->processUploadFile($request->banner);
+        } else {
+            $banner = $uni_postcategory->banner;
+        }
+        if ($request->thumbnail) {
+            Storage::delete('public/uploads_product/' . $uni_postcategory->thumbnail);
+            $thumbnail = $this->processUploadFile($request->thumbnail);
+        } else {
+            $thumbnail = $uni_postcategory->thumbnail;
+        }
+        $param = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'desscription' => $request->desscription,
+            'content' => $request->content,
+            'meta_title' => $request->name,
+            'meta_desscription' => $request->desscription,
+            'updated_at' => Carbon::now(),
+            'updated_by' => get_data_user('web'),
+            'status' => $request->status,
+            'parent_id' => $request->parent_id,
+            'order' => $request->order,
+            'order' => $request->order,
+            'thumbnail' => $thumbnail,
+            'banner' => $banner,
+            'status' => $request->status,
+        ];
+        $uni_postcategory->fill($param)->save();
+        // RenderUrlSeoBLogService::update($request->slug, SeoBlog::TYPE_MENU, $id);
+        $this->showMessagesSuccess();
+        return redirect()->route('get_admin.post_category.index');
+    }
 
-    //     $menu->fill($data)->save();
-    //     RenderUrlSeoBLogService::update($request->m_slug,SeoBlog::TYPE_MENU, $id);
-    //     $this->showMessagesSuccess();
-    //     return redirect()->route('get_admin.menu.index');
-    // }
 
+    public function delete(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $uni_postcategory = Uni_PostCategory::findOrFail($id);
+            PostCategory::where('category_id',$id)->delete();
+            if ($uni_postcategory)
+            {
+                $uni_postcategory->delete();
+                // RenderUrlSeoBLogService::deleteUrlSeo(SeoBlog::TYPE_MENU, $id);
+            }
+            return response()->json([
+                'status' => 200,
+                'message' => 'Xoá dữ liệu thành công'
+            ]);
+        }
 
-    // public function delete(Request $request, $id)
-    // {
-    //     if($request->ajax())
-    //     {
-    //         $menu = Menu::findOrFail($id);
-    //         if ($menu)
-    //         {
-    //             $menu->delete();
-    //             RenderUrlSeoBLogService::deleteUrlSeo(SeoBlog::TYPE_MENU, $id);
-    //         }
-    //         return response()->json([
-    //             'status' => 200,
-    //             'message' => 'Xoá dữ liệu thành công'
-    //         ]);
-    //     }
-
-    //     return redirect()->to('/');
-    // }
+        return redirect()->to('/');
+    }
     public function processUploadFile($fileName)
     {
         try {

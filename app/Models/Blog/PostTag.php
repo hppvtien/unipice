@@ -4,10 +4,12 @@ namespace App\Models\Blog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
-class Uni_Post extends Model
+class PostTag extends Model
 {
     use HasFactory;
-    protected $table = 'uni_post';
+
+    protected $table = 'post_tag';
     protected $guarded = [''];
 }

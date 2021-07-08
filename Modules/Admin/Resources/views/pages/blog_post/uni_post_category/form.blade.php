@@ -1,4 +1,4 @@
-<form class="form-horizontal" autocomplete="off" method="POST" action="">
+<form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-lg-8">
@@ -53,7 +53,7 @@
                         <label for="exampleInputEmail1">Banner </label>
                         <input type="file" class="form-control" name="banner" value="">
                     </div>
-                    <input type="hidden" class="form-control" name="bannerold" multiple value="{{ old('banner', $postcategory->banner ?? '') }}">
+                    <input type="hidden" class="form-control" name="bannerold" value="{{ old('banner', $postcategory->banner ?? '') }}">
                 </div>
             </div>
             <div class="card  box-shadow-0">

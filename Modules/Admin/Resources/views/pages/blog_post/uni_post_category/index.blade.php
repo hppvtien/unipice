@@ -39,7 +39,7 @@
                                 @forelse($uni_postcategory as $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
-                                        <td>{{ $item->m_name }}</td>
+                                        <td>{{ $item->name }}</td>
                                         <td>
                                             <div class="existed-seo-meta">
                                                 <span class="page-title-seo title_seo">{{ $item->meta_title }}</span>
@@ -56,7 +56,7 @@
                                             <span class="badge badge-info">{{ $item->order }}</span>
                                         </td>
                                         <td>
-                                            <span class="badge {{ $item->getStatus($item->m_status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span>
+                                            <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-default' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
                                         </td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>

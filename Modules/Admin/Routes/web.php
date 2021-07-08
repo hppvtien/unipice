@@ -265,6 +265,14 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::post('update/{id}', 'AdminUniTagController@update');
         Route::get('delete/{id}', 'AdminUniTagController@delete')->name('get_admin.uni_tag.delete');
     });
+    Route::prefix('uni_store')->group(function (){
+        Route::get('/', 'AdminUniStoreController@index')->name('get_admin.uni_store.index');
+        Route::get('/create', 'AdminUniStoreController@create')->name('get_admin.uni_store.create');
+        Route::post('/create', 'AdminUniStoreController@store');
+        Route::get('update/{id}', 'AdminUniStoreController@edit')->name('get_admin.uni_store.edit');
+        Route::post('update/{id}', 'AdminUniStoreController@update');
+        Route::get('delete/{id}', 'AdminUniStoreController@delete')->name('get_admin.uni_store.delete');
+    });
     Route::prefix('blog-post')->namespace('Blog')->group(function (){
 
         Route::prefix('post_category')->group(function (){

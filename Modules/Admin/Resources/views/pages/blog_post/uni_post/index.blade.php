@@ -28,6 +28,7 @@
                                         <th>ID</th>
                                         <th>SEO</th>
                                         <th>Time</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -48,6 +49,7 @@
                                                 </div>
                                             </td>
                                             <td>{{ $item->created_at }}</td>
+                                            <td><span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger'; }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span></td>
                                             <td>
                                                 <a href="{{ route('get_admin.post.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                                 <a href="{{ route('get_admin.post.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>

@@ -114,6 +114,16 @@ return [
             ]
         ],
         [
+            'name' => 'Quản lý cửa hàng',
+            'class-icon' => 'la la-book-open',
+            'sub' => [
+                [
+                    'name' => 'Danh sách cửa hàng',
+                    'route' => 'get_admin.uni_store.index'
+                ],
+            ]
+        ],
+        [
             'name' => 'Voucher',
             'class-icon' => 'la la-cart-arrow-down',
             'sub' => [
