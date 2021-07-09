@@ -156,6 +156,7 @@ class AdminUniProductController extends AdminController
     public function update(Request $request, $id)
     {
         $uni_product             = Uni_Product::findOrFail($id);
+        $product_albumOld = json_decode(Uni_Product::where('id', $id)->pluck('album')->first());
         $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
         $data['updated_at'] = Carbon::now();
         $data['updated_by'] = get_data_user('web');
@@ -165,8 +166,9 @@ class AdminUniProductController extends AdminController
                 $album[] = $this->processUploadFile($item);
             }
         } else {
-            $album = $request->albumold;
+            $album = [];
         }
+        $store_ab = array_merge($product_albumOld, $album);
         $param = [
             'name' => $request->name,
             'slug' => $request->slug,
@@ -182,7 +184,7 @@ class AdminUniProductController extends AdminController
             'order' => $request->order,
             'thumnail' => $request->thumbnail,
             'status' => $request->status,
-            'album' => $album,
+            'album' => json_encode($store_ab),
         ];
         $uni_product->fill($param)->save();
         $this->syncTagProduct($id, $request->tags);
@@ -310,12 +312,13 @@ class AdminUniProductController extends AdminController
         $product = Uni_Product::findOrFail($request->data_id);
         $uni_product = Uni_Product::where('id', $request->data_id)->pluck('album')->first();
         $album_product = json_decode($uni_product);
-        if (in_array($request->name_img, $album_product, true)) {
+        if (in_array($request->name_img, $album_product)) {
             $album_product = \array_diff($album_product, [$request->name_img]);
+            
             Storage::delete('public/uploads_product/' . $request->name_img);
-            $param = [
-                'album' => $album_product,
-            ];
+            array_multisort($album_product);
+            $param['album'] = json_encode($album_product);
+            
             $product->fill($param)->save();
         }
         return response()->json([

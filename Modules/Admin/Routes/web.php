@@ -271,7 +271,16 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::post('/create', 'AdminUniStoreController@store');
         Route::get('update/{id}', 'AdminUniStoreController@edit')->name('get_admin.uni_store.edit');
         Route::post('update/{id}', 'AdminUniStoreController@update');
+        Route::get('update/{id?}', 'AdminUniStoreController@delete_album')->name('get_admin.uni_store.delete_album');
         Route::get('delete/{id}', 'AdminUniStoreController@delete')->name('get_admin.uni_store.delete');
+    });
+    Route::prefix('uni_flashsale')->group(function (){
+        Route::get('/', 'AdminUniFlashSaleController@index')->name('get_admin.uni_flashsale.index');
+        Route::get('/create', 'AdminUniFlashSaleController@create')->name('get_admin.uni_flashsale.create');
+        Route::post('/create', 'AdminUniFlashSaleController@store');
+        Route::get('update/{id}', 'AdminUniFlashSaleController@edit')->name('get_admin.uni_flashsale.edit');
+        Route::post('update/{id}', 'AdminUniFlashSaleController@update');
+        Route::get('delete/{id}', 'AdminUniFlashSaleController@delete')->name('get_admin.uni_flashsale.delete');
     });
     Route::prefix('blog-post')->namespace('Blog')->group(function (){
 

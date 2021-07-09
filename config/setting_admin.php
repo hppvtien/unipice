@@ -124,6 +124,16 @@ return [
             ]
         ],
         [
+            'name' => 'Gói Sale off',
+            'class-icon' => 'la la-book-open',
+            'sub' => [
+                [
+                    'name' => 'Danh sách cửa hàng',
+                    'route' => 'get_admin.uni_flashsale.index'
+                ],
+            ]
+        ],
+        [
             'name' => 'Voucher',
             'class-icon' => 'la la-cart-arrow-down',
             'sub' => [

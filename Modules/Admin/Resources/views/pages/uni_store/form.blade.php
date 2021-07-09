@@ -41,10 +41,24 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Album </label>
+                        <label for="exampleInputEmail1">Hình ảnh cửa hàng </label>
                         <input type="file" class="form-control" name="store_album[]" value="" multiple>
                     </div>
                     <input type="hidden" class="form-control" name="albumold" multiple value="{{ old('store_album', $uni_store->store_album ?? '') }}">
+                    @if($uni_store)
+                        <div class="row" style="border: 1px solid;padding-top:10px">
+                            @forelse (json_decode($uni_store->store_album) as $key => $item)
+                            <div class="col-3" data-rm="{{ $item }}" data-key="{{ $key }}" style="margin-bottom: 10px;position: relative; ">
+                                <span class="close-img js-delete" data-url="{{ route('get_admin.uni_store.delete_album') }}" data-id="{{ $uni_store->id }}" album-data="{{ $item }}" style="position:absolute"><i class="la la-trash"></i></span>
+                                <img src="/storage/uploads_store/{{ $item }}" class="card-img-top" alt="...">
+                            </div>
+                            @empty
+
+                            @endforelse
+
+                        </div>
+                        @else
+                        @endif
                 </div>
             </div>
         </div>

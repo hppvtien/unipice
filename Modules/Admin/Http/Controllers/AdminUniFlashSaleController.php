@@ -2,31 +2,30 @@
 
 namespace Modules\Admin\Http\Controllers;
 
-use App\Models\Uni_Store;
+use App\Models\Uni_FlashSale;
 use App\Service\Seo\RenderUrlSeoCourseService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use Modules\Admin\Http\Requests\AdminCourseRequest;
+// use Modules\Admin\Http\Requests\AdminCourseRequest;
 
-class AdminUniStoreController extends AdminController
+class AdminUniFlashSaleController extends AdminController
 {
     public function index()
     {
-        $uni_store = Uni_Store::orderByDesc('id')->get();
+        $uni_flashsale = Uni_FlashSale::orderByDesc('id')->get();
         $viewData = [
-            'uni_store' => $uni_store
+            'uni_flashsale' => $uni_flashsale
         ];
-
-        return view('admin::pages.uni_store.index', $viewData);
+        return view('admin::pages.uni_flashsale.index', $viewData);
     }
 
     public function create()
     {
-        $uni_store = [];
-        return view('admin::pages.uni_store.create', compact('uni_store'));
+        $uni_flashsale = [];
+        return view('admin::pages.uni_flashsale.create', compact('uni_flashsale'));
     }
 
     public function store(Request $request)
@@ -54,28 +53,28 @@ class AdminUniStoreController extends AdminController
             'store_album' => json_encode($store_album),
             'store_status' => $request->store_status,
         ];
-        $storeID = Uni_Store::insertGetId($param);
+        $storeID = Uni_FlashSale::insertGetId($param);
 
         if ($storeID) {
             $this->showMessagesSuccess();
-            return redirect()->route('get_admin.uni_store.index');
+            return redirect()->route('get_admin.uni_flashsale.index');
         }
         $this->showMessagesError();
         return redirect()->back();
     }
     public function edit($id)
     {
-        $uni_store     = Uni_Store::findOrFail($id);
+        $uni_flashsale     = Uni_FlashSale::findOrFail($id);
         $viewData = [
-            'uni_store'       => $uni_store
+            'uni_flashsale'       => $uni_flashsale
         ];
-        return view('admin::pages.uni_store.update', $viewData);
+        return view('admin::pages.uni_flashsale.update', $viewData);
     }
     public function update(Request $request, $id)
     {
         if ($request) {
-            $uni_store             = Uni_Store::findOrFail($id);
-            $store_albumOld = json_decode(Uni_Store::where('id', $id)->pluck('store_album')->first());
+            $uni_flashsale             = Uni_FlashSale::findOrFail($id);
+            $store_albumOld = json_decode(Uni_FlashSale::where('id', $id)->pluck('store_album')->first());
 
             $data               = $request->except(['store_thumbnail', 'save', '_token', 'store_album']);
             $data['updated_at'] = Carbon::now();
@@ -93,7 +92,7 @@ class AdminUniStoreController extends AdminController
             // dd($store_albumOld);
             // dd($store_ab);
             if ($request->store_thumbnail) {
-                Storage::delete('public/uploads/' . $uni_store->store_thumbnail);
+                Storage::delete('public/uploads/' . $uni_flashsale->store_thumbnail);
                 $store_thumbnail = $request->store_thumbnail;
             } else {
                 $store_thumbnail = $request->store_thumbnail;
@@ -112,20 +111,20 @@ class AdminUniStoreController extends AdminController
                 'store_status' => $request->store_status,
             ];
             // dd($param);
-            $uni_store->fill($param)->save();
+            $uni_flashsale->fill($param)->save();
 
             // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
             $this->showMessagesSuccess();
-            return redirect()->route('get_admin.uni_store.index');
+            return redirect()->route('get_admin.uni_flashsale.index');
         }
     }
 
 
     public function delete_album(Request $request)
     {
-        $store = Uni_Store::findOrFail($request->data_id);
-        $uni_store = Uni_Store::where('id', $request->data_id)->pluck('store_album')->first();
-        $store_album = json_decode($uni_store);
+        $store = Uni_FlashSale::findOrFail($request->data_id);
+        $uni_flashsale = Uni_FlashSale::where('id', $request->data_id)->pluck('store_album')->first();
+        $store_album = json_decode($uni_flashsale);
 
         if (in_array($request->name_img, $store_album)) {
             $store_album = \array_diff($store_album, [$request->name_img]);
@@ -142,8 +141,8 @@ class AdminUniStoreController extends AdminController
     public function delete(Request $request, $id)
     {
         if ($request->ajax()) {
-            $product = Uni_Store::findOrFail($id);
-            $uni_product = Uni_Store::where('id', $id)->pluck('album')->first();
+            $product = Uni_FlashSale::findOrFail($id);
+            $uni_product = Uni_FlashSale::where('id', $id)->pluck('album')->first();
 
             if ($product) {
                 if ($uni_product) {

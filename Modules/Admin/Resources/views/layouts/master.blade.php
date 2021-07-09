@@ -151,10 +151,24 @@
 <!-- modal -->
 @include('admin::components._inc_footer')
 <!-- JQuery min js -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="{{ asset('js_admin/admin_dashboard.js') }}"></script>
 <script src="{{ asset('js_admin/select2.min.js') }}"></script>
 <script src="{{ asset('js_admin/custom.js') }}"></script>
+<script src="{{ asset('plugin/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('plugin/ckfinder/ckfinder.js') }}"></script>
+<script type="text/javascript">
+
+    CKEDITOR.replace( 'article-ckeditor', {
+        filebrowserBrowseUrl: "{{ asset('ckfinder/ckfinder.html') }}",
+        filebrowserImageBrowseUrl: "{{ asset('/plugin/ckfinder/ckfinder.html?type=Images') }}",
+        filebrowserFlashBrowseUrl: "{{ asset('/plugin/ckfinder/ckfinder.html?type=Flash') }}",
+        filebrowserUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}",
+        filebrowserImageUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}",
+        filebrowserFlashUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}",
+    } );
+    
+</script>
 @yield('scriptck')
 </body>
 </html>
