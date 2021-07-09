@@ -6,6 +6,7 @@ use App\Models\Uni_Supplier;
 use App\Models\Uni_Size;
 use App\Models\Uni_Product;
 use App\Models\Uni_LotProduct;
+use App\Models\ProductLotProduct;
 use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

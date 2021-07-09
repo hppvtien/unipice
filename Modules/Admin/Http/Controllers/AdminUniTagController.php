@@ -3,6 +3,7 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Uni_Tag;
+use App\Models\ProductTag;
 use App\Models\Blog\SeoBlog;
 use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
@@ -71,15 +72,15 @@ class AdminUniTagController extends AdminController
         return redirect()->route('get_admin.uni_tag.index');
     }
 
-    public function delete(AdminUniTagRequest $request, $id)
+    public function delete(Request $request, $id)
     {
         if($request->ajax())
         {
-            $menu = Uni_Tag::findOrFail($id);
-            if ($menu)
+            $product_tag = Uni_Tag::findOrFail($id);
+            if ($product_tag)
             {
-                $menu->delete();
-                RenderUrlSeoBLogService::deleteUrlSeo(SeoBlog::TYPE_MENU, $id);
+                ProductTag::where('tag_id', $id)->delete();
+                $product_tag->delete();
             }
             return response()->json([
                 'status' => 200,

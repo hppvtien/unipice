@@ -27,5 +27,4 @@ Route::prefix('blog')->namespace('Blog')->group(function (){
         Route::post('update/{id}', 'AdminArticleController@update');
         Route::get('delete/{id}', 'AdminArticleController@delete')->name('get_admin.article.delete')->middleware('permission:article_delete|full');
     });
-    
 });

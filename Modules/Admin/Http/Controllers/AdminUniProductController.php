@@ -76,7 +76,6 @@ class AdminUniProductController extends AdminController
             'uni_category'     => $uni_category, 
             'uni_product'     => $uni_product
         ];
-// dd($viewData);
         return view('admin::pages.uni_product.create', $viewData);
     }
 
@@ -154,6 +153,48 @@ class AdminUniProductController extends AdminController
         ];
         return view('admin::pages.uni_product.update', $viewData);
     }
+    public function update(Request $request, $id)
+    {
+        $uni_product             = Uni_Product::findOrFail($id);
+        $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
+        $data['updated_at'] = Carbon::now();
+        $data['updated_by'] = get_data_user('web');
+        if ($request->album) {
+            $album = [];
+            foreach ($request->album as $item) {
+                $album[] = $this->processUploadFile($item);
+            }
+        } else {
+            $album = $request->albumold;
+        }
+        $param = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'desscription' => $request->desscription,
+            'content' => $request->content,
+            'meta_title' => $request->name,
+            'meta_desscription' => $request->desscription,
+            'created_at' => Carbon::now(),
+            'created_by' => get_data_user('web'),
+            'status' => $request->status,
+            'is_hot' => $request->is_hot,
+            'is_feauture' => $request->is_feauture,
+            'order' => $request->order,
+            'thumnail' => $request->thumbnail,
+            'status' => $request->status,
+            'album' => $album,
+        ];
+        $uni_product->fill($param)->save();
+        $this->syncTagProduct($id, $request->tags);
+        $this->syncCatProduct($id, $request->category);
+        $this->syncSizeProduct($id, $request->size);
+        $this->syncColorProduct($id, $request->color);
+        $this->syncTradeProduct($id, $request->trade);
+
+        // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
+        $this->showMessagesSuccess();
+        return redirect()->route('get_admin.uni_product.index');
+    }
     public function importview($id)
     {
         $uni_lotproduct     = Uni_LotProduct::where('product_id',$id)->get();
@@ -188,55 +229,6 @@ class AdminUniProductController extends AdminController
         $uni_lotproduct->fill($param_lotproduct)->save();
         $this->syncLotProduct($id, $request->lotproduct_id, $request->qty, $request->price);
 
-        $this->showMessagesSuccess();
-        return redirect()->route('get_admin.uni_product.index');
-    }
-
-    public function update(Request $request, $id)
-    {
-        $uni_product             = Uni_Product::findOrFail($id);
-        $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
-        $data['updated_at'] = Carbon::now();
-        $data['updated_by'] = get_data_user('web');
-        if ($request->album) {
-            $album = [];
-            foreach ($request->album as $item) {
-                $album[] = $this->processUploadFile($item);
-            }
-        } else {
-            $album = $request->albumold;
-        }
-        $param = [
-            'name' => $request->name,
-            'slug' => $request->slug,
-            'desscription' => $request->desscription,
-            'content' => $request->content,
-            'meta_title' => $request->name,
-            'meta_desscription' => $request->desscription,
-            'created_at' => Carbon::now(),
-            'created_by' => get_data_user('web'),
-            'status' => $request->status,
-            'is_hot' => $request->is_hot,
-            'is_feauture' => $request->is_feauture,
-            'order' => $request->order,
-            'thumnail' => $request->thumbnail,
-            'status' => $request->status,
-            'album' => json_encode($album),
-        ];
-        // if($request->c_avatar){
-        //     Storage::delete('public/uploads/'.$request->d_avatar);
-        //     $data['c_avatar'] = $uni_product->c_avatar;
-        // } else{
-        //     $data['c_avatar'] = $uni_product->c_avatar;
-        // }
-        $uni_product->fill($param)->save();
-        $this->syncTagProduct($id, $request->tags);
-        $this->syncCatProduct($id, $request->category);
-        $this->syncSizeProduct($id, $request->size);
-        $this->syncColorProduct($id, $request->color);
-        $this->syncTradeProduct($id, $request->trade);
-
-        // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.uni_product.index');
     }
@@ -337,12 +329,20 @@ class AdminUniProductController extends AdminController
             $product = Uni_Product::findOrFail($id);
             $uni_product = Uni_Product::where('id', $id)->pluck('album')->first();
          
-            if ($product && $uni_product) {
-                foreach(json_decode($uni_product) as $item){
-                    Storage::delete('public/uploads_product/'.$item);
+            if ($product) {
+                if($uni_product){
+                    foreach(json_decode($uni_product) as $item){
+                        Storage::delete('public/uploads_product/'.$item);
+                    }
                 }
+                
                 Storage::delete('public/uploads_product/'.$product->thumbnail);
                 $product->delete();
+                ProductTag::where('product_id', $id)->delete();
+                ProductCategory::where('product_id', $id)->delete();
+                ProductTrade::where('product_id', $id)->delete();
+                ProductColor::where('product_id', $id)->delete();
+                ProductSize::where('product_id', $id)->delete();
             }
             return response()->json([
                 'status'  => 200,

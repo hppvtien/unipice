@@ -5,13 +5,13 @@
         <div class="breadcrumb-header justify-content-between">
             <div class="my-auto">
                 <div class="d-flex">
-                    <h4 class="content-title mb-0 my-auto">Danh mục sản phẩm</h4>
-                    <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ Danh sách sản phẩm</span>
+                    <h4 class="content-title mb-0 my-auto">Danh mục bài viết</h4>
+                    <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ index</span>
                 </div>
             </div>
             <div class="d-flex my-xl-auto right-content">
                 <div class="pr-1 mb-3 mb-xl-0">
-                    <a href="{{ route('get_admin.uni_product.create') }}" class="btn btn-info  mr-2">Thêm mới <i class="la la-plus-circle"></i></a>
+                    <a href="{{ route('get_admin.post_category.create') }}" class="btn btn-info  mr-2">Thêm mới <i class="la la-plus-circle"></i></a>
                 </div>
             </div>
         </div>
@@ -25,10 +25,10 @@
                             <table class="table mg-b-0 text-md-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>ID</th>
                                         <th>Name</th>
                                         <th>SEO</th>
-                                        <th>Số lượng</th>
+                                        <th>Sort</th>
                                         <th>Status</th>
                                         <th>Time</th>
                                         <th>Action</th>
@@ -36,7 +36,7 @@
                                 </thead>
 
                                 <tbody>
-                                @forelse($uni_product as $key => $item)
+                                @forelse($uni_postcategory as $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>{{ $item->name }}</td>
@@ -48,21 +48,20 @@
                                                 </div>
                                                 <div class="ws-nm">
                                                     <span style="color: #70757a;">{{ $item->created_at }} - </span>
-                                                    <span class="page-description-seo meta-desscription">{{ $item->meta_desscription }}</span>
+                                                    <span class="page-description-seo description_seo">{{ $item->meta_desscription }}</span>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <span class="badge badge-info">{{ $item->qty }}</span>
+                                            <span class="badge badge-info">{{ $item->order }}</span>
                                         </td>
                                         <td>
-                                            <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
+                                            <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-default' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
                                         </td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('get_admin.uni_product.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
-                                            <a href="{{ route('get_admin.uni_product.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
-                                            <a href="{{ route('get_admin.uni_product.import', $item->id) }}" class="btn btn-xs btn-success"><i class="la la-file-import"></i></a>
+                                            <a href="{{ route('get_admin.post_category.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
+                                            <a href="{{ route('get_admin.post_category.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
                                         </td>
                                     </tr>
                                 @empty
