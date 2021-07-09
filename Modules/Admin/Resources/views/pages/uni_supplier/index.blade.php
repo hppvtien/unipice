@@ -46,7 +46,7 @@
                                         <td>{{ $item->address }}</td>
                                         <td>{{ $item->tax_code }}</td>
                                         <td>
-                                            <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger'; }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
+                                            <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
                                         </td>
                                         <td>
                                             <a href="{{ route('get_admin.uni_supplier.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>

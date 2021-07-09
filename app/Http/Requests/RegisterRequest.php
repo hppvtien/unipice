@@ -31,6 +31,7 @@ class RegisterRequest extends FormRequest
                 'regex:/[0-9]/',     
                 'regex:/[@$!%*#?&]/',
             ],
+            'password_confirmation'=>'required|same:password',
         ];
     }
 
@@ -48,13 +49,15 @@ class RegisterRequest extends FormRequest
             'phone.max' => 'Số điện thoại chỉ được tối đa 11 ký tự',
             'phone.regex' => 'Số điện thoại chỉ được nhập số từ 0 - 9',
             'password.required' => 'Dữ liệu không được để trống',
-            'password.min' => 'Mật khẩu phải có ít nhất 10 Ký tự',
+            'password.min' => 'Mật khẩu phải có ít nhất 10 ký tự',
             'password.regex' =>  [
                 '<br>Phải chứa ít nhất một chữ cái thường',
                 '<br>Phải chứa ít nhất một chữ cái viết hoa',
                 '<br>Phải chứa ít nhất một chữ số',
                 '<br>Phải chứa một ký tự đặc biệt',
-            ]
+            ],
+            'password_confirmation.required'=> 'Bạn chưa nhập lại mật khẩu',
+            'password_confirmation.same'=> 'Mật khẩu nhập lại chưa đúng', 
         ];
     }
 }

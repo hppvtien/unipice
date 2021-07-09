@@ -10,7 +10,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
-    public function index(LoginRequest  $request)
+    public function index()
+    {
+        return view('pages.login.index');
+    }
+    public function login(LoginRequest  $request)
     {
         if ($request->ajax()) {
             $credentials = $request->only('email', 'password');

@@ -19,13 +19,17 @@ use Illuminate\Support\Facades\Mail as FacadesMail;
 
 class RegisterController extends Controller
 {
+    public function index()
+    {
+        return view('pages.register.index');
+    }
+
     public function register(RegisterRequest $request)
     {
-
         if ($request->ajax()) {
             $code =  200;
             try {
-                $data               = $request->except('_token', 'remember', 'code_verication');
+                $data               = $request->except('_token', 'remember', 'code_verication','password_confirmation');
 
                 $data['created_at'] = Carbon::now();
                 $data['password'] = bcrypt($request->password);
@@ -33,11 +37,16 @@ class RegisterController extends Controller
                 $data['avatar_social'] = '';
                 $data['provider_id']  = 0;
                 $data['code_verication']  = Str::random(40);
+                $data['type']  = $request->type;
+
                 $user = User::insertGetId($data);
+
                 if ($user) {
                     Mail::to($data['email'])->send(new EmailVerificationMail($data));
-                    $success = "Xác nhận Email của bạn để hoàn tất đăng ký!";
-                    return $success;
+                    return response([
+                        'status'     => 200,
+                        'message' => "Xác nhận Email của bạn để hoàn tất đăng ký!"
+                    ]);
                 }
             } catch (\Exception $exception) {
                 $code = 501;
@@ -71,13 +80,13 @@ class RegisterController extends Controller
         } else {
             if ($user->email_verified_at) {
                 $this->showEmailSuccess();
-                return redirect()->route('get.home');
+                return redirect()->route('get.login');
             } else {
                 $user->update([
                     'email_verified_at' => \Carbon\Carbon::now()
                 ]);
                 $this->showEmailSuccess();
-                return redirect()->route('get.home');
+                return redirect()->route('get.login');
             }
         }
     }
@@ -87,9 +96,8 @@ class RegisterController extends Controller
         return redirect()->route('get.home');
     }
 
-    public function forgetpassword(Request $request)
+    public function forgetpassword()
     {
-
         return view('pages.forgetpassword.index');
     }
     public function showforgetpassword($message = 'Email không hợp lệ')
@@ -152,6 +160,7 @@ class RegisterController extends Controller
     }
     public function postresetcodepassword($reset_code, RestcodeRequest $request)
     {
+       
         $pass_reset = PasswordResett::where('reset_code', $reset_code)->first();
         if (!$pass_reset || Carbon::now()->subMinutes(10) > $pass_reset->created_at) {
             $this->showtimeforget();

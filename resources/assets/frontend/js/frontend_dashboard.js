@@ -1,5 +1,0 @@
-import './../assets/js/framework.js'
-import './../assets/js/jquery-3.3.1.min.js'
-import './../assets/js/mmenu.min.js'
-import './../assets/js/simplebar.js'
-import './../assets/js/main.js'
