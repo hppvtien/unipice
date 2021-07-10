@@ -48,7 +48,7 @@
                                         <td>{{ $item->store_address }}</td>
                                         <td>{{ $item->store_phone }}</td>
                                         <td>{{ $item->store_taxcode }}</td>
-                                        <td><span class="badge {{ $item->store_status == 1 ? 'badge-success':'badge-danger'; }}">{{ $item->store_status == 1 ? 'Active':'Not-Active' }}</span></td>
+                                        <td><span class="badge {{ $item->store_status == 1 ? 'badge-success':'badge-danger' }}">{{ $item->store_status == 1 ? 'Active':'Not-Active' }}</span></td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
                                             <a href="{{ route('get_admin.uni_store.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>

@@ -1,10 +1,10 @@
     <style>
-    h3.h3-title{
-        text-transform: uppercase;
-        font-size: 18px;
-        text-align: center;
-        padding: 8px 0;
-    }
+        h3.h3-title {
+            text-transform: uppercase;
+            font-size: 18px;
+            text-align: center;
+            padding: 8px 0;
+        }
     </style>
     <form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
         @csrf
@@ -34,7 +34,7 @@
                                         <th scope="row">{{ $key+1 }}</th>
                                         <td>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="lotproduct_id" product-id="{{ $item->product_id }}" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
+                                                <input require class="form-check-input" type="radio" name="lotproduct_id" product-id="{{ $item->product_id }}" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
                                                 <label class="form-check-label" for="inlineCheckbox{{ $item->id }}">{{ $item->lot_name }}</label>
                                             </div>
                                         </td>
@@ -46,6 +46,9 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
+                                @if($errors->first('lotproduct_id'))
+                                            <span class="text-danger">{{ $errors->first('lotproduct_id') }}</span>
+                                            @endif
                             </table>
                         </div>
                         <div class="bg-primary">

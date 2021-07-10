@@ -3,6 +3,7 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Uni_FlashSale;
+use App\Models\Uni_Product;
 use App\Service\Seo\RenderUrlSeoCourseService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -24,34 +25,38 @@ class AdminUniFlashSaleController extends AdminController
 
     public function create()
     {
+        $uni_product = Uni_Product::orderByDesc('id')->get();
         $uni_flashsale = [];
-        return view('admin::pages.uni_flashsale.create', compact('uni_flashsale'));
+        $viewData = [
+            'uni_product' => $uni_product,
+            'uni_flashsale' => $uni_flashsale
+        ];
+        return view('admin::pages.uni_flashsale.create', $viewData);
     }
 
     public function store(Request $request)
     {
-        $data                 = $request->except(['store_thumbnail', 'save', '_token', 'store_album']);
+        $data                 = $request->except(['thumbnail', 'save', '_token']);
         $data['created_at']   = Carbon::now();
-
-        if ($request->store_album) {
-            $store_album = [];
-            foreach ($request->store_album as $item) {
-                $store_album[] = $this->processUploadFile($item);
+        $product_sale = [];
+        foreach ($request->product_sale as $item) {
+            if (count($item) == 3) {
+                $product_sale[] = $item;
             }
-        } else {
-            $store_album = [];
         }
+        $data['info_sale'] = json_encode($product_sale);
         $param = [
-            'store_name' => $request->store_name,
-            'created_at' => Carbon::now(),
-            'user_id' => get_data_user('web'),
-            'store_area' => $request->store_area,
-            'store_address' => $request->store_address,
-            'store_phone' => $request->store_phone,
-            'store_thumbnail' => $request->store_thumbnail,
-            'store_taxcode' => $request->store_taxcode,
-            'store_album' => json_encode($store_album),
-            'store_status' => $request->store_status,
+            "name" => $request->name,
+            "slug" => $request->slug,
+            "desscription" => $request->desscription,
+            "qty" => $request->qty,
+            "content" => $request->content,
+            "meta_title" => $request->meta_title,
+            "meta_desscription" => $request->meta_desscription,
+            "status" => $request->status,
+            "thumbnail" => $request->thumbnail,
+            "created_at" => $data['created_at'],
+            "info_sale" => $data['info_sale']
         ];
         $storeID = Uni_FlashSale::insertGetId($param);
 
@@ -117,26 +122,6 @@ class AdminUniFlashSaleController extends AdminController
             $this->showMessagesSuccess();
             return redirect()->route('get_admin.uni_flashsale.index');
         }
-    }
-
-
-    public function delete_album(Request $request)
-    {
-        $store = Uni_FlashSale::findOrFail($request->data_id);
-        $uni_flashsale = Uni_FlashSale::where('id', $request->data_id)->pluck('store_album')->first();
-        $store_album = json_decode($uni_flashsale);
-
-        if (in_array($request->name_img, $store_album)) {
-            $store_album = \array_diff($store_album, [$request->name_img]);
-            Storage::delete('public/uploads_store/' . $request->name_img);
-            array_multisort($store_album);
-            $param['store_album'] = json_encode($store_album);
-            $store->fill($param)->save();
-        }
-        return response()->json([
-            'status'  => 200,
-            'message' => 'Xoá dữ liệu thành công'
-        ]);
     }
     public function delete(Request $request, $id)
     {

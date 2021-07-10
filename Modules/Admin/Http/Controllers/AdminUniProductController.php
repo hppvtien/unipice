@@ -21,7 +21,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use Modules\Admin\Http\Requests\AdminCourseRequest;
+use Modules\Admin\Http\Requests\AdminLotRequest;
+use Modules\Admin\Http\Requests\AdminUniProductRequest;
 
 class AdminUniProductController extends AdminController
 {
@@ -205,24 +206,28 @@ class AdminUniProductController extends AdminController
         ];
         return view('admin::pages.uni_product.import', $viewData);
     }
-    public function import(Request $request, $id)
+    public function import(AdminLotRequest $request, $id)
     {
         $uni_product             = Uni_Product::findOrFail($id);
         $data               = $request->except(['save', '_token']);
-        $qty_import = $request->qty;
+        $qty_import = (int)$request->qty;
         $qty_product = 0;
         if($uni_product->qty == 0){
-            $qty_product += $uni_product->qty;
+            $qty_product += $qty_import;
         } else {
             $qty_product = $uni_product->qty + $qty_import;
         };
-        $param = [
-            'lotproduct_id' => $request->lotproduct_id,
-            'qty' => $qty_product,
-            'price' => $request->price,
-            'price_sale' => $request->price_sale,
-            'price_sale_store' => $request->price_sale_store,
-        ];
+        
+        if($request->lotproduct_id){
+            $param = [
+                'qty' => $qty_product,
+                'price' => $request->price,
+                'price_sale' => $request->price_sale,
+                'price_sale_store' => $request->price_sale_store,
+            ];
+        } else {
+            $this->showMessagesError();
+        }
         $uni_product->fill($param)->save();
         $uni_lotproduct     = Uni_LotProduct::findOrFail($request->lotproduct_id);
         $param_lotproduct = [

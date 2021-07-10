@@ -29,10 +29,9 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="required">Content <span>(*)</span></label>
                             <textarea name="content" class="form-control" id="article-ckeditor" cols="30" rows="10">{{ old('content',$uni_product->content ?? '') }}</textarea>
-                                        @if($errors->first('content'))
-                                            <span class="text-danger">{{ $errors->first('content') }}</span>
-                                        @endif
-                          
+                            @if($errors->first('content'))
+                            <span class="text-danger">{{ $errors->first('content') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="required"> Danh mục sản phẩm <span>(*)</span></label>
@@ -111,7 +110,7 @@
                     <input type="file" class="form-control" name="album[]" value="" multiple>
                 </div>
                 <input type="hidden" class="form-control" name="albumold" value="{{ old('album', $uni_product->album ?? '') }}">
-                @if ($uni_product->album)
+                @if ($uni_product)
                 <div class="row" style="border: 1px solid;padding-top:10px">
                     @forelse (json_decode($uni_product->album) as $item)
                     <div class="col-3" data-rm="{{ $item }}" style="margin-bottom: 10px;position: relative; ">

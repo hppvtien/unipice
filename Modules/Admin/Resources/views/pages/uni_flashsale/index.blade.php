@@ -64,10 +64,10 @@
                                             <span class="badge badge-info">{{ $item->sale_off }}</span>
                                         </td>
                                         <td>
-                                            <span class="badge badge-info">{{ $item->info_sale }}</span>
+                                            <span class="badge badge-info">{{ $item->status }}</span>
                                         </td>
                                         <td>
-                                            <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger'; }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
+                                            <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
                                         </td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>

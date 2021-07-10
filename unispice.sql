@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2021 at 01:01 PM
+-- Generation Time: Jul 10, 2021 at 12:59 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -122,107 +122,6 @@ INSERT INTO `answer_to_teacher` (`id`, `asw_teacher`, `asw_content`, `asw_image`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ap_category`
---
-
-CREATE TABLE `ap_category` (
-  `id` int(11) NOT NULL,
-  `parent_id` int(11) NOT NULL DEFAULT 0,
-  `thumbnail` varchar(255) DEFAULT NULL,
-  `banner` varchar(255) DEFAULT NULL,
-  `is_featured` varchar(255) DEFAULT NULL COMMENT 'Background for parent_id = 0',
-  `style` varchar(255) DEFAULT NULL COMMENT 'style html',
-  `class` varchar(100) DEFAULT NULL,
-  `type` varchar(255) DEFAULT 'post' COMMENT 'type theo đúng tên controller',
-  `order` int(3) DEFAULT 0,
-  `is_status` tinyint(2) NOT NULL DEFAULT 1,
-  `created_time` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_time` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `created_by` varchar(255) NOT NULL,
-  `updated_by` varchar(255) NOT NULL,
-  `album` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `ap_category`
---
-
-INSERT INTO `ap_category` (`id`, `parent_id`, `thumbnail`, `banner`, `is_featured`, `style`, `class`, `type`, `order`, `is_status`, `created_time`, `updated_time`, `created_by`, `updated_by`, `album`) VALUES
-(1, 1, '', '', NULL, '', NULL, 'post', 3, 1, '2019-10-31 17:00:27', '2019-12-06 14:48:45', '', '', NULL),
-(8, 8, '', '', NULL, '', NULL, 'post', 0, 1, '2019-12-06 15:17:32', '2019-12-06 15:19:40', '', '', NULL),
-(10, 0, '', '', NULL, '', NULL, 'question', 0, 1, '2019-12-09 09:48:56', '2019-12-09 10:18:36', '', '', NULL),
-(11, 0, '', '', NULL, '', NULL, 'question', 2, 1, '2019-12-09 10:18:53', '2020-02-19 09:08:45', '', '', NULL),
-(15, 0, '', '', NULL, NULL, NULL, 'career', 0, 1, '2020-02-13 17:18:29', '2020-02-13 17:18:29', '', '', NULL),
-(16, 0, '', '', NULL, '', NULL, 'project', 0, 1, '2020-02-14 11:50:39', '2020-02-14 11:50:39', '', '', NULL),
-(17, 0, '', '', NULL, '', NULL, 'project', 2, 1, '2020-02-14 11:50:50', '2020-02-19 15:20:03', '', '', NULL),
-(19, 15, '', NULL, NULL, NULL, NULL, 'career', 20, 1, '2020-02-17 15:59:40', '2020-02-17 16:02:25', '', '', NULL),
-(33, 11, '', NULL, NULL, '', NULL, 'question', 1, 1, '2020-02-18 16:20:09', '2020-02-19 09:08:47', '', '', NULL),
-(47, 0, '', NULL, NULL, '', NULL, 'project', 1, 1, '2020-02-19 15:19:56', '2020-02-19 15:20:02', '', '', NULL),
-(48, 47, '', NULL, NULL, '', NULL, 'project', 0, 1, '2020-02-19 15:24:09', '2020-02-19 15:24:09', '', '', NULL),
-(52, 0, '', '', NULL, '', NULL, 'project', 0, 1, '2020-02-19 15:50:34', '2020-02-20 15:57:48', '', '', NULL),
-(60, 0, '', '', NULL, '', NULL, 'document', 0, 1, '2020-02-20 09:05:58', '2020-02-20 09:05:58', '', '', NULL),
-(61, 0, '', '', NULL, '', NULL, 'pro_service', 2, 1, '2020-02-20 09:21:32', '2020-02-22 09:47:36', '', '', NULL),
-(62, 60, '', '', NULL, '', NULL, 'document', 1, 1, '2020-02-20 09:54:59', '2020-02-20 15:49:11', '', '', NULL),
-(64, 0, '', '', NULL, '', NULL, 'pro_service', 1, 1, '2020-02-20 10:02:06', '2020-02-22 09:38:49', '', '', NULL),
-(68, 0, '', '', NULL, '', NULL, 'question', 2, 1, '2020-02-20 16:09:55', '2020-02-22 09:19:04', '', '', NULL),
-(72, 0, '', '', NULL, '', NULL, 'post', 0, 1, '2020-02-20 16:23:10', '2020-02-20 16:23:10', '', '', NULL),
-(73, 0, '', '', NULL, '', NULL, 'post', 1, 1, '2020-02-20 16:23:18', '2020-02-21 14:20:37', '', '', NULL),
-(74, 0, '', '', NULL, '', NULL, 'post', 0, 1, '2020-02-20 16:23:28', '2020-02-20 16:23:28', '', '', NULL),
-(75, 0, '', '', NULL, '', NULL, 'post', 2, 1, '2020-02-20 16:23:42', '2020-02-21 14:20:33', '', '', NULL),
-(79, 0, '', '', NULL, '', NULL, 'question', 8, 1, '2020-02-20 16:42:30', '2020-02-22 09:19:29', '', '', NULL),
-(86, 0, '', '', NULL, '', NULL, 'document', 2, 1, '2020-02-21 10:36:27', '2020-02-21 13:48:41', '', '', NULL),
-(88, 0, 'padlwktevy_1558777957.jpg', 'padlwktevy_1558777957.jpg', NULL, '', NULL, 'document', 0, 1, '2020-02-21 13:43:41', '2020-02-21 13:43:41', '', '', NULL),
-(90, 0, '', '', NULL, '', NULL, 'document', 0, 1, '2020-02-21 15:44:50', '2020-02-21 15:44:50', '', '', NULL),
-(91, 90, '', '', NULL, '', NULL, 'document', 0, 1, '2020-02-21 15:45:16', '2020-02-21 15:45:16', '', '', NULL),
-(95, 0, '', '', NULL, NULL, NULL, 'career', 0, 1, '2020-02-21 16:46:58', '2020-02-21 16:46:58', '', '', NULL),
-(100, 64, '', '', NULL, '', NULL, 'pro_service', 0, 1, '2020-02-22 09:50:15', '2020-02-22 09:50:15', '', '', NULL),
-(103, 0, '', '', NULL, '', NULL, 'product', 0, 1, '2020-03-11 08:48:10', '2020-03-11 08:48:10', '', '', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ap_menus`
---
-
-CREATE TABLE `ap_menus` (
-  `id` int(4) NOT NULL,
-  `title` varchar(75) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `icon` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `link` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '#',
-  `parent_id` int(2) NOT NULL DEFAULT 0,
-  `order` tinyint(2) DEFAULT NULL,
-  `class` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `location_id` smallint(4) NOT NULL,
-  `language_code` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
-  `type` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `ap_menus`
---
-
-INSERT INTO `ap_menus` (`id`, `title`, `icon`, `link`, `parent_id`, `order`, `class`, `location_id`, `language_code`, `type`) VALUES
-(10, 'Sản phẩm', '', 'san-pham', 0, 1, '', 2, 'vi', 'page'),
-(11, 'Khuyến mại', '', 'khuyen-mai', 0, 2, '', 2, 'vi', 'page'),
-(12, 'Hệ thống cửa hàng', '', 'he-thong-cua-hang', 0, 3, '', 2, 'vi', 'page'),
-(13, 'Tư vấn dinh dưỡng', '', 'tu-van-dinh-duong', 0, 4, '', 2, 'vi', 'page'),
-(14, 'Câu hỏi thường gặp', '', 'cau-hoi-thuong-gap', 0, 5, '', 2, 'vi', 'page'),
-(15, 'Hướng dẫn mua hàng', '', 'huong-dan-mua-hang', 0, 1, '', 2, 'vi', 'page'),
-(16, 'Chính sách giao hàng', '', 'chinh-sach-giao-hang', 0, 2, '', 3, 'vi', 'page'),
-(17, 'Chính sách đổi trả', '', 'chinh-sach-doi-tra', 0, 3, '', 3, 'vi', 'page'),
-(18, 'Chính sách giá cả & thanh toán', '', 'chinh-sach-gia-ca-thanh-toan', 0, 4, '', 3, 'vi', 'page'),
-(19, 'Hóa đơn điện tử', '', 'hoa-don-dien-tu', 0, 5, '', 3, 'vi', 'page'),
-(21, 'Liên hệ', '', 'lien-he', 0, 1, '', 4, 'vi', 'page'),
-(22, 'Kiểm tra đơn hàng', '', 'kiem-tra-don-hang', 0, 2, '', 4, 'vi', 'page'),
-(23, 'Sản phẩm', '', 'san-pham', 0, 1, '', 1, 'vi', 'page'),
-(24, 'Khuyến mại', '', 'khuyen-mai', 0, 2, '', 1, 'vi', 'page'),
-(25, 'Hệ thống cửa hàng', '', 'he-thong-cua-hang', 0, 3, '', 1, 'vi', 'page'),
-(26, 'Tư vấn dinh dưỡng', '', 'tu-van-dinh-duong', 0, 4, '', 1, 'vi', 'page'),
-(27, 'Hướng dẫn mua hàng', '', 'huong-dan-mua-hang', 0, 5, '', 1, 'vi', 'page');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `articles`
 --
 
@@ -253,7 +152,7 @@ INSERT INTO `articles` (`id`, `a_name`, `a_slug`, `a_description`, `a_hot`, `a_s
 (2, 'Kiến thức thiết kế cơ bản', 'kien-thuc-thiet-ke-co-ban', 'Kiến thức thiết kế cơ bản', 0, 1, 6, '<p style=\"text-align:center\">Kiến thức thiết kế cơ bản</p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"\" src=\"/uploads/images/icon-kcc-1.jpg\" style=\"height:270px; width:366px\" /></p>', 0, 'Kiến thức thiết kế cơ bản', NULL, NULL, 'Kiến thức thiết kế cơ bản', '2021-05-06 03:25:00', NULL),
 (3, 'Chạy quảng cáo như nào cho hiệu quả', 'chay-quang-cao-nhu-nao-cho-hieu-qua', 'Chạy quảng cáo như nào cho hiệu quả', 0, 1, 7, '<p>Chạy quảng c&aacute;o như n&agrave;o cho hiệu quả</p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"\" src=\"/uploads/images/banner-05.png\" style=\"height:136px; width:205px\" /></p>', 0, 'Chạy quảng cáo như nào cho hiệu quả', NULL, NULL, 'Chạy quảng cáo như nào cho hiệu quả', '2021-05-06 03:27:27', NULL),
 (4, 'Thiết kế thương hiệu có cần thiết không thế', 'thiet-ke-thuong-hieu-co-can-thiet-khong-the', 'Thiết kế thương hiệu có cần thiết sadsda', 0, 1, 5, '<p>Thiết kế thương hiệu c&oacute; cần thiết</p>', 0, 'Thiết kế thương hiệu có cần thiết không thế', NULL, NULL, 'Thiết kế thương hiệu có cần thiết không thế', '2021-05-06 03:31:57', NULL),
-(5, 'Kiến thức Merdia', 'kien-thuc-merdia', 'Kiến thức Merdia', 0, 1, 2, '<p>Kiến thức Merdia</p>', 0, 'Kiến thức Merdia', NULL, NULL, 'Kiến thức Merdia', '2021-05-07 19:37:01', NULL);
+(5, 'Kiến thức Merdia', 'kien-thuc-merdia', 'Kiến thức Merdia', 0, 1, 3, '<p>Kiến thức Merdia</p>', 0, 'Kiến thức Merdia', NULL, NULL, 'Kiến thức Merdia', '2021-07-07 20:44:55', '2021-07-07 20:44:55');
 
 -- --------------------------------------------------------
 
@@ -279,8 +178,8 @@ INSERT INTO `articles_keywords` (`id`, `ak_article_id`, `ak_keyword_id`) VALUES
 (9, 3, 1),
 (10, 3, 2),
 (11, 4, 1),
-(12, 5, 1),
-(13, 5, 2);
+(14, 5, 1),
+(15, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -291,9 +190,7 @@ INSERT INTO `articles_keywords` (`id`, `ak_article_id`, `ak_keyword_id`) VALUES
 CREATE TABLE `bill` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `method_invoice` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_transaction` int(11) NOT NULL,
   `method_course` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`method_course`)),
-  `method_phone` int(12) DEFAULT NULL,
   `method_pay` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `paid_total` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `method_email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -307,8 +204,6 @@ CREATE TABLE `bill` (
   `method_company` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total_no_vat` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vat_total` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `method_voucher` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `method_voucher_percent` int(11) NOT NULL,
   `configuration` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`configuration`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -316,18 +211,12 @@ CREATE TABLE `bill` (
 -- Dumping data for table `bill`
 --
 
-INSERT INTO `bill` (`id`, `method_invoice`, `id_transaction`, `method_course`, `method_phone`, `method_pay`, `paid_total`, `method_email`, `method_customer`, `method_address`, `method_paid`, `group_buy`, `created_at`, `updated_at`, `method_customer_code`, `method_company`, `total_no_vat`, `vat_total`, `method_voucher`, `method_voucher_percent`, `configuration`) VALUES
-(1, '#004258', 1, '[{\"id\":\"28\",\"qty\":1,\"name\":\"Building Organizational Cultures\"}]', 969938801, '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '6600000', '0', '2021-06-12 00:15:10', NULL, NULL, NULL, NULL, NULL, NULL, 0, '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}'),
-(2, '#008248', 2, '[{\"id\":\"28\",\"qty\":1,\"name\":\"Building Organizational Cultures\"}]', 969938801, '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '6600000', '1', '2021-06-12 00:16:42', NULL, 'Code2343423423', 'Nam vfg', '6.000.000đ', '600.000đ', NULL, 0, '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}'),
-(3, '#005165', 3, '[{\"id\":\"28\",\"qty\":1,\"name\":\"Building Organizational Cultures\"}]', 969938801, '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '5940000', '0', '2021-06-12 00:17:23', NULL, NULL, NULL, NULL, NULL, 'IHQqY4k3Fw', 10, '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}'),
-(4, '#001539', 5, '[{\"id\":\"28\",\"qty\":1,\"name\":\"Building Organizational Cultures\",\"price\":66000000}]', 969938801, '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '6600000', '0', '2021-06-12 00:26:47', NULL, NULL, NULL, NULL, NULL, NULL, 0, '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}'),
-(5, '#001663', 6, '[{\"id\":\"28\",\"qty\":1,\"name\":\"Building Organizational Cultures\",\"price\":6600000}]', 969938801, '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '6600000', '0', '2021-06-12 00:31:42', NULL, NULL, NULL, NULL, NULL, 'IHQqY4k3Fw', 0, '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}'),
-(6, '#006827', 7, '[{\"id\":\"28\",\"qty\":1,\"name\":\"Building Organizational Cultures\",\"price\":6600000}]', 969938801, '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hai Phong', '6600000', '0', '2021-06-12 00:32:28', NULL, NULL, NULL, NULL, NULL, NULL, 0, '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}'),
-(7, '#004406', 8, '[{\"id\":\"29\",\"qty\":1,\"name\":\"Negotiation Skills\",\"price\":4400000}]', 969938801, '2', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '4400000', '0', '2021-06-12 02:21:45', NULL, NULL, NULL, NULL, NULL, NULL, 0, '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}'),
-(8, '#005357', 9, '[{\"id\":\"27\",\"qty\":1,\"name\":\"Leadership Communication\",\"price\":5500000}]', 969938801, '2', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '5500000', '0', '2021-06-12 02:27:04', NULL, NULL, NULL, NULL, NULL, NULL, 0, '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}'),
-(9, '#003825', 10, '[{\"id\":\"27\",\"qty\":1,\"name\":\"Leadership Communication\",\"price\":5500000}]', 969938801, '2', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '5500000', '0', '2021-06-12 02:29:42', NULL, NULL, NULL, NULL, NULL, NULL, 0, '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}'),
-(10, '#001653', 11, '[{\"id\":\"28\",\"qty\":1,\"name\":\"Building Organizational Cultures\",\"price\":6600000}]', 969938801, '2', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '6600000', '0', '2021-06-12 02:35:23', NULL, NULL, NULL, NULL, NULL, NULL, 0, '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}'),
-(11, '#006344', 12, '[{\"id\":\"30\",\"qty\":1,\"name\":\"Strategic Sales Management\",\"price\":4400000}]', 969938801, '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '4400000', '0', '2021-06-12 03:02:53', NULL, NULL, NULL, NULL, NULL, NULL, 0, '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}');
+INSERT INTO `bill` (`id`, `method_invoice`, `method_course`, `method_pay`, `paid_total`, `method_email`, `method_customer`, `method_address`, `method_paid`, `group_buy`, `created_at`, `updated_at`, `method_customer_code`, `method_company`, `total_no_vat`, `vat_total`, `configuration`) VALUES
+(17, '#002395', '{\"5eaf20ac9ef4cb174b6c0fb853a6ce4d\":{\"rowId\":\"5eaf20ac9ef4cb174b6c0fb853a6ce4d\",\"id\":\"29\",\"name\":\"Negotiation Skills\",\"qty\":1,\"price\":4000000,\"weight\":1,\"options\":{\"images\":\"\\/images\\/default.png\",\"sale\":0},\"discount\":0,\"tax\":840000,\"subtotal\":4000000},\"f764ef34e56bde5dfd6db905886f617c\":{\"rowId\":\"f764ef34e56bde5dfd6db905886f617c\",\"id\":\"27\",\"name\":\"Leadership Communication\",\"qty\":1,\"price\":5000000,\"weight\":1,\"options\":{\"images\":\"\\/images\\/default.png\",\"sale\":0},\"discount\":0,\"tax\":1050000,\"subtotal\":5000000}}', '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '9.000.000đ', '1', '2021-06-02 03:28:28', NULL, 'Code2343423423', 'Nam giới', '8.181.818đ', '818.182đ', '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Tien Van Pham\",\"address\":\"Ha noi\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-05-25T03:37:20.000000Z\"}'),
+(18, '#002355', '{\"5eaf20ac9ef4cb174b6c0fb853a6ce4d\":{\"rowId\":\"5eaf20ac9ef4cb174b6c0fb853a6ce4d\",\"id\":\"29\",\"name\":\"Negotiation Skills\",\"qty\":1,\"price\":4000000,\"weight\":1,\"options\":{\"images\":\"\\/images\\/default.png\",\"sale\":0},\"discount\":0,\"tax\":840000,\"subtotal\":4000000},\"f764ef34e56bde5dfd6db905886f617c\":{\"rowId\":\"f764ef34e56bde5dfd6db905886f617c\",\"id\":\"27\",\"name\":\"Leadership Communication\",\"qty\":1,\"price\":5000000,\"weight\":1,\"options\":{\"images\":\"\\/images\\/default.png\",\"sale\":0},\"discount\":0,\"tax\":1050000,\"subtotal\":5000000}}', '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '9.000.000đ', '1', '2021-06-02 03:28:28', NULL, 'Code2343423423', 'Nam giới', '8.181.818đ', '818.182đ', '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Tien Van Pham\",\"address\":\"Ha noi\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-05-25T03:37:20.000000Z\"}'),
+(19, '#001128', '{\"5853bf5f6eb9accc6a28c49b46e0e9d0\":{\"rowId\":\"5853bf5f6eb9accc6a28c49b46e0e9d0\",\"id\":\"28\",\"name\":\"Building Organizational Cultures\",\"qty\":1,\"price\":6000000,\"weight\":1,\"options\":{\"images\":\"\\/images\\/default.png\",\"sale\":0},\"discount\":0,\"tax\":1260000,\"subtotal\":6000000}}', '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '6.000.000đ', '1', '2021-06-02 18:56:04', NULL, 'Code2343423423', 'Nam giới', '5.454.546đ', '545.455đ', '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Tien Van Pham\",\"address\":\"Ha noi\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-05-25T03:37:20.000000Z\"}'),
+(20, '#005195', '{\"91c40419b6e1f5ddd01e1673454d1021\":{\"rowId\":\"91c40419b6e1f5ddd01e1673454d1021\",\"id\":\"5\",\"name\":\"Digital Marketing Leadership\",\"qty\":1,\"price\":4000000,\"weight\":1,\"options\":{\"images\":\"\\/images\\/default.png\",\"sale\":0},\"discount\":0,\"tax\":840000,\"subtotal\":4000000},\"21ca5a93e6ba7724da26c3e484a29bf9\":{\"rowId\":\"21ca5a93e6ba7724da26c3e484a29bf9\",\"id\":\"4\",\"name\":\"Marketing Analytics and Insights\",\"qty\":1,\"price\":3000000,\"weight\":1,\"options\":{\"images\":\"\\/images\\/default.png\",\"sale\":0},\"discount\":0,\"tax\":630000,\"subtotal\":3000000}}', '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '7.000.000đ', '1', '2021-06-02 22:06:18', NULL, 'Code2343423423', 'Nam giới', '6.363.636đ', '636.364đ', '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Tien Van Pham\",\"address\":\"Ha noi\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-05-25T03:37:20.000000Z\"}'),
+(21, '#004239', '{\"c0c5b4b285d20095eeb31ab83a96c3db\":{\"rowId\":\"c0c5b4b285d20095eeb31ab83a96c3db\",\"id\":\"30\",\"name\":\"Strategic Sales Management\",\"qty\":1,\"price\":4000000,\"weight\":1,\"options\":{\"images\":\"\\/storage\\/uploads\\/hinh-anh-dep-1-1621498375.jpg\",\"sale\":10},\"discount\":0,\"tax\":840000,\"subtotal\":4000000}}', '1', NULL, 'hppvtien@gmail.com', 'Tien Van Pham', 'Hà Nội, Hải Phòng', '4.000.000đ', '0', '2021-06-03 01:35:40', NULL, NULL, NULL, '4.000.000đ', '0', '{\"id\":1,\"logo\":\"logo-1621497786.png\",\"name\":\"Unimind\",\"address\":\"T\\u1ea7ng 8, T\\u00f2a nh\\u00e0 HD Tower \\u2013 22 Ph\\u1ed1 M\\u1edbi \\u2013 Th\\u1ee7y S\\u01a1n \\u2013 Th\\u1ee7y Nguy\\u00ean \\u2013 H\\u1ea3i Ph\\u00f2ng\",\"tax_id\":34343434,\"email\":\"tlead01@gmail.com\",\"hotline\":\"03561054882\",\"hotline_rp\":545454545,\"footer_bottom\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 UNIMIND. \\u0110\\u00e3 \\u0111\\u0103ng k\\u00fd b\\u1ea3n quy\\u1ec1n.\",\"facebook\":\"11111111\",\"youtube\":\"22222222222222\",\"twitter\":\"22222222222222\",\"instagram\":\"22222222222222\",\"created_at\":\"2020-11-21T16:11:08.000000Z\",\"updated_at\":\"2021-06-03T07:42:45.000000Z\"}');
 
 -- --------------------------------------------------------
 
@@ -569,8 +458,8 @@ INSERT INTO `courses` (`id`, `c_name`, `c_slug`, `c_total_time`, `c_status`, `c_
 (25, 'Business Leadership', 'business-leadership', 0, 1, NULL, 0, 0, 0, 1, 0, 1, 6000000, 'Business Leadership', NULL, 'Business Leadership', 4, 8, 0, 0, 0, NULL, NULL, NULL, '2021-05-05 04:02:47', '2021-05-12 20:12:49'),
 (26, 'Leadership Principles', 'leadership-principles', 0, 1, NULL, 0, 0, 0, 1, 0, 1, 3000000, 'Leadership Principles', NULL, 'Leadership Principles', 4, 8, 0, 0, 0, NULL, NULL, NULL, '2021-05-05 04:03:04', '2021-05-12 20:12:41'),
 (27, 'Leadership Communication', 'leadership-communication', 0, 1, NULL, 0, 0, 0, 1, 0, 1, 5000000, 'Leadership Communication', NULL, 'Leadership Communication', 4, 8, 0, 0, 0, NULL, NULL, NULL, '2021-05-05 04:03:21', '2021-05-12 20:12:35'),
-(28, 'Building Organizational Cultures', 'building-organizational-cultures', 0, 1, NULL, 0, 0, 0, 1, 0, 1, 6000000, 'Building Organizational Cultures', NULL, 'Building Organizational Cultures', 3, 8, 0, 0, 1, NULL, NULL, NULL, '2021-05-05 04:03:39', '2021-05-12 20:33:07'),
-(29, 'Negotiation Skills', 'negotiation-skills', 0, 1, NULL, 0, 0, 0, 1, 0, 1, 4000000, 'Negotiation Skills', NULL, 'Negotiation Skills', 4, 8, 0, 0, 2, NULL, NULL, NULL, '2021-05-05 04:03:58', '2021-05-12 20:12:24'),
+(28, 'Building Organizational Cultures', 'building-organizational-cultures', 0, 1, NULL, 0, 0, 0, 1, 0, 1, 6000000, 'Building Organizational Cultures', NULL, 'Building Organizational Cultures', 3, 8, 0, 0, 0, NULL, NULL, NULL, '2021-05-05 04:03:39', '2021-05-12 20:33:07'),
+(29, 'Negotiation Skills', 'negotiation-skills', 0, 1, NULL, 0, 0, 0, 1, 0, 1, 4000000, 'Negotiation Skills', NULL, 'Negotiation Skills', 4, 8, 0, 0, 1, NULL, NULL, NULL, '2021-05-05 04:03:58', '2021-05-12 20:12:24'),
 (30, 'Strategic Sales Management', 'strategic-sales-management', 0, 1, 'hinh-anh-dep-1-1621498375.jpg', 0, 0, 0, 1, 10, 1, 4000000, 'Strategic Sales Management', NULL, 'Strategic Sales Management', 3, 8, 1, 3, 2, NULL, NULL, NULL, '2021-05-05 04:04:15', '2021-05-20 01:12:59');
 
 -- --------------------------------------------------------
@@ -842,8 +731,7 @@ CREATE TABLE `jobs` (
 --
 
 INSERT INTO `jobs` (`id`, `name`, `slug`, `desscription`, `content`, `phone`, `email`, `address`, `status`, `is_hot`, `user_id`, `end_date`, `created_at`, `updated_at`) VALUES
-(2, 'Tuyển nhân viên SEO WEB', 'tuyen-nhan-vien-seo-web', 'Mục đích của công việc Nhân viên Seo Web chịu trách nhiệm xây dựng chiến lược, kế hoạch và trực tiếp điều hành triển khai toàn bộ hoạt động', '<h2>Y&Ecirc;U CẦU C&Ocirc;NG VIỆC</h2>\r\n\r\n<ul>\r\n	<li>Giới t&iacute;nh: Nam/Nữ</li>\r\n	<li>Độ tuổi: Từ 20 tuổi trở l&ecirc;n</li>\r\n	<li>Bằng cấp: Kh&ocirc;ng y&ecirc;u cầu</li>\r\n	<li>Kinh nghiệm: Tối thiểu đ&atilde; c&oacute; 2 năm kinh nghiệm tham gia c&aacute;c dự &aacute;n SEO, hoặc l&agrave;m việc ở vị tr&iacute; SEO.</li>\r\n</ul>\r\n\r\n<ul>\r\n	<li>Kiến thức chuy&ecirc;n m&ocirc;n:</li>\r\n</ul>\r\n\r\n<p>+ C&oacute; kinh nghiệm hiểu biết s&acirc;u về SEO v&agrave; marketing online&nbsp;+ Biết tổng hợp nhiều phương ph&aacute;p marketing nhằm tăng thứ hạng website tr&ecirc;n c&ocirc;ng cụ t&igrave;m kiếm.&nbsp;+ Khắc phục c&aacute;c lỗi bảo mật tr&ecirc;n website, chỉnh sửa &ndash; thay đổi v&agrave; tối ưu h&oacute;a website phục vụ cho c&ocirc;ng việc SEO&nbsp;+ C&oacute; kinh nghiệm thiết kế web, am hiểu về code PHP&amp;MySQL</p>\r\n\r\n<ul>\r\n	<li>Kỹ năng:</li>\r\n</ul>\r\n\r\n<p>+ Kỹ năng lập kế hoạch&nbsp;+ Kỹ năng quản l&yacute; c&ocirc;ng việc c&aacute; nh&acirc;n, quản l&yacute; thời gian&nbsp;+ Kỹ năng quản l&yacute; nh&oacute;m, phối hợp với c&aacute;c th&agrave;nh vi&ecirc;n trong nh&oacute;m v&agrave; ph&ograve;ng ban kh&aacute;c.&nbsp;+ Kỹ năng giao tiếp</p>\r\n\r\n<ul>\r\n	<li>Th&aacute;i độ/T&iacute;nh c&aacute;ch h&ograve;a đồng: Y&ecirc;u th&iacute;ch v&agrave; nghi&ecirc;m t&uacute;c với c&ocirc;ng việc</li>\r\n	<li>Kỷ luật:</li>\r\n</ul>\r\n\r\n<p>+ Th&aacute;i độ t&iacute;ch cực, chủ động trong c&ocirc;ng việc&nbsp;+ L&agrave;m việc cam kết, chủ động, đ&uacute;ng tiến độ, lu&ocirc;n c&oacute; &yacute; thức th&uacute;c đẩy bản th&acirc;n tiến bộ, chịu kh&oacute; học hỏi v&agrave; &aacute;p dụng v&agrave;o c&ocirc;ng việc</p>\r\n\r\n<ul>\r\n	<li>Lương: Thỏa thuận</li>\r\n	<li>Thưởng:</li>\r\n</ul>\r\n\r\n<p>+ Đ&aacute;nh gi&aacute; xếp hạng tăng lương định kỳ&nbsp;+ Thưởng hiệu quả hoạt động chung của c&ocirc;ng ty</p>\r\n\r\n<ul>\r\n	<li>Đ&agrave;o tạo:</li>\r\n</ul>\r\n\r\n<p>+ Hỗ trợ tham gia c&aacute;c kh&oacute;a học chuy&ecirc;n ng&agrave;nh</p>\r\n\r\n<ul>\r\n	<li>Phụ cấp, c&aacute;c quyền lợi kh&aacute;c:</li>\r\n</ul>\r\n\r\n<p>+ Đ&oacute;ng BHXH đầy đủ.&nbsp;+ Du lịch c&ugrave;ng c&ocirc;ng ty&nbsp;&nbsp;+ Nghỉ Chủ nhật&nbsp;+ Thưởng c&aacute;c dịp lễ tết</p>\r\n\r\n<h2>TH&Ocirc;NG TIN LI&Ecirc;N HỆ</h2>\r\n\r\n<p>Địa chỉ: Số 22 Phố Mới, Thủy Sơn, Thủy Nguy&ecirc;n, Hải Ph&ograve;ng&nbsp;&nbsp;Số điện thoại: 0225.625.8809&nbsp;&nbsp;Email: tuyendung@adsmo.vn</p>', 345345345, 'xaynhatrongoihaiphong@gmail.com', 'thủy sơn thủy nguyên hải phòng', 1, 1, 0, '2021-05-30', '2021-05-15 00:09:53', '2021-05-15 00:23:24'),
-(3, 'Tuyển Nhân Viên Web Developer', 'tuyen-nhan-vien-web-developer', 'Mục đích của công việc Nhân viên thiết kế phát triển web chịu trách nhiệm nghe theo sự phân công của trưởng nhóm, thực hiện xây', '<h2>Y&Ecirc;U CẦU C&Ocirc;NG VIỆC</h2>\r\n\r\n<ul>\r\n	<li>Giới t&iacute;nh: Nam/Nữ</li>\r\n	<li>Độ tuổi: Từ 20 tuổi trở l&ecirc;n</li>\r\n	<li>Bằng cấp: Kh&ocirc;ng y&ecirc;u cầu</li>\r\n	<li>Kinh nghiệm: Đ&atilde; kinh nghiệm tham gia c&aacute;c dự &aacute;n thiết kế ph&aacute;t triển web. Tuy nhi&ecirc;n với c&aacute;c ứng vi&ecirc;n dưới 1 năm kinh nghiệm sẽ được đ&agrave;o tạo b&agrave;i bản</li>\r\n</ul>\r\n\r\n<ul>\r\n	<li>Kiến thức chuy&ecirc;n m&ocirc;n:</li>\r\n</ul>\r\n\r\n<p>+ C&oacute; tư duy lập tr&igrave;nh.&nbsp;&nbsp;+ Biết HTML5, CSS3, Bootstrap, Photoshop.</p>\r\n\r\n<ul>\r\n	<li>Kỹ năng:</li>\r\n</ul>\r\n\r\n<p>+ Kỹ năng lập kế hoạch&nbsp;+ Kỹ năng quản l&yacute; c&ocirc;ng việc c&aacute; nh&acirc;n, quản l&yacute; thời gian&nbsp;+ Kỹ năng quản l&yacute; nh&oacute;m, phối hợp với c&aacute;c th&agrave;nh vi&ecirc;n trong nh&oacute;m v&agrave; ph&ograve;ng ban kh&aacute;c.&nbsp;+ Kỹ năng giao tiếp</p>\r\n\r\n<ul>\r\n	<li>Th&aacute;i độ/T&iacute;nh c&aacute;ch h&ograve;a đồng: Y&ecirc;u th&iacute;ch v&agrave; nghi&ecirc;m t&uacute;c với c&ocirc;ng việc</li>\r\n	<li>Kỷ luật:</li>\r\n</ul>\r\n\r\n<p>+Th&aacute;i độ t&iacute;ch cực, chủ động trong c&ocirc;ng việc&nbsp;+L&agrave;m việc cam kết, chủ động, đ&uacute;ng tiến độ, lu&ocirc;n c&oacute; &yacute; thức th&uacute;c đẩy bản th&acirc;n tiến bộ, chịu kh&oacute; học hỏi v&agrave; &aacute;p dụng v&agrave;o c&ocirc;ng việc</p>\r\n\r\n<ul>\r\n	<li>Lương: Thỏa thuận</li>\r\n	<li>Thưởng:</li>\r\n</ul>\r\n\r\n<p>+ Đ&aacute;nh gi&aacute; xếp hạng tăng lương định kỳ&nbsp;+Thưởng hiệu quả hoạt động chung của c&ocirc;ng ty</p>\r\n\r\n<ul>\r\n	<li>Đ&agrave;o tạo:</li>\r\n</ul>\r\n\r\n<p>+ Hỗ trợ tham gia c&aacute;c kh&oacute;a học chuy&ecirc;n ng&agrave;nh</p>\r\n\r\n<ul>\r\n	<li>Phụ cấp, c&aacute;c quyền lợi kh&aacute;c:</li>\r\n</ul>\r\n\r\n<p>+ Đ&oacute;ng BHXH đầy đủ.&nbsp;+ Du lịch c&ugrave;ng c&ocirc;ng ty&nbsp;&nbsp;+ Nghỉ Chủ nhật&nbsp;+ Thưởng c&aacute;c dịp lễ tết</p>\r\n\r\n<h2>TH&Ocirc;NG TIN LI&Ecirc;N HỆ</h2>\r\n\r\n<p>Địa chỉ: Số 22 Phố Mới, Thủy Sơn, Thủy Nguy&ecirc;n, Hải Ph&ograve;ng&nbsp;&nbsp;Số điện thoại: 0225.625.8809&nbsp;&nbsp;Email: tuyendung@adsmo.vn</p>', 979467612, 'xaynhatrongoihaiphong@gmail.com', 'thủy sơn thủy nguyên hải phòng', 0, 0, 0, '2021-05-30', '2021-05-15 00:25:49', NULL);
+(2, 'Tuyển nhân viên SEO WEB', 'tuyen-nhan-vien-seo-web', 'Mục đích của công việc Nhân viên Seo Web chịu trách nhiệm xây dựng chiến lược, kế hoạch và trực tiếp điều hành triển khai toàn bộ hoạt động', '<h2>Y&Ecirc;U CẦU C&Ocirc;NG VIỆC</h2>\r\n\r\n<ul>\r\n	<li>Giới t&iacute;nh: Nam/Nữ</li>\r\n	<li>Độ tuổi: Từ 20 tuổi trở l&ecirc;n</li>\r\n	<li>Bằng cấp: Kh&ocirc;ng y&ecirc;u cầu</li>\r\n	<li>Kinh nghiệm: Tối thiểu đ&atilde; c&oacute; 2 năm kinh nghiệm tham gia c&aacute;c dự &aacute;n SEO, hoặc l&agrave;m việc ở vị tr&iacute; SEO.</li>\r\n</ul>\r\n\r\n<ul>\r\n	<li>Kiến thức chuy&ecirc;n m&ocirc;n:</li>\r\n</ul>\r\n\r\n<p>+ C&oacute; kinh nghiệm hiểu biết s&acirc;u về SEO v&agrave; marketing online&nbsp;+ Biết tổng hợp nhiều phương ph&aacute;p marketing nhằm tăng thứ hạng website tr&ecirc;n c&ocirc;ng cụ t&igrave;m kiếm.&nbsp;+ Khắc phục c&aacute;c lỗi bảo mật tr&ecirc;n website, chỉnh sửa &ndash; thay đổi v&agrave; tối ưu h&oacute;a website phục vụ cho c&ocirc;ng việc SEO&nbsp;+ C&oacute; kinh nghiệm thiết kế web, am hiểu về code PHP&amp;MySQL</p>\r\n\r\n<ul>\r\n	<li>Kỹ năng:</li>\r\n</ul>\r\n\r\n<p>+ Kỹ năng lập kế hoạch&nbsp;+ Kỹ năng quản l&yacute; c&ocirc;ng việc c&aacute; nh&acirc;n, quản l&yacute; thời gian&nbsp;+ Kỹ năng quản l&yacute; nh&oacute;m, phối hợp với c&aacute;c th&agrave;nh vi&ecirc;n trong nh&oacute;m v&agrave; ph&ograve;ng ban kh&aacute;c.&nbsp;+ Kỹ năng giao tiếp</p>\r\n\r\n<ul>\r\n	<li>Th&aacute;i độ/T&iacute;nh c&aacute;ch h&ograve;a đồng: Y&ecirc;u th&iacute;ch v&agrave; nghi&ecirc;m t&uacute;c với c&ocirc;ng việc</li>\r\n	<li>Kỷ luật:</li>\r\n</ul>\r\n\r\n<p>+ Th&aacute;i độ t&iacute;ch cực, chủ động trong c&ocirc;ng việc&nbsp;+ L&agrave;m việc cam kết, chủ động, đ&uacute;ng tiến độ, lu&ocirc;n c&oacute; &yacute; thức th&uacute;c đẩy bản th&acirc;n tiến bộ, chịu kh&oacute; học hỏi v&agrave; &aacute;p dụng v&agrave;o c&ocirc;ng việc</p>\r\n\r\n<ul>\r\n	<li>Lương: Thỏa thuận</li>\r\n	<li>Thưởng:</li>\r\n</ul>\r\n\r\n<p>+ Đ&aacute;nh gi&aacute; xếp hạng tăng lương định kỳ&nbsp;+ Thưởng hiệu quả hoạt động chung của c&ocirc;ng ty</p>\r\n\r\n<ul>\r\n	<li>Đ&agrave;o tạo:</li>\r\n</ul>\r\n\r\n<p>+ Hỗ trợ tham gia c&aacute;c kh&oacute;a học chuy&ecirc;n ng&agrave;nh</p>\r\n\r\n<ul>\r\n	<li>Phụ cấp, c&aacute;c quyền lợi kh&aacute;c:</li>\r\n</ul>\r\n\r\n<p>+ Đ&oacute;ng BHXH đầy đủ.&nbsp;+ Du lịch c&ugrave;ng c&ocirc;ng ty&nbsp;&nbsp;+ Nghỉ Chủ nhật&nbsp;+ Thưởng c&aacute;c dịp lễ tết</p>\r\n\r\n<h2>TH&Ocirc;NG TIN LI&Ecirc;N HỆ</h2>\r\n\r\n<p>Địa chỉ: Số 22 Phố Mới, Thủy Sơn, Thủy Nguy&ecirc;n, Hải Ph&ograve;ng&nbsp;&nbsp;Số điện thoại: 0225.625.8809&nbsp;&nbsp;Email: tuyendung@adsmo.vn</p>', 345345345, 'xaynhatrongoihaiphong@gmail.com', 'thủy sơn thủy nguyên hải phòng', 1, 1, 0, '2021-05-30', '2021-05-15 00:09:53', '2021-05-15 00:23:24');
 
 -- --------------------------------------------------------
 
@@ -951,7 +839,6 @@ CREATE TABLE `menus` (
 INSERT INTO `menus` (`id`, `m_name`, `m_slug`, `m_icon`, `m_sort`, `m_status`, `m_hot`, `m_position`, `m_parent_id`, `m_child_all`, `m_parent_all`, `m_title_seo`, `m_avatar`, `m_keyword_seo`, `m_description_seo`, `created_at`, `updated_at`) VALUES
 (1, 'Góc kiến thức', 'bai-viet', 'fa fa-bandcamp', 0, 1, 0, 0, 0, NULL, NULL, 'Góc kiến thức', NULL, NULL, 'Tin 1', '2020-12-20 08:51:41', '2021-05-05 19:45:45'),
 (2, 'Kiến thức Digital Marketing', 'kien-thuc-digital-marketing', 'fa fa-bandcamp', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức Digital Marketing', NULL, NULL, 'Kiến thức Digital Marketing', '2021-05-05 19:48:29', NULL),
-(3, 'Kiến thức SEO', 'kien-thuc-seo', 'fa fa-bandcamp', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức SEO', NULL, NULL, 'Kiến thức SEO', '2021-05-05 19:49:03', NULL),
 (4, 'Kiến thức Content Marketing', 'kien-thuc-content-marketing', 'blogmenu', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức Content Marketing', NULL, NULL, 'Kiến thức Content Marketing', '2021-05-05 19:49:34', NULL),
 (5, 'Kiến thức Branding', 'kien-thuc-branding', 'fa fa-bandcamp', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức Branding', NULL, NULL, 'Kiến thức Branding', '2021-05-05 19:50:35', NULL),
 (6, 'Kiến thức Website Design', 'kien-thuc-website-design', 'fa fa-bandcamp', 0, 1, 0, 0, 1, NULL, NULL, 'Kiến thức Website Design', NULL, NULL, 'Kiến thức Website Design', '2021-05-05 19:51:55', NULL),
@@ -1031,19 +918,33 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (57, '2021_05_28_023534_create_questions_from_teacher_table', 23),
 (58, '2021_05_28_092826_create_questions_from_teacher_table', 24),
 (59, '2021_05_31_021928_alter_asw_parent_answer_to_teacher', 25),
-(60, '2021_06_09_023459_create_voucher_table', 26),
-(61, '2021_06_09_024046_create_voucher_table', 27),
-(62, '2021_06_09_024438_create_vouchers_table', 28),
-(63, '2021_06_10_063923_alter_transactions_to_table_name', 29),
-(64, '2021_06_10_065522_alter_transactions_to_table_name', 30),
-(65, '2021_06_14_041117_create_table_uni_products_table', 31),
-(66, '2021_06_14_041223_create_table_uni_product_color_table', 31),
-(67, '2021_06_14_041254_create_table_uni_product_size_table', 31),
-(68, '2021_06_14_041311_create_table_uni_product_category_table', 31),
-(69, '2021_06_14_041424_create_table_uni_size_table', 31),
-(70, '2021_06_14_041437_create_table_uni_color_table', 31),
-(71, '2021_06_14_042033_create_table_uni_category_table', 31),
-(72, '2021_06_14_085248_create_table_uni_trademark_table', 32);
+(60, '2021_06_29_025547_create_uni_lotproduct_table', 26),
+(61, '2021_06_29_025633_create_uni_supplier_table', 26),
+(62, '2021_06_29_025657_create_product_lotproduct_table', 26),
+(63, '2021_06_29_025716_create_uni_product_table', 26),
+(64, '2021_06_29_025837_create_product_category_table', 26),
+(65, '2021_06_29_025852_create_uni_trade_table', 26),
+(66, '2021_06_29_025911_create_uni_size_table', 26),
+(67, '2021_06_29_025921_create_uni_admin_table', 26),
+(68, '2021_06_29_025930_create_uni_user_table', 26),
+(69, '2021_06_29_025939_create_uni_color_table', 26),
+(70, '2021_06_29_030005_create_product_size_table', 26),
+(71, '2021_06_29_030014_create_product_color_table', 26),
+(72, '2021_06_29_030036_create_uni_tag_table', 26),
+(73, '2021_06_29_030046_create_product_tag_table', 26),
+(74, '2021_06_29_030105_create_uni_transaction_table', 26),
+(75, '2021_06_29_030116_create_uni_order_table', 26),
+(76, '2021_06_29_030132_create_uni_post_table', 26),
+(77, '2021_06_29_030144_create_uni_post_category_table', 26),
+(78, '2021_06_29_030202_create_post_category_table', 26),
+(79, '2021_06_29_030215_create_uni_contact_table', 26),
+(80, '2021_06_29_030236_create_uni_favourite_table', 26),
+(81, '2021_06_29_030456_create_uni_product_category_table', 26),
+(82, '2021_06_29_030609_create_uni_store_table', 26),
+(83, '2021_06_29_030626_create_uni_flash_sale_table', 27),
+(84, '2021_06_29_030014_create_product_trade_table', 28),
+(85, '2021_07_08_042837_create_post_tag_table', 29),
+(86, '2021_07_08_043003_create_post_tag_table', 30);
 
 -- --------------------------------------------------------
 
@@ -1102,17 +1003,137 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `o_transaction_id`, `o_action_id`, `o_user_id`, `o_sale`, `o_price`, `o_status`, `o_admin_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 28, 34, 0, 6600000, 1, 0, NULL, NULL),
-(2, 2, 28, 34, 0, 6600000, 1, 0, NULL, NULL),
-(3, 3, 28, 34, 0, 5940000, 1, 0, NULL, NULL),
-(4, 5, 28, 34, 0, 6600000, 1, 0, NULL, NULL),
-(5, 6, 28, 34, 0, 6600000, 1, 0, NULL, NULL),
-(6, 7, 28, 34, 0, 6600000, 1, 0, NULL, NULL),
-(7, 8, 29, 34, 0, 4400000, 1, 0, NULL, NULL),
-(8, 9, 27, 34, 0, 5500000, 1, 0, NULL, NULL),
-(9, 10, 27, 34, 0, 5500000, 1, 0, NULL, NULL),
-(10, 11, 28, 34, 0, 6600000, 1, 0, NULL, NULL),
-(11, 12, 30, 34, 0, 4400000, 1, 0, NULL, NULL);
+(1, 1, 30, 1, 0, 4000000, 3, 0, NULL, NULL),
+(3, 3, 30, 1, 0, 4000000, 1, 0, NULL, NULL),
+(4, 3, 29, 1, 0, 4000000, 1, 0, NULL, NULL),
+(5, 4, 29, 1, 0, 4000000, 1, 0, NULL, NULL),
+(6, 4, 1, 1, 0, 2000000, 1, 0, NULL, NULL),
+(7, 4, 9, 1, 0, 4000000, 1, 0, NULL, NULL),
+(8, 5, 9, 1, 0, 4000000, 1, 0, NULL, NULL),
+(9, 6, 29, 1, 0, 4000000, 1, 0, NULL, NULL),
+(10, 7, 30, 1, 0, 4000000, 1, 0, NULL, NULL),
+(11, 8, 28, 1, 0, 6000000, 1, 0, NULL, NULL),
+(12, 9, 28, 1, 0, 6000000, 1, 0, NULL, NULL),
+(13, 10, 29, 1, 0, 4000000, 1, 0, NULL, NULL),
+(14, 11, 27, 1, 0, 5000000, 1, 0, NULL, NULL),
+(15, 12, 28, 1, 0, 6000000, 1, 0, NULL, NULL),
+(16, 13, 28, 1, 0, 6000000, 1, 0, NULL, NULL),
+(17, 14, 28, 1, 0, 6000000, 1, 0, NULL, NULL),
+(18, 15, 30, 1, 0, 4000000, 1, 0, NULL, NULL),
+(19, 16, 30, 1, 0, 4000000, 1, 0, NULL, NULL),
+(20, 17, 29, 1, 0, 4000000, 1, 0, NULL, NULL),
+(21, 18, 28, 1, 0, 6000000, 1, 0, NULL, NULL),
+(22, 19, 30, 1, 0, 4000000, 1, 0, NULL, NULL),
+(23, 20, 28, 1, 0, 6000000, 1, 0, NULL, NULL),
+(24, 21, 29, 1, 0, 4000000, 1, 0, NULL, NULL),
+(25, 22, 30, 1, 0, 4000000, 1, 0, NULL, NULL),
+(26, 23, 30, 1, 0, 4000000, 1, 0, NULL, NULL),
+(27, 24, 27, 1, 0, 5000000, 1, 0, NULL, NULL),
+(28, 30, 28, 1, 0, 6000000, 1, 0, NULL, NULL),
+(29, 33, 27, 1, 0, 5000000, 1, 0, NULL, NULL),
+(30, 34, 29, 1, 0, 4000000, 1, 0, NULL, NULL),
+(31, 35, 27, 1, 0, 5000000, 1, 0, NULL, NULL),
+(32, 36, 28, 1, 0, 6000000, 1, 0, NULL, NULL),
+(33, 37, 28, 1, 0, 6000000, 1, 0, NULL, NULL),
+(34, 38, 30, 1, 0, 4000000, 1, 0, NULL, NULL),
+(35, 39, 30, 1, 0, 4000000, 1, 0, NULL, NULL),
+(36, 40, 29, 1, 0, 4000000, 1, 0, NULL, NULL),
+(37, 41, 29, 1, 0, 4000000, 1, 0, NULL, NULL),
+(38, 42, 29, 1, 0, 4000000, 1, 0, NULL, NULL),
+(39, 95, 30, 34, 0, 4000000, 1, 0, NULL, NULL),
+(40, 96, 30, 34, 0, 4000000, 1, 0, NULL, NULL),
+(41, 97, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(42, 98, 30, 34, 0, 4000000, 1, 0, NULL, NULL),
+(43, 99, 30, 34, 0, 4000000, 1, 0, NULL, NULL),
+(44, 100, 30, 34, 0, 4000000, 1, 0, NULL, NULL),
+(45, 101, 30, 34, 0, 4000000, 1, 0, NULL, NULL),
+(46, 102, 30, 34, 0, 4000000, 1, 0, NULL, NULL),
+(47, 103, 5, 34, 0, 4000000, 3, 0, NULL, NULL),
+(48, 104, 19, 34, 0, 3000000, 1, 0, NULL, NULL),
+(49, 105, 19, 34, 0, 3000000, 1, 0, NULL, NULL),
+(50, 106, 19, 34, 0, 3000000, 1, 0, NULL, NULL),
+(51, 107, 30, 34, 0, 4000000, 1, 0, NULL, NULL),
+(52, 108, 28, 34, 0, 6000000, 1, 0, NULL, NULL),
+(53, 109, 28, 34, 0, 6000000, 1, 0, NULL, NULL),
+(54, 110, 28, 34, 0, 6000000, 1, 0, NULL, NULL),
+(55, 111, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(56, 111, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(57, 112, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(58, 112, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(59, 113, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(60, 113, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(61, 114, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(62, 114, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(63, 115, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(64, 115, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(65, 116, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(66, 116, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(67, 117, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(68, 117, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(69, 118, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(70, 118, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(71, 119, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(72, 119, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(73, 120, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(74, 120, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(75, 121, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(76, 121, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(77, 122, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(78, 122, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(79, 123, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(80, 123, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(81, 124, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(82, 124, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(83, 125, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(84, 125, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(85, 126, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(86, 126, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(87, 127, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(88, 127, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(89, 128, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(90, 128, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(91, 129, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(92, 129, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(93, 130, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(94, 130, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(95, 131, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(96, 131, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(97, 132, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(98, 132, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(99, 133, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(100, 133, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(101, 134, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(102, 134, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(103, 135, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(104, 135, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(105, 136, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(106, 136, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(107, 137, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(108, 137, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(109, 138, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(110, 138, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(111, 139, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(112, 139, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(113, 140, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(114, 140, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(115, 141, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(116, 141, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(117, 142, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(118, 142, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(119, 143, 29, 34, 0, 4000000, 1, 0, NULL, NULL),
+(120, 143, 27, 34, 0, 5000000, 1, 0, NULL, NULL),
+(121, 144, 28, 34, 0, 6000000, 1, 0, NULL, NULL),
+(122, 145, 5, 34, 0, 4000000, 1, 0, NULL, NULL),
+(123, 145, 4, 34, 0, 3000000, 1, 0, NULL, NULL),
+(124, 146, 5, 34, 0, 4000000, 1, 0, NULL, NULL),
+(125, 146, 4, 34, 0, 3000000, 1, 0, NULL, NULL),
+(126, 147, 5, 34, 0, 4000000, 1, 0, NULL, NULL),
+(127, 147, 4, 34, 0, 3000000, 1, 0, NULL, NULL),
+(128, 148, 5, 34, 0, 4000000, 1, 0, NULL, NULL),
+(129, 148, 4, 34, 0, 3000000, 1, 0, NULL, NULL),
+(130, 149, 5, 34, 0, 4000000, 1, 0, NULL, NULL),
+(131, 149, 4, 34, 0, 3000000, 1, 0, NULL, NULL),
+(132, 150, 30, 34, 0, 4000000, 1, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1201,6 +1222,217 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `description`, `group_per
 (24, 'user_edit', 'admins', 'Cập nhật thành viên', 10, '2020-10-30 21:29:55', '2020-10-30 21:29:55'),
 (25, 'user_delete', 'admins', 'Xoá thành viên', 10, '2020-10-30 21:30:06', '2020-10-30 21:30:06'),
 (27, 'full', 'admins', 'full', 1, '2021-04-04 22:44:56', '2021-04-04 22:47:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_category`
+--
+
+CREATE TABLE `post_category` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `post_category_id` int(11) DEFAULT NULL,
+  `post_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_tag`
+--
+
+CREATE TABLE `post_tag` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tag_id` int(11) DEFAULT NULL,
+  `post_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `post_tag`
+--
+
+INSERT INTO `post_tag` (`id`, `tag_id`, `post_id`, `created_at`, `updated_at`) VALUES
+(5, 1, 1, NULL, NULL),
+(6, 1, 2, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_category`
+--
+
+CREATE TABLE `product_category` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_category`
+--
+
+INSERT INTO `product_category` (`id`, `category_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(2, 1, 1, NULL, NULL),
+(10, 1, 3, NULL, NULL),
+(18, 1, 10, NULL, NULL),
+(27, 1, 6, NULL, NULL),
+(28, 1, 9, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_color`
+--
+
+CREATE TABLE `product_color` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `color_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `product_image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_color`
+--
+
+INSERT INTO `product_color` (`id`, `color_id`, `product_id`, `product_image`, `created_at`, `updated_at`) VALUES
+(6, 1, 3, NULL, NULL, NULL),
+(7, 1, 4, NULL, NULL, NULL),
+(8, 1, 5, NULL, NULL, NULL),
+(10, 1, 7, NULL, NULL, NULL),
+(11, 1, 8, NULL, NULL, NULL),
+(13, 1, 10, NULL, NULL, NULL),
+(20, 1, 6, NULL, NULL, NULL),
+(21, 1, 9, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_lotproduct`
+--
+
+CREATE TABLE `product_lotproduct` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `lotproduct_id` int(11) DEFAULT NULL,
+  `inventory` int(11) DEFAULT NULL,
+  `price_lotproduct` int(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_lotproduct`
+--
+
+INSERT INTO `product_lotproduct` (`id`, `product_id`, `lotproduct_id`, `inventory`, `price_lotproduct`, `created_at`, `updated_at`) VALUES
+(4, 9, 1, 100, 500, '2021-07-06 21:10:47', NULL),
+(5, 9, 1, 100, 500, '2021-07-06 21:13:24', NULL),
+(6, 9, 2, 500, 500, '2021-07-06 21:14:45', NULL),
+(7, 9, 1, 500, 500, '2021-07-06 21:48:11', NULL),
+(8, 9, 2, 500, 500, '2021-07-07 02:39:05', NULL),
+(9, 6, 6, 2500, 550, '2021-07-10 02:47:21', NULL),
+(10, 4, 4, 2000, 550, '2021-07-10 02:49:42', NULL),
+(11, 3, 5, 800, 600, '2021-07-10 02:53:36', NULL),
+(12, 3, 5, 200, 600, '2021-07-10 02:55:19', NULL),
+(13, 3, 5, 200, 600, '2021-07-10 02:55:35', NULL),
+(14, 3, 5, 200, 600, '2021-07-10 02:58:24', NULL),
+(15, 3, 5, 200, 600, '2021-07-10 02:59:15', NULL),
+(16, 3, 5, 200, 500, '2021-07-10 03:01:56', NULL),
+(17, 3, 5, 200, 600, '2021-07-10 03:37:38', NULL),
+(18, 3, 5, 100, 600, '2021-07-10 03:41:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_size`
+--
+
+CREATE TABLE `product_size` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `size_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_size`
+--
+
+INSERT INTO `product_size` (`id`, `size_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(6, 1, 3, NULL, NULL),
+(7, 1, 4, NULL, NULL),
+(8, 1, 5, NULL, NULL),
+(10, 1, 7, NULL, NULL),
+(11, 1, 8, NULL, NULL),
+(13, 1, 10, NULL, NULL),
+(20, 1, 6, NULL, NULL),
+(21, 1, 9, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_tag`
+--
+
+CREATE TABLE `product_tag` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tag_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_tag`
+--
+
+INSERT INTO `product_tag` (`id`, `tag_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(6, 1, 3, NULL, NULL),
+(7, 1, 4, NULL, NULL),
+(8, 1, 5, NULL, NULL),
+(10, 1, 7, NULL, NULL),
+(11, 1, 8, NULL, NULL),
+(13, 1, 10, NULL, NULL),
+(21, 1, 6, NULL, NULL),
+(22, 1, 9, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_trade`
+--
+
+CREATE TABLE `product_trade` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `trade_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_trade`
+--
+
+INSERT INTO `product_trade` (`id`, `trade_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(5, 1, 3, NULL, NULL),
+(6, 1, 4, NULL, NULL),
+(7, 1, 5, NULL, NULL),
+(9, 1, 7, NULL, NULL),
+(10, 1, 8, NULL, NULL),
+(12, 1, 10, NULL, NULL),
+(19, 1, 6, NULL, NULL),
+(20, 1, 9, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1332,10 +1564,9 @@ CREATE TABLE `seo_blog` (
 
 INSERT INTO `seo_blog` (`id`, `sb_slug`, `sb_md5`, `sb_type`, `sb_id`, `created_at`, `updated_at`) VALUES
 (1, 'tin-hot-k', '2730180250b752b53bda1294cfa5d2b8', 1, 1, '2021-05-05 19:46:57', '2021-05-05 19:46:57'),
-(2, 'goc-kien-thuc-m', '95ab8fc85bbadcbaf19c20adc88d02d6', 2, 1, '2021-05-05 19:45:45', '2021-05-05 19:45:45'),
+(2, 'gia-vi-nau-001-m', 'a99f38f6b4b23d7b64b4f78a50c0a22f', 2, 1, '2021-07-04 21:15:38', '2021-07-04 21:15:38'),
 (4, 'tin-moi-trong-ngay-k', '4711daa7b71e972e7a0f08906e757915', 1, 2, '2021-05-05 19:47:36', NULL),
 (5, 'kien-thuc-digital-marketing-m', '0a11d0d67bd85e1d3f61a3e3cc9f3b47', 2, 2, '2021-05-05 19:48:29', NULL),
-(6, 'kien-thuc-seo-m', 'cd9e70bd1b5b18478eb6eadaf573f455', 2, 3, '2021-05-05 19:49:03', NULL),
 (7, 'kien-thuc-content-marketing-m', 'ce63762cf9ce98e6347fa89d348775b9', 2, 4, '2021-05-05 19:49:34', NULL),
 (8, 'kien-thuc-branding-m', '0084d98dc10e81a3aa9a5000bbcb04eb', 2, 5, '2021-05-05 19:50:35', NULL),
 (9, 'kien-thuc-website-design-m', '80050ca69b7bd79c0e48299b241cd049', 2, 6, '2021-05-05 19:51:55', NULL),
@@ -1445,187 +1676,6 @@ INSERT INTO `slides` (`id`, `s_name`, `s_desscription`, `s_link`, `s_banner`, `s
 (2, 'Tên Nghề nghiệp', '<p>T&ocirc;i đ&atilde; ra trường được khoảng hai năm, Unimind đ&atilde; thay đổi c&aacute;ch nh&igrave;n của t&ocirc;i về sự nghiệp của t&ocirc;i. Tham gia c&aacute;c kh&oacute;a học nền tảng trong tiếp thị đ&atilde; gi&uacute;p t&ocirc;i khởi động sự nghiệp của m&igrave;nh.</p>', 'https://www.adsmo', 'hinh-anh-dep-1-1621498093.jpg', 1, 2, 1, '2020-10-29 12:38:03', '2021-05-13 21:49:05'),
 (3, 'Tên nghề nghiệp 01', '<p>T&ocirc;i đ&atilde; ra trường được khoảng hai năm, Unimind đ&atilde; thay đổi c&aacute;ch nh&igrave;n của t&ocirc;i về sự nghiệp của t&ocirc;i. Tham gia c&aacute;c kh&oacute;a học nền tảng trong tiếp thị đ&atilde; gi&uacute;p t&ocirc;i khởi động sự nghiệp của m&igrave;nh.</p>', 'https://www.adsmo.vn', 'hinh-anh-dep-1-1621498093.jpg', 1, 2, 1, '2020-10-29 12:38:18', '2021-05-13 21:48:58'),
 (4, 'Tên nghề nghiệp 02', '<p>T&ocirc;i đ&atilde; ra trường được khoảng hai năm, Unimind đ&atilde; thay đổi c&aacute;ch nh&igrave;n của t&ocirc;i về sự nghiệp của t&ocirc;i. Tham gia c&aacute;c kh&oacute;a học nền tảng trong tiếp thị đ&atilde; gi&uacute;p t&ocirc;i khởi động sự nghiệp của m&igrave;nh.</p>', 'https://adsmo.vn/', 'hinh-anh-dep-1-1621498093.jpg', 1, 2, 1, '2021-05-12 01:24:56', '2021-05-20 01:08:27');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `system_menu`
---
-
-CREATE TABLE `system_menu` (
-  `id` int(11) NOT NULL,
-  `text` varchar(255) DEFAULT NULL,
-  `icon` varchar(50) DEFAULT NULL,
-  `href` varchar(255) DEFAULT NULL,
-  `controller` varchar(50) DEFAULT NULL,
-  `parent_id` int(4) DEFAULT NULL,
-  `class` varchar(255) DEFAULT NULL,
-  `order` int(4) DEFAULT NULL,
-  `target` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `table_uni_category`
---
-
-CREATE TABLE `table_uni_category` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `thumbnail` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `banner` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content_more` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_keyword` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_status` tinyint(4) NOT NULL DEFAULT 0,
-  `parent_id` int(11) DEFAULT NULL,
-  `order` int(11) DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `updated_by` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `table_uni_color`
---
-
-CREATE TABLE `table_uni_color` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content_more` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_keyword` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `thumbnail` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_status` tinyint(4) NOT NULL DEFAULT 0,
-  `order` int(11) DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `updated_by` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `table_uni_products`
---
-
-CREATE TABLE `table_uni_products` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content_more` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_keyword` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_featured` tinyint(4) NOT NULL DEFAULT 0,
-  `thumbnail` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `album` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_status` tinyint(4) NOT NULL DEFAULT 0,
-  `order` int(11) DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `updated_by` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `table_uni_product_category`
---
-
-CREATE TABLE `table_uni_product_category` (
-  `product_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `table_uni_product_color`
---
-
-CREATE TABLE `table_uni_product_color` (
-  `product_id` int(11) NOT NULL,
-  `color_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `table_uni_product_size`
---
-
-CREATE TABLE `table_uni_product_size` (
-  `product_id` int(11) NOT NULL,
-  `size_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `table_uni_size`
---
-
-CREATE TABLE `table_uni_size` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `thumbnail` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content_more` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_keyword` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_status` tinyint(4) NOT NULL DEFAULT 0,
-  `order` int(11) DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `updated_by` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `table_uni_trademark`
---
-
-CREATE TABLE `table_uni_trademark` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `thumbnail` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `banner` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content_more` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_keyword` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_status` tinyint(4) NOT NULL DEFAULT 0,
-  `order` int(11) DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `updated_by` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1753,27 +1803,683 @@ CREATE TABLE `transactions` (
   `t_status` tinyint(4) NOT NULL DEFAULT 1,
   `t_time_process` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `t_voucher` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `transactions`
 --
 
-INSERT INTO `transactions` (`id`, `t_user_id`, `t_admin_id`, `t_total_money`, `t_code`, `t_note`, `t_phone`, `t_type_pay`, `t_status`, `t_time_process`, `created_at`, `updated_at`, `t_voucher`) VALUES
-(1, 34, 0, 6600000, NULL, NULL, '0969938801', 1, 1, NULL, '2021-06-12 00:15:10', NULL, NULL),
-(2, 34, 0, 6600000, NULL, NULL, '0969938801', 1, 1, NULL, '2021-06-12 00:16:42', NULL, NULL),
-(3, 34, 0, 5940000, NULL, NULL, '0969938801', 1, 1, NULL, '2021-06-12 00:17:23', NULL, 'IHQqY4k3Fw'),
-(4, 34, 0, 6600000, NULL, NULL, '0969938801', 1, 1, NULL, '2021-06-12 00:21:57', NULL, NULL),
-(5, 34, 0, 6600000, NULL, NULL, '0969938801', 1, 1, NULL, '2021-06-12 00:26:47', NULL, NULL),
-(6, 34, 0, 6600000, NULL, NULL, '0969938801', 1, 1, NULL, '2021-06-12 00:31:42', NULL, 'IHQqY4k3Fw'),
-(7, 34, 0, 6600000, NULL, NULL, '0969938801', 1, 1, NULL, '2021-06-12 00:32:28', NULL, NULL),
-(8, 34, 0, 4400000, '20210612092154', 'Thanh toán qua MoMo', '969938801', 2, 1, NULL, '2021-06-12 02:21:45', '2021-06-12 02:21:54', NULL),
-(9, 34, 0, 5500000, NULL, NULL, '0969938801', 2, 1, NULL, '2021-06-12 02:27:04', NULL, NULL),
-(10, 34, 0, 5500000, '20210612093430', 'Thanh toán qua MoMo', '969938801', 2, 1, NULL, '2021-06-12 02:29:42', '2021-06-12 02:34:30', NULL),
-(11, 34, 0, 6600000, '20210612094052', 'Thanh toán qua MoMo', '969938801', 2, 1, NULL, '2021-06-12 02:35:23', '2021-06-12 02:40:52', NULL),
-(12, 34, 0, 4400000, NULL, NULL, '0969938801', 1, 1, NULL, '2021-06-12 03:02:53', NULL, NULL);
+INSERT INTO `transactions` (`id`, `t_user_id`, `t_admin_id`, `t_total_money`, `t_code`, `t_note`, `t_phone`, `t_type_pay`, `t_status`, `t_time_process`, `created_at`, `updated_at`) VALUES
+(1, 1, 0, 4000000, NULL, NULL, NULL, 1, 4, NULL, '2021-05-11 21:31:03', '2021-05-20 02:45:42'),
+(4, 1, 0, 10000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 04:05:37', NULL),
+(5, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 04:06:50', NULL),
+(6, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 04:25:51', NULL),
+(7, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 18:56:45', NULL),
+(8, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:03:13', NULL),
+(9, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:04:41', NULL),
+(10, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:05:44', NULL),
+(11, 1, 0, 5000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:20:44', NULL),
+(12, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:21:41', NULL),
+(13, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:22:26', NULL),
+(14, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:23:54', NULL),
+(15, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:24:36', NULL),
+(16, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:27:46', NULL),
+(17, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:28:11', NULL),
+(18, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:31:07', NULL),
+(19, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:33:23', NULL),
+(20, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:36:07', NULL),
+(21, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:38:25', NULL),
+(22, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:40:23', NULL),
+(23, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:41:36', NULL),
+(24, 1, 0, 5000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:43:16', NULL),
+(25, 1, 0, 0, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:43:18', NULL),
+(26, 1, 0, 0, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:43:20', NULL),
+(27, 1, 0, 0, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:43:21', NULL),
+(28, 1, 0, 0, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:43:23', NULL),
+(29, 1, 0, 0, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:43:24', NULL),
+(30, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:44:09', NULL),
+(31, 1, 0, 0, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:44:17', NULL),
+(32, 1, 0, 0, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:44:19', NULL),
+(33, 1, 0, 5000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:46:55', NULL),
+(34, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:47:50', NULL),
+(35, 1, 0, 5000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:48:38', NULL),
+(36, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:52:26', NULL),
+(37, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:53:33', NULL),
+(38, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:55:56', NULL),
+(39, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:57:00', NULL),
+(40, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 20:58:18', NULL),
+(41, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:02:23', NULL),
+(42, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:11:59', NULL),
+(43, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:14:03', NULL),
+(44, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:14:36', NULL),
+(45, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:16:06', NULL),
+(46, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:16:29', NULL),
+(47, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:19:44', NULL),
+(48, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:20:13', NULL),
+(49, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:26:04', NULL),
+(50, 1, 0, 5000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:29:50', NULL),
+(51, 1, 0, 5000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:31:11', NULL),
+(52, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:31:58', NULL),
+(53, 1, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:36:05', NULL),
+(54, 1, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:42:02', NULL),
+(55, 1, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:43:34', NULL),
+(56, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:49:25', NULL),
+(57, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:50:07', NULL),
+(58, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 21:50:42', NULL),
+(59, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 23:40:18', NULL),
+(60, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 23:49:27', NULL),
+(61, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 23:53:48', NULL),
+(62, 1, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-20 23:54:37', NULL),
+(63, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-21 00:01:42', NULL),
+(64, 1, 0, 4000000, NULL, NULL, NULL, 1, 3, NULL, '2021-05-21 00:03:12', '2021-05-21 00:21:34'),
+(65, 1, 0, 3000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-21 21:24:06', NULL),
+(66, 1, 0, 0, NULL, NULL, NULL, 1, 1, NULL, '2021-05-21 21:26:11', NULL),
+(67, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-21 21:29:27', NULL),
+(68, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-22 02:28:35', NULL),
+(69, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-23 19:23:49', NULL),
+(70, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-23 20:16:19', NULL),
+(71, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-23 20:16:44', NULL),
+(72, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-23 20:19:27', NULL),
+(73, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-23 21:02:24', NULL),
+(74, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-23 21:10:12', NULL),
+(75, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-23 21:12:41', NULL),
+(76, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-23 21:27:11', NULL),
+(77, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-23 21:29:12', NULL),
+(78, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-23 21:30:45', NULL),
+(79, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-23 23:31:34', NULL),
+(80, 1, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-24 19:01:19', NULL),
+(81, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-25 04:16:25', NULL),
+(82, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-25 04:19:35', NULL),
+(83, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-25 18:59:28', NULL),
+(84, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-25 19:14:56', NULL),
+(85, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-25 21:31:02', NULL),
+(86, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-25 22:59:31', NULL),
+(87, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 20:54:13', NULL),
+(88, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 20:54:24', NULL),
+(89, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 20:54:53', NULL),
+(90, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 20:55:19', NULL),
+(91, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 20:56:45', NULL),
+(92, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 20:59:08', NULL),
+(93, 34, 0, 5000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 21:01:12', NULL),
+(94, 34, 0, 5000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 21:41:42', NULL),
+(95, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 23:00:27', NULL),
+(96, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 23:01:06', NULL),
+(97, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 23:01:37', NULL),
+(98, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 23:02:52', NULL),
+(99, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 23:04:39', NULL),
+(100, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 23:05:43', NULL),
+(101, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 23:07:49', NULL),
+(102, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-26 23:08:49', NULL),
+(103, 34, 0, 4000000, NULL, NULL, NULL, 1, 3, NULL, '2021-05-26 23:41:11', '2021-05-27 01:04:45'),
+(104, 34, 0, 3000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-31 20:10:33', NULL),
+(105, 34, 0, 3000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-31 20:31:42', NULL),
+(106, 34, 0, 3000000, NULL, NULL, NULL, 1, 1, NULL, '2021-05-31 20:36:53', NULL),
+(107, 34, 0, 4000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-01 01:28:12', NULL),
+(108, 34, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-01 21:27:45', NULL),
+(109, 34, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-01 21:28:09', NULL),
+(110, 34, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-01 23:39:02', NULL),
+(111, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 00:07:36', NULL),
+(112, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 01:24:36', NULL),
+(113, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 02:51:14', NULL),
+(114, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 02:55:32', NULL),
+(115, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 02:56:37', NULL),
+(116, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 02:57:09', NULL),
+(117, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 02:59:32', NULL),
+(118, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:01:03', NULL),
+(119, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:01:45', NULL),
+(120, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:03:26', NULL),
+(121, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:04:04', NULL),
+(122, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:04:37', NULL),
+(123, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:04:41', NULL),
+(124, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:05:09', NULL),
+(125, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:05:14', NULL),
+(126, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:07:50', NULL),
+(127, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:08:37', NULL),
+(128, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:08:40', NULL),
+(129, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:09:32', NULL),
+(130, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:12:18', NULL),
+(131, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:13:01', NULL),
+(132, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:13:09', NULL),
+(133, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:14:30', NULL),
+(134, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:16:15', NULL),
+(135, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:18:16', NULL),
+(136, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:18:29', NULL),
+(137, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:18:50', NULL),
+(138, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:20:01', NULL),
+(139, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:22:41', NULL),
+(140, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:25:02', NULL),
+(141, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:26:12', NULL),
+(142, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:27:14', NULL),
+(143, 34, 0, 9000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 03:28:28', NULL),
+(144, 34, 0, 6000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 18:56:04', NULL),
+(145, 34, 0, 7000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 20:35:08', NULL),
+(146, 34, 0, 7000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 20:35:32', NULL),
+(147, 34, 0, 7000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 20:35:59', NULL),
+(148, 34, 0, 7000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 20:36:31', NULL),
+(149, 34, 0, 7000000, NULL, NULL, NULL, 1, 1, NULL, '2021-06-02 22:06:18', NULL),
+(150, 34, 0, 4000000, NULL, NULL, NULL, 1, 4, NULL, '2021-06-03 01:35:40', '2021-07-05 21:58:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_admin`
+--
+
+CREATE TABLE `uni_admin` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `username` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email_verified` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `avatar` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_color`
+--
+
+CREATE TABLE `uni_color` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `code_color` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_more` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `order` int(11) DEFAULT NULL,
+  `thumnail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `banner` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_color`
+--
+
+INSERT INTO `uni_color` (`id`, `name`, `slug`, `code_color`, `desscription`, `meta_desscription`, `meta_title`, `meta_keyword`, `content`, `content_more`, `status`, `order`, `thumnail`, `banner`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Màu đổ', 'mau-do', '#ff7750', 'ent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idpaparent_idparent_idparent_idparent_idrent_idparent_id', 'Màu đổ', 'Màu đổ', NULL, 'parent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_idparent_id', NULL, 1, 0, NULL, NULL, NULL, NULL, '2021-07-03 00:01:15', '2021-07-03 00:17:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_contact`
+--
+
+CREATE TABLE `uni_contact` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT 0,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `phone` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_favourite`
+--
+
+CREATE TABLE `uni_favourite` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_flash_sale`
+--
+
+CREATE TABLE `uni_flash_sale` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `price` int(11) DEFAULT NULL,
+  `sale_off` int(11) DEFAULT NULL,
+  `info_sale` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `thumbnail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` timestamp NULL DEFAULT NULL,
+  `updated_by` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_flash_sale`
+--
+
+INSERT INTO `uni_flash_sale` (`id`, `name`, `slug`, `desscription`, `meta_desscription`, `meta_title`, `meta_keyword`, `content`, `qty`, `status`, `price`, `sale_off`, `info_sale`, `thumbnail`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Combo 20-12-2021', 'combo-20-12-2021', 'Màu sắc đóng vai trò quan trong thiết kế web và thiết kế đồ họa trên máy tính.', 'Màu sắc đóng vai trò quan trong thiết kế web và thiết kế đồ họa trên máy tính.', 'Combo 20-12-2021', NULL, '<p>M&agrave;u sắc đ&oacute;ng vai tr&ograve; quan trong thiết kế web v&agrave; thiết kế đồ họa tr&ecirc;n m&aacute;y t&iacute;nh. V&igrave; vậy ta cần phải biết ch&iacute;nh x&aacute;c m&atilde; m&agrave;u của từng m&agrave;u sắc để tạo ra thiết kế đ&uacute;ng chuẩn. Hi vọng&nbsp;m&atilde; m&agrave;u dưới đ&acirc;y sẽ gi&uacute;p &iacute;ch cho bạn trong qu&aacute; tr&igrave;nh l&agrave;m việc v&agrave; học tập.</p>', 12, 0, NULL, NULL, '[{\"\'id\'\":\"9\",\"\'qty_sale\'\":\"12\",\"\'price_sale\'\":\"22\"},{\"\'id\'\":\"6\",\"\'qty_sale\'\":\"13\",\"\'price_sale\'\":\"33\"}]', NULL, NULL, NULL, '2021-07-10 01:56:41', NULL),
+(2, 'Com bo chu nhat', 'com-bo-chu-nhat', 'Màu sắc đóng vai trò quan trong thiết kế web và thiết kế đồ họa trên máy tính.', 'Màu sắc đóng vai trò quan trong thiết kế web và thiết kế đồ họa trên máy tính.', 'Com bo chu nhat', NULL, '<p>M&agrave;u sắc đ&oacute;ng vai tr&ograve; quan trong thiết kế web v&agrave; thiết kế đồ họa tr&ecirc;n m&aacute;y t&iacute;nh. V&igrave; vậy ta cần phải biết ch&iacute;nh x&aacute;c m&atilde; m&agrave;u của từng m&agrave;u sắc để tạo ra thiết kế đ&uacute;ng chuẩn. Hi vọng&nbsp;<a href=\"https://bietmaytinh.com/category/bang-tong-hop/\" rel=\"noopener noreferrer\" target=\"_blank\">bảng tổng hợp</a>&nbsp;m&atilde; m&agrave;u dưới đ&acirc;y sẽ gi&uacute;p &iacute;ch cho bạn trong qu&aacute; tr&igrave;nh l&agrave;m việc v&agrave; học tập.</p>', 12, 0, NULL, NULL, '[{\"\'id\'\":\"9\",\"\'qty_sale\'\":\"23\",\"\'price_sale\'\":\"44\"},{\"\'id\'\":\"6\",\"\'qty_sale\'\":\"44\",\"\'price_sale\'\":\"55\"},{\"\'id\'\":\"5\",\"\'qty_sale\'\":\"44\",\"\'price_sale\'\":\"55\"}]', NULL, NULL, NULL, '2021-07-10 02:10:27', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_lotproduct`
+--
+
+CREATE TABLE `uni_lotproduct` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `lot_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `supplier_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `qty` int(11) NOT NULL,
+  `qty_box` int(11) DEFAULT NULL,
+  `size_box` int(11) NOT NULL,
+  `price_lotproduct` int(20) DEFAULT NULL,
+  `size` int(11) NOT NULL,
+  `barcode` int(20) NOT NULL,
+  `sku_lotproduct` int(20) NOT NULL,
+  `expiry_date` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_lotproduct`
+--
+
+INSERT INTO `uni_lotproduct` (`id`, `lot_name`, `supplier_id`, `product_id`, `qty`, `qty_box`, `size_box`, `price_lotproduct`, `size`, `barcode`, `sku_lotproduct`, `expiry_date`, `created_at`, `updated_at`) VALUES
+(1, 'Lô bột chua', 1, 5, 2000, 20, 100, 600, 2, 12321234, 99998888, '2022-12-31', '2021-07-04 20:42:10', '2021-07-10 02:43:58'),
+(2, 'Lô bọt ngọt', 1, 6, 2500, 25, 100, 200000000, 2, 12321234, 99998888, '2022-12-31', '2021-07-04 20:42:10', '2021-07-10 02:44:29'),
+(3, 'Lô bột chiên', 1, 9, 900, 10, 90, 200000000, 1, 11223344, 22334455, '2025-01-01', '2021-07-06 21:38:10', NULL),
+(4, 'Lô bột ớt', 1, 4, 2000, 100, 20, 550, 2, 1211221122, 33223322, '2022-11-10', '2021-07-10 02:42:58', '2021-07-10 02:49:42'),
+(5, 'Lô bột gừng', 1, 3, 1900, 100, 20, 600, 2, 11221122, 23221122, '2022-02-11', '2021-07-10 02:43:40', '2021-07-10 03:41:00'),
+(6, 'Lô bọt ngọt 2', 1, 6, 2500, 25, 100, 550, 2, 1245698, 2256365, '2022-11-22', '2021-07-10 02:46:36', '2021-07-10 02:47:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_order`
+--
+
+CREATE TABLE `uni_order` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `admin_id` int(11) DEFAULT NULL,
+  `transaction_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `product_sale` int(11) DEFAULT NULL,
+  `total_money` int(11) DEFAULT NULL,
+  `created_by` timestamp NULL DEFAULT NULL,
+  `updated_by` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_post`
+--
+
+CREATE TABLE `uni_post` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category_id` int(11) NOT NULL,
+  `desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `order` int(11) DEFAULT NULL,
+  `thumbnail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` timestamp NULL DEFAULT NULL,
+  `updated_by` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_post`
+--
+
+INSERT INTO `uni_post` (`id`, `name`, `slug`, `category_id`, `desscription`, `meta_desscription`, `meta_title`, `content`, `status`, `order`, `thumbnail`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'It is Very Easy to Customize and it uses in your website apllication.12312312', 'it-is-very-easy-to-customize-and-it-uses-in-your-website-apllication12312312', 2, 'It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.', 'It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.', 'It is Very Easy to Customize and it uses in your website apllication.12312312', '<p>It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.</p>', 1, 1, 'brvn2-1625720056.jpg', NULL, NULL, '2021-07-07 21:56:01', '2021-07-08 00:10:51'),
+(2, 'It is Very Easy to Customize and it uses in your website apllication.1111', 'it-is-very-easy-to-customize-and-it-uses-in-your-website-apllication1111', 1, 'It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.', 'It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.', 'It is Very Easy to Customize and it uses in your website apllication.1111', '<p>It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.</p>', 0, 1, 'brvn2-1625720056.jpg', NULL, NULL, '2021-07-07 21:56:09', '2021-07-08 00:47:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_post_category`
+--
+
+CREATE TABLE `uni_post_category` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `banner` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_more` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `parent_id` int(11) NOT NULL DEFAULT 0,
+  `order` int(11) DEFAULT NULL,
+  `thumbnail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` timestamp NULL DEFAULT NULL,
+  `updated_by` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_post_category`
+--
+
+INSERT INTO `uni_post_category` (`id`, `name`, `slug`, `banner`, `desscription`, `meta_desscription`, `meta_title`, `meta_keyword`, `content`, `content_more`, `status`, `parent_id`, `order`, `thumbnail`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Bột ớt cay cấp 4', 'bot-ot-cay-cap-4', 'brvn3-1625712074.jpg', 'Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4', 'Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4', 'Bột ớt cay cấp 4', NULL, 'Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4 Bột ớt cay cấp 4', NULL, 1, 0, 0, 'monkey-1625711763.jpg<link rel=\'stylesheet\' type=\'text/css\' property=\'stylesheet\' href=\'//127.0.0.1:8000/_debugbar/assets/stylesheets?v=1625212637&theme=auto\'><script type=\'text/javascript\' src=\'//127.0.0.1:8000/_debugbar/assets/javascript?v=1625212637\'></script><script type=\"text/javascript\">jQuery.noConflict(true);</script>\r\n<script> Sfdump = window.Sfdump || (function (doc) { var refStyle = doc.createElement(\'style\'), rxEsc = /([.*+?^${}()|\\[\\]\\/\\\\])/g, idRx = /\\bsf-dump-\\d+-ref[012]\\w+\\b/, keyHint = 0 <= navigator.platform.toUpperCase().indexOf(\'MAC\') ? \'Cmd\' : \'Ctrl\', addEventListener = function (e, n, cb) { e.addEventListener(n, cb, false); }; refStyle.innerHTML = \'.phpdebugbar pre.sf-dump .sf-dump-compact, .sf-dump-str-collapse .sf-dump-str-collapse, .sf-dump-str-expand .sf-dump-str-expand { display: none; }\'; (doc.documentElement.firstElementChild || doc.documentElement.children[0]).appendChild(refStyle); refStyle = doc.createElement(\'style\'); (doc.documentElement.firstElementChild || doc.documentElement.children[0]).appendChild(refStyle); if (!doc.addEventListener) { addEventListener = function (element, eventName, callback) { element.attachEvent(\'on\' + eventName, function (e) { e.preventDefault = function () {e.returnValue = false;}; e.target = e.srcElement; callback(e); }); }; } function toggle(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className, arrow, newClass; if (/\\bsf-dump-compact\\b/.test(oldClass)) { arrow = \'▼\'; newClass = \'sf-dump-expanded\'; } else if (/\\bsf-dump-expanded\\b/.test(oldClass)) { arrow = \'▶\'; newClass = \'sf-dump-compact\'; } else { return false; } if (doc.createEvent && s.dispatchEvent) { var event = doc.createEvent(\'Event\'); event.initEvent(\'sf-dump-expanded\' === newClass ? \'sfbeforedumpexpand\' : \'sfbeforedumpcollapse\', true, false); s.dispatchEvent(event); } a.lastChild.innerHTML = arrow; s.className = s.className.replace(/\\bsf-dump-(compact|expanded)\\b/, newClass); if (recursive) { try { a = s.querySelectorAll(\'.\'+oldClass); for (s = 0; s < a.length; ++s) { if (-1 == a[s].className.indexOf(newClass)) { a[s].className = newClass; a[s].previousSibling.lastChild.innerHTML = arrow; } } } catch (e) { } } return true; }; function collapse(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className; if (/\\bsf-dump-expanded\\b/.test(oldClass)) { toggle(a, recursive); return true; } return false; }; function expand(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className; if (/\\bsf-dump-compact\\b/.test(oldClass)) { toggle(a, recursive); return true; } return false; }; function collapseAll(root) { var a = root.querySelector(\'a.sf-dump-toggle\'); if (a) { collapse(a, true); expand(a); return true; } return false; } function reveal(node) { var previous, parents = []; while ((node = node.parentNode || {}) && (previous = node.previousSibling) && \'A\' === previous.tagName) { parents.push(previous); } if (0 !== parents.length) { parents.forEach(function (parent) { expand(parent); }); return true; } return false; } function highlight(root, activeNode, nodes) { resetHighlightedNodes(root); Array.from(nodes||[]).forEach(function (node) { if (!/\\bsf-dump-highlight\\b/.test(node.className)) { node.className = node.className + \' sf-dump-highlight\'; } }); if (!/\\bsf-dump-highlight-active\\b/.test(activeNode.className)) { activeNode.className = activeNode.className + \' sf-dump-highlight-active\'; } } function resetHighlightedNodes(root) { Array.from(root.querySelectorAll(\'.sf-dump-str, .sf-dump-key, .sf-dump-public, .sf-dump-protected, .sf-dump-private\')).forEach(function (strNode) { strNode.className = strNode.className.replace(/\\bsf-dump-highlight\\b/, \'\'); strNode.className = strNode.className.replace(/\\bsf-dump-highlight-active\\b/, \'\'); }); } return function (root, x) { root = doc.getElementById(root); var indentRx = new RegExp(\'^(\'+(root.getAttribute(\'data-indent-pad\') || \' \').replace(rxEsc, \'\\\\$1\')+\')+\', \'m\'), options = {\"maxDepth\":1,\"maxStringLength\":160,\"fileLinkFormat\":false}, elt = root.getElementsByTagName(\'A\'), len = elt.length, i = 0, s, h, t = []; while (i < len) t.push(elt[i++]); for (i in x) { options[i] = x[i]; } function a(e, f) { addEventListener(root, e, function (e, n) { if (\'A\' == e.target.tagName) { f(e.target, e); } else if (\'A\' == e.target.parentNode.tagName) { f(e.target.parentNode, e); } else { n = /\\bsf-dump-ellipsis\\b/.test(e.target.className) ? e.target.parentNode : e.target; if ((n = n.nextElementSibling) && \'A\' == n.tagName) { if (!/\\bsf-dump-toggle\\b/.test(n.className)) { n = n.nextElementSibling || n; } f(n, e, true); } } }); }; function isCtrlKey(e) { return e.ctrlKey || e.metaKey; } function xpathString(str) { var parts = str.match(/[^\'\"]+|[\'\"]/g).map(function (part) { if (\"\'\" == part) { return \'\"\\\'\"\'; } if (\'\"\' == part) { return \"\'\\\"\'\"; } return \"\'\" + part + \"\'\"; }); return \"concat(\" + parts.join(\",\") + \", \'\')\"; } function xpathHasClass(className) { return \"contains(concat(\' \', normalize-space(@class), \' \'), \' \" + className +\" \')\"; } addEventListener(root, \'mouseover\', function (e) { if (\'\' != refStyle.innerHTML) { refStyle.innerHTML = \'\'; } }); a(\'mouseover\', function (a, e, c) { if (c) { e.target.style.cursor = \"pointer\"; } else if (a = idRx.exec(a.className)) { try { refStyle.innerHTML = \'.phpdebugbar pre.sf-dump .\'+a[0]+\'{background-color: #B729D9; color: #FFF !important; border-radius: 2px}\'; } catch (e) { } } }); a(\'click\', function (a, e, c) { if (/\\bsf-dump-toggle\\b/.test(a.className)) { e.preventDefault(); if (!toggle(a, isCtrlKey(e))) { var r = doc.getElementById(a.getAttribute(\'href\').substr(1)), s = r.previousSibling, f = r.parentNode, t = a.parentNode; t.replaceChild(r, a); f.replaceChild(a, s); t.insertBefore(s, r); f = f.firstChild.nodeValue.match(indentRx); t = t.firstChild.nodeValue.match(indentRx); if (f && t && f[0] !== t[0]) { r.innerHTML = r.innerHTML.replace(new RegExp(\'^\'+f[0].replace(rxEsc, \'\\\\$1\'), \'mg\'), t[0]); } if (/\\bsf-dump-compact\\b/.test(r.className)) { toggle(s, isCtrlKey(e)); } } if (c) { } else if (doc.getSelection) { try { doc.getSelection().removeAllRanges(); } catch (e) { doc.getSelection().empty(); } } else { doc.selection.empty(); } } else if (/\\bsf-dump-str-toggle\\b/.test(a.className)) { e.preventDefault(); e = a.parentNode.parentNode; e.className = e.className.replace(/\\bsf-dump-str-(expand|collapse)\\b/, a.parentNode.className); } }); elt = root.getElementsByTagName(\'SAMP\'); len = elt.length; i = 0; while (i < len) t.push(elt[i++]); len = t.length; for (i = 0; i < len; ++i) { elt = t[i]; if (\'SAMP\' == elt.tagName) { a = elt.previousSibling || {}; if (\'A\' != a.tagName) { a = doc.createElement(\'A\'); a.className = \'sf-dump-ref\'; elt.parentNode.insertBefore(a, elt); } else { a.innerHTML += \' \'; } a.title = (a.title ? a.title+\'\\n[\' : \'[\')+keyHint+\'+click] Expand all children\'; a.innerHTML += elt.className == \'sf-dump-compact\' ? \'<span>▶</span>\' : \'<span>▼</span>\'; a.className += \' sf-dump-toggle\'; x = 1; if (\'sf-dump\' != elt.parentNode.className) { x += elt.parentNode.getAttribute(\'data-depth\')/1; } } else if (/\\bsf-dump-ref\\b/.test(elt.className) && (a = elt.getAttribute(\'href\'))) { a = a.substr(1); elt.className += \' \'+a; if (/[\\[{]$/.test(elt.previousSibling.nodeValue)) { a = a != elt.nextSibling.id && doc.getElementById(a); try { s = a.nextSibling; elt.appendChild(a); s.parentNode.insertBefore(a, s); if (/^[@#]/.test(elt.innerHTML)) { elt.innerHTML += \' <span>▶</span>\'; } else { elt.innerHTML = \'<span>▶</span>\'; elt.className = \'sf-dump-ref\'; } elt.className += \' sf-dump-toggle\'; } catch (e) { if (\'&\' == elt.innerHTML.charAt(0)) { elt.innerHTML = \'…\'; elt.className = \'sf-dump-ref\'; } } } } } if (doc.evaluate && Array.from && root.children.length > 1) { root.setAttribute(\'tabindex\', 0); SearchState = function () { this.nodes = []; this.idx = 0; }; SearchState.prototype = { next: function () { if (this.isEmpty()) { return this.current(); } this.idx = this.idx < (this.nodes.length - 1) ? this.idx + 1 : 0; return this.current(); }, previous: function () { if (this.isEmpty()) { return this.current(); } this.idx = this.idx > 0 ? this.idx - 1 : (this.nodes.length - 1); return this.current(); }, isEmpty: function () { return 0 === this.count(); }, current: function () { if (this.isEmpty()) { return null; } return this.nodes[this.idx]; }, reset: function () { this.nodes = []; this.idx = 0; }, count: function () { return this.nodes.length; }, }; function showCurrent(state) { var currentNode = state.current(), currentRect, searchRect; if (currentNode) { reveal(currentNode); highlight(root, currentNode, state.nodes); if (\'scrollIntoView\' in currentNode) { currentNode.scrollIntoView(true); currentRect = currentNode.getBoundingClientRect(); searchRect = search.getBoundingClientRect(); if (currentRect.top < (searchRect.top + searchRect.height)) { window.scrollBy(0, -(searchRect.top + searchRect.height + 5)); } } } counter.textContent = (state.isEmpty() ? 0 : state.idx + 1) + \' of \' + state.count(); } var search = doc.createElement(\'div\'); search.className = \'sf-dump-search-wrapper sf-dump-search-hidden\'; search.innerHTML = \' <input type=\"text\" class=\"sf-dump-search-input\"> <span class=\"sf-dump-search-count\">0 of 0<\\/span> <button type=\"button\" class=\"sf-dump-search-input-previous\" tabindex=\"-1\"> <svg viewBox=\"0 0 1792 1792\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1683 1331l-166 165q-19 19-45 19t-45-19L896 965l-531 531q-19 19-45 19t-45-19l-166-165q-19-19-19-45.5t19-45.5l742-741q19-19 45-19t45 19l742 741q19 19 19 45.5t-19 45.5z\"\\/><\\/svg> <\\/button> <button type=\"button\" class=\"sf-dump-search-input-next\" tabindex=\"-1\"> <svg viewBox=\"0 0 1792 1792\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1683 808l-742 741q-19 19-45 19t-45-19L109 808q-19-19-19-45.5t19-45.5l166-165q19-19 45-19t45 19l531 531 531-531q19-19 45-19t45 19l166 165q19 19 19 45.5t-19 45.5z\"\\/><\\/svg> <\\/button> \'; root.insertBefore(search, root.firstChild); var state = new SearchState(); var searchInput = search.querySelector(\'.sf-dump-search-input\'); var counter = search.querySelector(\'.sf-dump-search-count\'); var searchInputTimer = 0; var previousSearchQuery = \'\'; addEventListener(searchInput, \'keyup\', function (e) { var searchQuery = e.target.value; /* Don\'t perform anything if the pressed key didn\'t change the query */ if (searchQuery === previousSearchQuery) { return; } previousSearchQuery = searchQuery; clearTimeout(searchInputTimer); searchInputTimer = setTimeout(function () { state.reset(); collapseAll(root); resetHighlightedNodes(root); if (\'\' === searchQuery) { counter.textContent = \'0 of 0\'; return; } var classMatches = [ \"sf-dump-str\", \"sf-dump-key\", \"sf-dump-public\", \"sf-dump-protected\", \"sf-dump-private\", ].map(xpathHasClass).join(\' or \'); var xpathResult = doc.evaluate(\'.//span[\' + classMatches + \'][contains(translate(child::text(), \' + xpathString(searchQuery.toUpperCase()) + \', \' + xpathString(searchQuery.toLowerCase()) + \'), \' + xpathString(searchQuery.toLowerCase()) + \')]\', root, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null); while (node = xpathResult.iterateNext()) state.nodes.push(node); showCurrent(state); }, 400); }); Array.from(search.querySelectorAll(\'.sf-dump-search-input-next, .sf-dump-search-input-previous\')).forEach(function (btn) { addEventListener(btn, \'click\', function (e) { e.preventDefault(); -1 !== e.target.className.indexOf(\'next\') ? state.next() : state.previous(); searchInput.focus(); collapseAll(root); showCurrent(state); }) }); addEventListener(root, \'keydown\', function (e) { var isSearchActive = !/\\bsf-dump-search-hidden\\b/.test(search.className); if ((114 === e.keyCode && !isSearchActive) || (isCtrlKey(e) && 70 === e.keyCode)) { /* F3 or CMD/CTRL + F */ if (70 === e.keyCode && document.activeElement === searchInput) { /* * If CMD/CTRL + F is hit while having focus on search input, * the user probably meant to trigger browser search instead. * Let the browser execute its behavior: */ return; } e.preventDefault(); search.className = search.className.replace(/\\bsf-dump-search-hidden\\b/, \'\'); searchInput.focus(); } else if (isSearchActive) { if (27 === e.keyCode) { /* ESC key */ search.className += \' sf-dump-search-hidden\'; e.preventDefault(); resetHighlightedNodes(root); searchInput.value = \'\'; } else if ( (isCtrlKey(e) && 71 === e.keyCode) /* CMD/CTRL + G */ || 13 === e.keyCode /* Enter */ || 114 === e.keyCode /* F3 */ ) { e.preventDefault(); e.shiftKey ? state.previous() : state.next(); collapseAll(root); showCurrent(state); } } }); } if (0 >= options.maxStringLength) { return; } try { elt = root.querySelectorAll(\'.sf-dump-str\'); len = elt.length; i = 0; t = []; while (i < len) t.push(elt[i++]); len = t.length; for (i = 0; i < len; ++i) { elt = t[i]; s = elt.innerText || elt.textContent; x = s.length - options.maxStringLength; if (0 < x) { h = elt.innerHTML; elt[elt.innerText ? \'innerText\' : \'textContent\'] = s.substring(0, options.maxStringLength); elt.className += \' sf-dump-str-collapse\'; elt.innerHTML = \'<span class=sf-dump-str-collapse>\'+h+\'<a class=\"sf-dump-ref sf-dump-str-toggle\" title=\"Collapse\"> ◀</a></span>\'+ \'<span class=sf-dump-str-expand>\'+elt.innerHTML+\'<a class=\"sf-dump-ref sf-dump-str-toggle\" title=\"\'+x+\' remaining characters\"> ▶</a></span>\'; } } } catch (e) { } }; })(document); </script><style> .phpdebugbar pre.sf-dump { display: block; white-space: pre; padding: 5px; overflow: initial !important; } .phpdebugbar pre.sf-dump:after { content: \"\"; visibility: hidden; display: block; height: 0; clear: both; } .phpdebugbar pre.sf-dump span { display: inline; } .phpdebugbar pre.sf-dump a { text-decoration: none; cursor: pointer; border: 0; outline: none; color: inherit; } .phpdebugbar pre.sf-dump img { max-width: 50em; max-height: 50em; margin: .5em 0 0 0; padding: 0; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAHUlEQVQY02O8zAABilCaiQEN0EeA8QuUcX9g3QEAAjcC5piyhyEAAAAASUVORK5CYII=) #D3D3D3; } .phpdebugbar pre.sf-dump .sf-dump-ellipsis { display: inline-block; overflow: visible; text-overflow: ellipsis; max-width: 5em; white-space: nowrap; overflow: hidden; vertical-align: top; } .phpdebugbar pre.sf-dump .sf-dump-ellipsis+.sf-dump-ellipsis { max-width: none; } .phpdebugbar pre.sf-dump code { display:inline; padding:0; background:none; } .sf-dump-public.sf-dump-highlight, .sf-dump-protected.sf-dump-highlight, .sf-dump-private.sf-dump-highlight, .sf-dump-str.sf-dump-highlight, .sf-dump-key.sf-dump-highlight { background: rgba(111, 172, 204, 0.3); border: 1px solid #7DA0B1; border-radius: 3px; } .sf-dump-public.sf-dump-highlight-active, .sf-dump-protected.sf-dump-highlight-active, .sf-dump-private.sf-dump-highlight-active, .sf-dump-str.sf-dump-highlight-active, .sf-dump-key.sf-dump-highlight-active { background: rgba(253, 175, 0, 0.4); border: 1px solid #ffa500; border-radius: 3px; } .phpdebugbar pre.sf-dump .sf-dump-search-hidden { display: none !important; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper { font-size: 0; white-space: nowrap; margin-bottom: 5px; display: flex; position: -webkit-sticky; position: sticky; top: 5px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > * { vertical-align: top; box-sizing: border-box; height: 21px; font-weight: normal; border-radius: 0; background: #FFF; color: #757575; border: 1px solid #BBB; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > input.sf-dump-search-input { padding: 3px; height: 21px; font-size: 12px; border-right: none; border-top-left-radius: 3px; border-bottom-left-radius: 3px; color: #000; min-width: 15px; width: 100%; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next, .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-previous { background: #F2F2F2; outline: none; border-left: none; font-size: 0; line-height: 0; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next { border-top-right-radius: 3px; border-bottom-right-radius: 3px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next > svg, .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-previous > svg { pointer-events: none; width: 12px; height: 12px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-count { display: inline-block; padding: 0 5px; margin: 0; border-left: none; line-height: 21px; font-size: 12px; }.phpdebugbar pre.sf-dump, .phpdebugbar pre.sf-dump .sf-dump-default{word-wrap: break-word; white-space: pre-wrap; word-break: normal}.phpdebugbar pre.sf-dump .sf-dump-num{font-weight:bold; color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-const{font-weight:bold}.phpdebugbar pre.sf-dump .sf-dump-str{font-weight:bold; color:#3A9B26}.phpdebugbar pre.sf-dump .sf-dump-note{color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-ref{color:#7B7B7B}.phpdebugbar pre.sf-dump .sf-dump-public{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-protected{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-private{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-meta{color:#B729D9}.phpdebugbar pre.sf-dump .sf-dump-key{color:#3A9B26}.phpdebugbar pre.sf-dump .sf-dump-index{color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-ellipsis{color:#A0A000}.phpdebugbar pre.sf-dump .sf-dump-ns{user-select:none;}.phpdebugbar pre.sf-dump .sf-dump-ellipsis-note{color:#1299DA}</style>\r\n<script type=\"text/javascript\">\r\nvar phpdebugbar = new PhpDebugBar.DebugBar();\r\nphpdebugbar.addIndicator(\"php_version\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"code\",\"tooltip\":\"PHP Version\"}), \"right\");\r\nphpdebugbar.addTab(\"messages\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"list-alt\",\"title\":\"Messages\", \"widget\": new PhpDebugBar.Widgets.MessagesWidget()}));\r\nphpdebugbar.addIndicator(\"time\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"clock-o\",\"tooltip\":\"Request Duration\"}), \"right\");\r\nphpdebugbar.addTab(\"timeline\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"tasks\",\"title\":\"Timeline\", \"widget\": new PhpDebugBar.Widgets.TimelineWidget()}));\r\nphpdebugbar.addIndicator(\"memory\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"cogs\",\"tooltip\":\"Memory Usage\"}), \"right\");\r\nphpdebugbar.addTab(\"exceptions\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"bug\",\"title\":\"Exceptions\", \"widget\": new PhpDebugBar.Widgets.ExceptionsWidget()}));\r\nphpdebugbar.addTab(\"views\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"leaf\",\"title\":\"Views\", \"widget\": new PhpDebugBar.Widgets.TemplatesWidget()}));\r\nphpdebugbar.addTab(\"route\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"share\",\"title\":\"Route\", \"widget\": new PhpDebugBar.Widgets.VariableListWidget()}));\r\nphpdebugbar.addIndicator(\"currentroute\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"share\",\"tooltip\":\"Route\"}), \"right\");\r\nphpdebugbar.addTab(\"queries\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"database\",\"title\":\"Queries\", \"widget\": new PhpDebugBar.Widgets.LaravelSQLQueriesWidget()}));\r\nphpdebugbar.addTab(\"models\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"cubes\",\"title\":\"Models\", \"widget\": new PhpDebugBar.Widgets.HtmlVariableListWidget()}));\r\nphpdebugbar.addTab(\"emails\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"inbox\",\"title\":\"Mails\", \"widget\": new PhpDebugBar.Widgets.MailsWidget()}));\r\nphpdebugbar.addTab(\"gate\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"list-alt\",\"title\":\"Gate\", \"widget\": new PhpDebugBar.Widgets.MessagesWidget()}));\r\nphpdebugbar.addTab(\"session\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"archive\",\"title\":\"Session\", \"widget\": new PhpDebugBar.Widgets.VariableListWidget()}));\r\nphpdebugbar.addTab(\"request\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"tags\",\"title\":\"Request\", \"widget\": new PhpDebugBar.Widgets.HtmlVariableListWidget()}));\r\nphpdebugbar.setDataMap({\r\n\"php_version\": [\"php.version\", ],\r\n\"messages\": [\"messages.messages\", []],\r\n\"messages:badge\": [\"messages.count\", null],\r\n\"time\": [\"time.duration_str\", \'0ms\'],\r\n\"timeline\": [\"time\", {}],\r\n\"memory\": [\"memory.peak_usage_str\", \'0B\'],\r\n\"exceptions\": [\"exceptions.exceptions\", []],\r\n\"exceptions:badge\": [\"exceptions.count\", null],\r\n\"views\": [\"views\", []],\r\n\"views:badge\": [\"views.nb_templates\", 0],\r\n\"route\": [\"route\", {}],\r\n\"currentroute\": [\"route.uri\", ],\r\n\"queries\": [\"queries\", []],\r\n\"queries:badge\": [\"queries.nb_statements\", 0],\r\n\"models\": [\"models.data\", {}],\r\n\"models:badge\": [\"models.count\", 0],\r\n\"emails\": [\"swiftmailer_mails.mails\", []],\r\n\"emails:badge\": [\"swiftmailer_mails.count\", null],\r\n\"gate\": [\"gate.messages\", []],\r\n\"gate:badge\": [\"gate.count\", null],\r\n\"session\": [\"session\", {}],\r\n\"request\": [\"request\", {}]\r\n});\r\nphpdebugbar.restoreState();\r\nphpdebugbar.ajaxHandler = new PhpDebugBar.AjaxHandler(phpdebugbar, undefined, true);\r\nphpdebugbar.ajaxHandler.bindToFetch();\r\nphpdebugbar.ajaxHandler.bindToXHR();\r\nphpdebugbar.setOpenHandler(new PhpDebugBar.OpenHandler({\"url\":\"http:\\/\\/127.0.0.1:8000\\/_debugbar\\/open\"}));\r\nphpdebugbar.addDataSet({\"__meta\":{\"id\":\"Xb82773c8e827f6ddae9559ebc1dc085e\",\"datetime\":\"2021-07-08 02:36:03\",\"utime\":1625711763.375154,\"method\":\"POST\",\"uri\":\"\\/admin\\/ajax\\/upload\\/image\",\"ip\":\"127.0.0.1\"},\"php\":{\"version\":\"7.4.16\",\"interface\":\"cli-server\"},\"messages\":{\"count\":0,\"messages\":[]},\"time\":{\"start\":1625711763.172065,\"end\":1625711763.375174,\"duration\":0.2031090259552002,\"duration_str\":\"203ms\",\"measures\":[{\"label\":\"Booting\",\"start\":1625711763.172065,\"relative_start\":0,\"end\":1625711763.335018,\"relative_end\":1625711763.335018,\"duration\":0.16295289993286133,\"duration_str\":\"163ms\",\"params\":[],\"collector\":null},{\"label\":\"Application\",\"start\":1625711763.337102,\"relative_start\":0.16503691673278809,\"end\":1625711763.375177,\"relative_end\":2.86102294921875e-6,\"duration\":0.03807497024536133,\"duration_str\":\"38.07ms\",\"params\":[],\"collector\":null}]},\"memory\":{\"peak_usage\":21384320,\"peak_usage_str\":\"20MB\"},\"exceptions\":{\"count\":0,\"exceptions\":[]},\"views\":{\"nb_templates\":0,\"templates\":[]},\"route\":{\"uri\":\"POST admin\\/ajax\\/upload\\/image\",\"middleware\":\"web, checkLoginAdmin\",\"controller\":\"Modules\\\\Admin\\\\Http\\\\Controllers\\\\Ajax\\\\AdminAjaxUploadImageController@processUpload\",\"namespace\":\"Modules\\\\Admin\\\\Http\\\\Controllers\\\\Ajax\",\"prefix\":\"admin\\/ajax\",\"where\":[],\"as\":\"post_ajax_admin.uploads\",\"file\":\"\\\\Modules\\\\Admin\\\\Http\\\\Controllers\\\\Ajax\\\\AdminAjaxUploadImageController.php:14-40\"},\"queries\":{\"nb_statements\":1,\"nb_failed_statements\":0,\"accumulated_duration\":0.00035999999999999997,\"accumulated_duration_str\":\"360\\u03bcs\",\"statements\":[{\"sql\":\"select * from `admins` where `id` = 1 limit 1\",\"type\":\"query\",\"params\":[],\"bindings\":[\"1\"],\"hints\":null,\"show_copy\":false,\"backtrace\":[{\"index\":15,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Auth\\\\EloquentUserProvider.php\",\"line\":52},{\"index\":16,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Auth\\\\SessionGuard.php\",\"line\":141},{\"index\":17,\"namespace\":null,\"name\":\"\\\\app\\\\Helpers\\\\guest.php\",\"line\":7},{\"index\":19,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\"line\":167},{\"index\":20,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings.php\",\"line\":50}],\"duration\":0.00035999999999999997,\"duration_str\":\"360\\u03bcs\",\"stmt_id\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Auth\\\\EloquentUserProvider.php:52\",\"connection\":\"unispice\",\"start_percent\":0,\"width_percent\":100}]},\"models\":{\"data\":{\"App\\\\Models\\\\System\\\\Admin\":1},\"count\":1},\"swiftmailer_mails\":{\"count\":0,\"mails\":[]},\"gate\":{\"count\":0,\"messages\":[]},\"session\":{\"_token\":\"tn3YzCIWQpUBEVUrL08HcgNDLlNCQtcjnctxkH9m\",\"_previous\":\"array:1 [\\n  \\\"url\\\" => \\\"http:\\/\\/127.0.0.1:8000\\/admin\\/blog-post\\/post_category\\/create\\\"\\n]\",\"_flash\":\"array:2 [\\n  \\\"old\\\" => []\\n  \\\"new\\\" => []\\n]\",\"login_admins_59ba36addc2b2f9401580f014c7f58ea4e30989d\":\"1\",\"PHPDEBUGBAR_STACK_DATA\":\"[]\"},\"request\":{\"path_info\":\"\\/admin\\/ajax\\/upload\\/image\",\"status_code\":\"<pre class=sf-dump id=sf-dump-297288865 data-indent-pad=\\\"  \\\"><span class=sf-dump-num>200<\\/span>\\n<\\/pre><script>Sfdump(\\\"sf-dump-297288865\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"status_text\":\"OK\",\"format\":\"html\",\"content_type\":\"text\\/html; charset=UTF-8\",\"request_query\":\"<pre class=sf-dump id=sf-dump-2011288516 data-indent-pad=\\\"  \\\">[]\\n<\\/pre><script>Sfdump(\\\"sf-dump-2011288516\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_request\":\"<pre class=sf-dump id=sf-dump-1499754353 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:1<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>avatar<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"14 characters\\\">{&quot;color&quot;:null}<\\/span>\\\"\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-1499754353\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_headers\":\"<pre class=sf-dump id=sf-dump-127946776 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:17<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>host<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"14 characters\\\">127.0.0.1:8000<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>connection<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"10 characters\\\">keep-alive<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>content-length<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">475655<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-ch-ua<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"64 characters\\\">&quot; Not;A Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;91&quot;, &quot;Chromium&quot;;v=&quot;91&quot;<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>x-csrf-token<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">tn3YzCIWQpUBEVUrL08HcgNDLlNCQtcjnctxkH9m<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-ch-ua-mobile<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"2 characters\\\">?0<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>user-agent<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"115 characters\\\">Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/91.0.4472.124 Safari\\/537.36<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>content-type<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"68 characters\\\">multipart\\/form-data; boundary=----WebKitFormBoundaryL0bBfXfhQUr4eaqo<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>accept<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"3 characters\\\">*\\/*<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>origin<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"21 characters\\\">http:\\/\\/127.0.0.1:8000<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-fetch-site<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"11 characters\\\">same-origin<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-fetch-mode<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">cors<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-fetch-dest<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"5 characters\\\">empty<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>referer<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"58 characters\\\">http:\\/\\/127.0.0.1:8000\\/admin\\/blog-post\\/post_category\\/create<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>accept-encoding<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"17 characters\\\">gzip, deflate, br<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>accept-language<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"23 characters\\\">en-US,en;q=0.9,vi;q=0.8<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>cookie<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"689 characters\\\">XSRF-TOKEN=eyJpdiI6IkI3UFd6MldsZ3RaZWF0RWJZRFl0b2c9PSIsInZhbHVlIjoiQ2pNb0svVXU4d3hUSmIrTXBnU0c4OC9RVHNMTEd1TnRjN2wveGRjQTBRcWM3RUh4Q2tldk9DeDc0TTZmT29EYVk0dzlYQUxudTluUU9ad0NaeUducEVQd2FZVnpya1h5ektLWmN5TnkxOVI3aDd6LzVlaXQ1TFplSlBQVzJCUXgiLCJtYWMiOiI4MzM3ODZmMmQ1N2Q3MjJiNDczODQ0ZjFkNzgwNmY5ZDVjNTI2NjQxM2M2OTE3ZmUyMzE3ZmU0ZTc4YWJkNDE4In0%3D; unimind_session=eyJpdiI6Ik1IQUpLOW41aXc1K0l3UllPSVA1UVE9PSIsInZhbHVlIjoicDlLUTh4V2F2d2xBdlFXbXpjVlNSQ2YrRlVlVzBFckFMWmVuV3hPNEM4amZqL0kyTnk3ZWdOVlFPOWw1eEp0alRmQXRxbVVSeTNHQWxMUzhKcWhZQVJnK2tDeHM0UjZkRE1kZks0UTU4cWppWi9HN0U5RHJIY3lKY0pTSEZjVHkiLCJtYWMiOiI0ZjkzN2RlOThlOTY1ZTRkYWIxZTA2YzA1MmZlYmZiZWRiODg2OWNiY2E5MjYxYjZlODllZTM1NjBlZmYxMWFlIn0%3D<\\/span>\\\"\\n  <\\/samp>]\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-127946776\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_server\":\"<pre class=sf-dump id=sf-dump-105037353 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:34<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>DOCUMENT_ROOT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"30 characters\\\">C:\\\\xampp\\\\htdocs\\\\unipice\\\\public<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REMOTE_ADDR<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"9 characters\\\">127.0.0.1<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REMOTE_PORT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"5 characters\\\">50442<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_SOFTWARE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"29 characters\\\">PHP 7.4.16 Development Server<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_PROTOCOL<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"8 characters\\\">HTTP\\/1.1<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_NAME<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"9 characters\\\">127.0.0.1<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_PORT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">8000<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REQUEST_URI<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"24 characters\\\">\\/admin\\/ajax\\/upload\\/image<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REQUEST_METHOD<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">POST<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SCRIPT_NAME<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"10 characters\\\">\\/index.php<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SCRIPT_FILENAME<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">C:\\\\xampp\\\\htdocs\\\\unipice\\\\public\\\\index.php<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>PATH_INFO<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"24 characters\\\">\\/admin\\/ajax\\/upload\\/image<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>PHP_SELF<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"34 characters\\\">\\/index.php\\/admin\\/ajax\\/upload\\/image<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_HOST<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"14 characters\\\">127.0.0.1:8000<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_CONNECTION<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"10 characters\\\">keep-alive<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>CONTENT_LENGTH<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">475655<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_CONTENT_LENGTH<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">475655<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_CH_UA<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"64 characters\\\">&quot; Not;A Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;91&quot;, &quot;Chromium&quot;;v=&quot;91&quot;<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_X_CSRF_TOKEN<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">******<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_CH_UA_MOBILE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"2 characters\\\">?0<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_USER_AGENT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"115 characters\\\">Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/91.0.4472.124 Safari\\/537.36<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>CONTENT_TYPE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"68 characters\\\">multipart\\/form-data; boundary=----WebKitFormBoundaryL0bBfXfhQUr4eaqo<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_CONTENT_TYPE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"68 characters\\\">multipart\\/form-data; boundary=----WebKitFormBoundaryL0bBfXfhQUr4eaqo<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ACCEPT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"3 characters\\\">*\\/*<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ORIGIN<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"21 characters\\\">http:\\/\\/127.0.0.1:8000<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_FETCH_SITE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"11 characters\\\">same-origin<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_FETCH_MODE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">cors<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_FETCH_DEST<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"5 characters\\\">empty<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_REFERER<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"58 characters\\\">http:\\/\\/127.0.0.1:8000\\/admin\\/blog-post\\/post_category\\/create<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ACCEPT_ENCODING<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"17 characters\\\">gzip, deflate, br<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ACCEPT_LANGUAGE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"23 characters\\\">en-US,en;q=0.9,vi;q=0.8<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_COOKIE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"689 characters\\\">XSRF-TOKEN=eyJpdiI6IkI3UFd6MldsZ3RaZWF0RWJZRFl0b2c9PSIsInZhbHVlIjoiQ2pNb0svVXU4d3hUSmIrTXBnU0c4OC9RVHNMTEd1TnRjN2wveGRjQTBRcWM3RUh4Q2tldk9DeDc0TTZmT29EYVk0dzlYQUxudTluUU9ad0NaeUducEVQd2FZVnpya1h5ektLWmN5TnkxOVI3aDd6LzVlaXQ1TFplSlBQVzJCUXgiLCJtYWMiOiI4MzM3ODZmMmQ1N2Q3MjJiNDczODQ0ZjFkNzgwNmY5ZDVjNTI2NjQxM2M2OTE3ZmUyMzE3ZmU0ZTc4YWJkNDE4In0%3D; unimind_session=eyJpdiI6Ik1IQUpLOW41aXc1K0l3UllPSVA1UVE9PSIsInZhbHVlIjoicDlLUTh4V2F2d2xBdlFXbXpjVlNSQ2YrRlVlVzBFckFMWmVuV3hPNEM4amZqL0kyTnk3ZWdOVlFPOWw1eEp0alRmQXRxbVVSeTNHQWxMUzhKcWhZQVJnK2tDeHM0UjZkRE1kZks0UTU4cWppWi9HN0U5RHJIY3lKY0pTSEZjVHkiLCJtYWMiOiI0ZjkzN2RlOThlOTY1ZTRkYWIxZTA2YzA1MmZlYmZiZWRiODg2OWNiY2E5MjYxYjZlODllZTM1NjBlZmYxMWFlIn0%3D<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REQUEST_TIME_FLOAT<\\/span>\\\" => <span class=sf-dump-num>1625711763.1721<\\/span>\\n  \\\"<span class=sf-dump-key>REQUEST_TIME<\\/span>\\\" => <span class=sf-dump-num>1625711763<\\/span>\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-105037353\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_cookies\":\"<pre class=sf-dump id=sf-dump-550443753 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:2<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>XSRF-TOKEN<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">tn3YzCIWQpUBEVUrL08HcgNDLlNCQtcjnctxkH9m<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>unimind_session<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">PK8BG2JeeHWAauP97JvverZELIbEI3DvDmS3giyB<\\/span>\\\"\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-550443753\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"response_headers\":\"<pre class=sf-dump id=sf-dump-1273869325 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:5<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>content-type<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"24 characters\\\">text\\/html; charset=UTF-8<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>cache-control<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"17 characters\\\">no-cache, private<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>date<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"29 characters\\\">Thu, 08 Jul 2021 02:36:03 GMT<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>set-cookie<\\/span>\\\" => <span class=sf-dump-note>array:2<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"416 characters\\\">XSRF-TOKEN=eyJpdiI6IkJ6VVhrWUZ0V2QzUGdIa2VmZXladXc9PSIsInZhbHVlIjoiUU5MTlMxTE1IZmgxY1cxMkI0d0V4Qko3SWc2OUt0QXNxSlRQd1BaOHk2OG9MQ3YvdDNRZmtCc1NYWGc5L2xVYnlabkxlWUlZRnNqSzk5WFBqekIwMEVKbHF4S0ZNSkhreTFXb3I3SW1HVFV2dm9pRlY1dTRjcnZKdlZZSnVUbHMiLCJtYWMiOiJmZjM4OTgyYzM1YTc4NjU2MTExMDQ1MjdhNGY4MjUzOGM4YWU3NGVmZjg0NzYwMTkyNTAwODNjMDcxYTMzM2U2In0%3D; expires=Thu, 08-Jul-2021 04:36:03 GMT; Max-Age=7200; path=\\/; samesite=lax<\\/span>\\\"\\n    <span class=sf-dump-index>1<\\/span> => \\\"<span class=sf-dump-str title=\\\"431 characters\\\">unimind_session=eyJpdiI6IjY4Ulg1R2YzMHhrZGVlcHV0bEpiOGc9PSIsInZhbHVlIjoiSzYxOXJoWjVXYzJsaDlCTThROEREbm1wRTNxT0RGdEZzWmZJNTR1TEtHK1Zucml0SFNoNUdFczZLWUY3cURIT2MyeHZMaWtCaDBBaitWNEo2VThvWVZHMUZMS3luU2NlUy9VaVVXcmdjcis2YlRZYTh5Y2tQMkxkY21oczFqVGQiLCJtYWMiOiJhMjFhODI2MzYyYmM1MzI3NTZiOTk4ODFkZTk3ZmRlZjEyMWIzZWU4ZDYyZWJhZmI5MDhmMGNiM2Q5OTcwYTc4In0%3D; expires=Thu, 08-Jul-2021 04:36:03 GMT; Max-Age=7200; path=\\/; httponly; samesite=lax<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>Set-Cookie<\\/span>\\\" => <span class=sf-dump-note>array:2<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"388 characters\\\">XSRF-TOKEN=eyJpdiI6IkJ6VVhrWUZ0V2QzUGdIa2VmZXladXc9PSIsInZhbHVlIjoiUU5MTlMxTE1IZmgxY1cxMkI0d0V4Qko3SWc2OUt0QXNxSlRQd1BaOHk2OG9MQ3YvdDNRZmtCc1NYWGc5L2xVYnlabkxlWUlZRnNqSzk5WFBqekIwMEVKbHF4S0ZNSkhreTFXb3I3SW1HVFV2dm9pRlY1dTRjcnZKdlZZSnVUbHMiLCJtYWMiOiJmZjM4OTgyYzM1YTc4NjU2MTExMDQ1MjdhNGY4MjUzOGM4YWU3NGVmZjg0NzYwMTkyNTAwODNjMDcxYTMzM2U2In0%3D; expires=Thu, 08-Jul-2021 04:36:03 GMT; path=\\/<\\/span>\\\"\\n    <span class=sf-dump-index>1<\\/span> => \\\"<span class=sf-dump-str title=\\\"403 characters\\\">unimind_session=eyJpdiI6IjY4Ulg1R2YzMHhrZGVlcHV0bEpiOGc9PSIsInZhbHVlIjoiSzYxOXJoWjVXYzJsaDlCTThROEREbm1wRTNxT0RGdEZzWmZJNTR1TEtHK1Zucml0SFNoNUdFczZLWUY3cURIT2MyeHZMaWtCaDBBaitWNEo2VThvWVZHMUZMS3luU2NlUy9VaVVXcmdjcis2YlRZYTh5Y2tQMkxkY21oczFqVGQiLCJtYWMiOiJhMjFhODI2MzYyYmM1MzI3NTZiOTk4ODFkZTk3ZmRlZjEyMWIzZWU4ZDYyZWJhZmI5MDhmMGNiM2Q5OTcwYTc4In0%3D; expires=Thu, 08-Jul-2021 04:36:03 GMT; path=\\/; httponly<\\/span>\\\"\\n  <\\/samp>]\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-1273869325\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"session_attributes\":\"<pre class=sf-dump id=sf-dump-22284954 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:5<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>_token<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">tn3YzCIWQpUBEVUrL08HcgNDLlNCQtcjnctxkH9m<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>_previous<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    \\\"<span class=sf-dump-key>url<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"58 characters\\\">http:\\/\\/127.0.0.1:8000\\/admin\\/blog-post\\/post_category\\/create<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>_flash<\\/span>\\\" => <span class=sf-dump-note>array:2<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    \\\"<span class=sf-dump-key>old<\\/span>\\\" => []\\n    \\\"<span class=sf-dump-key>new<\\/span>\\\" => []\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>login_admins_59ba36addc2b2f9401580f014c7f58ea4e30989d<\\/span>\\\" => <span class=sf-dump-num>1<\\/span>\\n  \\\"<span class=sf-dump-key>PHPDEBUGBAR_STACK_DATA<\\/span>\\\" => []\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-22284954\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\"}}, \"Xb82773c8e827f6ddae9559ebc1dc085e\");\r\n\r\n</script>', NULL, NULL, '2021-07-07 19:41:14', NULL),
+(2, 'Bột nghệ', 'bot-nghe', 'brvn2-1625714313.jpg', 'Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ', 'Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ', 'Bột nghệ', NULL, 'Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ Bột nghệ', NULL, 1, 0, 0, 'monkey-1625714308.jpg', NULL, NULL, '2021-07-07 20:18:33', NULL),
+(3, 'Bột nghệ 00222', 'bot-nghe-00222', 'brvn-1625714442.jpg', 'Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002', 'Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002', 'Bột nghệ 00222', NULL, 'Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002 Bột nghệ 002', NULL, 1, 2, 0, 'monkey-1625714437.jpg', NULL, NULL, '2021-07-07 20:20:42', '2021-07-07 20:30:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_product`
+--
+
+CREATE TABLE `uni_product` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lotproduct_id` int(11) DEFAULT NULL,
+  `qty` int(11) DEFAULT 0,
+  `price` bigint(20) DEFAULT NULL,
+  `price_sale` bigint(20) DEFAULT NULL,
+  `price_sale_store` bigint(20) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `is_hot` tinyint(4) NOT NULL DEFAULT 0,
+  `is_feauture` tinyint(4) NOT NULL DEFAULT 0,
+  `order` int(11) DEFAULT NULL,
+  `thumbnail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `box_thumnail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `album` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` timestamp NULL DEFAULT NULL,
+  `updated_by` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_product`
+--
+
+INSERT INTO `uni_product` (`id`, `name`, `slug`, `desscription`, `meta_desscription`, `meta_title`, `meta_keyword`, `content`, `lotproduct_id`, `qty`, `price`, `price_sale`, `price_sale_store`, `status`, `is_hot`, `is_feauture`, `order`, `thumbnail`, `box_thumnail`, `album`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(3, 'Bột gừng', 'bot-gung', 'In addition to conditional statements, Blade provides simple directives for working with PHP\'s loop structures. Again, each of these directives functions identically to their PHP counterparts:', 'In addition to conditional statements, Blade provides simple directives for working with PHP\'s loop structures. Again, each of these directives functions identically to their PHP counterparts:', 'Bột gừng', NULL, 'In addition to conditional statements, Blade provides simple directives for working with PHP\'s loop structures. Again, each of these directives functions identically to their PHP counterparts:In addition to conditional statements, Blade provides simple directives for working with PHP\'s loop structures. Again, each of these directives functions identically to their PHP counterparts:', NULL, 1600, 600, 700, 650, 1, 1, 1, 0, NULL, NULL, NULL, NULL, NULL, '2021-07-05 19:17:03', '2021-07-10 03:41:00'),
+(4, 'Bột ớt', 'bot-ot', 'If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.', 'If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.', 'Bột ớt', NULL, 'If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.', 4, 0, 550, 600, 650, 0, 0, 0, 0, 'brvn3-1625538446.jpg<link rel=\'stylesheet\' type=\'text/css\' property=\'stylesheet\' href=\'//127.0.0.1:8000/_debugbar/assets/stylesheets?v=1625212637&theme=auto\'><script type=\'text/javascript\' src=\'//127.0.0.1:8000/_debugbar/assets/javascript?v=1625212637\'></script><script type=\"text/javascript\">jQuery.noConflict(true);</script>\r\n<script> Sfdump = window.Sfdump || (function (doc) { var refStyle = doc.createElement(\'style\'), rxEsc = /([.*+?^${}()|\\[\\]\\/\\\\])/g, idRx = /\\bsf-dump-\\d+-ref[012]\\w+\\b/, keyHint = 0 <= navigator.platform.toUpperCase().indexOf(\'MAC\') ? \'Cmd\' : \'Ctrl\', addEventListener = function (e, n, cb) { e.addEventListener(n, cb, false); }; refStyle.innerHTML = \'.phpdebugbar pre.sf-dump .sf-dump-compact, .sf-dump-str-collapse .sf-dump-str-collapse, .sf-dump-str-expand .sf-dump-str-expand { display: none; }\'; (doc.documentElement.firstElementChild || doc.documentElement.children[0]).appendChild(refStyle); refStyle = doc.createElement(\'style\'); (doc.documentElement.firstElementChild || doc.documentElement.children[0]).appendChild(refStyle); if (!doc.addEventListener) { addEventListener = function (element, eventName, callback) { element.attachEvent(\'on\' + eventName, function (e) { e.preventDefault = function () {e.returnValue = false;}; e.target = e.srcElement; callback(e); }); }; } function toggle(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className, arrow, newClass; if (/\\bsf-dump-compact\\b/.test(oldClass)) { arrow = \'▼\'; newClass = \'sf-dump-expanded\'; } else if (/\\bsf-dump-expanded\\b/.test(oldClass)) { arrow = \'▶\'; newClass = \'sf-dump-compact\'; } else { return false; } if (doc.createEvent && s.dispatchEvent) { var event = doc.createEvent(\'Event\'); event.initEvent(\'sf-dump-expanded\' === newClass ? \'sfbeforedumpexpand\' : \'sfbeforedumpcollapse\', true, false); s.dispatchEvent(event); } a.lastChild.innerHTML = arrow; s.className = s.className.replace(/\\bsf-dump-(compact|expanded)\\b/, newClass); if (recursive) { try { a = s.querySelectorAll(\'.\'+oldClass); for (s = 0; s < a.length; ++s) { if (-1 == a[s].className.indexOf(newClass)) { a[s].className = newClass; a[s].previousSibling.lastChild.innerHTML = arrow; } } } catch (e) { } } return true; }; function collapse(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className; if (/\\bsf-dump-expanded\\b/.test(oldClass)) { toggle(a, recursive); return true; } return false; }; function expand(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className; if (/\\bsf-dump-compact\\b/.test(oldClass)) { toggle(a, recursive); return true; } return false; }; function collapseAll(root) { var a = root.querySelector(\'a.sf-dump-toggle\'); if (a) { collapse(a, true); expand(a); return true; } return false; } function reveal(node) { var previous, parents = []; while ((node = node.parentNode || {}) && (previous = node.previousSibling) && \'A\' === previous.tagName) { parents.push(previous); } if (0 !== parents.length) { parents.forEach(function (parent) { expand(parent); }); return true; } return false; } function highlight(root, activeNode, nodes) { resetHighlightedNodes(root); Array.from(nodes||[]).forEach(function (node) { if (!/\\bsf-dump-highlight\\b/.test(node.className)) { node.className = node.className + \' sf-dump-highlight\'; } }); if (!/\\bsf-dump-highlight-active\\b/.test(activeNode.className)) { activeNode.className = activeNode.className + \' sf-dump-highlight-active\'; } } function resetHighlightedNodes(root) { Array.from(root.querySelectorAll(\'.sf-dump-str, .sf-dump-key, .sf-dump-public, .sf-dump-protected, .sf-dump-private\')).forEach(function (strNode) { strNode.className = strNode.className.replace(/\\bsf-dump-highlight\\b/, \'\'); strNode.className = strNode.className.replace(/\\bsf-dump-highlight-active\\b/, \'\'); }); } return function (root, x) { root = doc.getElementById(root); var indentRx = new RegExp(\'^(\'+(root.getAttribute(\'data-indent-pad\') || \' \').replace(rxEsc, \'\\\\$1\')+\')+\', \'m\'), options = {\"maxDepth\":1,\"maxStringLength\":160,\"fileLinkFormat\":false}, elt = root.getElementsByTagName(\'A\'), len = elt.length, i = 0, s, h, t = []; while (i < len) t.push(elt[i++]); for (i in x) { options[i] = x[i]; } function a(e, f) { addEventListener(root, e, function (e, n) { if (\'A\' == e.target.tagName) { f(e.target, e); } else if (\'A\' == e.target.parentNode.tagName) { f(e.target.parentNode, e); } else { n = /\\bsf-dump-ellipsis\\b/.test(e.target.className) ? e.target.parentNode : e.target; if ((n = n.nextElementSibling) && \'A\' == n.tagName) { if (!/\\bsf-dump-toggle\\b/.test(n.className)) { n = n.nextElementSibling || n; } f(n, e, true); } } }); }; function isCtrlKey(e) { return e.ctrlKey || e.metaKey; } function xpathString(str) { var parts = str.match(/[^\'\"]+|[\'\"]/g).map(function (part) { if (\"\'\" == part) { return \'\"\\\'\"\'; } if (\'\"\' == part) { return \"\'\\\"\'\"; } return \"\'\" + part + \"\'\"; }); return \"concat(\" + parts.join(\",\") + \", \'\')\"; } function xpathHasClass(className) { return \"contains(concat(\' \', normalize-space(@class), \' \'), \' \" + className +\" \')\"; } addEventListener(root, \'mouseover\', function (e) { if (\'\' != refStyle.innerHTML) { refStyle.innerHTML = \'\'; } }); a(\'mouseover\', function (a, e, c) { if (c) { e.target.style.cursor = \"pointer\"; } else if (a = idRx.exec(a.className)) { try { refStyle.innerHTML = \'.phpdebugbar pre.sf-dump .\'+a[0]+\'{background-color: #B729D9; color: #FFF !important; border-radius: 2px}\'; } catch (e) { } } }); a(\'click\', function (a, e, c) { if (/\\bsf-dump-toggle\\b/.test(a.className)) { e.preventDefault(); if (!toggle(a, isCtrlKey(e))) { var r = doc.getElementById(a.getAttribute(\'href\').substr(1)), s = r.previousSibling, f = r.parentNode, t = a.parentNode; t.replaceChild(r, a); f.replaceChild(a, s); t.insertBefore(s, r); f = f.firstChild.nodeValue.match(indentRx); t = t.firstChild.nodeValue.match(indentRx); if (f && t && f[0] !== t[0]) { r.innerHTML = r.innerHTML.replace(new RegExp(\'^\'+f[0].replace(rxEsc, \'\\\\$1\'), \'mg\'), t[0]); } if (/\\bsf-dump-compact\\b/.test(r.className)) { toggle(s, isCtrlKey(e)); } } if (c) { } else if (doc.getSelection) { try { doc.getSelection().removeAllRanges(); } catch (e) { doc.getSelection().empty(); } } else { doc.selection.empty(); } } else if (/\\bsf-dump-str-toggle\\b/.test(a.className)) { e.preventDefault(); e = a.parentNode.parentNode; e.className = e.className.replace(/\\bsf-dump-str-(expand|collapse)\\b/, a.parentNode.className); } }); elt = root.getElementsByTagName(\'SAMP\'); len = elt.length; i = 0; while (i < len) t.push(elt[i++]); len = t.length; for (i = 0; i < len; ++i) { elt = t[i]; if (\'SAMP\' == elt.tagName) { a = elt.previousSibling || {}; if (\'A\' != a.tagName) { a = doc.createElement(\'A\'); a.className = \'sf-dump-ref\'; elt.parentNode.insertBefore(a, elt); } else { a.innerHTML += \' \'; } a.title = (a.title ? a.title+\'\\n[\' : \'[\')+keyHint+\'+click] Expand all children\'; a.innerHTML += elt.className == \'sf-dump-compact\' ? \'<span>▶</span>\' : \'<span>▼</span>\'; a.className += \' sf-dump-toggle\'; x = 1; if (\'sf-dump\' != elt.parentNode.className) { x += elt.parentNode.getAttribute(\'data-depth\')/1; } } else if (/\\bsf-dump-ref\\b/.test(elt.className) && (a = elt.getAttribute(\'href\'))) { a = a.substr(1); elt.className += \' \'+a; if (/[\\[{]$/.test(elt.previousSibling.nodeValue)) { a = a != elt.nextSibling.id && doc.getElementById(a); try { s = a.nextSibling; elt.appendChild(a); s.parentNode.insertBefore(a, s); if (/^[@#]/.test(elt.innerHTML)) { elt.innerHTML += \' <span>▶</span>\'; } else { elt.innerHTML = \'<span>▶</span>\'; elt.className = \'sf-dump-ref\'; } elt.className += \' sf-dump-toggle\'; } catch (e) { if (\'&\' == elt.innerHTML.charAt(0)) { elt.innerHTML = \'…\'; elt.className = \'sf-dump-ref\'; } } } } } if (doc.evaluate && Array.from && root.children.length > 1) { root.setAttribute(\'tabindex\', 0); SearchState = function () { this.nodes = []; this.idx = 0; }; SearchState.prototype = { next: function () { if (this.isEmpty()) { return this.current(); } this.idx = this.idx < (this.nodes.length - 1) ? this.idx + 1 : 0; return this.current(); }, previous: function () { if (this.isEmpty()) { return this.current(); } this.idx = this.idx > 0 ? this.idx - 1 : (this.nodes.length - 1); return this.current(); }, isEmpty: function () { return 0 === this.count(); }, current: function () { if (this.isEmpty()) { return null; } return this.nodes[this.idx]; }, reset: function () { this.nodes = []; this.idx = 0; }, count: function () { return this.nodes.length; }, }; function showCurrent(state) { var currentNode = state.current(), currentRect, searchRect; if (currentNode) { reveal(currentNode); highlight(root, currentNode, state.nodes); if (\'scrollIntoView\' in currentNode) { currentNode.scrollIntoView(true); currentRect = currentNode.getBoundingClientRect(); searchRect = search.getBoundingClientRect(); if (currentRect.top < (searchRect.top + searchRect.height)) { window.scrollBy(0, -(searchRect.top + searchRect.height + 5)); } } } counter.textContent = (state.isEmpty() ? 0 : state.idx + 1) + \' of \' + state.count(); } var search = doc.createElement(\'div\'); search.className = \'sf-dump-search-wrapper sf-dump-search-hidden\'; search.innerHTML = \' <input type=\"text\" class=\"sf-dump-search-input\"> <span class=\"sf-dump-search-count\">0 of 0<\\/span> <button type=\"button\" class=\"sf-dump-search-input-previous\" tabindex=\"-1\"> <svg viewBox=\"0 0 1792 1792\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1683 1331l-166 165q-19 19-45 19t-45-19L896 965l-531 531q-19 19-45 19t-45-19l-166-165q-19-19-19-45.5t19-45.5l742-741q19-19 45-19t45 19l742 741q19 19 19 45.5t-19 45.5z\"\\/><\\/svg> <\\/button> <button type=\"button\" class=\"sf-dump-search-input-next\" tabindex=\"-1\"> <svg viewBox=\"0 0 1792 1792\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1683 808l-742 741q-19 19-45 19t-45-19L109 808q-19-19-19-45.5t19-45.5l166-165q19-19 45-19t45 19l531 531 531-531q19-19 45-19t45 19l166 165q19 19 19 45.5t-19 45.5z\"\\/><\\/svg> <\\/button> \'; root.insertBefore(search, root.firstChild); var state = new SearchState(); var searchInput = search.querySelector(\'.sf-dump-search-input\'); var counter = search.querySelector(\'.sf-dump-search-count\'); var searchInputTimer = 0; var previousSearchQuery = \'\'; addEventListener(searchInput, \'keyup\', function (e) { var searchQuery = e.target.value; /* Don\'t perform anything if the pressed key didn\'t change the query */ if (searchQuery === previousSearchQuery) { return; } previousSearchQuery = searchQuery; clearTimeout(searchInputTimer); searchInputTimer = setTimeout(function () { state.reset(); collapseAll(root); resetHighlightedNodes(root); if (\'\' === searchQuery) { counter.textContent = \'0 of 0\'; return; } var classMatches = [ \"sf-dump-str\", \"sf-dump-key\", \"sf-dump-public\", \"sf-dump-protected\", \"sf-dump-private\", ].map(xpathHasClass).join(\' or \'); var xpathResult = doc.evaluate(\'.//span[\' + classMatches + \'][contains(translate(child::text(), \' + xpathString(searchQuery.toUpperCase()) + \', \' + xpathString(searchQuery.toLowerCase()) + \'), \' + xpathString(searchQuery.toLowerCase()) + \')]\', root, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null); while (node = xpathResult.iterateNext()) state.nodes.push(node); showCurrent(state); }, 400); }); Array.from(search.querySelectorAll(\'.sf-dump-search-input-next, .sf-dump-search-input-previous\')).forEach(function (btn) { addEventListener(btn, \'click\', function (e) { e.preventDefault(); -1 !== e.target.className.indexOf(\'next\') ? state.next() : state.previous(); searchInput.focus(); collapseAll(root); showCurrent(state); }) }); addEventListener(root, \'keydown\', function (e) { var isSearchActive = !/\\bsf-dump-search-hidden\\b/.test(search.className); if ((114 === e.keyCode && !isSearchActive) || (isCtrlKey(e) && 70 === e.keyCode)) { /* F3 or CMD/CTRL + F */ if (70 === e.keyCode && document.activeElement === searchInput) { /* * If CMD/CTRL + F is hit while having focus on search input, * the user probably meant to trigger browser search instead. * Let the browser execute its behavior: */ return; } e.preventDefault(); search.className = search.className.replace(/\\bsf-dump-search-hidden\\b/, \'\'); searchInput.focus(); } else if (isSearchActive) { if (27 === e.keyCode) { /* ESC key */ search.className += \' sf-dump-search-hidden\'; e.preventDefault(); resetHighlightedNodes(root); searchInput.value = \'\'; } else if ( (isCtrlKey(e) && 71 === e.keyCode) /* CMD/CTRL + G */ || 13 === e.keyCode /* Enter */ || 114 === e.keyCode /* F3 */ ) { e.preventDefault(); e.shiftKey ? state.previous() : state.next(); collapseAll(root); showCurrent(state); } } }); } if (0 >= options.maxStringLength) { return; } try { elt = root.querySelectorAll(\'.sf-dump-str\'); len = elt.length; i = 0; t = []; while (i < len) t.push(elt[i++]); len = t.length; for (i = 0; i < len; ++i) { elt = t[i]; s = elt.innerText || elt.textContent; x = s.length - options.maxStringLength; if (0 < x) { h = elt.innerHTML; elt[elt.innerText ? \'innerText\' : \'textContent\'] = s.substring(0, options.maxStringLength); elt.className += \' sf-dump-str-collapse\'; elt.innerHTML = \'<span class=sf-dump-str-collapse>\'+h+\'<a class=\"sf-dump-ref sf-dump-str-toggle\" title=\"Collapse\"> ◀</a></span>\'+ \'<span class=sf-dump-str-expand>\'+elt.innerHTML+\'<a class=\"sf-dump-ref sf-dump-str-toggle\" title=\"\'+x+\' remaining characters\"> ▶</a></span>\'; } } } catch (e) { } }; })(document); </script><style> .phpdebugbar pre.sf-dump { display: block; white-space: pre; padding: 5px; overflow: initial !important; } .phpdebugbar pre.sf-dump:after { content: \"\"; visibility: hidden; display: block; height: 0; clear: both; } .phpdebugbar pre.sf-dump span { display: inline; } .phpdebugbar pre.sf-dump a { text-decoration: none; cursor: pointer; border: 0; outline: none; color: inherit; } .phpdebugbar pre.sf-dump img { max-width: 50em; max-height: 50em; margin: .5em 0 0 0; padding: 0; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAHUlEQVQY02O8zAABilCaiQEN0EeA8QuUcX9g3QEAAjcC5piyhyEAAAAASUVORK5CYII=) #D3D3D3; } .phpdebugbar pre.sf-dump .sf-dump-ellipsis { display: inline-block; overflow: visible; text-overflow: ellipsis; max-width: 5em; white-space: nowrap; overflow: hidden; vertical-align: top; } .phpdebugbar pre.sf-dump .sf-dump-ellipsis+.sf-dump-ellipsis { max-width: none; } .phpdebugbar pre.sf-dump code { display:inline; padding:0; background:none; } .sf-dump-public.sf-dump-highlight, .sf-dump-protected.sf-dump-highlight, .sf-dump-private.sf-dump-highlight, .sf-dump-str.sf-dump-highlight, .sf-dump-key.sf-dump-highlight { background: rgba(111, 172, 204, 0.3); border: 1px solid #7DA0B1; border-radius: 3px; } .sf-dump-public.sf-dump-highlight-active, .sf-dump-protected.sf-dump-highlight-active, .sf-dump-private.sf-dump-highlight-active, .sf-dump-str.sf-dump-highlight-active, .sf-dump-key.sf-dump-highlight-active { background: rgba(253, 175, 0, 0.4); border: 1px solid #ffa500; border-radius: 3px; } .phpdebugbar pre.sf-dump .sf-dump-search-hidden { display: none !important; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper { font-size: 0; white-space: nowrap; margin-bottom: 5px; display: flex; position: -webkit-sticky; position: sticky; top: 5px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > * { vertical-align: top; box-sizing: border-box; height: 21px; font-weight: normal; border-radius: 0; background: #FFF; color: #757575; border: 1px solid #BBB; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > input.sf-dump-search-input { padding: 3px; height: 21px; font-size: 12px; border-right: none; border-top-left-radius: 3px; border-bottom-left-radius: 3px; color: #000; min-width: 15px; width: 100%; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next, .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-previous { background: #F2F2F2; outline: none; border-left: none; font-size: 0; line-height: 0; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next { border-top-right-radius: 3px; border-bottom-right-radius: 3px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next > svg, .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-previous > svg { pointer-events: none; width: 12px; height: 12px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-count { display: inline-block; padding: 0 5px; margin: 0; border-left: none; line-height: 21px; font-size: 12px; }.phpdebugbar pre.sf-dump, .phpdebugbar pre.sf-dump .sf-dump-default{word-wrap: break-word; white-space: pre-wrap; word-break: normal}.phpdebugbar pre.sf-dump .sf-dump-num{font-weight:bold; color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-const{font-weight:bold}.phpdebugbar pre.sf-dump .sf-dump-str{font-weight:bold; color:#3A9B26}.phpdebugbar pre.sf-dump .sf-dump-note{color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-ref{color:#7B7B7B}.phpdebugbar pre.sf-dump .sf-dump-public{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-protected{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-private{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-meta{color:#B729D9}.phpdebugbar pre.sf-dump .sf-dump-key{color:#3A9B26}.phpdebugbar pre.sf-dump .sf-dump-index{color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-ellipsis{color:#A0A000}.phpdebugbar pre.sf-dump .sf-dump-ns{user-select:none;}.phpdebugbar pre.sf-dump .sf-dump-ellipsis-note{color:#1299DA}</style>\r\n<script type=\"text/javascript\">\r\nvar phpdebugbar = new PhpDebugBar.DebugBar();\r\nphpdebugbar.addIndicator(\"php_version\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"code\",\"tooltip\":\"PHP Version\"}), \"right\");\r\nphpdebugbar.addTab(\"messages\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"list-alt\",\"title\":\"Messages\", \"widget\": new PhpDebugBar.Widgets.MessagesWidget()}));\r\nphpdebugbar.addIndicator(\"time\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"clock-o\",\"tooltip\":\"Request Duration\"}), \"right\");\r\nphpdebugbar.addTab(\"timeline\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"tasks\",\"title\":\"Timeline\", \"widget\": new PhpDebugBar.Widgets.TimelineWidget()}));\r\nphpdebugbar.addIndicator(\"memory\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"cogs\",\"tooltip\":\"Memory Usage\"}), \"right\");\r\nphpdebugbar.addTab(\"exceptions\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"bug\",\"title\":\"Exceptions\", \"widget\": new PhpDebugBar.Widgets.ExceptionsWidget()}));\r\nphpdebugbar.addTab(\"views\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"leaf\",\"title\":\"Views\", \"widget\": new PhpDebugBar.Widgets.TemplatesWidget()}));\r\nphpdebugbar.addTab(\"route\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"share\",\"title\":\"Route\", \"widget\": new PhpDebugBar.Widgets.VariableListWidget()}));\r\nphpdebugbar.addIndicator(\"currentroute\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"share\",\"tooltip\":\"Route\"}), \"right\");\r\nphpdebugbar.addTab(\"queries\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"database\",\"title\":\"Queries\", \"widget\": new PhpDebugBar.Widgets.LaravelSQLQueriesWidget()}));\r\nphpdebugbar.addTab(\"models\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"cubes\",\"title\":\"Models\", \"widget\": new PhpDebugBar.Widgets.HtmlVariableListWidget()}));\r\nphpdebugbar.addTab(\"emails\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"inbox\",\"title\":\"Mails\", \"widget\": new PhpDebugBar.Widgets.MailsWidget()}));\r\nphpdebugbar.addTab(\"gate\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"list-alt\",\"title\":\"Gate\", \"widget\": new PhpDebugBar.Widgets.MessagesWidget()}));\r\nphpdebugbar.addTab(\"session\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"archive\",\"title\":\"Session\", \"widget\": new PhpDebugBar.Widgets.VariableListWidget()}));\r\nphpdebugbar.addTab(\"request\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"tags\",\"title\":\"Request\", \"widget\": new PhpDebugBar.Widgets.HtmlVariableListWidget()}));\r\nphpdebugbar.setDataMap({\r\n\"php_version\": [\"php.version\", ],\r\n\"messages\": [\"messages.messages\", []],\r\n\"messages:badge\": [\"messages.count\", null],\r\n\"time\": [\"time.duration_str\", \'0ms\'],\r\n\"timeline\": [\"time\", {}],\r\n\"memory\": [\"memory.peak_usage_str\", \'0B\'],\r\n\"exceptions\": [\"exceptions.exceptions\", []],\r\n\"exceptions:badge\": [\"exceptions.count\", null],\r\n\"views\": [\"views\", []],\r\n\"views:badge\": [\"views.nb_templates\", 0],\r\n\"route\": [\"route\", {}],\r\n\"currentroute\": [\"route.uri\", ],\r\n\"queries\": [\"queries\", []],\r\n\"queries:badge\": [\"queries.nb_statements\", 0],\r\n\"models\": [\"models.data\", {}],\r\n\"models:badge\": [\"models.count\", 0],\r\n\"emails\": [\"swiftmailer_mails.mails\", []],\r\n\"emails:badge\": [\"swiftmailer_mails.count\", null],\r\n\"gate\": [\"gate.messages\", []],\r\n\"gate:badge\": [\"gate.count\", null],\r\n\"session\": [\"session\", {}],\r\n\"request\": [\"request\", {}]\r\n});\r\nphpdebugbar.restoreState();\r\nphpdebugbar.ajaxHandler = new PhpDebugBar.AjaxHandler(phpdebugbar, undefined, true);\r\nphpdebugbar.ajaxHandler.bindToFetch();\r\nphpdebugbar.ajaxHandler.bindToXHR();\r\nphpdebugbar.setOpenHandler(new PhpDebugBar.OpenHandler({\"url\":\"http:\\/\\/127.0.0.1:8000\\/_debugbar\\/open\"}));\r\nphpdebugbar.addDataSet({\"__meta\":{\"id\":\"Xfb3a7983f492eb451d3c5ce873d82629\",\"datetime\":\"2021-07-06 02:27:26\",\"utime\":1625538446.918831,\"method\":\"POST\",\"uri\":\"\\/admin\\/ajax\\/upload\\/image\",\"ip\":\"127.0.0.1\"},\"php\":{\"version\":\"7.4.16\",\"interface\":\"cli-server\"},\"messages\":{\"count\":0,\"messages\":[]},\"time\":{\"start\":1625538446.730654,\"end\":1625538446.918856,\"duration\":0.188201904296875,\"duration_str\":\"188ms\",\"measures\":[{\"label\":\"Booting\",\"start\":1625538446.730654,\"relative_start\":0,\"end\":1625538446.87246,\"relative_end\":1625538446.87246,\"duration\":0.14180588722229004,\"duration_str\":\"142ms\",\"params\":[],\"collector\":null},{\"label\":\"Application\",\"start\":1625538446.874518,\"relative_start\":0.14386391639709473,\"end\":1625538446.91886,\"relative_end\":4.0531158447265625e-6,\"duration\":0.044342041015625,\"duration_str\":\"44.34ms\",\"params\":[],\"collector\":null}]},\"memory\":{\"peak_usage\":21772920,\"peak_usage_str\":\"21MB\"},\"exceptions\":{\"count\":0,\"exceptions\":[]},\"views\":{\"nb_templates\":0,\"templates\":[]},\"route\":{\"uri\":\"POST admin\\/ajax\\/upload\\/image\",\"middleware\":\"web, checkLoginAdmin\",\"controller\":\"Modules\\\\Admin\\\\Http\\\\Controllers\\\\Ajax\\\\AdminAjaxUploadImageController@processUpload\",\"namespace\":\"Modules\\\\Admin\\\\Http\\\\Controllers\\\\Ajax\",\"prefix\":\"admin\\/ajax\",\"where\":[],\"as\":\"post_ajax_admin.uploads\",\"file\":\"\\\\Modules\\\\Admin\\\\Http\\\\Controllers\\\\Ajax\\\\AdminAjaxUploadImageController.php:14-40\"},\"queries\":{\"nb_statements\":1,\"nb_failed_statements\":0,\"accumulated_duration\":0.00035,\"accumulated_duration_str\":\"350\\u03bcs\",\"statements\":[{\"sql\":\"select * from `admins` where `id` = 1 limit 1\",\"type\":\"query\",\"params\":[],\"bindings\":[\"1\"],\"hints\":null,\"show_copy\":false,\"backtrace\":[{\"index\":15,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Auth\\\\EloquentUserProvider.php\",\"line\":52},{\"index\":16,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Auth\\\\SessionGuard.php\",\"line\":141},{\"index\":17,\"namespace\":null,\"name\":\"\\\\app\\\\Helpers\\\\guest.php\",\"line\":7},{\"index\":19,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\"line\":167},{\"index\":20,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings.php\",\"line\":50}],\"duration\":0.00035,\"duration_str\":\"350\\u03bcs\",\"stmt_id\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Auth\\\\EloquentUserProvider.php:52\",\"connection\":\"unispice\",\"start_percent\":0,\"width_percent\":100}]},\"models\":{\"data\":{\"App\\\\Models\\\\System\\\\Admin\":1},\"count\":1},\"swiftmailer_mails\":{\"count\":0,\"mails\":[]},\"gate\":{\"count\":0,\"messages\":[]},\"session\":{\"_token\":\"FkH0xvvu8CUJYvRT8sowgyhVVihFDzU7YP6m99wu\",\"_previous\":\"array:1 [\\n  \\\"url\\\" => \\\"http:\\/\\/127.0.0.1:8000\\/admin\\/uni_product\\/create\\\"\\n]\",\"_flash\":\"array:2 [\\n  \\\"old\\\" => []\\n  \\\"new\\\" => []\\n]\",\"login_admins_59ba36addc2b2f9401580f014c7f58ea4e30989d\":\"1\",\"PHPDEBUGBAR_STACK_DATA\":\"[]\"},\"request\":{\"path_info\":\"\\/admin\\/ajax\\/upload\\/image\",\"status_code\":\"<pre class=sf-dump id=sf-dump-158655910 data-indent-pad=\\\"  \\\"><span class=sf-dump-num>200<\\/span>\\n<\\/pre><script>Sfdump(\\\"sf-dump-158655910\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"status_text\":\"OK\",\"format\":\"html\",\"content_type\":\"text\\/html; charset=UTF-8\",\"request_query\":\"<pre class=sf-dump id=sf-dump-425286830 data-indent-pad=\\\"  \\\">[]\\n<\\/pre><script>Sfdump(\\\"sf-dump-425286830\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_request\":\"<pre class=sf-dump id=sf-dump-27924597 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:1<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>avatar<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"14 characters\\\">{&quot;color&quot;:null}<\\/span>\\\"\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-27924597\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_headers\":\"<pre class=sf-dump id=sf-dump-1781913079 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:17<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>host<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"14 characters\\\">127.0.0.1:8000<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>connection<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"10 characters\\\">keep-alive<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>content-length<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">118654<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-ch-ua<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"64 characters\\\">&quot; Not;A Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;91&quot;, &quot;Chromium&quot;;v=&quot;91&quot;<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>x-csrf-token<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">FkH0xvvu8CUJYvRT8sowgyhVVihFDzU7YP6m99wu<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-ch-ua-mobile<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"2 characters\\\">?0<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>user-agent<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"115 characters\\\">Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/91.0.4472.124 Safari\\/537.36<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>content-type<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"68 characters\\\">multipart\\/form-data; boundary=----WebKitFormBoundaryzmQelg2oUW60YbdT<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>accept<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"3 characters\\\">*\\/*<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>origin<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"21 characters\\\">http:\\/\\/127.0.0.1:8000<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-fetch-site<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"11 characters\\\">same-origin<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-fetch-mode<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">cors<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-fetch-dest<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"5 characters\\\">empty<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>referer<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"46 characters\\\">http:\\/\\/127.0.0.1:8000\\/admin\\/uni_product\\/create<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>accept-encoding<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"17 characters\\\">gzip, deflate, br<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>accept-language<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"23 characters\\\">en-US,en;q=0.9,vi;q=0.8<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>cookie<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"689 characters\\\">XSRF-TOKEN=eyJpdiI6Ik8vWE1SbWpQTkFReE1RaEUzdkVWMHc9PSIsInZhbHVlIjoiUUo3OWRnMWJBOFAxL1V4T1NPNUJabzhyQnZ4N1M0cENTV2FZdzgyR1lqL1Bhczl2U3QxSWtmU0MrdUthS0o5dHRlTU1kRk1kREZwRmI2ekJlWUpQSUlIN0JwblJCNjBQR2dHMS9zOHBUQ1FwbkZYaDhJV0pxZC96SzRVNWRXVkUiLCJtYWMiOiI3YzNlOGU3ZTk4NDBkZjE5NzNjMDM2OTA5ZjViNjE3M2ZkNmFiNWY0NmQzODI4MDhkOWQ3ZGE4OTg2ODgyNTc3In0%3D; unimind_session=eyJpdiI6IldtMVJqam1lUGh3Tm1ieDRuU0RSS0E9PSIsInZhbHVlIjoicmhBQi81RHF5QjI3OWdwMUQ0NXlhaU54TEc1QkhYTWhkMXBVamRLd0ltRHM4aEtkR0h1bVF3ck0yQWcvbnZMVmxWMC9taEwydUZtaGh4TTFHVjRqVzBnL1VrQ00zTkRPeXQyVWhISjlPTE5aTElUOUZ3ckhJYWQzWnBMY3VTU3UiLCJtYWMiOiJmMDNmZWQwZDkwODVmOGRjYjg5YjdjZWIwNDM2MjYxYWFmMWMxOWI1MjJmMzYzMjhhZDMyYmQ1OGY2NmM3OGU5In0%3D<\\/span>\\\"\\n  <\\/samp>]\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-1781913079\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_server\":\"<pre class=sf-dump id=sf-dump-1286513510 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:34<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>DOCUMENT_ROOT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"30 characters\\\">C:\\\\xampp\\\\htdocs\\\\unipice\\\\public<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REMOTE_ADDR<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"9 characters\\\">127.0.0.1<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REMOTE_PORT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"5 characters\\\">60468<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_SOFTWARE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"29 characters\\\">PHP 7.4.16 Development Server<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_PROTOCOL<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"8 characters\\\">HTTP\\/1.1<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_NAME<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"9 characters\\\">127.0.0.1<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_PORT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">8000<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REQUEST_URI<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"24 characters\\\">\\/admin\\/ajax\\/upload\\/image<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REQUEST_METHOD<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">POST<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SCRIPT_NAME<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"10 characters\\\">\\/index.php<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SCRIPT_FILENAME<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">C:\\\\xampp\\\\htdocs\\\\unipice\\\\public\\\\index.php<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>PATH_INFO<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"24 characters\\\">\\/admin\\/ajax\\/upload\\/image<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>PHP_SELF<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"34 characters\\\">\\/index.php\\/admin\\/ajax\\/upload\\/image<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_HOST<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"14 characters\\\">127.0.0.1:8000<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_CONNECTION<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"10 characters\\\">keep-alive<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>CONTENT_LENGTH<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">118654<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_CONTENT_LENGTH<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">118654<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_CH_UA<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"64 characters\\\">&quot; Not;A Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;91&quot;, &quot;Chromium&quot;;v=&quot;91&quot;<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_X_CSRF_TOKEN<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">******<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_CH_UA_MOBILE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"2 characters\\\">?0<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_USER_AGENT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"115 characters\\\">Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/91.0.4472.124 Safari\\/537.36<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>CONTENT_TYPE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"68 characters\\\">multipart\\/form-data; boundary=----WebKitFormBoundaryzmQelg2oUW60YbdT<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_CONTENT_TYPE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"68 characters\\\">multipart\\/form-data; boundary=----WebKitFormBoundaryzmQelg2oUW60YbdT<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ACCEPT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"3 characters\\\">*\\/*<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ORIGIN<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"21 characters\\\">http:\\/\\/127.0.0.1:8000<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_FETCH_SITE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"11 characters\\\">same-origin<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_FETCH_MODE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">cors<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_FETCH_DEST<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"5 characters\\\">empty<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_REFERER<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"46 characters\\\">http:\\/\\/127.0.0.1:8000\\/admin\\/uni_product\\/create<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ACCEPT_ENCODING<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"17 characters\\\">gzip, deflate, br<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ACCEPT_LANGUAGE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"23 characters\\\">en-US,en;q=0.9,vi;q=0.8<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_COOKIE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"689 characters\\\">XSRF-TOKEN=eyJpdiI6Ik8vWE1SbWpQTkFReE1RaEUzdkVWMHc9PSIsInZhbHVlIjoiUUo3OWRnMWJBOFAxL1V4T1NPNUJabzhyQnZ4N1M0cENTV2FZdzgyR1lqL1Bhczl2U3QxSWtmU0MrdUthS0o5dHRlTU1kRk1kREZwRmI2ekJlWUpQSUlIN0JwblJCNjBQR2dHMS9zOHBUQ1FwbkZYaDhJV0pxZC96SzRVNWRXVkUiLCJtYWMiOiI3YzNlOGU3ZTk4NDBkZjE5NzNjMDM2OTA5ZjViNjE3M2ZkNmFiNWY0NmQzODI4MDhkOWQ3ZGE4OTg2ODgyNTc3In0%3D; unimind_session=eyJpdiI6IldtMVJqam1lUGh3Tm1ieDRuU0RSS0E9PSIsInZhbHVlIjoicmhBQi81RHF5QjI3OWdwMUQ0NXlhaU54TEc1QkhYTWhkMXBVamRLd0ltRHM4aEtkR0h1bVF3ck0yQWcvbnZMVmxWMC9taEwydUZtaGh4TTFHVjRqVzBnL1VrQ00zTkRPeXQyVWhISjlPTE5aTElUOUZ3ckhJYWQzWnBMY3VTU3UiLCJtYWMiOiJmMDNmZWQwZDkwODVmOGRjYjg5YjdjZWIwNDM2MjYxYWFmMWMxOWI1MjJmMzYzMjhhZDMyYmQ1OGY2NmM3OGU5In0%3D<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REQUEST_TIME_FLOAT<\\/span>\\\" => <span class=sf-dump-num>1625538446.7307<\\/span>\\n  \\\"<span class=sf-dump-key>REQUEST_TIME<\\/span>\\\" => <span class=sf-dump-num>1625538446<\\/span>\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-1286513510\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_cookies\":\"<pre class=sf-dump id=sf-dump-1559799779 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:2<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>XSRF-TOKEN<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">FkH0xvvu8CUJYvRT8sowgyhVVihFDzU7YP6m99wu<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>unimind_session<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">ZdwYmnZAD4tNVhA1iwTCgBq53YDcZP0r84vr0LLj<\\/span>\\\"\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-1559799779\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"response_headers\":\"<pre class=sf-dump id=sf-dump-1363552428 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:5<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>content-type<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"24 characters\\\">text\\/html; charset=UTF-8<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>cache-control<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"17 characters\\\">no-cache, private<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>date<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"29 characters\\\">Tue, 06 Jul 2021 02:27:26 GMT<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>set-cookie<\\/span>\\\" => <span class=sf-dump-note>array:2<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"416 characters\\\">XSRF-TOKEN=eyJpdiI6ImcrUWc0d2JVRS9OOUs4SzFCOE1aWGc9PSIsInZhbHVlIjoiTU9mRlJrcHZNNmVBWFhlVTcxa0NtSFkrTlZpWjZpbUNHaGNpcG1KSVI1SWd3Y2pIZHZXNzZTaGlIcmtLOEJOaWVNUUpMblBtVmZJK2drRW9GN3VJWFBNU2FWUFRtT0trYVVsY1p4bUZPaEV1Z3ZtY1ovVGU1SnVJYngrckcrQ1UiLCJtYWMiOiIyOGU3OWJiZjM2ZGJhOWEyNzM4MTE1MTNmMGQxNGM3MmI1NjQzZTU1YmEzNWVlNTY1MDJlM2VkMTExNGUyZTU5In0%3D; expires=Tue, 06-Jul-2021 04:27:26 GMT; Max-Age=7200; path=\\/; samesite=lax<\\/span>\\\"\\n    <span class=sf-dump-index>1<\\/span> => \\\"<span class=sf-dump-str title=\\\"431 characters\\\">unimind_session=eyJpdiI6InlVL3pvTWpDUEhzTS9GcTJBREdqZUE9PSIsInZhbHVlIjoic2VFRkZXQm0yLzhsTWpacSs3UEp2U1Y4c3kyV3NKbk9Vd2tNZ1RnWU95UnR5TFY2T1VWV0xjUmRpM1dyUWh4ZDVqTUNlVW1PMmliMmdpRjZwcWdYeXZWUFNPL3pZOFU0cGxUVDZqRE93VnJZNzlPVmV6NFpKZWlvbkVpZFVNQ1giLCJtYWMiOiJkN2Y2MDhhMzU5ZTI2YTFlMTZiMWJhZmE3NTk1NjFlYTQ0M2FhMmUzMWM1NzkyMTdiZGJiNTM4YjM4N2Y1YWU2In0%3D; expires=Tue, 06-Jul-2021 04:27:26 GMT; Max-Age=7200; path=\\/; httponly; samesite=lax<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>Set-Cookie<\\/span>\\\" => <span class=sf-dump-note>array:2<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"388 characters\\\">XSRF-TOKEN=eyJpdiI6ImcrUWc0d2JVRS9OOUs4SzFCOE1aWGc9PSIsInZhbHVlIjoiTU9mRlJrcHZNNmVBWFhlVTcxa0NtSFkrTlZpWjZpbUNHaGNpcG1KSVI1SWd3Y2pIZHZXNzZTaGlIcmtLOEJOaWVNUUpMblBtVmZJK2drRW9GN3VJWFBNU2FWUFRtT0trYVVsY1p4bUZPaEV1Z3ZtY1ovVGU1SnVJYngrckcrQ1UiLCJtYWMiOiIyOGU3OWJiZjM2ZGJhOWEyNzM4MTE1MTNmMGQxNGM3MmI1NjQzZTU1YmEzNWVlNTY1MDJlM2VkMTExNGUyZTU5In0%3D; expires=Tue, 06-Jul-2021 04:27:26 GMT; path=\\/<\\/span>\\\"\\n    <span class=sf-dump-index>1<\\/span> => \\\"<span class=sf-dump-str title=\\\"403 characters\\\">unimind_session=eyJpdiI6InlVL3pvTWpDUEhzTS9GcTJBREdqZUE9PSIsInZhbHVlIjoic2VFRkZXQm0yLzhsTWpacSs3UEp2U1Y4c3kyV3NKbk9Vd2tNZ1RnWU95UnR5TFY2T1VWV0xjUmRpM1dyUWh4ZDVqTUNlVW1PMmliMmdpRjZwcWdYeXZWUFNPL3pZOFU0cGxUVDZqRE93VnJZNzlPVmV6NFpKZWlvbkVpZFVNQ1giLCJtYWMiOiJkN2Y2MDhhMzU5ZTI2YTFlMTZiMWJhZmE3NTk1NjFlYTQ0M2FhMmUzMWM1NzkyMTdiZGJiNTM4YjM4N2Y1YWU2In0%3D; expires=Tue, 06-Jul-2021 04:27:26 GMT; path=\\/; httponly<\\/span>\\\"\\n  <\\/samp>]\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-1363552428\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"session_attributes\":\"<pre class=sf-dump id=sf-dump-324757730 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:5<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>_token<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">FkH0xvvu8CUJYvRT8sowgyhVVihFDzU7YP6m99wu<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>_previous<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    \\\"<span class=sf-dump-key>url<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"46 characters\\\">http:\\/\\/127.0.0.1:8000\\/admin\\/uni_product\\/create<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>_flash<\\/span>\\\" => <span class=sf-dump-note>array:2<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    \\\"<span class=sf-dump-key>old<\\/span>\\\" => []\\n    \\\"<span class=sf-dump-key>new<\\/span>\\\" => []\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>login_admins_59ba36addc2b2f9401580f014c7f58ea4e30989d<\\/span>\\\" => <span class=sf-dump-num>1<\\/span>\\n  \\\"<span class=sf-dump-key>PHPDEBUGBAR_STACK_DATA<\\/span>\\\" => []\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-324757730\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\"}}, \"Xfb3a7983f492eb451d3c5ce873d82629\");\r\n\r\n</script>', NULL, NULL, NULL, NULL, '2021-07-05 19:29:13', '2021-07-10 02:49:42'),
+(5, 'Bột chua', 'bot-chua', 'If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.', 'If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.', 'Bột chua', NULL, 'If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive.', NULL, 0, 0, NULL, NULL, 0, 0, 0, 0, 'monkey-1625538610.jpg', NULL, NULL, NULL, NULL, '2021-07-05 19:30:13', NULL),
+(6, 'Bột ngọt', 'bot-ngot', 'Laravel cung cấp chức storage để lưu tất cả loại dữ liệu bao gồm cả ảnh và các loại files khác.Laravel cung cấp chức storage để lưu tất cả loại dữ liệu bao gồm cả ảnh và các loại files khác.', 'Laravel cung cấp chức storage để lưu tất cả loại dữ liệu bao gồm cả ảnh và các loại files khác.Laravel cung cấp chức storage để lưu tất cả loại dữ liệu bao gồm cả ảnh và các loại files khác.', 'Bột ngọt', NULL, '<p>Laravel cung cấp chức storage để lưu tất cả loại dữ liệu bao gồm cả ảnh v&agrave; c&aacute;c loại files kh&aacute;c.Laravel cung cấp chức storage để lưu tất cả loại dữ liệu bao gồm cả ảnh v&agrave; c&aacute;c loại files kh&aacute;c.Laravel cung cấp chức storage để lưu tất cả loại dữ liệu bao gồm cả ảnh v&agrave; c&aacute;c loại files kh&aacute;c.Laravel cung cấp chức storage để lưu tất cả loại dữ liệu bao gồm cả ảnh v&agrave; c&aacute;c loại files kh&aacute;c.</p>', 6, 0, 550, 650, 600, 0, 0, 0, 0, 'monkey-1625538877.jpg', NULL, '[\"brvn-1625821622.jpg\",\"monkey-1625821622.jpg\",\"hinh-anh-dep-1-1625824181.jpg\"]', NULL, NULL, '2021-07-09 02:49:41', '2021-07-10 02:47:21');
+INSERT INTO `uni_product` (`id`, `name`, `slug`, `desscription`, `meta_desscription`, `meta_title`, `meta_keyword`, `content`, `lotproduct_id`, `qty`, `price`, `price_sale`, `price_sale_store`, `status`, `is_hot`, `is_feauture`, `order`, `thumbnail`, `box_thumnail`, `album`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(9, 'Bột chiên aji', 'bot-chien-aji', 'Tương tự bạn hãy thử với file có đuôi không đúng định dạng sẽ bị báo Falied to upload. Only accept jpg, png photos.', 'Tương tự bạn hãy thử với file có đuôi không đúng định dạng sẽ bị báo Falied to upload. Only accept jpg, png photos.', 'Bột chiên aji', NULL, '<p>Tương tự bạn h&atilde;y thử với file c&oacute; đu&ocirc;i kh&ocirc;ng đ&uacute;ng định dạng sẽ bị b&aacute;o Falied to upload. Only accept jpg, png photos.Tương tự bạn h&atilde;y thử với file c&oacute; đu&ocirc;i kh&ocirc;ng đ&uacute;ng định dạng sẽ bị b&aacute;o Falied to upload. Only accept jpg, png photos.</p>', 2, 2200, 500, 600, 550, 0, 0, 0, 0, 'monkey-1625542630.jpg<link rel=\'stylesheet\' type=\'text/css\' property=\'stylesheet\' href=\'//127.0.0.1:8000/_debugbar/assets/stylesheets?v=1625212637&theme=auto\'><script type=\'text/javascript\' src=\'//127.0.0.1:8000/_debugbar/assets/javascript?v=1625212637\'></script><script type=\"text/javascript\">jQuery.noConflict(true);</script>\r\n<script> Sfdump = window.Sfdump || (function (doc) { var refStyle = doc.createElement(\'style\'), rxEsc = /([.*+?^${}()|\\[\\]\\/\\\\])/g, idRx = /\\bsf-dump-\\d+-ref[012]\\w+\\b/, keyHint = 0 <= navigator.platform.toUpperCase().indexOf(\'MAC\') ? \'Cmd\' : \'Ctrl\', addEventListener = function (e, n, cb) { e.addEventListener(n, cb, false); }; refStyle.innerHTML = \'.phpdebugbar pre.sf-dump .sf-dump-compact, .sf-dump-str-collapse .sf-dump-str-collapse, .sf-dump-str-expand .sf-dump-str-expand { display: none; }\'; (doc.documentElement.firstElementChild || doc.documentElement.children[0]).appendChild(refStyle); refStyle = doc.createElement(\'style\'); (doc.documentElement.firstElementChild || doc.documentElement.children[0]).appendChild(refStyle); if (!doc.addEventListener) { addEventListener = function (element, eventName, callback) { element.attachEvent(\'on\' + eventName, function (e) { e.preventDefault = function () {e.returnValue = false;}; e.target = e.srcElement; callback(e); }); }; } function toggle(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className, arrow, newClass; if (/\\bsf-dump-compact\\b/.test(oldClass)) { arrow = \'▼\'; newClass = \'sf-dump-expanded\'; } else if (/\\bsf-dump-expanded\\b/.test(oldClass)) { arrow = \'▶\'; newClass = \'sf-dump-compact\'; } else { return false; } if (doc.createEvent && s.dispatchEvent) { var event = doc.createEvent(\'Event\'); event.initEvent(\'sf-dump-expanded\' === newClass ? \'sfbeforedumpexpand\' : \'sfbeforedumpcollapse\', true, false); s.dispatchEvent(event); } a.lastChild.innerHTML = arrow; s.className = s.className.replace(/\\bsf-dump-(compact|expanded)\\b/, newClass); if (recursive) { try { a = s.querySelectorAll(\'.\'+oldClass); for (s = 0; s < a.length; ++s) { if (-1 == a[s].className.indexOf(newClass)) { a[s].className = newClass; a[s].previousSibling.lastChild.innerHTML = arrow; } } } catch (e) { } } return true; }; function collapse(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className; if (/\\bsf-dump-expanded\\b/.test(oldClass)) { toggle(a, recursive); return true; } return false; }; function expand(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className; if (/\\bsf-dump-compact\\b/.test(oldClass)) { toggle(a, recursive); return true; } return false; }; function collapseAll(root) { var a = root.querySelector(\'a.sf-dump-toggle\'); if (a) { collapse(a, true); expand(a); return true; } return false; } function reveal(node) { var previous, parents = []; while ((node = node.parentNode || {}) && (previous = node.previousSibling) && \'A\' === previous.tagName) { parents.push(previous); } if (0 !== parents.length) { parents.forEach(function (parent) { expand(parent); }); return true; } return false; } function highlight(root, activeNode, nodes) { resetHighlightedNodes(root); Array.from(nodes||[]).forEach(function (node) { if (!/\\bsf-dump-highlight\\b/.test(node.className)) { node.className = node.className + \' sf-dump-highlight\'; } }); if (!/\\bsf-dump-highlight-active\\b/.test(activeNode.className)) { activeNode.className = activeNode.className + \' sf-dump-highlight-active\'; } } function resetHighlightedNodes(root) { Array.from(root.querySelectorAll(\'.sf-dump-str, .sf-dump-key, .sf-dump-public, .sf-dump-protected, .sf-dump-private\')).forEach(function (strNode) { strNode.className = strNode.className.replace(/\\bsf-dump-highlight\\b/, \'\'); strNode.className = strNode.className.replace(/\\bsf-dump-highlight-active\\b/, \'\'); }); } return function (root, x) { root = doc.getElementById(root); var indentRx = new RegExp(\'^(\'+(root.getAttribute(\'data-indent-pad\') || \' \').replace(rxEsc, \'\\\\$1\')+\')+\', \'m\'), options = {\"maxDepth\":1,\"maxStringLength\":160,\"fileLinkFormat\":false}, elt = root.getElementsByTagName(\'A\'), len = elt.length, i = 0, s, h, t = []; while (i < len) t.push(elt[i++]); for (i in x) { options[i] = x[i]; } function a(e, f) { addEventListener(root, e, function (e, n) { if (\'A\' == e.target.tagName) { f(e.target, e); } else if (\'A\' == e.target.parentNode.tagName) { f(e.target.parentNode, e); } else { n = /\\bsf-dump-ellipsis\\b/.test(e.target.className) ? e.target.parentNode : e.target; if ((n = n.nextElementSibling) && \'A\' == n.tagName) { if (!/\\bsf-dump-toggle\\b/.test(n.className)) { n = n.nextElementSibling || n; } f(n, e, true); } } }); }; function isCtrlKey(e) { return e.ctrlKey || e.metaKey; } function xpathString(str) { var parts = str.match(/[^\'\"]+|[\'\"]/g).map(function (part) { if (\"\'\" == part) { return \'\"\\\'\"\'; } if (\'\"\' == part) { return \"\'\\\"\'\"; } return \"\'\" + part + \"\'\"; }); return \"concat(\" + parts.join(\",\") + \", \'\')\"; } function xpathHasClass(className) { return \"contains(concat(\' \', normalize-space(@class), \' \'), \' \" + className +\" \')\"; } addEventListener(root, \'mouseover\', function (e) { if (\'\' != refStyle.innerHTML) { refStyle.innerHTML = \'\'; } }); a(\'mouseover\', function (a, e, c) { if (c) { e.target.style.cursor = \"pointer\"; } else if (a = idRx.exec(a.className)) { try { refStyle.innerHTML = \'.phpdebugbar pre.sf-dump .\'+a[0]+\'{background-color: #B729D9; color: #FFF !important; border-radius: 2px}\'; } catch (e) { } } }); a(\'click\', function (a, e, c) { if (/\\bsf-dump-toggle\\b/.test(a.className)) { e.preventDefault(); if (!toggle(a, isCtrlKey(e))) { var r = doc.getElementById(a.getAttribute(\'href\').substr(1)), s = r.previousSibling, f = r.parentNode, t = a.parentNode; t.replaceChild(r, a); f.replaceChild(a, s); t.insertBefore(s, r); f = f.firstChild.nodeValue.match(indentRx); t = t.firstChild.nodeValue.match(indentRx); if (f && t && f[0] !== t[0]) { r.innerHTML = r.innerHTML.replace(new RegExp(\'^\'+f[0].replace(rxEsc, \'\\\\$1\'), \'mg\'), t[0]); } if (/\\bsf-dump-compact\\b/.test(r.className)) { toggle(s, isCtrlKey(e)); } } if (c) { } else if (doc.getSelection) { try { doc.getSelection().removeAllRanges(); } catch (e) { doc.getSelection().empty(); } } else { doc.selection.empty(); } } else if (/\\bsf-dump-str-toggle\\b/.test(a.className)) { e.preventDefault(); e = a.parentNode.parentNode; e.className = e.className.replace(/\\bsf-dump-str-(expand|collapse)\\b/, a.parentNode.className); } }); elt = root.getElementsByTagName(\'SAMP\'); len = elt.length; i = 0; while (i < len) t.push(elt[i++]); len = t.length; for (i = 0; i < len; ++i) { elt = t[i]; if (\'SAMP\' == elt.tagName) { a = elt.previousSibling || {}; if (\'A\' != a.tagName) { a = doc.createElement(\'A\'); a.className = \'sf-dump-ref\'; elt.parentNode.insertBefore(a, elt); } else { a.innerHTML += \' \'; } a.title = (a.title ? a.title+\'\\n[\' : \'[\')+keyHint+\'+click] Expand all children\'; a.innerHTML += elt.className == \'sf-dump-compact\' ? \'<span>▶</span>\' : \'<span>▼</span>\'; a.className += \' sf-dump-toggle\'; x = 1; if (\'sf-dump\' != elt.parentNode.className) { x += elt.parentNode.getAttribute(\'data-depth\')/1; } } else if (/\\bsf-dump-ref\\b/.test(elt.className) && (a = elt.getAttribute(\'href\'))) { a = a.substr(1); elt.className += \' \'+a; if (/[\\[{]$/.test(elt.previousSibling.nodeValue)) { a = a != elt.nextSibling.id && doc.getElementById(a); try { s = a.nextSibling; elt.appendChild(a); s.parentNode.insertBefore(a, s); if (/^[@#]/.test(elt.innerHTML)) { elt.innerHTML += \' <span>▶</span>\'; } else { elt.innerHTML = \'<span>▶</span>\'; elt.className = \'sf-dump-ref\'; } elt.className += \' sf-dump-toggle\'; } catch (e) { if (\'&\' == elt.innerHTML.charAt(0)) { elt.innerHTML = \'…\'; elt.className = \'sf-dump-ref\'; } } } } } if (doc.evaluate && Array.from && root.children.length > 1) { root.setAttribute(\'tabindex\', 0); SearchState = function () { this.nodes = []; this.idx = 0; }; SearchState.prototype = { next: function () { if (this.isEmpty()) { return this.current(); } this.idx = this.idx < (this.nodes.length - 1) ? this.idx + 1 : 0; return this.current(); }, previous: function () { if (this.isEmpty()) { return this.current(); } this.idx = this.idx > 0 ? this.idx - 1 : (this.nodes.length - 1); return this.current(); }, isEmpty: function () { return 0 === this.count(); }, current: function () { if (this.isEmpty()) { return null; } return this.nodes[this.idx]; }, reset: function () { this.nodes = []; this.idx = 0; }, count: function () { return this.nodes.length; }, }; function showCurrent(state) { var currentNode = state.current(), currentRect, searchRect; if (currentNode) { reveal(currentNode); highlight(root, currentNode, state.nodes); if (\'scrollIntoView\' in currentNode) { currentNode.scrollIntoView(true); currentRect = currentNode.getBoundingClientRect(); searchRect = search.getBoundingClientRect(); if (currentRect.top < (searchRect.top + searchRect.height)) { window.scrollBy(0, -(searchRect.top + searchRect.height + 5)); } } } counter.textContent = (state.isEmpty() ? 0 : state.idx + 1) + \' of \' + state.count(); } var search = doc.createElement(\'div\'); search.className = \'sf-dump-search-wrapper sf-dump-search-hidden\'; search.innerHTML = \' <input type=\"text\" class=\"sf-dump-search-input\"> <span class=\"sf-dump-search-count\">0 of 0<\\/span> <button type=\"button\" class=\"sf-dump-search-input-previous\" tabindex=\"-1\"> <svg viewBox=\"0 0 1792 1792\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1683 1331l-166 165q-19 19-45 19t-45-19L896 965l-531 531q-19 19-45 19t-45-19l-166-165q-19-19-19-45.5t19-45.5l742-741q19-19 45-19t45 19l742 741q19 19 19 45.5t-19 45.5z\"\\/><\\/svg> <\\/button> <button type=\"button\" class=\"sf-dump-search-input-next\" tabindex=\"-1\"> <svg viewBox=\"0 0 1792 1792\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1683 808l-742 741q-19 19-45 19t-45-19L109 808q-19-19-19-45.5t19-45.5l166-165q19-19 45-19t45 19l531 531 531-531q19-19 45-19t45 19l166 165q19 19 19 45.5t-19 45.5z\"\\/><\\/svg> <\\/button> \'; root.insertBefore(search, root.firstChild); var state = new SearchState(); var searchInput = search.querySelector(\'.sf-dump-search-input\'); var counter = search.querySelector(\'.sf-dump-search-count\'); var searchInputTimer = 0; var previousSearchQuery = \'\'; addEventListener(searchInput, \'keyup\', function (e) { var searchQuery = e.target.value; /* Don\'t perform anything if the pressed key didn\'t change the query */ if (searchQuery === previousSearchQuery) { return; } previousSearchQuery = searchQuery; clearTimeout(searchInputTimer); searchInputTimer = setTimeout(function () { state.reset(); collapseAll(root); resetHighlightedNodes(root); if (\'\' === searchQuery) { counter.textContent = \'0 of 0\'; return; } var classMatches = [ \"sf-dump-str\", \"sf-dump-key\", \"sf-dump-public\", \"sf-dump-protected\", \"sf-dump-private\", ].map(xpathHasClass).join(\' or \'); var xpathResult = doc.evaluate(\'.//span[\' + classMatches + \'][contains(translate(child::text(), \' + xpathString(searchQuery.toUpperCase()) + \', \' + xpathString(searchQuery.toLowerCase()) + \'), \' + xpathString(searchQuery.toLowerCase()) + \')]\', root, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null); while (node = xpathResult.iterateNext()) state.nodes.push(node); showCurrent(state); }, 400); }); Array.from(search.querySelectorAll(\'.sf-dump-search-input-next, .sf-dump-search-input-previous\')).forEach(function (btn) { addEventListener(btn, \'click\', function (e) { e.preventDefault(); -1 !== e.target.className.indexOf(\'next\') ? state.next() : state.previous(); searchInput.focus(); collapseAll(root); showCurrent(state); }) }); addEventListener(root, \'keydown\', function (e) { var isSearchActive = !/\\bsf-dump-search-hidden\\b/.test(search.className); if ((114 === e.keyCode && !isSearchActive) || (isCtrlKey(e) && 70 === e.keyCode)) { /* F3 or CMD/CTRL + F */ if (70 === e.keyCode && document.activeElement === searchInput) { /* * If CMD/CTRL + F is hit while having focus on search input, * the user probably meant to trigger browser search instead. * Let the browser execute its behavior: */ return; } e.preventDefault(); search.className = search.className.replace(/\\bsf-dump-search-hidden\\b/, \'\'); searchInput.focus(); } else if (isSearchActive) { if (27 === e.keyCode) { /* ESC key */ search.className += \' sf-dump-search-hidden\'; e.preventDefault(); resetHighlightedNodes(root); searchInput.value = \'\'; } else if ( (isCtrlKey(e) && 71 === e.keyCode) /* CMD/CTRL + G */ || 13 === e.keyCode /* Enter */ || 114 === e.keyCode /* F3 */ ) { e.preventDefault(); e.shiftKey ? state.previous() : state.next(); collapseAll(root); showCurrent(state); } } }); } if (0 >= options.maxStringLength) { return; } try { elt = root.querySelectorAll(\'.sf-dump-str\'); len = elt.length; i = 0; t = []; while (i < len) t.push(elt[i++]); len = t.length; for (i = 0; i < len; ++i) { elt = t[i]; s = elt.innerText || elt.textContent; x = s.length - options.maxStringLength; if (0 < x) { h = elt.innerHTML; elt[elt.innerText ? \'innerText\' : \'textContent\'] = s.substring(0, options.maxStringLength); elt.className += \' sf-dump-str-collapse\'; elt.innerHTML = \'<span class=sf-dump-str-collapse>\'+h+\'<a class=\"sf-dump-ref sf-dump-str-toggle\" title=\"Collapse\"> ◀</a></span>\'+ \'<span class=sf-dump-str-expand>\'+elt.innerHTML+\'<a class=\"sf-dump-ref sf-dump-str-toggle\" title=\"\'+x+\' remaining characters\"> ▶</a></span>\'; } } } catch (e) { } }; })(document); </script><style> .phpdebugbar pre.sf-dump { display: block; white-space: pre; padding: 5px; overflow: initial !important; } .phpdebugbar pre.sf-dump:after { content: \"\"; visibility: hidden; display: block; height: 0; clear: both; } .phpdebugbar pre.sf-dump span { display: inline; } .phpdebugbar pre.sf-dump a { text-decoration: none; cursor: pointer; border: 0; outline: none; color: inherit; } .phpdebugbar pre.sf-dump img { max-width: 50em; max-height: 50em; margin: .5em 0 0 0; padding: 0; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAHUlEQVQY02O8zAABilCaiQEN0EeA8QuUcX9g3QEAAjcC5piyhyEAAAAASUVORK5CYII=) #D3D3D3; } .phpdebugbar pre.sf-dump .sf-dump-ellipsis { display: inline-block; overflow: visible; text-overflow: ellipsis; max-width: 5em; white-space: nowrap; overflow: hidden; vertical-align: top; } .phpdebugbar pre.sf-dump .sf-dump-ellipsis+.sf-dump-ellipsis { max-width: none; } .phpdebugbar pre.sf-dump code { display:inline; padding:0; background:none; } .sf-dump-public.sf-dump-highlight, .sf-dump-protected.sf-dump-highlight, .sf-dump-private.sf-dump-highlight, .sf-dump-str.sf-dump-highlight, .sf-dump-key.sf-dump-highlight { background: rgba(111, 172, 204, 0.3); border: 1px solid #7DA0B1; border-radius: 3px; } .sf-dump-public.sf-dump-highlight-active, .sf-dump-protected.sf-dump-highlight-active, .sf-dump-private.sf-dump-highlight-active, .sf-dump-str.sf-dump-highlight-active, .sf-dump-key.sf-dump-highlight-active { background: rgba(253, 175, 0, 0.4); border: 1px solid #ffa500; border-radius: 3px; } .phpdebugbar pre.sf-dump .sf-dump-search-hidden { display: none !important; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper { font-size: 0; white-space: nowrap; margin-bottom: 5px; display: flex; position: -webkit-sticky; position: sticky; top: 5px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > * { vertical-align: top; box-sizing: border-box; height: 21px; font-weight: normal; border-radius: 0; background: #FFF; color: #757575; border: 1px solid #BBB; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > input.sf-dump-search-input { padding: 3px; height: 21px; font-size: 12px; border-right: none; border-top-left-radius: 3px; border-bottom-left-radius: 3px; color: #000; min-width: 15px; width: 100%; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next, .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-previous { background: #F2F2F2; outline: none; border-left: none; font-size: 0; line-height: 0; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next { border-top-right-radius: 3px; border-bottom-right-radius: 3px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next > svg, .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-previous > svg { pointer-events: none; width: 12px; height: 12px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-count { display: inline-block; padding: 0 5px; margin: 0; border-left: none; line-height: 21px; font-size: 12px; }.phpdebugbar pre.sf-dump, .phpdebugbar pre.sf-dump .sf-dump-default{word-wrap: break-word; white-space: pre-wrap; word-break: normal}.phpdebugbar pre.sf-dump .sf-dump-num{font-weight:bold; color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-const{font-weight:bold}.phpdebugbar pre.sf-dump .sf-dump-str{font-weight:bold; color:#3A9B26}.phpdebugbar pre.sf-dump .sf-dump-note{color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-ref{color:#7B7B7B}.phpdebugbar pre.sf-dump .sf-dump-public{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-protected{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-private{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-meta{color:#B729D9}.phpdebugbar pre.sf-dump .sf-dump-key{color:#3A9B26}.phpdebugbar pre.sf-dump .sf-dump-index{color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-ellipsis{color:#A0A000}.phpdebugbar pre.sf-dump .sf-dump-ns{user-select:none;}.phpdebugbar pre.sf-dump .sf-dump-ellipsis-note{color:#1299DA}</style>\r\n<script type=\"text/javascript\">\r\nvar phpdebugbar = new PhpDebugBar.DebugBar();\r\nphpdebugbar.addIndicator(\"php_version\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"code\",\"tooltip\":\"PHP Version\"}), \"right\");\r\nphpdebugbar.addTab(\"messages\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"list-alt\",\"title\":\"Messages\", \"widget\": new PhpDebugBar.Widgets.MessagesWidget()}));\r\nphpdebugbar.addIndicator(\"time\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"clock-o\",\"tooltip\":\"Request Duration\"}), \"right\");\r\nphpdebugbar.addTab(\"timeline\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"tasks\",\"title\":\"Timeline\", \"widget\": new PhpDebugBar.Widgets.TimelineWidget()}));\r\nphpdebugbar.addIndicator(\"memory\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"cogs\",\"tooltip\":\"Memory Usage\"}), \"right\");\r\nphpdebugbar.addTab(\"exceptions\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"bug\",\"title\":\"Exceptions\", \"widget\": new PhpDebugBar.Widgets.ExceptionsWidget()}));\r\nphpdebugbar.addTab(\"views\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"leaf\",\"title\":\"Views\", \"widget\": new PhpDebugBar.Widgets.TemplatesWidget()}));\r\nphpdebugbar.addTab(\"route\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"share\",\"title\":\"Route\", \"widget\": new PhpDebugBar.Widgets.VariableListWidget()}));\r\nphpdebugbar.addIndicator(\"currentroute\", new PhpDebugBar.DebugBar.Indicator({\"icon\":\"share\",\"tooltip\":\"Route\"}), \"right\");\r\nphpdebugbar.addTab(\"queries\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"database\",\"title\":\"Queries\", \"widget\": new PhpDebugBar.Widgets.LaravelSQLQueriesWidget()}));\r\nphpdebugbar.addTab(\"models\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"cubes\",\"title\":\"Models\", \"widget\": new PhpDebugBar.Widgets.HtmlVariableListWidget()}));\r\nphpdebugbar.addTab(\"emails\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"inbox\",\"title\":\"Mails\", \"widget\": new PhpDebugBar.Widgets.MailsWidget()}));\r\nphpdebugbar.addTab(\"gate\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"list-alt\",\"title\":\"Gate\", \"widget\": new PhpDebugBar.Widgets.MessagesWidget()}));\r\nphpdebugbar.addTab(\"session\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"archive\",\"title\":\"Session\", \"widget\": new PhpDebugBar.Widgets.VariableListWidget()}));\r\nphpdebugbar.addTab(\"request\", new PhpDebugBar.DebugBar.Tab({\"icon\":\"tags\",\"title\":\"Request\", \"widget\": new PhpDebugBar.Widgets.HtmlVariableListWidget()}));\r\nphpdebugbar.setDataMap({\r\n\"php_version\": [\"php.version\", ],\r\n\"messages\": [\"messages.messages\", []],\r\n\"messages:badge\": [\"messages.count\", null],\r\n\"time\": [\"time.duration_str\", \'0ms\'],\r\n\"timeline\": [\"time\", {}],\r\n\"memory\": [\"memory.peak_usage_str\", \'0B\'],\r\n\"exceptions\": [\"exceptions.exceptions\", []],\r\n\"exceptions:badge\": [\"exceptions.count\", null],\r\n\"views\": [\"views\", []],\r\n\"views:badge\": [\"views.nb_templates\", 0],\r\n\"route\": [\"route\", {}],\r\n\"currentroute\": [\"route.uri\", ],\r\n\"queries\": [\"queries\", []],\r\n\"queries:badge\": [\"queries.nb_statements\", 0],\r\n\"models\": [\"models.data\", {}],\r\n\"models:badge\": [\"models.count\", 0],\r\n\"emails\": [\"swiftmailer_mails.mails\", []],\r\n\"emails:badge\": [\"swiftmailer_mails.count\", null],\r\n\"gate\": [\"gate.messages\", []],\r\n\"gate:badge\": [\"gate.count\", null],\r\n\"session\": [\"session\", {}],\r\n\"request\": [\"request\", {}]\r\n});\r\nphpdebugbar.restoreState();\r\nphpdebugbar.ajaxHandler = new PhpDebugBar.AjaxHandler(phpdebugbar, undefined, true);\r\nphpdebugbar.ajaxHandler.bindToFetch();\r\nphpdebugbar.ajaxHandler.bindToXHR();\r\nphpdebugbar.setOpenHandler(new PhpDebugBar.OpenHandler({\"url\":\"http:\\/\\/127.0.0.1:8000\\/_debugbar\\/open\"}));\r\nphpdebugbar.addDataSet({\"__meta\":{\"id\":\"X2360a26398e78ef34db96a03a9d27058\",\"datetime\":\"2021-07-06 03:37:10\",\"utime\":1625542630.449065,\"method\":\"POST\",\"uri\":\"\\/admin\\/ajax\\/upload\\/image\",\"ip\":\"127.0.0.1\"},\"php\":{\"version\":\"7.4.16\",\"interface\":\"cli-server\"},\"messages\":{\"count\":0,\"messages\":[]},\"time\":{\"start\":1625542630.256374,\"end\":1625542630.44908,\"duration\":0.19270610809326172,\"duration_str\":\"193ms\",\"measures\":[{\"label\":\"Booting\",\"start\":1625542630.256374,\"relative_start\":0,\"end\":1625542630.410007,\"relative_end\":1625542630.410007,\"duration\":0.15363311767578125,\"duration_str\":\"154ms\",\"params\":[],\"collector\":null},{\"label\":\"Application\",\"start\":1625542630.412899,\"relative_start\":0.1565251350402832,\"end\":1625542630.449082,\"relative_end\":1.9073486328125e-6,\"duration\":0.03618288040161133,\"duration_str\":\"36.18ms\",\"params\":[],\"collector\":null}]},\"memory\":{\"peak_usage\":21772896,\"peak_usage_str\":\"21MB\"},\"exceptions\":{\"count\":0,\"exceptions\":[]},\"views\":{\"nb_templates\":0,\"templates\":[]},\"route\":{\"uri\":\"POST admin\\/ajax\\/upload\\/image\",\"middleware\":\"web, checkLoginAdmin\",\"controller\":\"Modules\\\\Admin\\\\Http\\\\Controllers\\\\Ajax\\\\AdminAjaxUploadImageController@processUpload\",\"namespace\":\"Modules\\\\Admin\\\\Http\\\\Controllers\\\\Ajax\",\"prefix\":\"admin\\/ajax\",\"where\":[],\"as\":\"post_ajax_admin.uploads\",\"file\":\"\\\\Modules\\\\Admin\\\\Http\\\\Controllers\\\\Ajax\\\\AdminAjaxUploadImageController.php:14-40\"},\"queries\":{\"nb_statements\":1,\"nb_failed_statements\":0,\"accumulated_duration\":0.00043,\"accumulated_duration_str\":\"430\\u03bcs\",\"statements\":[{\"sql\":\"select * from `admins` where `id` = 1 limit 1\",\"type\":\"query\",\"params\":[],\"bindings\":[\"1\"],\"hints\":null,\"show_copy\":false,\"backtrace\":[{\"index\":15,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Auth\\\\EloquentUserProvider.php\",\"line\":52},{\"index\":16,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Auth\\\\SessionGuard.php\",\"line\":141},{\"index\":17,\"namespace\":null,\"name\":\"\\\\app\\\\Helpers\\\\guest.php\",\"line\":7},{\"index\":19,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\"line\":167},{\"index\":20,\"namespace\":null,\"name\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings.php\",\"line\":50}],\"duration\":0.00043,\"duration_str\":\"430\\u03bcs\",\"stmt_id\":\"\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Auth\\\\EloquentUserProvider.php:52\",\"connection\":\"unispice\",\"start_percent\":0,\"width_percent\":100}]},\"models\":{\"data\":{\"App\\\\Models\\\\System\\\\Admin\":1},\"count\":1},\"swiftmailer_mails\":{\"count\":0,\"mails\":[]},\"gate\":{\"count\":0,\"messages\":[]},\"session\":{\"_token\":\"FkH0xvvu8CUJYvRT8sowgyhVVihFDzU7YP6m99wu\",\"_previous\":\"array:1 [\\n  \\\"url\\\" => \\\"http:\\/\\/127.0.0.1:8000\\/admin\\/uni_product\\/create\\\"\\n]\",\"_flash\":\"array:2 [\\n  \\\"old\\\" => []\\n  \\\"new\\\" => []\\n]\",\"login_admins_59ba36addc2b2f9401580f014c7f58ea4e30989d\":\"1\",\"PHPDEBUGBAR_STACK_DATA\":\"[]\"},\"request\":{\"path_info\":\"\\/admin\\/ajax\\/upload\\/image\",\"status_code\":\"<pre class=sf-dump id=sf-dump-689317345 data-indent-pad=\\\"  \\\"><span class=sf-dump-num>200<\\/span>\\n<\\/pre><script>Sfdump(\\\"sf-dump-689317345\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"status_text\":\"OK\",\"format\":\"html\",\"content_type\":\"text\\/html; charset=UTF-8\",\"request_query\":\"<pre class=sf-dump id=sf-dump-1790100078 data-indent-pad=\\\"  \\\">[]\\n<\\/pre><script>Sfdump(\\\"sf-dump-1790100078\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_request\":\"<pre class=sf-dump id=sf-dump-35528428 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:1<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>avatar<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"14 characters\\\">{&quot;color&quot;:null}<\\/span>\\\"\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-35528428\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_headers\":\"<pre class=sf-dump id=sf-dump-5076038 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:17<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>host<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"14 characters\\\">127.0.0.1:8000<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>connection<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"10 characters\\\">keep-alive<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>content-length<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">475655<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-ch-ua<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"64 characters\\\">&quot; Not;A Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;91&quot;, &quot;Chromium&quot;;v=&quot;91&quot;<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>x-csrf-token<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">FkH0xvvu8CUJYvRT8sowgyhVVihFDzU7YP6m99wu<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-ch-ua-mobile<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"2 characters\\\">?0<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>user-agent<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"115 characters\\\">Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/91.0.4472.124 Safari\\/537.36<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>content-type<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"68 characters\\\">multipart\\/form-data; boundary=----WebKitFormBoundaryuePlufd4ILBGHLBm<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>accept<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"3 characters\\\">*\\/*<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>origin<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"21 characters\\\">http:\\/\\/127.0.0.1:8000<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-fetch-site<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"11 characters\\\">same-origin<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-fetch-mode<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">cors<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>sec-fetch-dest<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"5 characters\\\">empty<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>referer<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"46 characters\\\">http:\\/\\/127.0.0.1:8000\\/admin\\/uni_product\\/create<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>accept-encoding<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"17 characters\\\">gzip, deflate, br<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>accept-language<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"23 characters\\\">en-US,en;q=0.9,vi;q=0.8<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>cookie<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"689 characters\\\">XSRF-TOKEN=eyJpdiI6IjVZTDVtMDNJT25CYVZJM3ZxQzN0enc9PSIsInZhbHVlIjoiU2NXSytBcUVzVjRjK3h4ZXNXcGRPTi95QnlVRGpDRFdmZit0bUttdnVSTVJiVGsyNEIzYzRUOHhxbXNsUkZ1NkFvRkl2OElMSmp6NTlrQ2h1THdHQVZNTUFBZEpybFpFb0x6MnNUQktIKzE0aFcwemxGUnJjampiaEx0SGR3ankiLCJtYWMiOiJlMzNlNzQ0MjAxYzU1NTllODcyNDI0NWUyYWU3Y2JjOTkwYmQ5MDFmOTQxYWNmODgyYjRjNmQwZjE2YWE3MmIzIn0%3D; unimind_session=eyJpdiI6IlRCdFFHMU1pY1hHUE1wWjIwdURnaGc9PSIsInZhbHVlIjoiaDlUcC9Qb3pac0dCaEU4NmtJUDh6WW1hYVQ1ZDh4a214WVpYbFJkYVNPazNNWk5ld0hMU0hMTCtyMGJ3eFpYNW5BZnNIWWZuMEtINmNVZXdFRHNFazQyYi94Wk0vV0ZkZ0tkNzR2NnNZSjhTbDByVGtFMjZWWnBoZXdFdE9ZRnoiLCJtYWMiOiI2NWIxMGFhZGVjNjYwZGVmYzRmOTgxYWFjYTZhYjVmMzMwN2NjYTQ2YzViYmVjZDRhNjRmNzRkZmYzOGUwZDA3In0%3D<\\/span>\\\"\\n  <\\/samp>]\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-5076038\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_server\":\"<pre class=sf-dump id=sf-dump-459369287 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:34<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>DOCUMENT_ROOT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"30 characters\\\">C:\\\\xampp\\\\htdocs\\\\unipice\\\\public<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REMOTE_ADDR<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"9 characters\\\">127.0.0.1<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REMOTE_PORT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"5 characters\\\">51501<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_SOFTWARE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"29 characters\\\">PHP 7.4.16 Development Server<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_PROTOCOL<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"8 characters\\\">HTTP\\/1.1<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_NAME<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"9 characters\\\">127.0.0.1<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SERVER_PORT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">8000<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REQUEST_URI<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"24 characters\\\">\\/admin\\/ajax\\/upload\\/image<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REQUEST_METHOD<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">POST<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SCRIPT_NAME<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"10 characters\\\">\\/index.php<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>SCRIPT_FILENAME<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">C:\\\\xampp\\\\htdocs\\\\unipice\\\\public\\\\index.php<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>PATH_INFO<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"24 characters\\\">\\/admin\\/ajax\\/upload\\/image<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>PHP_SELF<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"34 characters\\\">\\/index.php\\/admin\\/ajax\\/upload\\/image<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_HOST<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"14 characters\\\">127.0.0.1:8000<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_CONNECTION<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"10 characters\\\">keep-alive<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>CONTENT_LENGTH<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">475655<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_CONTENT_LENGTH<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">475655<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_CH_UA<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"64 characters\\\">&quot; Not;A Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;91&quot;, &quot;Chromium&quot;;v=&quot;91&quot;<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_X_CSRF_TOKEN<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"6 characters\\\">******<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_CH_UA_MOBILE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"2 characters\\\">?0<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_USER_AGENT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"115 characters\\\">Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/91.0.4472.124 Safari\\/537.36<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>CONTENT_TYPE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"68 characters\\\">multipart\\/form-data; boundary=----WebKitFormBoundaryuePlufd4ILBGHLBm<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_CONTENT_TYPE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"68 characters\\\">multipart\\/form-data; boundary=----WebKitFormBoundaryuePlufd4ILBGHLBm<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ACCEPT<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"3 characters\\\">*\\/*<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ORIGIN<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"21 characters\\\">http:\\/\\/127.0.0.1:8000<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_FETCH_SITE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"11 characters\\\">same-origin<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_FETCH_MODE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"4 characters\\\">cors<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_SEC_FETCH_DEST<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"5 characters\\\">empty<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_REFERER<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"46 characters\\\">http:\\/\\/127.0.0.1:8000\\/admin\\/uni_product\\/create<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ACCEPT_ENCODING<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"17 characters\\\">gzip, deflate, br<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_ACCEPT_LANGUAGE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"23 characters\\\">en-US,en;q=0.9,vi;q=0.8<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>HTTP_COOKIE<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"689 characters\\\">XSRF-TOKEN=eyJpdiI6IjVZTDVtMDNJT25CYVZJM3ZxQzN0enc9PSIsInZhbHVlIjoiU2NXSytBcUVzVjRjK3h4ZXNXcGRPTi95QnlVRGpDRFdmZit0bUttdnVSTVJiVGsyNEIzYzRUOHhxbXNsUkZ1NkFvRkl2OElMSmp6NTlrQ2h1THdHQVZNTUFBZEpybFpFb0x6MnNUQktIKzE0aFcwemxGUnJjampiaEx0SGR3ankiLCJtYWMiOiJlMzNlNzQ0MjAxYzU1NTllODcyNDI0NWUyYWU3Y2JjOTkwYmQ5MDFmOTQxYWNmODgyYjRjNmQwZjE2YWE3MmIzIn0%3D; unimind_session=eyJpdiI6IlRCdFFHMU1pY1hHUE1wWjIwdURnaGc9PSIsInZhbHVlIjoiaDlUcC9Qb3pac0dCaEU4NmtJUDh6WW1hYVQ1ZDh4a214WVpYbFJkYVNPazNNWk5ld0hMU0hMTCtyMGJ3eFpYNW5BZnNIWWZuMEtINmNVZXdFRHNFazQyYi94Wk0vV0ZkZ0tkNzR2NnNZSjhTbDByVGtFMjZWWnBoZXdFdE9ZRnoiLCJtYWMiOiI2NWIxMGFhZGVjNjYwZGVmYzRmOTgxYWFjYTZhYjVmMzMwN2NjYTQ2YzViYmVjZDRhNjRmNzRkZmYzOGUwZDA3In0%3D<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>REQUEST_TIME_FLOAT<\\/span>\\\" => <span class=sf-dump-num>1625542630.2564<\\/span>\\n  \\\"<span class=sf-dump-key>REQUEST_TIME<\\/span>\\\" => <span class=sf-dump-num>1625542630<\\/span>\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-459369287\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"request_cookies\":\"<pre class=sf-dump id=sf-dump-1704442039 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:2<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>XSRF-TOKEN<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">FkH0xvvu8CUJYvRT8sowgyhVVihFDzU7YP6m99wu<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>unimind_session<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">ZdwYmnZAD4tNVhA1iwTCgBq53YDcZP0r84vr0LLj<\\/span>\\\"\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-1704442039\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"response_headers\":\"<pre class=sf-dump id=sf-dump-265617533 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:5<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>content-type<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"24 characters\\\">text\\/html; charset=UTF-8<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>cache-control<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"17 characters\\\">no-cache, private<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>date<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"29 characters\\\">Tue, 06 Jul 2021 03:37:10 GMT<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>set-cookie<\\/span>\\\" => <span class=sf-dump-note>array:2<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"416 characters\\\">XSRF-TOKEN=eyJpdiI6InU5VXFkZklJOHpDOG5rc1RYOTQrS0E9PSIsInZhbHVlIjoieWtPeWhadG96MUxqZGJIendJYTM1UE55YlpQeHI5VkpnSUN5WndPd3psMlNqMWI0cXpzNnF5UDVyWE12aG1EV1FZM1N3dUdzenNWYlFWWjB2Zi9pbWhFZDR3YUFFYXFzakRFUmM1TllGbjB3TWpyb1lPMGZqTTNsamJjdS92QXIiLCJtYWMiOiIxOWI0ZGU3MmFhNjNlOWUwNmE4YzhhNWNiYTE5ZTkxZmNkZDJjODE5YTM4Y2EzZDEwMGEwMWNmMjczYmIzZGFjIn0%3D; expires=Tue, 06-Jul-2021 05:37:10 GMT; Max-Age=7200; path=\\/; samesite=lax<\\/span>\\\"\\n    <span class=sf-dump-index>1<\\/span> => \\\"<span class=sf-dump-str title=\\\"431 characters\\\">unimind_session=eyJpdiI6Iis2dlZaUkxYSTFOZFdDZnR4NUgwVmc9PSIsInZhbHVlIjoieS9ZUlIwV28xNURXREVLZS9QZUY1ZW5oZFlkWkl1ZytwL0hoajZBazltZkpYVkpHUytGK2VzWSt4RFh1dlp0a2Z2R1VYL1FSTUpESmtrWFk1VVpIWGFrSUtVaXpNNTcyc1d5d3UxL1lIN3ZXMHBmNm1vdXlHWE1VbG03TFhsbXUiLCJtYWMiOiI1YTVmZWE5YTIxOWJhMzc5MGM5ZTE4ZTViNDJkNDAxYjA1OWFlMTAyZDY1YmM4NDhlZjMyMzAwM2U5ZWNjNzM2In0%3D; expires=Tue, 06-Jul-2021 05:37:10 GMT; Max-Age=7200; path=\\/; httponly; samesite=lax<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>Set-Cookie<\\/span>\\\" => <span class=sf-dump-note>array:2<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    <span class=sf-dump-index>0<\\/span> => \\\"<span class=sf-dump-str title=\\\"388 characters\\\">XSRF-TOKEN=eyJpdiI6InU5VXFkZklJOHpDOG5rc1RYOTQrS0E9PSIsInZhbHVlIjoieWtPeWhadG96MUxqZGJIendJYTM1UE55YlpQeHI5VkpnSUN5WndPd3psMlNqMWI0cXpzNnF5UDVyWE12aG1EV1FZM1N3dUdzenNWYlFWWjB2Zi9pbWhFZDR3YUFFYXFzakRFUmM1TllGbjB3TWpyb1lPMGZqTTNsamJjdS92QXIiLCJtYWMiOiIxOWI0ZGU3MmFhNjNlOWUwNmE4YzhhNWNiYTE5ZTkxZmNkZDJjODE5YTM4Y2EzZDEwMGEwMWNmMjczYmIzZGFjIn0%3D; expires=Tue, 06-Jul-2021 05:37:10 GMT; path=\\/<\\/span>\\\"\\n    <span class=sf-dump-index>1<\\/span> => \\\"<span class=sf-dump-str title=\\\"403 characters\\\">unimind_session=eyJpdiI6Iis2dlZaUkxYSTFOZFdDZnR4NUgwVmc9PSIsInZhbHVlIjoieS9ZUlIwV28xNURXREVLZS9QZUY1ZW5oZFlkWkl1ZytwL0hoajZBazltZkpYVkpHUytGK2VzWSt4RFh1dlp0a2Z2R1VYL1FSTUpESmtrWFk1VVpIWGFrSUtVaXpNNTcyc1d5d3UxL1lIN3ZXMHBmNm1vdXlHWE1VbG03TFhsbXUiLCJtYWMiOiI1YTVmZWE5YTIxOWJhMzc5MGM5ZTE4ZTViNDJkNDAxYjA1OWFlMTAyZDY1YmM4NDhlZjMyMzAwM2U5ZWNjNzM2In0%3D; expires=Tue, 06-Jul-2021 05:37:10 GMT; path=\\/; httponly<\\/span>\\\"\\n  <\\/samp>]\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-265617533\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\",\"session_attributes\":\"<pre class=sf-dump id=sf-dump-825835022 data-indent-pad=\\\"  \\\"><span class=sf-dump-note>array:5<\\/span> [<samp data-depth=1 class=sf-dump-expanded>\\n  \\\"<span class=sf-dump-key>_token<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"40 characters\\\">FkH0xvvu8CUJYvRT8sowgyhVVihFDzU7YP6m99wu<\\/span>\\\"\\n  \\\"<span class=sf-dump-key>_previous<\\/span>\\\" => <span class=sf-dump-note>array:1<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    \\\"<span class=sf-dump-key>url<\\/span>\\\" => \\\"<span class=sf-dump-str title=\\\"46 characters\\\">http:\\/\\/127.0.0.1:8000\\/admin\\/uni_product\\/create<\\/span>\\\"\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>_flash<\\/span>\\\" => <span class=sf-dump-note>array:2<\\/span> [<samp data-depth=2 class=sf-dump-compact>\\n    \\\"<span class=sf-dump-key>old<\\/span>\\\" => []\\n    \\\"<span class=sf-dump-key>new<\\/span>\\\" => []\\n  <\\/samp>]\\n  \\\"<span class=sf-dump-key>login_admins_59ba36addc2b2f9401580f014c7f58ea4e30989d<\\/span>\\\" => <span class=sf-dump-num>1<\\/span>\\n  \\\"<span class=sf-dump-key>PHPDEBUGBAR_STACK_DATA<\\/span>\\\" => []\\n<\\/samp>]\\n<\\/pre><script>Sfdump(\\\"sf-dump-825835022\\\", {\\\"maxDepth\\\":0})<\\/script>\\n\"}}, \"X2360a26398e78ef34db96a03a9d27058\");\r\n\r\n</script>', NULL, '[\"monkey-1625823043.jpg\",\"brvn3-1625824234.jpg\",\"hinh-anh-dep-1-1625824234.jpg\",\"logo-1625824234.png\",\"monkey-1625824234.jpg\"]', NULL, NULL, '2021-07-09 02:50:34', '2021-07-09 02:50:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_product_category`
+--
+
+CREATE TABLE `uni_product_category` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `order` int(11) DEFAULT NULL,
+  `thumnail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `banner` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` timestamp NULL DEFAULT NULL,
+  `updated_by` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_product_category`
+--
+
+INSERT INTO `uni_product_category` (`id`, `name`, `slug`, `desscription`, `meta_desscription`, `meta_title`, `meta_keyword`, `content`, `parent_id`, `status`, `order`, `thumnail`, `banner`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Sản phẩm bột ớt_edit01', 'san-pham-bot-otedit01', 'Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt', 'Sản phẩm bột ớt_edit01', 'Sản phẩm bột ớt_edit01', NULL, 'Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt Mô tả sản phẩm bột ớt', 0, 1, 1, NULL, NULL, NULL, NULL, '2021-07-02 21:32:06', '2021-07-02 21:49:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_size`
+--
+
+CREATE TABLE `uni_size` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_more` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `order` int(11) DEFAULT NULL,
+  `thumnail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `banner` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` timestamp NULL DEFAULT NULL,
+  `updated_by` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_size`
+--
+
+INSERT INTO `uni_size` (`id`, `name`, `slug`, `desscription`, `meta_desscription`, `meta_title`, `meta_keyword`, `content`, `content_more`, `status`, `order`, `thumnail`, `banner`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Hộp nhựa 30g', 'hop-nhua-30g', 'Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa', 'Hộp nhựa 30g', 'Hộp nhựa 30g', NULL, 'Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa Hộp nhựa', NULL, 1, 0, NULL, NULL, NULL, NULL, '2021-07-03 01:53:26', '2021-07-03 01:53:58'),
+(2, 'Hộp 50g', 'hop-50g', 'It is Very Easy to Customize and it uses in your website apllication. It is Very Easy to Customize and it uses in your website apllication.', 'Hộp 50g', 'Hộp 50g', NULL, 'It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.It is Very Easy to Customize and it uses in your website apllication.', NULL, 1, 0, NULL, NULL, NULL, NULL, '2021-07-07 02:44:41', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_store`
+--
+
+CREATE TABLE `uni_store` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `store_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `store_area` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `store_address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `store_album` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `store_phone` int(11) DEFAULT NULL,
+  `store_status` tinyint(4) DEFAULT NULL,
+  `store_taxcode` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `store_thumbnail` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_store`
+--
+
+INSERT INTO `uni_store` (`id`, `user_id`, `store_name`, `store_area`, `store_address`, `store_album`, `store_phone`, `store_status`, `store_taxcode`, `store_thumbnail`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Naga saja', '222', 'Haf noi', '[\"brvn-1625735068.jpg\",\"brvn1-1625735068.jpg\",\"brvn2-1625735068.jpg\",\"brvn3-1625735068.jpg\"]', 966699966, 1, '11222552', 'monkey-1625734962.jpg', '2021-07-08 02:04:28', '2021-07-08 02:04:28'),
+(2, NULL, 'Cua hang gia vi so 222', '333', 'Hai phong', '[\"brvn-1625735068.jpg\",\"brvn1-1625735068.jpg\",\"brvn2-1625735068.jpg\",\"brvn3-1625735068.jpg\"]', 969987456, 1, '12332211', NULL, '2021-07-08 02:19:53', '2021-07-08 02:19:53'),
+(3, NULL, 'Của hàng đồ cay số 2', '200', 'Hà Nam', '[\"monkey-1625820540.jpg\",\"brvn-1625820751.jpg\",\"hinh-anh-dep-1-1625822937.jpg\"]', 968874556, 0, '112233366554', NULL, '2021-07-09 02:28:57', '2021-07-09 02:28:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_supplier`
+--
+
+CREATE TABLE `uni_supplier` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL,
+  `tax_code` int(12) DEFAULT NULL,
+  `avatar` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_supplier`
+--
+
+INSERT INTO `uni_supplier` (`id`, `name`, `email`, `address`, `phone`, `status`, `tax_code`, `avatar`, `created_at`, `updated_at`) VALUES
+(1, 'Dat Nguyen 07', 'ntdat7714@gmail.com', '75 Cau Giay st.', 969938801, 1, 1234567822, NULL, '2021-07-03 03:02:19', '2021-07-04 19:04:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_tag`
+--
+
+CREATE TABLE `uni_tag` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` timestamp NULL DEFAULT NULL,
+  `updated_by` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_tag`
+--
+
+INSERT INTO `uni_tag` (`id`, `name`, `slug`, `desscription`, `meta_desscription`, `meta_title`, `meta_keyword`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Gia vị nẩu 001', 'gia-vi-nau-001', 'Gia vị nẩu thái ngon cho từng gia đình Gia vị nẩu thái ngon cho từng gia đìnhGia vị nẩu thái ngon cho từng gia đình', 'Gia vị nẩu 001', 'Gia vị nẩu 001', NULL, NULL, NULL, '2021-07-04 21:14:23', '2021-07-04 21:15:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_trade`
+--
+
+CREATE TABLE `uni_trade` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desscription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_more` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `order` int(11) DEFAULT NULL,
+  `thumnail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `banner` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` timestamp NULL DEFAULT NULL,
+  `updated_by` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `uni_trade`
+--
+
+INSERT INTO `uni_trade` (`id`, `name`, `slug`, `desscription`, `meta_desscription`, `meta_title`, `meta_keyword`, `content`, `content_more`, `qty`, `status`, `order`, `thumnail`, `banner`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Văn Phạm', 'van-pham', 'Hạt tiêu cay bắc cực biên cương cức Hạt tiêu cay bắc cực biên cương cức Hạt tiêu cay bắc cực biên cương cức', 'Văn Phạm', 'Văn Phạm', NULL, 'Hạt tiêu cay bắc cực biên cương cức Hạt tiêu cay bắc cực biên cương cức Hạt tiêu cay bắc cực biên cương cức', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, '2021-07-03 01:23:31', '2021-07-03 01:23:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_transaction`
+--
+
+CREATE TABLE `uni_transaction` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `admin_id` int(11) DEFAULT NULL,
+  `total_money` int(11) DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `method_pay` int(11) DEFAULT NULL,
+  `address` int(11) DEFAULT NULL,
+  `type_pay` int(11) DEFAULT NULL,
+  `node_pay` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `code_pay` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `voucher` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `time_process` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` timestamp NULL DEFAULT NULL,
+  `updated_by` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uni_user`
+--
+
+CREATE TABLE `uni_user` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `username` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email_verified` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `type` tinyint(4) NOT NULL DEFAULT 0,
+  `avatar` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1810,27 +2516,19 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (1, 'adsmo', 'pvtien@gmail.com', NULL, '$2y$10$TSAZhOcoEvyfb/GG1T5ya.24MguuRjpgO2pT0nbHndgbeXCEIxgFG', 'PfeXTVHdXhTXPCEd84GQ6wvYfjoEjSxnzgk0wM6vVrUW6bNUNQS3ybZrQbgJ', NULL, '2021-05-03 04:00:39', NULL, NULL, NULL, NULL, 1, 0, 'google', '', '106738833952998328415', ''),
 (2, 'Nguyên Văn Dược', 'duocnvoit@gmail.com', NULL, '$2y$10$XWoLgI19bRRddChjMOZ/cevKcq74iwXTBGSjslH5s4blqDhCLCUay', NULL, '2020-12-27 02:02:47', NULL, NULL, '0928817228', NULL, NULL, 1, 0, '', '', '', ''),
 (3, 'Tấn Đình Hoàng', 'daohainamnam28@gmail.com', NULL, 'daohainamnam28@gmail.com', 'gghPpDtuVnEKXeQ3GIRfszSoFNJTTNYNFRNrtiedOg5pJ0MKFIyKIlbUAblx', '2020-12-28 00:51:01', '2020-12-28 00:51:01', NULL, NULL, NULL, NULL, 1, 0, 'google', 'https://lh4.googleusercontent.com/-ad9WyeDGPwI/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclcdoZqddG7FQbR5s2PAR7vHjEngg/s96-c/photo.jpg', '118326123659883004311', ''),
-(34, 'Tien Van Pham', 'hppvtien@gmail.com', '2020-12-27 02:02:47', '$2y$10$K.4lMHMgrgP0RZTaek.tUuoU4h40PMXY.wAFerkl.2Is59kmeWRVS', NULL, '2021-05-25 03:27:48', NULL, NULL, '0969938801', NULL, NULL, 1, 0, 'register', '', '0', 'dasdasdasdasdasdasdasd');
+(34, 'Tien Van Pham', 'hppvtien@gmail.com', '2020-12-27 02:02:47', '$2y$10$1aATl0EuZjB1whFCus860uZcTsbEFdePtY.ahL0GhDI/l3m6Ikvca', NULL, '2021-05-25 03:27:48', NULL, NULL, '0969938801', NULL, NULL, 1, 0, 'register', '', '0', 'dasdasdasdasdasdasdasd');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_voucher`
+-- Table structure for table `user_activations`
 --
 
-CREATE TABLE `user_voucher` (
+CREATE TABLE `user_activations` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `voucher_id` bigint(20) UNSIGNED NOT NULL,
-  `redeemed_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `user_voucher`
---
-
-INSERT INTO `user_voucher` (`id`, `user_id`, `voucher_id`, `redeemed_at`) VALUES
-(1, 34, 2, '2021-06-12 00:17:23');
 
 -- --------------------------------------------------------
 
@@ -1856,7 +2554,6 @@ CREATE TABLE `votes` (
 --
 
 INSERT INTO `votes` (`id`, `v_name`, `v_user_id`, `v_id`, `v_type`, `v_content`, `v_number`, `v_status`, `created_at`, `updated_at`) VALUES
-(1, '', 1, 50, 1, 'Đúng là 1 khoá học tuyệt vời. Mình lại đang cần gặp ngay ô bạn giới thiệu', 5, 1, '2020-11-21 09:06:42', '2021-05-05 19:00:01'),
 (2, '', 1, 50, 1, 'Khoá học thật hay và rất bổ ích. Hi vọng các bạn sẽ cảm nhận được nó như mình. Ngoài ra các bạn muốn mua đồ án này thì liên hệ với mình nhé.', 5, 1, '2020-12-27 01:49:18', NULL),
 (3, '', 1, 50, 1, 'Khoá học thật hay và rất bổ ích. Hi vọng các bạn sẽ cảm nhận được nó như mình. Ngoài ra các bạn muốn mua đồ án này thì liên hệ với mình nhé.', 5, 1, '2020-12-27 02:49:40', NULL),
 (5, '', 1, 61, 1, 'Khóa học này rất hay', 4, 1, '2021-05-11 21:15:26', NULL),
@@ -1866,31 +2563,6 @@ INSERT INTO `votes` (`id`, `v_name`, `v_user_id`, `v_id`, `v_type`, `v_content`,
 (9, '', 1, 50, 1, 'Đúng là 1 khoá học tuyệt vời. Mình lại đang cần gặp ngay ô bạn giới thiệu', 5, 1, '2020-11-21 09:06:42', '2021-05-05 19:00:01'),
 (10, 'ádfasdf', 999, 20, 1, 'ádfasdf', 0, 1, '2021-05-13 04:39:29', NULL),
 (11, 'Ngonnnnnnnnnnnnnnnnnnnnnn', 34, 19, 1, 'Bài học rất bổ ích cho chúng tồi', 5, 1, '2021-05-27 01:06:55', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `vouchers`
---
-
-CREATE TABLE `vouchers` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `code` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `model_percent` int(11) DEFAULT NULL,
-  `model_qty` bigint(20) UNSIGNED NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `expires_at` date DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `vouchers`
---
-
-INSERT INTO `vouchers` (`id`, `code`, `model_percent`, `model_qty`, `description`, `expires_at`, `created_at`, `updated_at`) VALUES
-(1, '1c462PIOoY', 10, 5, 'Khóa học bvcccc', '2021-06-13', '2021-06-08 23:51:49', '2021-06-11 03:40:25'),
-(2, 'IHQqY4k3Fw', 10, 55, 'ádasdasdasdsadsa', '2021-06-19', '2021-06-09 00:13:19', '2021-06-12 00:17:23');
 
 --
 -- Indexes for dumped tables
@@ -1914,18 +2586,6 @@ ALTER TABLE `answers`
 --
 ALTER TABLE `answer_to_teacher`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ap_category`
---
-ALTER TABLE `ap_category`
-  ADD PRIMARY KEY (`id`) USING BTREE;
-
---
--- Indexes for table `ap_menus`
---
-ALTER TABLE `ap_menus`
-  ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
 -- Indexes for table `articles`
@@ -2131,6 +2791,54 @@ ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `post_category`
+--
+ALTER TABLE `post_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `post_tag`
+--
+ALTER TABLE `post_tag`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_category`
+--
+ALTER TABLE `product_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_color`
+--
+ALTER TABLE `product_color`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_lotproduct`
+--
+ALTER TABLE `product_lotproduct`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_size`
+--
+ALTER TABLE `product_size`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_tag`
+--
+ALTER TABLE `product_tag`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_trade`
+--
+ALTER TABLE `product_trade`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
@@ -2180,36 +2888,6 @@ ALTER TABLE `slides`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `table_uni_category`
---
-ALTER TABLE `table_uni_category`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `table_uni_color`
---
-ALTER TABLE `table_uni_color`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `table_uni_products`
---
-ALTER TABLE `table_uni_products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `table_uni_size`
---
-ALTER TABLE `table_uni_size`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `table_uni_trademark`
---
-ALTER TABLE `table_uni_trademark`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tags`
 --
 ALTER TABLE `tags`
@@ -2240,6 +2918,114 @@ ALTER TABLE `transactions`
   ADD KEY `transactions_t_user_id_index` (`t_user_id`);
 
 --
+-- Indexes for table `uni_admin`
+--
+ALTER TABLE `uni_admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_color`
+--
+ALTER TABLE `uni_color`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_contact`
+--
+ALTER TABLE `uni_contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_favourite`
+--
+ALTER TABLE `uni_favourite`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_flash_sale`
+--
+ALTER TABLE `uni_flash_sale`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_lotproduct`
+--
+ALTER TABLE `uni_lotproduct`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_order`
+--
+ALTER TABLE `uni_order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_post`
+--
+ALTER TABLE `uni_post`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_post_category`
+--
+ALTER TABLE `uni_post_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_product`
+--
+ALTER TABLE `uni_product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_product_category`
+--
+ALTER TABLE `uni_product_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_size`
+--
+ALTER TABLE `uni_size`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_store`
+--
+ALTER TABLE `uni_store`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_supplier`
+--
+ALTER TABLE `uni_supplier`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_tag`
+--
+ALTER TABLE `uni_tag`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_trade`
+--
+ALTER TABLE `uni_trade`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_transaction`
+--
+ALTER TABLE `uni_transaction`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uni_user`
+--
+ALTER TABLE `uni_user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -2248,26 +3034,16 @@ ALTER TABLE `users`
   ADD KEY `users_activation_code_index` (`code_verication`);
 
 --
--- Indexes for table `user_voucher`
+-- Indexes for table `user_activations`
 --
-ALTER TABLE `user_voucher`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_voucher_user_id_foreign` (`user_id`),
-  ADD KEY `user_voucher_voucher_id_foreign` (`voucher_id`);
+ALTER TABLE `user_activations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `votes`
 --
 ALTER TABLE `votes`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vouchers`
---
-ALTER TABLE `vouchers`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `vouchers_code_unique` (`code`),
-  ADD KEY `vouchers_model_type_model_id_index` (`model_percent`,`model_qty`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -2292,18 +3068,6 @@ ALTER TABLE `answer_to_teacher`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `ap_category`
---
-ALTER TABLE `ap_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
-
---
--- AUTO_INCREMENT for table `ap_menus`
---
-ALTER TABLE `ap_menus`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
---
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
@@ -2313,13 +3077,13 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `articles_keywords`
 --
 ALTER TABLE `articles_keywords`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -2439,13 +3203,13 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -2458,6 +3222,54 @@ ALTER TABLE `pages`
 --
 ALTER TABLE `permissions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `post_category`
+--
+ALTER TABLE `post_category`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `post_tag`
+--
+ALTER TABLE `post_tag`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `product_category`
+--
+ALTER TABLE `product_category`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `product_color`
+--
+ALTER TABLE `product_color`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `product_lotproduct`
+--
+ALTER TABLE `product_lotproduct`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `product_size`
+--
+ALTER TABLE `product_size`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `product_tag`
+--
+ALTER TABLE `product_tag`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `product_trade`
+--
+ALTER TABLE `product_trade`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `questions`
@@ -2481,7 +3293,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `seo_blog`
 --
 ALTER TABLE `seo_blog`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `seo_education`
@@ -2494,36 +3306,6 @@ ALTER TABLE `seo_education`
 --
 ALTER TABLE `slides`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `table_uni_category`
---
-ALTER TABLE `table_uni_category`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `table_uni_color`
---
-ALTER TABLE `table_uni_color`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `table_uni_products`
---
-ALTER TABLE `table_uni_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `table_uni_size`
---
-ALTER TABLE `table_uni_size`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `table_uni_trademark`
---
-ALTER TABLE `table_uni_trademark`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tags`
@@ -2547,7 +3329,115 @@ ALTER TABLE `teachers_tags`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+
+--
+-- AUTO_INCREMENT for table `uni_admin`
+--
+ALTER TABLE `uni_admin`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `uni_color`
+--
+ALTER TABLE `uni_color`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `uni_contact`
+--
+ALTER TABLE `uni_contact`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `uni_favourite`
+--
+ALTER TABLE `uni_favourite`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `uni_flash_sale`
+--
+ALTER TABLE `uni_flash_sale`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `uni_lotproduct`
+--
+ALTER TABLE `uni_lotproduct`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `uni_order`
+--
+ALTER TABLE `uni_order`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `uni_post`
+--
+ALTER TABLE `uni_post`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `uni_post_category`
+--
+ALTER TABLE `uni_post_category`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `uni_product`
+--
+ALTER TABLE `uni_product`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `uni_product_category`
+--
+ALTER TABLE `uni_product_category`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `uni_size`
+--
+ALTER TABLE `uni_size`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `uni_store`
+--
+ALTER TABLE `uni_store`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `uni_supplier`
+--
+ALTER TABLE `uni_supplier`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `uni_tag`
+--
+ALTER TABLE `uni_tag`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `uni_trade`
+--
+ALTER TABLE `uni_trade`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `uni_transaction`
+--
+ALTER TABLE `uni_transaction`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `uni_user`
+--
+ALTER TABLE `uni_user`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -2556,22 +3446,16 @@ ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT for table `user_voucher`
+-- AUTO_INCREMENT for table `user_activations`
 --
-ALTER TABLE `user_voucher`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `user_activations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `vouchers`
---
-ALTER TABLE `vouchers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -2595,13 +3479,6 @@ ALTER TABLE `model_has_roles`
 ALTER TABLE `role_has_permissions`
   ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `user_voucher`
---
-ALTER TABLE `user_voucher`
-  ADD CONSTRAINT `user_voucher_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `user_voucher_voucher_id_foreign` FOREIGN KEY (`voucher_id`) REFERENCES `vouchers` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
