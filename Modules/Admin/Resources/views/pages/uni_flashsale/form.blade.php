@@ -65,25 +65,25 @@
                                     <th scope="row">{{ $key+1 }}</th>
                                     <td class="text-center">
                                         <div class="form-group">
-                                            <input class="form-check-input" require type="checkbox" name="product_sale[{{ $key }}]['id']" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
-                                            <label class="form-check-label" for="inlineCheckbox{{ $item->id }}">{{ $item->name }}</label>
+                                            <input class="form-check-input"  data-key = {{ $key }} require type="checkbox" name="product_sale[{{ $key }}]['id']" id="inlineCheckbox{{ $key }}" value="{{ $item->id }}">
+                                            <label class="form-check-label" for="inlineCheckbox{{ $key }}">{{ $item->name }}</label>
                                         </div>
                                     </td>
                                     <td>{{ $item->qty }}</td>
                                     <td>{{ $item->price }}</td>
                                     <td>
                                         <div class="form-group">
-                                            <input type="number" class="form-control" name="product_sale[{{ $key }}]['qty_sale']" value="">
+                                            <input type="number" class="form-control keypress-count" id="qty_sale_{{ $key }}" data-key = {{ $key }} name="product_sale[{{ $key }}]['qty_sale']" value="">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
-                                            <input type="number" class="form-control" name="product_sale[{{ $key }}]['price_sale']" value="">
+                                            <input type="number" class="form-control keypress-count" id="price_sale_{{ $key }}" data-key = {{ $key }}  name="product_sale[{{ $key }}]['price_sale']" value="">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
-                                            <input type="number" class="form-control" name="product_sale[{{ $key }}]['price_subtotal']" value="">
+                                            <input type="number" class="form-control keypress-count price_subtotal" id="price_subtotal_{{ $key }}" data-key = {{ $key }} readonly="readonly" name="product_sale[{{ $key }}]['price_subtotal']" value="">
                                         </div>
                                     </td>
                                 </tr>
@@ -92,7 +92,11 @@
                                 @endforelse
                                 <tr class="bg-black">
                                     <td colspan="6" class="text-info">Tổng tiền combo</td>
-                                    <td class="text-info">500.000.000 VND</td>
+                                    <td class="text-info">
+                                    <div class="form-group">
+                                            <input type="number" class="form-control price_all_subtotal" id="price_all_subtotal" name="product_sale[{{ $key }}]['price_all_subtotal']" value="" readonly="readonly">
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -170,7 +174,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Thumbnail </label>
+                        <label for="exampleInputEmail1">Thumbnail </label>
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="thumbnail" id="avatar_uploads">
                     </div>

@@ -40,3 +40,35 @@ $('.close-img').on('click', function() {
 
     }
 });
+
+$('.form-check-input').on('change', function() {
+    let key_data = $(this).attr('data-key');
+    if ($('#inlineCheckbox' + key_data).is(':checked')) {
+        $('.keypress-count').on('keyup', function() {
+            let qty_sale = $("#qty_sale_" + key_data).val();
+            let price_sale = $("#price_sale_" + key_data).val();
+            if (qty_sale && price_sale) {
+                // let price_all_subtotal = 0;
+                let price_subtotal = qty_sale * price_sale;
+                $("#price_subtotal_" + key_data).val(price_subtotal);
+                // if (price_subtotal) {
+                //     price_all_subtotal += price_subtotal;
+                // }
+            }
+
+        });
+
+    }
+    if (!$('#inlineCheckbox' + key_data).is(':checked')) {
+        $("#price_subtotal_" + key_data).val(0);
+    }
+
+
+    var total = 0;
+    $('input:checkbox:checked').each(function() { // iterate through each checked element.
+        total += Number($('.price_subtotal').val());
+    });
+    $("#price_all_subtotal").val(total);
+
+
+});

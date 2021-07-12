@@ -47,8 +47,8 @@
                                     @endforeach
                                 </tbody>
                                 @if($errors->first('lotproduct_id'))
-                                            <span class="text-danger">{{ $errors->first('lotproduct_id') }}</span>
-                                            @endif
+                                <span class="text-danger">{{ $errors->first('lotproduct_id') }}</span>
+                                @endif
                             </table>
                         </div>
                         <div class="bg-primary">
