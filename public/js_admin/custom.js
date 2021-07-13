@@ -43,32 +43,32 @@ $('.close-img').on('click', function() {
 
 $('.form-check-input').on('change', function() {
     let key_data = $(this).attr('data-key');
-    if ($('#inlineCheckbox' + key_data).is(':checked')) {
-        $('.keypress-count').on('keyup', function() {
+    $('.keypress-count').on('keyup', function() {
+        if ($('#inlineCheckbox' + key_data).is(':checked')) {
             let qty_sale = $("#qty_sale_" + key_data).val();
             let price_sale = $("#price_sale_" + key_data).val();
             if (qty_sale && price_sale) {
-                // let price_all_subtotal = 0;
                 let price_subtotal = qty_sale * price_sale;
                 $("#price_subtotal_" + key_data).val(price_subtotal);
-                // if (price_subtotal) {
-                //     price_all_subtotal += price_subtotal;
-                // }
+                $('#inlineCheckbox' + key_data).attr("data-sub", price_subtotal);
             }
+            let data_sub = 0;
+            if (!$('#inlineCheckbox' + key_data).is(':checked')) {
+                data_sub = $(this).attr('data-sub');
+            }
+            let totalPrice = 0;
+            $('.form-check-input:checked').each(function() {
+                totalPrice += Number($(this).attr('data-sub'));
+                $('.price_all_subtotal').val(totalPrice);
+            });
 
-        });
-
-    }
-    if (!$('#inlineCheckbox' + key_data).is(':checked')) {
-        $("#price_subtotal_" + key_data).val(0);
-    }
-
-
-    var total = 0;
-    $('input:checkbox:checked').each(function() { // iterate through each checked element.
-        total += Number($('.price_subtotal').val());
+        }
     });
-    $("#price_all_subtotal").val(total);
-
+    if (!$('#inlineCheckbox' + key_data).is(':checked')) {
+        $("#qty_sale_" + key_data).val(0);
+        $("#price_sale_" + key_data).val(0);
+        $("#price_subtotal_" + key_data).val(0);
+        $('#inlineCheckbox' + key_data).attr("data-sub", 0);
+    }
 
 });

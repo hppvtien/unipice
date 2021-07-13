@@ -65,7 +65,7 @@
                                     <th scope="row">{{ $key+1 }}</th>
                                     <td class="text-center">
                                         <div class="form-group">
-                                            <input class="form-check-input"  data-key = {{ $key }} require type="checkbox" name="product_sale[{{ $key }}]['id']" id="inlineCheckbox{{ $key }}" value="{{ $item->id }}">
+                                            <input class="form-check-input" data-sub="" data-key = {{ $key }} require type="checkbox" name="product_sale[{{ $key }}]['id']" id="inlineCheckbox{{ $key }}" value="{{ $item->id }}">
                                             <label class="form-check-label" for="inlineCheckbox{{ $key }}">{{ $item->name }}</label>
                                         </div>
                                     </td>
