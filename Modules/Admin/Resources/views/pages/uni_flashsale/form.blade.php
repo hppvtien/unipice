@@ -60,41 +60,77 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($uni_product as $key => $item)
-                                <tr>
-                                    <th scope="row">{{ $key+1 }}</th>
-                                    <td class="text-center">
-                                        <div class="form-group">
-                                            <input class="form-check-input" data-sub="" data-key = {{ $key }} require type="checkbox" name="product_sale[{{ $key }}]['id']" id="inlineCheckbox{{ $key }}" value="{{ $item->id }}">
-                                            <label class="form-check-label" for="inlineCheckbox{{ $key }}">{{ $item->name }}</label>
-                                        </div>
-                                    </td>
-                                    <td>{{ $item->qty }}</td>
-                                    <td>{{ $item->price }}</td>
-                                    <td>
-                                        <div class="form-group">
-                                            <input type="number" class="form-control keypress-count" id="qty_sale_{{ $key }}" data-key = {{ $key }} name="product_sale[{{ $key }}]['qty_sale']" value="">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group">
-                                            <input type="number" class="form-control keypress-count" id="price_sale_{{ $key }}" data-key = {{ $key }}  name="product_sale[{{ $key }}]['price_sale']" value="">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group">
-                                            <input type="number" class="form-control keypress-count price_subtotal" id="price_subtotal_{{ $key }}" data-key = {{ $key }} readonly="readonly" name="product_sale[{{ $key }}]['price_subtotal']" value="">
-                                        </div>
-                                    </td>
-                                </tr>
-                                @empty
-
-                                @endforelse
+                                <?php if ($uni_flashsale) { ?>
+                                   
+                                    @foreach ($uni_product as $key => $item)
+                                            <tr>
+                                                <th scope="row">{{ $key+1 }}</th>
+                                                <td class="text-center">
+                                                    <div class="form-group">
+                                                        <input class="form-check-input" 
+                                                        <?= isset($item->flash_sale) ? 'checked' : '' ?> 
+                                                        data-sub="" data-key={{ $key }} require type="checkbox" 
+                                                        name="product_sale[{{ $key }}][id]" id="inlineCheckbox{{ $key }}" value="{{ $item->id }}">
+                                                        <label class="form-check-label" for="inlineCheckbox{{ $key }}">{{ $item->name }}</label>
+                                                    </div>
+                                                </td>
+                                                <td>{{ $item->qty }}</td>
+                                                <td>{{ $item->price }}</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="number" class="form-control keypress-count" id="qty_sale_{{ $key }}" data-key={{ $key }} 
+                                                        name="product_sale[{{ $key }}][qty_sale]" value="{{ old('qty_sale', $item->flash_sale->qty_sale ?? '') }}">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="number" class="form-control keypress-count" id="price_sale_{{ $key }}" data-key={{ $key }} 
+                                                        name="product_sale[{{ $key }}][price_sale]" value="{{ old('price_sale', $item->flash_sale->price_sale ?? '') }}">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="number" class="form-control keypress-count price_subtotal" id="price_subtotal_{{ $key }}" data-key={{ $key }} readonly="readonly" 
+                                                        name="product_sale[{{ $key }}][price_subtotal]" value="{{ old('price_subtotal', $item->flash_sale->price_subtotal ?? '') }}">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                    @endforeach
+                                <?php } else { ?>
+                                    @foreach ($uni_product as $key => $item)
+                                    <tr>
+                                        <th scope="row">{{ $key+1 }}</th>
+                                        <td class="text-center">
+                                            <div class="form-group">
+                                                <input class="form-check-input" data-sub="" data-key={{ $key }} require type="checkbox" name="product_sale[{{ $key }}][id]" id="inlineCheckbox{{ $key }}" value="{{ $item->id }}">
+                                                <label class="form-check-label" for="inlineCheckbox{{ $key }}">{{ old('name', $item->name ?? '') }}</label>
+                                            </div>
+                                        </td>
+                                        <td>{{ $item->qty }}</td>
+                                        <td>{{ $item->price }}</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control keypress-count" id="qty_sale_{{ $key }}" data-key={{ $key }} name="product_sale[{{ $key }}][qty_sale]" value="">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control keypress-count" id="price_sale_{{ $key }}" data-key={{ $key }} name="product_sale[{{ $key }}][price_sale]" value="">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control keypress-count price_subtotal" id="price_subtotal_{{ $key }}" data-key={{ $key }} readonly="readonly" name="product_sale[{{ $key }}][price_subtotal]" value="">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                <?php } ?>
                                 <tr class="bg-black">
                                     <td colspan="6" class="text-info">Tổng tiền combo</td>
                                     <td class="text-info">
-                                    <div class="form-group">
-                                            <input type="number" class="form-control price_all_subtotal" id="price_all_subtotal" name="product_sale[{{ $key }}]['price_all_subtotal']" value="" readonly="readonly">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control price_all_subtotal" id="price_all_subtotal" name="price_all_subtotal" value="{{ old('price',$uni_flashsale->price ?? '') }}" readonly="readonly">
                                         </div>
                                     </td>
                                 </tr>
@@ -115,7 +151,6 @@
                         </p>
                         <p class="mb-2 view-seo-description meta_desscription">
                             {{ old('meta_desscription', $uni_flashsale->meta_desscription ?? 'It is Very Easy to Customize and it uses in your website apllication.') }}
-
                         </p>
                     </div>
                 </div>

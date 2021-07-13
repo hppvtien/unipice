@@ -40,15 +40,18 @@ class AdminUniFlashSaleController extends AdminController
         $data['created_at']   = Carbon::now();
         $product_sale = [];
         foreach ($request->product_sale as $item) {
-            if (count($item) == 3) {
+            if (count($item) == 4) {
                 $product_sale[] = $item;
             }
         }
+        
         $data['info_sale'] = json_encode($product_sale);
+       
         $param = [
             "name" => $request->name,
             "slug" => $request->slug,
             "desscription" => $request->desscription,
+            "price" => $request->price_all_subtotal,
             "qty" => $request->qty,
             "content" => $request->content,
             "meta_title" => $request->meta_title,
@@ -69,51 +72,57 @@ class AdminUniFlashSaleController extends AdminController
     }
     public function edit($id)
     {
+        $uni_product      = Uni_Product::get();
         $uni_flashsale     = Uni_FlashSale::findOrFail($id);
+        foreach($uni_product as $key => $item){
+            foreach(json_decode($uni_flashsale->info_sale) as $keys => $items){
+                if($items->id == $item['id']){
+                    $item['flash_sale'] = $items;
+                }
+            }
+        }
         $viewData = [
-            'uni_flashsale'       => $uni_flashsale
+            'uni_flashsale'       => $uni_flashsale,
+            'uni_product'       => $uni_product
         ];
+
         return view('admin::pages.uni_flashsale.update', $viewData);
     }
     public function update(Request $request, $id)
     {
         if ($request) {
+           
             $uni_flashsale             = Uni_FlashSale::findOrFail($id);
-            $store_albumOld = json_decode(Uni_FlashSale::where('id', $id)->pluck('store_album')->first());
-
-            $data               = $request->except(['store_thumbnail', 'save', '_token', 'store_album']);
+            $data               = $request->except(['thumbnail', 'save', '_token']);
             $data['updated_at'] = Carbon::now();
             $data['created_by'] = get_data_user('web');
-            if ($request->store_album) {
-                $store_album = [];
-                foreach ($request->store_album as $item) {
-                    $store_album[] = $this->processUploadFile($item);
+            $product_sale = [];
+            foreach ($request->product_sale as $item) {
+                if (count($item) == 4) {
+                    $product_sale[] = $item;
                 }
-            } else {
-                $store_album = [];
             }
-
-            $store_ab = array_merge($store_albumOld, $store_album);
-            // dd($store_albumOld);
-            // dd($store_ab);
-            if ($request->store_thumbnail) {
-                Storage::delete('public/uploads/' . $uni_flashsale->store_thumbnail);
-                $store_thumbnail = $request->store_thumbnail;
+            $data['info_sale'] = json_encode($product_sale);
+            if ($request->thumbnail) {
+                $data['thumbnail'] = $request->thumbnail;
+                Storage::delete('public/uploads/' . $uni_flashsale->thumbnail);
             } else {
-                $store_thumbnail = $request->store_thumbnail;
+                $data['thumbnail'] = $request->thumbnail;
             }
 
             $param = [
-                'store_name' => $request->store_name,
-                'created_at' => Carbon::now(),
-                'user_id' => $data['created_by'],
-                'store_area' => $request->store_area,
-                'store_address' => $request->store_address,
-                'store_phone' => $request->store_phone,
-                'store_thumbnail' => $store_thumbnail,
-                'store_taxcode' => $request->store_taxcode,
-                'store_album' => json_encode($store_ab),
-                'store_status' => $request->store_status,
+                "name" => $request->name,
+                "slug" => $request->slug,
+                "desscription" => $request->desscription,
+                "price" => $request->price_all_subtotal,
+                "qty" => $request->qty,
+                "content" => $request->content,
+                "meta_title" => $request->meta_title,
+                "meta_desscription" => $request->meta_desscription,
+                "status" => $request->status,
+                "thumbnail" => $data['thumbnail'],
+                "updated_at" => $data['updated_at'],
+                "info_sale" => $data['info_sale']
             ];
             // dd($param);
             $uni_flashsale->fill($param)->save();
