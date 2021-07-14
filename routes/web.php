@@ -22,6 +22,7 @@ Route::get('/c', function() {
 });
 Route::group(['namespace' => 'Frontend'], function (){
     Route::get('/','HomeController@index')->name('get.home');
+    Route::post('/','HomeController@product_trade')->name('get.product_trade');
     Route::get('/dang-nhap','LoginController@index')->name('get.login');
     Route::post('/dang-nhap','LoginController@login')->name('post.login');
     Route::get('/dang-ky','RegisterController@index')->name('get.register');

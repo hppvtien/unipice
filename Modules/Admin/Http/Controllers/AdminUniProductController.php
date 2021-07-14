@@ -169,6 +169,13 @@ class AdminUniProductController extends AdminController
         } else {
             $album = [];
         }
+        if ($request->thumbnail) {
+            $data['thumbnail'] = $request->thumbnail;
+            Storage::delete('public/uploads_product/'.$uni_product->thumbnail);
+        } else {
+            $data['thumbnail'] = $uni_product->thumbnail;
+        }
+        
         $store_ab = array_merge($product_albumOld, $album);
         $param = [
             'name' => $request->name,
@@ -183,7 +190,7 @@ class AdminUniProductController extends AdminController
             'is_hot' => $request->is_hot,
             'is_feauture' => $request->is_feauture,
             'order' => $request->order,
-            'thumnail' => $request->thumbnail,
+            'thumbnail' => $request->thumbnail,
             'status' => $request->status,
             'album' => json_encode($store_ab),
         ];

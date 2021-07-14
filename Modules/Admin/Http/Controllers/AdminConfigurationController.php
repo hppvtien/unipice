@@ -21,12 +21,11 @@ class AdminConfigurationController extends AdminController
 
         return view('admin::pages.configuration.index', $viewData);
     }
-
+ 
     public function store(Request $request)
     {
-        // dd($request);
-        try {
             $configuration = Configuration::firstOrNew(['email' => $request->email]);
+            
             $data = $request->except(['_token', 'save', 'email','avatar','d_avatar']);
             if($request->logo){
                 Storage::delete('public/uploads/'.$request->d_avatar);
@@ -34,14 +33,10 @@ class AdminConfigurationController extends AdminController
             } else{
                 $data['logo'] = $configuration->logo;
             }
-            // dd($data['logo']);
             // $configuration->fill($request->except(['_token', 'save', 'email','avatar','d_avatar']))->save();
             $configuration->fill($data)->update();
             $this->showMessagesSuccess('Cập nhật thành công');
-        } catch (\Exception $exception) {
-            $this->showMessagesError('Cập nhật thất bại');
-            Log::error($exception->getMessage());
-        }
+       
         return redirect()->back();
     }
 }

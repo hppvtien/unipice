@@ -5,7 +5,7 @@
                     <div class="c-header__promo">
                         <a href="tel:0969938801" class="m-account-menu__link">
                             <span class="m-account-menu__link-text a-promo-message">
-                                Hotline: 0969938801
+                                Hotline: {!! nl2br($configuration->hotline ?? '') !!}
                             </span>
                         </a>
                     </div>
@@ -54,8 +54,8 @@
                         <!-- /BASE -->
                     </div>
                     <div class="c-header__logo">
-                        <a class="a-logo" href="https://www.coopmarket.com/">
-                            <img data-src="https://www.coopmarket.com/themes/custom/frontiercoop_market/logo.svg" class="lazyload" alt="Home" />
+                        <a class="a-logo" href="">
+                            <img data-src="{{ pare_url_file($configuration->logo) }}" class="lazyload" alt="Home" />
                         </a>
                     </div>
                     <!-- BASE -->

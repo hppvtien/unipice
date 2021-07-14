@@ -28,6 +28,7 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Sort</th>
+                                        <th>Vị trí</th>
                                         <th>Status</th>
                                         <th>Banner</th>
                                         <th>Action</th>
@@ -41,6 +42,9 @@
                                             <a href="{{ $item->s_link }}" title="{{ $item->s_name }}">{{ $item->s_name }}</a>
                                         </td>
                                         <td><span class="badge badge-info">{{ $item->s_sort }}</span></td>
+                                        <td>
+                                            <span class="badge {{ $item->getStatusType($item->s_type)['class'] }}">{{ $item->getStatusType($item->s_type)['name']  }}</span>
+                                        </td>
                                         <td>
                                             <span class="badge {{ $item->getStatus($item->s_status)['class']  }}">{{ $item->getStatus($item->s_status)['name']  }}</span>
                                         </td>
