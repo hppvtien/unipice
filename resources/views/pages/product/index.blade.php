@@ -34,34 +34,21 @@
                         </div>
                         <div class="layout layout--onecol">
                             <div class="layout__region layout__region--content">
-                                <div data-block-plugin-id="entity_view:node">
-                                    <script>
-                                        dataLayer.push({
-                                            'event': 'productDetail',
-                                            'ecommerce': {
-                                                'detail': {
-                                                    'products': [{
-                                                        "name": 'Atomizer with 1 2/3 oz. Amber Oil Bottle',
-                                                        "id": '2992',
-                                                        "brand": 'Frontier Co-op',
-                                                        "category": '\Accessories\Essential Oils\Diffusers and Accessories\Storage\Bottles',
-                                                        "price": '$5.45',
-                                                    }]
-                                                }
-                                            }
-                                        });
-                                    </script>
-
-                                    <div data-product-name="Atomizer with 1 2/3 oz. Amber Oil Bottle" data-product-sku="2992" data-product-brand="Frontier Co-op" data-product-category="\Accessories\Essential Oils\Diffusers and Accessories\Storage\Bottles" class="c-product-overview">
+                                <div>
+                                    <div class="c-product-overview">
                                         <div class="c-product-overview__content-wrapper">
                                             <div class="m-product-gallery glide">
                                                 <div class="m-product-gallery__track glide__track" data-glide-el="track">
                                                     <ul class="m-product-gallery__slides glide__slides">
+                                                        @forelse (json_decode($product->album) as $key => $item)
                                                         <li class="m-product-gallery__slide glide__slide">
                                                             <div class="m-product-gallery__img-wrapper">
-                                                                <img class="lazyload m-product-gallery__img" data-src="https://www.coopmarket.com/sites/default/files/acquiadam/2020-12/1_Accessories-Atomizer-with-Amber-Oil-Bottle-2992-Front.jpg" alt="" data-zoom="https://www.coopmarket.com/sites/default/files/acquiadam/2020-12/1_Accessories-Atomizer-with-Amber-Oil-Bottle-2992-Front.jpg">
-                                                            </div>
+                                                                <img class="lazyload m-product-gallery__img" data-src="{{ pare_url_file_product($item) }}" alt="{{ $product->name }}" data-zoom="{{ pare_url_file_product($item) }}">
                                                         </li>
+                                                        @empty
+                                                            
+                                                        @endforelse
+                                                        
                                                     </ul>
                                                 </div>
                                                 <div class="a-carousel-indicator glide__arrows m-product-gallery__controls" data-glide-el="controls">
@@ -86,37 +73,38 @@
 
                                                             <div class="m-combined-product-name">
                                                                 <h1 class="m-combined-product-name__h1">
-
-
                                                                     <span class="a-folio">
-                                                                        Frontier Co-op
+                                                                        {{ $trade_name }}
                                                                     </span>
-
                                                                     <span class="a-product-name">
-                                                                        Atomizer with 1 2/3 oz. Amber Oil Bottle
+                                                                        {{ $product->name }}
+                                                                        {{-- {{ desscription_cut($product->desscription,60) }} --}}
                                                                     </span>
                                                                 </h1>
                                                             </div>
                                                             <!-- FC-2249:: Remove markup that should only be available to authenticated users -->
                                                         </div>
-
-                                                        <div class="m-product-overview__unit-and-sku">
-
-                                                            <span class="m-product-overview__sku">SKU: 2992</span>
-                                                        </div>
+                                                        {{-- <div class="m-product-overview__unit-and-sku">
+                                                            <span class="m-product-overview__sku">SKU: {{ $product->id }}</span>
+                                                        </div> --}}
                                                         <!-- /TODO :: ADD RATING -->
-                                                        <div data-history-node-id="246326" role="article" about="/accessories/storage/bottles/atomizer-with-1-2-3-oz-amber-oil-bottle" class="m-product-overview__price-wrapper">
+                                                        <div role="article" class="m-product-overview__price-wrapper">
                                                             <div class="m-price-lockup">
-                                                                <span class="m-price-lockup__price" style="display: none">
-
+                                                                <span class="m-price-lockup__price">
                                                                     <span class="a-price">
-                                                                        $5.45
+                                                                        {{ $product->price == '' ? 'Giá liên hệ': $product->price }}
                                                                     </span>
                                                                 </span>
                                                             </div>
-                                                            <span class="m-product-overview__discontinued">
-                                                                In Stock
-                                                            </span>
+                                                        </div>
+                                                        <div role="article" class="m-product-overview__price-wrapper">
+                                                            <div class="m-price-lockup">
+                                                                <span class="m-price-lockup__price">
+                                                                    <span class="a-qty">
+                                                                        {{ $product->qty == '' ? 'Hiện tại hết hàng': $product->qty }}
+                                                                    </span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                         <form class="m-product-overview__add-to-cart">
                                                             <input class="a-number-input m-product-overview__qty" type="number" id="qty" name="qty" min="0" max="10000" value="1" aria-label="Quantity" /> <button class="a-btn a-btn--primary m-product-overview__add-to-cart-btn" type="submit">Add to Cart</button>
@@ -124,10 +112,8 @@
                                                     </div>
                                                     <!-- Review :: this should be removed -->
                                                     <div style="padding-top:20px;"></div>
-
                                                     <div class="c-product-overview__links">
-
-                                                        <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="http://pinterest.com/pin/create/button/?url=https://www.coopmarket.com/accessories/storage/bottles/atomizer-with-1-2-3-oz-amber-oil-bottle&amp;media=https://www.coopmarket.com/sites/default/files/acquiadam/2020-12/1_Accessories-Atomizer-with-Amber-Oil-Bottle-2992-Front.jpg" target="_blank">
+                                                        <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="http://pinterest.com/pin/create/button/?url=/san-pham/{{ $product->slug }}&amp;media={{ pare_url_file_product($product->thumbnail) }}" target="_blank">
                                                             <span class="icon-pinterest  a-icon-text-btn__icon" aria-hidden="true"></span>
                                                         </a>
                                                         <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="https://www.facebook.com/sharer/sharer.php?u=https://www.coopmarket.com/accessories/storage/bottles/atomizer-with-1-2-3-oz-amber-oil-bottle" target="_blank">
@@ -141,7 +127,6 @@
                                                                 <img src="https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop/images/email.svg" alt="Email icon" height="25" width="25">
                                                             </span>
                                                         </a>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,7 +152,7 @@
                                                     <span class="icon-star-filled"> </span>
                                                 </div>
                                                 <p class="a-paragraph--large">
-                                                    This lead-free amber glass bottle is perfect for storing essential oils. Use as perfume mister.
+                                                    {{ $product->desscription }}
                                                 </p>
                                             </div>
                                         </div>
@@ -180,7 +165,6 @@
                     </div>
                     <div class="non-visible layout layout--onecol">
                         <div class="layout__region layout__region--content">
-
                         </div>
                     </div>
                     <div class="non-visible layout layout--onecol">

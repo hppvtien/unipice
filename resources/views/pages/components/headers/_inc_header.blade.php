@@ -54,7 +54,7 @@
                         <!-- /BASE -->
                     </div>
                     <div class="c-header__logo">
-                        <a class="a-logo" href="">
+                        <a class="a-logo" href="/">
                             <img data-src="{{ pare_url_file($configuration->logo) }}" class="lazyload" alt="Home" />
                         </a>
                     </div>

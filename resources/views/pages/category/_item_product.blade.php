@@ -1,5 +1,6 @@
-<div class="t-plp__grid js-plp-grid" id="show-product">
+
     @forelse ($product as $key => $item)
+
     <div class="t-plp__product" data-animate-grid-id="0.7226111054869209" style="transform-origin: 0px 0px;">
         <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
                 <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" data-product-category="\Accessories\Home and Pet\Kitchen and Dining\Food Storage and Containers" class="m-product-card">
@@ -15,9 +16,8 @@
                         </form>
                     </div>
                     <div class="m-product-card__info">
-
                         <div class="m-combined-product-name">
-                            <a class="m-combined-product-name__link" href="/home-and-pet/kitchen-and-dining/food-storage-and-containers/self-closing-lid-for-1-2-gallon-plastic-container">
+                            <a class="m-combined-product-name__link" href="{{ $item->slug }}">
                                 <span class="a-folio">
                                     {{ $item->name }}
                                 </span>
@@ -29,7 +29,6 @@
                         <div class="m-product-card__sku">SKU: {{ $item->id }}</div>
                         <div class="m-price-lockup m-product-card__price">
                             <span class="m-price-lockup__price" style="display: none">
-
                                 <span class="a-price">
                                     {{ $item->price_sale }}
                                 </span>
@@ -45,4 +44,7 @@
     @empty
 
     @endforelse
-</div>
+
+
+
+

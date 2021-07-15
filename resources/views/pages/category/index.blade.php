@@ -54,30 +54,20 @@
                                                                         <span class="c-filter-bar__label--hide">Hide Filters</span>
                                                                     </span>
                                                                 </button>
-                                                                <p class="c-filter-bar__items-count"><span>{{ $count_product }}</span> Sản phẩm</p>
                                                                 <div class="c-filter-bar__sorting">
                                                                     <div class="m-sort-by">
                                                                         <label class="m-sort-by__label" for="sort_by">Sort By</label>
                                                                         <select class="m-sort-by__select frontier-custom-sort" id="sort_by" name="sort_by" aria-label="Sort By">
-                                                                            <option value=search_api_relevance selected="selected" data-href="/accessories?sort_by=search_api_relevance">
-                                                                                Relevance
-                                                                            </option>
-                                                                            <option value=title data-href="/accessories?sort_by=title">
-                                                                                Name
-                                                                            </option>
+                                                                            <option value="price" selected>Price</option>
+                                                                            <option value="name">Name</option>
                                                                         </select>
                                                                         <span class="m-sort-by__arrow"></span>
                                                                     </div>
                                                                     <div class="m-sort-by">
                                                                         <label class="m-sort-by__label" for="sort_order">Order By</label>
-
-                                                                        <select class="m-sort-by__select frontier-custom-sort" id="sort_order" name="sort_order" aria-label="Order By">
-                                                                            <option value=ASC selected="selected" data-href="/accessories?sort_order=ASC">
-                                                                                Asc
-                                                                            </option>
-                                                                            <option value=DESC data-href="/accessories?sort_order=DESC">
-                                                                                Desc
-                                                                            </option>
+                                                                        <select class="m-sort-by__select frontier-custom-sort" id="order_by" name="order_by" aria-label="Order By">
+                                                                            <option value="asc" selected>Asc</option>
+                                                                            <option value="desc">Desc</option>
                                                                         </select>
                                                                         <span class="m-sort-by__arrow"></span>
                                                                     </div>
@@ -111,7 +101,7 @@
                                                                             <div class="m-accordion__content-inner js-accordion-content-inner js-frontier-facet">
                                                                                 @forelse ($trade as $key => $item)
                                                                                 <div class="facet-item m-checkbox c-sidebar-filters__filter">
-                                                                                    <a href="javascript:;" class="name-filler" rel="nofollow" data-url="{{ route('get.fillter',$category->slug) }}" data-slug="{{ $item->slug }}" data-drupal-facet-item-id="product-brand-plp-1171">
+                                                                                    <a href="javascript:;" class="name-filler" rel="nofollow" data-url="{{ route('get.fillter',$category->slug) }}" data-slug-trade="{{ $item->slug }}" data-drupal-facet-item-id="product-brand-plp-1171">
                                                                                         <span class="m-checkbox__text-label facet-item__value">
                                                                                             {{ $item->name }}
                                                                                             <span class="facet-item__count"></span>
@@ -132,7 +122,7 @@
                                                                             <div class="m-accordion__content-inner js-accordion-content-inner js-frontier-facet">
                                                                                 @forelse ($categories as $key => $item)
                                                                                 <div class="facet-item m-checkbox c-sidebar-filters__filter">
-                                                                                    <a href="javascript:;" class="name-filler" rel="nofollow" data-url="{{ route('get.fillter',$category->slug) }}" data-slug="{{ $item->slug }}">
+                                                                                    <a href="javascript:;" class="name-filler" rel="nofollow" data-url="{{ route('get.fillter',$category->slug) }}" data-slug-cat="{{ $item->slug }}">
                                                                                         <span class="m-checkbox__text-label facet-item__value">
                                                                                             {{ $item->name }}
                                                                                             <span class="facet-item__count"></span>
@@ -148,8 +138,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                        <div class="t-plp__grid js-plp-grid" id="show-product">
+                                                        <div class="t-plp__grid js-plp-grid show-product" id="show-product">
                                                             @forelse ($product as $key => $item)
                                                             <div class="t-plp__product" data-animate-grid-id="0.7226111054869209" style="transform-origin: 0px 0px;">
                                                                 <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
@@ -166,9 +155,8 @@
                                                                                 </form>
                                                                             </div>
                                                                             <div class="m-product-card__info">
-
                                                                                 <div class="m-combined-product-name">
-                                                                                    <a class="m-combined-product-name__link" href="/home-and-pet/kitchen-and-dining/food-storage-and-containers/self-closing-lid-for-1-2-gallon-plastic-container">
+                                                                                    <a class="m-combined-product-name__link" href="{{ $item->slug }}">
                                                                                         <span class="a-folio">
                                                                                             {{ $item->name }}
                                                                                         </span>
@@ -187,108 +175,67 @@
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
-                                                                            <!-- FC-2249:: Remove markup that should only be available to authenticated users -->
                                                                             <div class="m-product-card__cta"></div>
                                                                         </div>
                                                                     </span>
                                                                 </div>
                                                             </div>
                                                             @empty
-
                                                             @endforelse
                                                         </div>
+                                                        <div class="t-plp__grid js-plp-grid">
+                                                        </div>
                                                         <div class="t-plp__media-block" data-animate-grid-id="0.7649058207806405" style="transform-origin: 0px 0px;">
-                                                                <div class="c-media-block c-media-block--flipped c-media-block--template-" style="transform-origin: 0px 0px;">
-
-
-                                                                    <div class="c-media-block__image-wrapper">
-                                                                        <picture>
-                                                                            <source media="(min-width: 768px)" data-srcset="/sites/default/files/acquiadam/2020-09/1548775356830.jpg" srcset="/sites/default/files/acquiadam/2020-09/1548775356830.jpg">
-                                                                            <img class=" lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/acquiadam/2020-09/1548775356830.jpg" alt=" " src="https://www.coopmarket.com/sites/default/files/acquiadam/2020-09/1548775356830.jpg">
-                                                                        </picture>
-                                                                    </div>
-
-                                                                    <div class="c-media-block__content">
-                                                                        <div class="c-media-block__headline">Free Shipping on all orders over $39</div>
-                                                                    </div>
+                                                            <div class="t-plp__pagination">
+                                                                <div class="m-pagination">
+                                                                    <ul class="m-pagination__list">
+                                                                        <li class="m-pagination__list-item m-pagination__list-item--active">
+                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=0" title="Current page" aria-current="page">1</a>
+                                                                        </li>
+                                                                        <li class="m-pagination__list-item">
+                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=1" title="Go to page 2">2</a>
+                                                                        </li>
+                                                                        <li class="m-pagination__list-item">
+                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=2" title="Go to page 3">3</a>
+                                                                        </li>
+                                                                        <li class="m-pagination__list-item">
+                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=3" title="Go to page 4">4</a>
+                                                                        </li>
+                                                                        <li class="m-pagination__list-item">
+                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=4" title="Go to page 5">5</a>
+                                                                        </li>
+                                                                        <li class="m-pagination__list-item">
+                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=5" title="Go to page 6">6</a>
+                                                                        </li>
+                                                                        <li class="m-pagination__list-item">
+                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=6" title="Go to page 7">7</a>
+                                                                        </li>
+                                                                        <li class="m-pagination__list-item">
+                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=7" title="Go to page 8">8</a>
+                                                                        </li>
+                                                                        <li class="m-pagination__list-item">
+                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=8" title="Go to page 9">9</a>
+                                                                        </li>
+                                                                        <li class="m-pagination__list-item">
+                                                                            <a class="m-pagination__link m-pagination__link--next" aria-label="Next" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=1">
+                                                                                <span class="icon-arrow-right"></span>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
                                                                 </div>
                                                             </div>
-
-                                                        <div class="t-plp__pagination">
-                                                            <div class="m-pagination">
-                                                                <ul class="m-pagination__list">
-                                                                    <li class="m-pagination__list-item m-pagination__list-item--active">
-                                                                        <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=0" title="Current page" aria-current="page">1</a>
-                                                                    </li>
-                                                                    <li class="m-pagination__list-item">
-                                                                        <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=1" title="Go to page 2">2</a>
-                                                                    </li>
-                                                                    <li class="m-pagination__list-item">
-                                                                        <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=2" title="Go to page 3">3</a>
-                                                                    </li>
-                                                                    <li class="m-pagination__list-item">
-                                                                        <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=3" title="Go to page 4">4</a>
-                                                                    </li>
-                                                                    <li class="m-pagination__list-item">
-                                                                        <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=4" title="Go to page 5">5</a>
-                                                                    </li>
-                                                                    <li class="m-pagination__list-item">
-                                                                        <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=5" title="Go to page 6">6</a>
-                                                                    </li>
-                                                                    <li class="m-pagination__list-item">
-                                                                        <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=6" title="Go to page 7">7</a>
-                                                                    </li>
-                                                                    <li class="m-pagination__list-item">
-                                                                        <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=7" title="Go to page 8">8</a>
-                                                                    </li>
-                                                                    <li class="m-pagination__list-item">
-                                                                        <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=8" title="Go to page 9">9</a>
-                                                                    </li>
-                                                                    <li class="m-pagination__list-item">
-                                                                        <a class="m-pagination__link m-pagination__link--next" aria-label="Next" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=1">
-                                                                            <span class="icon-arrow-right"></span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-
                                                         </div>
                                                     </div>
-
                                                 </div>
-
                                             </div>
-
                                         </div>
-
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
-
                     </header>
-
-                    <!-- EXPOSED -->
-
-                    <!-- EXPOSED -->
-
-
-
-
-
-
-
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
-
 </main>
 @stop

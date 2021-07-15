@@ -37,13 +37,13 @@ Route::group(['namespace' => 'Frontend'], function (){
 
     Route::get('gioi-thieu','AboutController@index')->name('get.about');
     Route::get('gio-hang','CartController@index')->name('get.cart');
-    Route::get('san-pham/{slug}','CategoryController@index')->name('get.category');
-    Route::post('san-pham/{slug}','CategoryController@fillter_product')->name('get.fillter');
+    Route::get('san-pham/{slug}.html','CategoryController@index')->name('get.category');
+    Route::post('san-pham/{slug}.html','CategoryController@fillter_product')->name('get.fillter');
     Route::get('thanh-toan','CheckoutController@index')->name('get.chekout');
     Route::get('faq','FaqsController@index')->name('get.faq');
     Route::get('find','FindStoreController@index')->name('get.find');
     Route::get('membership','MembershipController@index')->name('get.membership');
-    Route::get('productdetall','ProductDetallController@index')->name('get.productdetall');
+    Route::get('san-pham/{slug}','ProductController@index')->name('get.product');
     
 
 

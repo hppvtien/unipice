@@ -43,7 +43,7 @@ function execPostRequest($url, $data)
      */
     function getSlugCategory($tring)
     {
-        $getSlug = 'san-pham/'.$tring;
+        $getSlug = 'san-pham/'.$tring.'.html';
         return $getSlug;
     }
     function count_order()

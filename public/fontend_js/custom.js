@@ -48,17 +48,23 @@ $('#trade-product').on('change', function() {
     });
 });
 $('.name-filler').on('click', function() {
-    let data_slug = $(this).attr('data-slug');
+    let data_slug_trade = $(this).attr('data-slug-trade');
+    let data_slug_cat = $(this).attr('data-slug-cat');
     let data_url = $(this).attr('data-url');
+    let data_sort = $('#sort_by').find(":selected").val();
+    let data_order = $('#order_by').find(":selected").val();
     $.ajax({
         url: data_url,
         method: "POST",
         data: {
-            data_slug: data_slug,
-            data_url: data_url
+            data_slug_trade: data_slug_trade,
+            data_slug_cat: data_slug_cat,
+            data_sort: data_sort,
+            data_order: data_order
         },
         success: function(data) {
-            $('#group-product').html(data);
+            $('#show-product').html(data);
         },
+
     });
 });
