@@ -78,7 +78,7 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Logo </label>
-                        <input type="hidden" name="d_avatar" value="{{ old('logo', $configuration->logo ?? '') }}">
+                        <input type="hidden" name="d_avatar" value="{{ old('logo', $configuration->logo ?? '') }}">                       
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="logo" id="avatar_uploads">
                     </div>

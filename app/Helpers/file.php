@@ -1,5 +1,6 @@
 <?php
 if (!function_exists('pare_url_file')) {
+    
     function pare_url_file($image, $folder = 'storage/uploads')
     {
         if (!$image) {

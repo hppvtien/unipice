@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Blog\Menu;
+use App\Models\Uni_Category;
 use App\Models\Configuration;
 use App\Models\Education\Tag;
 use Illuminate\Support\Facades\Schema;
@@ -32,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
             $menuBlog      = Menu::orderBy('m_sort', 'asc')->get();
             $configuration = Configuration::first();
             $tagsHot       = Tag::where('t_hot', Tag::HOT)->get();
+            $category_mn = Uni_Category::where('status', 1)
+            ->orderBy('id', 'asc')
+            ->get();
         } catch (\Exception $exception) {
 
         }
@@ -39,5 +43,6 @@ class AppServiceProvider extends ServiceProvider
         \View::share('menuBlog', $menuBlog ?? []);
         \View::share('configuration', $configuration ?? []);
         \View::share('tagsHot', $tagsHot ?? []);
+        \View::share('category_mn', $category_mn ?? []);
     }
 }

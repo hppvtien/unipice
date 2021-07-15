@@ -23,11 +23,28 @@ function execPostRequest($url, $data)
         curl_close($ch);
         return $result;
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     * @param string $tring
+     * @param int $sub
+     * @return string $description
+     */
     function desscription_cut($tring,$sub)
     {
         $string_cut = substr($tring,0,$sub);
         $description_string = $string_cut.'...';
         return $description_string;
+    }
+       /**
+     * Show the form for editing the specified resource.
+     * @param string $tring
+     * @return string $slug
+     */
+    function getSlugCategory($tring)
+    {
+        $getSlug = 'san-pham/'.$tring;
+        return $getSlug;
     }
     function count_order()
     {

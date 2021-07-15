@@ -47,3 +47,18 @@ $('#trade-product').on('change', function() {
         },
     });
 });
+$('.name-filler').on('click', function() {
+    let data_slug = $(this).attr('data-slug');
+    let data_url = $(this).attr('data-url');
+    $.ajax({
+        url: data_url,
+        method: "POST",
+        data: {
+            data_slug: data_slug,
+            data_url: data_url
+        },
+        success: function(data) {
+            $('#group-product').html(data);
+        },
+    });
+});

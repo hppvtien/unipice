@@ -15,6 +15,7 @@
     </script>
     @endif
     <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 
 <body data-frontier-brand-type="B2C" data-frontier-brand="frontiercoop_market" data-frontier-code="coopMarket">

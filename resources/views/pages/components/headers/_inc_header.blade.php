@@ -66,73 +66,8 @@
                             <span class="a-icon-text-btn__label">Close Menu</span>
                         </button>
                         <div class="c-header__main-panel-top">
-                            <ul class="c-header__links">
-                                <li class="c-header__link-item js-main-menu-panel">
-                                    <button class="c-header__link js-main-menu-panel__trigger" type="button">
-                                    <a href="/unipice/category.php">
-                                        <span class="c-header__link-text">Gia vị tự nhiên</span>
-                                        </a>
-                                    </button>
-                                </li>
-                                <li class="c-header__link-item js-main-menu-panel">
-                                    <button class="c-header__link js-main-menu-panel__trigger" type="button">
-                                    <a href="/unipice/category.php">
-                                        <span class="c-header__link-text">Gia vị hoàn chỉnh</span>
-                                    </a>
-                                    </button>
-
-                                </li>
-                                <li class="c-header__link-item js-main-menu-panel">
-                                    <button class="c-header__link js-main-menu-panel__trigger" type="button">
-                                    <a href="/unipice/category.php">
-                                        <span class="c-header__link-text">Gia vị tẩm ướp & bột BBQ</span>
-                                        </a>
-                                    </button>
-                                </li>
-
-                                <li class="c-header__link-item js-main-menu-panel">
-                                    <button class="c-header__link js-main-menu-panel__trigger" type="button">
-                                    <a href="/unipice/category.php">
-                                        <span class="c-header__link-text">Gia vị + muối</span>
-                                    </a>
-                                    </button>
-                                </li>
-                                <li class="c-header__link-item js-main-menu-panel">
-                                    <button class="c-header__link js-main-menu-panel__trigger" type="button">
-                                    <a href="/unipice/category.php">
-                                        <span class="c-header__link-text">Trà</span>
-                                    </a>
-                                    </button>
-                                </li>
-                                <li class="c-header__link-item js-main-menu-panel">
-
-                                    <!-- MACRO :: YES Panel -->
-                                    <button class="c-header__link js-main-menu-panel__trigger" type="button">
-                                    <a href="/unipice/category.php">
-                                        <span class="c-header__link-text">Sản phẩm mới</span>
-                                    </a>
-                                    </button>
-
-                                </li>
-                                <li class="c-header__link-item js-main-menu-panel">
-
-                                    <!-- MACRO :: YES Panel -->
-                                    <button class="c-header__link js-main-menu-panel__trigger" type="button">
-                                    <a href="/unipice/category.php">
-                                        <span class="c-header__link-text">Gia vị quà tặng</span>
-                                    </a>
-                                    </button>
-                                </li>
-                                <li class="c-header__link-item js-main-menu-panel">
-                                    <!-- MACRO :: YES Panel -->
-                                    <button class="c-header__link js-main-menu-panel__trigger" type="button">
-                                    <a href="/unipice/category.php">
-                                        <span class="c-header__link-text">Khuyến mãi</span>
-                                    </a>
-                                    </button>
-                                </li>
-                                <!-- /BASE :: MACRO-MENU-LINK-ITEM-B2C -->
-                            </ul>
+                            @include('pages.components.headers._inc_menu')
+                            
                             <div class="c-header__search-panel-wrapper js-search-panel">
                                 <div class="c-header__search-panel">
                                     <!-- BASE :: BLK-HEADER-MAIN-PANEL-TOP-SEARCH -->

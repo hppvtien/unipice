@@ -86,5 +86,6 @@ class HomeController extends Controller
         $html = view('pages.home.product_trade',compact('product'))->render();
         return $html;
     }
+    
 
 }

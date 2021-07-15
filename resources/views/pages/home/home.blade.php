@@ -78,7 +78,7 @@
                                                                 {{ $item->name }}
                                                             </span>
                                                             <span class="a-product-name">
-                                                                {{ desscription_cut($item->desscription,80) }}
+                                                                {{ desscription_cut($item->desscription,60) }}
                                                             </span>
                                                         </div>
                                                         <span class="a-product-unit m-expandable-product-card__unit">
@@ -173,14 +173,14 @@
                                             <a data-block-plugin-id="inline_block:media_component" data-inline-block-uuid="380a9014-fee0-43d7-8277-0e3a68d90cee" class="m-category-card" href="{{ $item->slug }}">
                                                 <div class="m-category-card__image-wrapper">
                                                     <picture>
-                                                        <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($item->thumbnail) }}">
-                                                        <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt=" ">
+                                                        <source media="(min-width: 768px)" data-srcset="{{ pare_url_file_product($item->thumbnail) }}">
+                                                        <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt=" ">
                                                     </picture>
                                                     <div class="m-category-card__caption">
                                                         <span class="m-category-card__caption-text">{{ $item->name }}</span>
                                                     </div>
                                                     <div class="m-category-card__caption">
-                                                        <p>{{ desscription_cut($item->desscription,80) }}</p>
+                                                        <p>{{ desscription_cut($item->desscription,60) }}</p>
                                                     </div>
                                                 </div>
                                             </a>
@@ -281,7 +281,7 @@
                                                     <span class="m-category-card__caption-text">{{ $item->name }}</span>
                                                 </div>
                                                 <div class="m-category-card__caption">
-                                                    <p>{{ desscription_cut($item->desscription,80) }}</p>
+                                                    <p>{{ desscription_cut($item->desscription,60) }}</p>
                                                 </div>
                                             </div>
                                         </a>
