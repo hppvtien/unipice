@@ -33,7 +33,6 @@
     @include('pages.components.auth._inc_popup_auth')
     @endif
 </body>
-<script src="{{ asset('js/user.js') }}"></script>
 <script>
     (function(window, document, undefined) {
         'use strict';
@@ -70,6 +69,5 @@
     })(window, document);
 </script>
 
-<script src="{{ asset('js/frontend_dashboard.js') }}"></script>
 @yield('script')
 </html> 

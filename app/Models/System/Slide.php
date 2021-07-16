@@ -19,6 +19,11 @@ class Slide extends Model
     const STATUS_TYPE_HOME_2 = 3;
     const STATUS_TYPE_HOME_3 = 4;
     const STATUS_TYPE_HOME_4 = 5;
+    const STATUS_TYPE_POST_CATE = 6;
+    const STATUS_TYPE_POST_SINGLE = 7;
+    const STATUS_TYPE_PRODUCT_CATE = 8;
+    const STATUS_TYPE_PRODUCT_SINGLE = 9;
+    const STATUS_TYPE_ABOUT = 10;
 
     protected $status = [
         self::STATUS_DEFAULT => [
@@ -30,7 +35,7 @@ class Slide extends Model
             'class' => 'badge-default'
         ]
     ];
-    protected $status_type = [
+    public $status_type = [
         self::STATUS_TYPE_HEADER => [
             'name' => 'Banner header',
             'class' => 'badge-success'
@@ -54,6 +59,26 @@ class Slide extends Model
         self::STATUS_HIDE => [
             'name' => 'Hide',
             'class' => 'badge-default'
+        ],
+        self::STATUS_TYPE_POST_CATE => [
+            'name' => 'Banner Blog Category',
+            'class' => 'badge-success'
+        ],
+        self::STATUS_TYPE_POST_SINGLE => [
+            'name' => 'Banner Blog Single',
+            'class' => 'badge-success'
+        ],
+        self::STATUS_TYPE_PRODUCT_CATE => [
+            'name' => 'Banner Blog Category',
+            'class' => 'badge-success'
+        ],
+        self::STATUS_TYPE_PRODUCT_SINGLE => [
+            'name' => 'Banner Blog Single',
+            'class' => 'badge-success'
+        ],
+        self::STATUS_TYPE_ABOUT => [
+            'name' => 'Banner About',
+            'class' => 'badge-success'
         ]
     ];
 

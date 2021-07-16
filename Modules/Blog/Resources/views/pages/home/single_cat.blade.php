@@ -11,8 +11,8 @@
   <div class="layout-content">
     <div class="region region-content">
       <div data-drupal-messages-fallback="" class="hidden"></div>
-      <div>
-        <article>
+      <div id="block-frontiercoop-market-content" data-block-plugin-id="system_main_block">
+        <article data-history-node-id="330491" role="article" about="/co-op-market-blog" data-frontier-type="page">
           <div>
             <div class="layout layout--onecol">
               <div class="layout__region layout__region--content">
@@ -39,7 +39,7 @@
                         <a class="a-anchor" href="/">Home</a>
                       </li>
                       <li class="m-breadcrumb__item m-breadcrumb__item--active">
-                        <a class="a-anchor" aria-current="page">Co op Market Blog</a>
+                        <a class="a-anchor" aria-current="page">{{ $current_cate->name }}</a>
                       </li>
                     </ol>
                   </nav>
@@ -84,7 +84,7 @@
                     </a>
                     <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="mailto:?subject=Lorem%20ipsum&amp;body=Lorem%20ipsum%20https%3A%2F%2Fwww.coopmarket.com%2Fcommunity%2Fco-op-market-blogs%2Ffood." target="_blank">
                       <span class="a-icon-text-btn__icon" aria-hidden="true">
-                        <img src="/themes/custom/frontierbase/dist/frontiercoop/images/email.svg" alt="Email icon" height="25" width="25">
+                        <img src="https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop/images/email.svg" alt="Email icon" height="25" width="25">
                       </span>
                     </a>
                     <a href="/" class="a-anchor js-favorite">Add to Favorites</a>

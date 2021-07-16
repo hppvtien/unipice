@@ -42,9 +42,10 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::get('thanh-toan','CheckoutController@index')->name('get.chekout');
     Route::get('faq','FaqsController@index')->name('get.faq');
     Route::get('find','FindStoreController@index')->name('get.find');
-    Route::get('membership','MembershipController@index')->name('get.membership');
+    Route::get('cua-hang','MembershipController@index')->name('get.membership');
     Route::get('san-pham/{slug}','ProductController@index')->name('get.product');
-    
+
+
 
 
     // Route::post('/dang-nhap','LoginController@index')->name('get.login');

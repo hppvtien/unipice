@@ -20,6 +20,7 @@
                         <input type="text" class="form-control keypress-count" name="s_desscription" value="{{ old('s_desscription',$slide->s_desscription ?? '') }}">
                     </div>
                     <div class="form-group">
+                        
                         <label for="exampleInputEmail1"> Status <span>(*)</span></label>
                         <div class="SumoSelect sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="s_type" class="form-control SlectBox SumoUnder" onclick="console.log($(this).val())" onchange="console.log('change is firing')" tabindex="-1">
@@ -28,6 +29,11 @@
                                 <option title="Public" value="3">Banner Home 2</option>
                                 <option title="Public" value="4">Banner Home 3</option>
                                 <option title="Public" value="5">Banner Home 4</option>
+                                <option title="Public" value="6">Banner Post Category</option>
+                                <option title="Public" value="7">Banner Post Single</option>
+                                <option title="Public" value="8">Banner Product Category</option>
+                                <option title="Public" value="9">Banner Product Single</option>
+                                <option title="Public" value="10">Banner About</option>
                             </select>
                         </div>
                     </div>

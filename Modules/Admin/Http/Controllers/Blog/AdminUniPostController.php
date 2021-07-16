@@ -64,7 +64,7 @@ class AdminUniPostController extends AdminController
             'created_by' => get_data_user('web'),
             'status' => $request->status,
             'order' => $request->order,
-            'thumnail' => $request->thumbnail,
+            'thumbnail' => $request->thumbnail,
             'status' => $request->status,
         ];
         $postID = Uni_Post::insertGetId($param);

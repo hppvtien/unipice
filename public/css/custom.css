@@ -22,6 +22,41 @@
     .m-category-card .m-category-card__image-wrapper img {
         max-width: 176px;
     }
+    .c-media-card-2up {
+        margin: 10px 0 15px;
+    }
+    .c-media-card-2up__media-wrapper .m-media-card {
+        width: calc(50%);
+    }
+    .t-cms__with-nav .layout__region {
+        grid-column: 1/span 2;
+    }
+    h1.title-blog-post {
+        font-size: 2rem;
+    }
+    .field__item h2 {
+        font-size: 1.5rem;
+    }
+    .field__item h3 {
+        font-size: 1.2rem;
+    }
+    .field__item img {
+        width: 100%;
+        margin: 10px auto;
+    }
+    .c-story-block__headline {
+        font-size: 26px;
+        line-height: 1.2;
+    }
+    .c-story-block__content.info_store {
+        padding: 0;
+    }
+    .m-media-block-aligned__content {
+        width: 33%;
+        padding: 40px;
+        max-height: 700px;
+        overflow-y: scroll;
+    }
 }
 
 .c-sidebar-filters__filter .name-filler {

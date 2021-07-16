@@ -46,6 +46,16 @@ function execPostRequest($url, $data)
         $getSlug = 'san-pham/'.$tring.'.html';
         return $getSlug;
     }
+    function getSlugPost($tring)
+    {
+        $getSlug = '/bai-viet/'.$tring;
+        return $getSlug;
+    }
+    function getSlugPostCate($tring)
+    {
+        $getSlug = '/danh-muc-bai-viet/'.$tring;
+        return $getSlug;
+    }
     function count_order()
     {
         $order = App\Models\Cart\Order::where('created_at','<',date_format(Carbon\Carbon::now(), 'Y-m-d'))->get();

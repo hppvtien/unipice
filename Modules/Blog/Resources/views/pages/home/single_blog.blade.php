@@ -11,8 +11,8 @@
   <div class="layout-content">
     <div class="region region-content">
       <div data-drupal-messages-fallback="" class="hidden"></div>
-      <div>
-        <article>
+      <div id="block-frontiercoop-market-content" data-block-plugin-id="system_main_block">
+        <article data-history-node-id="330491" role="article" about="/co-op-market-blog" data-frontier-type="page">
           <div>
             <div class="layout layout--onecol">
               <div class="layout__region layout__region--content">
@@ -21,12 +21,10 @@
                     <source media="(min-width: 1024px)" data-srcset="{{ pare_url_file($slide->s_banner) }}" srcset="{{ pare_url_file($slide->s_banner) }}">
                     <img class=" lazyloaded" data-src="{{ pare_url_file($slide->s_banner) }}" alt="{{ $slide->s_banner }}" src="{{ pare_url_file($slide->s_banner) }}">
                   </picture>
-
                   <div class="c-page-header__content">
-                    <h1 class="c-page-header__headline">Tin tức cùng Unispice</h1>
+                    <h1 class="c-page-header__headline">{{ $blog_post->name }}</h1>
                   </div>
                 </div>
-
               </div>
             </div>
             <div class="layout layout--onecol">
@@ -38,8 +36,11 @@
                       <li class="m-breadcrumb__item">
                         <a class="a-anchor" href="/">Home</a>
                       </li>
+                      <li class="m-breadcrumb__item">
+                        <a class="a-anchor" href="{{ getSlugPostCate($current_cate->slug) }}">{{ $current_cate->name }}</a>
+                      </li>
                       <li class="m-breadcrumb__item m-breadcrumb__item--active">
-                        <a class="a-anchor" aria-current="page">Co op Market Blog</a>
+                        <a class="a-anchor" aria-current="page">{{ desscription_cut($blog_post->name,30) }}</a>
                       </li>
                     </ol>
                   </nav>
@@ -59,7 +60,7 @@
                           @forelse ($post_category as $key => $item)
                           <div>
                             <span>
-                              <a class="m-sidebar-nav__link name-filler" href="javascript:;" data-url="{{ route('get_blog.home') }}" data-slug-cat="{{ $item->slug }}">{{ $item->name }}</a>
+                              <a class="m-sidebar-nav__link name-filler" href="{{ getSlugPostCate($item->slug) }}" data-url="{{ route('get_blog.home') }}" data-slug-cat="{{ $item->slug }}">{{ $item->name }}</a>
                             </span>
                           </div>
                           @empty
@@ -89,59 +90,19 @@
                     </a>
                     <a href="/" class="a-anchor js-favorite">Add to Favorites</a>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="layout layout--onecol">
-              <div class="layout__region layout__region--content">
-                <div class="views-element-container" data-block-plugin-id="views_block:taxonomy_term-block_story_block">
-                  <div class="views-element-container">
-                    <!-- EXPOSED -->
-                    <div class="t-cms__content" id="show-product">
-                      @forelse ($blog_post as $key => $item)
-                      
-                      <div class="c-story-block {{ $key % 2 != 0 ? 'c-story-block--flipped':'' }}">
-                        <div class="c-story-block__content-wrapper">
-                          <div class="c-story-block__content">
-                            <h2 class="c-story-block__headline">{{ $item->name }}</h2>
-                            <p class="c-story-block__description">{{ $item->desscription }}</p>
-                            <div class="c-story-block__cta">
-                              <a class="a-btn a-btn--secondary" href="{{ getSlugPost($item->slug) }}" title="{{ $item->name }}">Read More</a>
-                            </div>
-                          </div>
-                        </div>
+                  <div data-block-plugin-id="field_block:node:blog:body">
 
-                        <div class="c-story-block__image-wrapper">
-                          <picture>
-                            <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($item->thumbnail) }}" srcset="{{ pare_url_file($item->thumbnail) }}">
-                            <img class=" lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
-                          </picture>
-                        </div>
-                      </div>
-                      @empty
-                          
-                      @endforelse
-                    </div>
-                    <div class="t-plp__pagination">
-                      <div class="m-pagination">
-                        <ul class="m-pagination__list">
-                          <li class="m-pagination__list-item m-pagination__list-item--active">
-                            <a class="m-pagination__link" href="?page=0" title="Current page" aria-current="page">1</a>
-                          </li>
-                          <li class="m-pagination__list-item">
-                            <a class="m-pagination__link" href="?page=1" title="Go to page 2">2</a>
-                          </li>
-                          <li class="m-pagination__list-item">
-                            <a class="m-pagination__link" href="?page=2" title="Go to page 3">3</a>
-                          </li>
-                          <li class="m-pagination__list-item">
-                            <a class="m-pagination__link m-pagination__link--next" aria-label="Next" href="?page=1">
-                              <span class="icon-arrow-right"></span>
-                            </a>
-                          </li>
-                        </ul>
+
+
+                    <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-visually_hidden">
+                      <div class="field__label visually-hidden">Body</div>
+                      <div class="field__item">
+
+                        <p>{{ $blog_post->desscription }}</p>
+                        {!! $blog_post->content !!}
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>
