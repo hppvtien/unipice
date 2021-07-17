@@ -68,18 +68,10 @@ $('.name-filler').on('click', function() {
 
     });
 });
-$('."m-newsletter-signup__submit').on('click', function() {
-    let mail_newsletter = $('.m-newsletter-signup__input').val();
-    let data_url = $(this).attr('data-url');
-    $.ajax({
-        url: data_url,
-        method: "POST",
-        data: {
-            mail_newsletter: mail_newsletter
-        },
-        success: function(data) {
-            $('#show-product').html(data);
-        },
-
+$('.get-map-google').on('click', function() {
+    $(this).each(function(index, el) {
+        var data_lat = $(this).attr('data-lat');
+        var data_lng = $(this).attr('data-lng');
+        $('#ren_map').html(data_lat);
     });
 });

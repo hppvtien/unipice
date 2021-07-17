@@ -48,12 +48,8 @@
                                         <div class="layout layout--onecol">
                                             <div class="layout__region layout__region--content">
                                                 <div class="views-element-container" data-block-plugin-id="views_block:listing_page_media_block_aligned-block_lp_media_block_aligned">
-
-
                                                     <div class="views-element-container">
                                                         <div class="c-media-block-aligned c-media-block-aligned--template- template-clp">
-
-
                                                             <div class="c-media-block-aligned__content-wrapper">
                                                                 <div class="m-media-block-aligned">
                                                                     <div class="m-media-block-aligned__image-wrapper">
@@ -61,7 +57,6 @@
                                                                             <img class=" lazyloaded" data-src="/storage/uploads/brvn-1625537947.jpg" alt="6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night" src="/storage/uploads/brvn-1625537947.jpg">
                                                                         </picture>
                                                                     </div>
-
                                                                     <div class="m-media-block-aligned__content">
                                                                         <div class="m-heading">
                                                                             <div class="m-heading__cta">
@@ -91,13 +86,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
-
                                                     </div>
-
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>

@@ -31,7 +31,7 @@ class AdminUniStoreController extends AdminController
 
     public function store(Request $request)
     {
-        $data                 = $request->except(['store_thumbnail', 'save', '_token', 'store_album']);
+        $data                 = $request->except(['store_thumbnail','avatar', 'save', '_token', 'store_album']);
         $data['created_at']   = Carbon::now();
 
         if ($request->store_album) {
@@ -51,6 +51,8 @@ class AdminUniStoreController extends AdminController
             'store_phone' => $request->store_phone,
             'store_thumbnail' => $request->store_thumbnail,
             'store_taxcode' => $request->store_taxcode,
+            'store_lat' => $request->store_lat,
+            'store_lng' => $request->store_lng,
             'store_album' => json_encode($store_album),
             'store_status' => $request->store_status,
         ];
@@ -108,6 +110,8 @@ class AdminUniStoreController extends AdminController
                 'store_phone' => $request->store_phone,
                 'store_thumbnail' => $store_thumbnail,
                 'store_taxcode' => $request->store_taxcode,
+                'store_lat' => $request->store_lat,
+                'store_lng' => $request->store_lng,
                 'store_album' => json_encode($store_ab),
                 'store_status' => $request->store_status,
             ];

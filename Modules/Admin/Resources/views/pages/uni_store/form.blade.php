@@ -41,6 +41,20 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Tọa độ (lat) <span>(*)</span></label>
+                        <input type="text" class="form-control store_lat" name="store_lat" value="{{ old('store_lat', $uni_store->store_lat ?? '') }}">
+                        @if($errors->first('store_lat'))
+                        <span class="text-danger">{{ $errors->first('store_lat') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Tọa độ (lng) <span>(*)</span></label>
+                        <input type="text" class="form-control store_lng" name="store_lng" value="{{ old('store_lng', $uni_store->store_lng ?? '') }}">
+                        @if($errors->first('store_lng'))
+                        <span class="text-danger">{{ $errors->first('store_lng') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail1">Hình ảnh cửa hàng </label>
                         <input type="file" class="form-control" name="store_album[]" value="" multiple>
                     </div>

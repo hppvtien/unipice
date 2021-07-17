@@ -26,8 +26,8 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>user_id</th>
                                         <th>Name</th>
-                                        <th>Chủ cửa hàng</th>
                                         <th>Diện tích</th>
                                         <th>Địa chỉ</th>
                                         <th>Số điện thoại</th>

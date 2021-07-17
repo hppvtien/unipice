@@ -56,8 +56,8 @@
                                 </a>
                             </li>
                             <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="/find_store.php">
-                                    Find Store
+                                <a class="m-footer-menu__link" href="{{ route('get_blog.home') }}">
+                                    Tìm cửa hàng
                                 </a>
                             </li>
                         </ul>
@@ -95,7 +95,7 @@
                                 </a>
                             </li>
                             <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="/blog.php">
+                                <a class="m-footer-menu__link" href="{{ route('get_blog.home') }}">
                                     Blog
                                 </a>
                             </li>
