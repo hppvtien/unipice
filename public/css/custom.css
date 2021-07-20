@@ -1,8 +1,253 @@
+.navigation,
+.breadcrumbs,
+.page-header .header.panel,
+.header.content,
+.page-wrapper>.widget,
+.page-wrapper>.page-bottom,
+.block.category.event,
+.top-container,
+.page-main {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1320px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: auto;
+}
+
+.block-collapsible-nav .item.current {
+    position: relative;
+}
+
+li.nav.item {
+    margin: 0 0 10px;
+}
+
+ul.nav.items {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    letter-spacing: .25px;
+    list-style: none;
+    padding: 0;
+}
+
+.block-collapsible-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.block-collapsible-nav .content {
+    background-color: #fff;
+}
+
+h1.page-title {
+    margin-bottom: 40px;
+    font-size: 32px
+}
+
+.block .block-title {
+    font-size: 24px;
+    font-weight: 700;
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #0b2d25;
+    padding-bottom: 8px;
+    color: #0b2d25;
+}
+
+.block-title>strong {
+    font-size: 24px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.block-title .action.a-anchor {
+    padding: 0 0 2px;
+    margin: 10px 0 10px 20px;
+}
+
+.column.main .block:last-child {
+    margin-bottom: 40px;
+}
+
+.column.main .block {
+    margin-bottom: 40px;
+}
+
+.block-title .action {
+    padding: 10px 0 10px 20px;
+    white-space: nowrap;
+    float: right;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    vertical-align: middle;
+}
+
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box
+}
+
+.columns:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden
+}
+
+.columns .column.main {
+    padding-bottom: 40px;
+    width: 100%
+}
+
+.columns .sidebar-main {
+    flex-grow: 1;
+    flex-basis: 100%;
+    order: 1
+}
+
+.columns .sidebar-additional {
+    flex-grow: 1;
+    flex-basis: 100%;
+    order: 2
+}
+
+.page-main {
+    margin-top: 40px
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh
+}
+
+.page.messages {
+    max-width: 1280px;
+    margin: 0 auto
+}
+
+.box-title {
+    display: inline-block;
+    margin: 0 0 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+.block .box-actions {
+    margin-top: 10px;
+}
+
+.block .box-actions .action:after {
+    content: '';
+    border-left: 1px solid #ddd6c4;
+    display: inline-block;
+    height: 12px;
+    margin: 0 10px;
+    position: absolute;
+    margin-top: 4px;
+}
+
+.block .box-actions .action {
+    margin-right: 18px;
+}
+
+.block .box-actions .action {
+    margin-right: 18px;
+}
+
 @media screen and (min-width: 1024px) {
     .c-header__logo img {
         margin: 4px auto;
         max-height: initial;
         max-width: 176px;
+    }
+    .columns .sidebar-main {
+        width: 20%;
+        float: left;
+        order: 1;
+    }
+    .columns {
+        display: block;
+    }
+    .column.main .block.block-addresses-list .block-title,
+    .column.main .block.block-dashboard-orders .block-title,
+    .column.main .block.block-order-details .block-title {
+        margin: 0
+    }
+    .column.main .block.block-addresses-list .block-content .empty,
+    .column.main .block.block-dashboard-orders .block-content .empty,
+    .column.main .block.block-order-details .block-content .empty {
+        margin-top: 30px
+    }
+    .page-main {
+        margin-top: 95px
+    }
+    .page-main {
+        width: 100%;
+    }
+    .block .block-title {
+        margin: 0 0 30px
+    }
+    .block-content:before {
+        content: '';
+        display: table
+    }
+    .block-content:after {
+        content: '';
+        display: table;
+        clear: both
+    }
+    .block-content .box {
+        width: 48.8%
+    }
+    .block-content .box:nth-child(odd) {
+        clear: left;
+        float: left
+    }
+    .block-content .box:nth-child(even) {
+        float: right
+    }
+    .form-address-edit__fields,
+    .form-edit-account__fields {
+        grid-template-columns: 1fr 1fr
+    }
+    .columns .column.main {
+        width: 80%;
+        float: right;
+        order: 2;
+    }
+}
+
+@media screen and (max-width:1023px) {
+    .account .page-main {
+        margin-top: 0;
+        padding-top: 40px;
+        position: relative
+    }
+    .account .columns .column.main {
+        padding-top: 80px
+    }
+    .block-content .box {
+        margin-bottom: 30px
+    }
+    .block-content .box:last-child {
+        margin-bottom: 0
+    }
+    .account .toolbar .limiter {
+        clear: both;
+        margin: 0 auto
+    }
+    .account .toolbar .pages {
+        clear: both;
+        margin: 0 auto
     }
 }
 

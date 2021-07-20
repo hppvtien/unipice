@@ -64,7 +64,7 @@ function execPostRequest($url, $data)
     }
     function count_contact()
     {
-        $contact = App\Models\Contact::where('created_at','<',date_format(Carbon\Carbon::now(), 'Y-m-d'))->get();
+        $contact = App\Models\Uni_Contact::where('created_at','<',date_format(Carbon\Carbon::now(), 'Y-m-d'))->get();
         $count_contact = count($contact);
         return $count_contact;
     }

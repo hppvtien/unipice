@@ -57,7 +57,7 @@
                                 <h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">Thông báo</h6>
                                 <span class="badge badge-pill badge-warning ml-auto my-auto float-right">Liên hệ chưa xác nhận</span>
                             </div>
-                            <p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">Có {{ count_contact() }} tin nhắn liên hệ</p>
+                            <p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">Có  tin nhắn liên hệ</p>
                         </div>
                     </div>
                 </div>

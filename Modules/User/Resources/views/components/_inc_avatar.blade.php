@@ -8,6 +8,6 @@
     </a>
     <p><b>{{ get_data_user('web','name') }}</b></p>
     <p><b>{{ get_data_user('web','job') }}</b></p>
-    <p><a href="{{ route('get.logout') }}" title="Đăng xuất">Đăng xuất</a></p>
+    {{-- <p><a href="{{ route('get.logout') }}" title="Đăng xuất">Đăng xuất</a></p> --}}
 </div>
 @include('user::components._inc_menu_user')

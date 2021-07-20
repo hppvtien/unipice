@@ -1,98 +1,130 @@
-@extends('user::layouts.app_master_user')
-@section('style')
-<link rel="stylesheet" href="{{ asset('css/user.css') }}">
-@stop
-@section('content')
-<div class="container" id="pjax-pages-page">
-    <div class="pages_user mt30">
-        <div class="box">
-            <div class="box-30">
-                <div class="box-dashboard-item">
-                    @include('user::components._inc_avatar')
+@extends('pages.layouts.app_master_frontend')
+@section('contents')
+<main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
+    <div class="page messages">
+        <div data-placeholder="messages"></div>
+        <div data-bind="scope: 'messages'">
+            <!-- ko if: cookieMessages && cookieMessages.length > 0 -->
+            <!-- /ko -->
+
+            <!-- ko if: messages().messages && messages().messages.length > 0 -->
+            <!-- /ko -->
+        </div>
+
+    </div>
+    <div class="columns">
+        <div class="column main">
+            <div class="page-title-wrapper">
+                <h1 class="page-title">
+                    <span class="base" data-ui-id="page-title-wrapper">My Account</span>
+                </h1>
+            </div>
+            <input name="form_key" type="hidden" value="ti05PgAwYARp0X1u">
+            <div id="authenticationPopup" data-bind="scope:'authenticationPopup'" style="display: none;">
+                <script>
+                    window.authenticationPopup = {
+                        "autocomplete": "off",
+                        "customerRegisterUrl": "https:\/\/shop.coopmarket.com\/customer\/account\/create\/",
+                        "customerForgotPasswordUrl": "https:\/\/shop.coopmarket.com\/customer\/account\/forgotpassword\/",
+                        "baseUrl": "https:\/\/shop.coopmarket.com\/"
+                    };
+                </script>
+                <!-- ko template: getTemplate() -->
+
+
+                <!-- /ko -->
+
+            </div>
+
+            <div class="block block-dashboard-info">
+                <div class="block-title"><strong>Account Information</strong></div>
+                <div class="block-content">
+                    <div class="box box-information">
+                        <strong class="box-title">
+                            <span>Contact Information</span>
+                        </strong>
+                        <div class="box-content">
+                            <p>
+                                Tien Pham<br>
+                                hppvtien@gmail.com<br>
+                            </p>
+                        </div>
+                        <div class="box-actions">
+                            <a class="action edit a-anchor" href="https://shop.coopmarket.com/customer/account/edit/">
+                                <span>Edit</span>
+                            </a>
+                            <a href="https://shop.coopmarket.com/customer/account/edit/changepass/1/" class="action change-password a-anchor">
+                                Change Password </a>
+                        </div>
+                    </div>
+                    <div class="box box-newsletter">
+                        <strong class="box-title">
+                            <span>Newsletters</span>
+                        </strong>
+                        <div class="box-content">
+                            <p class="newsletter-label">No subscribed newsletters.</p>
+                        </div>
+                        <div class="box-actions">
+                            <a class="action edit a-anchor" href="https://shop.coopmarket.com/newsletter/manage/"><span>Edit</span></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="box-70 margin-left">
-                <div class="box-dashboard-item">
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Mã đơn</th>
-                                    <th scope="col">Tổng</th>
-                                    <th scope="col">Trạng thái</th>
-                                    <th scope="col">Xuất hóa đơn</th>
-                                    <th scope="col" style="text-align: center">Xử lý</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($transactions as $item)
-                                <tr>
-                                    <td scope="row" style="position:relative" data-tooltip="Click để xem chi tiết" class="css-tooltip">
-                                        <a href="{{ route('get_user.transaction.view', $item->id) }}">DH{{ $item->id }}</a>
-                                    </td>
-                                    <td>{{ number_format($item->t_total_money, 0, ',', '.') }} đ</td>
-                                    <td> <span class="label {{ $item->getStatus($item->t_status)['class'] }}">
-                                            {{ $item->getStatus($item->t_status)['name'] }} </span> </td>
-                                    <td> <a href="javascript:;" data-id="{{ $item->id }}" class="btn-xs label-danger js-export-order" style="color: white"><i class="fa fa-share"></i> Xuất hóa đơn </a> </td>
-                                   @if ($item->t_status == 1)
-                                   <td style="text-align: center"> <a href="javascript:;" data-id="{{ $item->id }}" class="del_order btn-xs label-danger" style="color: white"><i class="fa fa-save"></i> Huỷ đơn</a> </td>
-                                   @else
-                                   <td style="text-align: center"> <a href="javascript:;" data-id="{{ $item->id }}" class="btn-xs label-success" style="color: white"><i class="fa fa-save"></i> Hoàn thành</a> </td>
-                                   @endif
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+            <div class="block block-dashboard-addresses">
+                <div class="block-title">
+                    <strong>Address Book</strong>
+                    <a class="action edit a-anchor" href="https://shop.coopmarket.com/customer/address/"><span>Manage Addresses</span></a>
+                </div>
+                <div class="block-content">
+                    <div class="box box-billing-address">
+                        <strong class="box-title">
+                            <span>Default Billing Address</span>
+                        </strong>
+                        <div class="box-content">
+                            <address>
+                                You have not set a default billing address. </address>
+                        </div>
+                    </div>
+                    <div class="box box-shipping-address">
+                        <strong class="box-title">
+                            <span>Default Shipping Address</span>
+                        </strong>
+                        <div class="box-content">
+                            <address>
+                                You have not set a default shipping address. </address>
+                        </div>
+                        <div class="box-actions">
+                            <a class="action edit a-anchor" href="https://shop.coopmarket.com/customer/address/edit/" data-ui-id="default-shipping-edit-link"><span>Edit Address</span></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="sidebar sidebar-main">
+            <div class="block block-collapsible-nav">
+                <div class="title block-collapsible-nav-title">
+                    <strong>
+                        My Account </strong>
+                </div>
+                <div class="content block-collapsible-nav-content" id="block-collapsible-nav">
+                    <ul class="nav items">
+                        <li class="nav item current"><strong>My Account</strong></li>
+                        <li class="nav item"><a href="https://shop.coopmarket.com/sales/order/history/">My Orders</a></li>
+                        <li class="nav item"><a href="https://shop.coopmarket.com/wishlist/">My Wish List</a></li>
+                        <li class="nav item"><a href="https://shop.coopmarket.com/customer/address/">Address Book</a></li>
+                        <li class="nav item">
+                            <span class="delimiter"></span>
+                        </li>
+                        <li class="nav item"><a href="https://shop.coopmarket.com/customer/account/edit/">Account Information</a></li>
+                        <li class="nav item"><a href="https://shop.coopmarket.com/newsletter/manage/">Newsletter Subscriptions</a></li>
+                        <li class="nav item"><a href="https://shop.coopmarket.com/favorites/">My Favorites</a></li>
+                        <li class="nav item">
+                            <span class="delimiter"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-@stop
-@section('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $('.del_order').on('click', function() {
-        let v_idOrder = $(this).attr('data-id');
-        alert(v_idOrder);
-        $.ajax({
-            url: "{{ route('get_user.replaceOrder') }}",
-            type: "post",
-            dataType: "text",
-            data: {
-                v_idOrder: v_idOrder
-            },
-            success: function(result) {
-                window.location.href = "{{ route('get_user.dashboard') }}";
-                console.log(result);
-            },
-            error: function(result) {
-                console.log(result);
-            }
-        });
-    });
-    $('.js-export-order').on('click', function() {
-        let id_transaction = $(this).attr('data-id');
-        $.ajax({
-            url: "{{ route('get_user.downPDF') }}",
-            type: "get",
-            dataType: "text",
-            data: {
-                id_transaction: id_transaction
-            },
-            success: function(result) {
-                window.open("down-pdf.html?id_transaction=" + id_transaction + "")
-            },
-            error: function(result) {
-                console.log(result);
-            }
-        });
-    });
-</script>
+</main>
 @stop

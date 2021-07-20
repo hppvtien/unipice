@@ -86,7 +86,7 @@
                                     <th>Name</th>
                                     <th>Phone</th>
                                     <th>Email</th>
-                                    <th>Content</th>
+                                    <th>Tin Nhắn</th>
                                     <th>Trạng thái</th>
                                     <th>Ngày tạo</th>
                                     <th>Action</th>
@@ -106,7 +106,7 @@
                                         <a href="javascript:;" title="{{ $item->email }}">{{ $item->email }}</a>
                                     </td>
                                     <td>
-                                        <a href="javascript:;" title="{{ $item->name  }}">{{ $item->content }}</a>
+                                        <a data-toggle="modal" class="modal_message" data-mess="{{ $item->message }}" data-id="{{ $item->id }}" data-target="#exampleModalLong" href="javascript:;" title="{{ $item->name  }}">{{ $item->message }}</a>
                                     </td>
                                     <td>
                                         <label class="switch">
@@ -134,6 +134,23 @@
     </div>
     <!-- row closed -->
 </div>
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Nội dung liên hệ</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     
@@ -143,6 +160,11 @@
             }
         });
        
+    $('.modal_message').on('click',function(){
+        let c_id = $(this).attr('data-id'); 
+        let data_mess = $(this).attr('data-mess'); 
+        $('.modal-body').html(data_mess);
+    });
     $('.v_status').on('change',function(){
         let v_id = $(this).attr('data-ckb'); 
         $.ajax({

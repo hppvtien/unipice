@@ -30,6 +30,7 @@ class AdminUniContactController extends AdminController
         $contact->save();
     }
 
+
     public function delete(Request $request, $id)
     {
         if ($request->ajax()) {
