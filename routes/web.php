@@ -42,6 +42,7 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::get('thanh-toan','CheckoutController@index')->name('get.chekout');
     Route::get('faq','FaqsController@index')->name('get.faq');
     Route::get('cua-hang','FindStoreController@index')->name('get.find');
+    Route::post('cua-hang','FindStoreController@searchName');
     Route::get('member','MembershipController@index')->name('get.membership');
     Route::get('san-pham/{slug}','ProductController@index')->name('get.product');
 

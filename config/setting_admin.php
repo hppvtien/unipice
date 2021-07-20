@@ -207,11 +207,7 @@ return [
             'sub' => [
                 [
                     'name' => 'Danh sách',
-                    'route' => 'get_admin.contact.index'
-                ],
-                [
-                    'name' => 'Ứng Viên',
-                    'route' => 'get_admin.contact.jobsapply'
+                    'route' => 'get_admin.uni_contact.index'
                 ],
             ]
         ],

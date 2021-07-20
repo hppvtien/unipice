@@ -6,17 +6,17 @@
             <div class="my-auto">
                 <div class="d-flex">
                     <h4 class="content-title mb-0 my-auto">Jobs</h4>
-                    <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ Update</span>
+                    <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ Create</span>
                 </div>
             </div>
             <div class="d-flex my-xl-auto right-content">
                 <div class="pr-1 mb-3 mb-xl-0">
-                    <a href="{{ route('get_admin.jobs.index') }}" class="btn btn-danger mr-2">Quay lại <i class="la la-undo"></i></a>
+                    <a href="{{ route('get_admin.uni_contact.index') }}" class="btn btn-danger mr-2">Quay lại <i class="la la-undo"></i></a>
                 </div>
             </div>
         </div>
         <!-- breadcrumb -->
         <!-- row -->
-        @include('admin::pages.jobs.form')
+        @include('admin::pages.uni_contact.form')
     </div>
 @stop

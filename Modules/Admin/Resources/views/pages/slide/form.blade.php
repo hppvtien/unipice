@@ -24,16 +24,16 @@
                         <label for="exampleInputEmail1"> Status <span>(*)</span></label>
                         <div class="SumoSelect sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="s_type" class="form-control SlectBox SumoUnder" onclick="console.log($(this).val())" onchange="console.log('change is firing')" tabindex="-1">
-                                <option title="Public" value="1">Banner header</option>
-                                <option title="Public" value="2">Banner Home 1</option>
-                                <option title="Public" value="3">Banner Home 2</option>
-                                <option title="Public" value="4">Banner Home 3</option>
-                                <option title="Public" value="5">Banner Home 4</option>
-                                <option title="Public" value="6">Banner Post Category</option>
-                                <option title="Public" value="7">Banner Post Single</option>
-                                <option title="Public" value="8">Banner Product Category</option>
-                                <option title="Public" value="9">Banner Product Single</option>
-                                <option title="Public" value="10">Banner About</option>
+                                <option title="Public" {{ $slide->s_type == 1 ? 'selected' : '' }} value="1">Banner header</option>
+                                <option title="Public" {{ $slide->s_type == 2 ? 'selected' : '' }} value="2">Banner Home 1</option>
+                                <option title="Public" {{ $slide->s_type == 3 ? 'selected' : '' }} value="3">Banner Home 2</option>
+                                <option title="Public" {{ $slide->s_type == 4 ? 'selected' : '' }} value="4">Banner Home 3</option>
+                                <option title="Public" {{ $slide->s_type == 5 ? 'selected' : '' }} value="5">Banner Home 4</option>
+                                <option title="Public" {{ $slide->s_type == 6 ? 'selected' : '' }} value="6">Banner Post Category</option>
+                                <option title="Public" {{ $slide->s_type == 7 ? 'selected' : '' }} value="7">Banner Post Single</option>
+                                <option title="Public" {{ $slide->s_type == 8 ? 'selected' : '' }} value="8">Banner Product Category</option>
+                                <option title="Public" {{ $slide->s_type == 9 ? 'selected' : '' }} value="9">Banner Product Single</option>
+                                <option title="Public" {{ $slide->s_type == 10 ? 'selected' : '' }} value="10">Banner About</option>
                             </select>
                         </div>
                     </div>

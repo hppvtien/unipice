@@ -18,6 +18,13 @@
                         <span class="text-danger">{{ $errors->first('store_address') }}</span>
                         @endif
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required"><span> Tỉnh - Thành Phố ( VD: Hải Phòng, Hà Nội, Quảng Ninh ) (*)</span></label>
+                        <input type="text" class="form-control" name="store_province" value="{{ old('store_province', $uni_store->store_province ?? '') }}">
+                        @if($errors->first('store_province'))
+                        <span class="text-danger">{{ $errors->first('store_province') }}</span>
+                        @endif
+                    </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Số điện thoại <span>(*)</span></label>

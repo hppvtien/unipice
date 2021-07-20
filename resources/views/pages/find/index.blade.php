@@ -20,7 +20,6 @@
                                         <h1 class="c-page-header__headline">Tìm cửa hàng cùng Unispice</h1>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="layout layout--onecol">
@@ -62,14 +61,17 @@
                                                                             <div class="search-input">
                                                                                 <div class="field email required">
                                                                                     <div class="control">
-                                                                                        <input placeholder="Tìm kiếm..." name="search_name" id="search_name" type="text" class="">
+                                                                                        <input placeholder="Tìm kiếm..." name="search_name" id="search_name" type="text" class="" data-url="{{ route('get.find') }}">
                                                                                     </div>
                                                                                     <div class="c-filter-bar__sorting">
                                                                                         <div class="">
-                                                                                            <select class="m-sort-by__select frontier-custom-sort" id="order_by" name="order_by" aria-label="Order By">
+                                                                                            <select class="m-sort-by__select frontier-custom-sort search_province" data-url="{{ route('get.find') }}" id="order_by" name="search_province" aria-label="Search Province">
                                                                                                 <option value="" selected>Chọn tỉnh thành</option>
-                                                                                                <option value="Hải Phòng">Hải Phòng</option>
-                                                                                                <option value="Hà Nội">Hà Nội</option>
+                                                                                                @forelse ($uni_province as $item)
+                                                                                                <option value="{{ $item }}">{{ $item }}</option>
+                                                                                                @empty
+                                                                                                    
+                                                                                                @endforelse
                                                                                             </select>
                                                                                             <span class="m-sort-by__arrow"></span>
                                                                                         </div>
@@ -78,18 +80,20 @@
                                                                             </div>
                                                                         
                                                                         </div>
-                                                                        @forelse ($uni_store as $key => $item)
-                                                                        <div class="m-heading get-map-google" data-lat="{{ $item->store_lat }}" data_lng="{{ $item->store_lng }}">
-                                                                            <div class="m-heading__cta">
-                                                                                <h2 class="m-heading__headline heading_namestore">{{ $item->store_name }}</h2>
-                                                                                <p class="m-media-block-aligned__description">Địa chỉ: {{ $item->store_address }}</p>
-                                                                                <p class="m-media-block-aligned__description">Số điện thoại: {{ $item->store_phone }}</p>
-                                                                                <p class="go-map">Xem bản đồ</p>
+                                                                        <div id="show-store">
+                                                                            @forelse ($uni_store as $key => $item)
+                                                                            <div class="m-heading get-map-google" data-lat="{{ $item->store_lat }}" data_lng="{{ $item->store_lng }}">
+                                                                                <div class="m-heading__cta">
+                                                                                    <h2 class="m-heading__headline heading_namestore">{{ $item->store_name }}</h2>
+                                                                                    <p class="m-media-block-aligned__description">Địa chỉ: {{ $item->store_address }}</p>
+                                                                                    <p class="m-media-block-aligned__description">Số điện thoại: {{ $item->store_phone }}</p>
+                                                                                    <p class="go-map">Xem bản đồ</p>
+                                                                                </div>
                                                                             </div>
+                                                                            @empty
+                                                                                
+                                                                            @endforelse
                                                                         </div>
-                                                                        @empty
-                                                                            
-                                                                        @endforelse
                                                                     
                                                                     </div>
                                                                 </div>

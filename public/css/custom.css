@@ -55,13 +55,14 @@
         width: 33%;
         padding: 40px;
         max-height: 700px;
-        overflow-y: scroll;
     }
     .block-group-store {
         padding: 20px;
         width: 40%;
         display: block;
         cursor: pointer;
+        overflow-y: scroll;
+        height: 700px;
     }
     .heading_namestore {
         font-size: 22px;

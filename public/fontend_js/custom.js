@@ -75,3 +75,38 @@ $('.get-map-google').on('click', function() {
         $('#ren_map').html(data_lat);
     });
 });
+
+
+$("#search_name").on('keyup', function() {
+    let store_name = $('input[name=search_name]').val();
+    let data_url = $(this).attr('data-url');
+    $.ajax({
+        url: data_url,
+        method: "POST",
+        data: {
+            store_name: store_name
+        },
+        success: function(data) {
+            console.log(data);
+            $('#show-store').html(data);
+        },
+
+    });
+});
+
+$('.search_province').on('change', function() {
+    let data_url = $(this).attr('data-url');
+    let store_province = $(".search_province option:selected").val();
+    $.ajax({
+        url: data_url,
+        method: "POST",
+        data: {
+            store_province: store_province
+        },
+        success: function(data) {
+            console.log(data);
+            $('#show-store').html(data);
+        },
+
+    });
+});

@@ -9,7 +9,7 @@
                 <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ index</span>
             </div>
         </div>
-
+    
     </div>
     <style>
         .switch {
@@ -86,45 +86,40 @@
                                     <th>Name</th>
                                     <th>Phone</th>
                                     <th>Email</th>
-                                    <th>Địa chỉ</th>
-                                    <th>CV</th>
-                                    <th>Công việc</th>
+                                    <th>Content</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ngày tạo</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($contact_job as $item)
+                                @forelse($contact as $item)
                                 <tr>
                                     <th scope="row">{{ $item->id }}</th>
                                     <td>
-                                        <a href="javascript:;" title="{{ $item->j_fullname }}">{{ $item->j_fullname }}</a>
+                                        <a href="javascript:;" title="{{ $item->name }}">{{ $item->name }}</a>
                                     </td>
                                     <td>
-                                        <a href="javascript:;" title="{{ $item->j_phone }}">{{ $item->j_phone }}</a>
+                                        <a href="javascript:;" title="{{ $item->phone }}">{{ $item->phone }}</a>
                                     </td>
                                     <td>
-                                        <a href="javascript:;" title="{{ $item->j_email }}">{{ $item->j_email }}</a>
+                                        <a href="javascript:;" title="{{ $item->email }}">{{ $item->email }}</a>
                                     </td>
                                     <td>
-                                        <a href="javascript:;" title="{{ $item->j_address }}">{{ $item->j_address }}</a>
-                                    </td>
-                                    <td>
-                                        <a href="javascript:;" title="{{ $item->j_file_cv }}">{{ $item->j_file_cv }}</a>
-                                    </td>
-                                    <td>
-                                        <a href="javascript:;" title="{{ $item->j_job_id }}">{{ $item->j_job_id }}</a>
+                                        <a href="javascript:;" title="{{ $item->name  }}">{{ $item->content }}</a>
                                     </td>
                                     <td>
                                         <label class="switch">
-                                            <input type="checkbox" class="j_status" data-ckb="{{ $item->id }}" {{ $item->j_status == 1 ?'checked':'' }}>
+                                            <input type="checkbox" class="v_status" data-ckb="{{ $item->id }}" {{ $item->status == 1 ?'checked':'' }}>
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
+                                    <!-- <td><span class="badge badge-info">{{ $item->status = 1 ? 'Active':'Not-Active' }}</span></td> -->
                                     <td>
-                                        <a href="javascript:;" title="{{ $item->created_at  }}">{{ $item->created_at }}</a>
+                                        <a href="javascript:;" title="{{ $item->name  }}">{{ $item->created_at }}</a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('get_admin.jobsapply.delete_apply', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
+                                        <a href="{{ route('get_admin.uni_contact.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
                                     </td>
                                 </tr>
                                 @empty
@@ -148,14 +143,14 @@
             }
         });
        
-    $('.j_status').on('change',function(){
-        let j_id = $(this).attr('data-ckb'); 
+    $('.v_status').on('change',function(){
+        let v_id = $(this).attr('data-ckb'); 
         $.ajax({
-                url: "{{ route('get_admin.jobsapply.edit_apply') }}",
+                url: "{{ route('get_admin.uni_contact.edit') }}",
                 type : "post",
                 dataType:"text",
                 data : {
-                    j_id : j_id
+                    v_id : v_id
                 },
                 success : function (result){
                     console.log(result);

@@ -190,12 +190,9 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
     });
     // --------------------------------------------------------------------------------------------------------------------
     Route::prefix('contact')->group(function (){
-        Route::get('/', 'AdminContactController@index')->name('get_admin.contact.index');
-        Route::get('jobsapply', 'AdminContactController@jobsapply')->name('get_admin.contact.jobsapply');
-        Route::post('/', 'AdminContactController@update')->name('get_admin.contact.edit');
-        Route::post('jobsapply', 'AdminContactController@updateJobsapply')->name('get_admin.jobsapply.edit_apply');
-        Route::get('delete/{id}', 'AdminContactController@delete')->name('get_admin.contact.delete');
-        Route::get('delete_apply/{id}', 'AdminContactController@delete_apply')->name('get_admin.jobsapply.delete_apply');
+        Route::get('/', 'AdminUniContactController@index')->name('get_admin.uni_contact.index');
+        Route::post('/', 'AdminUniContactController@update')->name('get_admin.uni_contact.edit');
+        Route::get('delete/{id}', 'AdminUniContactController@delete')->name('get_admin.uni_contact.delete');
     });
 
     Route::prefix('uni_product')->group(function (){

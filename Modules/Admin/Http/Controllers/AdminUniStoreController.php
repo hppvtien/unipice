@@ -48,6 +48,7 @@ class AdminUniStoreController extends AdminController
             'user_id' => get_data_user('web'),
             'store_area' => $request->store_area,
             'store_address' => $request->store_address,
+            'store_province' => $request->store_province,
             'store_phone' => $request->store_phone,
             'store_thumbnail' => $request->store_thumbnail,
             'store_taxcode' => $request->store_taxcode,
@@ -90,6 +91,11 @@ class AdminUniStoreController extends AdminController
             } else {
                 $store_album = [];
             }
+            if ($request->store_thumbnail) {
+                $store_thumbnail = $request->store_thumbnail;
+            } else {
+                $store_thumbnail = $uni_store->store_thumbnail;
+            }
 
             $store_ab = array_merge($store_albumOld, $store_album);
             // dd($store_albumOld);
@@ -107,6 +113,7 @@ class AdminUniStoreController extends AdminController
                 'user_id' => $data['created_by'],
                 'store_area' => $request->store_area,
                 'store_address' => $request->store_address,
+                'store_province' => $request->store_province,
                 'store_phone' => $request->store_phone,
                 'store_thumbnail' => $store_thumbnail,
                 'store_taxcode' => $request->store_taxcode,
