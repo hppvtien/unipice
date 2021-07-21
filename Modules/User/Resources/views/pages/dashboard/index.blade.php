@@ -20,22 +20,6 @@
                 </h1>
             </div>
             <input name="form_key" type="hidden" value="ti05PgAwYARp0X1u">
-            <div id="authenticationPopup" data-bind="scope:'authenticationPopup'" style="display: none;">
-                <script>
-                    window.authenticationPopup = {
-                        "autocomplete": "off",
-                        "customerRegisterUrl": "https:\/\/shop.coopmarket.com\/customer\/account\/create\/",
-                        "customerForgotPasswordUrl": "https:\/\/shop.coopmarket.com\/customer\/account\/forgotpassword\/",
-                        "baseUrl": "https:\/\/shop.coopmarket.com\/"
-                    };
-                </script>
-                <!-- ko template: getTemplate() -->
-
-
-                <!-- /ko -->
-
-            </div>
-
             <div class="block block-dashboard-info">
                 <div class="block-title"><strong>Account Information</strong></div>
                 <div class="block-content">
@@ -104,23 +88,19 @@
             <div class="block block-collapsible-nav">
                 <div class="title block-collapsible-nav-title">
                     <strong>
-                        My Account </strong>
+                        My Account 
+                    </strong>
                 </div>
                 <div class="content block-collapsible-nav-content" id="block-collapsible-nav">
                     <ul class="nav items">
-                        <li class="nav item current"><strong>My Account</strong></li>
                         <li class="nav item"><a href="https://shop.coopmarket.com/sales/order/history/">My Orders</a></li>
                         <li class="nav item"><a href="https://shop.coopmarket.com/wishlist/">My Wish List</a></li>
                         <li class="nav item"><a href="https://shop.coopmarket.com/customer/address/">Address Book</a></li>
-                        <li class="nav item">
-                            <span class="delimiter"></span>
-                        </li>
+                    
                         <li class="nav item"><a href="https://shop.coopmarket.com/customer/account/edit/">Account Information</a></li>
                         <li class="nav item"><a href="https://shop.coopmarket.com/newsletter/manage/">Newsletter Subscriptions</a></li>
                         <li class="nav item"><a href="https://shop.coopmarket.com/favorites/">My Favorites</a></li>
-                        <li class="nav item">
-                            <span class="delimiter"></span>
-                        </li>
+                    
                     </ul>
                 </div>
             </div>
