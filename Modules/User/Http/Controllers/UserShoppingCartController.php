@@ -31,7 +31,6 @@ class UserShoppingCartController extends UserController
                 }
 
                 $listCarts = \Cart::content();
-
                 // Kierm tra xem đã lưu khoá học chưa
                 $checkExist = $listCarts->search(function ($cartItem) use ($id) {
                     if($cartItem->id == $id) return $id;
@@ -45,8 +44,9 @@ class UserShoppingCartController extends UserController
                         'name' => $uni_product->name,
                         'qty' => 1,
                         'price' => $uni_product->price,
+                        'weight' => 1,
                         'options' => [
-                            'images' => pare_url_file($uni_product->thumbnail)
+                            'images' => $uni_product->thumbnail
                         ]
                     ]);
                 }

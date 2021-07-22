@@ -9,7 +9,9 @@
                             <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                         </a>
                         <form class="m-product-card__add-to-cart">
-                            <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single'']) }}" type="button">Add to cart</button>
+                            <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" 
+                            data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single'']) }}" 
+                            type="button">Add to cart</button>
                             <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" type="&quot;submit&quot;">
                                 <span class="icon-add-to-cart"></span>
                             </button>

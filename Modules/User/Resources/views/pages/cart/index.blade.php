@@ -5,9 +5,12 @@
         padding-bottom: 40px;
         width: 100%;
     }
+
     ul.checkout-methods-items li:before {
-    content: '';
-}
+        content: '';
+        display: none;
+    }
+
     .cart-container .cart-summary .shipping .m-text-input,
     .cart-container .cart-summary .shipping .m-select-menu {
         margin-top: 20px;
@@ -43,7 +46,7 @@
     }
 
     .cart-container .cart-summary .shipping.block {
-        margin-bottom: 0;
+        margin-bottom: 20px;
     }
 
     .cart-container .cart-summary .shipping .title {
@@ -110,7 +113,7 @@
         font-size: 14px;
         font-size: .875rem;
         font-weight: 400;
-        padding: 24px 12px;
+        padding: 16px 12px;
     }
 
     .cart-container .cart-totals td {
@@ -124,7 +127,7 @@
         font-size: 14px;
         font-size: .875rem;
         font-weight: 400;
-        padding: 24px 12px;
+        padding: 16px 12px;
     }
 
     .cart-container .cart-table .item-info {
@@ -148,6 +151,24 @@
 
     .cart-container .cart-table td a {
         box-shadow: none;
+    }
+
+    .cart-container .cart-summary .summary.title {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .cart-container {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        grid-template-rows: auto auto 1fr;
+        grid-gap: 0 30px;
+    }
+
+
+
+    .cart-container .cart-messaging__shipping {
+        margin: 20px 0;
     }
 
     .table td a {
@@ -188,7 +209,13 @@
         top: 0;
     }
 
+    .checkout {
+        width: 100%;
+    }
+
     .cart-container .cart-table .actions-toolbar {
+        margin-top: 16px;
+        margin-bottom: 0;
         padding: 20px 0;
         display: flex;
         justify-content: space-between;
@@ -199,6 +226,7 @@
         margin-top: 20px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
     }
 
     .cart-container .cart-actions button {
@@ -209,6 +237,7 @@
         margin: 20px 0;
         text-align: center;
     }
+
 
     @media screen and (min-width: 1024px) {
 
@@ -266,38 +295,38 @@
 
         .cart-container .cart-actions {
             flex-direction: row;
-            justify-content: flex-end;
+            justify-content: center;
         }
     }
 
-    @media screen and (min-width: 1023px) {
+    @media screen and (max-width: 1023px) {
+        .cart-container {
+            display: block;
+        }
+
+        .cart-container .cart-table .item-info {
+            display: table-row;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .cart-container .cart-table .item-info .item {
+            display: block;
+        }
+
         .fieldset>.field {
             box-sizing: border-box;
         }
-    }
 
-    .cart-container .cart-summary .summary.title {
-        display: block;
-        margin-bottom: 20px;
-    }
-
-    .cart-container {
-        display: grid;
-        grid-template-columns: 1fr 320px;
-        grid-template-rows: auto auto 1fr;
-        grid-gap: 0 30px;
-    }
-
-
-
-    .cart-container .cart-messaging__shipping {
-        margin: 20px 0;
+        .cart-container .cart-table .actions-toolbar {
+            margin-top: 0;
+            padding: 10px 0;
+        }
     }
 </style>
 <main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
     <div class="page-title-wrapper">
         <h1 class="page-title">
-            <span class="base" data-ui-id="page-title-wrapper">Shopping Cart</span>
+            <span class="base" data-ui-id="page-title-wrapper">Giỏ hàng</span>
         </h1>
     </div>
     <div class="page messages">
@@ -309,48 +338,35 @@
                 <div class="cart-messaging__shipping">
                     <div class="cart-messaging__inner">
                         <p class="cart-messaging__text">
-                            Only $34.01 away from FREE Shipping — Keep Shopping </p>
+                            Miễn phí giao hàng với đơn hàng 10 triệu trở lên </p>
                     </div>
                 </div>
-                <div class="cart-summary"><strong class="summary title">Summary</strong>
+                <div class="cart-summary"><strong class="summary title">Thông tin chi phí</strong>
                     <div id="block-shipping" class="block shipping active" data-collapsible="true" role="tablist">
                         <div class="title" data-role="title" aria-controls="block-summary" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
                             <h2 id="block-shipping-heading" class="cart-accordion-title">
-                                Estimate Shipping and Tax </h2>
-                        </div>
-                        <div id="block-summary" class="content" data-role="content" aria-labelledby="block-shipping-heading" role="tabpanel" aria-hidden="true">
-
-                            <form id="co-shipping-method-form" data-bind="blockLoader: isLoading, visible: isVisible()" class="shipping-rates">
-                                <p class="field note" data-bind="visible: (!isLoading() &amp;&amp; shippingRates().length <= 0)" style="">
-                                    <!-- ko text: $t('Sorry, no quotes are available for this order at this time')-->Sorry, no quotes are available for this order at this time
-                                    <!-- /ko -->
-                                </p>
-                                <fieldset class="fieldset rate" data-bind="visible: (shippingRates().length > 0)" style="display: none;">
-                                    <dl class="items methods" data-bind="foreach: shippingRateGroups"></dl>
-                                </fieldset>
-                            </form>
-
+                                Thông tin vận chuyển và thuế
+                            </h2>
                         </div>
                     </div>
-                    <div id="cart-totals" class="cart-totals" data-bind="scope:'block-totals'">
+                    <div id="cart-totals" class="cart-totals">
                         <!-- ko template: getTemplate() -->
-                        <div class="table-wrapper" data-bind="blockLoader: isLoading">
+                        <div class="table-wrapper">
                             <table class="data table totals">
-                                <caption class="table-caption" data-bind="text: $t('Total')">Total</caption>
                                 <tbody>
 
                                     <tr class="totals sub">
-                                        <th data-bind="i18n: title" class="mark" scope="row">Subtotal</th>
+                                        <th class="mark" scope="row">Tổng tiền</th>
                                         <td class="amount">
-                                            <span class="price" data-bind="text: getValue(), attr: {'data-th': title}" data-th="Subtotal">$6.65</span>
+                                            <span class="price" data-th="Subtotal">{{ \Cart::total(0,0,'.') }}đ</span>
                                         </td>
                                     </tr>
                                     <tr class="grand totals">
                                         <th class="mark" scope="row">
-                                            <strong data-bind="i18n: title">Order Total</strong>
+                                            <strong>Tổng đơn hàng</strong>
                                         </th>
-                                        <td data-bind="attr: {'data-th': title}" class="amount" data-th="Order Total">
-                                            <strong><span class="price" data-bind="text: getValue()">$6.65</span></strong>
+                                        <td class="amount" data-th="Order Total">
+                                            <strong><span class="price">{{ \Cart::total(0,0,'.') }}đ</span></strong>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -361,7 +377,7 @@
                     </div>
                     <div class="block discount active" id="block-discount" data-collapsible="true" role="tablist">
                         <div class="title" data-role="title" role="tab" aria-selected="true" aria-expanded="true" tabindex="0">
-                            <h2 class="cart-accordion-title" id="block-discount-heading">Apply Discount Code</h2>
+                            <h2 class="cart-accordion-title" id="block-discount-heading">Sử dụng mã giảm giá</h2>
                         </div>
                         <div class="content" data-role="content" aria-labelledby="block-discount-heading" role="tabpanel" aria-hidden="false" style="display: block;">
                             <form id="discount-coupon-form" action="https://shop.coopmarket.com/checkout/cart/couponPost/" method="post">
@@ -370,13 +386,13 @@
                                     <div class="field">
                                         <div class="m-text-input m-text-input--placeholder-label control">
                                             <input type="text" class="a-text-input m-text-input__input input-text" id="coupon_code" name="coupon_code" value="" placeholder="Enter discount code">
-                                            <label for="coupon_code" class="a-form-label m-text-input__label label"><span>Enter discount code</span></label>
+                                            <label for="coupon_code" class="a-form-label m-text-input__label label"><span>Nhập mã giảm giá</span></label>
                                         </div>
                                     </div>
                                     <div class="actions-toolbar">
                                         <div class="primary">
                                             <button class="a-btn a-btn--primary action apply primary" type="button" value="Apply Discount">
-                                                <span>Apply Discount</span>
+                                                <span>Sử dụng mã giảm giá</span>
                                             </button>
                                         </div>
                                     </div>
@@ -385,9 +401,9 @@
                         </div>
                     </div>
                     <ul class="checkout methods items checkout-methods-items">
-                        <li class="item"> 
+                        <li class="item">
                             <button type="button" data-role="proceed-to-checkout" title="Proceed to Checkout on Co-Op Market" class="a-btn a-btn--primary action primary checkout">
-                                <span>Proceed to Checkout on Co-Op Market</span>
+                                <span>Tiến hành thanh toán</span>
                             </button>
                         </li>
                     </ul>
@@ -396,32 +412,33 @@
                     <input name="form_key" type="hidden" value="GXhjnhZzwPqQ9aXV">
                     <div class="cart table-wrapper">
                         <table id="shopping-cart-table" class="cart items data table cart-table">
-                            <caption class="table-caption">Shopping Cart Items</caption>
+                            <caption class="table-caption">Thông tin giỏ hàng</caption>
                             <thead>
                                 <tr>
-                                    <th class="col item" scope="col"><span>Item</span></th>
-                                    <th class="col price" scope="col"><span>Price</span></th>
-                                    <th class="col qty" scope="col"><span>Qty</span></th>
-                                    <th class="col subtotal" scope="col"><span>Subtotal</span></th>
+                                    <th class="col item" scope="col"><span>Sản phẩm</span></th>
+                                    <th class="col price" scope="col"><span>Giá</span></th>
+                                    <th class="col qty" scope="col"><span>Số lượng</span></th>
+                                    <th class="col subtotal" scope="col"><span>Tổng tiền</span></th>
                                 </tr>
                             </thead>
                             <tbody class="cart item">
+                                @forelse ($listCarts as $key => $item)
                                 <tr class="item-info">
                                     <td data-th="Item" class="col item">
-                                        <a href="https://www.coopmarket.com/self-closing-lid-for-1-2-gallon-plastic-container" title="Self Closing Lid for 1/2 Gallon Plastic Container     " tabindex="-1" class="product-item-photo">
-
+                                        <a href="{{ $item->slug }}" title="Self Closing Lid for 1/2 Gallon Plastic Container" tabindex="-1" class="product-item-photo">
                                             <span class="product-image-container" style="width:110px;">
                                                 <span class="product-image-wrapper" style="padding-bottom: 145.45454545455%;">
-                                                    <img class="product-image-photo" src="https://acquia.prod.wholesale.frontiercoop.com/sites/default/files/acquiadam/2020-09/1_Frontier-Co-op-Self-Closing-Lid-Half-Gallon-12401-Front.jpg" max-width="110" max-height="160" alt="Self Closing Lid for 1/2 Gallon Plastic Container     "></span>
+                                                    <img class="product-image-photo" src="{{ $item->options->thumbnail }}" max-width="100%" max-height="100%" alt="{{ $item->avatar }}">
+                                                </span>
                                             </span>
                                         </a>
                                         <div class="product-item-details">
                                             <strong class="product-item-name">
-                                                <a href="https://www.coopmarket.com/self-closing-lid-for-1-2-gallon-plastic-container">Self Closing Lid for 1/2 Gallon Plastic Container </a>
+                                                <a href="{{ $item->slug }}">{{ $item->avatar }} </a>
                                             </strong>
                                             <div class="product attribute sku">
-                                                <strong class="type">SKU:</strong>
-                                                <span class="value" itemprop="sku">12401</span>
+                                                <strong class="type">Mã sản phẩm:</strong>
+                                                <span class="value" itemprop="sku">{{ $item->id }}</span>
                                             </div>
                                         </div>
                                     </td>
@@ -430,7 +447,7 @@
 
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price">$4.99</span> </span>
+                                                <span class="price">{{ $item->price }}</span> </span>
 
                                         </span>
                                     </td>
@@ -438,33 +455,37 @@
                                         <div class="field qty">
                                             <div class="control qty">
                                                 <label for="cart-20563347-qty">
-                                                    <input id="cart-20563347-qty" name="cart[20563347][qty]" data-cart-item-id="12401" value="1" type="number" size="4" step="any" title="Qty" class="input-text qty" data-validate="{required:true,'validate-greater-than-zero':true}" data-role="cart-item-qty">
+                                                    <input id="cart-20563347-qty" name="cart[20563347][qty]" data-cart-item-id="12401" value="{{ $item->qty }}" type="number" size="4" step="any" title="Qty" class="input-text qty" data-validate="{required:true,'validate-greater-than-zero':true}" data-role="cart-item-qty">
                                                 </label>
                                             </div>
                                         </div>
                                     </td>
 
-                                    <td class="col subtotal" data-th="Subtotal">
+                                    <td class="col subtotal" data-th="Tổng tiền">
 
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price">$4.99</span> </span>
+                                                <span class="price">{{ $item->price }}</span> </span>
 
                                         </span>
                                     </td>
                                 </tr>
+                                @empty
+                                    
+                                @endforelse
+                                
                                 <tr class="item-actions">
                                     <td colspan="4">
                                         <div class="actions-toolbar">
                                             <a href="#" data-post="{&quot;action&quot;:&quot;https:\/\/shop.coopmarket.com\/wishlist\/index\/fromcart\/&quot;,&quot;data&quot;:{&quot;item&quot;:&quot;21003618&quot;,&quot;uenc&quot;:&quot;aHR0cHM6Ly9zaG9wLmNvb3BtYXJrZXQuY29tL2NoZWNrb3V0L2NhcnQv&quot;}}" class="use-ajax action towishlist action-towishlist">
-                                                <span>Move to Wishlist</span>
+                                                <span>Yêu thích</span>
                                             </a>
                                             <a class="action action-edit" href="https://shop.coopmarket.com/checkout/cart/configure/id/21003618/product_id/10606/" title="Edit item parameters">
-                                                <span>Edit</span>
+                                                <span>Sửa sản phẩm</span>
                                             </a>
                                             <a href="#" title="Remove item" class="action action-delete" data-post="{&quot;action&quot;:&quot;https:\/\/shop.coopmarket.com\/checkout\/cart\/delete\/&quot;,&quot;data&quot;:{&quot;id&quot;:&quot;21003618&quot;,&quot;uenc&quot;:&quot;aHR0cHM6Ly9zaG9wLmNvb3BtYXJrZXQuY29tL2NoZWNrb3V0L2NhcnQv&quot;}}">
                                                 <span>
-                                                    Remove item </span>
+                                                    Xóa sản phẩm </span>
                                             </a>
                                         </div>
                                     </td>
@@ -475,17 +496,17 @@
                     <div class="cart main actions">
                         <div class="cart-actions">
                             <button type="submit" name="update_cart_action" data-cart-item-update="" value="update_qty" title="Update Shopping Cart" class="a-btn a-btn--primary action update">
-                                <span>Update Shopping Cart</span>
+                                <span>Cập nhật giỏ hàng</span>
                             </button>
                             <button type="button" name="update_cart_action" data-cart-empty="" value="empty_cart" title="Clear Shopping Cart" class="a-btn a-btn--secondary action clear" id="empty_cart_button">
-                                <span>Clear Shopping Cart</span>
+                                <span>Xóa giỏ hàng</span>
                             </button>
                             <input type="hidden" value="" id="update_cart_action_container" data-cart-item-update="">
                         </div>
 
                         <div class="cart-continue">
                             <a class="action continue a-anchor" href="https://www.coopmarket.com/" title="Continue Shopping">
-                                <span>Continue Shopping</span>
+                                <span>Tiếp tục mua hàng</span>
                             </a>
                         </div>
                     </div>

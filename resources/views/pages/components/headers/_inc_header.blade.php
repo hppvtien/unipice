@@ -268,6 +268,14 @@
                                 <span class="icon-cart a-icon-text-btn__icon" aria-hdden="true"></span>
                                 <span class="a-icon-text-btn__label">
                                     My Cart </span>
+                                    @php
+                                    $dem = Cart::count();
+                                @endphp
+                                    @if($dem == 0)
+                                    <div class="c-header__minicart-count"><span></span></div>
+                                @else
+                                    <div class="c-header__minicart-count"><span>{{ \Cart::count() }}</span></div>
+                                @endif
                             </button>
                             <div class="c-header__minicart-panel">
                                 <div class="m-minicart">
