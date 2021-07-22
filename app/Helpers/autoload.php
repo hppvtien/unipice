@@ -1,4 +1,7 @@
 <?php
+
+use phpDocumentor\Reflection\Types\Null_;
+
 require_once  'file.php';
 require_once  'guest.php';
 function execPostRequest($url, $data)
@@ -67,4 +70,9 @@ function execPostRequest($url, $data)
         $contact = App\Models\Uni_Contact::where('created_at','<',date_format(Carbon\Carbon::now(), 'Y-m-d'))->get();
         $count_contact = count($contact);
         return $count_contact;
+    }
+
+    function get_category_id($product_id){
+        $catid = App\Models\Product_Category::where('product_id','=', $product_id)->pluck('category_id')->first();
+        return $catid;
     }
