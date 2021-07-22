@@ -30,8 +30,7 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
 
     Route::prefix('cart')->group(function (){
         Route::post('save/{type}', 'UserPayController@processPayCart')->name('post_user.cart.pay');
-        Route::get('{id}/{type}/add', 'UserShoppingCartController@processCart')->name('get_user.cart.add');
-    });
+        Route::get('{id}/{type}/add', 'UserShoppingCartController@processCart')->name('get_user.cart.add');    });
     Route::prefix('favourite')->group(function (){
         Route::post('save/{type}', 'UserPayController@processPayCart')->name('post_user.cart.pay');
         Route::post('{id}/{type}/add', 'UserFavouriteController@processFavourite')->name('get_user.favourite.add');

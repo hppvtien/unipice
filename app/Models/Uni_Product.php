@@ -13,8 +13,8 @@ class Uni_Product extends Model
 
     protected $guarded = [''];
     protected $table = 'uni_product';
-    public function courses()
+    public function uni_product()
     {
-        return $this->hasMany(Course::class,'lotproduct_id');
+        return $this->hasMany(Uni_Product::class,'lotproduct_id');
     }
 }

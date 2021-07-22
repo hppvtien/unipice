@@ -110,3 +110,22 @@ $('.search_province').on('change', function() {
 
     });
 });
+
+$(".js-add-cart").on('click', function() {
+    let URL = $(this).attr('data-url');
+    let data_id = $(this).attr('data-id');
+    alert(data_id);
+    $.ajax({
+        url: URL,
+        method: "get",
+        data: {
+            data_id: data_id
+        },
+        success: function(data) {
+            console.log(data);
+            $('#show-store').html(data);
+        },
+
+    });
+
+});

@@ -20,7 +20,7 @@ class CategoryController extends Controller
         $trade = Uni_Trade::get();
         $categories = Uni_Category::get();
         $group_id_product = Product_Category::where('category_id', $cat_id)->pluck('product_id');
-        $product = Uni_Product::whereIn('id', $group_id_product)->orderBy('id', 'asc')->limit(12)->get();
+        $product = Uni_Product::whereIn('id', $group_id_product)->orderBy('id', 'asc')->groupBy('created_at')->limit(2);
         $count_product = count($group_id_product);
         $viewdata = [
             'category' => $category,

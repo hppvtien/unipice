@@ -64,11 +64,12 @@
                                                                         <span class="m-sort-by__arrow"></span>
                                                                     </div>
                                                                     <div class="m-sort-by">
-                                                                        <label class="m-sort-by__label" for="sort_order">Order By</label>
-                                                                        <select class="m-sort-by__select frontier-custom-sort" id="order_by" name="order_by" aria-label="Order By">
-                                                                            <option value="asc" selected>Asc</option>
+                                                                        <label class="m-sort-by__label" for="order_by">Order By</label>
+                                                                        <select class="m-sort-by__select frontier-custom-sort" id="order_by" name="order_by" aria-label="Order B">
+                                                                        <option value="asc" selected>Asc</option>
                                                                             <option value="desc">Desc</option>
                                                                         </select>
+                                                                       
                                                                         <span class="m-sort-by__arrow"></span>
                                                                     </div>
                                                                 </div>
@@ -140,16 +141,16 @@
                                                         </div>
                                                         <div class="t-plp__grid js-plp-grid show-product" id="show-product">
                                                             @forelse ($product as $key => $item)
-                                                            <div class="t-plp__product" data-animate-grid-id="0.7226111054869209" style="transform-origin: 0px 0px;">
+                                                            <div class="t-plp__product" style="transform-origin: 0px 0px;">
                                                                 <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
                                                                         <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" data-product-category="\Accessories\Home and Pet\Kitchen and Dining\Food Storage and Containers" class="m-product-card">
                                                                             <div class="m-product-card__content-wrapper">
                                                                                 <a class="m-product-card__img-wrapper" href="{{ $item->slug }}" title="{{ $item->name }}">
-                                                                                    <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file_product($item->thumbnail) }}">
+                                                                                    <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                                                                                 </a>
                                                                                 <form class="m-product-card__add-to-cart">
-                                                                                    <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn" type="submit">Add to cart</button>
-                                                                                    <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" type="&quot;submit&quot;">
+                                                                                    <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-id="{{ $item->id }}" type="button">Add to cart</button>
+                                                                                    <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon js-add-cart" type="&quot;submit&quot;">
                                                                                         <span class="icon-add-to-cart"></span>
                                                                                     </button>
                                                                                 </form>

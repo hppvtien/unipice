@@ -2119,7 +2119,7 @@
                                         <div class="field qty">
                                             <div class="control qty">
                                                 <label for="cart-20563347-qty">
-                                                    <span class="label">Qty</span>
+                                                    <span class="label">sadasdasd</span>
                                                     <input id="cart-20563347-qty" name="cart[20563347][qty]" data-cart-item-id="12401" value="1" type="number" size="4" step="any" title="Qty" class="input-text qty" data-validate="{required:true,'validate-greater-than-zero':true}" data-role="cart-item-qty">
                                                 </label>
                                             </div>

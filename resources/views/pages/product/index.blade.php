@@ -107,7 +107,7 @@
                                                             </div>
                                                         </div>
                                                         <form class="m-product-overview__add-to-cart">
-                                                            <input class="a-number-input m-product-overview__qty" type="number" id="qty" name="qty" min="0" max="10000" value="1" aria-label="Quantity" /> <button class="a-btn a-btn--primary m-product-overview__add-to-cart-btn" type="submit">Add to Cart</button>
+                                                            <input class="a-number-input m-product-overview__qty" type="number" id="qty" name="qty" min="0" max="10000" value="1" aria-label="Quantity" /> <button class="a-btn a-btn--primary m-product-overview__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" type="button">Add to Cart</button>
                                                         </form>
                                                     </div>
                                                     <!-- Review :: this should be removed -->

@@ -8,12 +8,13 @@ use Illuminate\Http\Request;
 // use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Uni_Product;
 
 class UserShoppingCartController extends UserController
 {
     const COMBO = 'combo';
-    const COURSE = 'course';
-    public function processCart(Request $request, $id, $type = 'course')
+    const SINGLE = 'single';
+    public function processCart(Request $request, $id, $type = 'single')
     {
         if ($request->ajax())
         {
@@ -22,8 +23,8 @@ class UserShoppingCartController extends UserController
                 // Xử lý dữ liệu combo
             }else{
                 // xử lý dữ liệu với khoá học
-                $course = $this->checkCourse($id);
-                if (!$course){
+                $uni_product = $this->checkProduct($id);
+                if (!$uni_product){
                     return response([
                        'status' => 404
                     ]);
@@ -41,17 +42,14 @@ class UserShoppingCartController extends UserController
                     Log::info("[Cart]: Empty" );
                     \Cart::add([
                         'id' => $id,
-                        'name' => $course->c_name,
+                        'name' => $uni_product->name,
                         'qty' => 1,
-                        'price' => $course->c_price,
-                        'weight' => 1,
+                        'price' => $uni_product->price,
                         'options' => [
-                            'images' => pare_url_file($course->c_avatar),
-                            'sale' => $course->c_sale
+                            'images' => pare_url_file($uni_product->thumbnail)
                         ]
                     ]);
                 }
-
                 return response([
                     'status' => 200,
                     'message' => !$checkExist ? "Đã thêm khóa học vào giỏ" : "Khoá học đã có trong giỏ"
@@ -60,18 +58,15 @@ class UserShoppingCartController extends UserController
         }
     }
 
-    protected function checkCourse($id)
+    protected function checkProduct($id)
     {
-        return Course::find($id);
+        return Uni_Product::find($id);
     }
 
     protected function checkCombo($id)
     {
 
     }
-
-
-
-
-
 }
+
+   
