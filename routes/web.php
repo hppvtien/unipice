@@ -1,7 +1,8 @@
 <?php
 
+use App\Models\Uni_Contact;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,9 @@ Route::get('/c', function() {
 Route::group(['namespace' => 'Frontend'], function (){
     Route::get('/','HomeController@index')->name('get.home');
     Route::post('/','HomeController@product_trade')->name('get.product_trade');
+
+
+
     Route::get('/dang-nhap','LoginController@index')->name('get.login');
     Route::post('/dang-nhap','LoginController@login')->name('post.login');
     Route::get('/dang-ky','RegisterController@index')->name('get.register');
@@ -45,7 +49,12 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::post('cua-hang','FindStoreController@searchName');
     Route::get('member','MembershipController@index')->name('get.membership');
     Route::get('san-pham/{slug}','ProductController@index')->name('get.product');
+    Route::get('lien-he/','Uni_ContactController@index')->name('get.uni_contact');
+    Route::post('lien-he/','Uni_ContactController@getformsubmit')->name('post.uni_contact');
 
+    
+
+ 
 
 
 

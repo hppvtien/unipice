@@ -17,6 +17,7 @@
     @endif
     <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ducanh.css') }}">
 </head>
 
 <body>
@@ -34,48 +35,8 @@
     <script src="{{ asset('fontend_js/custom.js') }}"></script>
     <script src="{{ asset('js/frontends.js') }}"></script>
     <script src="{{ asset('fontend_js/unijs.js') }}"></script>
-    <script type="text/javascript" async>
-        ;
-        (function(o, l, a, r, k, y) {
-            if (o.olark) return;
-            r = "script";
-            y = l.createElement(r);
-            r = l.getElementsByTagName(r)[0];
-            y.async = 1;
-            y.src = "//" + a;
-            r.parentNode.insertBefore(y, r);
-            y = o.olark = function() {
-                k.s.push(arguments);
-                k.t.push(+new Date)
-            };
-            y.extend = function(i, j) {
-                y("extend", i, j)
-            };
-            y.identify = function(i) {
-                y("identify", k.i = i)
-            };
-            y.configure = function(i, j) {
-                y("configure", i, j);
-                k.c[i] = j
-            };
-            k = y._ = {
-                s: [],
-                t: [+new Date],
-                c: {},
-                l: a
-            };
-        })
-        (window, document, "static.olark.com/jsclient/loader.js");
-        olark.configure('system.hb_primary_color', '#137F62');
-        olark.configure('system.hb_custom_style', {
-            general: {
-                fonts: ['Montserrat', 'sans-serif'],
-                corners: 'hard',
-                secondaryColor: ''
-            }
-        });
-        olark.identify('8164-882-10-5249');
-    </script>
+  
+
 </body>
 
 </html>
