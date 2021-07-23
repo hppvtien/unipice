@@ -638,26 +638,8 @@
                                 </div>
                             </li>
 
-                            <li id="opc-shipping_method" class="checkout-shipping-method" role="presentation">
-                                <div class="checkout-shipping-method">
-                                    <div class="step-title" data-role="title">Shipping Methods</div>
-                                    <div class="shipping-policy-block field-tooltip">
-                                        <span class="field-tooltip-action" tabindex="0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                            <span>See our Shipping Policy</span>
-                                        </span>
-                                        <div class="field-tooltip-content" data-target="dropdown" aria-hidden="true">
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div id="checkout-step-shipping_method" class="step-content" data-role="content" role="tabpanel" aria-hidden="false">
-                                        <div class="no-quotes-block">Sorry, no quotes are available for this order at this time</div><!-- /ko -->
-                                    </div>
-                                </div>
-                            </li>
                             <li id="validate_address" role="presentation" class="checkout-validate-address">
-                                <div class="step-title" data-role="title">Verify Your Address</div>
                                 <div class="step-content" data-role="content" role="tabpanel" aria-hidden="false">
-                                    <div class="instructions noError">To ensure accurate delivery, we suggest the changes highlighted below. Please choose which address you would like to use. If neither option is correct, <a href="#" class="edit-address">edit your address</a>.</div>
                                     <form id="co-validate-form" class="form validate noError" novalidate="novalidate">
                                         <div class="validContainer addressOption selected m-radio-button">
                                             <input type="radio" class="validAddress m-radio-button__input" name="addressToUse" checked="" data-bind="attr: {id: 'valid-' + uid}" id="valid-QIXABRP">
@@ -675,88 +657,24 @@
                                                 <div class="optionAddress originalAddressText"></div>
                                             </label>
                                         </div>
+                                        <div class="validContainer addressOption selected m-radio-button">
+                                            <input type="radio" class="validAddress m-radio-button__input" name="addressToUse" checked="" data-bind="attr: {id: 'valid-' + uid}" id="valid-QIXABRP">
+                                            <label class="addressLabel" for="valid-QIXABRP">
+                                                <span class="m-radio-button__circle"></span>
+                                                <div class="optionTitle m-radio-button__text-label">Suggested Address</div>
+                                                <div class="optionAddress validAddressText"></div>
+                                            </label>
+                                        </div>
+                                        <div class="originalContainer addressOption m-radio-button">
+                                            <input type="radio" class="originalAddress m-radio-button__input" name="addressToUse" id="original-QIXABRP">
+                                            <label class="addressLabel" for="original-QIXABRP">
+                                                <span class="m-radio-button__circle"></span>
+                                                <div class="optionTitle m-radio-button__text-label">Original Address</div>
+                                                <div class="optionAddress originalAddressText"></div>
+                                            </label>
+                                        </div>
                                     </form>
-                                    <div class="errorMessageContainer yesError">
-                                        <div class="instructions" data-uid="QIXABRP">We were unable to validate your address. <p class="error-message"></p> If the address below is correct then you don’t need to do anything. To change your address, <a href="#" class="edit-address">click here</a>.</div>
-                                        <div class="originalAddressText"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id="payment" role="presentation" class="checkout-payment-method">
-                                <div id="checkout-step-payment" class="step-content" data-role="content" role="tabpanel" aria-hidden="false">
-                                    <form id="co-payment-form" class="form payments" novalidate="novalidate">
-                                        <input type="hidden" name="form_key" value="GXhjnhZzwPqQ9aXV">
-                                        <fieldset class="fieldset">
-                                            <legend class="legend payment-information-legend">
-                                                <span>Payment Information</span>
-                                            </legend>
-                                            <div class="no-quotes-block">
-                                                <span>No Payment method available.</span>
-                                            </div>
-
-                                            <div class="payment-option _collapsible opc-payment-additional discount-code" data-collapsible="true" role="tablist">
-                                                <div class="payment-option-title field choice a-anchor" data-role="title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
-                                                    <span class="action action-toggle" id="block-discount-heading" role="heading" aria-level="2">
-                                                        <span>Apply Discount Code</span>
-                                                    </span>
-                                                </div>
-                                                <div class="payment-option-content" data-role="content" role="tabpanel" aria-hidden="true">
-                                                    <div data-role="checkout-messages" class="messages">
-                                                    </div>
-                                                    <form class="form form-discount" id="discount-form">
-                                                        <div class="payment-option-inner">
-                                                            <div class="field">
-                                                                <div class="control m-text-input m-text-input--placeholder-label">
-                                                                    <input class="input-text a-text-input m-text-input__input" type="text" id="discount-code" name="discount_code" data-validate="{'required-entry':true}" data-bind="value: couponCode, attr:{placeholder: $t('Enter discount code')}, 'disable': isDisable " placeholder="Enter discount code">
-                                                                    <label class="label a-form-label m-text-input__label" for="discount-code">
-                                                                        <span>Enter discount code</span>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="actions-toolbar">
-                                                            <div class="primary">
-                                                                <button class="action action-apply a-btn a-btn--primary" type="submit" value="Apply Discount">
-                                                                    <span>
-                                                                        <span>Apply Discount</span>
-                                                                    </span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <input name="captcha_form_id" type="hidden" value="sales_rule_coupon_request" data-scope="">
-
-                                                    </form>
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <div class="payment-option-content" data-role="content">
-                                                    <form class="form form-ordercomments" id="ordercomments-form">
-
-                                                        <div class="ordercomments-inner">
-                                                            <div class="field">
-                                                                <label class="label" for="order-comment">
-                                                                    <span>Order Comment</span>
-                                                                </label>
-                                                                <div class="control">
-                                                                    <textarea class="input-text" id="order-comment" name="order-comment" data-bind="attr:{placeholder: $t('Enter Order Comments')}" cols="5" rows="3" placeholder="Enter Order Comments"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="shipcomplete field">
-                                                            <div class="control ship-complete">
-                                                                <input type="checkbox" name="ship-complete" id="ship-complete" value="0" class="checkbox">
-                                                                <label class="label" for="ship-complete">
-                                                                    <span>Ship Complete</span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </form>
+                                    
                                 </div>
                             </li>
                         </ol>
