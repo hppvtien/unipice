@@ -20,11 +20,15 @@ class UserCartController extends Controller
         if ($listCarts->isEmpty()) return redirect()->to('/');
         return view('user::pages.cart.index', compact('listCarts'));
     }
-    public function deletecart($id)
+    public function deletecart(Request $request)
     {
-        \Cart::remove($id);
+        \Cart::remove($request->item_row);
         return redirect()->route('get_user.cart');
     }
+    public function updateCart(Request $request){
+        \SEOMeta::setTitle('Giỏ hàng');
+        \Cart::update($request->item_row,$request->item_qty);
+            }
     public function generatePDF()
     {
         $listCarts = \Cart::content();

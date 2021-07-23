@@ -4,7 +4,7 @@
     <div class="columns">
         <div class="column main"><input name="form_key" type="hidden" value="GXhjnhZzwPqQ9aXV">
             <div class="c-login">
-                <div class="c-login__content">
+                <div class="c-login__content" style="padding:0;margin-right:20px">
                     <div class="login-container">
                         <div class="page-title-wrapper c-login__heading">
                             <h1 class="page-title">

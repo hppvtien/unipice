@@ -264,7 +264,7 @@
                             </a>
                         </div>
                         <div class="c-header__minicart js-minicart">
-                            <button class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
+                            <a href="{{ route('get_user.cart') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
                                 <span class="icon-cart a-icon-text-btn__icon" aria-hdden="true"></span>
                                 <span class="a-icon-text-btn__label">
                                     My Cart </span>
@@ -276,7 +276,7 @@
                                 @else
                                     <div class="c-header__minicart-count"><span>{{ \Cart::count() }}</span></div>
                                 @endif
-                            </button>
+                            </a>
                             <div class="c-header__minicart-panel">
                                 <div class="m-minicart">
 

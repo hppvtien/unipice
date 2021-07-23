@@ -128,3 +128,41 @@ $(".js-add-cart").on('click', function() {
     });
 
 });
+$(".update-qty").on('keyup', function() {
+    let URL = $(this).attr('data-url');
+    let item_id = $(this).attr('item-id');
+    let item_qty = $('#cart-' + item_id + '-qty').val();
+    let item_row = $(this).attr('data-row');
+    $.ajax({
+        url: URL,
+        method: "get",
+        data: {
+            item_id: item_id,
+            item_qty: item_qty,
+            item_row: item_row
+        },
+        success: function(data) {
+            console.log(data);
+            $('#show-store').html(data);
+        },
+
+    });
+
+});
+$(".remove_cart_action").on('click', function() {
+    let URL = $(this).attr('data-url');
+    let item_row = $(this).attr('data-row');
+    $.ajax({
+        url: URL,
+        method: "get",
+        data: {
+            item_row: item_row
+        },
+        success: function(data) {
+            console.log(data);
+            $('#show-store').html(data);
+        },
+
+    });
+
+});

@@ -8,12 +8,12 @@
             <div id="block-frontiercoop-market-content" data-block-plugin-id="system_main_block">
                 <div class="views-element-container">
                     <header>
-                        <div about="/{{ $category->name }}" data-frontier-type="products_categories" id="taxonomy-term-521" class="taxonomy-term vocabulary-products-categories">
+                        <div data-frontier-type="products_categories" id="taxonomy-term-521" class="taxonomy-term vocabulary-products-categories">
                             <div class="content">
                                 <div class="layout layout--onecol">
                                     <div class="layout__region layout__region--content">
                                         <div data-block-plugin-id="entity_view:taxonomy_term">
-                                            <div about="/{{ $category->name }}" class="c-page-header c-page-header--light">
+                                            <div class="c-page-header c-page-header--light">
                                                 <picture class="c-page-header__image">
                                                     <source media="(min-width: 1024px)" data-srcset="{{ pare_url_file($category->banner) }}">
                                                     <img class="lazyload" data-src="{{ pare_url_file($category->banner) }}" alt="{{ $category->name }}">

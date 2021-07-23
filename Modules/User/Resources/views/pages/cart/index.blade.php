@@ -358,7 +358,7 @@
                                     <tr class="totals sub">
                                         <th class="mark" scope="row">Tổng tiền</th>
                                         <td class="amount">
-                                            <span class="price" data-th="Subtotal">{{ \Cart::total(0,0,'.') }}đ</span>
+                                            <span class="price" data-th="Subtotal">{{ \Cart::total(0,0,'.') }} đ</span>
                                         </td>
                                     </tr>
                                     <tr class="grand totals">
@@ -366,7 +366,7 @@
                                             <strong>Tổng đơn hàng</strong>
                                         </th>
                                         <td class="amount" data-th="Order Total">
-                                            <strong><span class="price">{{ \Cart::total(0,0,'.') }}đ</span></strong>
+                                            <strong><span class="price">{{ \Cart::total(0,0,'.') }} đ</span></strong>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -402,14 +402,13 @@
                     </div>
                     <ul class="checkout methods items checkout-methods-items">
                         <li class="item">
-                            <button type="button" data-role="proceed-to-checkout" title="Proceed to Checkout on Co-Op Market" class="a-btn a-btn--primary action primary checkout">
+                            <a href="{{ route('get_user.pay') }}" type="button" data-role="proceed-to-checkout" title="Proceed to Checkout on Co-Op Market" class="a-btn a-btn--primary action primary checkout">
                                 <span>Tiến hành thanh toán</span>
-                            </button>
+                            </a>
                         </li>
                     </ul>
                 </div>
-                <form action="https://shop.coopmarket.com/checkout/cart/updatePost/" method="post" id="form-validate" class="form form-cart">
-                    <input name="form_key" type="hidden" value="GXhjnhZzwPqQ9aXV">
+                <form action="" method="get" id="form-validate" class="form form-cart">
                     <div class="cart table-wrapper">
                         <table id="shopping-cart-table" class="cart items data table cart-table">
                             <caption class="table-caption">Thông tin giỏ hàng</caption>
@@ -419,16 +418,17 @@
                                     <th class="col price" scope="col"><span>Giá</span></th>
                                     <th class="col qty" scope="col"><span>Số lượng</span></th>
                                     <th class="col subtotal" scope="col"><span>Tổng tiền</span></th>
+                                    <th class="col subtotal" scope="col"><span></span></th>
                                 </tr>
                             </thead>
                             <tbody class="cart item">
                                 @forelse ($listCarts as $key => $item)
                                 <tr class="item-info">
                                     <td data-th="Item" class="col item">
-                                        <a href="{{ $item->slug }}" title="Self Closing Lid for 1/2 Gallon Plastic Container" tabindex="-1" class="product-item-photo">
+                                        <a href="{{ $item->slug }}" title="{{ $item->name }}" tabindex="-1" class="product-item-photo">
                                             <span class="product-image-container" style="width:110px;">
                                                 <span class="product-image-wrapper" style="padding-bottom: 145.45454545455%;">
-                                                    <img class="product-image-photo" src="{{ $item->options->thumbnail }}" max-width="100%" max-height="100%" alt="{{ $item->avatar }}">
+                                                    <img class="product-image-photo" src="{{ pare_url_file($item->options->images) }}" max-width="100%" max-height="100%" alt="{{ $item->name }}">
                                                 </span>
                                             </span>
                                         </a>
@@ -442,70 +442,69 @@
                                             </div>
                                         </div>
                                     </td>
-
                                     <td class="col price" data-th="Price">
-
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price">{{ $item->price }}</span> </span>
-
+                                                <span class="price">{{ $item->price }} đ</span> 
+                                            </span>
                                         </span>
                                     </td>
                                     <td class="col qty" data-th="Qty">
                                         <div class="field qty">
                                             <div class="control qty">
-                                                <label for="cart-20563347-qty">
-                                                    <input id="cart-20563347-qty" name="cart[20563347][qty]" data-cart-item-id="12401" value="{{ $item->qty }}" type="number" size="4" step="any" title="Qty" class="input-text qty" data-validate="{required:true,'validate-greater-than-zero':true}" data-role="cart-item-qty">
+                                                <label for="cart-{{ $item->id }}-qty">
+                                                    <input id="cart-{{ $item->id }}-qty" data-row={{ $item->rowId }} class="input-text qty update-qty"  data-url="{{ route('get_user.updatecart',$item->id) }}" name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" size="4" step="any" title="Qty">
                                                 </label>
                                             </div>
                                         </div>
                                     </td>
-
                                     <td class="col subtotal" data-th="Tổng tiền">
-
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price">{{ $item->price }}</span> </span>
-
+                                                <span class="price">{{ $item->price }} đ</span> 
+                                            </span>
                                         </span>
+                                    </td>
+                                    <td class="col subtotal" data-th="Xóa sản phẩm">
+                                        <button style="width: 20px;height: 20px;padding: 0;background: red;" data-row={{ $item->rowId }} type="button" data-url="{{ route('get_user.deletecart') }}" name="remove_cart_action" title="Remove Shopping Cart" class="a-btn a-btn--primary action remove remove_cart_action">
+                                            <span>x</span>
+                                        </button>
                                     </td>
                                 </tr>
                                 @empty
                                     
                                 @endforelse
                                 
-                                <tr class="item-actions">
+                                {{-- <tr class="item-actions">
                                     <td colspan="4">
                                         <div class="actions-toolbar">
-                                            <a href="#" data-post="{&quot;action&quot;:&quot;https:\/\/shop.coopmarket.com\/wishlist\/index\/fromcart\/&quot;,&quot;data&quot;:{&quot;item&quot;:&quot;21003618&quot;,&quot;uenc&quot;:&quot;aHR0cHM6Ly9zaG9wLmNvb3BtYXJrZXQuY29tL2NoZWNrb3V0L2NhcnQv&quot;}}" class="use-ajax action towishlist action-towishlist">
+                                            <a href="#" class="use-ajax action towishlist action-towishlist">
                                                 <span>Yêu thích</span>
                                             </a>
-                                            <a class="action action-edit" href="https://shop.coopmarket.com/checkout/cart/configure/id/21003618/product_id/10606/" title="Edit item parameters">
+                                            <a class="action action-edit" href="" title="Edit item parameters">
                                                 <span>Sửa sản phẩm</span>
                                             </a>
-                                            <a href="#" title="Remove item" class="action action-delete" data-post="{&quot;action&quot;:&quot;https:\/\/shop.coopmarket.com\/checkout\/cart\/delete\/&quot;,&quot;data&quot;:{&quot;id&quot;:&quot;21003618&quot;,&quot;uenc&quot;:&quot;aHR0cHM6Ly9zaG9wLmNvb3BtYXJrZXQuY29tL2NoZWNrb3V0L2NhcnQv&quot;}}">
-                                                <span>
-                                                    Xóa sản phẩm </span>
+                                            <a href="#" title="Remove item" class="action action-delete">
+                                                <span> Xóa sản phẩm </span>
                                             </a>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr> --}}
                             </tbody>
                         </table>
                     </div>
                     <div class="cart main actions">
                         <div class="cart-actions">
-                            <button type="submit" name="update_cart_action" data-cart-item-update="" value="update_qty" title="Update Shopping Cart" class="a-btn a-btn--primary action update">
+                            <button type="button" name="update_cart_action" title="Update Shopping Cart" class="a-btn a-btn--primary action update update_cart_action">
                                 <span>Cập nhật giỏ hàng</span>
                             </button>
                             <button type="button" name="update_cart_action" data-cart-empty="" value="empty_cart" title="Clear Shopping Cart" class="a-btn a-btn--secondary action clear" id="empty_cart_button">
                                 <span>Xóa giỏ hàng</span>
                             </button>
-                            <input type="hidden" value="" id="update_cart_action_container" data-cart-item-update="">
                         </div>
 
                         <div class="cart-continue">
-                            <a class="action continue a-anchor" href="https://www.coopmarket.com/" title="Continue Shopping">
+                            <a class="action continue a-anchor" href="" title="Continue Shopping">
                                 <span>Tiếp tục mua hàng</span>
                             </a>
                         </div>
