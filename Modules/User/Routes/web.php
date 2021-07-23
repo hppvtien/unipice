@@ -58,7 +58,7 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
 
 Route::middleware('checkLoginUser')->group(function() {
     Route::get('thanh-toan.html', 'UserPayController@getPay')->name('get_user.pay');
-    Route::post('thanh-toan.html', 'UserPayController@check_vouchers')->name('get_user.check_vouchers');
+    Route::post('gio-hang.html', 'UserPayController@check_vouchers')->name('get_user.check_vouchers');
     Route::get('hoan-tat-don-hang.html', 'UserPayController@getPaySuccsess')->name('get_user.paysuccsess'); 
     Route::get('gio-hang.html', 'UserCartController@index')->name('get_user.cart');
     Route::get('update-gio-hang/{id}', 'UserCartController@updateCart')->name('get_user.updatecart');
