@@ -105,3 +105,15 @@ a:hover {
     background-color: #fff;
     color: #0b2d25;
 }
+
+ul li::before {
+    content: none;
+}
+
+span.icon-favorite {
+    float: right;
+}
+
+span.red {
+    color: red;
+}
