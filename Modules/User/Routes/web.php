@@ -31,9 +31,12 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
         Route::post('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@storeVote');
     });
     Route::get('favourite', 'UserFavouriteController@index')->name('get_user.favourite');
-    Route::get('info', 'UserInfoController@index')->name('get_user.info');
+
     Route::get('info/edit/{id}', 'UserInfoController@edit')->name('get_user.info.edit');
     Route::post('info/edit/{id}', 'UserInfoController@update');
+
+    Route::get('store/edit/{id}', 'UserInfoController@storeedit')->name('get_user.store.edit');
+    Route::post('store/edit/{id}', 'UserInfoController@storeupdate');
 
     Route::prefix('cart')->group(function (){
         Route::post('save/{type}', 'UserPayController@processPayCart')->name('post_user.cart.pay');
