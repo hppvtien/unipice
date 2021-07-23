@@ -85,13 +85,7 @@
                                             <span class="a-product-name">{{ Str::limit($value->desscription, 55) }}</span>
                                         </a>
                                     </div>
-                                    <div class="m-product-card__sku">SKU: {{ $value->id }} <span class="icon-favorite  a-icon-text-btn__icon @php foreach ($my_favorites as  $l) {
-                                        if($value->id == $l){
-                                            echo 'red';
-                                        }else {
-                                            echo  '';
-                                        }
-                                    } @endphp" aria-hidden="true"></span></div>
+                                    <div class="m-product-card__sku">SKU: {{ $value->id }} <span my-id="{{ $value->id }}" onclick="check_my_favorites(this);" class="icon-favorite  a-icon-text-btn__icon red" aria-hidden="true"></span></div>
                                     <div class="m-price-lockup m-product-card__price">
                                         <span class="m-price-lockup__price" style="display: none">
                                             <span class="a-price"></span>
@@ -114,9 +108,18 @@
             var sort_by = $('#sort_by').val();
             var order_by = $('#order_by').val();
 
-            $.get( "{{ route('get_user.productlist_filter') }}", { sort_by: sort_by, order_by: order_by } )
+            $.get( "{{ route('get_user.myfavorites_filter') }}", { sort_by: sort_by, order_by: order_by } )
                 .done(function( data ) {
                 $( "#show-product" ).html( data );
+            });
+        }
+
+        function check_my_favorites(my_id){
+            var title = $(my_id).attr('my-id');
+            $.get( "{{ route('get_user.myfavorites_delete') }}", { id: title} )
+            .done(function( data ) {
+                alert(data);
+                location.reload();
             });
         }
         
@@ -149,6 +152,7 @@
                     $(".totop a").fadeOut();
                 }
             });
+            
     </script>
 </main>
 

@@ -21,7 +21,7 @@
                                             <span class="a-product-name">{{ Str::limit($value->desscription, 55) }}</span>
                                         </a>
                                     </div>
-                                    <div class="m-product-card__sku">SKU: {{ $value->id }}</div>
+                                    <div class="m-product-card__sku">SKU: {{ $value->id }} <span my-id="{{ $value->id }}" onclick="check_my_favorites(this);" class="icon-favorite  a-icon-text-btn__icon red" aria-hidden="true"></span></div>
                                     <div class="m-price-lockup m-product-card__price">
                                         <span class="m-price-lockup__price" style="display: none">
                                             <span class="a-price"></span>
@@ -49,6 +49,16 @@
                     }, 1500);
                 });
             });
+
+            function check_my_favorites(my_id){
+                var title = $(my_id).attr('my-id');
+                $.get( "{{ route('get_user.myfavorites_delete') }}", { id: title} )
+                .done(function( data ) {
+                    alert(data);
+                    location.reload();
+                });
+            }
+        
 
             $("a[href=#top]").click(function () {
                 $("#show-product").animate({

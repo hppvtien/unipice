@@ -99,7 +99,7 @@
                     
                         <li class="nav item"><a href="https://shop.coopmarket.com/customer/account/edit/">Account Information</a></li>
                         <li class="nav item"><a href="https://shop.coopmarket.com/newsletter/manage/">Newsletter Subscriptions</a></li>
-                        <li class="nav item"><a href="https://shop.coopmarket.com/favorites/">My Favorites</a></li>
+                        <li class="nav item"><a href="{{ route('get_user.myfavorites') }}">Sản Phẩm Yêu Thích</a></li>
                         <li class="nav item"><a href="{{ route('get_user.productlist') }}">List Sản Phẩm</a></li>
                     
                     </ul>

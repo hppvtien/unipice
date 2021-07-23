@@ -15,10 +15,10 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     Route::get('/', 'UserDashboardController@index')->name('get_user.dashboard');
     Route::post('/', 'UserDashboardController@replaceOrder')->name('get_user.replaceOrder');
     Route::get('/danh-sach-san-pham', 'UserDashboardController@productlist')->name('get_user.productlist');
+    Route::get('/danh-sach-san-pham/myfavorites', 'UserDashboardController@myfavorites')->name('get_user.myfavorites');
+    Route::get('/danh-sach-san-pham/myfavorites/delete', 'UserDashboardController@myfavorites_delete')->name('get_user.myfavorites_delete');
+    Route::get('/danh-sach-san-pham/myfavorites/filter', 'UserDashboardController@myfavorites_filter')->name('get_user.myfavorites_filter');
     Route::get('/danh-sach-san-pham/filter', 'UserDashboardController@productlist_filter')->name('get_user.productlist_filter');
-
-
-
 
     Route::get('transaction', 'UserTransactionController@index')->name('get_user.transaction');
     
