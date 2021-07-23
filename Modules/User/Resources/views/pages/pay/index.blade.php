@@ -481,200 +481,106 @@
                     <div class="opc-wrapper">
                         <ol class="opc" id="checkoutSteps">
                             <li id="shipping" class="checkout-shipping-address" data-bind="fadeVisible: visible()">
-                                <!-- <div class="message notice">
-                                    <span>
-                                        <span>The shipping address specified on the quote was deleted from your Address Book. </span>
-                                        <span>To proceed with the checkout, update the shipping address.</span>
-                                    </span>
-                                </div> -->
-                                <div class="step-title" data-role="title">Địa chỉ giao hàng</div>
+                              
+                                <div class="step-title" data-role="title">Thông tin khách hàng</div>
                                 <div id="checkout-step-shipping" class="step-content" data-role="content">
-                                    <!-- <form class="form form-login" data-role="email-with-possible-login" method="post">
-                                        <fieldset id="customer-email-fieldset" class="fieldset">
-                                            <div class="field required">
-                                                <div class="m-text-input m-text-input--placeholder-label control _with-tooltip">
-                                                    <input class="a-text-input m-text-input__input input-text" type="email" name="username" data-validate="{required:true, 'validate-email':true}" id="customer-email">
-                                                    <label class="a-form-label m-text-input__label label" for="customer-email">
-                                                        <span>Email Address</span>
-                                                    </label>
+                                    <div class="block discount active" id="block-discount" data-collapsible="true" role="tablist">
+                                        <div class="content" data-role="content" aria-labelledby="block-discount-heading" role="tabpanel" aria-hidden="false" style="display: block;">
+                                            <form id="discount-coupon-form" action="" method="post">
+                                                <div class="fieldset coupon">
+                                                    <input type="hidden" name="remove" id="remove-coupon" value="0">
+                                                    <div class="field">
+                                                        <div class="m-text-input m-text-input--placeholder-label control">
+                                                            <input type="text" class="a-text-input m-text-input__input input-text" id="vouchers" name="vouchers" value="" placeholder="Enter discount code">
+                                                            <label for="vouchers" class="a-form-label m-text-input__label label"><span>Nhập mã giảm giá</span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="messager_check text-center mb10 text-danger"></div>
+                                                    <div class="actions-toolbar">
+                                                        <div class="primary">
+                                                            <button class="a-btn a-btn--primary action apply primary" id="check_vouchers" data-url="{{ route('get_user.check_vouchers') }}" type="button" value="Apply Discount">
+                                                                <span>Sử dụng mã giảm giá</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="field">
-                                                <div class="m-text-input m-text-input--placeholder-label control">
-                                                    <input class="a-text-input m-text-input__input input-text" type="password" name="password" id="customer-password" autocomplete="off" placeholder="Password">
-                                                    <label class="a-form-label m-text-input__label label" for="customer-password">
-                                                        <span>Password</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <input name="captcha_form_id" type="hidden" value="user_login" data-scope="">
-                                            <div class="actions-toolbar">
-                                                <input name="context" type="hidden" value="checkout">
-                                                <div class="primary">
-                                                    <button type="submit" class="a-btn a-btn--primary action login primary" data-action="checkout-method-login"><span data-bind="i18n: 'Login'">Đăng nhập</span></button>
-                                                </div>
-                                                <div class="secondary">
-                                                    <a class="a-btn a-btn--text action remind" href="https://shop.coopmarket.com/customer/account/forgotpassword/">
-                                                        <span>Forgot Your Password?</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </form> -->
-
+                                            </form>
+                                        </div>
+                                    </div>
                                     <form class="form form-shipping-address" id="co-shipping-form" data-hasrequired="* Required Fields">
                                         <div id="shipping-new-address-form" class="fieldset address">
+                                            <input type="hidden" class="form-control" name="method_invoice" id="method_invoice"
+                                                value="#00<?php echo rand(1000, 9999); ?>">
                                             <div class="field _required" name="shippingAddress.firstname">
-
                                                 <div class="control">
-
                                                     <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="firstname" aria-required="true" aria-invalid="false" id="G11F99D">
-
+                                                        <input class="a-text-input m-text-input__input" type="text" name="method_customer" aria-required="true" aria-invalid="false" id="G11F99D">
                                                         <label class="a-form-label m-text-input__label" for="G11F99D">
-                                                            <span>First Name</span>
+                                                            <span>Họ tên khách hàng</span>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="field _required" name="shippingAddress.lastname">
-
                                                 <div class="control">
-
                                                     <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="lastname" aria-required="true" aria-invalid="false" id="NF52K8P">
-
+                                                        <input class="a-text-input m-text-input__input" type="text" name="method_email" aria-required="true" aria-invalid="false" id="NF52K8P">
                                                         <label class="a-form-label m-text-input__label" for="NF52K8P">
-                                                            <span>Last Name</span>
+                                                            <span>Email</span>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="field" name="shippingAddress.company">
-
                                                 <div class="control">
-
                                                     <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="company" aria-invalid="false" id="SMA1P60">
+                                                        <input class="a-text-input m-text-input__input" type="text" name="method_address" aria-invalid="false" id="SMA1P60">
 
                                                         <label class="a-form-label m-text-input__label" for="SMA1P60">
-                                                            <span>Company</span>
+                                                            <span>Địa chỉ</span>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="control">
-                                                <div class="field _required">
-
-                                                    <div class="control">
-
-                                                        <div class="m-text-input m-text-input--placeholder-label  ">
-                                                            <input class="a-text-input m-text-input__input" type="text" name="street[0]" aria-required="true" aria-invalid="false" id="SAIFHCQ">
-
-                                                            <label class="a-form-label m-text-input__label" data-bind="attr: { for: uid }" for="SAIFHCQ">
-                                                                <span>Street Address: Line 1</span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="field additional" name="shippingAddress.street.1">
-
-                                                    <div class="control">
-
-                                                        <div class="m-text-input m-text-input--placeholder-label  ">
-                                                            <input class="a-text-input m-text-input__input" type="text" name="street[1]" aria-invalid="false" id="S2QDEV3">
-
-                                                            <label class="a-form-label m-text-input__label" for="S2QDEV3">
-                                                                <span>Street Address: Line 2</span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="field _required" name="shippingAddress.city">
-
-                                                <div class="control">
-
-                                                    <div class="m-text-input m-text-input--placeholder-label">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="city" aria-required="true" aria-invalid="false" id="LV82JH6">
-
-                                                        <label class="a-form-label m-text-input__label" for="LV82JH6">
-                                                            <span>City</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                             <div class="field _required" name="shippingAddress.telephone">
-
                                                 <div class="control _with-tooltip">
-
                                                     <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="telephone" aria-required="true" aria-invalid="false" id="CNBP3U7">
-
+                                                        <input class="a-text-input m-text-input__input" type="text" name="method_customer_code" aria-required="true" aria-invalid="false" id="CNBP3U7">
                                                         <label class="a-form-label m-text-input__label" for="CNBP3U7">
-                                                            <span>Phone Number</span>
+                                                            <span>Mã số thuế</span>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="field" name="shippingAddress.fax">
-
                                                 <div class="control">
-
                                                     <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="fax" aria-invalid="false" id="CBQX168">
-
+                                                        <input class="a-text-input m-text-input__input" type="text" name="method_phone" aria-invalid="false" id="CBQX168">
                                                         <label class="a-form-label m-text-input__label" for="CBQX168">
-                                                            <span>Fax</span>
+                                                            <span>Số điện thoại</span>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
+                                            @foreach (config('cart.pay_type') as $key => $item)
+                                            <div class="validContainer addressOption selected m-radio-button">
+                                                <input type="radio" class="validAddress m-radio-button__input" name="type_pay"  {{ $key == 0 ? 'checked' : '' }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
+                                                <label class="addressLabel" for="valid-{{ $item['type'] }}">
+                                                    <span class="m-radio-button__circle"></span>
+                                                    <div class="optionTitle m-radio-button__text-label">{{ $item['name'] }}</div>
+                                                    <div class="optionAddress validAddressText"></div>
+                                                </label>
+                                            </div>
+                                            @endforeach
                                         </div>
                                     </form>
-                                    
-                                </div>
-                            </li>
-
-                            <li id="validate_address" role="presentation" class="checkout-validate-address">
-                                <div class="step-content" data-role="content" role="tabpanel" aria-hidden="false">
-                                    <form id="co-validate-form" class="form validate noError" novalidate="novalidate">
-                                        <div class="validContainer addressOption selected m-radio-button">
-                                            <input type="radio" class="validAddress m-radio-button__input" name="addressToUse" checked="" data-bind="attr: {id: 'valid-' + uid}" id="valid-QIXABRP">
-                                            <label class="addressLabel" for="valid-QIXABRP">
-                                                <span class="m-radio-button__circle"></span>
-                                                <div class="optionTitle m-radio-button__text-label">Suggested Address</div>
-                                                <div class="optionAddress validAddressText"></div>
-                                            </label>
+                                    <div class="actions-toolbar">
+                                        <div class="primary">
+                                            <button class="a-btn a-btn--primary action apply primary js-save-cart" data-url-rd="{{ route('get_user.paysuccsess') }}" id="pay_success" data-url="{{ route('get_user.paysuccsess') }}" type="button" value="Pay Continue">
+                                                <span>Tiếp tục thanh toán</span>
+                                            </button>
                                         </div>
-                                        <div class="originalContainer addressOption m-radio-button">
-                                            <input type="radio" class="originalAddress m-radio-button__input" name="addressToUse" id="original-QIXABRP">
-                                            <label class="addressLabel" for="original-QIXABRP">
-                                                <span class="m-radio-button__circle"></span>
-                                                <div class="optionTitle m-radio-button__text-label">Original Address</div>
-                                                <div class="optionAddress originalAddressText"></div>
-                                            </label>
-                                        </div>
-                                        <div class="validContainer addressOption selected m-radio-button">
-                                            <input type="radio" class="validAddress m-radio-button__input" name="addressToUse" checked="" data-bind="attr: {id: 'valid-' + uid}" id="valid-QIXABRP">
-                                            <label class="addressLabel" for="valid-QIXABRP">
-                                                <span class="m-radio-button__circle"></span>
-                                                <div class="optionTitle m-radio-button__text-label">Suggested Address</div>
-                                                <div class="optionAddress validAddressText"></div>
-                                            </label>
-                                        </div>
-                                        <div class="originalContainer addressOption m-radio-button">
-                                            <input type="radio" class="originalAddress m-radio-button__input" name="addressToUse" id="original-QIXABRP">
-                                            <label class="addressLabel" for="original-QIXABRP">
-                                                <span class="m-radio-button__circle"></span>
-                                                <div class="optionTitle m-radio-button__text-label">Original Address</div>
-                                                <div class="optionAddress originalAddressText"></div>
-                                            </label>
-                                        </div>
-                                    </form>
-                                    
+                                    </div>
                                 </div>
                             </li>
                         </ol>
@@ -687,93 +593,52 @@
                             <div id="opc-sidebar">
                                 <div class="opc-block-summary">
                                     <div class="order-summary__heading">
-                                        <span class="title">Order Summary</span>
+                                        <span class="title">Thông tin đơn hàng</span>
                                     </div>
                                     <div class="block items-in-cart" data-collapsible="true" role="tablist">
                                         <div class="title items-in-cart__title" data-role="title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
                                             <span>
-                                                <span>1</span>
-                                                <span>Items in Cart</span>
+                                                <span>Sản phẩm đã mua</span>
                                             </span>
                                         </div>
                                         <div class="content minicart-items" data-role="content" role="tabpanel" aria-hidden="true">
+                                            @foreach ($listCarts as $key => $item)
                                             <div class="minicart-items-wrapper overflowed">
                                                 <ol class="minicart-items">
                                                     <li class="product-item">
                                                         <div class="product">
                                                             <span class="product-image-container" style="height: 78px; width: 78px;">
                                                                 <span class="product-image-wrapper">
-                                                                    <img src="https://acquia.prod.wholesale.frontiercoop.com/sites/default/files/acquiadam/2020-09/1_Frontier-Co-op-Self-Closing-Lid-Half-Gallon-12401-Front.jpg" width="100%" height="100%" alt="Self Closing Lid for 1/2 Gallon Plastic Container     " title="Self Closing Lid for 1/2 Gallon Plastic Container     ">
+                                                                    <img src="{{ pare_url_file($item->options->images) }}" width="100%" height="100%" alt="{{ $item->name }}">
                                                                 </span>
                                                             </span>
                                                             <div class="product-item-details">
-
                                                                 <div class="product-item-inner">
                                                                     <div class="product-item-name-block">
-                                                                        <strong class="product-item-name">Self Closing Lid for 1/2 Gallon Plastic Container </strong>
+                                                                        <strong class="product-item-name">{{ $item->name }} </strong>
                                                                         <div class="details-qty">
-                                                                            <span class="label">Số lượng</span>
-                                                                            <span class="value">1</span>
+                                                                            <span class="label">Số lượng: </span>
+                                                                            <span class="value">{{ $item->qty }}</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="subtotal">
                                                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                                                             <span class="cart-price">
-                                                                                <span class="price">$4.99</span>
+                                                                                <span class="label">Thành tiền: </span>
+                                                                                <span class="price">{{ $item->price }} đ</span>
                                                                             </span>
                                                                         </span>
-                                                                        <!-- /ko -->
                                                                     </div>
                                                                 </div>
-
-                                                                <!-- ko if: (JSON.parse($parent.options).length > 0)-->
-                                                                <!-- /ko -->
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <!-- /ko -->
                                                 </ol>
                                             </div>
-                                            <div class="minicart-items-wrapper overflowed">
-                                                <ol class="minicart-items">
-                                                    <li class="product-item">
-                                                        <div class="product">
-                                                            <span class="product-image-container" style="height: 78px; width: 78px;">
-                                                                <span class="product-image-wrapper">
-                                                                    <img src="https://acquia.prod.wholesale.frontiercoop.com/sites/default/files/acquiadam/2020-09/1_Frontier-Co-op-Self-Closing-Lid-Half-Gallon-12401-Front.jpg" width="100%" height="100%" alt="Self Closing Lid for 1/2 Gallon Plastic Container     " title="Self Closing Lid for 1/2 Gallon Plastic Container     ">
-                                                                </span>
-                                                            </span>
-                                                            <div class="product-item-details">
-
-                                                                <div class="product-item-inner">
-                                                                    <div class="product-item-name-block">
-                                                                        <strong class="product-item-name">Self Closing Lid for 1/2 Gallon Plastic Container </strong>
-                                                                        <div class="details-qty">
-                                                                            <span class="label">Số lượng</span>
-                                                                            <span class="value">1</span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="subtotal">
-                                                                        <span class="price-excluding-tax" data-label="Excl. Tax">
-                                                                            <span class="cart-price">
-                                                                                <span class="price">$4.99</span>
-                                                                            </span>
-                                                                        </span>
-                                                                        <!-- /ko -->
-                                                                    </div>
-                                                                </div>
-
-                                                                <!-- ko if: (JSON.parse($parent.options).length > 0)-->
-                                                                <!-- /ko -->
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <!-- /ko -->
-                                                </ol>
-                                            </div>
+                                            @endforeach
+                                            
+                                            
                                         </div>
-                                        <!-- ko if: maxCartItemsToDisplay < getCartLineItemsCount() -->
-                                        <!-- /ko -->
                                     </div>
                                 </div>
 

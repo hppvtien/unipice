@@ -23,7 +23,7 @@ class UserPayController extends UserController
 {
     public function getPay(Request $request)
     {
-
+        
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
         $paid_total = \Cart::total(0, 0, '.');
@@ -40,6 +40,8 @@ class UserPayController extends UserController
     }
     public function getPaySuccsess()
     {
+        dd($request->all());
+
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
         $configuration = Configuration::first();
@@ -89,7 +91,7 @@ class UserPayController extends UserController
             return $message;
         }
     }
-    public function processPayCart(BillRequest $request)
+    public function processPayCart(Request $request)
     {
         if ($request->ajax()) {
             $vouchers = $request->vouchers;
