@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\Route;
 use phpDocumentor\Reflection\Types\Null_;
 
 require_once  'file.php';
@@ -75,4 +76,14 @@ function execPostRequest($url, $data)
     function get_category_id($product_id){
         $catid = App\Models\Product_Category::where('product_id','=', $product_id)->pluck('category_id')->first();
         return $catid;
+    }
+
+    function get_title_product($product_id){
+        $title_product = App\Models\Uni_Product::where('id','=',$product_id)->pluck('name')->first();
+        return $title_product;
+    }
+
+    function get_link_blank($product_id){
+        $link = App\Models\Uni_Product::where('id','=',$product_id)->pluck('slug')->first();
+        return route('get.product',['slug'=>$link]);
     }

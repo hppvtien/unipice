@@ -81,7 +81,8 @@
                 </div>
             </div>
         </div>
-        @include('user::components._inc_menu_user')
+@include('user::components._inc_menu_user')
+
     </div>
 </main>
 @stop

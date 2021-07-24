@@ -11,6 +11,8 @@ use DB;
 use Psy\Util\Str;
 use Sentry;
 use App\Models\Favourite;
+use App\Models\Uni_FlashSale;
+use Carbon\Carbon;
 
 // use Illuminate\Routing\Controller;
 class UserDashboardController extends Controller
@@ -39,6 +41,7 @@ class UserDashboardController extends Controller
     }
 
     public function productlist_filter(Request $request){
+        $user_id = auth()->id();
         if($request->sort_by){
             $sort_by = $request->sort_by;
         }else{
@@ -50,10 +53,11 @@ class UserDashboardController extends Controller
         else{
             $order_by = 'desc';
         }
+        $my_favorites = Favourite::where('f_user_id','=',$user_id)->pluck('f_id');
         $array_product_cat = Product_Category::where('category_id', '=', $sort_by)->pluck('product_id')->all();
         $product_list = Uni_Product::select('id','name','slug','desscription','thumbnail')->whereIn('id', $array_product_cat)->orderBy('id',$order_by)->get();
 
-        $view = view("user::pages.dashboard.product_list_filter",compact('product_list'))->render();
+        $view = view("user::pages.dashboard.product_list_filter",compact('product_list','my_favorites'))->render();
         return $view;
     }
 
@@ -102,7 +106,7 @@ class UserDashboardController extends Controller
         $my_favorites = Favourite::where('f_user_id','=',$user_id)->pluck('f_id');
         $array_product_cat = Product_Category::where('category_id', '=', $sort_by)->pluck('product_id')->all();
         $product_list = Uni_Product::select('id','name','slug','desscription','thumbnail')->wherein('id',$my_favorites)->wherein('id', $array_product_cat)->orderBy('id',$order_by)->get();
-        $view = view("user::pages.dashboard.product_list_filter",compact('product_list'))->render();
+        $view = view("user::pages.dashboard.product_list_filter",compact('product_list', 'my_favorites'))->render();
         return $view;
     }
 
@@ -118,5 +122,58 @@ class UserDashboardController extends Controller
             }
         }
         
+    }
+
+    public function myfavorites_add(Request $request){
+        
+        if($request->id){
+            $id_add = $request->id;
+            $user_id = auth()->id();
+            if (Favourite::where('f_id', '=', $id_add)->exists()) {
+                $del_id_product = Favourite::where('f_id', $id_add)->delete();
+                if($del_id_product){
+                    return 'Đã Bỏ Thích Sản Phẩm '.$id_add;
+                }
+                else{
+                    return 'Không Thể Xóa Sản Phẩm ';
+                }
+            }
+            else{
+                $id = Favourite::insertGetId(
+                    ['f_user_id' => $user_id, 'f_id' => $id_add, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
+                );
+                if($id){
+                    return 'Bạn Đã Thích Sản Phẩm '. $id_add;
+                }
+            }
+        }
+    }
+    
+    public function my_flash_sale(){
+
+        $my_flash_sale = Uni_FlashSale::select('name','slug','desscription','price','qty','thumbnail','id','content','status')->get();
+
+        $viewData = [
+            'my_flash_sale' => $my_flash_sale,
+        ];
+        return view('user::pages.dashboard.my_flash_sale', $viewData);
+    }
+
+    public function get_product_flash_sale(Request $request)
+    {
+        if($request->get_id){
+            $get_id = $request->get_id;
+            $get_data_id = Uni_FlashSale::select('info_sale')->where('id','=',$get_id)->get();
+        }
+
+        if($request->get_total_price){
+            $get_total_price = $request->get_total_price;
+        }
+
+        foreach ($get_data_id as $vl){
+            $get_result_arr = json_decode($vl->info_sale, true);
+        }
+        $view = view("user::pages.dashboard.my_flash_sale_product", compact('get_result_arr','get_total_price'))->render();
+        return $view;
     }
 }
