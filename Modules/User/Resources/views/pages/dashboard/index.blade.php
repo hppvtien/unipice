@@ -81,32 +81,8 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-        <div class="sidebar sidebar-main">
-            <div class="block block-collapsible-nav">
-                <div class="title block-collapsible-nav-title">
-                    <strong>
-                        My Account 
-                    </strong>
-                </div>
-                <div class="content block-collapsible-nav-content" id="block-collapsible-nav">
-                    <ul class="nav items">
-                        <li class="nav item"><a href="https://shop.coopmarket.com/sales/order/history/">My Orders</a></li>
-                        <li class="nav item"><a href="https://shop.coopmarket.com/wishlist/">My Wish List</a></li>
-                        <li class="nav item"><a href="https://shop.coopmarket.com/customer/address/">Address Book</a></li>
-                    
-                        <li class="nav item"><a href="https://shop.coopmarket.com/customer/account/edit/">Account Information</a></li>
-                        <li class="nav item"><a href="{{ route('get_user.my_flash_sale') }}">Danh Sách Gói Combo</a></li>
-                        <li class="nav item"><a href="{{ route('get_user.myfavorites') }}">Sản Phẩm Yêu Thích</a></li>
-                        <li class="nav item"><a href="{{ route('get_user.productlist') }}">List Sản Phẩm</a></li>
-                    
-                    </ul>
-                </div>
-            </div>
-        </div>
-=======
-        @include('user::components._inc_menu_user')
->>>>>>> 6fd97d14aa7295776fcd5f6629dd2569c6cad328
+@include('user::components._inc_menu_user')
+
     </div>
 </main>
 @stop
