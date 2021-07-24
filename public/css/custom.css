@@ -15,9 +15,11 @@
     padding-right: 20px;
     width: auto;
 }
-.m-text-input{
+
+.m-text-input {
     width: 100%;
 }
+
 .block-collapsible-nav .item.current {
     position: relative;
 }
@@ -170,6 +172,18 @@ h1.page-title {
         margin: 4px auto;
         max-height: initial;
         max-width: 176px;
+    }
+    .c-header__minicart-count {
+        background-color: #137f62;
+        width: auto;
+        height: auto;
+        min-width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-width: 2px;
+        bottom: -15px;
+        right: -15px;
     }
     .columns .sidebar-main {
         width: 20%;

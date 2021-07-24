@@ -33,15 +33,19 @@ class CategoryController extends Controller
     }
     public function fillter_product(Request $request)
     {
+        
         $data_slug = $request->data_slug_trade;
         $data_slug = $request->data_slug_cat;
         $data_sort = $request->data_sort;
         $data_order = $request->data_order;
         if ($request->data_slug_trade) {
             $data_slug = $request->data_slug_trade;
+
+            
             $trade_id = Uni_Trade::where('slug', $data_slug)->pluck('id')->first();
             $group_id_product = Product_Trade::where('trade_id', $trade_id)->pluck('product_id');
             $product  = Uni_Product::whereIn('id', $group_id_product)->orderBy($data_sort, $data_order)->limit(12)->get();
+            
             $html = view('pages.category._item_product', compact('product'))->render();
         } elseif ($request->data_slug_cat) {
             $data_slug = $request->data_slug_cat;
@@ -52,6 +56,7 @@ class CategoryController extends Controller
         } else {
             $html = '<p>Sản phẩm bạn vừa chọn hiện đang cập nhật</p>';
         }
+        
         return $html;
     }
 }
