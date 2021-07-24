@@ -28,6 +28,7 @@ class UserCartController extends Controller
     public function updateCart(Request $request){
         \SEOMeta::setTitle('Giỏ hàng');
         \Cart::update($request->item_row,$request->item_qty);
+        $listCarts = \Cart::content();
             }
     public function generatePDF()
     {

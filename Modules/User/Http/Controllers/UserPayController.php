@@ -62,6 +62,7 @@ class UserPayController extends UserController
         ];
         $idOrder = Uni_Order::insertGetId($order_data); 
         if($idOrder){
+            \Cart::destroy();
             $order_data_sucsses = Uni_Order::find($idOrder);
             $configuration = Configuration::first();
             $viewData = [

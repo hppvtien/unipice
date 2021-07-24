@@ -437,7 +437,7 @@
                                     <td class="col subtotal" data-th="Tổng tiền">
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price">{{ $item->price }} đ</span> 
+                                                <span class="price">{{ $item->price * $item->qty}} đ</span> 
                                             </span>
                                         </span>
                                     </td>
@@ -455,12 +455,12 @@
                     </div>
                     <div class="cart main actions">
                         <div class="cart-actions">
-                            <button type="button" name="update_cart_action" title="Update Shopping Cart" class="a-btn a-btn--primary action update update_cart_action">
+                            <button type="button" onClick="window.location.reload();" name="update_cart_action" title="Update Shopping Cart" class="a-btn a-btn--primary action update update_cart_action">
                                 <span>Cập nhật giỏ hàng</span>
                             </button>
-                            <button type="button" name="update_cart_action" data-cart-empty="" value="empty_cart" title="Clear Shopping Cart" class="a-btn a-btn--secondary action clear" id="empty_cart_button">
+                            {{-- <button type="button" name="update_cart_action" data-cart-empty="" value="empty_cart" title="Clear Shopping Cart" class="a-btn a-btn--secondary action clear" id="empty_cart_button">
                                 <span>Xóa giỏ hàng</span>
-                            </button>
+                            </button> --}}
                         </div>
 
                         <div class="cart-continue">
