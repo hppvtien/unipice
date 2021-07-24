@@ -19713,6 +19713,30 @@ var Auth = {
   init: function init() {
     this.register();
     this.login();
+    this.store();
+  },
+  store: function store() {
+    $("body").on("click", ".js-store-user", function (event) {
+      var URL = $("#co-store-form").attr('action');
+      event.preventDefault();
+      $(".gd-danger").remove();
+      $.ajax({
+        url: URL,
+        method: "POST",
+        data: $('#co-store-form').serialize(),
+        success: function success(results) {
+          if (results.status === 200) {
+            toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success(results.message);
+          }
+        },
+        error: function error(xhrs) {
+          $('#validation-errors').html('');
+          $.each(xhrs.responseJSON.errors, function (field_names, error) {
+            $("#co-store-form").find('[name=' + field_names + ']').after('<span class="text-strong gd-danger">' + error + '</span>');
+          });
+        }
+      });
+    });
   },
   register: function register() {
     $("body").on("click", ".js-register", function (event) {

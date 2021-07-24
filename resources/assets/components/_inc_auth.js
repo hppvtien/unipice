@@ -7,9 +7,33 @@ var Auth = {
        
         this.register()
         this.login()
-       
+        this.store()
     },
-
+    store()
+    {
+        $("body").on("click",".js-store-user", function(event){ 
+            let URL = $("#co-store-form").attr('action')
+            event.preventDefault() 
+            $(".gd-danger").remove()
+            $.ajax({
+                url: URL,
+                method : "POST",
+                data:$('#co-store-form').serialize(),
+                success: function(results) {
+                    if(results.status === 200)
+                    {
+                        Toastr.success(results.message)
+                    }            
+                },
+                error: function(xhrs) {
+                    $('#validation-errors').html('');
+                    $.each(xhrs.responseJSON.errors,function(field_names,error){
+                        $("#co-store-form").find('[name='+field_names+']').after('<span class="text-strong gd-danger">' +error+ '</span>')
+                    })                   
+                },
+            });
+        })
+    },
    
     register()
     {
