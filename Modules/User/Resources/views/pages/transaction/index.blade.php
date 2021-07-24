@@ -19,72 +19,95 @@
                         <span class="base" data-ui-id="page-title-wrapper">Đơn hàng</span>
                     </h1>
                 </div>
-                <div class="cart table-wrapper">
-                    <table id="shopping-cart-table" class="cart items data table cart-table">
-
+                <div class="table-responsive ">
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th class="col item" scope="col"><span>Sản phẩm</span></th>
-                                <th class="col price" scope="col"><span>Giá</span></th>
-                                <th class="col qty" scope="col"><span>Số lượng</span></th>
-                                <th class="col subtotal" scope="col"><span>Tổng tiền</span></th>
-                                <th class="col subtotal" scope="col"><span>Trạng thái</span></th>
+                              <th scope="col">STT</th>
+                              <th scope="col">Họ Và Tên</th>
+                              <th scope="col">Email</th>
+                              <th scope="col">Điện Thoại</th>
+                              <th scope="col">Điạ Chỉ</th>
+                              <th scope="col">MST</th>
+                              <th scope="col">PTTT</th>
+                              <th scope="col">MHĐ</th>
+                              <th scope="col">T.Tiền</th>
+                              <th scope="col">NLPhiếu</th>
                             </tr>
                         </thead>
-                        <tbody class="cart item">
-                            <tr class="item-info">
-                                <td data-th="Item" class="col item">
-                                    <a href="" title="ASản phẩm 01" tabindex="-1" class="product-item-photo">
-                                        <span class="product-image-container" style="width:110px;">
-                                            <span class="product-image-wrapper" style="padding-bottom: 145.45454545455%;">
-                                                <img class="product-image-photo"
-                                                    src="/storage/uploads//storage/uploads_product/31103-900x900-1626172168.jpg"
-                                                    max-width="100%" max-height="100%" alt="ASản phẩm 01">
-                                            </span>
+                        <tbody>
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach ($order_list_get_as_user_id as $item)
+                                <tr>
+                                    <th scope="row">{{ $i }}</th>
+                                    <td class="col-md-3">
+                                        <span type="" class="hover_bea" data-toggle="modal" data-target="#myModal" onclick="get_info_order(this);" id_order="{{ $item->id }}">
+                                            {{ $item->customer_name }}
                                         </span>
-                                    </a>
-                                    <div class="product-item-details">
-                                        <strong class="product-item-name">
-                                            <a href=""> </a>
-                                        </strong>
-                                        <div class="product attribute sku">
-                                            <strong class="type">Mã sản phẩm:</strong>
-                                            <span class="value" itemprop="sku">1</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="col price" data-th="Price">
-                                    <span class="price-excluding-tax" data-label="Excl. Tax">
-                                        <span class="cart-price">
-                                            <span class="price">3000 đ</span>
-                                        </span>
-                                    </span>
-                                </td>
-                                <td class="col qty" data-th="Qty">
-                                    <div class="field qty">
-                                        <span class="cart-price">
-                                            <span class="price">1</span>
-                                        </span>
-                                    </div>
-                                </td>
-                                <td class="col subtotal" data-th="Tổng tiền">
-                                    <span class="price-excluding-tax" data-label="Excl. Tax">
-                                        <span class="cart-price">
-                                            <span class="price">3000 đ</span>
-                                        </span>
-                                    </span>
-                                </td>
-                                <td class="col subtotal" data-th="Trạng thái">
-                                   
-                                </td>
-                            </tr>
-
-
+                                    </td>
+                                    <td class="col-md-3">{{ $item->email }}</td>
+                                    <td class="col-md-3">{{ $item->phone }}</td>
+                                    <td class="col-md-3">{{ $item->address }}</td>
+                                    <td >{{ $item->taxcode }}</td>
+                                    <td>{{ $item->type_pay }}</td>
+                                    <td>{{ $item->code_invoice }}</td>
+                                    <td>{{ number_format($item->total_money) }}</td>
+                                    <td>{{ $item->created_at->format('d.m.Y H:i') }}</td>
+                                </tr>
+                            @php
+                                $i++;
+                            @endphp
+                            @endforeach
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
+
+            <script>
+                function get_info_order(id_order){
+                    $.post( "{{ route('get_user.get_info_order') }}", { id_order: $(id_order).attr('id_order')})
+                    .done(function( data ) {
+                        $( ".modal-body" ).html( data );
+                    });
+                }
+            </script>
+
             @include('user::components._inc_menu_user')
         </div>
     </main>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    
+
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Chi Tiết Sản Phẩm</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+              
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+            
+          </div>
+        </div>
+    </div>
+
 @stop

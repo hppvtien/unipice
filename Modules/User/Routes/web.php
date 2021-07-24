@@ -20,11 +20,14 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     Route::get('/danh-sach-san-pham/myfavorites/filter', 'UserDashboardController@myfavorites_filter')->name('get_user.myfavorites_filter');
     Route::get('/danh-sach-san-pham/filter', 'UserDashboardController@productlist_filter')->name('get_user.productlist_filter');
 
-    Route::get('transaction', 'UserTransactionController@index')->name('get_user.transaction');
+    Route::get('don-hang', 'UserTransactionController@index')->name('get_user.transaction');
     
 
-    Route::group(['prefix' => 'transaction'], function(){
+    Route::group(['prefix' => 'don-hang'], function(){
         Route::get('/', 'UserTransactionController@index')->name('get_user.transaction');
+
+        Route::post('/', 'UserTransactionController@get_info_order')->name('get_user.get_info_order');
+
         Route::get('{idTransaction}/view', 'UserTransactionController@viewTransaction')->name('get_user.transaction.view');
         Route::get('{idTransaction}/view/course/{idCourse}', 'UserCourseByOrderController@viewCourse')->name('get_user.transaction.view_course');
         Route::get('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@vote')->name('get_user.transaction.vote');
