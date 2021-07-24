@@ -27,7 +27,7 @@
                         <li class="nav item liststyle_none"><a href="https://shop.coopmarket.com/customer/address/">Address Book</a></li>
 
                         <li class="nav item liststyle_none"><a href="https://shop.coopmarket.com/customer/account/edit/">Account Information</a></li>
-                        <li class="nav item liststyle_none"><a href="https://shop.coopmarket.com/newsletter/manage/">Newsletter Subscriptions</a></li>
+                        <li class="nav item liststyle_none"><a href="{{ route('get_user.my_flash_sale') }}">Danh Sách Gói Combo</a></li>
                         <li class="nav item liststyle_none"><a href="{{ route('get_user.myfavorites') }}">Sản Phẩm Yêu Thích</a></li>
                         <li class="nav item liststyle_none"><a href="{{ route('get_user.productlist') }}">List Sản Phẩm</a></li>
 
@@ -85,7 +85,7 @@
                                             <span class="a-product-name">{{ Str::limit($value->desscription, 55) }}</span>
                                         </a>
                                     </div>
-                                    <div class="m-product-card__sku">SKU: {{ $value->id }} <span class="icon-favorite  a-icon-text-btn__icon @php foreach ($my_favorites as  $l) {
+                                    <div class="m-product-card__sku">SKU: {{ $value->id }} <span my-id="{{ $value->id }}" onclick="check_my_favorites_add(this);" class="icon-favorite  a-icon-text-btn__icon @php foreach ($my_favorites as  $l) {
                                         if($value->id == $l){
                                             echo 'red';
                                         }else {
@@ -119,6 +119,15 @@
                 $( "#show-product" ).html( data );
             });
         }
+
+        function check_my_favorites_add(my_id){
+                var title = $(my_id).attr('my-id');
+                $.get( "{{ route('get_user.myfavorites_add') }}", { id: title} )
+                .done(function( data ) {
+                    alert(data);
+                    location.reload();
+                });
+            }
         
        
         $(function () {

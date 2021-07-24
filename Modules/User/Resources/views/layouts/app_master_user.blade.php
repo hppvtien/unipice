@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user_css.css') }}">
+    
    
 </head>
 

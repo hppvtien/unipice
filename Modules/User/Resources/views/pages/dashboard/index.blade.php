@@ -98,7 +98,7 @@
                         <li class="nav item"><a href="https://shop.coopmarket.com/customer/address/">Address Book</a></li>
                     
                         <li class="nav item"><a href="https://shop.coopmarket.com/customer/account/edit/">Account Information</a></li>
-                        <li class="nav item"><a href="https://shop.coopmarket.com/newsletter/manage/">Newsletter Subscriptions</a></li>
+                        <li class="nav item"><a href="{{ route('get_user.my_flash_sale') }}">Danh Sách Gói Combo</a></li>
                         <li class="nav item"><a href="{{ route('get_user.myfavorites') }}">Sản Phẩm Yêu Thích</a></li>
                         <li class="nav item"><a href="{{ route('get_user.productlist') }}">List Sản Phẩm</a></li>
                     

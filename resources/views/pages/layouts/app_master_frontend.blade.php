@@ -17,7 +17,10 @@
     @endif
     <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    
     <link rel="stylesheet" href="{{ asset('css/ducanh.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/ducanh2.css') }}">
 </head>
 
 <body>
