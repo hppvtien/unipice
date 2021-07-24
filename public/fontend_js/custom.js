@@ -210,6 +210,7 @@ $("#pay_success").on('click', function() {
             email: email
         },
         success: function success(results) {
+            console.log(results);
             window.location.href = URLRD;
         },
         error: function error(results) {
