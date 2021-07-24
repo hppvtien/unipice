@@ -260,7 +260,7 @@
                             </a>
                         </div>
                         @if (get_data_user('web'))
-                        <div class="c-header__account-button js-account c-header__account-button--open">
+                        <div class="c-header__account-button js-dropdown">
                         <button class="a-btn c-header__initials js-account__trigger" type="button"><span class="icon-account a-icon-text-btn__icon" aria-hidden="true"></span></button>
                             <div class="c-header__account-dropdown">
                                 <div class="m-account-dropdown">

@@ -19714,6 +19714,14 @@ var Auth = {
     this.register();
     this.login();
     this.store();
+    this.showdropdown();
+  },
+  showdropdown: function showdropdown() {
+    $(".js-dropdown").on('click', function (event) {
+      event.preventDefault();
+      var $this = $(this);
+      $this.toggleClass('c-header__account-button--open');
+    });
   },
   store: function store() {
     $("body").on("click", ".js-store-user", function (event) {

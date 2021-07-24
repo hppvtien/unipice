@@ -43,8 +43,8 @@ class UserInfoController extends Controller
                 $data               = $request->except('_token');  
                 $data['user_id']  = $id;           
                 $data['store_status']  = 0;
-                $user = Uni_Store::insertGetId($data);
-                if ($user){
+                $store = Uni_Store::insertGetId($data);
+                if ($store){
                     return response([
                         'status'     => 200,
                         'message' => "Cập nhật thành công hãy đợi admin kiểm tra bạn sẽ nhận được email thông báo kết quả!"

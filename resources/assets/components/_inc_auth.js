@@ -8,6 +8,15 @@ var Auth = {
         this.register()
         this.login()
         this.store()
+        this.showdropdown()
+    },
+    showdropdown()
+    {
+        $(".js-dropdown").on('click',function (event){
+            event.preventDefault()
+            let $this = $(this);
+                $this.toggleClass('c-header__account-button--open')
+        })
     },
     store()
     {

@@ -8679,8 +8679,9 @@ font-display:auto;font-style:normal;font-weight:400;
             clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)
         }
         .c-header__account-button--open .c-header__account-dropdown {
-            display: block
+            display: block;
         }
+        
         .c-header__account-button--transition .c-header__account-dropdown {
             -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
             clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)
