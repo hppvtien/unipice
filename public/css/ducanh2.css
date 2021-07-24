@@ -3,3 +3,11 @@
 .modal-dialog {
     margin-top: 10%;
 }
+
+.hover_bea {
+    color: #0b2d25;
+}
+
+.hover_bea:hover {
+    color: red;
+}

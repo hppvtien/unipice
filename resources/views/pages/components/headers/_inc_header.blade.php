@@ -293,7 +293,7 @@
                             </div>
                         </div>
                     @else
-                       
+                      
                     @endif
                         <div class="c-header__minicart js-minicart">
                             <a href="{{ route('get_user.cart') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
@@ -301,12 +301,12 @@
                                 <span class="a-icon-text-btn__label">
                                     My Cart </span>
                                     @php
-                                    $dem = Cart::count();
+                                    $dem = count(\Cart::content());
                                 @endphp
                                     @if($dem == 0)
-                                    
+                                    <div></div>
                                 @else
-                                    <div class="c-header__minicart-count"><span>{{ \Cart::count() }}</span></div>
+                                    <div class="c-header__minicart-count"><span>{{ $dem }}</span></div>
                                 @endif
                             </a>
                             <div class="c-header__minicart-panel">

@@ -15,20 +15,19 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     Route::get('/', 'UserDashboardController@index')->name('get_user.dashboard');
     Route::post('/', 'UserDashboardController@replaceOrder')->name('get_user.replaceOrder');
     Route::get('/danh-sach-san-pham', 'UserDashboardController@productlist')->name('get_user.productlist');
-    Route::get('/danh-sach-san-pham/goi-san-pham-sale', 'UserDashboardController@my_flash_sale')->name('get_user.my_flash_sale');
-    Route::get('/danh-sach-san-pham/goi-san-pham-sale/get_product_flash_sale', 'UserDashboardController@get_product_flash_sale')->name('get_user.get_product_flash_sale');
     Route::get('/danh-sach-san-pham/myfavorites', 'UserDashboardController@myfavorites')->name('get_user.myfavorites');
     Route::get('/danh-sach-san-pham/myfavorites/delete', 'UserDashboardController@myfavorites_delete')->name('get_user.myfavorites_delete');
-    Route::get('/danh-sach-san-pham/myfavorites/add', 'UserDashboardController@myfavorites_add')->name('get_user.myfavorites_add');
     Route::get('/danh-sach-san-pham/myfavorites/filter', 'UserDashboardController@myfavorites_filter')->name('get_user.myfavorites_filter');
     Route::get('/danh-sach-san-pham/filter', 'UserDashboardController@productlist_filter')->name('get_user.productlist_filter');
+
+    Route::get('don-hang', 'UserTransactionController@index')->name('get_user.transaction');
     
 
-    Route::get('transaction', 'UserTransactionController@index')->name('get_user.transaction');
-    
-
-    Route::group(['prefix' => 'transaction'], function(){
+    Route::group(['prefix' => 'don-hang'], function(){
         Route::get('/', 'UserTransactionController@index')->name('get_user.transaction');
+
+        Route::post('/', 'UserTransactionController@get_info_order')->name('get_user.get_info_order');
+
         Route::get('{idTransaction}/view', 'UserTransactionController@viewTransaction')->name('get_user.transaction.view');
         Route::get('{idTransaction}/view/course/{idCourse}', 'UserCourseByOrderController@viewCourse')->name('get_user.transaction.view_course');
         Route::get('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@vote')->name('get_user.transaction.vote');
@@ -62,19 +61,17 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
 
 Route::middleware('checkLoginUser')->group(function() {
     Route::get('thanh-toan.html', 'UserPayController@getPay')->name('get_user.pay');
+    Route::get('thanh-toan', 'UserPayController@getPaySuccsess')->name('get_user.postpay');
     Route::post('gio-hang.html', 'UserPayController@check_vouchers')->name('get_user.check_vouchers');
-    Route::get('hoan-tat-don-hang.html', 'UserPayController@getPaySuccsess')->name('get_user.paysuccsess'); 
+    Route::get('hoan-tat-don-hang.html', 'UserPayController@getSuccsess')->name('get_user.paysuccsess'); 
     Route::get('gio-hang.html', 'UserCartController@index')->name('get_user.cart');
-
-    Route::post('gio-hang.html', 'UserCartController@cart_now')->name('get_user.cart_now_1');
-
     Route::get('update-gio-hang/{id}', 'UserCartController@updateCart')->name('get_user.updatecart');
     Route::get('xoa-san-pham', 'UserCartController@deletecart')->name('get_user.deletecart');
     Route::get('in-pdf.html', 'UserCartController@generatePDF')->name('get_user.generatePDF');
     Route::post('in-pdf.html', 'UserCartController@viewPDF');
     Route::get('down-pdf.html', 'UserCartController@downPDF')->name('get_user.downPDF');
-    Route::get('thanh-toan-vnpay.html', 'UserPayController@getVnPaySuccsess')->name('get_user.vnpaysuccsess'); 
-    Route::post('thanh-toan-vnpay.html', 'UserPayController@processVnPayCart'); 
+    Route::get('thanh-toan-vnpay.html/{id}', 'UserPayController@getVnPaySuccsess')->name('get_user.vnpaysuccsess'); 
+    Route::post('thanh-toan-vnpay.html/{id}', 'UserPayController@processVnPayCart'); 
     Route::get('thanh-toan-momo.html', 'UserPayController@getmomoSuccsess')->name('get_user.momosuccsess'); 
     Route::post('thanh-toan-momo.html', 'UserPayController@processmomoCart'); 
     Route::get('thong-bao-thanh-toan-momo.html', 'UserPayController@resultmomo')->name('get_user.result_momo');
