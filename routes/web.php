@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::post('/dang-nhap','LoginController@login')->name('post.login');
     Route::get('/dang-ky','RegisterController@index')->name('get.register');
     Route::post('/dang-ky','RegisterController@register')->name('post.register');
+    Route::get('/dang-xuat','RegisterController@logout')->name('get.logout');
 
     Route::get('/verify-email/{code_verication}','RegisterController@verify_email')->name('verify.email');
     Route::get('/forget-password','RegisterController@forgetpassword')->name('get.forgetpassword');
@@ -53,20 +54,5 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::post('lien-he/','Uni_ContactController@getformsubmit')->name('post.uni_contact');
 
     
-
- 
-
-
-
-    // Route::post('/dang-nhap','LoginController@index')->name('get.login');
-    // Route::post('/dang-ky','RegisterController@register')->name('get.register');
-    // Route::get('/verify-email/{code_verication}','RegisterController@verify_email')->name('verify.email');
-    // Route::get('/forget-password','RegisterController@forgetpassword')->name('get.forgetpassword');
-    // Route::post('/forget-password','RegisterController@postforgetpassword')->name('post.forgetpassword');
-    // Route::post('/forget-password','RegisterController@postforgetpassword')->name('post.forgetpassword');
-    // Route::get('/forget-password{reset_code}','RegisterController@get_reset_code')->name('get.resetcodepassword');
-    // Route::post('/forget-password{reset_code}','RegisterController@postresetcodepassword')->name('post.resetcodepassword');
-    
-    // Route::get('/dang-xuat','RegisterController@logout')->name('get.logout');
 
 });

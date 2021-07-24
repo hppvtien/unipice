@@ -46,7 +46,7 @@ class UserShoppingCartController extends UserController
                         'price' => $uni_product->price,
                         'weight' => 1,
                         'options' => [
-                            'images' => pare_url_file_product($uni_product->thumbnail)
+                            'images' => $uni_product->thumbnail
                         ]
                     ]);
                 }

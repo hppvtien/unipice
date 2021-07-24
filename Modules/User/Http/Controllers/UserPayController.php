@@ -3,6 +3,7 @@
 namespace Modules\User\Http\Controllers;
 
 use App\Models\Cart\Order;
+use App\Models\Cart\Uni_Order;
 use App\Models\Cart\Transaction;
 use Session;
 use Carbon\Carbon;
@@ -23,7 +24,7 @@ class UserPayController extends UserController
 {
     public function getPay(Request $request)
     {
-
+        
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
         $paid_total = \Cart::total(0, 0, '.');
@@ -38,28 +39,55 @@ class UserPayController extends UserController
         ];
         return view('user::pages.pay.index', $viewData);
     }
-    public function getPaySuccsess()
+    public function getPaySuccsess(Request $request)
     {
+        
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
-        $configuration = Configuration::first();
-        $bill_data = Bill::orderBy('id', 'desc')->first();
-        $tran_data = Transaction::orderBy('id', 'desc')->first();
-        $order_data = Order::orderBy('id', 'desc')->first();
-        $viewData = [
-            'tran_data' => $tran_data,
-            'order_data' => $order_data,
-            'listCarts' => $listCarts,
-            'bill_data' => $bill_data,
-            'configuration' => $configuration
+        $order_data = [
+            'user_id'=>get_data_user('web'),
+            'code_invoice'=>$request->code_invoice,
+            'vouchers'=>$request->vouchers,
+            'customer_name'=>$request->customer_name,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'phone'=>$request->phone,
+            'taxcode'=>$request->taxcode,
+            'type_pay'=>$request->type_pay,
+            // 'combo_id'=>$request->combo_id,
+            'cart_info'=>$listCarts,
+            // 'product_sale'=>$request->method_invoice,
+            // 'total_money'=>$request->method_invoice,
+            'created_at'=>Carbon::now()
         ];
-        if ($bill_data->method_pay == 4) {
-            return redirect()->route('get_user.vnpaysuccsess');
-        } elseif ($bill_data->method_pay == 2) {
-            return redirect()->route('get_user.momosuccsess');
-        } else {
-            return view('user::pages.pay.succsess', $viewData);
+        $idOrder = Uni_Order::insertGetId($order_data); 
+        if($idOrder){
+            $order_data_sucsses = Uni_Order::find($idOrder);
+            $configuration = Configuration::first();
+            $viewData = [
+                'order_data_sucsses' => $order_data_sucsses,
+                'configuration' => $configuration
+            ];
+            if ($order_data_sucsses->type_pay == 4) {
+                return redirect()->route('get_user.vnpaysuccsess');
+            } elseif ($order_data_sucsses->type_pay == 2) {
+                return redirect()->route('get_user.momosuccsess');
+            } else {
+                return view('user::pages.pay.succsess', $viewData);
+            }
         }
+        
+        // $bill_data = Bill::orderBy('id', 'desc')->first();
+        // $tran_data = Transaction::orderBy('id', 'desc')->first();
+        // $order_data = Order::orderBy('id', 'desc')->first();
+        // $viewData = [
+        //     'tran_data' => $tran_data,
+        //     'order_data' => $order_data,
+        //     'listCarts' => $listCarts,
+        //     'bill_data' => $bill_data,
+        //     'configuration' => $configuration
+        // ];
+        
     }
     public function check_vouchers(Request $request)
     {
@@ -89,7 +117,7 @@ class UserPayController extends UserController
             return $message;
         }
     }
-    public function processPayCart(BillRequest $request)
+    public function processPayCart(Request $request)
     {
         if ($request->ajax()) {
             $vouchers = $request->vouchers;

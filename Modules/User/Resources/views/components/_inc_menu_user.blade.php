@@ -1,16 +1,21 @@
-<div class="menu_user">
-    <div class="container">
-        <ul>
-            @foreach(config('user.menu') as $menu)
-                <li>
-                    <a data-class-element=".menu_user_item"
-                       class="menu_user_item {{ \Request::route()->getName() == 'get_user.transaction.view' ? 'active' : '' }}"
-                       data-pjax href="{{ route($menu['route']) }}" title="{{ $menu['title'] }}">
-                        <i class="{{ $menu['icon'] }}"></i>
-                        {{ $menu['title'] }}
-                    </a>
-                </li>
-            @endforeach
-        </ul>
+<div class="sidebar sidebar-main">
+    <div class="block block-collapsible-nav">
+        <div class="title block-collapsible-nav-title">
+            <strong>
+                Tài khoản của tôi
+            </strong>
+        </div>
+        <div class="content block-collapsible-nav-content" id="block-collapsible-nav">
+            <ul class="nav items">
+                <li class="nav item"><a href="{{ route('get_user.transaction') }}">Đơn hàng</a></li>
+                <li class="nav item"><a href="#">My Wish List</a></li>
+                <li class="nav item"><a href="#">Địa chỉ</a></li>                   
+                <li class="nav item"><a href="#">Thông tin tài khoản</a></li>
+                <li class="nav item"><a href="#">Đăng ký nhận tin</a></li>
+                <li class="nav item"><a href="{{ route('get_user.myfavorites') }}">Sản Phẩm Yêu Thích</a></li>
+                <li class="nav item"><a href="{{ route('get_user.productlist') }}">List Sản Phẩm</a></li>
+            
+            </ul>
+        </div>
     </div>
 </div>

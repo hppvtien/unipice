@@ -375,31 +375,7 @@
                         <!-- /ko -->
 
                     </div>
-                    <div class="block discount active" id="block-discount" data-collapsible="true" role="tablist">
-                        <div class="title" data-role="title" role="tab" aria-selected="true" aria-expanded="true" tabindex="0">
-                            <h2 class="cart-accordion-title" id="block-discount-heading">Sử dụng mã giảm giá</h2>
-                        </div>
-                        <div class="content" data-role="content" aria-labelledby="block-discount-heading" role="tabpanel" aria-hidden="false" style="display: block;">
-                            <form id="discount-coupon-form" action="https://shop.coopmarket.com/checkout/cart/couponPost/" method="post">
-                                <div class="fieldset coupon">
-                                    <input type="hidden" name="remove" id="remove-coupon" value="0">
-                                    <div class="field">
-                                        <div class="m-text-input m-text-input--placeholder-label control">
-                                            <input type="text" class="a-text-input m-text-input__input input-text" id="coupon_code" name="coupon_code" value="" placeholder="Enter discount code">
-                                            <label for="coupon_code" class="a-form-label m-text-input__label label"><span>Nhập mã giảm giá</span></label>
-                                        </div>
-                                    </div>
-                                    <div class="actions-toolbar">
-                                        <div class="primary">
-                                            <button class="a-btn a-btn--primary action apply primary" type="button" value="Apply Discount">
-                                                <span>Sử dụng mã giảm giá</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    
                     <ul class="checkout methods items checkout-methods-items">
                         <li class="item">
                             <a href="{{ route('get_user.pay') }}" type="button" data-role="proceed-to-checkout" title="Proceed to Checkout on Co-Op Market" class="a-btn a-btn--primary action primary checkout">
@@ -474,22 +450,6 @@
                                 @empty
                                     
                                 @endforelse
-                                
-                                {{-- <tr class="item-actions">
-                                    <td colspan="4">
-                                        <div class="actions-toolbar">
-                                            <a href="#" class="use-ajax action towishlist action-towishlist">
-                                                <span>Yêu thích</span>
-                                            </a>
-                                            <a class="action action-edit" href="" title="Edit item parameters">
-                                                <span>Sửa sản phẩm</span>
-                                            </a>
-                                            <a href="#" title="Remove item" class="action action-delete">
-                                                <span> Xóa sản phẩm </span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr> --}}
                             </tbody>
                         </table>
                     </div>

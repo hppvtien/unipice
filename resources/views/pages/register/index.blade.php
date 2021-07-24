@@ -4,14 +4,14 @@
         <div class="columns">
             <div class="column main"><input name="form_key" type="hidden" value="kvxXZOrq8kWkV0FM">
                 <div class="c-create-account">
-                    <div class="c-create-account__content">
+                    <div class="c-create-account__content" style="padding:0;margin-right:20px">
                         <div class="page-title-wrapper c-create-account__heading">
                             <h1 class="page-title">
                                 <span class="base" data-ui-id="page-title-wrapper">Đăng ký tài khoản</span>
                             </h1>
                         </div>
                         <div class="form-create-account-box">
-                            <form class="form create account form-create-account" action="{{ route('post.register') }}" method="POST" id="formRegister"  >
+                            <form class="form create account form-create-account" action="{{ route('post.register') }}" method="POST" id="formRegister"  > 
                                 @csrf
                                 <fieldset class="fieldsets create info">
                                     <div class="field field-name-firstname required">

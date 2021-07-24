@@ -2,7 +2,7 @@
 @section('contents')
     <main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
         <div class="c-forgot-password">
-            <div class="c-forgot-password__content">
+            <div class="c-forgot-password__content" style="padding:0;margin-right:20px">
                 <div class="form-password-forget-box">
                     <div class="page-title-wrapper c-forgot-password__heading">
                         <h1 class="page-title">

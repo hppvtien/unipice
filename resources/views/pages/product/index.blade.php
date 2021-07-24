@@ -92,7 +92,7 @@
                                                             <div class="m-price-lockup">
                                                                 <span class="m-price-lockup__price">
                                                                     <span class="a-price">
-                                                                        {{ $product->price == '' ? 'Giá liên hệ': $product->price }}
+                                                                        Giá: {{ $product->price == '' ? 'Giá liên hệ': $product->price }} vnd
                                                                     </span>
                                                                 </span>
                                                             </div>
@@ -101,13 +101,12 @@
                                                             <div class="m-price-lockup">
                                                                 <span class="m-price-lockup__price">
                                                                     <span class="a-qty">
-                                                                        {{ $product->qty == '' ? 'Hiện tại hết hàng': $product->qty }}
+                                                                        Số lượng: {{ $product->qty == '' ? 'Hiện tại hết hàng': $product->qty }} 
                                                                     </span>
                                                                 </span>
                                                             </div>
                                                         </div>
                                                         <form class="m-product-overview__add-to-cart">
-                                                            <input class="a-number-input m-product-overview__qty" type="number" id="qty" name="qty" min="0" max="10000" value="1" aria-label="Quantity" /> <button class="a-btn a-btn--primary m-product-overview__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" type="button">Add to Cart</button>
                                                         </form>
                                                     </div>
                                                     <!-- Review :: this should be removed -->

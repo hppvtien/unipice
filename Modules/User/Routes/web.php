@@ -35,9 +35,12 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
         Route::post('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@storeVote');
     });
     Route::get('favourite', 'UserFavouriteController@index')->name('get_user.favourite');
-    Route::get('info', 'UserInfoController@index')->name('get_user.info');
+
     Route::get('info/edit/{id}', 'UserInfoController@edit')->name('get_user.info.edit');
     Route::post('info/edit/{id}', 'UserInfoController@update');
+
+    Route::get('store/edit/{id}', 'UserInfoController@storeedit')->name('get_user.store.edit');
+    Route::post('store/edit/{id}', 'UserInfoController@storeupdate');
 
     Route::prefix('cart')->group(function (){
         Route::post('save/{type}', 'UserPayController@processPayCart')->name('post_user.cart.pay');
@@ -59,7 +62,7 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
 
 Route::middleware('checkLoginUser')->group(function() {
     Route::get('thanh-toan.html', 'UserPayController@getPay')->name('get_user.pay');
-    Route::post('thanh-toan.html', 'UserPayController@check_vouchers')->name('get_user.check_vouchers');
+    Route::post('gio-hang.html', 'UserPayController@check_vouchers')->name('get_user.check_vouchers');
     Route::get('hoan-tat-don-hang.html', 'UserPayController@getPaySuccsess')->name('get_user.paysuccsess'); 
     Route::get('gio-hang.html', 'UserCartController@index')->name('get_user.cart');
 

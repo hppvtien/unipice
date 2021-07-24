@@ -13,6 +13,7 @@
 
     </div>
     <div class="columns">
+<<<<<<< HEAD
         <div class="sidebar sidebar-main">
             <div class="block block-collapsible-nav">
                 <div class="title block-collapsible-nav-title">
@@ -35,6 +36,9 @@
                 </div>
             </div>
         </div>
+=======
+        @include('user::components._inc_menu_user')
+>>>>>>> 6fd97d14aa7295776fcd5f6629dd2569c6cad328
         <div class="column main">
             <div>
                 <div class="c-filter-bar class_left">

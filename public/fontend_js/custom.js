@@ -166,3 +166,54 @@ $(".remove_cart_action").on('click', function() {
     });
 
 });
+$('#check_vouchers').on('click', function() {
+    let URL = $(this).attr('data-url');
+    $.ajax({
+        url: URL,
+        type: "post",
+        dataType: "text",
+        data: {
+            check_vouchers: $("input[name='vouchers']").val()
+        },
+        success: function(result) {
+            $('.messager_check').html(result);
+        },
+        error: function(result) {
+            $('.messager_check').html(result);
+        }
+    });
+});
+$("#pay_success").on('click', function() {
+    var data_url = $(this).attr('data-url');
+    var URLRD = $(this).attr('data-url-rd');
+    var taxcode = $("input[name='taxcode']").val();
+    var code_invoice = $("input[name='code_invoice']").val();
+    var vouchers = $("input[name='vouchers']").val();
+    var phone = $("input[name='phone']").val();
+    var email = $("input[name='email']").val();
+    var customer_name = $("input[name='customer_name']").val();
+    var address = $("input[name='address']").val();
+    var type_pay = $("input[name='type_pay']:checked").val();
+    var vouchers = $("input[name='vouchers']").val();
+    $.ajax({
+        url: data_url,
+        method: "get",
+        data: {
+            code_invoice: code_invoice,
+            vouchers: vouchers,
+            phone: phone,
+            taxcode: taxcode,
+            type_pay: type_pay,
+            address: address,
+            email: email,
+            customer_name: customer_name,
+            email: email
+        },
+        success: function success(results) {
+            window.location.href = URLRD;
+        },
+        error: function error(results) {
+
+        }
+    });
+});

@@ -11,13 +11,16 @@
                     </div>
                     <div class="c-header__account-menu-desktop">
                         <ul class="m-account-menu">
-                            <li class="m-account-menu__item">
-                                <a href="{{ route('get.login') }}" class="m-account-menu__link">
-                                    <span class="m-account-menu__link-text">
-                                        Sign In/Create Account
-                                    </span>
-                                </a>
-                            </li>
+                            @if (get_data_user('web'))
+                            @else
+                                <li class="m-account-menu__item">
+                                    <a href="{{ route('get.login') }}" class="m-account-menu__link">
+                                        <span class="m-account-menu__link-text">
+                                            Sign In/Create Account
+                                        </span>
+                                    </a>
+                                </li>
+                            @endif
                             <li class="m-account-menu__item">
                                 <a href="/associate-member-landing" class="m-account-menu__link">
                                     <span class="m-account-menu__link-text">
@@ -256,13 +259,42 @@
                                 <span class="a-icon-text-btn__label">Search</span>
                             </a>
                         </div>
-                        <div class="c-header__account-button js-account" style="display:none">
-
-                            <a class="a-icon-text-btn a-icon-text-btn--icon-only" href="https://shop.coopmarket.com/customer/account/index/referer/aHR0cDovL2Zyb250aWVyY29vcC5wcm9kLmFjcXVpYS1zaXRlcy5jb20%3D">
-                                <span class="icon-account a-icon-text-btn__icon" aria-hidden="true"></span>
-                                <span class="a-icon-text-btn__label">My Account</span>
-                            </a>
+                        @if (get_data_user('web'))
+                        <div class="c-header__account-button js-account c-header__account-button--open">
+                        <button class="a-btn c-header__initials js-account__trigger" type="button"><span class="icon-account a-icon-text-btn__icon" aria-hidden="true"></span></button>
+                            <div class="c-header__account-dropdown">
+                                <div class="m-account-dropdown">
+                                    <ul class="m-account-dropdown__list">
+                                        <li class="m-account-dropdown__item">
+                                            <a href="{{ route('get_user.dashboard') }}"
+                                                class="m-account-dropdown__link">
+                                                Tài khoản
+                                            </a>
+                                        </li>
+                                        <li class="m-account-dropdown__item">
+                                            <a href="{{ route('get_user.transaction') }}"
+                                                class="m-account-dropdown__link">
+                                                Đơn hàng
+                                            </a>
+                                        </li>
+                                        <li class="m-account-dropdown__item">
+                                            <a href="{{ route('get_user.myfavorites') }}" class="m-account-dropdown__link">
+                                                Yêu thích
+                                            </a>
+                                        </li>
+                                        <li class="m-account-dropdown__item">
+                                            <a href="{{ route('get.logout') }}"
+                                                class="m-account-dropdown__link">
+                                                Đăng xuất
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
+                    @else
+                       
+                    @endif
                         <div class="c-header__minicart js-minicart">
                             <a href="{{ route('get_user.cart') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
                                 <span class="icon-cart a-icon-text-btn__icon" aria-hdden="true"></span>
@@ -272,7 +304,7 @@
                                     $dem = Cart::count();
                                 @endphp
                                     @if($dem == 0)
-                                    <div class="c-header__minicart-count"><span></span></div>
+                                    
                                 @else
                                     <div class="c-header__minicart-count"><span>{{ \Cart::count() }}</span></div>
                                 @endif

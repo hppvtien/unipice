@@ -7624,7 +7624,7 @@
         .c-header__minicart-panel,
         .c-header__account-dropdown {
             padding-left: calc((100vw - 1280px)/2);
-            padding-right: calc((100vw - 1280px)/2);
+            padding-right: calc((77vw - 1280px)/2);
             padding-left: 0
         }
     }
