@@ -509,12 +509,12 @@
                                     </div>
                                     <form class="form form-shipping-address" id="co-shipping-form" data-hasrequired="* Required Fields">
                                         <div id="shipping-new-address-form" class="fieldset address">
-                                            <input type="hidden" class="form-control" name="method_invoice" id="method_invoice"
+                                            <input type="hidden" class="form-control" name="code_invoice" id="method_invoice"
                                                 value="#00<?php echo rand(1000, 9999); ?>">
                                             <div class="field _required" name="shippingAddress.firstname">
                                                 <div class="control">
                                                     <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="method_customer" aria-required="true" aria-invalid="false" id="G11F99D">
+                                                        <input class="a-text-input m-text-input__input" type="text" name="customer_name" aria-required="true" aria-invalid="false" id="G11F99D">
                                                         <label class="a-form-label m-text-input__label" for="G11F99D">
                                                             <span>Họ tên khách hàng</span>
                                                         </label>
@@ -524,7 +524,7 @@
                                             <div class="field _required" name="shippingAddress.lastname">
                                                 <div class="control">
                                                     <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="method_email" aria-required="true" aria-invalid="false" id="NF52K8P">
+                                                        <input class="a-text-input m-text-input__input" type="text" name="email" aria-required="true" aria-invalid="false" id="NF52K8P">
                                                         <label class="a-form-label m-text-input__label" for="NF52K8P">
                                                             <span>Email</span>
                                                         </label>
@@ -534,7 +534,7 @@
                                             <div class="field" name="shippingAddress.company">
                                                 <div class="control">
                                                     <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="method_address" aria-invalid="false" id="SMA1P60">
+                                                        <input class="a-text-input m-text-input__input" type="text" name="address" aria-invalid="false" id="SMA1P60">
 
                                                         <label class="a-form-label m-text-input__label" for="SMA1P60">
                                                             <span>Địa chỉ</span>
@@ -545,7 +545,7 @@
                                             <div class="field _required" name="shippingAddress.telephone">
                                                 <div class="control _with-tooltip">
                                                     <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="method_customer_code" aria-required="true" aria-invalid="false" id="CNBP3U7">
+                                                        <input class="a-text-input m-text-input__input" type="text" name="taxcode" aria-required="true" aria-invalid="false" id="CNBP3U7">
                                                         <label class="a-form-label m-text-input__label" for="CNBP3U7">
                                                             <span>Mã số thuế</span>
                                                         </label>
@@ -555,7 +555,7 @@
                                             <div class="field" name="shippingAddress.fax">
                                                 <div class="control">
                                                     <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="method_phone" aria-invalid="false" id="CBQX168">
+                                                        <input class="a-text-input m-text-input__input" type="text" name="phone" aria-invalid="false" id="CBQX168">
                                                         <label class="a-form-label m-text-input__label" for="CBQX168">
                                                             <span>Số điện thoại</span>
                                                         </label>
@@ -576,7 +576,7 @@
                                     </form>
                                     <div class="actions-toolbar">
                                         <div class="primary">
-                                            <button class="a-btn a-btn--primary action apply primary js-save-cart" data-url-rd="{{ route('get_user.paysuccsess') }}" id="pay_success" data-url="{{ route('get_user.paysuccsess') }}" type="button" value="Pay Continue">
+                                            <button class="a-btn a-btn--primary action apply primary js-save-cart" id="pay_success" data-url="{{ route('get_user.paysuccsess') }}"  data-url-rd = "{{ route('get_user.paysuccsess') }}" type="button" value="Pay Continue">
                                                 <span>Tiếp tục thanh toán</span>
                                             </button>
                                         </div>

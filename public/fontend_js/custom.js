@@ -183,88 +183,37 @@ $('#check_vouchers').on('click', function() {
         }
     });
 });
-$(".js-save-cart").on('click', function() {
-    // var $this = $(this);
-    // var group_buy = $("input[name='type_pay']:checked").val();
-    // var method_customer_code;
-    // var method_company;
-
-    // if (group_buy == 0) {
-    var method_customer_code = '0000000000';
-    // method_company = 'Ca nhan';
-    // } else {
-    var method_customer_code = $("input[name='method_customer_code']").val();
-    // method_company = $("input[name='method_company']").val();
-    // }
-
-    var method_invoice = $("input[name='method_invoice']").val();
+$("#pay_success").on('click', function() {
+    var data_url = $(this).attr('data-url');
+    var URLRD = $(this).attr('data-url-rd');
+    var taxcode = $("input[name='taxcode']").val();
+    var code_invoice = $("input[name='code_invoice']").val();
     var vouchers = $("input[name='vouchers']").val();
-    var method_phone = $("input[name='method_phone']").val();
-    var method_email = $("input[name='method_email']").val();
-    var method_customer = $("input[name='method_customer']").val();
-    var method_address = $("input[name='method_address']").val();
+    var phone = $("input[name='phone']").val();
+    var email = $("input[name='email']").val();
+    var customer_name = $("input[name='customer_name']").val();
+    var address = $("input[name='address']").val();
     var type_pay = $("input[name='type_pay']:checked").val();
     var vouchers = $("input[name='vouchers']").val();
-    // $this.addClass('active'); // _this.flagClick = true;
-
-    var URL = $(this).attr('data-url');
-    console.log(URL);
-    // var URLRD = $this.attr('data-url-rd');
     $.ajax({
-        url: URL,
+        url: data_url,
         method: "get",
         data: {
-            method_invoice: method_invoice,
+            code_invoice: code_invoice,
             vouchers: vouchers,
-            method_phone: method_phone,
+            phone: phone,
+            taxcode: taxcode,
             type_pay: type_pay,
-            method_email: method_email,
-            method_email: method_email,
-            method_customer: method_customer,
-            method_address: method_address,
-            method_customer_code: method_customer_code,
+            address: address,
+            email: email,
+            customer_name: customer_name,
+            email: email
         },
         success: function success(results) {
-            // if (results.status === 401) {
-            //     console.log('code sai');
-            //     toastr__WEBPACK_IMPORTED_MODULE_0___default.a.error(results.messager);
-            // } else {
-            //     console.log('code dung');
-            //     _this.flagClick = false;
-            //     $this.removeClass('active');
-            //     window.location.href = URLRD;
-            // }
+            window.location.href = URLRD;
         },
         error: function error(results) {
-            // if (group_buy === 0) {
-            //     if (results.responseJSON.errors.method_address) {
-            //         $('.method_address').html(results.responseJSON.errors.method_address);
-            //     }
-            // } else {
-            //     if (!results.responseJSON.errors.method_address) {
-            //         $('.method_address').html('');
-            //     }
 
-            //     if (!results.responseJSON.errors.method_company) {
-            //         $('.method_company').html('');
-            //     }
-
-            //     if (!results.responseJSON.errors.method_customer_code) {
-            //         $('.method_customer_code').html('');
-            //     }
-
-            //     if (results.responseJSON.errors.method_address) {
-            //         $('.method_address').html(results.responseJSON.errors.method_address);
-            //     }
-
-            //     if (results.responseJSON.errors.method_company) {
-            //         $('.method_company').html(results.responseJSON.errors.method_company);
-            //     }
-
-            //     if (results.responseJSON.errors.method_customer_code) {
-            //         $('.method_customer_code').html(results.responseJSON.errors.method_customer_code);
-            //     }
-            // }
         }
     });
 });

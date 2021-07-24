@@ -23,7 +23,7 @@
 
 <body>
 
- @include('pages.components.headers._inc_header_user')
+ {{-- @include('pages.components.headers._inc_header_user') --}}
     <div id="pjax-pages">
         @yield('content')
     </div>
