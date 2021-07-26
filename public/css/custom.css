@@ -15,9 +15,11 @@
     padding-right: 20px;
     width: auto;
 }
-.m-text-input{
+
+.m-text-input {
     width: 100%;
 }
+
 .block-collapsible-nav .item.current {
     position: relative;
 }
@@ -105,7 +107,7 @@ h1.page-title {
 }
 
 .columns .column.main {
-    padding-bottom: 40px;
+    /*padding-bottom: 40px;*/
     width: 100%
 }
 

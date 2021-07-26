@@ -1,5 +1,5 @@
 <footer class="c-footer js-footer">
-    @include('pages.components.follow-me');
+    @include('pages.components.follow-me')
 
     <div class="c-footer__nav">
 

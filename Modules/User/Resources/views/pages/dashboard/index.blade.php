@@ -1,14 +1,11 @@
 @extends('pages.layouts.app_master_frontend')
 @section('contents')
-<main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
+@include('pages.components.headers.css_js')
+<main id="maincontent" class=""><!--<a id="contentarea" tabindex="-1"></a>-->
 
     <div class="columns">
-        <div class="column main">
-            <div class="page-title-wrapper">
-                <h1 class="page-title">
-                    <span class="base" data-ui-id="page-title-wrapper">Tài khoản</span>
-                </h1>
-            </div>
+        <div class="column main padding_css">
+
             <input name="form_key" type="hidden" value="ti05PgAwYARp0X1u">
             <div class="block block-dashboard-info">
                 <div class="block-title"><strong>Thông tin tài khoản</strong></div>
@@ -54,7 +51,6 @@
             <div class="block block-dashboard-addresses">
                 <div class="block-title">
                     <strong>Địa chỉ giao hàng</strong>
-                    <a class="action edit a-anchor" href="#"><span>Quản lý địa chỉ</span></a>
                 </div>
                 <div class="block-content">
                     <div class="box box-billing-address">

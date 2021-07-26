@@ -1,6 +1,8 @@
 @extends('pages.layouts.app_master_frontend') @section('contents')
-<main id="maincontent" class="page-main">
-    <a id="contentarea" tabindex="-1"></a>
+
+@include('pages.components.headers.css_js')
+<main id="maincontent" class="">
+    <!--<a id="contentarea" tabindex="-1"></a>-->
     <div class="page messages">
         <div data-placeholder="messages"></div>
         <div data-bind="scope: 'messages'">
@@ -15,7 +17,7 @@
     <div class="columns">
         @include('user::components._inc_menu_user')
 
-        <div class="column main">
+        <div class="column main padding_css">
             <div>
                 <div class="c-filter-bar class_left">
 
@@ -137,3 +139,4 @@
 </main>
 
 @stop
+
