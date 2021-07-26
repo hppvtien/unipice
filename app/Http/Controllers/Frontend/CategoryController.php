@@ -41,7 +41,7 @@ class CategoryController extends Controller
         if ($request->data_slug_trade) {
             $data_slug = $request->data_slug_trade;
 
-            
+        
             $trade_id = Uni_Trade::where('slug', $data_slug)->pluck('id')->first();
             $group_id_product = Product_Trade::where('trade_id', $trade_id)->pluck('product_id');
             $product  = Uni_Product::whereIn('id', $group_id_product)->orderBy($data_sort, $data_order)->limit(12)->get();

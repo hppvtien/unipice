@@ -70,12 +70,14 @@ Route::middleware('checkLoginUser')->group(function() {
     Route::get('in-pdf.html', 'UserCartController@generatePDF')->name('get_user.generatePDF');
     Route::post('in-pdf.html', 'UserCartController@viewPDF');
     Route::get('down-pdf.html', 'UserCartController@downPDF')->name('get_user.downPDF');
-    Route::get('thanh-toan-vnpay.html/{id}', 'UserPayController@getVnPaySuccsess')->name('get_user.vnpaysuccsess'); 
-    Route::post('thanh-toan-vnpay.html/{id}', 'UserPayController@processVnPayCart'); 
-    Route::get('thanh-toan-momo.html', 'UserPayController@getmomoSuccsess')->name('get_user.momosuccsess'); 
-    Route::post('thanh-toan-momo.html', 'UserPayController@processmomoCart'); 
-    Route::get('thong-bao-thanh-toan-momo.html', 'UserPayController@resultmomo')->name('get_user.result_momo');
-    Route::get('return-vnpay.html', 'UserPayController@returnvnpay')->name('get_user.result_vnpay');
+    Route::get('thanh-toan/{id}', 'UserPayController@getSuccsess')->name('get_user.paysuccsess'); 
+
+    Route::get('thanh-toan-vnpay/{id}', 'UserPayController@getVnPaySuccsess')->name('get_user.vnpaysuccsess'); 
+    // Route::post('thanh-toan-vnpay.html/{id}', 'UserPayController@processVnPayCart'); 
+    Route::get('thanh-toan-momo.html/{id}', 'UserPayController@getmomoSuccsess')->name('get_user.momosuccsess'); 
+    // Route::post('thanh-toan-momo.html/{id}', 'UserPayController@processmomoCart'); 
+    // Route::get('thong-bao-thanh-toan-momo.html', 'UserPayController@resultmomo')->name('get_user.result_momo');
+    // Route::get('return-vnpay.html', 'UserPayController@returnvnpay')->name('get_user.result_vnpay');
 });
 
 

@@ -86,4 +86,8 @@ function execPostRequest($url, $data)
     function get_link_blank($product_id){
         $link = App\Models\Uni_Product::where('id','=',$product_id)->pluck('slug')->first();
         return route('get.product',['slug'=>$link]);
+    }  
+    function get_link_blank_byname($product_name){
+        $link = App\Models\Uni_Product::where('name','=',$product_name)->pluck('slug')->first();
+        return '/san-pham/'.$link;
     }

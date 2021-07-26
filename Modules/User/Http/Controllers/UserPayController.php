@@ -34,12 +34,14 @@ class UserPayController extends UserController
             'vat_total' => $vat_total,
             'listCarts' => $listCarts
         ];
+        // dd($viewData);
         return view('user::pages.pay.index', $viewData);
     }
     public function getPaySuccsess(Request $request)
     { 
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
+        $total_money = \Cart::total(0,0,'.');
         $order_data = [
             'user_id'=>get_data_user('web'),
             'code_invoice'=>$request->code_invoice,
@@ -51,26 +53,29 @@ class UserPayController extends UserController
             'taxcode'=>$request->taxcode,
             'type_pay'=>$request->type_pay,
             'cart_info'=>$listCarts,
+            'total_money'=>$total_money,
             'created_at'=>Carbon::now()
         ];
-        // dd($order_data);
         $idOrder = Uni_Order::insertGetId($order_data); 
         // \Cart::destroy();
         if($idOrder){
             $order_data_sucsses = Uni_Order::where('id',$idOrder)->first();
-           
             if ($order_data_sucsses->type_pay == 4) {
-                return redirect()->route('get_user.vnpaysuccsess',$order_data_sucsses->id);
+                $url = 'thanh-toan-vnpay/'.$idOrder;
+                return $url;
             } elseif ($order_data_sucsses->type_pay == 2) {
-                return redirect()->route('get_user.momosuccsess');
+                $url = 'thanh-toan-momo/'.$idOrder;
+                return $url;
             } else {
-                return redirect()->route('get_user.paysuccsess');
+                $url = 'thanh-toan/'.$idOrder;
+                return $url;
             }
         }
     }
-
-    public function getSuccsess(){
-        return view('user::pages.pay.succsess');
+    public function getSuccsess(Request $request, $id){
+        $order = Uni_Order::find($id); 
+        
+        return view('user::pages.pay.succsess',compact('order'));
     }
     public function check_vouchers(Request $request)
     {
@@ -196,11 +201,12 @@ class UserPayController extends UserController
     //     }
     //     // return redirect()->to('/');
     // }
-    public function getVnPaySuccsess()
+    public function getVnPaySuccsess(Request $request, $id)
     {
-        \SEOMeta::setTitle('Thanh toán');
+        $order = Uni_Order::find($id); 
+        // \SEOMeta::setTitle('Thanh toán');
      
-        return view('user::pages.pay.vnpaysuccsess');
+        return view('user::pages.pay.vnpaysuccsess',compact('order'));
     }
 
     // public function processVnPayCart(Request $request)
@@ -292,24 +298,12 @@ class UserPayController extends UserController
         
     // }
 
-    // public function getmomoSuccsess()
-    // {
-    //     \SEOMeta::setTitle('Thanh toán');
-    //     $listCarts = \Cart::content();
-    //     $configuration = Configuration::first();
-    //     $bill_data = Bill::orderBy('id', 'desc')->first();
-    //     $tran_data = Transaction::orderBy('id', 'desc')->first();
-    //     $order_data = Order::orderBy('id', 'desc')->first();
-    //     $viewData = [
-    //         'tran_data' => $tran_data,
-    //         'order_data' => $order_data,
-    //         'listCarts' => $listCarts,
-    //         'bill_data' => $bill_data,
-    //         'configuration' => $configuration
-    //     ];
-    //     // dd($viewData);
-    //     return view('user::pages.pay.momosuccsess', $viewData);
-    // }
+    public function getmomoSuccsess(Request $request, $id)
+    {
+        $order = Uni_Order::find($id); 
+        // dd($viewData);
+        return view('user::pages.pay.momosuccsess', compact('order'));
+    }
 
     // public function processmomoCart(Request $request)
     // {

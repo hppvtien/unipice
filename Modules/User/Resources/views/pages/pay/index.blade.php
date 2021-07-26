@@ -584,7 +584,7 @@
                                     </form>
                                     <div class="actions-toolbar">
                                         <div class="primary">
-                                            <button class="a-btn a-btn--primary action apply primary " id="pay_success" data-url="{{ route('get_user.postpay') }}"  data-url-rd = "{{ route('get_user.paysuccsess') }}" type="button" value="Pay Continue">
+                                            <button class="a-btn a-btn--primary action apply primary " id="pay_success" data-url="{{ route('get_user.postpay') }}" type="button" value="Pay Continue">
                                                 <span>Tiếp tục thanh toán</span>
                                             </button>
                                         </div>
@@ -643,9 +643,7 @@
                                                     </li>
                                                 </ol>
                                             </div>
-                                            @endforeach
-                                            
-                                            
+                                            @endforeach 
                                         </div>
                                     </div>
                                 </div>

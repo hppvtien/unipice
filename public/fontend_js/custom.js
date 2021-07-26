@@ -211,7 +211,7 @@ $("#pay_success").on('click', function() {
         },
         success: function success(results) {
             console.log(results);
-            window.location.href = URLRD;
+            window.location.href = results;
         },
         error: function error(results) {
 
