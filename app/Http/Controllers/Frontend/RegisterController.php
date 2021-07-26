@@ -42,7 +42,7 @@ class RegisterController extends Controller
                 $user = User::insertGetId($data);
 
                 if ($user) {
-                    Mail::to($data['email'])->send(new EmailVerificationMail($data));
+                     Mail::to($data['email'])->send(new EmailVerificationMail($data));
                     return response([
                         'status'     => 200,
                         'message' => "Xác nhận Email của bạn để hoàn tất đăng ký!"

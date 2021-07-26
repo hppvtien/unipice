@@ -10,7 +10,10 @@
         content: '';
         display: none;
     }
-
+    .optionTitle.m-radio-button__text-label {
+        float: left;
+        margin-right: 10px;
+    }
     .cart-container .cart-summary .shipping .m-text-input,
     .cart-container .cart-summary .shipping .m-select-menu {
         margin-top: 20px;
@@ -20,7 +23,16 @@
     .checkout-container {
         position: relative;
     }
-
+    .m-radio-button {
+        position: relative;
+        margin-bottom: 10px;
+        flex: 0 0 25%;
+        max-width: 100%;
+    }
+    .pay_type {
+        display: flex;
+        margin-top: 20px!important;
+    }
     .a-select-menu {
         position: relative;
         padding-right: 40px;
@@ -464,15 +476,10 @@
         <div class="column main"><input name="form_key" type="hidden" value="GXhjnhZzwPqQ9aXV">
             <div id="checkout" data-bind="scope:'checkout'" class="checkout-container">
                 <div class="checkout-main">
-                    <ul class="opc-progress-bar">
-                        <li class="opc-progress-bar-item _active">
-                            <span>Chi tiết thanh toán</span>
-                        </li>
-                    </ul>
                     <div class="opc-estimated-wrapper">
                         <div class="estimated-block">
-                            <span class="estimated-label">Estimated Total</span>
-                            <span class="estimated-price">$4.99</span>
+                            <span class="estimated-label" style="font-size: 22px;text-transform: uppercase;font-weight: 500;">Tổng tiền phải thanh toán: </span>
+                            <span class="estimated-price" style="font-size: 22px;text-transform: uppercase;font-weight: 500;color:red">{{ \Cart::total(0,0,'.') }} đ</span>
                         </div>
 
                     </div>
@@ -481,8 +488,6 @@
                     <div class="opc-wrapper">
                         <ol class="opc" id="checkoutSteps">
                             <li id="shipping" class="checkout-shipping-address" data-bind="fadeVisible: visible()">
-                              
-                                <div class="step-title" data-role="title">Thông tin khách hàng</div>
                                 <div id="checkout-step-shipping" class="step-content" data-role="content">
                                     <div class="block discount active" id="block-discount" data-collapsible="true" role="tablist">
                                         <div class="content" data-role="content" aria-labelledby="block-discount-heading" role="tabpanel" aria-hidden="false" style="display: block;">
@@ -507,6 +512,7 @@
                                             </form>
                                         </div>
                                     </div>
+                                    <h4 class="step-title" data-role="title">Thông tin khách hàng</h4>
                                     <form class="form form-shipping-address" id="co-shipping-form" data-hasrequired="* Required Fields">
                                         <div id="shipping-new-address-form" class="fieldset address">
                                             <input type="hidden" class="form-control" name="code_invoice" id="method_invoice"
@@ -562,21 +568,23 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @foreach (config('cart.pay_type') as $key => $item)
-                                            <div class="validContainer addressOption selected m-radio-button">
-                                                <input type="radio" class="validAddress m-radio-button__input" name="type_pay"  {{ $key == 0 ? 'checked' : '' }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
-                                                <label class="addressLabel" for="valid-{{ $item['type'] }}">
-                                                    <span class="m-radio-button__circle"></span>
-                                                    <div class="optionTitle m-radio-button__text-label">{{ $item['name'] }}</div>
-                                                    <div class="optionAddress validAddressText"></div>
-                                                </label>
+                                            <div class="field pay_type">
+                                                @foreach (config('cart.pay_type') as $key => $item)
+                                                <div class="validContainer addressOption selected m-radio-button">
+                                                    <input type="radio" class="validAddress m-radio-button__input" name="type_pay"  {{ $key == 0 ? 'checked' : '' }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
+                                                    <label class="addressLabel" for="valid-{{ $item['type'] }}">
+                                                        <span class="m-radio-button__circle"></span>
+                                                        <div class="optionTitle m-radio-button__text-label">{{ $item['name'] }}</div>
+                                                        <div class="optionAddress validAddressText"></div>
+                                                    </label>
+                                                </div>
+                                                @endforeach
                                             </div>
-                                            @endforeach
                                         </div>
                                     </form>
                                     <div class="actions-toolbar">
                                         <div class="primary">
-                                            <button class="a-btn a-btn--primary action apply primary js-save-cart" id="pay_success" data-url="{{ route('get_user.paysuccsess') }}"  data-url-rd = "{{ route('get_user.paysuccsess') }}" type="button" value="Pay Continue">
+                                            <button class="a-btn a-btn--primary action apply primary " id="pay_success" data-url="{{ route('get_user.postpay') }}" type="button" value="Pay Continue">
                                                 <span>Tiếp tục thanh toán</span>
                                             </button>
                                         </div>
@@ -592,11 +600,11 @@
                         <div id="modal-content-11" class="modal-content" data-role="content">
                             <div id="opc-sidebar">
                                 <div class="opc-block-summary">
-                                    <div class="order-summary__heading">
+                                    <div class="order-summary__heading" style="margin-left: 20px">
                                         <span class="title">Thông tin đơn hàng</span>
                                     </div>
                                     <div class="block items-in-cart" data-collapsible="true" role="tablist">
-                                        <div class="title items-in-cart__title" data-role="title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
+                                        <div class="title items-in-cart__title" style="margin-left: 20px" data-role="title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
                                             <span>
                                                 <span>Sản phẩm đã mua</span>
                                             </span>
@@ -635,9 +643,7 @@
                                                     </li>
                                                 </ol>
                                             </div>
-                                            @endforeach
-                                            
-                                            
+                                            @endforeach 
                                         </div>
                                     </div>
                                 </div>

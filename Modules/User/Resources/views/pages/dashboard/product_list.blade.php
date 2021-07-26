@@ -16,7 +16,9 @@
     </div>
     <div class="columns">
         @include('user::components._inc_menu_user')
+
         <div class="column main padding_css">
+
             <div>
                 <div class="c-filter-bar class_left">
 

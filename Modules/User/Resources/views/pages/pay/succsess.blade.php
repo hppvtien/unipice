@@ -1,77 +1,517 @@
 @extends('pages.layouts.app_master_frontend')
 @section('contents')
+<style>
+    .columns .column.main {
+        padding-bottom: 40px;
+        width: 100%;
+    }
 
+    ul.checkout-methods-items li:before {
+        content: '';
+        display: none;
+    }
+    .optionTitle.m-radio-button__text-label {
+        float: left;
+        margin-right: 10px;
+    }
+    .cart-container .cart-summary .shipping .m-text-input,
+    .cart-container .cart-summary .shipping .m-select-menu {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .checkout-container {
+        position: relative;
+    }
+    .m-radio-button {
+        position: relative;
+        margin-bottom: 10px;
+        flex: 0 0 25%;
+        max-width: 100%;
+    }
+    .pay_type {
+        display: flex;
+        margin-top: 20px!important;
+    }
+    .a-select-menu {
+        position: relative;
+        padding-right: 40px;
+        cursor: pointer;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+    }
+
+    .m-select-menu__label {
+        padding-bottom: 0;
+        white-space: nowrap;
+    }
+
+    .m-select-menu__arrow {
+        top: 0;
+    }
+
+    .m-select-menu__arrow:before {
+        content: "";
+    }
+
+    .a-form-label,
+    .checkout-payment-method .payment-method-braintree .hosted-control .label {
+        display: block;
+        padding-bottom: 5px;
+    }
+
+    .cart-container .cart-summary .shipping.block {
+        margin-bottom: 20px;
+    }
+
+    .cart-container .cart-summary .shipping .title {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .cart-container .cart-accordion-title {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .cart-container .cart-summary .block .collapsible-arrow {
+        display: inline-block;
+    }
+
+    .fieldset>.field,
+    .fieldset>.fields>.field {
+        margin: 0 0 6px;
+    }
+
+    .cart-container .cart-summary .shipping-rates {
+        margin-top: 16px;
+    }
+
+    .icon-arrow-down:before {
+        transform: rotate(90deg);
+    }
+
+    .cart-container .cart-summary .shipping .fieldset {
+        margin: 0;
+    }
+
+    .cart-container .cart-totals {
+        margin-bottom: 20px;
+        border-top: 1px solid #a8a99e;
+    }
+
+    .cart-container .cart-totals .table {
+        margin-bottom: 30px;
+        width: 100%;
+        margin: 0 0 10px;
+    }
+
+    .table>caption {
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .cart-container .cart-totals th {
+        padding-left: 0;
+    }
+
+    .cart-container .cart-totals th,
+    .cart-container .cart-totals td {
+        border-bottom: 1px solid #a8a99e;
+        font-size: 14px;
+        font-size: .875rem;
+        font-weight: 400;
+        padding: 16px 12px;
+    }
+
+    .cart-container .cart-totals td {
+        padding-right: 0;
+        text-align: right;
+    }
+
+    .cart-container .cart-totals th,
+    .cart-container .cart-totals td {
+        border-bottom: 1px solid #a8a99e;
+        font-size: 14px;
+        font-size: .875rem;
+        font-weight: 400;
+        padding: 16px 12px;
+    }
+
+    .cart-container .cart-table .item-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cart-container .cart-table .item-info .item {
+        grid-column-end: span 3;
+        display: flex;
+        align-items: center;
+    }
+
+    .cart-container .cart-table td {
+        padding: 0;
+    }
+
+    .cart-container .cart-table td a.product-item-photo {
+        box-shadow: none;
+    }
+
+    .cart-container .cart-table td a {
+        box-shadow: none;
+    }
+
+    .cart-container .cart-summary .summary.title {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .cart-container {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        grid-template-rows: auto auto 1fr;
+        grid-gap: 0 30px;
+    }
+
+
+
+    .cart-container .cart-messaging__shipping {
+        margin: 20px 0;
+    }
+
+    .table td a {
+        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
+        color: inherit;
+        text-decoration: none;
+        padding: 0 0 2px;
+        box-shadow: inset 0 -2px var(--color-primary);
+        transition: box-shadow .2s ease-in-out;
+        outline: none;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .product-image-container {
+        width: 40%;
+        height: auto;
+        display: inline-block;
+        max-width: 100%;
+        margin-right: 10px;
+        object-fit: contain;
+    }
+
+    .checkout-container .opc-sidebar .product {
+        display: flex;
+        margin: 0;
+    }
+
+    .checkout-container .opc-sidebar .product-image-wrapper {
+        height: auto;
+    }
+
+    .checkout-container .opc-sidebar .product-image-container img {
+        object-fit: contain;
+    }
+
+    .checkout-container .opc-sidebar .subtotal {
+        color: #0b2d25;
+        margin-top: 5px;
+    }
+
+    .product-item-name {
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        display: block;
+        hyphens: auto;
+        margin: 5px 0;
+        word-wrap: break-word;
+        font-weight: 600;
+    }
+
+    .product-image-wrapper {
+        display: block;
+        /* height: 0; */
+        position: relative;
+        z-index: 1;
+    }
+
+    .content.minicart-items {
+        margin-top: 10px;
+    }
+
+    .product-image-photo {
+        bottom: 0;
+        display: block;
+        height: auto;
+        left: 0;
+        margin: auto;
+        max-width: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .checkout {
+        width: 100%;
+    }
+
+    .cart-container .cart-table .actions-toolbar {
+        margin-top: 16px;
+        margin-bottom: 0;
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .cart-container .cart-actions {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cart-container .cart-actions button {
+        margin-bottom: 10px;
+    }
+
+    .cart-container .cart-continue {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .opc-progress-bar-item {
+        display: flex;
+        align-items: center;
+        max-width: 50%;
+        margin: 15px 0;
+    }
+
+    .opc-progress-bar-item-last:last-child:before {
+        content: '>';
+        display: inline-block;
+        padding: 0 20px;
+    }
+
+    .opc-estimated-wrapper .estimated-price {
+        font-weight: 700;
+    }
+
+    .opc-estimated-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0 20px;
+    }
+
+    .opc-wrapper .opc>li {
+        padding: 0;
+        margin-bottom: 32px;
+    }
+
+    .checkout-container .opc-sidebar .order-summary__heading {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+
+    .checkout-container .opc-sidebar .product-item:last-child {
+        border-bottom: none;
+    }
+
+    .checkout-container .opc-sidebar .product-item {
+        padding: 0;
+        margin: 0;
+        display: block;
+    }
+
+    .message.notice {
+        background-color: #a8a99e;
+        font-size: 14px;
+        font-size: .875rem;
+        font-weight: 700;
+        padding: 14px;
+        text-align: center;
+        margin: 0 0 10px;
+        background-color: #fc6;
+    }
+
+    ol>li:before,
+    ul li:before {
+        display: none;
+    }
+
+    .opc-progress-bar-item._active span {
+        font-weight: 700;
+    }
+
+    .m-text-input {
+        width: 100%;
+    }
+
+    .m-select-menu {
+        width: 100%;
+    }
+
+    .minicart-items-wrapper.overflowed {
+        margin-bottom: 10px;
+        border-bottom: 1px solid #f2f2f2;
+    }
+
+    .minicart-items-wrapper.overflowed:last-child {
+        border-bottom: none;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            grid-gap: 30px;
+        }
+
+        .cart-container .cart-summary .discount .actions-toolbar,
+        .cart-container .cart-summary .giftcard .actions-toolbar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cart-container .cart-summary {
+            grid-column: 2/span 1;
+            grid-row: 1/-1;
+        }
+
+        .actions-toolbar .primary {
+            float: left;
+        }
+
+        .actions-toolbar .primary {
+            float: left;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .cart-container .cart-table thead {
+            display: table-header-group;
+        }
+
+        .opc-progress-bar {
+            display: flex;
+        }
+
+        .cart-container .cart-table .item-info {
+            display: table-row;
+        }
+
+        .cart-container .cart-table td:first-child {
+            padding-left: 0;
+        }
+
+        .cart-container .cart-table td {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .cart-container .cart-table .actions-toolbar {
+            justify-content: flex-start;
+            padding-top: 0;
+        }
+
+        .cart-container .cart-actions button {
+            margin-left: 10px;
+        }
+
+        .cart-container .cart-table .actions-toolbar a {
+            margin-right: 32px;
+        }
+
+        .cart-container .cart-actions {
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
+
+    @media screen and (max-width: 1023px) {
+        .cart-container {
+            display: block;
+        }
+
+        .cart-container .cart-table .item-info {
+            display: table-row;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .cart-container .cart-table .item-info .item {
+            display: block;
+        }
+
+        .fieldset>.field {
+            box-sizing: border-box;
+        }
+
+        .cart-container .cart-table .actions-toolbar {
+            margin-top: 0;
+            padding: 10px 0;
+        }
+    }
+</style>
 
 <main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
     <div class="page-title-wrapper">
         <h1 class="page-title">
-            <span class="base" data-ui-id="page-title-wrapper">Cám ơn bạn đã mua hàng !!!</span>
+            <span class="base">Chi tiết đơn hàng {{ $order->code_invoice }}</span>
         </h1>
     </div>
+   
     <div class="columns">
         <div class="column main" style="width:100%">
-            <div id="checkout" data-bind="scope:'checkout'" class="checkout-container">
-                <div class="checkout-main">
-                    <div class="opc-wrapper">
-                        <ol class="opc" id="checkoutSteps">
-                            <li id="shipping" class="checkout-shipping-address" data-bind="fadeVisible: visible()">
-                                <div class="step-title" data-role="title">Thông tin đơn hàng</div>
-                                <div id="checkout-step-shipping" class="step-content" data-role="content">
-                                    <form id="form-order" action="{{ route('get_user.downPDF') }}" method="get">
-
-                                        <div class="container" id="pjax-pages-page">
-                                            <div class="cart-detail">
-                                                <div class="cart-detail-top">
-                                                    <p><span class="text-danger"> Họ tên khách hàng (<i class="text-success"> Buyer name </i>):</span> {{ $order_data_sucsses->customer_name }}</p>
-                                                    @if ($order_data_sucsses->method_company)
-                                                    <p><span class="text-danger"> Tên công ty (<i class="text-success"> Company's name </i>):</span> {{ $order_data_sucsses->customer_name }}</p>
-                                                    <p><span class="text-danger"> Mã số thuế (<i class="text-success"> TaxCode </i>):</span> {{ $order_data_sucsses->taxcode }}</p>
-                                                    @else
-                                                    @endif
-                                                    <p><span class="text-danger"> Địa chỉ (<i class="text-success"> Address </i>):</span> {{ $order_data_sucsses->address }}</p>
-                                                    {{-- <p><span class="text-danger"> Hình thức thanh toán (<i class="text-success"> Payment Method </i>):</span> {{ config('cart.pay_type')[$order_data_sucsses->type_pay]['name'] }}</p> --}}
-                                                    <p>Thông tin ngân hàng: <span class="text-danger"> Tài khoản: <i class="text-dark">01256655852366</i> &nbsp&nbsp||&nbsp&nbspNgân hàng: <i class="text-dark">VIB</i> &nbsp&nbsp||&nbsp&nbsp Chủ Thẻ: <i class="text-dark">Phạm văn Tiến</i> &nbsp&nbsp||&nbsp&nbsp Chi nhánh: <i class="text-dark">Thủy Nguyên - Hải Phòng</i> </span></p>
-                                                </div>
-                                                <table class="table table-striped table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">STT</th>
-                                                            <th scope="col">Sản phẩm</th>
-                                                            <th scope="col">Sô lượng</th>
-                                                            <th scope="col">Đơn giá</th>
-                                                            <th scope="col">Thành tiền</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php $n=1; ?>
-                                                        @foreach(json_decode($order_data_sucsses->cart_info) as $key => $item)
-                                                        <tr>
-                                                            <td>{{ $n++ }}</td>
-                                                            <td>{{ $item->name }}</td>
-                                                            <td>{{ $item->qty }}</td>
-                                                            <td>{{ $item->price }}đ</td>
-                                                            <td>{{ $item->price }}đ</td>
-                                                        </tr>
-                                                        @endforeach
-                                                  
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        </form>
-                                    <div class="actions-toolbar">
-                                        <div class="primary">
-                                            <button class="a-btn a-btn--primary action apply primary js-save-cart" id="export_pdf" data-url="{{ route('get_user.paysuccsess') }}"  data-url-rd = "{{ route('get_user.paysuccsess') }}" type="button" value="Pay Continue">
-                                                <span>Xuất hóa đơn</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
+            <h3>Thông tin khách hàng</h3>
+                <p>Người mua: {{ $order->customer_name }}</p>
+                <p>Địa chỉ: {{ $order->address }}</p>
+                <p>Số điênh thoại: {{ $order->phone }}</p>
+                <p>Email: {{ $order->email }}</p>
+                <p>Hình thức thanh toán: {{ $order->type_pay }}</p>
+                <p>Mã số thuế: {{ $order->taxcode }}</p>
+                <p>Mã giảm giá: {{ $order->vouchers }}</p>
+            <h3>Thông tin giỏ hàng</h3>
+            <table id="shopping-cart-table" class="cart items data table cart-table">
+                <thead>
+                    <tr>
+                        <th class=" item" scope="col"><span>Sản phẩm</span></th>
+                        <th class=" price" scope="col"><span>Giá</span></th>
+                        <th class=" qty" scope="col"><span>Số lượng</span></th>
+                        <th class=" subtotal" scope="col"><span>Tổng tiền</span></th>
+                    </tr>
+                </thead>
+                <tbody class="cart item">
+                    <?php $carts = json_decode($order->cart_info, true); ?>
+                    @forelse ($carts as $key => $item)
+                    <tr>
+                        <td class="item" scope="col"><a href="{{ get_link_blank_byname($item['name']) }}"><span>{{ $item['name'] }}</span></a></td>
+                        <td class="price" scope="col"><span>{{ $item['price'] }} đ</span></td>
+                        <td class="qty" scope="col"><span>{{ $item['qty'] }}</span></td>
+                        <td class="subtotal" scope="col"><span>{{ $item['subtotal'] }} đ</span></td>
+                    </tr>
+                    @empty
+                        
+                    @endforelse
+                  <tr style="background">
+                      <td colspan="3">TỔNG TIỀN</td>
+                      <td><span>{{ $order->total_money }} đ</span></td>
+                  </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </main>

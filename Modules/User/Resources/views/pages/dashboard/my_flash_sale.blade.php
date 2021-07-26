@@ -16,7 +16,9 @@
     </div>
     <div class="columns">
         @include('user::components._inc_menu_user')
+
         <div class="column main padding_css">
+
             <div class="show-product" id="show-product">
                 <div class="mt-2 mb-5">
                     <div class="d-flex justify-content-center">
