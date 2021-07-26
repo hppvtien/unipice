@@ -47,7 +47,7 @@
                                                 Xem Chi Tiết Gói Sale
                                             </button>
                                            
-                                            <button onclick="cart_order_now(this);" id="button_sale" class="btn btn-outline-primary btn-sm mt-2" price-id="{{ $l->id }}" price-slug="{{ $l->slug }}" type="button">Mua Ngay</button>
+                                            <button onclick="cart_order_now(this);" id="button_sale" class="btn btn-outline-primary btn-sm mt-2" data-url="{{ route('get_user.cart.add', ['id'=>$l->id,'type'=>'combo']) }}" price-id="{{ $l->id }}" price-slug="{{ $l->slug }}" type="button">Mua Ngay</button>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                       
                     </div>
                     <div class="modal-footer">
-                      <button onclick="cart_order_now(this);" id="cart_sale" type="button" class="btn btn-secondary" price-id="" price-slug="" data-dismiss="modal">Đặt Ngay</button>
+                      <button onclick="cart_order_now(this);" id="cart_sale" type="button" class="btn btn-secondary" data-url="{{ route('get_user.cart.add') }}" price-id="" price-slug="" data-dismiss="modal">Đặt Ngay</button>
                     </div>
                   </div>
                 </div>
@@ -85,7 +85,8 @@
         function cart_order_now(cart_order_now1){
             var cart_order_now_id = $( cart_order_now1 ).attr('price-id');
             var cart_order_now_slug = $( cart_order_now1 ).attr('price-slug');
-            $.post( "{{ route('get_user.cart_now_1') }}", { cart_order_now_id: cart_order_now_id, cart_order_now_slug: cart_order_now_slug } )
+            var data_url = $( cart_order_now1 ).attr('data-url');
+            $.get( data_url)
             .done(function( data ) {
                 alert(data);
             });

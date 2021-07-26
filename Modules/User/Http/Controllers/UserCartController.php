@@ -66,12 +66,4 @@ class UserCartController extends Controller
         $pdf = PDF::loadView('user::pages.pay.downPDF', $viewdata);
         return $pdf->download('hoa-don.pdf');
     }
-
-    public function cart_now(Request $request){
-        if($request){
-            $cart_order_now_id = $request->cart_order_now_id;
-            $cart_order_now_slug = $request->cart_order_now_slug;
-        }
-        return 'aaaaaaaaaaaa '. $cart_order_now_id . '  ' . $cart_order_now_slug;
-    }
 }

@@ -169,6 +169,8 @@ class UserDashboardController extends Controller
 
         if($request->get_total_price){
             $get_total_price = $request->get_total_price;
+        }else{
+            $get_total_price = 1000000;
         }
 
         foreach ($get_data_id as $vl){

@@ -15,7 +15,10 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     Route::get('/', 'UserDashboardController@index')->name('get_user.dashboard');
     Route::post('/', 'UserDashboardController@replaceOrder')->name('get_user.replaceOrder');
     Route::get('/danh-sach-san-pham', 'UserDashboardController@productlist')->name('get_user.productlist');
+    Route::get('/danh-sach-san-pham/goi-san-pham-sale', 'UserDashboardController@my_flash_sale')->name('get_user.my_flash_sale');
+    Route::get('/danh-sach-san-pham/goi-san-pham-sale/get_product_flash_sale', 'UserDashboardController@get_product_flash_sale')->name('get_user.get_product_flash_sale');
     Route::get('/danh-sach-san-pham/myfavorites', 'UserDashboardController@myfavorites')->name('get_user.myfavorites');
+    Route::get('/danh-sach-san-pham/myfavorites/add', 'UserDashboardController@myfavorites_add')->name('get_user.myfavorites_add'); 
     Route::get('/danh-sach-san-pham/myfavorites/delete', 'UserDashboardController@myfavorites_delete')->name('get_user.myfavorites_delete');
     Route::get('/danh-sach-san-pham/myfavorites/filter', 'UserDashboardController@myfavorites_filter')->name('get_user.myfavorites_filter');
     Route::get('/danh-sach-san-pham/filter', 'UserDashboardController@productlist_filter')->name('get_user.productlist_filter');
@@ -43,7 +46,8 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
 
     Route::prefix('cart')->group(function (){
         Route::post('save/{type}', 'UserPayController@processPayCart')->name('post_user.cart.pay');
-        Route::get('{id}/{type}/add', 'UserShoppingCartController@processCart')->name('get_user.cart.add');    });
+        Route::get('{id?}/{type?}/add', 'UserShoppingCartController@processCart')->name('get_user.cart.add');    
+    });
     Route::prefix('favourite')->group(function (){
         Route::post('save/{type}', 'UserPayController@processPayCart')->name('post_user.cart.pay');
         Route::post('{id}/{type}/add', 'UserFavouriteController@processFavourite')->name('get_user.favourite.add');

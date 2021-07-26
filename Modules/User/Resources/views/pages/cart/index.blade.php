@@ -1,5 +1,18 @@
 @extends('pages.layouts.app_master_frontend')
 @section('contents')
+@include('pages.components.headers.css_js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    function get_product_sale(get_id){
+            var get_id = $( get_id ).attr( "data-id-sale" );
+            var get_total_price = $('#hihihihi').attr('gia');
+            $.get( "{{ route('get_user.get_product_flash_sale') }}", { get_id: get_id, get_total_price: get_total_price } )
+            .done(function( data ) {
+                $( "#exampleModalLong .modal-body" ).html( data );
+            });
+        }
+</script>
 <style>
     .columns .column.main {
         padding-bottom: 40px;
@@ -385,22 +398,23 @@
                     </ul>
                 </div>
                 <form action="" method="get" id="form-validate" class="form form-cart">
-                    <div class="cart table-wrapper">
+                    <div class="table-responsive">
                         <table id="shopping-cart-table" class="cart items data table cart-table">
                             <caption class="table-caption">Thông tin giỏ hàng</caption>
                             <thead>
                                 <tr>
-                                    <th class="col item" scope="col"><span>Sản phẩm</span></th>
-                                    <th class="col price" scope="col"><span>Giá</span></th>
-                                    <th class="col qty" scope="col"><span>Số lượng</span></th>
-                                    <th class="col subtotal" scope="col"><span>Tổng tiền</span></th>
-                                    <th class="col subtotal" scope="col"><span></span></th>
+                                    <th scope="col"><span>Sản phẩm</span></th>
+                                    <th scope="col"><span>Mã Sale</span></th>
+                                    <th scope="col"><span>Giá</span></th>
+                                    <th scope="col"><span>Số lượng</span></th>
+                                    <th scope="col"><span>Tổng tiền</span></th>
+                                    <th scope="col"><span>Chức năng</span></th>
                                 </tr>
                             </thead>
                             <tbody class="cart item">
                                 @forelse ($listCarts as $key => $item)
-                                <tr class="item-info">
-                                    <td data-th="Item" class="col item">
+                                <tr>
+                                    <td data-th="Item" class="">
                                         <a href="{{ $item->slug }}" title="{{ $item->name }}" tabindex="-1" class="product-item-photo">
                                             <span class="product-image-container" style="width:110px;">
                                                 <span class="product-image-wrapper" style="padding-bottom: 145.45454545455%;">
@@ -408,24 +422,24 @@
                                                 </span>
                                             </span>
                                         </a>
+                                    </td>
+                                    <td>
                                         <div class="product-item-details">
-                                            <strong class="product-item-name">
-                                                <a href="{{ $item->slug }}">{{ $item->avatar }} </a>
-                                            </strong>
                                             <div class="product attribute sku">
-                                                <strong class="type">Mã sản phẩm:</strong>
-                                                <span class="value" itemprop="sku">{{ $item->id }}</span>
+                                                <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" data-id-sale="{{ $item->id }}" onclick="get_product_sale(this);">
+                                                    Mã sản phẩm: <span class="value" itemprop="sku" >{{ $item->id }}</span>
+                                                </button>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="col price" data-th="Price">
+                                    <td data-th="Price">
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price">{{ $item->price }} đ</span> 
+                                                <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ $item->price }} đ</span> 
                                             </span>
                                         </span>
                                     </td>
-                                    <td class="col qty" data-th="Qty">
+                                    <td data-th="Qty">
                                         <div class="field qty">
                                             <div class="control qty">
                                                 <label for="cart-{{ $item->id }}-qty">
@@ -434,14 +448,14 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="col subtotal" data-th="Tổng tiền">
+                                    <td data-th="Tổng tiền">
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
                                                 <span class="price">{{ $item->price * $item->qty}} đ</span> 
                                             </span>
                                         </span>
                                     </td>
-                                    <td class="col subtotal" data-th="Xóa sản phẩm">
+                                    <td data-th="Xóa sản phẩm">
                                         <button style="width: 20px;height: 20px;padding: 0;background: red;" data-row={{ $item->rowId }} type="button" data-url="{{ route('get_user.deletecart') }}" name="remove_cart_action" title="Remove Shopping Cart" class="a-btn a-btn--primary action remove remove_cart_action">
                                             <span>x</span>
                                         </button>
@@ -476,4 +490,21 @@
         </div>
     </div>
 </main>
+<div style="z-index:999999" class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            Chi Tiết Gói Sale
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
 @stop
