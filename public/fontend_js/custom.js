@@ -162,7 +162,6 @@ $(".remove_cart_action").on('click', function() {
             console.log(data);
             $('#show-store').html(data);
         },
-
     });
 
 });

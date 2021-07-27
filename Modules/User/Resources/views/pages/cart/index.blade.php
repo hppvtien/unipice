@@ -1,8 +1,6 @@
 @extends('pages.layouts.app_master_frontend')
 @section('contents')
 @include('pages.components.headers.css_js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script>
     function get_product_sale(get_id){
             var get_id = $( get_id ).attr( "data-id-sale" );

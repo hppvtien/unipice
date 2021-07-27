@@ -1,7 +1,7 @@
 <div class="sidebar sidebar-main">
     <div class="block block-collapsible-nav">
 
-        <div id="sidebar" style="background-image: url(https://colorlib.com/etc/bootstrap-sidebar/sidebar-06/images/bg_1.jpg);">
+        <div id="sidebar" style="background-image: url({{asset('assets/images/bg_1.jpg')}});">
             <div class="p-4">
                 <h1><a href="{{ route('get_user.dashboard') }}" class="logo"> Tài Khoản</a></h1>
                 <ul class="list-unstyled components mb-5">

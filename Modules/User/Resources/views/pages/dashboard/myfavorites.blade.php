@@ -51,7 +51,7 @@
                             <div data-product-name="{{ $value->name }}" data-product-sku="{{ $value->id }}" data-product-brand="frontiercoop_market" data-product-category="{{ get_category_id($value->id) }}" class="m-product-card">
                                 <div class="m-product-card__content-wrapper">
                                     <a class="m-product-card__img-wrapper" href="san-pham-10" title="{{ $value->name }}">
-                                        <img class="m-product-card__img ls-is-cached lazyloaded" data-src="https://wall.vn/wp-content/uploads/2020/03/hinh-nen-dep-may-tinh-1.jpg" alt="{{ $value->name }}" src="https://wall.vn/wp-content/uploads/2020/03/hinh-nen-dep-may-tinh-1.jpg">
+                                        <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($value->thumbnail) }}" alt="{{ $value->name }}" src="{{ pare_url_file($value->thumbnail) }}">
                                     </a>
                                     <form class="m-product-card__add-to-cart">
                                         <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn" type="submit">Thêm Vào Giỏ</button>

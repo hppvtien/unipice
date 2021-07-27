@@ -19,7 +19,7 @@
         <tbody>
             @foreach ($array as $key => $value)
             <tr>
-                <td class="col-md-3">{{ $value['options']['images'] }}</td>
+                <td class="col-md-3">{{ pare_url_file($value['options']['images']) }}</td>
                 <td class="col-md-3">{{ $value['name'] }}</td>
                 <td class="col-md-3">{{ $value['qty'] }}</td>
                 <td class="col-md-3">{{ number_format($value['price']) }}</td>

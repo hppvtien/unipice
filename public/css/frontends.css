@@ -3124,7 +3124,7 @@ ol li ol:first-child {
 }
 
 ul li:before {
-    content: '\2022'
+    content: none
 }
 
 ul li ul li:before {
