@@ -264,25 +264,25 @@
                         <button class="a-btn c-header__initials js-account__trigger" type="button"><span class="icon-account a-icon-text-btn__icon" aria-hidden="true"></span></button>
                             <div class="c-header__account-dropdown">
                                 <div class="m-account-dropdown">
-                                    <ul class="m-account-dropdown__list">
+                                    <ul class="m-account-dropdo33wn__list">
                                         <li class="m-account-dropdown__item">
                                             <a href="{{ route('get_user.dashboard') }}"
                                                 class="m-account-dropdown__link">
                                                 Tài khoản
                                             </a>
                                         </li>
-                                        <li class="m-account-dropdown__item">
+                                        <li class="m-account-dropdo33wn__list">
                                             <a href="{{ route('get_user.transaction') }}"
                                                 class="m-account-dropdown__link">
                                                 Đơn hàng
                                             </a>
                                         </li>
-                                        <li class="m-account-dropdown__item">
+                                        <li class="m-account-dropdo33wn__list">
                                             <a href="{{ route('get_user.myfavorites') }}" class="m-account-dropdown__link">
                                                 Yêu thích
                                             </a>
                                         </li>
-                                        <li class="m-account-dropdown__item">
+                                        <li class="m-account-dropdo33wn__list">
                                             <a href="{{ route('get.logout') }}"
                                                 class="m-account-dropdown__link">
                                                 Đăng xuất
