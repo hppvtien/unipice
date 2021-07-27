@@ -122,6 +122,7 @@ $(".js-add-cart").on('click', function() {
         },
         success: function(data) {
             console.log(data);
+
             $('#show-store').html(data);
         },
 
@@ -160,12 +161,21 @@ $(".remove_cart_action").on('click', function() {
         },
         success: function(data) {
             console.log(data);
+            location.reload();
             $('#show-store').html(data);
         },
 
     });
 
 });
+
+// function cart_order_now(cart_order_now1) {
+//     var data_url = $(cart_order_now1).attr('data-url');
+//     $.get(data_url).fail(function() {
+//         location.reload();
+//     });
+// }
+
 $('#check_vouchers').on('click', function() {
     let URL = $(this).attr('data-url');
     $.ajax({
@@ -185,7 +195,6 @@ $('#check_vouchers').on('click', function() {
 });
 $("#pay_success").on('click', function() {
     var data_url = $(this).attr('data-url');
-    var URLRD = $(this).attr('data-url-rd');
     var taxcode = $("input[name='taxcode']").val();
     var code_invoice = $("input[name='code_invoice']").val();
     var vouchers = $("input[name='vouchers']").val();
@@ -197,7 +206,7 @@ $("#pay_success").on('click', function() {
     var vouchers = $("input[name='vouchers']").val();
     $.ajax({
         url: data_url,
-        method: "get",
+        method: "post",
         data: {
             code_invoice: code_invoice,
             vouchers: vouchers,
@@ -214,7 +223,52 @@ $("#pay_success").on('click', function() {
             window.location.href = results;
         },
         error: function error(results) {
-
+            console.log('Loizzzzzzzzz');
         }
+    });
+});
+$("#bank_code").on('change', function() {
+    let bank_code = $(this).val();
+    $('#btn-vnpay').on('click', function() {
+        var data_url = $(this).attr('data-url');
+        $.ajax({
+            url: data_url,
+            type: "post",
+            dataType: "text",
+            data: {
+                bank_code: bank_code
+            },
+            success: function(result) {
+                console.log(result);
+                // let urlvnpay = result;
+                // console.log(urlvnpay);
+                window.location.href = result;
+            },
+            error: function(result) {
+                console.log('loixxxxxxxxxxxxxxxxxxxx');
+            }
+
+        });
+    })
+});
+$('#momo-success').on('click', function() {
+    let data_url = $(this).attr('data-url');
+
+    $.ajax({
+        url: data_url,
+        type: "post",
+        dataType: "text",
+        data: {
+            t_note: $("input[name='t_note']").val(),
+        },
+        success: function(results) {
+            console.log(results);
+            // let urlmomo = result;
+            window.location.href = results;
+        },
+        error: function(results) {
+            console.log(results);
+        }
+
     });
 });

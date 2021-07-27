@@ -470,16 +470,58 @@
 <main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
     <div class="page-title-wrapper">
         <h1 class="page-title">
-            <span class="base">Cám ơn bạn đã mua hàng Momo !!! </span>
+            <span class="base">Chi tiết đơn hàng {{ $order->code_invoice }}</span>
         </h1>
     </div>
+   
     <div class="columns">
         <div class="column main" style="width:100%">
-            <div id="checkout" data-bind="scope:'checkout'" class="checkout-container">
-                <div class="checkout-main">
-                    <div class="opc-wrapper">
-                       <h3>Hệ thống đã tiếp nhận đơn hàng của bạn.</h3>
-                    </div>
+            <h3>Thông tin khách hàng</h3>
+                <p>Người mua: {{ $order->customer_name }}</p>
+                <p>Địa chỉ: {{ $order->address }}</p>
+                <p>Số điênh thoại: {{ $order->phone }}</p>
+                <p>Email: {{ $order->email }}</p>
+                <p>Hình thức thanh toán: {{ $order->type_pay }}</p>
+                <p>Mã số thuế: {{ $order->taxcode }}</p>
+                <p>Mã giảm giá: {{ $order->vouchers }}</p>
+                <div class="form-group">
+                    <label for="bank_code">Nội dung thanh toán</label>
+                    <input class="form-control" type="text" name="t_note" value="" placeholder="Vui lòng nhập nội dung thanh toán">
+                </div>
+            <h3>Thông tin giỏ hàng</h3>
+            <table id="shopping-cart-table" class="cart items data table cart-table">
+                <thead>
+                    <tr>
+                        <th class=" item" scope="col"><span>Sản phẩm</span></th>
+                        <th class=" price" scope="col"><span>Giá</span></th>
+                        <th class=" qty" scope="col"><span>Số lượng</span></th>
+                        <th class=" subtotal" scope="col"><span>Tổng tiền</span></th>
+                    </tr>
+                </thead>
+                <tbody class="cart item">
+                    <?php $carts = json_decode($order->cart_info, true); ?>
+                    @forelse ($carts as $key => $item)
+                    <tr>
+                        <td class="item" scope="col"><a href="{{ get_link_blank_byname($item['name']) }}"><span>{{ $item['name'] }}</span></a></td>
+                        <td class="price" scope="col"><span>{{ $item['price'] }} đ</span></td>
+                        <td class="qty" scope="col"><span>{{ $item['qty'] }}</span></td>
+                        <td class="subtotal" scope="col"><span>{{ $item['subtotal'] }} đ</span></td>
+                    </tr>
+                    @empty
+                        
+                    @endforelse
+                  <tr>
+                      <td colspan="3">TỔNG TIỀN</td>
+                      <td><span>{{ $order->total_money }} đ</span></td>
+                  </tr>
+                </tbody>
+            </table>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button class="a-btn a-btn--primary action apply primary" id="momo-success" data-url="{{ route('post_user.momosuccsess',$order->id) }}" 
+                        type="button" value="Pay Continue">
+                        <span>Tiến hành thanh toán</span>
+                    </button>
                 </div>
             </div>
         </div>

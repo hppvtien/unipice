@@ -39,73 +39,6 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('delete/{id}', 'AdminCategoryController@delete')->name('get_admin.category.delete')->middleware('permission:category_delete|full');
     });
 
-    Route::prefix('teacher')->group(function (){
-        Route::get('/', 'AdminTeacherController@index')->name('get_admin.teacher.index')->middleware('permission:teacher_index|full');
-        Route::get('/create', 'AdminTeacherController@create')->name('get_admin.teacher.create')->middleware('permission:teacher_create|full');
-        Route::post('/create', 'AdminTeacherController@store');
-        Route::get('update/{id}', 'AdminTeacherController@edit')->name('get_admin.teacher.edit')->middleware('permission:teacher_edit|full');
-        Route::post('update/{id}', 'AdminTeacherController@update');
-        Route::get('delete/{id}', 'AdminTeacherController@delete')->name('get_admin.teacher.delete')->middleware('permission:teacher_delete|full');
-    });
-
-    Route::prefix('course')->group(function (){
-        Route::get('/', 'AdminCourseController@index')->name('get_admin.course.index')->middleware('permission:course_index|full');
-        Route::get('/create', 'AdminCourseController@create')->name('get_admin.course.create')->middleware('permission:course_create|full');
-        Route::post('/create', 'AdminCourseController@store');
-        Route::get('update/{id}', 'AdminCourseController@edit')->name('get_admin.course.edit')->middleware('permission:course_update|full');
-        Route::prefix('view')->group(function (){
-            Route::get('{id}', 'AdminCourseController@show')->name('get_admin.course.show')->middleware('permission:course_show|full');
-        });
-
-        Route::prefix('content')->group(function (){
-            Route::get('{id}/index', 'AdminCourseContentController@index')->name('get_admin.course_content.index')->middleware('permission:course_content_index|full');
-            Route::get('{id}/create', 'AdminCourseContentController@create')->name('get_admin.course_content.create')->middleware('permission:course_content_create|full');
-            Route::post('{id}/create', 'AdminCourseContentController@store');
-
-            Route::get('{id}/update/{contentId}', 'AdminCourseContentController@edit')->name('get_admin.course_content.edit')->middleware('permission:course_content_edit|full');
-            Route::post('{id}/update/{contentId}', 'AdminCourseContentController@update');
-            Route::get('{id}/delete/{contentId}', 'AdminCourseContentController@delete')->name('get_admin.course_content.delete')->middleware('permission:course_content_delete|full');
-        });
-
-        Route::prefix('video')->group(function (){
-            Route::get('{id}/index', 'AdminCourseVideoController@index')->name('get_admin.course_video.index')->middleware('permission:course_video_index|full');
-            Route::get('{id}/create', 'AdminCourseVideoController@create')->name('get_admin.course_video.create')->middleware('permission:course_video_create|full');
-            Route::post('{id}/create', 'AdminCourseVideoController@store');
-
-            Route::get('{id}/update/{videoId}', 'AdminCourseVideoController@edit')->name('get_admin.course_video.edit')->middleware('permission:course_video_edit|full');
-            Route::post('{id}/update/{videoId}', 'AdminCourseVideoController@update');
-            Route::get('{id}/delete/{videoId}', 'AdminCourseVideoController@delete')->name('get_admin.course_video.delete')->middleware('permission:course_video_delete|full');
-        });
-        Route::prefix('question')->group(function (){
-            Route::get('{id}/index', 'AdminCourseQuestionController@index')->name('get_admin.course_question.index')->middleware('permission:course_question_index|full');
-            Route::get('{id}/create', 'AdminCourseQuestionController@create')->name('get_admin.course_question.create')
-                ->middleware('permission:course_question_create|full');
-            Route::post('{id}/create', 'AdminCourseQuestionController@store')->name('get_admin.course_question.create');
-
-            Route::get('{id}/update/{questId}', 'AdminCourseQuestionController@edit')->name('get_admin.course_question.edit')->middleware('permission:course_question_edit|full');
-            Route::post('{id}/update/{questId}', 'AdminCourseQuestionController@update');
-            Route::get('{id}/delete/{questId}', 'AdminCourseQuestionController@delete')->name('get_admin.course_question.delete')->middleware('permission:course_question_delete|full');
-            Route::get('{id}/answers/{questId}/{answerId}','AdminCourseQuestionController@success')->name('get_admin.course_question.success')
-                ->middleware('permission:course_question_success|full');
-        });
-        Route::prefix('faq')->group(function (){
-            Route::get('{id}/index', 'AdminCourseFaqController@index')->name('get_admin.course_faq.index');
-            Route::get('{id}/create', 'AdminCourseFaqController@create')->name('get_admin.course_faq.create');
-            Route::post('{id}/create', 'AdminCourseFaqController@store');
-
-            Route::get('{id}/update/{course_id}', 'AdminCourseFaqController@edit')->name('get_admin.course_faq.edit');
-            Route::post('{id}/update/{course_id}', 'AdminCourseFaqController@update');
-            Route::get('{id}/delete/{course_id}', 'AdminCourseFaqController@delete')->name('get_admin.course_faq.delete');
-          
-        });
-        Route::prefix('vote')->group(function (){
-            Route::get('{id}/index', 'AdminCourseVoteController@index')->name('get_admin.course_vote.index')->middleware('permission:course_vote_index|full');
-            Route::get('{id}/delete/{voteId}', 'AdminCourseVoteController@delete')->name('get_admin.course_vote.delete')->middleware('permission:course_vote_delete|full');
-        });
-
-        Route::post('update/{id}', 'AdminCourseController@update');
-        Route::get('delete/{id}', 'AdminCourseController@delete')->name('get_admin.course.delete')->middleware('permission:course_delete|full');
-    });
 
     Route::prefix('slide')->group(function (){
         Route::get('/', 'AdminSlideController@index')->name('get_admin.slide.index')->middleware('permission:slide_index|full');
@@ -150,29 +83,7 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('movetrash/{id}', 'AdminUserController@movetrash')->name('get_admin.user.movetrash');
         Route::get('delete/{id}', 'AdminUserController@delete')->name('get_admin.user.delete')->middleware('permission:user_delete|full');
     });
-    Route::prefix('freebook')->group(function (){
-        Route::get('/', 'AdminFreeBookController@index')->name('get_admin.free_book.index');
-        Route::get('/create', 'AdminFreeBookController@create')->name('get_admin.free_book.create');
-        Route::post('/create', 'AdminFreeBookController@store');
-        Route::get('update/{id}', 'AdminFreeBookController@edit')->name('get_admin.free_book.edit');
-        Route::post('update/{id}', 'AdminFreeBookController@update');
-        Route::get('delete/{id}', 'AdminFreeBookController@delete')->name('get_admin.free_book.delete');
-    });
-    Route::prefix('jobs')->group(function (){
-        Route::get('/', 'AdminJobsController@index')->name('get_admin.jobs.index');
-        Route::get('/create', 'AdminJobsController@create')->name('get_admin.jobs.create');
-        Route::post('/create', 'AdminJobsController@store');
-        Route::get('update/{id}', 'AdminJobsController@edit')->name('get_admin.jobs.edit');
-        Route::post('update/{id}', 'AdminJobsController@update');
-        Route::get('delete/{id}', 'AdminJobsController@delete')->name('get_admin.jobs.delete');
-    });
-    // ----------------------------------------------------------------------------------------------------------------
-    Route::prefix('answer_and_questions')->group(function (){
-        Route::get('/', 'AdminAnswersController@index')->name('get_admin.answer_and_questions.index');
-        Route::get('update/{id}', 'AdminAnswersController@questions')->name('get_admin.answer_and_questions.questions');
-        Route::post('update/{id}', 'AdminAnswersController@update');
-        Route::get('delete/{id}', 'AdminAnswersController@delete')->name('get_admin.answer_and_questions.delete');
-    });
+    
     // ----------------------------------------------------------------------------------------------------------------
     Route::prefix('apmenu')->group(function (){
         Route::get('/', 'AdminApMenuController@index')->name('get_admin.apmenu.index');

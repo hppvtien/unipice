@@ -65,7 +65,7 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
 
 Route::middleware('checkLoginUser')->group(function() {
     Route::get('thanh-toan.html', 'UserPayController@getPay')->name('get_user.pay');
-    Route::get('thanh-toan', 'UserPayController@getPaySuccsess')->name('get_user.postpay');
+    Route::post('thanh-toan.html', 'UserPayController@getPaySuccsess')->name('get_user.postpay');
     Route::post('gio-hang.html', 'UserPayController@check_vouchers')->name('get_user.check_vouchers');
     Route::get('hoan-tat-don-hang.html', 'UserPayController@getSuccsess')->name('get_user.paysuccsess'); 
     Route::get('gio-hang.html', 'UserCartController@index')->name('get_user.cart');
@@ -77,11 +77,11 @@ Route::middleware('checkLoginUser')->group(function() {
     Route::get('thanh-toan/{id}', 'UserPayController@getSuccsess')->name('get_user.paysuccsess'); 
 
     Route::get('thanh-toan-vnpay/{id}', 'UserPayController@getVnPaySuccsess')->name('get_user.vnpaysuccsess'); 
-    // Route::post('thanh-toan-vnpay.html/{id}', 'UserPayController@processVnPayCart'); 
-    Route::get('thanh-toan-momo.html/{id}', 'UserPayController@getmomoSuccsess')->name('get_user.momosuccsess'); 
-    // Route::post('thanh-toan-momo.html/{id}', 'UserPayController@processmomoCart'); 
-    // Route::get('thong-bao-thanh-toan-momo.html', 'UserPayController@resultmomo')->name('get_user.result_momo');
-    // Route::get('return-vnpay.html', 'UserPayController@returnvnpay')->name('get_user.result_vnpay');
+    Route::post('thanh-toan-vnpay/{id}', 'UserPayController@processVnPayCart')->name('post_user.vnpaysuccsess'); 
+    Route::get('thanh-toan-momo/{id}', 'UserPayController@getmomoSuccsess')->name('get_user.momosuccsess'); 
+    Route::post('thanh-toan-momo/{id}', 'UserPayController@processmomoCart')->name('post_user.momosuccsess'); 
+    Route::get('thong-bao-thanh-toan-momo.html', 'UserPayController@resultmomo')->name('get_user.result_momo');
+    Route::get('return-vnpay.html', 'UserPayController@returnvnpay')->name('get_user.result_vnpay');
 });
 
 

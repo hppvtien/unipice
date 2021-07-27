@@ -22,7 +22,7 @@
                                 </li>
                             @endif
                             <li class="m-account-menu__item">
-                                <a href="/associate-member-landing" class="m-account-menu__link">
+                                <a href="{{ route('get.find') }}" class="m-account-menu__link">
                                     <span class="m-account-menu__link-text">
                                         Tìm cửa hàng
                                     </span>

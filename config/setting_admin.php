@@ -6,46 +6,46 @@ return [
             'route' => 'get_admin.dashboard',
             'class-icon' => 'la la-tachometer-alt'
         ],
-        [
-            'name' => 'Khoá học',
-            'class-icon' => 'la la-book-open',
-            'sub' => [
-                [
-                    'name' => 'Từ khoá',
-                    'route' => 'get_admin.tag.index'
-                ],
-                [
-                    'name' => 'Danh mục',
-                    'route' => 'get_admin.category.index'
-                ],
-                [
-                    'name' => 'Giáo viên',
-                    'route' => 'get_admin.teacher.index'
-                ],
-                [
-                    'name' => 'Khoá học',
-                    'route' => 'get_admin.course.index'
-                ],
-            ]
-        ],
-        [
-            'name' => 'Tin tức && Sự kiện',
-            'class-icon' => 'la la-edit',
-            'sub' => [
-                [
-                    'name' => 'Từ khoá',
-                    'route' => 'get_admin.keyword.index'
-                ],
-                [
-                    'name' => 'Menu',
-                    'route' => 'get_admin.menu.index'
-                ],
-                [
-                    'name' => 'Bài viết',
-                    'route' => 'get_admin.article.index'
-                ],
-            ]
-        ],
+        // [
+        //     'name' => 'Khoá học',
+        //     'class-icon' => 'la la-book-open',
+        //     'sub' => [
+        //         [
+        //             'name' => 'Từ khoá',
+        //             'route' => 'get_admin.tag.index'
+        //         ],
+        //         [
+        //             'name' => 'Danh mục',
+        //             'route' => 'get_admin.category.index'
+        //         ],
+        //         [
+        //             'name' => 'Giáo viên',
+        //             'route' => 'get_admin.teacher.index'
+        //         ],
+        //         [
+        //             'name' => 'Khoá học',
+        //             'route' => 'get_admin.course.index'
+        //         ],
+        //     ]
+        // ],
+        // [
+        //     'name' => 'Tin tức && Sự kiện',
+        //     'class-icon' => 'la la-edit',
+        //     'sub' => [
+        //         [
+        //             'name' => 'Từ khoá',
+        //             'route' => 'get_admin.keyword.index'
+        //         ],
+        //         [
+        //             'name' => 'Menu',
+        //             'route' => 'get_admin.menu.index'
+        //         ],
+        //         [
+        //             'name' => 'Bài viết',
+        //             'route' => 'get_admin.article.index'
+        //         ],
+        //     ]
+        // ],
         [
             'name' => 'Người dùng',
             'class-icon' => 'la la-user',
@@ -149,11 +149,11 @@ return [
             'sub' => [
                 [
                     'name' => 'Danh sách',
-                    'route' => 'get_admin.transaction.index'
+                    'route' => 'get_admin.uni_order.index'
                 ],
                 [
                     'name' => 'Đơn hàng rác',
-                    'route' => 'get_admin.transaction.trash'
+                    'route' => 'get_admin.uni_order.trash'
                 ]
             ]
         ],
@@ -181,26 +181,26 @@ return [
                 ],
             ]
         ],
-        [
-            'name' => 'Free Ebook',
-            'class-icon' => 'la la-database',
-            'sub' => [
-                [
-                    'name' => 'Danh sách',
-                    'route' => 'get_admin.free_book.index'
-                ],
-            ]
-        ],
-        [
-            'name' => 'Jobs',
-            'class-icon' => 'la la-database',
-            'sub' => [
-                [
-                    'name' => 'Danh sách',
-                    'route' => 'get_admin.jobs.index'
-                ],
-            ]
-        ],
+        // [
+        //     'name' => 'Free Ebook',
+        //     'class-icon' => 'la la-database',
+        //     'sub' => [
+        //         [
+        //             'name' => 'Danh sách',
+        //             'route' => 'get_admin.free_book.index'
+        //         ],
+        //     ]
+        // ],
+        // [
+        //     'name' => 'Jobs',
+        //     'class-icon' => 'la la-database',
+        //     'sub' => [
+        //         [
+        //             'name' => 'Danh sách',
+        //             'route' => 'get_admin.jobs.index'
+        //         ],
+        //     ]
+        // ],
         [
             'name' => 'Quản lý liên hệ',
             'class-icon' => 'la la-database',
@@ -219,10 +219,10 @@ return [
                     'name' => 'Danh sách hóa đơn',
                     'route' => 'get_admin.bill.index'
                 ],
-                [
-                    'name' => 'Danh sách câu hỏi của học viên',
-                    'route' => 'get_admin.answer_and_questions.index'
-                ],
+                // [
+                //     'name' => 'Danh sách câu hỏi của học viên',
+                //     'route' => 'get_admin.answer_and_questions.index'
+                // ],
             ]
         ],
         [

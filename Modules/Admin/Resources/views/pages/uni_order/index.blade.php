@@ -5,7 +5,7 @@
         <div class="breadcrumb-header justify-content-between">
             <div class="my-auto">
                 <div class="d-flex">
-                    <h4 class="content-title mb-0 my-auto">Transaction</h4>
+                    <h4 class="content-title mb-0 my-auto">uni_order</h4>
                     <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ index</span>
                 </div>
             </div>
@@ -31,31 +31,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($transactions as $item)
+                                @forelse($uni_order as $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>
-                                            <p><span>Name</span> <span>{{ $item->user->name ?? "[N\A]" }}</span></p>
-                                            <p><span>Email</span> <span>{{ $item->user->email ?? "[N\A]" }}</span></p>
+                                            <p><span>Name: </span> <span class="text-success">{{ $item->user->name ?? "[N\A]" }}</span></p>
+                                            <p><span>Email: </span> <span class="text-success">{{ $item->user->email ?? "[N\A]" }}</span></p>
                                         </td>
                                         <td>
                                             {{ $item->t_code ?? "[N\A]" }}
                                         </td>
                                         <td>
-                                            {{ config('cart.pay_type')[$item->t_type_pay-1]['name'] }}
+                                            {{ config('cart.pay_type')[$item->type_pay-1]['name'] }}
                                         </td>
                                         <td>
-                                            <b>{{ number_format($item->t_total_money,0,',','.') }} đ</b>
+                                            <b>{{ number_format($item->total_money,0,',','.') }} đ</b>
                                         </td>
                                         <td>
-                                            <span class="badge {{ $item->getStatus($item->t_status)['class']  }}">{{ $item->getStatus($item->t_status)['name']  }}</span>
+                                            <span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span>
                                         </td>
                                         <td>
                                             {{ $item->created_at }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('get_admin.transaction.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
-                                            <a href="{{ route('get_admin.transaction.movetrash', $item->id) }}" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>
+                                            <a href="{{ route('get_admin.uni_order.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
+                                            <a href="{{ route('get_admin.uni_order.movetrash', $item->id) }}" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>
                                         </td>
                                     </tr>
                                 @empty

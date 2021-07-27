@@ -10,10 +10,12 @@
         content: '';
         display: none;
     }
+
     .optionTitle.m-radio-button__text-label {
         float: left;
         margin-right: 10px;
     }
+
     .cart-container .cart-summary .shipping .m-text-input,
     .cart-container .cart-summary .shipping .m-select-menu {
         margin-top: 20px;
@@ -23,16 +25,19 @@
     .checkout-container {
         position: relative;
     }
+
     .m-radio-button {
         position: relative;
         margin-bottom: 10px;
         flex: 0 0 25%;
         max-width: 100%;
     }
+
     .pay_type {
         display: flex;
-        margin-top: 20px!important;
+        margin-top: 20px !important;
     }
+
     .a-select-menu {
         position: relative;
         padding-right: 40px;
@@ -370,7 +375,30 @@
     }
 
     .minicart-items-wrapper.overflowed:last-child {
+
         border-bottom: none;
+    }
+
+    span.title-info {
+        color: #0b2d25;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+
+    .column.main p {
+        margin-bottom: 16px;
+    }
+    .column.main .m-sort-by {
+    margin-bottom: 10px;
+}
+
+    span.info-detail {
+        font-weight: 600;
+    }
+    h3.title-cart{
+        text-align: center;
+    margin-top: 20px;
     }
 
     @media screen and (min-width: 1024px) {
@@ -470,16 +498,81 @@
 <main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
     <div class="page-title-wrapper">
         <h1 class="page-title">
-            <span class="base">Cám ơn bạn đã mua hàng vnpay !!!</span>
+            <span class="base">Thông tin thanh toán</span>
         </h1>
     </div>
     <div class="columns">
         <div class="column main" style="width:100%">
-            <div id="checkout" data-bind="scope:'checkout'" class="checkout-container">
-                <div class="checkout-main">
-                    <div class="opc-wrapper">
-                       <h3>Hệ thống đã tiếp nhận đơn hàng của bạn.</h3>
-                    </div>
+            <p><span class="title-info">Mã đơn hàng:</span> <span class="info-detail">{{ $order->code_invoice }}</span></p>
+            <p><span class="title-info">Người mua:</span> <span class="info-detail">{{ $order->customer_name }}</span></p>
+            <p><span class="title-info">Địa chỉ:</span> <span class="info-detail">{{ $order->address }}</span></p>
+            <p><span class="title-info">Số điênh thoại:</span class="info-detail"> <span>{{ $order->phone }}</span></p>
+            <p><span class="title-info">Email:</span> <span class="info-detail">{{ $order->email }}</span></p>
+            <p><span class="title-info">Hình thức thanh toán:</span> <span class="info-detail">{{ $order->type_pay }}</span></p>
+            <p><span class="title-info">Mã số thuế:</span> <span class="info-detail">{{ $order->taxcode }}</span></p>
+            <p><span class="title-info">Mã giảm giá:</span> <span class="info-detail">{{ $order->vouchers }}</span></p>
+            <p>
+            <div class="m-sort-by">
+                <label class="m-sort-by__label" for="bank_code">Chọn ngân hàng</label>
+                <select class="m-sort-by__select frontier-custom-sort" name="bank_code" id="bank_code">
+                    <option value="NCB"> Ngan hang NCB</option>
+                    <option value="AGRIBANK"> Ngan hang Agribank</option>
+                    <option value="SCB"> Ngan hang SCB</option>
+                    <option value="SACOMBANK">Ngan hang SacomBank</option>
+                    <option value="EXIMBANK"> Ngan hang EximBank</option>
+                    <option value="MSBANK"> Ngan hang MSBANK</option>
+                    <option value="NAMABANK"> Ngan hang NamABank</option>
+                    <option value="VNMART"> Vi dien tu VnMart</option>
+                    <option value="VIETINBANK">Ngan hang Vietinbank</option>
+                    <option value="VIETCOMBANK"> Ngan hang VCB</option>
+                    <option value="HDBANK">Ngan hang HDBank</option>
+                    <option value="DONGABANK"> Ngan hang Dong A</option>
+                    <option value="TPBANK"> Ngân hàng TPBank</option>
+                    <option value="OJB"> Ngân hàng OceanBank</option>
+                    <option value="BIDV"> Ngân hàng BIDV</option>
+                    <option value="TECHCOMBANK"> Ngân hàng Techcombank</option>
+                    <option value="VPBANK"> Ngan hang VPBank</option>
+                    <option value="MBBANK"> Ngan hang MBBank</option>
+                    <option value="ACB"> Ngan hang ACB</option>
+                    <option value="OCB"> Ngan hang OCB</option>
+                    <option value="IVB"> Ngan hang IVB</option>
+                    <option value="VISA"> Thanh toan qua VISA/MASTER</option>
+                </select>
+                <span class="m-sort-by__arrow"></span>
+            </div>
+            <h3 class="title-cart">Thông tin giỏ hàng</h3>
+            <table id="shopping-cart-table" class="cart items data table cart-table">
+                <thead>
+                    <tr>
+                        <th class=" item" scope="col"><span>Sản phẩm</span></th>
+                        <th class=" price" scope="col"><span>Giá</span></th>
+                        <th class=" qty" scope="col"><span>Số lượng</span></th>
+                        <th class=" subtotal" scope="col"><span>Tổng tiền</span></th>
+                    </tr>
+                </thead>
+                <tbody class="cart item">
+                    <?php $carts = json_decode($order->cart_info, true); ?>
+                    @forelse ($carts as $key => $item)
+                    <tr>
+                        <td class="item" scope="col"><a href="{{ get_link_blank_byname($item['name']) }}"><span>{{ $item['name'] }}</span></a></td>
+                        <td class="price" scope="col"><span>{{ $item['price'] }} đ</span></td>
+                        <td class="qty" scope="col"><span>{{ $item['qty'] }}</span></td>
+                        <td class="subtotal" scope="col"><span>{{ $item['subtotal'] }} đ</span></td>
+                    </tr>
+                    @empty
+
+                    @endforelse
+                    <tr style="background">
+                        <td colspan="3">TỔNG TIỀN</td>
+                        <td><span>{{ $order->total_money }} đ</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button class="a-btn a-btn--primary action apply primary " id="btn-vnpay" data-url="{{ route('post_user.vnpaysuccsess',$order->id) }}" type="button" value="Pay Continue">
+                        <span>Tiến hành thanh toán</span>
+                    </button>
                 </div>
             </div>
         </div>

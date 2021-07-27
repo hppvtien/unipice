@@ -5,13 +5,8 @@
         <div class="breadcrumb-header justify-content-between">
             <div class="my-auto">
                 <div class="d-flex">
-                    <h4 class="content-title mb-0 my-auto">Jobs</h4>
+                    <h4 class="content-title mb-0 my-auto">uni_order</h4>
                     <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ index</span>
-                </div>
-            </div>
-            <div class="d-flex my-xl-auto right-content">
-                <div class="pr-1 mb-3 mb-xl-0">
-                    <a href="{{ route('get_admin.jobs.create') }}" class="btn btn-info  mr-2">Thêm mới <i class="la la-plus-circle"></i></a>
                 </div>
             </div>
         </div>
@@ -26,32 +21,40 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Desscription</th>
+                                        <th>Info</th>
+                                        <th>Money</th>
+{{--                                        <th>Type</th>--}}
                                         <th>Status</th>
-                                        <th>Hot Job</th>
+                                        <th>Time</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($jobs as $item)
+                                @forelse($uni_order as $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>
-                                            <a href="javascript:;" title="{{ $item->name }}">{{ $item->name }}</a>
+                                            <p><span>Name</span> <span>{{ $item->user->name ?? "[N\A]" }}</span></p>
+                                            <p><span>Email</span> <span>{{ $item->user->email ?? "[N\A]" }}</span></p>
                                         </td>
                                         <td>
-                                            <a href="javascript:;" title="{{ $item->desscription }}">{{ $item->desscription }}</a>
+                                            <b>{{ number_format($item->t_total_money,0,',','.') }} đ</b>
                                         </td>
-                                        <td><span class="badge badge-info">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span></td>
-                                        <td><span class="badge badge-info">{{ $item->is_hot == 1 ? 'Active':'Not-Active' }}</span></td>
+{{--                                        <td>--}}
+{{--                                            <span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span>--}}
+{{--                                        </td>--}}
                                         <td>
-                                            <a href="{{ route('get_admin.jobs.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
-                                            <a href="{{ route('get_admin.jobs.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
+                                            <span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span>
+                                        </td>
+                                        <td>
+                                            {{ $item->created_at }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('get_admin.uni_order.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
+                                            <a href="{{ route('get_admin.uni_order.delete', $item->id) }}" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>
                                         </td>
                                     </tr>
                                 @empty
-
                                 @endforelse
                                 </tbody>
                             </table>
