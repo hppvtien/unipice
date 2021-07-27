@@ -1,207 +1,198 @@
-<footer class="c-footer js-footer">
-    @include('pages.components.follow-me')
-
-    <div class="c-footer__nav">
-
-
-
-        <div class="c-footer__nav-section">
-
-
-            <div class="m-footer-menu m-accordion js-footer-accordion js-accordion--mobile-only">
-                <div class="m-footer-menu__heading m-accordion__title js-accordion-trigger">
-                    <span>Order</span>
-                </div>
-
-                <div class="m-footer-menu__content m-accordion__content js-accordion-content">
-                    <div class="m-footer-menu__content-inner m-accordion__content-inner js-accordion-content-inner">
-                        <ul class="m-footer-menu__list">
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="https://shop.coopmarket.com/sales/order/history/referer/aHR0cHM6Ly9zaG9wLmNvb3BtYXJrZXQuY29tL3NhbGVzL29yZGVyL2hpc3Rvcnkv">
-                                    Order Status
+@include('pages.components.follow-me')
+<footer id="dk-footer" class="dk-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-4">
+                <div class="dk-footer-box-info">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/footer_logo.png" alt="footer_logo" class="img-fluid">
+                    </a>
+                    <p class="footer-info-text">
+                        Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
+                    </p>
+                    <div class="footer-social-link">
+                        <h3>Follow us</h3>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
                                 </a>
                             </li>
                         </ul>
                     </div>
+                    <!-- End Social link -->
+                </div>
+                <!-- End Footer info -->
+                <div class="footer-awarad">
+                    <img src="images/icon/best.png" alt="">
+                    <p>Best Design Company 2019</p>
                 </div>
             </div>
-
-
-
-        </div>
-        <div class="c-footer__nav-section">
-
-
-            <div class="m-footer-menu m-accordion js-footer-accordion js-accordion--mobile-only">
-                <div class="m-footer-menu__heading m-accordion__title js-accordion-trigger">
-                    <span>Support</span>
-                </div>
-
-                <div class="m-footer-menu__content m-accordion__content js-accordion-content">
-                    <div class="m-footer-menu__content-inner m-accordion__content-inner js-accordion-content-inner">
-                        <ul class="m-footer-menu__list">
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="/faqs.php">
-                                    FAQs
-                                </a>
-                            </li>
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="/login.php">
-                                    My Account
-                                </a>
-                            </li>
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="/contact.php">
-                                    Contact Us
-                                </a>
-                            </li>
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="{{ route('get_blog.home') }}">
-                                    Tìm cửa hàng
-                                </a>
-                            </li>
-                        </ul>
+            <!-- End Col -->
+            <div class="col-md-12 col-lg-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contact-us padding-left-0">
+                            <div class="contact-icon">
+                                <i class="fa fa-map-o" aria-hidden="true"></i>
+                            </div>
+                            <!-- End contact Icon -->
+                            <div class="contact-info">
+                                <h3>Jaipur India</h3>
+                                <p>5353 Road Avenue</p>
+                            </div>
+                            <!-- End Contact Info -->
+                        </div>
+                        <!-- End Contact Us -->
                     </div>
-                </div>
-            </div>
-
-
-
-        </div>
-        <div class="c-footer__nav-section">
-
-
-            <div class="m-footer-menu m-accordion js-footer-accordion js-accordion--mobile-only">
-                <div class="m-footer-menu__heading m-accordion__title js-accordion-trigger">
-                    <span>Learn</span>
-                </div>
-
-                <div class="m-footer-menu__content m-accordion__content js-accordion-content">
-                    <div class="m-footer-menu__content-inner m-accordion__content-inner js-accordion-content-inner">
-                        <ul class="m-footer-menu__list">
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="/our-co-op">
-                                    Our Co-Op
-                                </a>
-                            </li>
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="https://careers-frontiercoop.icims.com/jobs">
-                                    Careers
-                                </a>
-                            </li>
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="/associate-member-landing">
-                                    Membership
-                                </a>
-                            </li>
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="{{ route('get_blog.home') }}">
-                                    Blog
-                                </a>
-                            </li>
-                        </ul>
+                    <!-- End Col -->
+                    <div class="col-md-6">
+                        <div class="contact-us contact-us-last">
+                            <div class="contact-icon">
+                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                            </div>
+                            <!-- End contact Icon -->
+                            <div class="contact-info">
+                                <h3>95 711 9 5353</h3>
+                                <p>Give us a call</p>
+                            </div>
+                            <!-- End Contact Info -->
+                        </div>
+                        <!-- End Contact Us -->
                     </div>
+                    <!-- End Col -->
                 </div>
-            </div>
-
-
-
-        </div>
-
-
-
-        <div class="c-footer__nav-section c-footer__nav-section--brands">
-
-            <div class="m-footer-menu m-footer-menu--brands m-accordion js-footer-accordion js-accordion--mobile-only
-    ">
-
-                <div class="m-footer-menu__heading m-accordion__title js-accordion-trigger">
-                    <span>Our Co-Op Family</span>
-                </div>
-
-                <div class="m-footer-menu__content m-accordion__content js-accordion-content">
-                    <div class="m-footer-menu__content-inner m-accordion__content-inner js-accordion-content-inner">
-                        <ul class="m-footer-menu__list">
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="https://www.frontiercoop.com/">
-                                    <img class="lazyload" data-src="https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop/images/frontier-coop.svg" alt="Frontier Coop">
-                                </a>
-                            </li>
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="https://www.simplyorganic.com/">
-                                    <img class="lazyload" data-src="https://www.coopmarket.com/themes/custom/frontierbase/dist/simply_organic/images/simply-organic.svg" alt="Simply Organic">
-                                </a>
-                            </li>
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="https://www.auracacia.com/">
-                                    <img class="lazyload" data-src="https://www.coopmarket.com/themes/custom/frontierbase/dist/aura_cacia/images/aura-cacia.svg" alt="Aura Cacia">
-                                </a>
-                            </li>
-                            <li class="m-footer-menu__item">
-                                <a class="m-footer-menu__link" href="https://www.coopmarket.com/">
-                                    <img class="lazyload" data-src="https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop_market/images/coop-market.svg" alt="Coop Market">
-                                </a>
-                            </li>
-                        </ul>
+                <!-- End Contact Row -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="footer-widget footer-left-widget">
+                            <div class="section-heading">
+                                <h3>Useful Links</h3>
+                                <span class="animate-border border-black"></span>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="#">About us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Services</a>
+                                </li>
+                                <li>
+                                    <a href="#">Projects</a>
+                                </li>
+                                <li>
+                                    <a href="#">Our Team</a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <a href="#">Contact us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="#">Testimonials</a>
+                                </li>
+                                <li>
+                                    <a href="#">Faq</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Footer Widget -->
                     </div>
+                    <!-- End col -->
+                    <div class="col-md-12 col-lg-6">
+                        <div class="footer-widget">
+                            <div class="section-heading">
+                                <h3>Subscribe</h3>
+                                <span class="animate-border border-black"></span>
+                            </div>
+                            <p class="color-p">
+                                <!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
+                                Reference site about Lorem Ipsum, giving information on its origins, as well.</p>
+                            <form action="#">
+                                <div class="form-row">
+                                    <div class="col dk-footer-form">
+                                        <input type="email" class="form-control" placeholder="Email Address">
+                                        <button type="submit">
+                                                <i class="fa fa-send"></i>
+                                            </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- End form -->
+                        </div>
+                        <!-- End footer widget -->
+                    </div>
+                    <!-- End Col -->
                 </div>
+                <!-- End Row -->
             </div>
-
-
+            <!-- End Col -->
         </div>
-
-        <div class="c-footer__social-links">
-            <ul class="m-social-links">
-                <li class="m-social-links__link">
-                    <a class="a-icon-text-btn a-icon-text-btn--icon-only" href="https://www.facebook.com/coopmarketpage" target="_blank">
-
-
-                        <span class="icon-facebook  a-icon-text-btn__icon" aria-hidden="true"></span>
-                        <span class="a-icon-text-btn__label">Facebook</span>
-                    </a>
-                </li>
-                <li class="m-social-links__link">
-                    <a class="a-icon-text-btn a-icon-text-btn--icon-only" href="https://www.instagram.com/coopmarket/" target="_blank">
-
-
-                        <span class="icon-instagram  a-icon-text-btn__icon" aria-hidden="true"></span>
-                        <span class="a-icon-text-btn__label">Instagram</span>
-                    </a>
-                </li>
-                <li class="m-social-links__link">
-                    <a class="a-icon-text-btn a-icon-text-btn--icon-only" href="https://www.twitter.com/coop_market" target="_blank">
-
-
-                        <span class="icon-twitter  a-icon-text-btn__icon" aria-hidden="true"></span>
-                        <span class="a-icon-text-btn__label">Twitter</span>
-                    </a>
-                </li>
-                <li class="m-social-links__link">
-                    <a class="a-icon-text-btn a-icon-text-btn--icon-only" href="https://www.pinterest.com/coopmarket/" target="_blank">
-
-
-                        <span class="icon-pinterest  a-icon-text-btn__icon" aria-hidden="true"></span>
-                        <span class="a-icon-text-btn__label">Pinterest</span>
-                    </a>
-                </li>
-            </ul>
-
-
-        </div>
-
-        <div class="c-footer__copyright">
-            <div class="c-footer__copyright-links">
-                <span class="c-footer__copyright-link">
-                    <a href="/terms-use-0">Terms of Use</a>
-                </span>
-                <span class="c-footer__copyright-link">
-                    <a href="/privacy-policy">Privacy Policy</a>
-                </span>
-            </div>
-
-            <p class="c-footer__copyright-text">© 2021 Frontier Co-op. All rights reserved.
-            </p>
-        </div>
+        <!-- End Widget Row -->
     </div>
+    <!-- End Contact Container -->
 
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text_center">
+                    <span>Copyright © 2019, All Right Reserved Seobin</span>
+                </div>
+                <!-- End Col -->
+                <div class="col-md-6 text_center">
+                    <div class="copyright-menu">
+                        <ul>
+                            <li>
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Terms</a>
+                            </li>
+                            <li>
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End col -->
+            </div>
+            <!-- End Row -->
+        </div>
+        <!-- End Copyright Container -->
+    </div>
+    <!-- End Copyright -->
+    <!-- Back to top -->
+    <div id="back-to-top" class="back-to-top">
+        <button class="btn btn-dark" title="Back to Top" style="display: block;">
+                <i class="fa fa-angle-up"></i>
+            </button>
+    </div>
+    <!-- End Back to top -->
 </footer>

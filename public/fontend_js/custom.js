@@ -164,7 +164,6 @@ $(".remove_cart_action").on('click', function() {
             location.reload();
             $('#show-store').html(data);
         },
-
     });
 
 });

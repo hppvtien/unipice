@@ -26,7 +26,7 @@
                             @foreach ($my_flash_sale as $l)
                             <div class="loadmore1">
                                 <div class=" mt-2 row p-2 bg-white border rounded">
-                                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://aphoto.vn/wp-content/uploads/2019/02/hinh10-4.jpg"></div>
+                                    <div class="col-md-3 mt-1"><img alt="{{ $l->name }}" class="img-fluid img-responsive rounded product-image" src="{{ pare_url_file($l->thumbnail) }}"></div>
                                     <div class="col-md-6 mt-1">
                                         <a href="#{{ $l->slug }}">{{ $l->name }}</a>
                                         <div class="d-flex flex-row">
@@ -78,17 +78,12 @@
                   </div>
                 </div>
               </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
 
         function cart_order_now(cart_order_now1){
-            var cart_order_now_id = $( cart_order_now1 ).attr('price-id');
-            var cart_order_now_slug = $( cart_order_now1 ).attr('price-slug');
             var data_url = $( cart_order_now1 ).attr('data-url');
-            $.get( data_url)
-            .done(function( data ) {
-                alert(data);
+            $.get( data_url ).fail(function() {
+                location.reload(); 
             });
         }
 
