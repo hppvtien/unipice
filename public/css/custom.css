@@ -361,13 +361,10 @@ h1.page-title {
         border-bottom: 1px solid #757575;
     }
     select#order_by {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
         background: transparent;
         color: #ff7759;
-        border: none;
-        border-bottom: 1px solid #757575;
-        width: 100%;
         background: transparent;
     }
     select#order_by:focus,

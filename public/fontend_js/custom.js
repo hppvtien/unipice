@@ -272,3 +272,16 @@ $('#momo-success').on('click', function() {
 
     });
 });
+$(function() {
+    $(".loadmore1").slice(0, 4).show();
+    $("#loadMore").on("click", function(e) {
+        e.preventDefault();
+        $(".loadmore1:hidden").slice(0, 4).slideDown();
+        if ($(".loadmore1:hidden").length == 0) {
+            $("#load").fadeOut("slow");
+        }
+        $("#show-product").animate({
+            scrollTop: $(this).offset().top
+        }, 1500);
+    });
+});

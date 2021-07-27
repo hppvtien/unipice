@@ -65,13 +65,14 @@
                                                                     </div>
                                                                     <div class="m-sort-by">
                                                                         <label class="m-sort-by__label" for="order_by">Order By</label>
-                                                                        <select class="m-sort-by__select frontier-custom-sort" id="order_by" name="order_by" aria-label="Order B">
-                                                                        <option value="asc" selected>Asc</option>
+                                                                        <select class="m-sort-by__select frontier-custom-sort" id="order_by" name="order_by" aria-label="Order By">
+                                                                            <option value="asc" selected>Asc</option>
                                                                             <option value="desc">Desc</option>
                                                                         </select>
                                                                        
                                                                         <span class="m-sort-by__arrow"></span>
                                                                     </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
