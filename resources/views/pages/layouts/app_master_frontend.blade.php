@@ -58,12 +58,6 @@
     </script>
     <script type="text/javascript" src="https://transvelo.github.io/pizzaro-html/assets/js/scripts.min.js"></script>
 
-    <style>
-        #main-content {
-            display: none;
-        }
-    </style>
-
 </body>
 
 </html>

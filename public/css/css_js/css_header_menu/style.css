@@ -27041,6 +27041,7 @@ Contact
 
 .contact-icon {
     position: absolute;
+    margin-top: 20px;
 }
 
 .contact-icon i {
@@ -27162,6 +27163,10 @@ Contact
 }
 
 a:hover {
-    color: #0056b3;
+    color: #fff;
     text-decoration: none;
+}
+
+#main-content {
+    display: none;
 }

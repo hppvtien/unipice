@@ -8,33 +8,28 @@
                         <img src="images/footer_logo.png" alt="footer_logo" class="img-fluid">
                     </a>
                     <p class="footer-info-text">
-                        Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
+                        Công ty chúng tôi mang tầm cỡ quốc tế
                     </p>
                     <div class="footer-social-link">
                         <h3>Follow us</h3>
                         <ul>
                             <li>
-                                <a href="#">
+                                <a href="{{ $configuration->facebook }}">
                                     <i class="fa fa-facebook"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ $configuration->twitter }}">
                                     <i class="fa fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="fa fa-google-plus"></i>
+                                <a href="{{ $configuration->youtube }}">
+                                    <i class="fa fa-youtube"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
+                                <a href="{{ $configuration->instagram }}">
                                     <i class="fa fa-instagram"></i>
                                 </a>
                             </li>
@@ -45,7 +40,7 @@
                 <!-- End Footer info -->
                 <div class="footer-awarad">
                     <img src="images/icon/best.png" alt="">
-                    <p>Best Design Company 2019</p>
+                    <p>{{ $configuration->name }}</p>
                 </div>
             </div>
             <!-- End Col -->
@@ -58,23 +53,24 @@
                             </div>
                             <!-- End contact Icon -->
                             <div class="contact-info">
-                                <h3>Jaipur India</h3>
-                                <p>5353 Road Avenue</p>
+                                <a href="https://goo.gl/maps/QrCzDdS4gKivind79" rel="nofollow" target="blank">
+                                    <p>{{ $configuration->address }}</p>
+                                </a>
                             </div>
                             <!-- End Contact Info -->
                         </div>
                         <!-- End Contact Us -->
                     </div>
                     <!-- End Col -->
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="margin-top: 20px;">
                         <div class="contact-us contact-us-last">
                             <div class="contact-icon">
                                 <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
                             </div>
                             <!-- End contact Icon -->
                             <div class="contact-info">
-                                <h3>95 711 9 5353</h3>
-                                <p>Give us a call</p>
+
+                                <p>{{ $configuration->hotline }}</p>
                             </div>
                             <!-- End Contact Info -->
                         </div>
@@ -87,35 +83,35 @@
                     <div class="col-md-12 col-lg-6">
                         <div class="footer-widget footer-left-widget">
                             <div class="section-heading">
-                                <h3>Useful Links</h3>
+                                <h3>Giới Thiệu {{ $configuration->name }}</h3>
                                 <span class="animate-border border-black"></span>
                             </div>
                             <ul>
                                 <li>
-                                    <a href="#">About us</a>
+                                    <a href="#">Giới Thiệu</a>
                                 </li>
                                 <li>
-                                    <a href="#">Services</a>
+                                    <a href="#">Dịch Vụ</a>
                                 </li>
                                 <li>
-                                    <a href="#">Projects</a>
+                                    <a href="#">Các Đối Tác</a>
                                 </li>
                                 <li>
-                                    <a href="#">Our Team</a>
+                                    <a href="#">Đội Ngũ</a>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
-                                    <a href="#">Contact us</a>
+                                    <a href="#">Liên Hệ</a>
                                 </li>
                                 <li>
                                     <a href="#">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="#">Testimonials</a>
+                                    <a href="#">Chính Sách</a>
                                 </li>
                                 <li>
-                                    <a href="#">Faq</a>
+                                    <a href="#">Bảo Mật</a>
                                 </li>
                             </ul>
                         </div>
@@ -125,16 +121,16 @@
                     <div class="col-md-12 col-lg-6">
                         <div class="footer-widget">
                             <div class="section-heading">
-                                <h3>Subscribe</h3>
+                                <h3>Đăng Ký Ngay</h3>
                                 <span class="animate-border border-black"></span>
                             </div>
                             <p class="color-p">
                                 <!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
-                                Reference site about Lorem Ipsum, giving information on its origins, as well.</p>
+                                {{ $configuration->footer_bottom }}</p>
                             <form action="#">
                                 <div class="form-row">
                                     <div class="col dk-footer-form">
-                                        <input type="email" class="form-control" placeholder="Email Address">
+                                        <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
                                         <button type="submit">
                                                 <i class="fa fa-send"></i>
                                             </button>
@@ -160,23 +156,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text_center">
-                    <span>Copyright © 2019, All Right Reserved Seobin</span>
+                    <span>{{ $configuration->footer_bottom }}</span>
                 </div>
                 <!-- End Col -->
                 <div class="col-md-6 text_center">
                     <div class="copyright-menu">
                         <ul>
                             <li>
-                                <a href="#">Home</a>
+                                <a href="/">Trang Chủ</a>
                             </li>
                             <li>
-                                <a href="#">Terms</a>
+                                <a href="{{ route('get.about') }}">Giới Thiệu</a>
                             </li>
                             <li>
-                                <a href="#">Privacy Policy</a>
+                                <a href="{{ route('get.find') }}">Tìm Cửa Hàng</a>
                             </li>
                             <li>
-                                <a href="#">Contact</a>
+                                <a href="{{ route('get.uni_contact') }}">Liên Hệ</a>
                             </li>
                         </ul>
                     </div>
