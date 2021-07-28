@@ -155,10 +155,10 @@
                                     <h2 class="m-heading__headline">
                                         Danh mục sản phẩm của chúng tôi.
                                     </h2>
-                                    <div class="m-heading__cta">
+                                    {{-- <div class="m-heading__cta">
                                         <a href="javascript:;"><span class="m-heading__cta--text">Shop All Categories</span>
                                             <span class="icon-arrow"></span></a>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
 
@@ -170,7 +170,7 @@
                                 <ul class="c-categories-slider__slider js-swiper-wrapper">
                                     @forelse ($category as $key => $item)
                                         <li class="c-categories-slider__item js-swiper-slide">
-                                            <a data-block-plugin-id="inline_block:media_component" data-inline-block-uuid="380a9014-fee0-43d7-8277-0e3a68d90cee" class="m-category-card" href="{{ $item->slug }}">
+                                            <a data-block-plugin-id="inline_block:media_component" data-inline-block-uuid="380a9014-fee0-43d7-8277-0e3a68d90cee" class="m-category-card" href="{{ getSlugCategory($item->slug) }}">
                                                 <div class="m-category-card__image-wrapper">
                                                     <picture>
                                                         <source media="(min-width: 768px)" data-srcset="{{ pare_url_file_product($item->thumbnail) }}">
@@ -256,11 +256,11 @@
                                     <h2 class="m-heading__headline">
                                         Sản phẩm mới nhất
                                     </h2>
-                                    <div class="m-heading__cta">
+                                    {{-- <div class="m-heading__cta">
                                         <a href="/home-and-pet"><span class="m-heading__cta--text">Xem các sản phẩm khác cùng loại</span>
                                             <span class="icon-arrow"></span>
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
 
@@ -271,7 +271,7 @@
                                 <ul class="c-categories-slider__slider js-swiper-wrapper">
                                     @forelse ($product_feauture as $key => $item)
                                     <li class="c-categories-slider__item js-swiper-slide">
-                                        <a data-block-plugin-id="inline_block:media_component" data-inline-block-uuid="e12ac350-b671-41f4-822c-459f7063a409" class="m-category-card m-category-card--bordered" href="{{ $item->slug }}">
+                                        <a class="m-category-card m-category-card--bordered" href="{{ getSlugProduct($item->slug) }}">
                                             <div class="m-category-card__image-wrapper">
                                                 <picture>
                                                     <source media="(min-width: 768px)" data-srcset="{{ pare_url_file_product($item->thumbnail) }}">
@@ -317,9 +317,9 @@
                     <!-- /DEBUG :: DRAFT V2 -->
                     <div class="layout layout--onecol">
                         <div class="layout__region layout__region--content">
-                            <div data-block-plugin-id="inline_block:media_block_aligned" data-inline-block-uuid="2fdc5030-4488-48fd-b140-830135f9b16f" class="c-media-block-aligned">
+                            <div class="c-media-block-aligned">
                                 <div class="c-media-block-aligned__content-wrapper">
-                                    <div data-block-plugin-id="inline_block:media_block_aligned" data-inline-block-uuid="2fdc5030-4488-48fd-b140-830135f9b16f" class="c-media-block-aligned m-media-block-aligned">
+                                    <div class="c-media-block-aligned m-media-block-aligned">
                                         <div class="m-media-block-aligned__image-wrapper">
                                             <picture>
                                                 <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($slides_home_three->s_banner) }}">
@@ -370,7 +370,7 @@
                                             <li class="c-products-slider__item js-swiper-slide">
                                                 <!-- BASE :: MINI-PRODUCT-CARD -->
                                                 <a style="--color-brand:var(--color-simply-organic)"
-                                                class="m-mini-product-card" href="{{ $item->slug }}">
+                                                class="m-mini-product-card" href="{{ getSlugProduct($item->slug) }}">
                                                     <div class="m-mini-product-card__img-wrapper">
                                                         <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}">
                                                     </div>
