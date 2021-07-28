@@ -1,11 +1,7 @@
 @extends('pages.layouts.app_master_frontend')
 @section('contents')
 <style>
-    .columns .column.main {
-        padding-bottom: 40px;
-        width: 100%;
-    }
-
+   
     ul.checkout-methods-items li:before {
         content: '';
         display: none;
@@ -465,54 +461,97 @@
             padding: 10px 0;
         }
     }
+    table.color-abc th {
+
+        background-color: transparent;
+        text-align: left;
+        color: #0b2d25;
+        font-weight: 700;
+        border-bottom: 2px solid #97ccc0;
+    }
 </style>
 
-<main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
-    <div class="page-title-wrapper">
-        <h1 class="page-title">
-            <span class="base">Chi tiết đơn hàng {{ $order->code_invoice }}</span>
-        </h1>
-    </div>
-   
+<main id="maincontent" class="">
     <div class="columns">
-        <div class="column main" style="width:100%">
-            <h3>Thông tin khách hàng</h3>
-                <p>Người mua: {{ $order->customer_name }}</p>
-                <p>Địa chỉ: {{ $order->address }}</p>
-                <p>Số điênh thoại: {{ $order->phone }}</p>
-                <p>Email: {{ $order->email }}</p>
-                <p>Hình thức thanh toán: {{ $order->type_pay }}</p>
-                <p>Mã số thuế: {{ $order->taxcode }}</p>
-                <p>Mã giảm giá: {{ $order->vouchers }}</p>
-            <h3>Thông tin giỏ hàng</h3>
-            <table id="shopping-cart-table" class="cart items data table cart-table">
-                <thead>
-                    <tr>
-                        <th class=" item" scope="col"><span>Sản phẩm</span></th>
-                        <th class=" price" scope="col"><span>Giá</span></th>
-                        <th class=" qty" scope="col"><span>Số lượng</span></th>
-                        <th class=" subtotal" scope="col"><span>Tổng tiền</span></th>
-                    </tr>
-                </thead>
-                <tbody class="cart item">
-                    <?php $carts = json_decode($order->cart_info, true); ?>
-                    @forelse ($carts as $key => $item)
-                    <tr>
-                        <td class="item" scope="col"><a href="{{ get_link_blank_byname($item['name']) }}"><span>{{ $item['name'] }}</span></a></td>
-                        <td class="price" scope="col"><span>{{ $item['price'] }} đ</span></td>
-                        <td class="qty" scope="col"><span>{{ $item['qty'] }}</span></td>
-                        <td class="subtotal" scope="col"><span>{{ $item['subtotal'] }} đ</span></td>
-                    </tr>
-                    @empty
-                        
-                    @endforelse
-                  <tr style="background">
-                      <td colspan="3">TỔNG TIỀN</td>
-                      <td><span>{{ $order->total_money }} đ</span></td>
-                  </tr>
-                </tbody>
-            </table>
+        <div class="column main padding_css">
+                <div class="block block-dashboard-info col-md-6 col-xs-12">
+                    <div class="block-title"><strong>Thông tin khách hàng</strong></div>
+                    <div class="block-content">
+                        <table class="table table-sm color-abc">
+                            <tbody>
+                              <tr>
+                                <th scope="row">Chi tiết đơn hàng:</th>
+                                <th>{{ $order->code_invoice }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Người mua:</th>
+                                <th>{{ $order->customer_name }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Địa chỉ:</th>
+                                <th>{{ $order->address }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Số điênh thoại:</th>
+                                <th>{{ $order->phone }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Email:</th>
+                                <th>{{ $order->email }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Hình thức thanh toán:</th>
+                                <th>{{ $order->type_pay }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Mã số thuế:</th>
+                                <th>{{ $order->taxcode }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Mã giảm giá:</th>
+                                <th>{{ $order->vouchers }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+                <div class="block block-dashboard-info col-md-6 col-xs-12">
+                    <div class="block-title"><strong>Thông tin giỏ hàng</strong></div>
+                    <div class="column main" style="width:100%">
+                        <h3></h3>
+                            
+                        <h3></h3>
+                        <table id="shopping-cart-table" class="cart items data table cart-table">
+                            <thead>
+                                <tr>
+                                    <th class=" item" scope="col"><span>Sản phẩm</span></th>
+                                    <th class=" price" scope="col"><span>Giá</span></th>
+                                    <th class=" qty" scope="col"><span>Số lượng</span></th>
+                                    <th class=" subtotal" scope="col"><span>Tổng tiền</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="cart item">
+                                <?php $carts = json_decode($order->cart_info, true); ?>
+                                @forelse ($carts as $key => $item)
+                                <tr>
+                                    <td class="item" scope="col"><a href="{{ get_link_blank_byname($item['name']) }}"><span>{{ $item['name'] }}</span></a></td>
+                                    <td class="price" scope="col"><span>{{ $item['price'] }} đ</span></td>
+                                    <td class="qty" scope="col"><span>{{ $item['qty'] }}</span></td>
+                                    <td class="subtotal" scope="col"><span>{{ $item['subtotal'] }} đ</span></td>
+                                </tr>
+                                @empty
+                                    
+                                @endforelse
+                              <tr style="background">
+                                  <td colspan="3">TỔNG TIỀN</td>
+                                  <td><span>{{ $order->total_money }} đ</span></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
         </div>
+        @include('user::components._inc_menu_user')
     </div>
 </main>
 @stop

@@ -7820,7 +7820,6 @@ body._has-modal {
 }
 
 .m-newsletter-signup--no-bg .m-newsletter-signup__input {
-    box-shadow: 0 0 0 2px #ddd6c4 inset;
     border-right: none;
     margin-right: -2px
 }
@@ -7965,7 +7964,6 @@ body._has-modal {
         margin-bottom: 56px
     }
     .m-newsletter-signup__form {
-        margin-top: 32px;
         width: 414px;
         z-index: 9999999;
         position: relative;
