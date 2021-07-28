@@ -69,10 +69,10 @@
                                                                             <option value="asc" selected>Asc</option>
                                                                             <option value="desc">Desc</option>
                                                                         </select>
-                                                                       
+
                                                                         <span class="m-sort-by__arrow"></span>
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -150,7 +150,7 @@
                                                                                     <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                                                                                 </a>
                                                                                 <form class="m-product-card__add-to-cart">
-                                                                                    <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
+                                                                                    <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
                                                                                     <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon js-add-cart" type="&quot;submit&quot;">
                                                                                         <span class="icon-add-to-cart"></span>
                                                                                     </button>
@@ -167,13 +167,27 @@
                                                                                         </span>
                                                                                     </a>
                                                                                 </div>
-                                                                                <div class="m-product-card__sku">SKU: {{ $item->id }}</div>
+                                                                                <div class="m-product-card__sku">SKU: {{ $item->id }} đ</div>
                                                                                 <div class="m-price-lockup m-product-card__price">
-                                                                                    <span class="m-price-lockup__price" style="display: none">
+                                                                                    <span class="m-price-lockup__price">
+                                                                                        <?php if (checkUid($uid)) { ?>
+                                                                                            <?php if ($item->price_sale_store != null) { ?>
+                                                                                                <span class="a-price">
+                                                                                                    {{ $item->price_sale_store }} đ
+                                                                                                </span>
+                                                                                            <?php } else { ?>
+                                                                                                <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
+                                                                                            <?php } ?>
+                                                                                        <?php } else { ?>
+                                                                                            <?php if ($item->price != null) { ?>
+                                                                                                <span class="a-price">
+                                                                                                    {{ $item->price }} đ
+                                                                                                </span>
+                                                                                            <?php } else { ?>
+                                                                                                <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
+                                                                                            <?php } ?>
+                                                                                        <?php } ?>
 
-                                                                                        <span class="a-price">
-                                                                                            {{ $item->price_sale }}
-                                                                                        </span>
                                                                                     </span>
                                                                                 </div>
                                                                             </div>

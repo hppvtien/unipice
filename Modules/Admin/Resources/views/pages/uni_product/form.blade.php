@@ -187,8 +187,8 @@
                         <label for="exampleInputEmail1"> Status <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                <option title="hide" {{ $uni_product->status == 1 ? 'selected':'' }} value="0">No Active</option>
-                                <option title="Public" {{ $uni_product->status == 1 ? 'selected':'' }} value="1">Active</option>
+                                <option title="hide" {{ ($uni_product->status ?? 0) == 0 ? 'selected' : '' }} value="0">No Active</option>
+                                <option title="Public" {{ ($uni_product->status ?? 1) == 1 ? 'selected' : '' }} value="1">Active</option>
                             </select>
                         </div>
                     </div>
@@ -200,8 +200,8 @@
                         <label for="exampleInputEmail1"> Sản phẩm nổi bật <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="is_hot" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                <option title="hide" {{ $uni_product->is_hot == 1 ? 'selected':'' }} value="0">No Active</option>
-                                <option title="Public" {{ $uni_product->is_hot == 1 ? 'selected':'' }} value="1">Active</option>
+                                <option title="hide" {{ ($uni_product->is_hot ?? 0) == 0 ? 'selected' : '' }} value="0">No Active</option>
+                                <option title="Public" {{ ($uni_product->is_hot ?? 1) == 1 ? 'selected' : '' }} value="1">Active</option>
                             </select>
                         </div>
                     </div>
@@ -213,8 +213,8 @@
                         <label for="exampleInputEmail1"> Sản phẩm mới thử nghiệm <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="is_feauture" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                <option title="hide" {{ $uni_product->is_feauture == 1 ? 'selected':'' }} value="0">No Active</option>
-                                <option title="Public" {{ $uni_product->is_feauture == 1 ? 'selected':'' }} value="1">Active</option>
+                                <option title="hide" {{ ($uni_product->is_feauture ?? 0) == 0 ? 'selected' : '' }} value="0">No Active</option>
+                                <option title="Public" {{ ($uni_product->is_feauture ?? 1) == 1 ? 'selected' : '' }} value="1">Active</option>
                             </select>
                         </div>
                     </div>

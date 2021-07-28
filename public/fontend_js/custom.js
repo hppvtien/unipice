@@ -114,11 +114,13 @@ $('.search_province').on('change', function() {
 $(".js-add-cart").on('click', function() {
     let URL = $(this).attr('data-url');
     let data_id = $(this).attr('data-id');
+    let data_uid = $(this).attr('data-uid');
     $.ajax({
         url: URL,
         method: "get",
         data: {
-            data_id: data_id
+            data_id: data_id,
+            data_uid: data_uid
         },
         success: function(data) {
             console.log(data);

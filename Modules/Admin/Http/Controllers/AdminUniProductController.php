@@ -51,7 +51,6 @@ class AdminUniProductController extends AdminController
     public function create()
     {
         $uni_color = Uni_Color::orderByDesc('id')->get();
-        // $uni_product = Uni_Product::orderByDesc('id')->get();
         $uni_size = Uni_Size::orderByDesc('id')->get();
         $uni_tag = Uni_Tag::orderByDesc('id')->get();
         $uni_trade = Uni_Trade::orderByDesc('id')->get();
@@ -65,7 +64,6 @@ class AdminUniProductController extends AdminController
 
         $viewData = [
             'uni_color' => $uni_color,
-            // 'uni_product'   => $uni_product,
             'uni_size'       => $uni_size,
             'uni_tag'      => $uni_tag,
             'uni_trade'     => $uni_trade,
@@ -77,6 +75,7 @@ class AdminUniProductController extends AdminController
             'uni_category'     => $uni_category, 
             'uni_product'     => $uni_product
         ];
+    // dd($viewData);
         return view('admin::pages.uni_product.create', $viewData);
     }
 
@@ -86,6 +85,9 @@ class AdminUniProductController extends AdminController
         $data['created_at']   = Carbon::now();
         $data['created_by'] = get_data_user('web');
 
+        if ($request->thumbnail) {
+                $thumbnail = $this->processUploadFile($request->thumbnail);
+        } 
         if ($request->album) {
             $album = [];
             foreach ($request->album as $item) {
@@ -107,7 +109,7 @@ class AdminUniProductController extends AdminController
             'is_hot' => $request->is_hot,
             'is_feauture' => $request->is_feauture,
             'order' => $request->order,
-            'thumbnail' => $request->thumbnail,
+            'thumbnail' => $thumbnail,
             'album' => json_encode($album),
             'status' => $request->status,
         ];
@@ -156,11 +158,13 @@ class AdminUniProductController extends AdminController
     }
     public function update(Request $request, $id)
     {
+        
         $uni_product             = Uni_Product::findOrFail($id);
         $product_albumOld = json_decode(Uni_Product::where('id', $id)->pluck('album')->first());
         $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
         $data['updated_at'] = Carbon::now();
         $data['updated_by'] = get_data_user('web');
+        
         if ($request->album) {
             $album = [];
             foreach ($request->album as $item) {
@@ -169,13 +173,15 @@ class AdminUniProductController extends AdminController
         } else {
             $album = [];
         }
-        if ($request->thumbnail) {
-            $data['thumbnail'] = $request->thumbnail;
-            Storage::delete('public/uploads_product/'.$uni_product->thumbnail);
-        } else {
-            $data['thumbnail'] = $uni_product->thumbnail;
-        }
         
+        if ($request->thumbnail) {
+            
+            $thumbnail = $request->thumbnail;
+            // Storage::delete('public/uploads_product/'.$uni_product->thumbnail);
+        
+        } else {
+            $thumbnail = $uni_product->thumbnail;
+        }
         $store_ab = array_merge($product_albumOld, $album);
         $param = [
             'name' => $request->name,
@@ -190,10 +196,11 @@ class AdminUniProductController extends AdminController
             'is_hot' => $request->is_hot,
             'is_feauture' => $request->is_feauture,
             'order' => $request->order,
-            'thumbnail' => $request->thumbnail,
+            'thumbnail' => $thumbnail,
             'status' => $request->status,
             'album' => json_encode($store_ab),
         ];
+        // dd($param);
         $uni_product->fill($param)->save();
         $this->syncTagProduct($id, $request->tags);
         $this->syncCatProduct($id, $request->category);

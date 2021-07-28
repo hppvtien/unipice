@@ -5,8 +5,8 @@
     <div class="layout-content">
         <div class="region region-content">
             <div data-drupal-messages-fallback class="hidden"></div>
-            <div id="block-frontiercoop-market-content" data-block-plugin-id="system_main_block">
-                <article data-history-node-id="246326" role="article" about="/accessories/storage/bottles/atomizer-with-1-2-3-oz-amber-oil-bottle" data-frontier-type="products">
+            <div id="block-frontiercoop-market-content">
+                <article>
                     <div>
                         <div class="layout layout--onecol">
                             <div class="layout__region layout__region--content">
@@ -18,13 +18,7 @@
                                                 <a class="a-anchor" href="/">Home</a>
                                             </li>
                                             <li class="m-breadcrumb__item">
-                                                <a class="a-anchor" href="/accessories">Accessories</a>
-                                            </li>
-                                            <li class="m-breadcrumb__item">
-                                                <a class="a-anchor" href="/accessories/storage">Storage</a>
-                                            </li>
-                                            <li class="m-breadcrumb__item m-breadcrumb__item--active">
-                                                <a class="a-anchor" aria-current="page">Bottles</a>
+                                                <a class="a-anchor" href="{{ getSlugProduct($product->slug) }}"> {{ $product->name }} </a>
                                             </li>
                                         </ol>
                                     </nav>
@@ -46,9 +40,9 @@
                                                                 <img class="lazyload m-product-gallery__img" data-src="{{ pare_url_file_product($item) }}" alt="{{ $product->name }}" data-zoom="{{ pare_url_file_product($item) }}">
                                                         </li>
                                                         @empty
-                                                            
+
                                                         @endforelse
-                                                        
+
                                                     </ul>
                                                 </div>
                                                 <div class="a-carousel-indicator glide__arrows m-product-gallery__controls" data-glide-el="controls">
@@ -73,35 +67,49 @@
 
                                                             <div class="m-combined-product-name">
                                                                 <h1 class="m-combined-product-name__h1">
-                                                                    <span class="a-folio">
-                                                                        {{ $trade_name }}
-                                                                    </span>
                                                                     <span class="a-product-name">
                                                                         {{ $product->name }}
-                                                                        {{-- {{ desscription_cut($product->desscription,60) }} --}}
                                                                     </span>
                                                                 </h1>
                                                             </div>
                                                             <!-- FC-2249:: Remove markup that should only be available to authenticated users -->
                                                         </div>
-                                                        {{-- <div class="m-product-overview__unit-and-sku">
-                                                            <span class="m-product-overview__sku">SKU: {{ $product->id }}</span>
-                                                        </div> --}}
+                                                        <div class="m-product-overview__unit-and-sku">
+                                                            <span class="m-product-overview__sku">Mã sản phẩm: {{ $product->id }}</span>
+                                                        </div>
                                                         <!-- /TODO :: ADD RATING -->
                                                         <div role="article" class="m-product-overview__price-wrapper">
                                                             <div class="m-price-lockup">
                                                                 <span class="m-price-lockup__price">
                                                                     <span class="a-price">
-                                                                        Giá: {{ $product->price == '' ? 'Giá liên hệ': $product->price }} vnd
+                                                                        Giá: {{ $product->price == '' ? 'liên hệ': $product->price.'vnd' }}
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="m-product-overview__unit-and-sku">
+                                                            <span class="a-folio">
+                                                                {{ $trade_name }}
+                                                            </span>
+                                                        </div>
+                                                        <div role="article" class="m-product-overview__price-wrapper">
+                                                            <div class="m-price-lockup">
+                                                                <span class="m-price-lockup__price">
+                                                                    <span class="a-qty">
+                                                                        Số lượng: {{ $product->qty == '' ? 'Hiện tại hết hàng': $product->qty }}
                                                                     </span>
                                                                 </span>
                                                             </div>
                                                         </div>
                                                         <div role="article" class="m-product-overview__price-wrapper">
                                                             <div class="m-price-lockup">
+
                                                                 <span class="m-price-lockup__price">
-                                                                    <span class="a-qty">
-                                                                        Số lượng: {{ $product->qty == '' ? 'Hiện tại hết hàng': $product->qty }} 
+                                                                    <span class="a-product-name a-title-des">
+                                                                        Mô tả về sản phẩm: </br>
+                                                                    </span>
+                                                                    <span class="a-folio">
+                                                                        {{ $product->desscription }}
                                                                     </span>
                                                                 </span>
                                                             </div>
@@ -137,7 +145,7 @@
                         </div>
                         <div class="layout layout--onecol">
                             <div class="layout__region layout__region--content">
-                                <div data-block-plugin-id="entity_view:node">
+                                <div>
                                     <div class="c-product-details">
                                         <div class="c-product-details__main-description m-accordion js-accordion-details js-accordion--mobile-only" />
                                         <div class="c-product-details__title m-accordion__title js-accordion-trigger">
@@ -151,7 +159,7 @@
                                                     <span class="icon-star-filled"> </span>
                                                 </div>
                                                 <p class="a-paragraph--large">
-                                                    {{ $product->desscription }}
+                                                    {!! $product->content !!}
                                                 </p>
                                             </div>
                                         </div>
@@ -167,109 +175,79 @@
                         </div>
                     </div>
                     <div class="non-visible layout layout--onecol">
-                        <div class="layout__region layout__region--content">
-                            <div class="c-testimonial-carousel">
-                                <div class="c-testimonial-carousel__carousel glide">
-                                    <div class="c-testimonial-carousel__track glide__track" data-glide-el="track">
-                                        <div class="c-testimonial-carousel__slides glide__slides">
-                                            <div class="c-testimonial-carousel__slide glide__slide">
-                                                <div data-block-plugin-id="inline_block:testimonial_block" data-inline-block-uuid="cdaa6813-674d-4305-8823-c40e6921b4fd" class="m-review-testimonial-block">
-                                                    <div class="m-review-testimonial-block__image-container">
-                                                        <img class="lazyload" data-src="https://www.coopmarket.com/sites/default/files/styles/281x356/public/acquiadam/2020-07/testimonial-1.png?itok=JxQ9MMj6" alt=" ">
-                                                    </div>
-                                                    <div class="m-review-testimonial-block__content">
-                                                        <blockquote class="m-review-testimonial-block__quote" cite="">
-                                                            <p class="m-review-testimonial-block__quote-text">Aura Cacia essential oils are the perfect addition to any skincare routine.</p>
-                                                            <footer>
-                                                                <p class="m-review-testimonial-block__quote-author">Catherine Nelson<br>
-                                                                    <cite class="m-review-testimonial-block__quote-cite">Licensed Esthetician, Chicago, IL</cite>
-                                                                </p>
-                                                            </footer>
-                                                        </blockquote>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="c-testimonial-carousel__slide glide__slide">
-                                                <div data-block-plugin-id="inline_block:testimonial_block" data-inline-block-uuid="380dc9f3-a052-4db1-a107-e226f0671086" class="m-review-testimonial-block">
-                                                    <div class="m-review-testimonial-block__image-container">
-                                                        <img class="lazyload" data-src="https://www.coopmarket.com/sites/default/files/styles/281x356/public/acquiadam/2020-07/testimonial-2.png?itok=Z4dklNKY" alt=" ">
-                                                    </div>
-                                                    <div class="m-review-testimonial-block__content">
-                                                        <blockquote class="m-review-testimonial-block__quote" cite="">
-                                                            <p class="m-review-testimonial-block__quote-text">aura cacia dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
-                                                            <footer>
-                                                                <p class="m-review-testimonial-block__quote-author">Page Turner<br>
-                                                                    <cite class="m-review-testimonial-block__quote-cite">Licensed Esthetician, Chicago, IL</cite>
-                                                                </p>
-                                                            </footer>
-                                                        </blockquote>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="c-testimonial-carousel__slide glide__slide">
-                                                <div data-block-plugin-id="inline_block:testimonial_block" data-inline-block-uuid="2325b869-9df7-4c72-8594-29f8f30c85f5" class="m-review-testimonial-block">
-                                                    <div class="m-review-testimonial-block__image-container">
-                                                        <img class="lazyload" data-src="https://www.coopmarket.com/sites/default/files/styles/281x356/public/acquiadam/2020-07/testimonial-3.png?itok=lgDgWofL" alt=" ">
-                                                    </div>
-                                                    <div class="m-review-testimonial-block__content">
-                                                        <blockquote class="m-review-testimonial-block__quote" cite="">
-                                                            <p class="m-review-testimonial-block__quote-text">aura cacia dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
-                                                            <footer>
-                                                                <p class="m-review-testimonial-block__quote-author">Crystal Chandelier<br>
-                                                                    <cite class="m-review-testimonial-block__quote-cite">Licensed Esthetician, Chicago, IL</cite>
-                                                                </p>
-                                                            </footer>
-                                                        </blockquote>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                        <div class="c-categories-slider layout layout--onecol">
+
+                            <div class="layout__region layout__region--heading">
+                                <div class="c-categories-slider__heading-wrapper layout-builder__add-block">
+
+
+                                    <div class="m-heading">
+                                        <h2 class="m-heading__headline">
+                                            Sản phẩm liên quan
+                                        </h2>
                                     </div>
+
+
                                 </div>
-                                <div class="c-testimonial-carousel__controls">
-                                    <div class="c-testimonial-carousel__page-track glide__track" data-glide-el="track">
-                                        <div class="c-testimonial-carousel__page-slides glide__slides">
-                                            <div class="c-testimonial-carousel__page-slide glide__slide">
-                                                <img class="lazyload" data-src="https://www.coopmarket.com/sites/default/files/styles/281x356/public/acquiadam/2020-07/testimonial-1.png?itok=JxQ9MMj6">
-                                            </div>
-                                            <div class="c-testimonial-carousel__page-slide glide__slide">
-                                                <img class="lazyload" data-src="https://www.coopmarket.com/sites/default/files/styles/281x356/public/acquiadam/2020-07/testimonial-2.png?itok=Z4dklNKY">
-                                            </div>
-                                            <div class="c-testimonial-carousel__page-slide glide__slide">
-                                                <img class="lazyload" data-src="https://www.coopmarket.com/sites/default/files/styles/281x356/public/acquiadam/2020-07/testimonial-3.png?itok=lgDgWofL">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="a-carousel-indicator a-carousel-indicator--no-bullets a-carousel-indicator--arrows glide__arrows ">
-                                        <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--left" type="button" aria-label="Prev">
+                            </div>
+                            <div class="layout__region layout__region--content">
+                                <div class="c-categories-slider__container js-swiper-container">
+                                    <ul class="c-categories-slider__slider js-swiper-wrapper">
+                                        @forelse ($product_related as $key => $item)
+                                        <li class="c-categories-slider__item js-swiper-slide">
+                                            <a class="m-category-card m-category-card--bordered" href="{{ $item->slug }}">
+                                                <div class="m-category-card__image-wrapper">
+                                                    <picture>
+                                                        <source media="(min-width: 768px)" data-srcset="{{ pare_url_file_product($item->thumbnail) }}">
+                                                        <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ pare_url_file_product($item->thumbnail) }}">
+                                                    </picture>
+                                                    <div class="m-category-card__caption">
+                                                        <span class="m-category-card__caption-text">{{ $item->name }}</span>
+                                                    </div>
+                                                    <div class="m-category-card__caption">
+                                                        <p>{{ desscription_cut($item->desscription,60) }}</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        @empty
+
+                                        @endforelse
+
+
+                                    </ul>
+                                    <div class="a-carousel-indicator a-carousel-indicator--no-bullets a-carousel-indicator--arrows c-categories-slider__arrows">
+                                        <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--left js-swiper-button-prev" type="button" aria-label="Prev">
                                             <span class="icon-arrow-left"></span>
                                         </button>
-
-                                        <div class="a-carousel-indicator__bullets glide__bullets">
-                                            <button class="a-carousel-indicator__bullet " type="button" aria-label="Go to slide " data-slide-number="">
-                                            </button>
-                                        </div>
-
-                                        <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--right" type="button" aria-label="Next">
+                                        <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--right js-swiper-button-next" type="button" aria-label="Next">
                                             <span class="icon-arrow-right"></span>
                                         </button>
                                     </div>
-                                </div>
+                                    <div class="c-products-slider__scrollbar">
+                                        <div class="a-slider-scrollbar">
+                                            <div class="a-slider-scrollbar__inner js-swiper-scrollbar">
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layout layout--onecol">
-                        <div class="layout__region layout__region--content">
-                            <div class="views-element-container" data-block-plugin-id="views_block:product_detail_page_shop_the_recipe_carousel-block_shop_the_recipe_card">
-                                <div class="views-element-container">
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
             </div>
-            </article>
+            <div class="layout layout--onecol">
+                <div class="layout__region layout__region--content">
+                    <div class="views-element-container" data-block-plugin-id="views_block:product_detail_page_shop_the_recipe_carousel-block_shop_the_recipe_card">
+                        <div class="views-element-container">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        </article>
+    </div>
     </div>
     </div>
 </main>

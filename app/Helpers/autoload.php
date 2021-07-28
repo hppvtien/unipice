@@ -50,6 +50,11 @@ function execPostRequest($url, $data)
         $getSlug = 'san-pham/'.$tring.'.html';
         return $getSlug;
     }
+    function getSlugProduct($tring)
+    {
+        $getSlug = '/san-pham/'.$tring;
+        return $getSlug;
+    }
     function getSlugPost($tring)
     {
         $getSlug = '/bai-viet/'.$tring;
@@ -90,4 +95,8 @@ function execPostRequest($url, $data)
     function get_link_blank_byname($product_name){
         $link = App\Models\Uni_Product::where('name','=',$product_name)->pluck('slug')->first();
         return '/san-pham/'.$link;
+    }
+    function checkUid($id){
+        $checkUid = App\Models\Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('id')->first();
+        return $checkUid;
     }

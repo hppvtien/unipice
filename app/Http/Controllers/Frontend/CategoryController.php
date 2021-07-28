@@ -22,12 +22,14 @@ class CategoryController extends Controller
         $group_id_product = Product_Category::where('category_id', $cat_id)->pluck('product_id');
         $product = Uni_Product::with('uni_product:id,name,thumbnail,slug')->whereIn('id', $group_id_product)->orderBy('id', 'asc')->limit(12)->get();
         $count_product = count($group_id_product);
+        $uid = get_data_user('web');
         $viewdata = [
             'category' => $category,
             'product' => $product,
             'count_product' => $count_product,
             'trade' => $trade,
-            'categories' => $categories
+            'categories' => $categories,
+            'uid' => $uid
         ];
         return view('pages.category.index', $viewdata);
     }

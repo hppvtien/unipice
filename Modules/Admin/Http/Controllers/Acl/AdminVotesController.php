@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Modules\Admin\Http\Controllers\AdminController;
 use Modules\Admin\Http\Requests\AdminRoleRequest;
 use Spatie\Permission\Models\Permission;
-use App\Models\Vote;
 
 class AdminVotesController extends AdminController
 {
