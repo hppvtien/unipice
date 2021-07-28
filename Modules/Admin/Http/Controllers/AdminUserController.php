@@ -3,14 +3,7 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Bill;
-use App\Models\Cart\Order;
-use App\Models\Cart\Transaction;
-use App\Models\Jobs;
-use App\Models\Vote;
-use App\Models\User_voucher;
-use App\Models\AnswerToTeacher;
-use App\Models\QuestionsToTeacher;
+use App\Models\Cart\Uni_Order;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -21,6 +14,7 @@ class AdminUserController extends AdminController
     public function index()
     {
         $users = User::orderByDesc('id')->where('status', '!=', 2)->paginate(20);
+       
         $viewData = [
             'users' => $users
         ];
@@ -29,7 +23,13 @@ class AdminUserController extends AdminController
     public function edit($id)
     {
         $users = User::find($id);
-        return view('admin::pages.user.update', compact('users'));
+        $g_status = User::getStatusGlobal();
+        // dd($g_status);
+        $viewData = [
+            'users' => $users,
+            'g_status' => $g_status
+        ];
+        return view('admin::pages.user.update', $viewData);
     }
 
     public function update(Request $request, $id)
@@ -62,12 +62,8 @@ class AdminUserController extends AdminController
         if ($request->ajax()) {
             $users = User::find($id);
             if ($users) {
-                $tran = Transaction::where('t_user_id', $id)->pluck('id');
-                if($tran){
-                    Bill::whereIn('id_transaction', $tran)->delete();
-                }
-                Order::where('o_user_id', $id)->delete();
-                Transaction::where('t_user_id', $id)->delete();
+                
+                Uni_Order::where('user_id', $id)->delete();
                 
                 // if ($tran) {
                 //     $bin = Bill::whereIn('id_transaction', $tran)->get();
@@ -86,21 +82,14 @@ class AdminUserController extends AdminController
                 // }
                 
                 // $job = Jobs::where('user_id', $id)->pluck('id');
-                $vote = Vote::where('v_user_id', $id)->delete();
                 // if($vote){
                 //     $vote->delete(); 
                 // }
-                User_voucher::where('user_id', $id)->delete();
-                Jobs::where('user_id', $id)->delete();
+           
                 // if($user_voucher){
                 //     $user_voucher->delete();
                 // }
-                $answerToTeacher = AnswerToTeacher::where('asw_id_user', $id)->pluck('id');
-                
-                if ($answerToTeacher) {
-                    QuestionsToTeacher::whereIn('qs_answerID', $answerToTeacher)->delete();
-                    AnswerToTeacher::where('asw_id_user', $id)->delete();
-                }
+            
                 
                 
                 $users->delete();

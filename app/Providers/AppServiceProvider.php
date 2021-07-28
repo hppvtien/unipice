@@ -30,19 +30,13 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         try {
-            $menuBlog      = Menu::orderBy('m_sort', 'asc')->get();
             $configuration = Configuration::first();
-            $tagsHot       = Tag::where('t_hot', Tag::HOT)->get();
-            $category_mn = Uni_Category::where('status', 1)
-            ->orderBy('id', 'asc')
-            ->get();
+            $category_mn = Uni_Category::get();
         } catch (\Exception $exception) {
 
         }
 
-        \View::share('menuBlog', $menuBlog ?? []);
         \View::share('configuration', $configuration ?? []);
-        \View::share('tagsHot', $tagsHot ?? []);
-        \View::share('category_mn', $category_mn ?? []);
+        \View::share('category_mn', $category_mn ?? 1);
     }
 }

@@ -4,7 +4,7 @@ namespace Modules\Admin\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminUniPostRequest extends FormRequest
+class AdminUniProductRequest extends FormRequest
 {
     public function rules()
     {

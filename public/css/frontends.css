@@ -7434,7 +7434,7 @@ table tfoot td {
     border: none;
     max-width: 130px;
     text-overflow: ellipsis;
-    padding: 14px 25px 14px 0
+    padding: 5px 25px 5px 0
 }
 
 .m-sort-by__select:focus {
@@ -7448,7 +7448,7 @@ table tfoot td {
     position: absolute;
     pointer-events: none;
     right: 0;
-    top: calc(50% - 12px);
+    top: calc(50% - 20px);
     color: var(--color-foreground)
 }
 

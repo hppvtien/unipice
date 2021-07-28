@@ -9,12 +9,19 @@
                     <li class=""><a href="{{ route('get_user.myfavorites') }}">Sản Phẩm Yêu Thích</a></li>
                     <li class=""><a href="#">Đăng ký nhận tin</a></li>
                     @php
-                    $store = DB::table('Uni_Store')->where('user_id', get_data_user('web'))->first();           
+                    $store = \DB::table('Uni_Store')->where('user_id', get_data_user('web'))->first();  
                     @endphp
-                    @if($store->user_id == get_data_user('web') && $store->store_status == 1)
-                    <li class=""><a href="{{ route('get_user.my_flash_sale') }}">Danh Sách Gói Combo</a></li>
-                    <li class=""><a href="{{ route('get_user.productlist') }}">List Sản Phẩm</a></li>
-                    @endif 
+               
+                    <?php 
+                    if($store != null){
+                        if($store->user_id == get_data_user('web') && $store->store_status == 1){ ?>
+                            <li class=""><a href="{{ route('get_user.my_flash_sale') }}">Danh Sách Gói Combo</a></li>
+                            <li class=""><a href="{{ route('get_user.productlist') }}">List Sản Phẩm</a></li>
+                        <?php } else {
+                            echo '';
+                        }
+                    }
+                    ?>
                     <li class=""><a href="{{ route('get_user.transaction') }}">Đơn hàng</a></li> 
                 </ul>
             </div>

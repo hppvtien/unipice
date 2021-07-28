@@ -2,7 +2,6 @@
 
 namespace Modules\User\Http\Controllers;
 
-use App\Models\Education\Course;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 // use Illuminate\Routing\Controller;
@@ -10,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Models\Uni_Product;
 use App\Models\Uni_FlashSale;
+use App\Models\Uni_Store;
 
 class UserShoppingCartController extends UserController
 {
@@ -17,7 +17,6 @@ class UserShoppingCartController extends UserController
     const SINGLE = 'single';
     public function processCart(Request $request, $id, $type)
     {
-        var_dump($id);
         if ($request->ajax())
         {
             if($type == self::COMBO)
@@ -55,9 +54,16 @@ class UserShoppingCartController extends UserController
                     'message' => !$checkExist ? "Đã thêm khóa học vào giỏ" : "Khoá học đã có trong giỏ"
                 ]);
                 
-            }else{
+            }else{ 
+
                 // xử lý dữ liệu với khoá học
                 $uni_product = $this->checkProduct($id);
+                $uni_store = $this->checkStore($id);
+                if($uni_store){
+                    $price_cart = $uni_product->price_sale_store;
+                } else {
+                    $price_cart = $uni_product->price;
+                }
                 if (!$uni_product){
                     return response([
                        'status' => 404
@@ -77,7 +83,7 @@ class UserShoppingCartController extends UserController
                         'id' => $id,
                         'name' => $uni_product->name,
                         'qty' => 1,
-                        'price' => $uni_product->price,
+                        'price' => $price_cart,
                         'weight' => 1,
                         'options' => [
                             'images' => $uni_product->thumbnail
@@ -100,6 +106,10 @@ class UserShoppingCartController extends UserController
     protected function checkCombo($id)
     {
         return Uni_FlashSale::find($id);
+    }
+    protected function checkStore($id)
+    {
+        return Uni_Store::where('user_id',$id)->first();
     }
 }
 

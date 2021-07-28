@@ -31,6 +31,7 @@
                         <li class="menu-item "><a href="shop-grid-3-column.html"><i class="po po-drinks"></i>Drinks</a></li>
                     </ul>
                 </div>
+
             </nav>
             <!-- #site-navigation -->
             <div class="header-info-wrapper">
@@ -50,6 +51,7 @@
                             <span class="a-icon-text-btn__label">
                          My Cart </span>
                             <div></div>
+
                         </a>
                         <a class="a-icon-text-btn a-icon-text-btn--icon-only js-search-btn" href="#">
                             <span class="icon-account a-icon-text-btn__icon" aria-hidden="true"></span>

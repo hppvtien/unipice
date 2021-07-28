@@ -65,6 +65,9 @@ $('.name-filler').on('click', function() {
         success: function(data) {
             $('#show-product').html(data);
         },
+        error: function(data) {
+            console.log(data);
+        }
 
     });
 });
@@ -114,11 +117,13 @@ $('.search_province').on('change', function() {
 $(".js-add-cart").on('click', function() {
     let URL = $(this).attr('data-url');
     let data_id = $(this).attr('data-id');
+    let data_uid = $(this).attr('data-uid');
     $.ajax({
         url: URL,
         method: "get",
         data: {
-            data_id: data_id
+            data_id: data_id,
+            data_uid: data_uid
         },
         success: function(data) {
             console.log(data);
@@ -270,5 +275,18 @@ $('#momo-success').on('click', function() {
             console.log(results);
         }
 
+    });
+});
+$(function() {
+    $(".loadmore1").slice(0, 4).show();
+    $("#loadMore").on("click", function(e) {
+        e.preventDefault();
+        $(".loadmore1:hidden").slice(0, 4).slideDown();
+        if ($(".loadmore1:hidden").length == 0) {
+            $("#load").fadeOut("slow");
+        }
+        $("#show-product").animate({
+            scrollTop: $(this).offset().top
+        }, 1500);
     });
 });

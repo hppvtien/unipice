@@ -108,6 +108,7 @@
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
                                 @foreach($status as $key => $item)
+                                <?php dd($key); ?>
                                     <option title="Public" value="{{ $key }}" {{ $uni_order->status == $key ? "selected" : "" }}>{{ $item['name'] }}</option>
                                 @endforeach
                             </select>
