@@ -58,8 +58,8 @@
                             <span class="a-icon-text-btn__label">Users</span>
                         </a>
                         <div id="wrap">
-                            <form action="" autocomplete="on">
-                                <input id="search" name="search" type="text" placeholder="Search...">
+                            <form action="{{ route('get.search') }}" autocomplete="off">
+                                <input id="search" name="search" type="text" placeholder="Tìm kiếm...">
                                 <span class="icon-search a-icon-text-btn__icon" aria-hidden="true"></span>
                             </form>
                         </div>

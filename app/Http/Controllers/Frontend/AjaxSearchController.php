@@ -22,13 +22,11 @@ class SearchController extends Controller
             ->orderByDesc('id')
             ->limit(20)
             ->get();
-            $uid = get_data_user('web');
         $viewData=[
             'product'=>$product,
-            'post'=>$post,
-            'uid'=>$uid,
-            'search'=>$search
+            'post'=>$post
         ];
+        dd($viewData);
         return view('pages.search.index', $viewData);
     }
 }

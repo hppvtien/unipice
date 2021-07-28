@@ -76,11 +76,11 @@
                                 @endforelse
                                 <tr class="bg-primary">
                                     <td colspan="5"><span class="text-light">Giảm giá</span></td>
-                                    <td colspan="5"><span class="text-light">{{ $uni_order->product_sale ?? 0 }}</span></td>
+                                    <td colspan="5"><span class="text-light">{{ $uni_order->product_sale ?? 0 }} đ</span></td>
                                 </tr>
                                 <tr class="bg-primary">
                                     <td colspan="5"><span class="text-light">Tổng tiền</span></td>
-                                    <td colspan="5"><span class="text-light">{{ $uni_order->total_money }}</span></td>
+                                    <td colspan="5"><span class="text-light">{{ $uni_order->total_money }} đ</span></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -108,7 +108,6 @@
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
                                 @foreach($status as $key => $item)
-                                <?php dd($key); ?>
                                     <option title="Public" value="{{ $key }}" {{ $uni_order->status == $key ? "selected" : "" }}>{{ $item['name'] }}</option>
                                 @endforeach
                             </select>

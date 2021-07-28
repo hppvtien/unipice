@@ -1,11 +1,5 @@
-@extends('blog::layouts.master')
-@section('style')
-
-<link rel="stylesheet" href="{{ asset('css/frontend_dashboard.css') }}">
-<link rel="stylesheet" href="{{ asset('css/blog_home.css') }}">
-@stop
-@section('content')
-<!-- @include('blog::pages.home.include._inc_breadcrumb') -->
+@extends('pages.layouts.app_master_frontend')
+@section('contents')
 <main role="main">
   <a id="main-content" tabindex="-1"></a>
   <div class="layout-content">
@@ -113,7 +107,4 @@
     </div>
   </div>
 </main>
-@endsection
-@section('js')
-
 @stop

@@ -52,7 +52,13 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::get('san-pham/{slug}','ProductController@index')->name('get.product');
     Route::get('lien-he/','Uni_ContactController@index')->name('get.uni_contact');
     Route::post('lien-he/','Uni_ContactController@getformsubmit')->name('post.uni_contact');
+    Route::get('tim-kiem','SearchController@search')->name('get.search');
 
+
+    Route::get('bai-viet', 'BlogHomeController@index')->name('get_blog.home');
+    Route::post('bai-viet', 'BlogHomeController@fillter_post');
+    Route::get('bai-viet/{slug}', 'BlogHomeController@SingleBlog')->name('get_blog.single_blog');
+    Route::get('danh-muc-bai-viet/{slug}', 'BlogHomeController@SingleCat')->name('get_blog.single_cat');
     
 
 });

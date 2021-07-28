@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Blog\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
 use App\Models\Blog\Uni_PostCategory;
 use App\Models\Blog\Uni_Post;
@@ -10,11 +10,10 @@ use App\Models\Education\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class BlogHomeController extends BlogController
+class BlogHomeController extends Controller
 {
     public function index()
     {
-        
         \SEOMeta::setTitle('Bài viết Unispice');
         \SEOMeta::setDescription('Bài viết Unispice');
         \SEOMeta::setCanonical(\Request::url());
@@ -27,7 +26,7 @@ class BlogHomeController extends BlogController
             'blog_post' => $blog_post,
             'slide' => $slide
         ];
-        return view('blog::pages.home.index', $viewData);
+        return view('pages.blog.index', $viewData);
     }
     public function fillter_post(Request $request)
     {
@@ -38,7 +37,7 @@ class BlogHomeController extends BlogController
             $blog_post  = Uni_Post::where('category_id', $cat_id)->orderBy('id', 'asc')->limit(8)->get();
            
         } 
-        $html = view('blog::pages.home._item_post', compact('blog_post'))->render();
+        $html = view('pages.blog._item_post', compact('blog_post'))->render();
         return $html;
     }
     public function SingleBlog($slug)
@@ -53,7 +52,7 @@ class BlogHomeController extends BlogController
             'slide' => $slide,
             'current_cate' => $current_cate
         ];
-        return view('blog::pages.home.single_blog',$viewdata);
+        return view('pages.blog.single_blog',$viewdata);
     }
     public function SingleCat($slug)
     {
@@ -68,6 +67,6 @@ class BlogHomeController extends BlogController
             'slide' => $slide,
             'current_cate' => $current_cate
         ];
-        return view('blog::pages.home.single_cat', $viewData);
+        return view('pages.blog.single_cat', $viewData);
     }
 }
