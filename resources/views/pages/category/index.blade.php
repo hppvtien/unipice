@@ -86,12 +86,12 @@
                                                                     <!-- BASE -->
                                                                     <button class="a-icon-text-btn  a-icon-text-btn--icon-only js-close-filters" type="button">
                                                                         <span class="icon-close a-icon-text-btn__icon" aria-hidden="true"></span>
-                                                                        <span class="a-icon-text-btn__label">Hide filters</span>
+                                                                        <span class="a-icon-text-btn__label">Ẩn bộ lọc</span>
                                                                     </button>
                                                                     <!-- /BASE -->
                                                                 </div>
                                                                 <div class="c-sidebar-filters__heading">
-                                                                    <p class="c-sidebar-filters__title">Filters by:</p>
+                                                                    <p class="c-sidebar-filters__title">Lọc với:</p>
                                                                 </div>
                                                                 <div class="c-sidebar-filters__list">
 

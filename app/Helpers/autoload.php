@@ -67,7 +67,7 @@ function execPostRequest($url, $data)
     }
     function count_order()
     {
-        $order = App\Models\Cart\Order::where('created_at','<',date_format(Carbon\Carbon::now(), 'Y-m-d'))->get();
+        $order = App\Models\Cart\Uni_Order::where('created_at','<',date_format(Carbon\Carbon::now(), 'Y-m-d'))->get();
         $count_order = count($order);
         return $count_order;
     }

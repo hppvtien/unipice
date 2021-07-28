@@ -57,8 +57,8 @@
                         <!-- /BASE -->
                     </div>
                     <div class="c-header__logo">
-                        <a class="a-logo" href="/">
-                            <img data-src="" class="lazyload" alt="Home" />
+                        <a class="a-logo" href="">
+                            <img data-src="/storage/uploads/{!! nl2br($configuration->logo ?? '') !!}" class="lazyload" alt="Home" />
                         </a>
                     </div>
                     <!-- BASE -->
