@@ -54,12 +54,12 @@ class UserShoppingCartController extends UserController
                     'message' => !$checkExist ? "Đã thêm khóa học vào giỏ" : "Khoá học đã có trong giỏ"
                 ]);
                 
-            }else{ 
+            } else { 
 
                 // xử lý dữ liệu với khoá học
                 $uni_product = $this->checkProduct($id);
-                $uni_store = $this->checkStore($id);
-                if($uni_store){
+                $uni_store = $this->checkStore($request->data_uid);
+                if($uni_store != null){
                     $price_cart = $uni_product->price_sale_store;
                 } else {
                     $price_cart = $uni_product->price;
@@ -109,7 +109,7 @@ class UserShoppingCartController extends UserController
     }
     protected function checkStore($id)
     {
-        return Uni_Store::where('user_id',$id)->first();
+        return Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('id')->first();
     }
 }
 

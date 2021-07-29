@@ -169,6 +169,7 @@
     } );
     
 </script>
+
 @yield('scriptck')
 </body>
 </html>

@@ -10,10 +10,12 @@
         content: '';
         display: none;
     }
+
     .optionTitle.m-radio-button__text-label {
         float: left;
         margin-right: 10px;
     }
+
     .cart-container .cart-summary .shipping .m-text-input,
     .cart-container .cart-summary .shipping .m-select-menu {
         margin-top: 20px;
@@ -23,16 +25,19 @@
     .checkout-container {
         position: relative;
     }
+
     .m-radio-button {
         position: relative;
         margin-bottom: 10px;
         flex: 0 0 25%;
         max-width: 100%;
     }
+
     .pay_type {
         display: flex;
-        margin-top: 20px!important;
+        margin-top: 20px !important;
     }
+
     .a-select-menu {
         position: relative;
         padding-right: 40px;
@@ -358,6 +363,7 @@
 
     .m-text-input {
         width: 100%;
+        flex-direction: column;
     }
 
     .m-select-menu {
@@ -371,6 +377,27 @@
 
     .minicart-items-wrapper.overflowed:last-child {
         border-bottom: none;
+    }
+
+    input.a-text-input.m-text-input__input {
+        border: 1px solid;
+        position: relative;
+        left: 0;
+        width: 90%;
+        border-radius: 5px;
+        height: 50px;
+    }
+
+    .actions-toolbar.pay_continue {
+        justify-content: center;
+    }
+
+    .field._required {
+        margin-top: 10px;
+    }
+
+    .field._required:first-child {
+        margin-top: 5px;
     }
 
     @media screen and (min-width: 1024px) {
@@ -486,112 +513,108 @@
                     <div data-role="checkout-messages" class="messages">
                     </div>
                     <div class="opc-wrapper">
-                        <ol class="opc" id="checkoutSteps">
-                            <li id="shipping" class="checkout-shipping-address" data-bind="fadeVisible: visible()">
-                                <div id="checkout-step-shipping" class="step-content" data-role="content">
-                                    <div class="block discount active" id="block-discount" data-collapsible="true" role="tablist">
-                                        <div class="content" data-role="content" aria-labelledby="block-discount-heading" role="tabpanel" aria-hidden="false" style="display: block;">
-                                            <form id="discount-coupon-form" action="" method="post">
-                                                <div class="fieldset coupon">
-                                                    <input type="hidden" name="remove" id="remove-coupon" value="0">
-                                                    <div class="field">
-                                                        <div class="m-text-input m-text-input--placeholder-label control">
-                                                            <input type="text" class="a-text-input m-text-input__input input-text" id="vouchers" name="vouchers" value="" placeholder="Enter discount code">
-                                                            <label for="vouchers" class="a-form-label m-text-input__label label"><span>Nhập mã giảm giá</span></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="messager_check text-center mb10 text-danger"></div>
-                                                    <div class="actions-toolbar">
-                                                        <div class="primary">
-                                                            <button class="a-btn a-btn--primary action apply primary" id="check_vouchers" data-url="{{ route('get_user.check_vouchers') }}" type="button" value="Apply Discount">
-                                                                <span>Sử dụng mã giảm giá</span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <h4 class="step-title" data-role="title">Thông tin khách hàng</h4>
-                                    <form class="form form-shipping-address" id="co-shipping-form" data-hasrequired="* Required Fields">
-                                        <div id="shipping-new-address-form" class="fieldset address">
-                                            <input type="hidden" class="form-control" name="code_invoice" id="method_invoice"
-                                                value="#00<?php echo rand(1000, 9999); ?>">
-                                            <div class="field _required" name="shippingAddress.firstname">
-                                                <div class="control">
-                                                    <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="customer_name" aria-required="true" aria-invalid="false" id="G11F99D">
-                                                        <label class="a-form-label m-text-input__label" for="G11F99D">
-                                                            <span>Họ tên khách hàng</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="field _required" name="shippingAddress.lastname">
-                                                <div class="control">
-                                                    <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="email" aria-required="true" aria-invalid="false" id="NF52K8P">
-                                                        <label class="a-form-label m-text-input__label" for="NF52K8P">
-                                                            <span>Email</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="field" name="shippingAddress.company">
-                                                <div class="control">
-                                                    <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="address" aria-invalid="false" id="SMA1P60">
 
-                                                        <label class="a-form-label m-text-input__label" for="SMA1P60">
-                                                            <span>Địa chỉ</span>
-                                                        </label>
-                                                    </div>
+                        <div id="checkout-step-shipping" class="step-content" data-role="content">
+                            <div class="block discount active" id="block-discount" data-collapsible="true" role="tablist">
+                                <div class="content" data-role="content" aria-labelledby="block-discount-heading" role="tabpanel" aria-hidden="false" style="display: block;">
+                                    <form id="discount-coupon-form" action="" method="post">
+                                        <div class="fieldset coupon">
+                                            <div class="field">
+                                                <div class=" control">
+                                                    <label for="vouchers" class="a-form-label m-text-input__label label"><span>Nhập mã giảm giá</span></label>
+                                                    <input type="text" class="a-text-input m-text-input__input input-text" id="vouchers" name="vouchers" value="" placeholder="Vouchers giảm giá">
                                                 </div>
                                             </div>
-                                            <div class="field _required" name="shippingAddress.telephone">
-                                                <div class="control _with-tooltip">
-                                                    <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="taxcode" aria-required="true" aria-invalid="false" id="CNBP3U7">
-                                                        <label class="a-form-label m-text-input__label" for="CNBP3U7">
-                                                            <span>Mã số thuế</span>
-                                                        </label>
-                                                    </div>
+                                            <div class="messager_check text-center mb10 text-danger"></div>
+                                            <div class="actions-toolbar">
+                                                <div class="primary">
+                                                    <button class="a-btn a-btn--primary action apply primary" id="check_vouchers" data-url="{{ route('get_user.check_vouchers') }}" type="button" value="Apply Discount">
+                                                        <span>Sử dụng mã giảm giá</span>
+                                                    </button>
                                                 </div>
-                                            </div>
-                                            <div class="field" name="shippingAddress.fax">
-                                                <div class="control">
-                                                    <div class="m-text-input m-text-input--placeholder-label  ">
-                                                        <input class="a-text-input m-text-input__input" type="text" name="phone" aria-invalid="false" id="CBQX168">
-                                                        <label class="a-form-label m-text-input__label" for="CBQX168">
-                                                            <span>Số điện thoại</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="field pay_type">
-                                                @foreach (config('cart.pay_type') as $key => $item)
-                                                <div class="validContainer addressOption selected m-radio-button">
-                                                    <input type="radio" class="validAddress m-radio-button__input" name="type_pay"  {{ $key == 0 ? 'checked' : '' }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
-                                                    <label class="addressLabel" for="valid-{{ $item['type'] }}">
-                                                        <span class="m-radio-button__circle"></span>
-                                                        <div class="optionTitle m-radio-button__text-label">{{ $item['name'] }}</div>
-                                                        <div class="optionAddress validAddressText"></div>
-                                                    </label>
-                                                </div>
-                                                @endforeach
                                             </div>
                                         </div>
                                     </form>
-                                    <div class="actions-toolbar">
-                                        <div class="primary">
-                                            <button class="a-btn a-btn--primary action apply primary " id="pay_success" data-url="{{ route('get_user.postpay') }}" type="button" value="Pay Continue">
-                                                <span>Tiếp tục thanh toán</span>
-                                            </button>
+                                </div>
+                            </div>
+                            <h4 class="step-title" data-role="title">Thông tin khách hàng</h4>
+                            <form class="form form-shipping-address" id="co-shipping-form" data-hasrequired="* Required Fields">
+                                <div id="shipping-new-address-form" class="fieldset address">
+                                    <input type="hidden" class="form-control" name="code_invoice" id="method_invoice" value="#00<?php echo rand(1000, 9999); ?>">
+                                    <div class="field _required" name="shippingAddress.firstname">
+                                        <div class="control">
+                                            <div class="m-text-input">
+                                                <label class="a-form-label m-text-input__label" for="G11F99D">
+                                                    <span>Họ tên khách hàng</span>
+                                                </label>
+                                                <input class="a-text-input m-text-input__input" type="text" name="customer_name" aria-required="true" aria-invalid="false" id="G11F99D">
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="field _required" name="shippingAddress.lastname">
+                                        <div class="control">
+                                            <div class="m-text-input  ">
+                                                <input class="a-text-input m-text-input__input" type="text" name="email" aria-required="true" aria-invalid="false" id="NF52K8P">
+                                                <label class="a-form-label m-text-input__label" for="NF52K8P">
+                                                    <span>Email</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field _required" name="shippingAddress.company">
+                                        <div class="control">
+                                            <div class="m-text-input  ">
+                                                <input class="a-text-input m-text-input__input" type="text" name="address" aria-invalid="false" id="SMA1P60">
+
+                                                <label class="a-form-label m-text-input__label" for="SMA1P60">
+                                                    <span>Địa chỉ</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field _required" name="shippingAddress.telephone">
+                                        <div class="control _with-tooltip">
+                                            <div class="m-text-input  ">
+                                                <input class="a-text-input m-text-input__input" type="text" name="taxcode" aria-required="true" aria-invalid="false" id="CNBP3U7">
+                                                <label class="a-form-label m-text-input__label" for="CNBP3U7">
+                                                    <span>Mã số thuế</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field _required" name="shippingAddress.fax">
+                                        <div class="control">
+                                            <div class="m-text-input  ">
+                                                <input class="a-text-input m-text-input__input" type="text" name="phone" aria-invalid="false" id="CBQX168">
+                                                <label class="a-form-label m-text-input__label" for="CBQX168">
+                                                    <span>Số điện thoại</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field _required pay_type">
+                                        @foreach (config('cart.pay_type') as $key => $item)
+                                        <div class="validContainer addressOption selected m-radio-button">
+                                            <input type="radio" class="validAddress m-radio-button__input" name="type_pay" {{ $key == 0 ? "checked" : " "; }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
+                                            <label class="addressLabel" for="valid-{{ $item['type'] }}">
+                                                <span class="m-radio-button__circle"></span>
+                                                <div class="optionTitle m-radio-button__text-label">{{ $item['name'] }}</div>
+                                                <div class="optionAddress validAddressText"></div>
+                                            </label>
+                                        </div>
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </li>
-                        </ol>
+                            </form>
+                            <div class="actions-toolbar pay_continue">
+                                <div class="primary">
+                                    <button class="a-btn a-btn--primary action apply primary " id="pay_success" data-url="{{ route('get_user.postpay') }}" type="button" value="Pay Continue">
+                                        <span>Tiếp tục thanh toán</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <aside role="dialog" class="modal-custom opc-sidebar opc-summary-wrapper custom-slide" aria-describedby="modal-content-11" data-role="modal" data-type="custom" tabindex="0">
@@ -632,7 +655,7 @@
                                                                     <div class="subtotal">
                                                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                                                             <span class="cart-price">
-                                                                                <span class="label">Thành tiền: </span>
+                                                                                <span class="label">Đơn giá: </span>
                                                                                 <span class="price">{{ $item->price }} đ</span>
                                                                             </span>
                                                                         </span>
@@ -643,7 +666,7 @@
                                                     </li>
                                                 </ol>
                                             </div>
-                                            @endforeach 
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

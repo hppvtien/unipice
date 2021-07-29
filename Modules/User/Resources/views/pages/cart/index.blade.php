@@ -248,7 +248,9 @@
         margin: 20px 0;
         text-align: center;
     }
-
+    tbody.cart.item tr td {
+    vertical-align: inherit;
+}
 
     @media screen and (min-width: 1024px) {
 
@@ -395,6 +397,7 @@
                         </li>
                     </ul>
                 </div>
+                
                 <form action="" method="get" id="form-validate" class="form form-cart">
                     <div class="table-responsive">
                         <table id="shopping-cart-table" class="cart items data table cart-table">
@@ -402,7 +405,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col"><span>Sản phẩm</span></th>
-                                    <th scope="col"><span>Mã Sale</span></th>
+                                    <th scope="col"><span></span></th>
                                     <th scope="col"><span>Giá</span></th>
                                     <th scope="col"><span>Số lượng</span></th>
                                     <th scope="col"><span>Tổng tiền</span></th>
@@ -441,7 +444,7 @@
                                         <div class="field qty">
                                             <div class="control qty">
                                                 <label for="cart-{{ $item->id }}-qty">
-                                                    <input id="cart-{{ $item->id }}-qty" data-row={{ $item->rowId }} class="input-text qty update-qty"  data-url="{{ route('get_user.updatecart',$item->id) }}" name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" size="4" step="any" title="Qty">
+                                                    <input id="cart-{{ $item->id }}-qty" style="width: 4.5em" data-row={{ $item->rowId }} class="input-text qty update-qty"  data-url="{{ route('get_user.updatecart',$item->id) }}" name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" size="4" step="any" title="Qty">
                                                 </label>
                                             </div>
                                         </div>

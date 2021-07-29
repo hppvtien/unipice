@@ -43,7 +43,9 @@
                             @if($dem == 0)
                             <div></div>
                             @else
-                            <div class="c-header__minicart-count"><span>{{ $dem }}</span></div>
+                            <div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">
+                                <span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">{{ $dem }}</span>
+                            </div>
                             @endif
 
                         </a>

@@ -12,6 +12,7 @@ use App\Mail\SendMail;
 use Illuminate\Support\Str;
 use App\Models\Configuration;
 use App\Models\Voucher;
+use App\Models\Uni_Product;
 use App\Models\User_voucher;
 use Modules\Admin\Http\Requests\BillRequest;
 use GuzzleHttp\Psr7\Message;
@@ -28,6 +29,7 @@ class UserPayController extends UserController
      
             'listCarts' => $listCarts
         ];
+        // \Cart::destroy();    
         // dd($viewData);
         return view('user::pages.pay.index', $viewData);
     }
@@ -111,7 +113,7 @@ class UserPayController extends UserController
     public function processVnPayCart(Request $request, $id)
     {
         $order = Uni_Order::find($id); 
-       
+        
         session(['cost_id' => $id]);
         session(['url_prev' => url()->previous()]);
         $vnp_TmnCode = "I007EUZ2"; //Mã website tại VNPAY 
@@ -124,15 +126,14 @@ class UserPayController extends UserController
         $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
         $vnp_OrderType = 'billpayment';
         $vnp_Amount = $order->total_money;
-        $vnp_Amount = str_replace('đ', '', str_replace('.', '', $order->total_money));
+        $vnp_Amount = (int)(str_replace('đ', '', str_replace('.', '', $order->total_money)));
         $vnp_Locale = 'vn';
         $vnp_BankCode = $request->bank_code;
-    
         $vnp_IpAddr = request()->ip();
         $inputData = array(
             "vnp_Version" => "2.0.0",
             "vnp_TmnCode" => $vnp_TmnCode,
-            "vnp_Amount" => $order->total_money * 100,
+            "vnp_Amount" => $vnp_Amount,
             "vnp_Command" => "pay",
             "vnp_CreateDate" => date('YmdHis'),
             "vnp_CurrCode" => "VND",
@@ -143,7 +144,6 @@ class UserPayController extends UserController
             "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef
         );
-        // dd($inputData);
 
         if (isset($vnp_BankCode) && $vnp_BankCode != "") {
             $inputData['vnp_BankCode'] = $vnp_BankCode;
@@ -187,12 +187,19 @@ class UserPayController extends UserController
         $responseTime = $request->vnp_PayDate;
         $data['t_note_message'] = $errorCode . '-' . $localMessage . '[' . $responseTime . ']';
         $order       = Uni_Order::where('pay_code', $request->vnp_TxnRef)->first();
+       
         if ($request['vnp_ResponseCode'] == '00') {
-            $data['status'] = 3;
+            foreach(json_decode($order->cart_info) as $items){
+                $uni_product       = Uni_Product::where('id', $items->id)->first();
+                $product['qty'] = $uni_product->qty - $items->qty;
+                $uni_product->fill($product)->save();
+            };
+            $data['status'] = 1;
             $order->fill($data)->save();
-            echo "GD Thanh cong";
+            $message = 'Cám ơn quý khách đã tin tưởng và ủng hộ chúng tao !!!';
+            return view('user::pages.pay.finish_pay',compact('message'));
         } else {
-            $data['status'] = -1;
+            $data['status'] = 0;
             $order->fill($data)->save();
             echo "GD Khong thanh cong";
         }
@@ -253,7 +260,14 @@ class UserPayController extends UserController
         $momo_Url = $jsonResult['payUrl'];
       
         if ($momo_Url) {
-       
+            $data_mm = [
+                't_user_id' => get_data_user('web'),
+                't_phone' => $request->method_phone,
+                't_type_pay' => $request->type_pay,
+                't_code' => $orderId,
+                't_note' =>  $orderInfo
+            ];
+            $order->fill($data)->save();
             \Cart::destroy();
             return $momo_Url;
         }
@@ -281,15 +295,15 @@ class UserPayController extends UserController
             $orderType = $request->orderType;
             $extraData = $request->extraData;
             $m2signature = $request->signature; //MoMo signature
-            $transaction       = Transaction::where('t_code', $orderId)->first();
-
-            $data['t_note_message'] = $errorCode . '-' . $localMessage . '[' . $responseTime . ']';
+            $order       = Uni_Order::where('pay_code', $orderId)->first();
+// dd($order);
+            $data['pay_node'] = $errorCode . '-' . $localMessage . '[' . $responseTime . ']';
             if ($errorCode == '0') {
-                $data['t_status'] = 3;
+                $data['status'] = 1;
             } else {
-                $data['t_status'] = -1;
+                $data['status'] = 0;
             }
-            $transaction->fill($data)->save();
+            $order->fill($data)->save();
             $rawHash = "partnerCode=" . $partnerCode . "&accessKey=" . $accessKey . "&requestId=" . $requestId . "&amount=" . $amount . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo .
                 "&orderType=" . $orderType . "&transId=" . $transId . "&message=" . $message . "&localMessage=" . $localMessage . "&responseTime=" . $responseTime . "&errorCode=" . $errorCode .
                 "&payType=" . $payType . "&extraData=" . $extraData;
@@ -302,8 +316,13 @@ class UserPayController extends UserController
 
             if ($m2signature == $partnerSignature) {
                 if ($errorCode == '0') {
-                    $result = '<div class="alert alert-success"><strong>Payment status: </strong>Success</div>';
-                    return $result;
+                    foreach(json_decode($order->cart_info) as $items){
+                        $uni_product       = Uni_Product::where('id', $items->id)->first();
+                        $product['qty'] = $uni_product->qty - $items->qty;
+                        $uni_product->fill($product)->save();
+                    };
+                    $message = 'Cám ơn quý khách đã tin tưởng và ủng hộ chúng tao !!!';
+                    return view('user::pages.pay.finish_pay',compact('message'));
                 } else {
                     $result = '<div class="alert alert-danger"><strong>Payment status: </strong>' . $message . '/' . $localMessage . '</div>';
                     return $result;

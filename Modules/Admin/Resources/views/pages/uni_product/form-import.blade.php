@@ -30,14 +30,14 @@
                                         <th scope="col">Hạn sử dụng</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="gr_sele">
                                     @foreach($uni_lotproduct as $key => $item)
                                     
                                     <tr>
                                         <th scope="row">{{ $key+1 }}</th>
                                         <td>
                                             <div class="form-check form-check-inline">
-                                                <input require class="form-check-input lot_product" {{ $item->status == 0 ? 'disabled':'' }} type="radio" name="lotproduct_id" lot-key="{{ $key }}"
+                                                <input require class="form-check-input {{ $item->key_lot != '' ? 'lot_product':''  }}" {{ $item->status == 0 ? 'disabled':'' }} type="radio" name="lotproduct_id" lot-key="{{ $key }}"
                                                 product-id="{{ $item->product_id }}" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
                                                 <label class="form-check-label" for="inlineCheckbox{{ $item->id }}">{{ $item->lot_name }}</label>
                                             </div>
@@ -139,3 +139,10 @@
             </div>
         </div>
     </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("input.lot_product").not(':first').attr( "disabled", "disabled" );
+        });
+   
+</script>
