@@ -9,7 +9,7 @@
     <form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
         @csrf
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-7">
                 <div class="card box-shadow-0">
                     <div class="card-body pt-3">
                         <div class="bg-info">
@@ -23,7 +23,7 @@
                                         <th scope="col">Tên Lô</th>
                                         <th scope="col">Sản Phẩm</th>
                                         <th scope="col">Tổng số lượng</th>
-                                        <th scope="col">Đã xuất</th>
+                                        <th scope="col">Xuất hàng</th>
                                         <th scope="col">Còn lại</th>
                                         <th scope="col">Giá nhập vào</th>
                                         <th scope="col">Ngày nhập</th>
@@ -37,7 +37,8 @@
                                         <th scope="row">{{ $key+1 }}</th>
                                         <td>
                                             <div class="form-check form-check-inline">
-                                                <input require class="form-check-input" type="radio" name="lotproduct_id" product-id="{{ $item->product_id }}" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
+                                                <input require class="form-check-input lot_product" {{ $item->status == 0 ? 'disabled':'' }} type="radio" name="lotproduct_id" lot-key="{{ $key }}"
+                                                product-id="{{ $item->product_id }}" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
                                                 <label class="form-check-label" for="inlineCheckbox{{ $item->id }}">{{ $item->lot_name }}</label>
                                             </div>
                                         </td>
@@ -68,21 +69,21 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Giá Gốc <span>(*)</span></label>
+                            <label for="exampleInputEmail1" class="required">Giá bán lẻ <span>(*)</span></label>
                             <input type="text" class="form-control price_a" name="price" value="{{ old('price', $uni_product->price ?? '') }}">
                             @if($errors->first('price'))
                             <span class="text-danger">{{ $errors->first('price') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Giá bán lẻ <span>(*)</span></label>
+                            <label for="exampleInputEmail1" class="required">Giá sale <span>(*)</span></label>
                             <input type="text" class="form-control price_sale" name="price_sale" value="{{ old('price_sale', $uni_product->price_sale ?? '') }}">
                             @if($errors->first('price_sale'))
                             <span class="text-danger">{{ $errors->first('price_sale') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Giá sỉ <span>(*)</span></label>
+                            <label for="exampleInputEmail1" class="required">Giá bán đại lý <span>(*)</span></label>
                             <input type="text" class="form-control price_sale_store" name="price_sale_store" value="{{ old('price_sale_store', $uni_product->price_sale_store ?? '') }}">
                             @if($errors->first('price_sale_store'))
                             <span class="text-danger">{{ $errors->first('price_sale_store') }}</span>
@@ -91,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <div class="card  box-shadow-0 ">
                     <div class="card-body pt-3">
                         <div class="form-group">
@@ -103,7 +104,7 @@
                         </div>
                         <div class="form-group">
                             <h2>
-                                Lịch sử nhập sản phẩm
+                                Lịch sử nhập sản phẩm để bán
                             </h2>
                         </div>
                         <div class="form-group">
