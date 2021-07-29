@@ -226,8 +226,8 @@ class AdminUniProductController extends AdminController
             } else {
                 $item['status'] = 1;
             }
+            
         }
-        // dd($uni_lotproduct);
         $import_history     = ProductLotProduct::where('product_id',$id)->get();
         $viewData = [
             'uni_lotproduct'       => $uni_lotproduct,
