@@ -3368,7 +3368,8 @@ fieldset:disabled a.btn {
 .btn-link {
     font-weight: 400;
     color: #007bff;
-    text-decoration: none
+    text-decoration: none;
+    margin-left: 20px;
 }
 
 .btn-link:hover {
