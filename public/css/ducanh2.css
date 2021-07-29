@@ -247,6 +247,13 @@ a:visited {
     color: #fff;
 }
 
+a.a-anchor:visited {
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+    color: #000;
+}
+
 .margin-left1 {
     margin-left: 20px;
 }
