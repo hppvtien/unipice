@@ -22,7 +22,9 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Tên Lô</th>
                                         <th scope="col">Sản Phẩm</th>
-                                        <th scope="col">Số lượng sản phẩm lô hàng</th>
+                                        <th scope="col">Tổng số lượng</th>
+                                        <th scope="col">Đã xuất</th>
+                                        <th scope="col">Còn lại</th>
                                         <th scope="col">Giá nhập vào</th>
                                         <th scope="col">Ngày nhập</th>
                                         <th scope="col">Hạn sử dụng</th>
@@ -30,6 +32,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($uni_lotproduct as $key => $item)
+                                    
                                     <tr>
                                         <th scope="row">{{ $key+1 }}</th>
                                         <td>
@@ -39,6 +42,8 @@
                                             </div>
                                         </td>
                                         <td>{{ get_data_table_name('uni_product',$item->product_id)->name }}</td>
+                                        <td>{{ $item->total_qty }}</td>
+                                        <td>{{ $item->total_export }}</td>
                                         <td>{{ $item->qty }}</td>
                                         <td>{{ $item->price_lotproduct }}</td>
                                         <td>{{ $item->created_at }}</td>
@@ -95,6 +100,38 @@
                                 <button class="btn btn-info"><i class="la la-save"></i> Save</button>
                                 <button class="btn btn-success"><i class="la la-check-circle"></i> Save & Edit</button>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <h2>
+                                Lịch sử nhập sản phẩm
+                            </h2>
+                        </div>
+                        <div class="form-group">
+                            <table class="table table-striped table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Tên Lô</th>
+                                        <th scope="col">Sản Phẩm</th>
+                                        <th scope="col">Số lượng đã nhập</th>
+                                        <th scope="col">Ngày nhập</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($import_history as $key => $item)
+                                    <tr>
+                                        <th scope="row">{{ $key+1 }}</th>
+                                        <td>
+                                            {{ get_data_table_name('uni_lotproduct',$item->lotproduct_id)->lot_name }}
+                                        </td>
+                                        <td>{{ get_data_table_name('uni_product',$item->product_id)->name }}</td>
+                                        <td>{{ $item->inventory }}</td>
+                                        <td>{{ $item->created_at }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                              
+                            </table>
                         </div>
                     </div>
                 </div>

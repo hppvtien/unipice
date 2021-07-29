@@ -7,6 +7,8 @@ use App\Models\ProductCategory;
 use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Modules\Admin\Http\Controllers\AdminController;
 use Modules\Admin\Http\Requests\AdminUniCategoryRequest;
 
@@ -35,7 +37,9 @@ class AdminUniCategoryController extends AdminController
         $data = $request->except(['avatar','save','_token']);
         $data['created_at'] = Carbon::now();
         $data['created_by'] = get_data_user('web');
-
+        if ($request->icon_thumb) {
+            $data['icon_thumb'] = $this->processUploadFile($request->icon_thumb);
+        } 
         if(!$request->meta_title)             $data['meta_title'] = $request->name;
         if(!$request->meta_description) $data['meta_desscription'] = $request->name;
         $menuID = Uni_Category::insertGetId($data);
@@ -57,13 +61,16 @@ class AdminUniCategoryController extends AdminController
 
     public function update(AdminUniCategoryRequest $request, $id)
     {
+        
         $uni_category = Uni_Category::findOrFail($id);
         $data = $request->except(['avatar','save','_token']);
         $data['updated_at'] = Carbon::now();
         $data['updated_by'] = get_data_user('web');
+        
+        $data['icon_thumb'] = $this->processUploadFile($request->icon_thumb);
         if(!$request->meta_title)             $data['meta_title'] = $request->name;
         if(!$request->meta_description) $data['meta_desscription'] = $request->name;
-
+        
         $uni_category->fill($data)->save();
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.uni_category.index');
@@ -87,5 +94,31 @@ class AdminUniCategoryController extends AdminController
         }
 
         return redirect()->to('/');
+    }
+    public function processUploadFile($fileName)
+    {
+        try {
+            $ext = $fileName->getClientOriginalExtension();
+
+            $extension = [
+                'jpg', 'png', 'jpeg'
+            ];
+            $time_img =  Carbon::now();
+            if (!in_array($ext, $extension)) return false;
+
+            $filename = str_replace($ext, '', $fileName->getClientOriginalName());
+            $filename = Str::slug($filename) . '-' . $time_img->getTimestamp() . '.' . $ext;
+            $path = public_path() . '/storage/uploads_Product/';
+
+            if (!\File::exists($path)) mkdir($path, 0777, true);
+
+            $fileName->move($path, $filename);
+
+            return  $filename;
+        } catch (\Exception $exception) {
+            Log::error("[processUploadFile] :" . $exception->getMessage());
+        }
+
+        return  null;
     }
 }

@@ -1,34 +1,12 @@
-<?php
-$store = \DB::table('Uni_Store')->where('user_id', get_data_user('web'))->first();  
-if ($store == null) { ?>
-    <ul class="c-header__links">
+
+    <ul class="menu">
         @forelse ($category_mn as $key => $item)
-        <li class="c-header__link-item js-main-menu-panel">
-            <button class="c-header__link js-main-menu-panel__trigger" type="button">
-            <a href="/{{ getSlugCategory($item->slug) }}">
-                <span class="c-header__link-text">{{ $item->name }}</span>
-                </a>
-            </button>
+        <li class="menu-item">
+            <a href="/{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
         </li>
         @empty
             
         @endforelse
         
     </ul>
-<?php } else { ?>
-    <ul class="c-header__links">
-        @forelse ($category_mn as $key => $item)
-        <li class="c-header__link-item js-main-menu-panel">
-            <button class="c-header__link js-main-menu-panel__trigger" type="button">
-            <a href="/{{ getSlugCategory($item->slug) }}">
-                <span class="c-header__link-text">{{ $item->name }}</span>
-                </a>
-            </button>
-        </li>
-        @empty
-            
-        @endforelse
-        
-    </ul>
-<?php }
-?>
+    

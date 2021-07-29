@@ -1,4 +1,4 @@
-<form class="form-horizontal" autocomplete="off" method="POST" action="">
+<form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-lg-8">
@@ -49,7 +49,10 @@
                         <input type="number" class="form-control" name="order" value="{{ old('order', $uni_cate->order ?? '0') }}">
                         <span class="d-block text-warning">Thứ thự được sắp xếp từ bé đến lớn</span>
                     </div>
-
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Hình ảnh icon <span>(*)</span></label>
+                        <input type="file" class="form-control"  name="icon_thumb" value="">
+                    </div>
                 </div>
             </div>
             <div class="card  box-shadow-0">
