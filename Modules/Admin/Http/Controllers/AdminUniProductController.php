@@ -192,7 +192,6 @@ class AdminUniProductController extends AdminController
             'meta_desscription' => $request->desscription,
             'updated_at' => Carbon::now(),
             'updated_by' => get_data_user('web'),
-            'status' => $request->status,
             'is_hot' => $request->is_hot,
             'is_feauture' => $request->is_feauture,
             'order' => $request->order,
@@ -218,17 +217,18 @@ class AdminUniProductController extends AdminController
         foreach($uni_lotproduct as $key => $item){
             if($item->export_qty !=null){
                 $item['total_export'] = array_sum(json_decode($item->export_qty));  
-                if($item->total_qty == $item['total_export']){
-                    $item['status'] = 0;
-                }
-                else {
-                    $item['status'] = 1;
-                }
             } else {
                 $item['total_export'] = 0;
             }
+            if($item->qty == 0) {
+                $item['status'] = 0;
+                $item['key_lot'] = $key;
+            } else {
+                $item['status'] = 1;
+            }
         }
-        $import_history     = ProductLotProduct::get();
+        // dd($uni_lotproduct);
+        $import_history     = ProductLotProduct::where('product_id',$id)->get();
         $viewData = [
             'uni_lotproduct'       => $uni_lotproduct,
             'import_history'       => $import_history
