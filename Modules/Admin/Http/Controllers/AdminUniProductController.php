@@ -230,8 +230,20 @@ class AdminUniProductController extends AdminController
             } else {
                 $item['total_export'] = 0;
             }
+<<<<<<< HEAD
         }
         $import_history     = ProductLotProduct::get();
+=======
+            if($item->qty == 0) {
+                $item['status'] = 0;
+                $item['key_lot'] = $key;
+            } else {
+                $item['status'] = 1;
+            }
+            
+        }
+        $import_history     = ProductLotProduct::where('product_id',$id)->get();
+>>>>>>> 6edac5cab9b9e969a1d2e2c5f0dda885f13c7e8f
         $viewData = [
             'uni_lotproduct'       => $uni_lotproduct,
             'import_history'       => $import_history

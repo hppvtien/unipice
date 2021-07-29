@@ -27081,7 +27081,7 @@ Contact
 .copyright-menu ul {
     text-align: center;
     margin: 0;
-    line-height: 25px;
+    line-height: 45px;
     font-size: 18px;
 }
 
@@ -27145,9 +27145,7 @@ Contact
         background: #0b2d25;
         padding: 30px;
         z-index: 2;
-        border-radius: 0;
-        margin: 0px;
-        right: 0px;
+        margin: 0 auto;
     }
     .padding-left-0 {
         margin-left: -80px;

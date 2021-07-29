@@ -135,27 +135,7 @@
 
                                         <div class="layout__region layout__region--second">
 
-                                            <div data-block-plugin-id="block_content:53bc7c81-0e01-4b09-a795-90903d87dc57" class="t-cms__links">
 
-
-
-                                                <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="http://pinterest.com/pin/create/button/?url={{ $link_url }}" target="_blank">
-                                                    <span class="icon-pinterest  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                                </a>
-                                                <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="https://www.facebook.com/sharer/sharer.php?u={{ $link_url }}" target="_blank">
-                                                    <span class="icon-facebook  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                                </a>
-                                                <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="http://twitter.com/share?text=&amp;url={{ $link_url }}" target="_blank">
-                                                    <span class="icon-twitter  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                                </a>
-                                                <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="mailto:?subject=Lorem%20ipsum&amp;body={{ $link_url }}" target="_blank">
-                                                    <span class="a-icon-text-btn__icon" aria-hidden="true">
-                                                        <img src="/themes/custom/frontierbase/dist/frontiercoop/images/email.svg" alt="Email icon" height="25" width="25">
-                                                    </span>
-                                                </a>
-
-
-                                            </div>
 
                                             <div class="views-element-container" data-block-plugin-id="views_block:taxonomy_term_content-block_3">
 
@@ -200,7 +180,24 @@
                                                 </div>
 
                                             </div>
+                                            <div id="share">
 
+                                                <!-- facebook -->
+                                                <a class="facebook" href="https://www.facebook.com/share.php?u=url&title=title" target="blank"><i class="fa fa-facebook"></i></a>
+
+                                                <!-- twitter -->
+                                                <a class="twitter" href="https://twitter.com/intent/tweet?status=title+url" target="blank"><i class="fa fa-twitter"></i></a>
+
+                                                <!-- google plus -->
+                                                <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank"><i class="fa fa-google-plus"></i></a>
+
+                                                <!-- linkedin -->
+                                                <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank"><i class="fa fa-linkedin"></i></a>
+
+                                                <!-- pinterest -->
+                                                <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank"><i class="fa fa-pinterest-p"></i></a>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
