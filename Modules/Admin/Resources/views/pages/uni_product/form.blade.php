@@ -1,7 +1,7 @@
-    <form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
+<form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
         @csrf
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8"> 
                 <div class="card box-shadow-0">
                     <div class="card-body pt-3">
                         <div class="form-group">
@@ -42,6 +42,9 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @if($errors->first('category'))
+                            <span class="text-danger">{{ $errors->first('category') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="required"> Tags <span>(*)</span></label>
@@ -52,53 +55,49 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @if($errors->first('tags'))
+                            <span class="text-danger">{{ $errors->first('tags') }}</span>
+                            @endif
                         </div>
-                        {{-- <div class="form-group">
-                        <label for="exampleInputEmail1" class="required"> Lô sản phẩm <span>(*)</span></label>
-                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                            <select name="parent_i" class="form-control SlectBox SumoUnder " tabindex="-1">
-                                @foreach($uni_lotproduct as $item)
-                                <option value="{{ $item->id }}" {{ ($uni_product->parent_id ?? 0) == $item->id ? "selected" : "" }}>{{ $item->lot_name }}--(Trong kho còn: {{ $item->qty }} sản phẩm)</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="required">Số lượng <span>(*)</span></label>
-                    <input type="number" class="form-control keypress-count" name="qty" value="{{ old('qty', $uni_product->qty ?? '') }}">
-                    @if($errors->first('qty'))
-                    <span class="text-danger">{{ $errors->first('qty') }}</span>
-                    @endif
-                </div> --}}
+                        
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="required"> Thương hiệu <span>(*)</span></label>
                     <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                        <select name="trade[]" class="form-control SlectBox SumoUnder " tabindex="-1">
+                    <select name="trade[]" class="form-control SlectBox SumoUnder " tabindex="-1">
                             @foreach($uni_trade as $item)
-                            <option value="{{ $item->id }}" {{ ($uni_product->parent_id ?? 0) == $item->id ? "selected" : "" }}>{{ $item->name }}</option>
+                            <option value="{{ $item->id }}" {{ ($tradeOld[0] ?? 0) == $item->id ? "selected" : "" }}>{{ $item->name }}</option>
                             @endforeach
                         </select>
                     </div>
+                    @if($errors->first('trade'))
+                            <span class="text-danger">{{ $errors->first('trade') }}</span>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="required"> Kích thước <span>(*)</span></label>
                     <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                        <select name="size[]" class="form-control SlectBox SumoUnder " tabindex="-1">
+                        <select name="size[]" class="form-control SlectBox SumoUnder " tabindex="-1">                            
                             @foreach($uni_size as $item)
-                            <option value="{{ $item->id }}" {{ ($uni_product->parent_id ?? 0) == $item->id ? "selected" : "" }}>{{ $item->name }}</option>
+                            <option value="{{ $item->id }}" {{ ($sizeOld[0] ?? 0) == $item->id ? "selected" : "" }}>{{ $item->name }}</option>
                             @endforeach
                         </select>
                     </div>
+                    @if($errors->first('size'))
+                    <span class="text-danger">{{ $errors->first('size') }}</span>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="required"> Màu sắc <span>(*)</span></label>
                     <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                         <select name="color[]" class="form-control SlectBox SumoUnder " tabindex="-1">
                             @foreach($uni_color as $item)
-                            <option value="{{ $item->id }}" {{ ($uni_product->parent_id ?? 0) == $item->id ? "selected" : "" }}>{{ $item->name }}</option>
+                            <option value="{{ $item->id }}" {{ ($colorOld[0] ?? 0) == $item->id ? "selected" : "" }}>{{ $item->name }}</option>
                             @endforeach
                         </select>
                     </div>
+                    @if($errors->first('color'))
+                    <span class="text-danger">{{ $errors->first('color') }}</span>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="required">Sắp xếp <span>(*)</span></label>
@@ -145,17 +144,19 @@
             <div class="card-body pt-3 box-seo hide">
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="required">Meta Title <span>(*)</span></label>
-                    <input type="text" class="form-control meta_title" name="meta_title" value="{{ old('meta_title', $uni_product->meta_title ?? '') }}">
+                    <input type="text" class="form-control meta_title" name="meta_title" id="meta_title" value="{{ old('meta_title', $uni_product->meta_title ?? '') }}">
                     @if($errors->first('meta_title'))
-                    <span class="text-danger">{{ $errors->first('meta_title') }}</span>
+                    <span class="text-danger">{{ $errors->first('meta_title') }}</span><br>
                     @endif
+                    <span class="text-danger" id="count_title">(Tiêu đề seo <= 70 ký tự)</span>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="required">Meta Description <span>(*)</span></label>
-                    <input type="text" class="form-control meta_desscription" name="meta_desscription" value="{{ old('meta_desscription', $uni_product->meta_desscription ?? '') }}">
+                    <input type="text" class="form-control meta_desscription" name="meta_desscription" id="meta_desscription" value="{{ old('meta_desscription', $uni_product->meta_desscription ?? '') }}">
                     @if($errors->first('meta_desscription'))
-                    <span class="text-danger">{{ $errors->first('meta_desscription') }}</span>
+                    <span class="text-danger">{{ $errors->first('meta_desscription') }}</span><br>
                     @endif
+                    <span class="text-danger" id="count_des">(Mô tả seo <= 150 ký tự)</span>
                 </div>
 
                 <div class="form-group">
@@ -224,11 +225,18 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Thumbnail </label>
+                        <input type="hidden" name="delete_thumbnail" value="{{ old('meta_keyword', $uni_product->thumbnail ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="thumbnail" id="avatar_uploads">
                     </div>
+                    @if(isset($uni_product->thumbnail))
+                    <p>
+                        <img src="{{ pare_url_file($uni_product->thumbnail) }}" alt="" style="width: 100%;height: auto">
+                    </p>
+                @endif
                 </div>
             </div>
         </div>
         </div>
     </form>
+

@@ -169,6 +169,15 @@
     } );
     
 </script>
+<script>
+    $("#meta_title").keyup(function() {
+        $("#count_title").text("Ký tự: " + ($(this).val().length) + " (Tiêu đề seo <= 70 ký tự)");
+    });
+    $("#meta_desscription").keyup(function() {
+        $("#count_des").text("Ký tự: " + ($(this).val().length) + " (Mô tả seo <= 150 ký tự)");
+    });
+     
+</script>
 @yield('scriptck')
 </body>
 </html>
