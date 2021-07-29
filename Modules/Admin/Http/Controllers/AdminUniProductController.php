@@ -228,7 +228,6 @@ class AdminUniProductController extends AdminController
                 $item['total_export'] = 0;
             }
         }
-        dd($uni_lotproduct);
         $import_history     = ProductLotProduct::get();
         $viewData = [
             'uni_lotproduct'       => $uni_lotproduct,
