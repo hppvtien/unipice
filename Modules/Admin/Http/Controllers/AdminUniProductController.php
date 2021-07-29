@@ -22,7 +22,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Modules\Admin\Http\Requests\AdminLotRequest;
-use Modules\Admin\Http\Requests\AdminUniProductRequest;
+use Modules\Admin\Http\Requests\AdminUniProductRequest; 
 
 class AdminUniProductController extends AdminController
 {
@@ -79,7 +79,7 @@ class AdminUniProductController extends AdminController
         return view('admin::pages.uni_product.create', $viewData);
     }
 
-    public function store(Request $request)
+    public function store(AdminUniProductRequest $request)
     {
         $data                 = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
         $data['created_at']   = Carbon::now();
@@ -156,7 +156,7 @@ class AdminUniProductController extends AdminController
         ];
         return view('admin::pages.uni_product.update', $viewData);
     }
-    public function update(Request $request, $id)
+    public function update(AdminUniProductRequest $request, $id)
     {
         
         $uni_product             = Uni_Product::findOrFail($id);
@@ -173,15 +173,16 @@ class AdminUniProductController extends AdminController
         } else {
             $album = [];
         }
+        if ($request->thumbnail){
+            Storage::delete('public/uploads/'.$request->delete_thumbnail);    
+            $data['thumbnail'] = $request->thumbnail;
+        } elseif (!$request->c_avatar) {
+            $data['thumbnail'] = $request->delete_thumbnail;         
         
-        if ($request->thumbnail) {
-            
-            $thumbnail = $request->thumbnail;
-            // Storage::delete('public/uploads_product/'.$uni_product->thumbnail);
-        
-        } else {
-            $thumbnail = $uni_product->thumbnail;
+        } elseif ($request->thumbnail && !$uni_product->thumbnail) {
+            $data['thumbnail'] = $request->thumbnail;         
         }
+       
         $store_ab = array_merge($product_albumOld, $album);
         $param = [
             'name' => $request->name,
@@ -192,12 +193,15 @@ class AdminUniProductController extends AdminController
             'meta_desscription' => $request->desscription,
             'updated_at' => Carbon::now(),
             'updated_by' => get_data_user('web'),
+            'status' => $request->status,
             'is_hot' => $request->is_hot,
             'is_feauture' => $request->is_feauture,
             'order' => $request->order,
-            'thumbnail' => $thumbnail,
+            
             'status' => $request->status,
             'album' => json_encode($store_ab),
+            'meta_title' => $request->meta_title,
+            'meta_desscription' => $request->meta_desscription,
         ];
         // dd($param);
         $uni_product->fill($param)->save();
@@ -217,9 +221,19 @@ class AdminUniProductController extends AdminController
         foreach($uni_lotproduct as $key => $item){
             if($item->export_qty !=null){
                 $item['total_export'] = array_sum(json_decode($item->export_qty));  
+                if($item->total_qty == $item['total_export']){
+                    $item['status'] = 0;
+                }
+                else {
+                    $item['status'] = 1;
+                }
             } else {
                 $item['total_export'] = 0;
             }
+<<<<<<< HEAD
+        }
+        $import_history     = ProductLotProduct::get();
+=======
             if($item->qty == 0) {
                 $item['status'] = 0;
                 $item['key_lot'] = $key;
@@ -229,6 +243,7 @@ class AdminUniProductController extends AdminController
             
         }
         $import_history     = ProductLotProduct::where('product_id',$id)->get();
+>>>>>>> 6edac5cab9b9e969a1d2e2c5f0dda885f13c7e8f
         $viewData = [
             'uni_lotproduct'       => $uni_lotproduct,
             'import_history'       => $import_history
@@ -366,7 +381,6 @@ class AdminUniProductController extends AdminController
             Storage::delete('public/uploads_product/' . $request->name_img);
             array_multisort($album_product);
             $param['album'] = json_encode($album_product);
-            
             $product->fill($param)->save();
         }
         return response()->json([
@@ -385,9 +399,8 @@ class AdminUniProductController extends AdminController
                     foreach(json_decode($uni_product) as $item){
                         Storage::delete('public/uploads_product/'.$item);
                     }
-                }
-                
-                Storage::delete('public/uploads_product/'.$product->thumbnail);
+                }              
+                Storage::delete('public/uploads/'.$product->thumbnail);
                 $product->delete();
                 ProductTag::where('product_id', $id)->delete();
                 ProductCategory::where('product_id', $id)->delete();

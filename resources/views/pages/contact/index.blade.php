@@ -1,6 +1,5 @@
 @extends('pages.layouts.app_master_frontend') @section('contents')
-<main id="maincontent" class="page-main">
-    <a id="contentarea" tabindex="-1"></a>
+<main id="maincontent" class="can_le">
     <div class="page messages">
         <div data-placeholder="messages"></div>
         <div data-bind="scope: 'messages'">
@@ -13,7 +12,7 @@
 
     </div>
     <div class="columns">
-        <div class="column main"><input name="form_key" type="hidden" value="km16CTJGtrby3Kv1">
+        <div class="column"><input name="form_key" type="hidden" value="km16CTJGtrby3Kv1">
             <div id="authenticationPopup" data-bind="scope:'authenticationPopup'" style="display: none;">
                 <script>
                     window.authenticationPopup = {
@@ -30,8 +29,8 @@
 
             </div>
 
-            <div class="c-contact-information">
-                <div class="c-contact-information__content">
+            <div class="c-contact-information container">
+                <div class="">
                     <div class="page-title-wrapper c-contact-information__heading">
                         <h1 class="page-title">
                             <span class="base" data-ui-id="page-title-wrapper">{{ $info['name'] }}</span> </h1>
@@ -68,30 +67,24 @@
                                 <h2 class="c-contact-information__block-heading">
                                     Mạng Xã Hội
                                 </h2>
-                                <p>
-                                    <ul id="menu1abc">
-                                        <li>
-                                            <a href="{{ $info['facebook'] }}">
-                                                <span class="icon-facebook  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ $info['youtube'] }}">
-                                                <span class="icon-youtube  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ $info['twitter'] }}">
-                                                <span class="icon-twitter  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ $info['instagram'] }}">
-                                                <span class="icon-instagram  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </p>
+                                <div class="link_share_contact">
+
+                                    <!-- facebook -->
+                                    <a class="facebook" href="{{ $info['facebook'] }}" target="blank"><i class="fa fa-facebook"></i></a>
+
+                                    <!-- twitter -->
+                                    <a class="twitter" href="{{ $info['twitter'] }}" target="blank"><i class="fa fa-twitter"></i></a>
+
+                                    <!-- google plus -->
+                                    <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank"><i class="fa fa-google-plus"></i></a>
+
+                                    <!-- linkedin -->
+                                    <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank"><i class="fa fa-linkedin"></i></a>
+
+                                    <!-- pinterest -->
+                                    <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank"><i class="fa fa-pinterest-p"></i></a>
+
+                                </div>
                             </div>
                         </div>
                     </div>

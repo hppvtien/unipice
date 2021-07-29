@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
     <link href="{{ asset('css/css_js/custom.css') }}" rel="stylesheet">
 
+
 </head>
 <div class="zeynep">
 

@@ -11494,7 +11494,6 @@ body._has-modal {
     position: relative;
     padding-top: 48px;
     background-color: var(--color-background);
-    margin-bottom: 48px;
     padding-bottom: 25px
 }
 
@@ -11653,7 +11652,6 @@ body._has-modal {
 
 @media screen and (min-width:1024px) {
     .c-categories-slider {
-        margin-bottom: 80px;
         padding-top: 80px;
         padding-bottom: 104px
     }
