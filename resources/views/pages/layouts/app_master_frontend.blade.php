@@ -16,12 +16,28 @@
     <link href="{{ asset('css/css_js/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" /> @include('pages.components.headers.css_js')
+    <link rel="stylesheet" href="{{ asset('css/css_js/font-awesome.css') }}" /> @include('pages.components.headers.css_js')
     <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
+    <link href="{{ asset('css/css_js/custom.css') }}" rel="stylesheet">
 
 </head>
+<div class="zeynep">
+
+    <ul>
+        @forelse ($category_mn as $key => $item)
+        <li>
+            <a href="/{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+        </li>
+        @empty @endforelse
+    </ul>
+</div>
+
+
+
+<div class="zeynep-overlay"></div>
 
 <body>
+
     <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
         <div class="layout-container">
             @include('pages.components.headers._inc_header') @yield('contents') @include('pages.components.footer._inc_footer')
@@ -31,6 +47,7 @@
     <!-- <script src="https://www.coopmarket.com/sites/default/files/js/js_4e1EHEQaAQ0l19WVSnwlvDtYVVkiTDW1ktKsaMmVO6g.js"></script> -->
 
     <script src="{{ asset('fontend_js/jquery.min.js') }}"></script>
+    <script src="{{ asset('css/css_js/jquery.zeynep.min.js') }}"></script>
     <script src="{{ asset('fontend_js/custom.js') }}"></script>
     <script src="{{ asset('js/frontends.js') }}"></script>
     <script src="{{ asset('fontend_js/unijs.js') }}"></script>
@@ -56,7 +73,39 @@
 
         });
     </script>
-    <script type="text/javascript" src="https://transvelo.github.io/pizzaro-html/assets/js/scripts.min.js"></script>
+    <script>
+        $(function() {
+            // init zeynepjs
+            var zeynep = $('.zeynep').zeynep({
+                onClosed: function() {
+                    // enable main wrapper element clicks on any its children element
+                    $("body main").attr("style", "");
+
+                    console.log('the side menu is closed.');
+                },
+                onOpened: function() {
+                    // disable main wrapper element clicks on any its children element
+                    $("body main").attr("style", "pointer-events: none;");
+
+                    console.log('the side menu is opened.');
+                }
+            });
+
+            // handle zeynep overlay click
+            $(".zeynep-overlay").click(function() {
+                zeynep.close();
+            });
+
+            // open side menu if hamburger menu is clicked
+            $("nav .navbar-toggler").click(function() {
+                if ($("html").hasClass("zeynep-opened")) {
+                    zeynep.close();
+                } else {
+                    zeynep.open();
+                }
+            });
+        });
+    </script>
 
 </body>
 

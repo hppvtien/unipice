@@ -3647,7 +3647,6 @@ p {
 
 ul,
 ol {
-    margin: 0 0 1em 3em;
     padding: 0;
 }
 
@@ -27169,4 +27168,9 @@ a:hover {
 
 #main-content {
     display: none;
+}
+
+#span_menu1 {
+    font-size: 40px;
+    margin-left: -50px;
 }

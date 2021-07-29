@@ -7,26 +7,15 @@
                 </a>
             </div>
             <nav id="site-navigation" class="main-navigation" aria-label="Primary Navigation">
-                <button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span class="close-icon"><i class="po po-close-delete"></i></span><span class="menu-icon"><i class="po po-menu-icon"></i></span><span class=" screen-reader-text">Menu</span></button>
+                <button id="hide_menu_pc" class=" navbar navbar-dark navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-menu" id="span_menu1"></span>
+                </button>
                 <div class="primary-navigation">
                     <ul id="menu-main-menu" class="menu nav-menu" aria-expanded="false">
                         <li class="menu-item"><a href="shop-grid-3-column.html">B2B</a></li>
                         <li class="menu-item"><a href="shop-grid-3-column.html">Spice Club</a></li>
                         <li class="menu-item"><a href="{{ route('get.find') }}">Tìm Cửa hàng</a></li>
                         <li class="menu-item"><a href="{{ route('get.about') }}">Giới Thiệu</a></li>
-                    </ul>
-                </div>
-                <div class="handheld-navigation">
-                    <span class="phm-close">Close</span>
-                    <ul class="menu">
-                        <li class="menu-item "><a href="shop-grid-3-column.html"><i class="po po-pizza"></i>Gia Vị Hoàn Chỉnh</a></li>
-                        <li class="menu-item "><a href="shop-grid-3-column.html"><i class="po po-burger"></i>Burgers</a></li>
-                        <li class="menu-item "><a href="shop-grid-3-column.html"><i class="po po-salads"></i>Salads</a></li>
-                        <li class="menu-item "><a href="shop-grid-3-column.html"><i class="po po-tacos"></i>Tacos</a></li>
-                        <li class="menu-item "><a href="shop-grid-3-column.html"><i class="po po-wraps"></i>Wraps</a></li>
-                        <li class="menu-item "><a href="shop-grid-3-column.html"><i class="po po-fries"></i>Fries</a></li>
-                        <li class="menu-item "><a href="shop-grid-3-column.html"><i class="po po-salads"></i>Salads</a></li>
-                        <li class="menu-item "><a href="shop-grid-3-column.html"><i class="po po-drinks"></i>Drinks</a></li>
                     </ul>
                 </div>
 
