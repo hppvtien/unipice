@@ -115,30 +115,28 @@
                                                             </form>
                                                         </div>
                                                         <!-- Review :: this should be removed -->
-                                                        <div style="padding-top:20px;"></div>
-                                                        <div class="c-product-overview__links">
-                                                            <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="http://pinterest.com/pin/create/button/?url=/san-pham/{{ $product->slug }}&amp;media={{ pare_url_file_product($product->thumbnail) }}" target="_blank">
-                                                                <span class="icon-pinterest  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                                            </a>
-                                                            <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="https://www.facebook.com/sharer/sharer.php?u=https://www.coopmarket.com/accessories/storage/bottles/atomizer-with-1-2-3-oz-amber-oil-bottle" target="_blank">
-                                                                <span class="icon-facebook  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                                            </a>
-                                                            <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="http://twitter.com/share?text=Atomizer with 1 2/3 oz. Amber Oil Bottle&amp;url=https://www.coopmarket.com/accessories/storage/bottles/atomizer-with-1-2-3-oz-amber-oil-bottle"
-                                                                target="_blank">
-                                                                <span class="icon-twitter  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                                            </a>
-                                                            <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="/cdn-cgi/l/email-protection#dbe4a8aeb9b1beb8afe697b4a9beb6fee9ebb2aba8aeb6fdbab6abe0b9b4bfa2e697b4a9beb6fee9ebb2aba8aeb6fee9ebb3afafaba8fee89afee99dfee99dacacacf5b8b4b4abb6baa9b0beaff5b8b4b6fee99dbab8b8bea8a8b4a9b2bea8fee99da8afb4a9babcbefee99db9b4afafb7bea8fee99dbaafb4b6b2a1bea9f6acb2afb3f6eaf6e9f6e8f6b4a1f6bab6b9bea9f6b4b2b7f6b9b4afafb7bef5"
-                                                                target="_blank">
-                                                                <span class="a-icon-text-btn__icon" aria-hidden="true">
-                                                                <img src="https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop/images/email.svg" alt="Email icon" height="25" width="25">
-                                                            </span>
-                                                            </a>
+                                                        <div id="share">
+
+                                                            <!-- facebook -->
+                                                            <a class="facebook" href="https://www.facebook.com/share.php?u=url&title=title" target="blank"><i class="fa fa-facebook"></i></a>
+
+                                                            <!-- twitter -->
+                                                            <a class="twitter" href="https://twitter.com/intent/tweet?status=title+url" target="blank"><i class="fa fa-twitter"></i></a>
+
+                                                            <!-- google plus -->
+                                                            <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank"><i class="fa fa-google-plus"></i></a>
+
+                                                            <!-- linkedin -->
+                                                            <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank"><i class="fa fa-linkedin"></i></a>
+
+                                                            <!-- pinterest -->
+                                                            <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank"><i class="fa fa-pinterest-p"></i></a>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
