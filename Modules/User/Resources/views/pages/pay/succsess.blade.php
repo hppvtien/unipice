@@ -474,7 +474,7 @@
 <main id="maincontent" class="">
     <div class="columns">
         <div class="column main padding_css">
-                <div class="block block-dashboard-info col-md-6 col-xs-12">
+                <div class="block block-dashboard-info col-md-6 col-xs-12 noi_left cach_top_bottom">
                     <div class="block-title"><strong>Thông tin khách hàng</strong></div>
                     <div class="block-content">
                         <table class="table table-sm color-abc">
@@ -515,7 +515,7 @@
                           </table>
                     </div>
                 </div>
-                <div class="block block-dashboard-info col-md-6 col-xs-12">
+                <div class="block block-dashboard-info col-md-6 col-xs-12 noi_left cach_top_bottom">
                     <div class="block-title"><strong>Thông tin giỏ hàng</strong></div>
                     <div class="column main" style="width:100%">
                         <h3></h3>

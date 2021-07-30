@@ -44,11 +44,11 @@
                                             @foreach (json_decode($item->cart_info) as $keys => $items)
                                                 <span class="text-success">Sản phẩm    :</span> <span>{{ $items->name }}</span> ||
                                                 <span class="text-success">Số lượng    :</span> <span>{{ $items->qty }}</span> ||
-                                                <span class="text-success">Giá sản phẩm:</span> <span>{{ formatVnd($items->price) }}</span><br>
+                                                <span class="text-success">Giá sản phẩm:</span> <span>{{ number_format($items->price) }}</span><br>
                                             @endforeach
                                         </td>
                                         <td class="text-center">{{ $item->type_pay }}</td>
-                                        <td class="text-center">{{ formatVnd($item->total_money) }}</td>
+                                        <td class="text-center">{{ number_format((int)$item->total_money) }}</td>
                                         <td class="text-center">{{ $item->status }}</td>
                                         <td>{{ $item->address }}</td>
                                         <td>{{ $item->phone }}</td>
