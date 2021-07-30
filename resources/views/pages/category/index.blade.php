@@ -1,5 +1,4 @@
-@extends('pages.layouts.app_master_frontend')
-@section('contents')
+@extends('pages.layouts.app_master_frontend') @section('contents')
 <main role="main">
     <a id="main-content" tabindex="-1"></a>
     <div class="layout-content">
@@ -110,9 +109,7 @@
                                                                                         </span>
                                                                                     </a>
                                                                                 </div>
-                                                                                @empty
-
-                                                                                @endforelse
+                                                                                @empty @endforelse
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -131,9 +128,7 @@
                                                                                         </span>
                                                                                     </a>
                                                                                 </div>
-                                                                                @empty
-
-                                                                                @endforelse
+                                                                                @empty @endforelse
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -142,7 +137,7 @@
                                                         </div>
                                                         <div class="t-plp__grid js-plp-grid show-product" id="show-product">
                                                             @forelse ($product as $key => $item)
-                                                            <div class="t-plp__product" style="transform-origin: 0px 0px;">
+                                                            <div class="loadmore1 t-plp__product" style="transform-origin: 0px 0px;">
                                                                 <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
                                                                         <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" data-product-category="\Accessories\Home and Pet\Kitchen and Dining\Food Storage and Containers" class="m-product-card">
                                                                             <div class="m-product-card__content-wrapper">
@@ -153,105 +148,100 @@
                                                                                     <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
                                                                                     <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon js-add-cart" type="&quot;submit&quot;">
                                                                                         <span class="icon-add-to-cart"></span>
-                                                                                    </button>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="m-product-card__info">
-                                                                                <div class="m-combined-product-name">
-                                                                                    <a class="m-combined-product-name__link" href="{{ $item->slug }}">
-                                                                                        <span class="a-folio">
+                                                                    </button>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="m-product-card__info">
+                                                                    <div class="m-combined-product-name">
+                                                                        <a class="m-combined-product-name__link" href="{{ $item->slug }}">
+                                                                            <span class="a-folio">
                                                                                             {{ $item->name }}
                                                                                         </span>
-                                                                                        <span class="a-product-name">
+                                                                            <span class="a-product-name">
                                                                                             {{ desscription_cut($item->desscription,60) }}
                                                                                         </span>
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="m-product-card__sku">SKU: {{ $item->id }} đ</div>
-                                                                                <div class="m-price-lockup m-product-card__price">
-                                                                                    <span class="m-price-lockup__price">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="m-product-card__sku">SKU: {{ $item->id }} đ</div>
+                                                                    <div class="m-price-lockup m-product-card__price">
+                                                                        <span class="m-price-lockup__price">
                                                                                         <?php if (checkUid($uid)) { ?>
                                                                                             <?php if ($item->price_sale_store != null) { ?>
                                                                                                 <span class="a-price">
                                                                                                     {{ $item->price_sale_store }} đ
                                                                                                 </span>
-                                                                                            <?php } else { ?>
-                                                                                                <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
-                                                                                            <?php } ?>
-                                                                                        <?php } else { ?>
-                                                                                            <?php if ($item->price != null) { ?>
-                                                                                                <span class="a-price">
+                                                                        <?php } else { ?>
+                                                                        <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
+                                                                        <?php } ?>
+                                                                        <?php } else { ?>
+                                                                        <?php if ($item->price != null) { ?>
+                                                                        <span class="a-price">
                                                                                                     {{ $item->price }} đ
                                                                                                 </span>
-                                                                                            <?php } else { ?>
-                                                                                                <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
-                                                                                            <?php } ?>
-                                                                                        <?php } ?>
+                                                                        <?php } else { ?>
+                                                                        <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
+                                                                        <?php } ?>
+                                                                        <?php } ?>
 
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="m-product-card__cta"></div>
-                                                                        </div>
-                                                                    </span>
+                                                                        </span>
+                                                                    </div>
                                                                 </div>
+                                                                <div class="m-product-card__cta"></div>
                                                             </div>
-                                                            @empty
-                                                            @endforelse
-                                                        </div>
-                                                        <div class="t-plp__grid js-plp-grid">
-                                                        </div>
-                                                        <div class="t-plp__media-block" data-animate-grid-id="0.7649058207806405" style="transform-origin: 0px 0px;">
-                                                            <div class="t-plp__pagination">
-                                                                <div class="m-pagination">
-                                                                    <ul class="m-pagination__list">
-                                                                        <li class="m-pagination__list-item m-pagination__list-item--active">
-                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=0" title="Current page" aria-current="page">1</a>
-                                                                        </li>
-                                                                        <li class="m-pagination__list-item">
-                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=1" title="Go to page 2">2</a>
-                                                                        </li>
-                                                                        <li class="m-pagination__list-item">
-                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=2" title="Go to page 3">3</a>
-                                                                        </li>
-                                                                        <li class="m-pagination__list-item">
-                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=3" title="Go to page 4">4</a>
-                                                                        </li>
-                                                                        <li class="m-pagination__list-item">
-                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=4" title="Go to page 5">5</a>
-                                                                        </li>
-                                                                        <li class="m-pagination__list-item">
-                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=5" title="Go to page 6">6</a>
-                                                                        </li>
-                                                                        <li class="m-pagination__list-item">
-                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=6" title="Go to page 7">7</a>
-                                                                        </li>
-                                                                        <li class="m-pagination__list-item">
-                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=7" title="Go to page 8">8</a>
-                                                                        </li>
-                                                                        <li class="m-pagination__list-item">
-                                                                            <a class="m-pagination__link" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=8" title="Go to page 9">9</a>
-                                                                        </li>
-                                                                        <li class="m-pagination__list-item">
-                                                                            <a class="m-pagination__link m-pagination__link--next" aria-label="Next" href="?sort_by=search_api_relevance&amp;sort_order=ASC&amp;page=1">
-                                                                                <span class="icon-arrow-right"></span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
+                                                            </span>
                                                         </div>
                                                     </div>
+                                                    @empty @endforelse
+                                                    
+                                                    
+                                                    <script>
+                                                        $(function() {
+                                                            $(".loadmore1").slice(0, 4).show();
+                                                            $("#loadMore").on("click", function(e) {
+                                                                e.preventDefault();
+                                                                $(".loadmore1:hidden").slice(0, 4).slideDown();
+                                                                if ($(".loadmore1:hidden").length == 0) {
+                                                                    $("#load").fadeOut("slow");
+                                                                }
+                                                                $("#show-product").animate({
+                                                                    scrollTop: $(this).offset().top
+                                                                }, 1500);
+                                                            });
+                                                        });
+
+                                                        $("a[href=#top]").click(function() {
+                                                            $("#show-product").animate({
+                                                                scrollTop: 0
+                                                            }, 600);
+                                                            return false;
+                                                        });
+
+                                                        $(window).scroll(function() {
+                                                            if ($(this).scrollTop() > 50) {
+                                                                $(".totop a").fadeIn();
+                                                            } else {
+                                                                $(".totop a").fadeOut();
+                                                            }
+                                                        });
+                                                    </script>
+                                                    
                                                 </div>
+                                                
+                                                <div class="col-md-12 col-xs-12">
+                                                    <a href="#" id="loadMore">Xem Thêm</a>
+                                                </div>
+        
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    </header>
+                        </div>
                 </div>
+                </header>
             </div>
         </div>
+    </div>
     </div>
 </main>
 @stop

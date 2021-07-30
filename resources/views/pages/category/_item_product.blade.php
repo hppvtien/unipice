@@ -1,6 +1,6 @@
 @forelse ($product as $key => $item)
 
-<div class="t-plp__product" data-animate-grid-id="0.7226111054869209" style="transform-origin: 0px 0px;">
+<div class="loadmore1 t-plp__product" data-animate-grid-id="0.7226111054869209" style="transform-origin: 0px 0px;">
     <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
             <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" class="m-product-card">
                 <div class="m-product-card__content-wrapper">
@@ -58,3 +58,35 @@
 @empty
 
 @endforelse
+
+
+<script>
+    $(function() {
+        $(".loadmore1").slice(0, 4).show();
+        $("#loadMore").on("click", function(e) {
+            e.preventDefault();
+            $(".loadmore1:hidden").slice(0, 4).slideDown();
+            if ($(".loadmore1:hidden").length == 0) {
+                $("#load").fadeOut("slow");
+            }
+            $("#show-product").animate({
+                scrollTop: $(this).offset().top
+            }, 1500);
+        });
+    });
+
+    $("a[href=#top]").click(function() {
+        $("#show-product").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    });
+
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 50) {
+            $(".totop a").fadeIn();
+        } else {
+            $(".totop a").fadeOut();
+        }
+    });
+</script>
