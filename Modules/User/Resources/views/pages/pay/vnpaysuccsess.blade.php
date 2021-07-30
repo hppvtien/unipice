@@ -509,8 +509,11 @@
             <p><span class="title-info">Số điênh thoại:</span class="info-detail"> <span>{{ $order->phone }}</span></p>
             <p><span class="title-info">Email:</span> <span class="info-detail">{{ $order->email }}</span></p>
             <p><span class="title-info">Hình thức thanh toán:</span> <span class="info-detail">{{ $order->type_pay }}</span></p>
-            <p><span class="title-info">Mã số thuế:</span> <span class="info-detail">{{ $order->taxcode }}</span></p>
-            <p><span class="title-info">Mã giảm giá:</span> <span class="info-detail">{{ $order->vouchers }}</span></p>
+            <?php if(checkUid(get_data_user('web'))){ ?>
+                <p><span class="title-info">Mã số thuế:</span> <span class="info-detail">{{ $order->taxcode }}</span></p>
+            <?php } else { ?>
+                <p><span class="title-info">Mã giảm giá:</span> <span class="info-detail">{{ $order->vouchers }}</span></p>
+            <?php } ?>
             <p>
             <div class="m-sort-by">
                 <label class="m-sort-by__label" for="bank_code">Chọn ngân hàng</label>

@@ -406,10 +406,10 @@
                                 <tr>
                                     <th scope="col"><span>Sản phẩm</span></th>
                                     <th scope="col"><span></span></th>
-                                    <th scope="col"><span>Giá</span></th>
+                                    <th scope="col"><span>Đơn giá</span></th>
                                     <th scope="col"><span>Số lượng</span></th>
                                     <th scope="col"><span>Tổng tiền</span></th>
-                                    <th scope="col"><span>Chức năng</span></th>
+                                    <th scope="col"><span></span></th>
                                 </tr>
                             </thead>
                             <tbody class="cart item">
@@ -428,7 +428,7 @@
                                         <div class="product-item-details">
                                             <div class="product attribute sku">
                                                 <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" data-id-sale="{{ $item->id }}" onclick="get_product_sale(this);">
-                                                    Mã sản phẩm: <span class="value" itemprop="sku" >{{ $item->id }}</span>
+                                                    <span class="value" itemprop="sku" >{{ $item->name }}</span>
                                                 </button>
                                             </div>
                                         </div>
@@ -436,16 +436,20 @@
                                     <td data-th="Price">
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ $item->price }} đ</span> 
+                                                <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ $item->price }} {{ checkUid(get_data_user('web')) != null ? 'đ/ thùng':'đ/ hộp' }}</span> 
                                             </span>
                                         </span>
                                     </td>
                                     <td data-th="Qty">
                                         <div class="field qty">
-                                            <div class="control qty">
-                                                <label for="cart-{{ $item->id }}-qty">
-                                                    <input id="cart-{{ $item->id }}-qty" style="width: 4.5em" data-row={{ $item->rowId }} class="input-text qty update-qty"  data-url="{{ route('get_user.updatecart',$item->id) }}" name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" size="4" step="any" title="Qty">
-                                                </label>
+                                            <div class="control qty" style="padding: 0!important">
+                                                <label for="cart-{{ $item->id }}-qty" style="display:flex">
+                                                    <input id="cart-{{ $item->id }}-qty" style="width: 4.5em;padding: 5px 18px!important;height: 30px;" data-row="{{ $item->rowId }}" 
+                                                    class="input-text qty update-qty"  data-url="{{ route('get_user.updatecart',$item->id) }}" 
+                                                    name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" 
+                                                    size="4"  min="{{ checkUid(get_data_user('web')) != null ? $item->weight:''  }}" max="100" step="any" title="Qty">
+                                                    <span style="order:2;margin-top: 5px;margin-left: 5px">{{ checkUid(get_data_user('web')) != null ? 'Thùng':'Hộp' }}</span>
+                                                    </label>
                                             </div>
                                         </div>
                                     </td>
@@ -457,7 +461,9 @@
                                         </span>
                                     </td>
                                     <td data-th="Xóa sản phẩm">
-                                        <button style="width: 20px;height: 20px;padding: 0;background: red;" data-row={{ $item->rowId }} type="button" data-url="{{ route('get_user.deletecart') }}" name="remove_cart_action" title="Remove Shopping Cart" class="a-btn a-btn--primary action remove remove_cart_action">
+                                        <button style="width: 20px;height: 20px;padding: 0;background: red;" data-row="{{ $item->rowId }}" 
+                                        type="button" data-url="{{ route('get_user.deletecart') }}" name="remove_cart_action" 
+                                        title="Remove Shopping Cart" class="a-btn a-btn--primary action remove remove_cart_action">
                                             <span>x</span>
                                         </button>
                                     </td>

@@ -326,7 +326,7 @@
 <main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
     <div class="page-title-wrapper">
         <h1 class="page-title">
-            <span class="base" data-ui-id="page-title-wrapper">Giỏ hàng</span>
+            <span class="base" data-ui-id="page-title-wrapper">Giỏ hàneeeg</span>
         </h1>
     </div>
     <div class="page messages">

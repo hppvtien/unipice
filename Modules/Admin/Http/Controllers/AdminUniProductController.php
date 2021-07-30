@@ -176,7 +176,7 @@ class AdminUniProductController extends AdminController
             Storage::delete('public/uploads_product/' . $uni_product->thumbnail);
             $data['thumbnail'] = $request->thumbnail;
         } else {
-            $data['thumbnail'] = $request->thumbnail;
+            $data['thumbnail'] = $uni_product->thumbnail;
         }
 
         $store_ab = array_merge($product_albumOld, $album);
@@ -193,6 +193,8 @@ class AdminUniProductController extends AdminController
             'is_hot' => $request->is_hot,
             'is_feauture' => $request->is_feauture,
             'order' => $request->order,
+            'qty_in_box' => $request->qty_in_box,
+            'min_box' => $request->min_box,
             'thumbnail' => $request->thumbnail,
             'status' => $request->status,
             'album' => json_encode($store_ab),
