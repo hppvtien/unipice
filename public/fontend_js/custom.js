@@ -118,12 +118,16 @@ $(".js-add-cart").on('click', function() {
     let URL = $(this).attr('data-url');
     let data_id = $(this).attr('data-id');
     let data_uid = $(this).attr('data-uid');
+    let data_qtyinbox = $(this).attr('data-qtyinbox');
+    let data_minbox = $(this).attr('data-minbox');
     $.ajax({
         url: URL,
         method: "get",
         data: {
             data_id: data_id,
-            data_uid: data_uid
+            data_uid: data_uid,
+            data_qtyinbox: data_qtyinbox,
+            data_minbox: data_minbox
         },
         success: function(data) {
             console.log(data);
@@ -137,8 +141,10 @@ $(".js-add-cart").on('click', function() {
 $(".update-qty").on('keyup', function() {
     let URL = $(this).attr('data-url');
     let item_id = $(this).attr('item-id');
+    // let item_max_qty = $(this).attr('max');
     let item_qty = $('#cart-' + item_id + '-qty').val();
     let item_row = $(this).attr('data-row');
+
     $.ajax({
         url: URL,
         method: "get",

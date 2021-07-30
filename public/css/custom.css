@@ -280,6 +280,9 @@ h1.page-title {
 }
 
 @media screen and (min-width: 768px) {
+    table.cart .qty {
+        padding: 0!important
+    }
     .m-category-card .m-category-card__image-wrapper img {
         max-width: 176px;
     }
@@ -389,4 +392,16 @@ h1.page-title {
 
 span.a-qty {
     color: #C03235;
+}
+
+button.btn_store_submit.js-add-cart {
+    display: block;
+    padding: 5px 10px;
+    background: #ff7600;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button.btn_store_submit.js-add-cart:hover {
+    background: #00ff15;
 }

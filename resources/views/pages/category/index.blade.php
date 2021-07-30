@@ -139,11 +139,12 @@
                                                             @forelse ($product as $key => $item)
                                                             <div class="loadmore1 t-plp__product" style="transform-origin: 0px 0px;">
                                                                 <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
-                                                                        <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" data-product-category="\Accessories\Home and Pet\Kitchen and Dining\Food Storage and Containers" class="m-product-card">
+                                                                        <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" class="m-product-card">
                                                                             <div class="m-product-card__content-wrapper">
                                                                                 <a class="m-product-card__img-wrapper" href="{{ $item->slug }}" title="{{ $item->name }}">
-                                                                                    <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
+                                                                                    <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file_product($item->thumbnail) }}">
                                                                                 </a>
+
                                                                                 <form class="m-product-card__add-to-cart">
                                                                                     <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
                                                                                     <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon js-add-cart" type="&quot;submit&quot;">
@@ -168,7 +169,7 @@
                                                                                         <?php if (checkUid($uid)) { ?>
                                                                                             <?php if ($item->price_sale_store != null) { ?>
                                                                                                 <span class="a-price">
-                                                                                                    {{ $item->price_sale_store }} đ
+                                                                                                    {{ formatVnd($item->price_sale_store) }}
                                                                                                 </span>
                                                                         <?php } else { ?>
                                                                         <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
@@ -177,6 +178,7 @@
                                                                         <?php if ($item->price != null) { ?>
                                                                         <span class="a-price">
                                                                                                     {{ $item->price }} đ
+
                                                                                                 </span>
                                                                         <?php } else { ?>
                                                                         <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>

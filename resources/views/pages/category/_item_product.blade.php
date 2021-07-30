@@ -5,7 +5,7 @@
             <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" class="m-product-card">
                 <div class="m-product-card__content-wrapper">
                     <a class="m-product-card__img-wrapper" href="{{ $item->slug }}" title="{{ $item->name }}">
-                        <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
+                        <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file_product($item->thumbnail) }}">
                     </a>
                     <form class="m-product-card__add-to-cart">
                         <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
@@ -31,7 +31,7 @@
                             <?php if (checkUid($uid)) { ?>
                                 <?php if ($item->price_sale_store != null) { ?>
                                     <span class="a-price">
-                                        {{ $item->price_sale_store }} đ
+                                        {{ formatVnd($item->price_sale_store) }}
                                     </span>
                                 <?php } else { ?>
                                     <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
@@ -39,7 +39,7 @@
                             <?php } else { ?>
                                 <?php if ($item->price != null) { ?>
                                     <span class="a-price">
-                                        {{ $item->price }} đ
+                                        {{ formatVnd($item->price) }}
                                     </span>
                                 <?php } else { ?>
                                     <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>

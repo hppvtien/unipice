@@ -572,6 +572,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?php if (checkUid(get_data_user('web'))) { ?>
                                     <div class="field _required" name="shippingAddress.telephone">
                                         <div class="control _with-tooltip">
                                             <div class="m-text-input  ">
@@ -582,6 +583,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?php } else {
+
+                                    } ?>
                                     <div class="field _required" name="shippingAddress.fax">
                                         <div class="control">
                                             <div class="m-text-input  ">
