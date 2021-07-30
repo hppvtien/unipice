@@ -55,7 +55,7 @@
                                         <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($value->thumbnail) }}" alt="{{ $value->name }}" src="{{ pare_url_file($value->thumbnail) }}">
                                     </a>
                                     <form class="m-product-card__add-to-cart">
-                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn" type="submit">Thêm Vào Giỏ</button>
+                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" type="button">Thêm Vào Giỏ</button>
                                         <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" type="&quot;submit&quot;">
                                         <span class="icon-add-to-cart"></span>
                                         </button>

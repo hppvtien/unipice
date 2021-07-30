@@ -17,6 +17,7 @@ class UserShoppingCartController extends UserController
     const SINGLE = 'single';
     public function processCart(Request $request, $id, $type)
     {
+        dd($request->all());
         if ($request->ajax())
         {
             if($type == self::COMBO)

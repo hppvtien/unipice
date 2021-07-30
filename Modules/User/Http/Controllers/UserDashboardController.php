@@ -85,7 +85,6 @@ class UserDashboardController extends Controller
             'product_list' => $product_list,
             'my_favorites' => $my_favorites,
         ];
-        
         return view('user::pages.dashboard.product_list', $viewdata);
     }
 
