@@ -63,13 +63,28 @@ class AdminUniCategoryController extends AdminController
     {
         
         $uni_category = Uni_Category::findOrFail($id);
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['banner','save','_token']);
         $data['updated_at'] = Carbon::now();
-        $data['updated_by'] = get_data_user('web');
-        
+        // $data['updated_by'] = get_data_user('web');
+       if($request->icon_thumb){
         $data['icon_thumb'] = $this->processUploadFile($request->icon_thumb);
+        Storage::delete('public/uploads_Product/'.$uni_category->icon_thumb);
+       }else{
+        $data['icon_thumb'] = $uni_category->icon_thumb;
+       }
+
+    if ($request->banner){
+        Storage::delete('public/uploads/'.$request->delete_thumbnail);    
+        $data['banner'] = $request->banner;
+    } elseif (!$request->banner) {
+        $data['banner'] = $request->delete_thumbnail;         
+    
+    } elseif ($request->banner && !$uni_category->banner) {
+        $data['banner'] = $request->banner;         
+    }
         if(!$request->meta_title)             $data['meta_title'] = $request->name;
         if(!$request->meta_description) $data['meta_desscription'] = $request->name;
+        
         
         $uni_category->fill($data)->save();
         $this->showMessagesSuccess();
