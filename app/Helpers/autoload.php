@@ -77,7 +77,11 @@ function execPostRequest($url, $data)
         $count_contact = count($contact);
         return $count_contact;
     }
-
+    function formatVnd($price)
+    {
+        $vndfm = number_format($price, 0, '', ','). ' đ';
+        return $vndfm;
+    }
     function get_category_id($product_id){
         $catid = App\Models\Product_Category::where('product_id','=', $product_id)->pluck('category_id')->first();
         return $catid;

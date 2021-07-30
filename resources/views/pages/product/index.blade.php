@@ -79,7 +79,7 @@
                                                                 <div class="m-price-lockup">
                                                                     <span class="m-price-lockup__price">
                                                                     <span class="a-price">
-                                                                        Giá: {{ $product->price == '' ? 'liên hệ': $product->price.'vnd' }}
+                                                                        Giá: {{ $product->price == '' ? 'liên hệ': formatVnd($product->price) }}
                                                                     </span>
                                                                     </span>
                                                                 </div>

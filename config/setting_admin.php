@@ -128,7 +128,7 @@ return [
             'class-icon' => 'la la-book-open',
             'sub' => [
                 [
-                    'name' => 'Danh sách cửa hàng',
+                    'name' => 'Tạo chiến dịch',
                     'route' => 'get_admin.uni_flashsale.index'
                 ],
             ]

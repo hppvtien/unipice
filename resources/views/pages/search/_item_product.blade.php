@@ -31,7 +31,7 @@
                             <?php if (checkUid($uid)) { ?>
                                 <?php if ($item->price_sale_store != null) { ?>
                                     <span class="a-price">
-                                        {{ $item->price_sale_store }} đ
+                                        {{ formatVnd($item->price_sale_store) }}
                                     </span>
                                 <?php } else { ?>
                                     <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
@@ -39,7 +39,7 @@
                             <?php } else { ?>
                                 <?php if ($item->price != null) { ?>
                                     <span class="a-price">
-                                        {{ $item->price }} đ
+                                        {{ formatVnd($item->price) }}
                                     </span>
                                 <?php } else { ?>
                                     <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>

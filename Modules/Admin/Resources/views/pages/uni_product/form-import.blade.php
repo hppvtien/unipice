@@ -9,7 +9,7 @@
     <form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
         @csrf
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-6">
                 <div class="card box-shadow-0">
                     <div class="card-body pt-3">
                         <div class="bg-info">
@@ -46,7 +46,7 @@
                                         <td>{{ $item->total_qty }}</td>
                                         <td>{{ $item->total_export }}</td>
                                         <td>{{ $item->qty }}</td>
-                                        <td>{{ $item->price_lotproduct }}</td>
+                                        <td>{{ formatVnd($item->price_lotproduct) }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>{{ $item->expiry_date }}</td>
                                     </tr>
@@ -92,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-6">
                 <div class="card  box-shadow-0 ">
                     <div class="card-body pt-3">
                         <div class="form-group">
@@ -114,7 +114,8 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Tên Lô</th>
                                         <th scope="col">Sản Phẩm</th>
-                                        <th scope="col">Số lượng đã nhập</th>
+                                        <th scope="col">Số lượng nhập</th>
+                                        <th scope="col">Giá Sản phẩm</th>
                                         <th scope="col">Ngày nhập</th>
                                     </tr>
                                 </thead>
@@ -127,6 +128,11 @@
                                         </td>
                                         <td>{{ get_data_table_name('uni_product',$item->product_id)->name }}</td>
                                         <td>{{ $item->inventory }}</td>
+                                        <td>
+                                            <span>Giá bán lẻ: <span class="text-success">{{ formatVnd($item->price) }} </span></span> <br>
+                                            <span>Giá bán sale: <span class="text-success">{{ formatVnd($item->price_sale) }}</span></span> <br>
+                                            <span>Giá bán Đại lý: <span class="text-success">{{ formatVnd($item->price_sale_store) }}</span></span>
+                                        </td>
                                         <td>{{ $item->created_at }}</td>
                                     </tr>
                                     @endforeach

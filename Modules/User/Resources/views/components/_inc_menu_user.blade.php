@@ -22,7 +22,7 @@
                         }
                     }
                     ?>
-                    <li class=""><a href="{{ route('get_user.transaction') }}">Đơn hàng</a></li> 
+                    <li class=""><a href="{{ route('get_user.list_order') }}">Đơn hàng</a></li> 
                 </ul>
             </div>
         </div>

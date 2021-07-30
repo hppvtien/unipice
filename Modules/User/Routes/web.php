@@ -13,7 +13,7 @@
 
 Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     Route::get('/', 'UserDashboardController@index')->name('get_user.dashboard');
-    Route::post('/', 'UserDashboardController@replaceOrder')->name('get_user.replaceOrder');
+    // Route::post('/', 'UserDashboardController@replaceOrder')->name('get_user.replaceOrder');
     Route::get('/danh-sach-san-pham', 'UserDashboardController@productlist')->name('get_user.productlist');
     Route::get('/danh-sach-san-pham/goi-san-pham-sale', 'UserDashboardController@my_flash_sale')->name('get_user.my_flash_sale');
     Route::get('/danh-sach-san-pham/goi-san-pham-sale/get_product_flash_sale', 'UserDashboardController@get_product_flash_sale')->name('get_user.get_product_flash_sale');
@@ -23,19 +23,19 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     Route::get('/danh-sach-san-pham/myfavorites/filter', 'UserDashboardController@myfavorites_filter')->name('get_user.myfavorites_filter');
     Route::get('/danh-sach-san-pham/filter', 'UserDashboardController@productlist_filter')->name('get_user.productlist_filter');
 
-    Route::get('don-hang', 'UserTransactionController@index')->name('get_user.transaction');
+    Route::get('/don-hang', 'UserDashboardController@listOrder')->name('get_user.list_order');
     
 
-    Route::group(['prefix' => 'don-hang'], function(){
-        Route::get('/', 'UserTransactionController@index')->name('get_user.transaction');
+    // Route::group(['prefix' => 'don-hang'], function(){
+    //     Route::get('/', 'UserTransactionController@index')->name('get_user.transaction');
 
-        Route::post('/', 'UserTransactionController@get_info_order')->name('get_user.get_info_order');
+    //     Route::post('/', 'UserTransactionController@get_info_order')->name('get_user.get_info_order');
 
-        Route::get('{idTransaction}/view', 'UserTransactionController@viewTransaction')->name('get_user.transaction.view');
-        Route::get('{idTransaction}/view/course/{idCourse}', 'UserCourseByOrderController@viewCourse')->name('get_user.transaction.view_course');
-        Route::get('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@vote')->name('get_user.transaction.vote');
-        Route::post('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@storeVote');
-    });
+    //     Route::get('{idTransaction}/view', 'UserTransactionController@viewTransaction')->name('get_user.transaction.view');
+    //     Route::get('{idTransaction}/view/course/{idCourse}', 'UserCourseByOrderController@viewCourse')->name('get_user.transaction.view_course');
+    //     Route::get('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@vote')->name('get_user.transaction.vote');
+    //     Route::post('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@storeVote');
+    // });
     Route::get('favourite', 'UserFavouriteController@index')->name('get_user.favourite');
 
     Route::get('info/edit/{id}', 'UserInfoController@edit')->name('get_user.info.edit');

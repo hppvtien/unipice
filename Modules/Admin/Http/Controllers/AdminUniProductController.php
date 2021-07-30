@@ -158,7 +158,6 @@ class AdminUniProductController extends AdminController
     }
     public function update(AdminUniProductRequest $request, $id)
     {
-
         $uni_product             = Uni_Product::findOrFail($id);
         $product_albumOld = json_decode(Uni_Product::where('id', $id)->pluck('album')->first());
         $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
@@ -174,11 +173,9 @@ class AdminUniProductController extends AdminController
             $album = [];
         }
         if ($request->thumbnail) {
-            Storage::delete('public/uploads/' . $request->delete_thumbnail);
+            Storage::delete('public/uploads_product/' . $uni_product->thumbnail);
             $data['thumbnail'] = $request->thumbnail;
-        } elseif (!$request->c_avatar) {
-            $data['thumbnail'] = $request->delete_thumbnail;
-        } elseif ($request->thumbnail && !$uni_product->thumbnail) {
+        } else {
             $data['thumbnail'] = $request->thumbnail;
         }
 
@@ -196,13 +193,12 @@ class AdminUniProductController extends AdminController
             'is_hot' => $request->is_hot,
             'is_feauture' => $request->is_feauture,
             'order' => $request->order,
-
+            'thumbnail' => $request->thumbnail,
             'status' => $request->status,
             'album' => json_encode($store_ab),
             'meta_title' => $request->meta_title,
             'meta_desscription' => $request->meta_desscription,
         ];
-        // dd($param);
         $uni_product->fill($param)->save();
         $this->syncTagProduct($id, $request->tags);
         $this->syncCatProduct($id, $request->category);
@@ -308,7 +304,7 @@ class AdminUniProductController extends AdminController
     protected function syncTagProduct($productID, $tags)
     {
         if (!empty($tags)) {
-            \DB::table('product_tag')->where('product_id', $productID)->delete();
+            ProductTag::where('product_id', $productID)->delete();
             foreach ($tags as $item) {
                 ProductTag::insert([
                     'product_id' => $productID,
@@ -320,7 +316,7 @@ class AdminUniProductController extends AdminController
     protected function syncCatProduct($productID, $category)
     {
         if (!empty($category)) {
-            \DB::table('product_category')->where('product_id', $productID)->delete();
+            ProductCategory::where('product_id', $productID)->delete();
             foreach ($category as $item) {
                 ProductCategory::insert([
                     'product_id' => $productID,
@@ -332,7 +328,7 @@ class AdminUniProductController extends AdminController
     protected function syncSizeProduct($productID, $size)
     {
         if (!empty($size)) {
-            \DB::table('product_size')->where('product_id', $productID)->delete();
+            ProductSize::where('product_id', $productID)->delete();
             foreach ($size as $item) {
                 ProductSize::insert([
                     'product_id' => $productID,
@@ -344,7 +340,7 @@ class AdminUniProductController extends AdminController
     protected function syncColorProduct($productID, $color)
     {
         if (!empty($color)) {
-            \DB::table('product_color')->where('product_id', $productID)->delete();
+            ProductColor::where('product_id', $productID)->delete();
             foreach ($color as $item) {
                 ProductColor::insert([
                     'product_id' => $productID,
@@ -356,7 +352,7 @@ class AdminUniProductController extends AdminController
     protected function syncTradeProduct($productID, $trade)
     {
         if (!empty($trade)) {
-            \DB::table('product_trade')->where('product_id', $productID)->delete();
+            ProductTrade::where('product_id', $productID)->delete();
             foreach ($trade as $item) {
                 ProductTrade::insert([
                     'product_id' => $productID,

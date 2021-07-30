@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Uni_Product;
 use App\Models\Uni_Category;
 use App\Models\Uni_Store;
+use App\Models\Cart\Uni_Order;
 use Illuminate\Http\Request;
 use App\Models\Product_Category;
 use DB;
@@ -21,7 +22,7 @@ class UserDashboardController extends Controller
 
     public function index()
     {
-        \SEOMeta::setTitle('Danh sách khóa học của bạn');
+        \SEOMeta::setTitle('Danh sách sản phẩm');
         // $transactions = Transaction::where('t_user_id', get_data_user('web'))
         //     ->where('t_status','!=',-1)
         //     ->orderByDesc('id')
@@ -31,14 +32,25 @@ class UserDashboardController extends Controller
         // $viewData = [
         //     'transactions' => $transactions,
         // ];
+        
         return view('user::pages.dashboard.index');
     }
-    public function replaceOrder(Request $request)
+    // public function replaceOrder(Request $request)
+    // {
+    //     $id = $request->v_idOrder;
+    //     $order_edit = Transaction::where('id', $id)->first();
+    //     $order_edit->t_status = -1;
+    //     $order_edit->save();
+    // }
+    public function listOrder()
     {
-        $id = $request->v_idOrder;
-        $order_edit = Transaction::where('id', $id)->first();
-        $order_edit->t_status = -1;
-        $order_edit->save();
+        $user_id = auth()->id();
+        $uni_order = Uni_Order::where('user_id',$user_id)->orderBy('id','asc')->get();
+           
+        $viewData = [
+            'uni_order' => $uni_order
+        ];
+        return view('user::pages.dashboard.list_order',$viewData);
     }
 
     public function productlist_filter(Request $request){
