@@ -26,7 +26,6 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::post('/','HomeController@product_trade')->name('get.product_trade');
 
 
-
     Route::get('/dang-nhap','LoginController@index')->name('get.login');
     Route::post('/dang-nhap','LoginController@login')->name('post.login');
     Route::get('/dang-ky','RegisterController@index')->name('get.register');
@@ -50,6 +49,7 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::post('cua-hang','FindStoreController@searchName');
     Route::get('member','MembershipController@index')->name('get.membership');
     Route::get('san-pham/{slug}','ProductController@index')->name('get.product');
+    Route::post('san-pham/{slug}/thembinhluan','ProductController@thembinhluan')->name('get.product_comment');
     Route::get('lien-he/','Uni_ContactController@index')->name('get.uni_contact');
     Route::post('lien-he/','Uni_ContactController@getformsubmit')->name('post.uni_contact');
     Route::get('tim-kiem','SearchController@search')->name('get.search');
@@ -58,6 +58,7 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::get('bai-viet', 'BlogHomeController@index')->name('get_blog.home');
     Route::post('bai-viet', 'BlogHomeController@fillter_post');
     Route::get('bai-viet/{slug}', 'BlogHomeController@SingleBlog')->name('get_blog.single_blog');
+    Route::post('bai-viet/{slug}/add_comment_post', 'BlogHomeController@add_comment_post')->name('get_blog.add_comment_post');
     Route::get('danh-muc-bai-viet/{slug}', 'BlogHomeController@SingleCat')->name('get_blog.single_cat');
     
 

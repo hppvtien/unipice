@@ -15,6 +15,7 @@ class CategoryController extends Controller
 {
     public function index($slug)
     {
+
         $cat_id = Uni_Category::where('slug', $slug)->pluck('id')->first();
         $category = Uni_Category::where('id', $cat_id)->first();
         $trade = Uni_Trade::get();

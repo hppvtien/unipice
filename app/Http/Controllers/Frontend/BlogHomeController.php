@@ -9,6 +9,9 @@ use App\Models\Blog\PostCategory;
 use App\Models\Education\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
+use Carbon\Carbon;
 
 class BlogHomeController extends Controller
 {
@@ -41,19 +44,41 @@ class BlogHomeController extends Controller
         return $html;
     }
     public function SingleBlog($slug)
-    {
+    {   
+
         $post_category = Uni_PostCategory::orderByDesc('id')->get();
         $slide = Slide::where('s_type',7)->first();
         $blog_post = Uni_Post::where('slug',$slug)->first();
+        $user_ids = Auth::user()->id;
+
         $current_cate = Uni_PostCategory::where('id',$blog_post->category_id)->first();
         $viewdata = [
             'blog_post'=>$blog_post,
             'post_category'=>$post_category,
             'slide' => $slide,
-            'current_cate' => $current_cate
+            'current_cate' => $current_cate,
+            'blog_post_id' => $blog_post->id,
+            'user_ids' => $user_ids,
+            'slug' => $slug,
         ];
         return view('pages.blog.single_blog',$viewdata);
     }
+
+    public function add_comment_post(Request $request)
+    {
+        if($request->user_id){
+            $type_product = 'blog';
+            $id = DB::table('uni_comment')->insertGetId(
+                ['user_id' => $request->user_id, 'product_id' => $request->blog_id, 'type_comment' => $type_product, 'noi_dung_comment' => $request->noi_dung_commnet, 'created_at' => Carbon::now(), 'update_at' => NULL]
+            );
+            return 'Đã thêm bình luận thành công';
+        }
+        else{
+            return 'Lỗi không thể bình luận';
+        }
+        
+    }
+
     public function SingleCat($slug)
     {
         $post_category = Uni_PostCategory::orderByDesc('id')->get();

@@ -92,6 +92,51 @@
                         <p>{{ $blog_post->desscription }}</p>
                         {!! $blog_post->content !!}
                       </div>
+                      <div>
+
+                        <div>
+                            <div class="col-md-12 bootstrap snippets">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <textarea id="noi_dung_commnet" class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
+                                        <div class="mar-top clearfix">
+                                            <button onclick="add_comment_user_blog(this);" blog_id="{{ $blog_post_id }}" user_id="{{ $user_ids }}" class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Share</button>
+                                            <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
+                                            <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
+                                            <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
+                                        </div>
+
+                                        <script>
+                                            function add_comment_user_blog(id){
+                                                var user_id = $(id).attr('user_id');
+                                                var blog_id = $(id).attr('blog_id');
+                                                var noi_dung_commnet = $('#noi_dung_commnet').val();
+
+                                                $.post( "{{ route('get_blog.add_comment_post',['slug'=>$slug]) }}", { user_id: user_id, blog_id: blog_id, noi_dung_commnet: noi_dung_commnet })
+                                                            .done(function( data ) {
+                                                                alert(data);
+                                                                location.reload();  
+                                                        });
+                                               
+                                            }
+                                        </script>
+
+                                    </div>
+                                </div>
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <!-- Newsfeed Content -->
+                                        <!--===================================================-->
+   
+                                        
+                                        
+                                        <!--===================================================-->
+                                        <!-- End Newsfeed Content -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
 
                   </div>
