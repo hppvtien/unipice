@@ -66,35 +66,77 @@
                     </div>
                   </div>
                 </div>
-                <div class="layout__region layout__region--second">
-                  <div data-block-plugin-id="block_content:6ff1ff1c-0107-49ed-a41f-063a6fef942e" class="t-cms__links">
-                    <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="http://pinterest.com/pin/create/button/?url=https://www.coopmarket.com/community/co-op-market-blogs/food&amp;media=&quot;&quot;" target="_blank">
-                      <span class="icon-pinterest  a-icon-text-btn__icon" aria-hidden="true"></span>
-                    </a>
-                    <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="https://www.facebook.com/sharer/sharer.php?u=https://www.coopmarket.com/community/co-op-market-blogs/food" target="_blank">
-                      <span class="icon-facebook  a-icon-text-btn__icon" aria-hidden="true"></span>
-                    </a>
-                    <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="http://twitter.com/share?text=&amp;url=https://www.coopmarket.com/community/co-op-market-blogs/food" target="_blank">
-                      <span class="icon-twitter  a-icon-text-btn__icon" aria-hidden="true"></span>
-                    </a>
-                    <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="mailto:?subject=Lorem%20ipsum&amp;body=Lorem%20ipsum%20https%3A%2F%2Fwww.coopmarket.com%2Fcommunity%2Fco-op-market-blogs%2Ffood." target="_blank">
-                      <span class="a-icon-text-btn__icon" aria-hidden="true">
-                        <img src="/themes/custom/frontierbase/dist/frontiercoop/images/email.svg" alt="Email icon" height="25" width="25">
-                      </span>
-                    </a>
-                    <a href="/" class="a-anchor js-favorite">Add to Favorites</a>
-                  </div>
-                  <div data-block-plugin-id="field_block:node:blog:body">
-
-
-
+                    
                     <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-visually_hidden">
                       <div class="field__label visually-hidden">Body</div>
-                      <div class="field__item">
+                      <div id="share">
 
+                        <!-- facebook -->
+                        <a class="facebook" href="https://www.facebook.com/share.php?u=url&title=title" target="blank"><i class="fa fa-facebook"></i></a>
+    
+                        <!-- twitter -->
+                        <a class="twitter" href="https://twitter.com/intent/tweet?status=title+url" target="blank"><i class="fa fa-twitter"></i></a>
+    
+                        <!-- google plus -->
+                        <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank"><i class="fa fa-google-plus"></i></a>
+    
+                        <!-- linkedin -->
+                        <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank"><i class="fa fa-linkedin"></i></a>
+    
+                        <!-- pinterest -->
+                        <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank"><i class="fa fa-pinterest-p"></i></a>
+    
+                    </div>
+                      <div class="field__item">
+                        
                         <p>{{ $blog_post->desscription }}</p>
                         {!! $blog_post->content !!}
                       </div>
+                      <div>
+
+                        <div>
+                            <div class="col-md-12 bootstrap snippets">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <textarea id="noi_dung_commnet" class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
+                                        <div class="mar-top clearfix">
+                                            <button onclick="add_comment_user_blog(this);" blog_id="{{ $blog_post_id }}" user_id="{{ $user_ids }}" class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Share</button>
+                                            <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
+                                            <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
+                                            <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
+                                        </div>
+
+                                        <script>
+                                            function add_comment_user_blog(id){
+                                                var user_id = $(id).attr('user_id');
+                                                var blog_id = $(id).attr('blog_id');
+                                                var noi_dung_commnet = $('#noi_dung_commnet').val();
+
+                                                $.post( "{{ route('get_blog.add_comment_post',['slug'=>$slug]) }}", { user_id: user_id, blog_id: blog_id, noi_dung_commnet: noi_dung_commnet })
+                                                            .done(function( data ) {
+                                                                alert(data);
+                                                                location.reload();  
+                                                        });
+                                               
+                                            }
+                                        </script>
+
+                                    </div>
+                                </div>
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <!-- Newsfeed Content -->
+                                        <!--===================================================-->
+   
+                                        
+                                        
+                                        <!--===================================================-->
+                                        <!-- End Newsfeed Content -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
 
                   </div>

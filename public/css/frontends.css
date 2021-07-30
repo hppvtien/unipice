@@ -1,4 +1,3 @@
-@import url(https://p.typekit.net/p.css?s=1&k=zxd3zqb&ht=tk&f=8493.5900.28988.34268.39567&a=8691760&app=typekit&e=css);
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
@@ -1553,46 +1552,6 @@ input[type=email] {
 
 
 /*{"last_published":"2021-02-22 13:41:32 UTC"}*/
-
-@font-face {
-    font-family: "arno-pro";
-    src: url("https://use.typekit.net/af/b9acbc/000000000000000000017424/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"), url("https://use.typekit.net/af/b9acbc/000000000000000000017424/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"), url("https://use.typekit.net/af/b9acbc/000000000000000000017424/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
-    font-display: auto;
-    font-style: normal;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "lft-etica";
-    src: url("https://use.typekit.net/af/1600d7/000000000000000077359a84/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("woff2"), url("https://use.typekit.net/af/1600d7/000000000000000077359a84/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("woff"), url("https://use.typekit.net/af/1600d7/000000000000000077359a84/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("opentype");
-    font-display: auto;
-    font-style: normal;
-    font-weight: 200;
-}
-
-@font-face {
-    font-family: "rift";
-    src: url("https://use.typekit.net/af/ede55a/00000000000000007735b228/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"), url("https://use.typekit.net/af/ede55a/00000000000000007735b228/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"), url("https://use.typekit.net/af/ede55a/00000000000000007735b228/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
-    font-display: auto;
-    font-style: normal;
-    font-weight: 700;
-}
-
-@font-face {
-    font-family: "gastromond";
-    src: url("https://use.typekit.net/af/3eba23/00000000000000007735ae01/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"), url("https://use.typekit.net/af/3eba23/00000000000000007735ae01/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"), url("https://use.typekit.net/af/3eba23/00000000000000007735ae01/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
-    font-display: auto;
-    font-style: normal;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "plantin";
-    src: url("https://use.typekit.net/af/1d9a50/00000000000000007735baf2/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"), url("https://use.typekit.net/af/1d9a50/00000000000000007735baf2/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"), url("https://use.typekit.net/af/1d9a50/00000000000000007735baf2/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
-    font-display: auto;
-    font-style: normal;
-    font-weight: 400;
-}
 
 .tk-arno-pro {
     font-family: "arno-pro", serif;
@@ -10077,7 +10036,7 @@ body._has-modal {
     bottom: 0;
     height: 50%;
     z-index: -10;
-    background: url(https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop_market/images/bgtexture2.jpg)
+    background: url(/public/images/bgtexture2.jpg)
 }
 
 .c-media-block-aligned--torn-edge {
@@ -10319,7 +10278,7 @@ body._has-modal {
 }
 
 .c-cta-banner--bgImg {
-    background: url(https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop_market/images/bgtexture2.jpg)
+    background: url(/public/images/bgtexture2.jpg)
 }
 
 .c-cta-banner--isLight {
@@ -10402,7 +10361,7 @@ body._has-modal {
     padding-left: 20px;
     padding-right: 20px;
     padding-right: 0;
-    display: grid;
+    /*display: grid;*/
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 20px;
     margin-right: 20px
@@ -11231,7 +11190,7 @@ body._has-modal {
     bottom: 0;
     height: 50%;
     z-index: 0;
-    background: url(https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop_market/images/bgtexture2.jpg)
+    background: url(/public/images/bgtexture2.jpg)
 }
 
 .c-products-slider--split-bg>* {
@@ -11240,7 +11199,7 @@ body._has-modal {
 }
 
 .c-products-slider--reverse-split-bg {
-    background: url(https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop_market/images/bgtexture2.jpg)
+    background: url(/public/images/bgtexture2.jpg)
 }
 
 .c-products-slider--reverse-split-bg::before {
@@ -11506,7 +11465,7 @@ body._has-modal {
     bottom: 0;
     height: 40%;
     z-index: 0;
-    background: url(https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop_market/images/bgtexture2.jpg)
+    background: url(/public/images/bgtexture2.jpg)
 }
 
 .c-categories-slider__heading-wrapper {

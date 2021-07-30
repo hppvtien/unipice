@@ -479,6 +479,33 @@ a.text-muted:focus {
     transition: opacity 0.15s linear;
 }
 
+.can_le_trai {
+    text-align: left;
+}
+
+#share1 {
+    width: 100%;
+    text-align: left;
+}
+
+#share1 a {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin: 8px;
+    font-size: 24px;
+    color: #fff;
+    opacity: 0.75;
+    transition: opacity 0.15s linear;
+}
+
+#share1 i {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 15px;
+}
+
 .link_share_contact i {
     position: relative;
     top: 50%;
@@ -525,4 +552,193 @@ a.text-muted:focus {
     font-weight: normal;
     border-radius: 0;
     position: relative;
+}
+
+#formLogin #email {
+    color: #0b2d25;
+}
+
+#formLogin #pass {
+    color: #0b2d25;
+    outline: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0px;
+}
+
+#formRegister #name {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0;
+    position: relative;
+    width: 100%;
+}
+
+#formRegister #phone {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0;
+    position: relative;
+    width: 100%;
+}
+
+#formRegister #email_address {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0px;
+    width: 99%;
+}
+
+#formRegister #password {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0px;
+}
+
+#formRegister #password-confirmation {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0px;
+}
+
+.field__item h3 {
+    font-size: 1.2rem;
+    line-height: 1em;
+}
+
+.field__item h3 a {
+    color: #000;
+    float: left;
+}
+
+.field__item h3 a::after {
+    content: "|";
+    margin: 10px;
+}
+
+.noi_left {
+    float: left;
+}
+
+.cach_top_bottom {
+    margin-top: 40px;
+}
+
+.modal-body a {
+    color: #000;
+}
+
+
+/*==============================LANGUAGE+++++++++++++++++++++++++++++++++*/
+
+
+/* 
+^ Styling the drop-down menu for language switcher
+* Auther : Fadi Nouh
+* URL : https://bluebit.dev
+* Repository: https://github.com/bluebits-academy/language-switcher
+*/
+
+.logo img {
+    width: 100px;
+}
+
+.lang-menu {
+    position: relative;
+}
+
+.lang-menu .selected-lang {
+    display: inline-flex;
+    justify-content: space-between;
+    line-height: 2;
+    cursor: pointer;
+    color: #fff;
+}
+
+.lang-menu .selected-lang:before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url(https://www.countryflags.io/vn/flat/32.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.lang-menu ul {
+    display: none;
+    background-color: #fff;
+    border: 1px solid #f8f8f8;
+    position: absolute;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999999;
+}
+
+.lang-menu ul li {
+    list-style: none;
+    text-align: left;
+    display: inline list-item;
+    justify-content: space-between;
+}
+
+.lang-menu ul li a {
+    text-decoration: none;
+    width: 125px;
+    padding: 5px 10px;
+    display: block;
+    color: #000;
+}
+
+.lang-menu ul li:hover {
+    background-color: #f2f2f2;
+}
+
+.lang-menu ul li a:before {
+    content: '';
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    margin-right: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.de:before {
+    background-image: url(https://www.countryflags.io/de/flat/32.png);
+}
+
+.en:before {
+    background-image: url(https://www.countryflags.io/us/flat/32.png);
+}
+
+.vn:before {
+    background-image: url(https://www.countryflags.io/vn/flat/32.png);
+}
+
+.lang-menu:hover ul {
+    display: block;
+    left: 246px;
 }

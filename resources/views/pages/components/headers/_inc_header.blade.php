@@ -23,12 +23,20 @@
             <!-- #site-navigation -->
             <div class="header-info-wrapper">
                 <div class="header-phone-numbers">
-                    <span class="intro-text">Đặt Hàng Ngay</span>
-                    <select class="select-city-phone-numbers" name="city-phone-numbers" id="city-phone-numbers">
-                        <option value="54 548 779 654">London</option>
-                        <option value="33 398 621 710">Paris</option>
-                        <option value="718 54 674 021">New York</option>
-                    </select>
+                    <div class="lang-menu">
+                        <div class="selected-lang">
+                            Vietnamses
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="" class="en">English</a>
+                            </li>
+                            <li>
+                                <a href="#" class="de">German</a>
+                            </li>
+                        </ul>
+                        
+                    </div>
                     <span id="" class="phone-number">{{ $configuration->hotline }}</span>
                 </div>
                 <ul class="site-header-cart-v2 menu">
@@ -36,11 +44,7 @@
                         <a href="{{ route('get_user.cart') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
                             <span class="icon-cart a-icon-text-btn__icon" aria-hdden="true"></span>
                             <span class="a-icon-text-btn__label">
-                                My Cart </span>
-                            @php
-                            $dem = count(\Cart::content());
-                            @endphp
-                            @if($dem == 0)
+                                My Cart </span> @php $dem = count(\Cart::content()); @endphp @if($dem == 0)
                             <div></div>
                             @else
                             <div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">

@@ -98,26 +98,22 @@
                                 </div>
 
                                 <div class="layout__region layout__region--second">
+                                    <div id="share1">
 
-                                    <div data-block-plugin-id="block_content:53bc7c81-0e01-4b09-a795-90903d87dc57" class="t-cms__links">
+                                        <!-- facebook -->
+                                        <a class="facebook" href="https://www.facebook.com/share.php?u=url&title=title" target="blank"><i class="fa fa-facebook"></i></a>
 
+                                        <!-- twitter -->
+                                        <a class="twitter" href="https://twitter.com/intent/tweet?status=title+url" target="blank"><i class="fa fa-twitter"></i></a>
 
+                                        <!-- google plus -->
+                                        <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank"><i class="fa fa-google-plus"></i></a>
 
-                                        <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="http://pinterest.com/pin/create/button/?url=https://www.coopmarket.com/co-op-market-faqs&amp;media=&quot;&quot;" target="_blank">
-                                            <span class="icon-pinterest  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                        </a>
-                                        <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="https://www.facebook.com/sharer/sharer.php?u=https://www.coopmarket.com/co-op-market-faqs" target="_blank">
-                                            <span class="icon-facebook  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                        </a>
-                                        <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="http://twitter.com/share?text=&amp;url=https://www.coopmarket.com/co-op-market-faqs" target="_blank">
-                                            <span class="icon-twitter  a-icon-text-btn__icon" aria-hidden="true"></span>
-                                        </a>
-                                        <a class="c-product-overview__link a-anchor a-anchor--social-sharing" href="mailto:?subject=Lorem%20ipsum&amp;body=Lorem%20ipsum%20https%3A%2F%2Fwww.coopmarket.com%2Fco-op-market-faqs." target="_blank">
-                                            <span class="a-icon-text-btn__icon" aria-hidden="true">
-                                                <img src="/themes/custom/frontierbase/dist/frontiercoop/images/email.svg" alt="Email icon" height="25" width="25">
-                                            </span>
-                                        </a>
+                                        <!-- linkedin -->
+                                        <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank"><i class="fa fa-linkedin"></i></a>
 
+                                        <!-- pinterest -->
+                                        <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank"><i class="fa fa-pinterest-p"></i></a>
 
                                     </div>
 
@@ -131,7 +127,7 @@
                                                 <h1>Co-op Market FAQs</h1>
 
 
-                                                <h3><a href="#product">Product</a>&nbsp;&nbsp;| &nbsp;<a href="#organic">Organic</a>&nbsp;&nbsp;| &nbsp;<a href="#quality">Quality</a>&nbsp;&nbsp;| &nbsp;<a href="#safety">Safety</a></h3>
+                                                <h3><a href="#product">Product</a><a href="#organic">Organic</a><a href="#quality">Quality</a><a href="#safety">Safety</a></h3>
 
                                                 <p>&nbsp;</p>
 

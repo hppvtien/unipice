@@ -172,32 +172,51 @@
                                     <div class="col-md-12 bootstrap snippets">
                                         <div class="panel">
                                             <div class="panel-body">
-                                                <textarea class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
+                                                <textarea id="noi_dung_commnet" class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
                                                 <div class="mar-top clearfix">
-                                                    <button class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Share</button>
+                                                    <button token="{{ csrf_token() }}" onclick="add_comment_user(this);" product_id="{{ $product->id }}" user_id="@php echo $user_id; @endphp" class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Share</button>
                                                     <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
                                                     <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
                                                     <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
                                                 </div>
+
+                                                <script>
+                                                    function add_comment_user(id){
+                                                        var user_id = $(id).attr('user_id');
+                                                        var product_id = $(id).attr('product_id');
+                                                        var token = $(id).attr('token');
+                                                        var noi_dung_commnet = $('#noi_dung_commnet').val();
+                                                        
+                                                        $.post( "{{ route('get.product_comment',['slug'=>$slug]) }}", { token: token, user_id: user_id, product_id: product_id, noi_dung_commnet: noi_dung_commnet })
+                                                            .done(function( data ) {
+                                                                alert(data);
+                                                                location.reload();  
+                                                        });
+                                                    }
+                                                </script>
+
                                             </div>
                                         </div>
                                         <div class="panel">
                                             <div class="panel-body">
                                                 <!-- Newsfeed Content -->
                                                 <!--===================================================-->
+                                                @foreach ($noi_dung_comment as $item)
                                                 <div class="media-block">
                                                     <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
                                                     <div class="media-body">
                                                         <div class="mar-btm">
-                                                            <a href="#" class="btn-link text-semibold media-heading box-inline">Lisa D.</a>
+                                                            <a href="#" class="btn-link text-semibold media-heading box-inline">{{ get_user_comment_product($item->user_id) }}</a>
 
                                                         </div>
-                                                        <p class="margin-left1">consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-                                                            lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                                                        <p class="margin-left1">{{ $item->noi_dung_comment }}</p>
 
                                                         <hr>
                                                     </div>
                                                 </div>
+                                                @endforeach
+                                                
+                                                
                                                 <!--===================================================-->
                                                 <!-- End Newsfeed Content -->
                                             </div>

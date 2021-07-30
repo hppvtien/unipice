@@ -25,7 +25,7 @@ class AdminAjaxUploadImageController extends Controller
 
            $filename = str_replace($ext,'',$fileName->getClientOriginalName());
            $filename =  Str::slug($filename).'-'.Carbon::now()->getTimestamp(). '.'.$ext;
-           $path = public_path().'/storage/uploads_product/';        
+           $path = public_path().'/storage/uploads/';        
            if(!\File::exists($path)) mkdir($path,0777, true);
 
            $fileName->move($path, $filename);
