@@ -134,7 +134,7 @@ class AdminUniStoreController extends AdminController
 
             // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
             $this->showMessagesSuccess();
-            return redirect()->route('get_admin.uni_store.index');
+            return redirect()->route('get_admin.user.store_index');
         }
     }
 
