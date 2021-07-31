@@ -436,7 +436,15 @@
                                     <td data-th="Price">
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ $item->price }} {{ checkUid(get_data_user('web')) != null ? 'đ/ thùng':'đ/ hộp' }}</span> 
+                                                <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ formatVnd($item->price) }} 
+                                                    <?php if($item->options->sale == 'combo' ){
+                                                        echo '/ thùng';
+                                                    } elseif($item->options->sale == 'user'){
+                                                        echo '/ hộp';
+                                                    } else {
+                                                        echo '/ thùng';
+                                                    } ?>
+                                            </span> 
                                             </span>
                                         </span>
                                     </td>
@@ -456,7 +464,7 @@
                                     <td data-th="Tổng tiền">
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price">{{ $item->price * $item->qty}} đ</span> 
+                                                <span class="price">{{ formatVnd($item->price * $item->qty) }} </span> 
                                             </span>
                                         </span>
                                     </td>

@@ -131,8 +131,6 @@ $(".js-add-cart").on('click', function() {
         },
         success: function(data) {
             console.log(data);
-
-            $('#show-store').html(data);
         },
 
     });

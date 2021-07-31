@@ -24,7 +24,7 @@ class UserPayController extends UserController
     {
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
-       
+    //    dd(\Cart::content());
         if ($listCarts->isEmpty()) return redirect()->to('/');
         $viewData = [
      

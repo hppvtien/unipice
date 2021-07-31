@@ -17,12 +17,12 @@ class UserShoppingCartController extends UserController
     const SINGLE = 'single';
     public function processCart(Request $request, $id, $type)
     {
-        dd($request->all());
+        // dd($request->all());
         if ($request->ajax())
         {
             if($type == self::COMBO)
             {
-                // xử lý dữ liệu với khoá học
+                // xử lý dữ liệu với san pham
                 $uni_combo = $this->checkCombo($id);
                 $type_box = 'combo';
                 if (!$uni_combo){
@@ -32,7 +32,7 @@ class UserShoppingCartController extends UserController
                 }
 
                 $listCarts = \Cart::content();
-                // Kierm tra xem đã lưu khoá học chưa
+                // Kierm tra xem đã lưu san pham chưa
                 $checkExist = $listCarts->search(function ($cartItem) use ($id) {
                     if($cartItem->id == $id) return $id;
                 });
@@ -54,12 +54,10 @@ class UserShoppingCartController extends UserController
                 }
                 return response([
                     'status' => 200,
-                    'message' => !$checkExist ? "Đã thêm khóa học vào giỏ" : "Khoá học đã có trong giỏ"
+                    'message' => !$checkExist ? "Đã thêm sản phẩm vào giỏ" : "Sản phẩm đã có trong giỏ"
                 ]);
                 
             } else { 
-
-                // xử lý dữ liệu với khoá học
                 $uni_product = $this->checkProduct($id);
                 $uni_store = $this->checkStore($request->data_uid);
                 if($uni_store != null){
@@ -78,29 +76,31 @@ class UserShoppingCartController extends UserController
                 }
 
                 $listCarts = \Cart::content();
+
                 // Kierm tra xem đã lưu khoá học chưa
                 $checkExist = $listCarts->search(function ($cartItem) use ($id) {
                     if($cartItem->id == $id) return $id;
                 });
 
                 // Nếu chưa có giỏ hàng thì mặc định thêm
-                if($listCarts->isEmpty() || $checkExist) {
+                if($listCarts->isEmpty() || !$checkExist) {
                     Log::info("[Cart]: Empty" );
                     \Cart::add([
                         'id' => $id,
                         'name' => $uni_product->name,
                         'qty' => $qty_cart,
                         'price' => $price_cart,
-                        'weight' => $uni_product->min_box,
+                        'weight' => 1,
                         'options' => [
-                            'images' => $uni_product->thumbnail,
+                            'images' => pare_url_file($uni_product->thumbnail),
                             'sale' => $type_box
                         ]
                     ]);
                 }
+
                 return response([
                     'status' => 200,
-                    'message' =>"Đã thêm khóa học vào giỏ" 
+                    'message' => !$checkExist ? "Đã thêm khóa học vào giỏ" : "Khoá học đã có trong giỏ"
                 ]);
             }
         }

@@ -7,12 +7,24 @@
                     <a class="m-product-card__img-wrapper" href="{{ $item->slug }}" title="{{ $item->name }}">
                         <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                     </a>
-                    <form class="m-product-card__add-to-cart">
-                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
-                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" type="&quot;submit&quot;">
-                            <span class="icon-add-to-cart"></span>
-                        </button>
-                    </form>
+                    <?php if (checkUid($uid)) { ?>
+                        <form class="m-product-card__add-to-cart">
+                            <div class="a-btn a-btn--primary m-product-card__add-to-cart-btn">
+                                <p>{{ $item->name }}</p>
+                                <p>Thùng {{ $item->qty_in_box }} hộp</p>
+                                <p>Tối đa {{ $item->min_box }} thùng</p>
+                                <button class="btn_store_submit js-add-cart" data-min-box="{{ $item->min_box }}" data-qtyinbox="{{ $item->qty_in_box }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
+                            </div>
+
+                        </form>
+                    <?php } else { ?>
+                        <form class="m-product-card__add-to-cart">
+                            <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
+                            <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" type="&quot;submit&quot;">
+                                <span class="icon-add-to-cart"></span>
+                            </button>
+                        </form>
+                    <?php } ?>
                 </div>
                 <div class="m-product-card__info">
                     <div class="m-combined-product-name">

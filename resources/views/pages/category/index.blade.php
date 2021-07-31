@@ -142,108 +142,119 @@
                                                                         <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" class="m-product-card">
                                                                             <div class="m-product-card__content-wrapper">
                                                                                 <a class="m-product-card__img-wrapper" href="{{ $item->slug }}" title="{{ $item->name }}">
-                                                                                    <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
+                                                                                    <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                                                                                 </a>
+                                                                                <?php if (checkUid($uid)) { ?>
+                                                                                    <form class="m-product-card__add-to-cart">
+                                                                                        <div class="a-btn a-btn--primary m-product-card__add-to-cart-btn">
+                                                                                            <p>{{ $item->name }}</p>
+                                                                                            <p>Thùng {{ $item->qty_in_box }} hộp</p>
+                                                                                            <p>Tối đa {{ $item->min_box }} thùng</p>
+                                                                                            <button class="btn_store_submit js-add-cart" data-min-box="{{ $item->min_box }}" data-qtyinbox="{{ $item->qty_in_box }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
+                                                                                        </div>
 
-                                                                                <form class="m-product-card__add-to-cart">
-                                                                                    <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
-                                                                                    <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon js-add-cart" type="&quot;submit&quot;">
-                                                                                        <span class="icon-add-to-cart"></span>
-                                                                    </button>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="m-product-card__info">
-                                                                    <div class="m-combined-product-name">
-                                                                        <a class="m-combined-product-name__link" href="{{ $item->slug }}">
-                                                                            <span class="a-folio">
+                                                                                    </form>
+                                                                                <?php } else { ?>
+                                                                                    <form class="m-product-card__add-to-cart">
+                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
+                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" type="&quot;submit&quot;">
+                                                                                            <span class="icon-add-to-cart"></span>
+                                                                                        </button>
+                                                                                    </form>
+                                                                                <?php } ?>
+                                                                            </div>
+                                                                            <div class="m-product-card__info">
+                                                                                <div class="m-combined-product-name">
+                                                                                    <a class="m-combined-product-name__link" href="{{ $item->slug }}">
+                                                                                        <span class="a-folio">
                                                                                             {{ $item->name }}
                                                                                         </span>
-                                                                            <span class="a-product-name">
+                                                                                        <span class="a-product-name">
                                                                                             {{ desscription_cut($item->desscription,60) }}
                                                                                         </span>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="m-product-card__sku">SKU: {{ $item->id }} đ</div>
-                                                                    <div class="m-price-lockup m-product-card__price">
-                                                                        <span class="m-price-lockup__price">
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="m-product-card__sku">SKU: {{ $item->id }} đ</div>
+                                                                                <div class="m-price-lockup m-product-card__price">
+                                                                                    <span class="m-price-lockup__price">
                                                                                         <?php if (checkUid($uid)) { ?>
                                                                                             <?php if ($item->price_sale_store != null) { ?>
                                                                                                 <span class="a-price">
                                                                                                     {{ formatVnd($item->price_sale_store) }}
                                                                                                 </span>
-                                                                        <?php } else { ?>
-                                                                        <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
-                                                                        <?php } ?>
-                                                                        <?php } else { ?>
-                                                                        <?php if ($item->price != null) { ?>
-                                                                        <span class="a-price">
+                                                                                            <?php } else { ?>
+                                                                                                <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
+                                                                                            <?php } ?>
+                                                                                        <?php } else { ?>
+                                                                                            <?php if ($item->price != null) { ?>
+                                                                                                <span class="a-price">
                                                                                                     {{ $item->price }} đ
 
                                                                                                 </span>
-                                                                        <?php } else { ?>
-                                                                        <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
-                                                                        <?php } ?>
-                                                                        <?php } ?>
+                                                                                            <?php } else { ?>
+                                                                                                <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
+                                                                                            <?php } ?>
+                                                                                        <?php } ?>
 
-                                                                        </span>
-                                                                    </div>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="m-product-card__cta"></div>
+                                                                        </div>
+                                                                    </span>
                                                                 </div>
-                                                                <div class="m-product-card__cta"></div>
                                                             </div>
-                                                            </span>
+                                                            @empty @endforelse
+
+
+                                                            <script>
+                                                                $(function() {
+                                                                    $(".loadmore1").slice(0, 4).show();
+                                                                    $("#loadMore").on("click", function(e) {
+                                                                        e.preventDefault();
+                                                                        $(".loadmore1:hidden").slice(0, 4).slideDown();
+                                                                        if ($(".loadmore1:hidden").length == 0) {
+                                                                            $("#load").fadeOut("slow");
+                                                                        }
+                                                                        $("#show-product").animate({
+                                                                            scrollTop: $(this).offset().top
+                                                                        }, 1500);
+                                                                    });
+                                                                });
+
+                                                                $("a[href=#top]").click(function() {
+                                                                    $("#show-product").animate({
+                                                                        scrollTop: 0
+                                                                    }, 600);
+                                                                    return false;
+                                                                });
+
+                                                                $(window).scroll(function() {
+                                                                    if ($(this).scrollTop() > 50) {
+                                                                        $(".totop a").fadeIn();
+                                                                    } else {
+                                                                        $(".totop a").fadeOut();
+                                                                    }
+                                                                });
+                                                            </script>
+
                                                         </div>
+
+                                                        <div class="col-md-12 col-xs-12">
+                                                            <a href="javascript:;" id="loadMore">Xem Thêm</a>
+                                                        </div>
+
                                                     </div>
-                                                    @empty @endforelse
-                                                    
-                                                    
-                                                    <script>
-                                                        $(function() {
-                                                            $(".loadmore1").slice(0, 4).show();
-                                                            $("#loadMore").on("click", function(e) {
-                                                                e.preventDefault();
-                                                                $(".loadmore1:hidden").slice(0, 4).slideDown();
-                                                                if ($(".loadmore1:hidden").length == 0) {
-                                                                    $("#load").fadeOut("slow");
-                                                                }
-                                                                $("#show-product").animate({
-                                                                    scrollTop: $(this).offset().top
-                                                                }, 1500);
-                                                            });
-                                                        });
-
-                                                        $("a[href=#top]").click(function() {
-                                                            $("#show-product").animate({
-                                                                scrollTop: 0
-                                                            }, 600);
-                                                            return false;
-                                                        });
-
-                                                        $(window).scroll(function() {
-                                                            if ($(this).scrollTop() > 50) {
-                                                                $(".totop a").fadeIn();
-                                                            } else {
-                                                                $(".totop a").fadeOut();
-                                                            }
-                                                        });
-                                                    </script>
-                                                    
                                                 </div>
-                                                
-                                                <div class="col-md-12 col-xs-12">
-                                                    <a href="#" id="loadMore">Xem Thêm</a>
-                                                </div>
-        
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                    </header>
                 </div>
-                </header>
             </div>
         </div>
-    </div>
     </div>
 </main>
 @stop
