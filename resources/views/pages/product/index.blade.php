@@ -253,8 +253,8 @@
                                                 <a class="m-category-card m-category-card--bordered" href="{{ $item->slug }}">
                                                     <div class="m-category-card__image-wrapper">
                                                         <picture>
-                                                            <source media="(min-width: 768px)" data-srcset="{{ pare_url_file_product($item->thumbnail) }}">
-                                                            <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ pare_url_file_product($item->thumbnail) }}">
+                                                            <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($item->thumbnail) }}">
+                                                            <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ pare_url_file($item->thumbnail) }}">
                                                         </picture>
                                                         <div class="m-category-card__caption">
                                                             <span class="m-category-card__caption-text">{{ $item->name }}</span>

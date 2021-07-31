@@ -15,7 +15,7 @@ if (!function_exists('pare_url_file')) {
     }
 }
 if (!function_exists('pare_url_file_product')) {
-    function pare_url_file_product($image, $folder = 'storage/uploads_product')
+    function pare_url_file_product($image, $folder = 'storage/uploads_Product')
     {
         if (!$image) {
             return '/images/default.png';

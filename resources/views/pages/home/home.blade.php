@@ -69,7 +69,7 @@
                                         <a data-history-node-id="305426" role="article" about="" class="m-expandable-product-card" href="{{ $item->slug }}">
                                             <div class="m-expandable-product-card__content-wrapper">
                                                 <div class="m-expandable-product-card__img-wrapper">
-                                                    <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}">
+                                                    <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}">
                                                 </div>
                                                 <div class="m-expandable-product-card__info">
                                                     <div class="m-expandable-product-card__info-left">
@@ -174,7 +174,8 @@
                                                 <div class="m-category-card__image-wrapper">
                                                     <picture>
                                                         <source media="(min-width: 768px)" data-srcset="{{ pare_url_file_product($item->thumbnail) }}">
-                                                        <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt=" ">
+                                                        <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->thumbnail }}">
+                                                
                                                     </picture>
                                                     <div class="m-category-card__caption">
                                                         <span class="m-category-card__caption-text">{{ $item->name }}</span>
@@ -274,8 +275,8 @@
                                         <a class="m-category-card m-category-card--bordered" href="{{ getSlugProduct($item->slug) }}">
                                             <div class="m-category-card__image-wrapper">
                                                 <picture>
-                                                    <source media="(min-width: 768px)" data-srcset="{{ pare_url_file_product($item->thumbnail) }}">
-                                                    <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ pare_url_file_product($item->thumbnail) }}">
+                                                    <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($item->thumbnail) }}">
+                                                    <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ pare_url_file($item->thumbnail) }}">
                                                 </picture>
                                                 <div class="m-category-card__caption">
                                                     <span class="m-category-card__caption-text">{{ $item->name }}</span>
@@ -372,7 +373,7 @@
                                                 <a style="--color-brand:var(--color-simply-organic)"
                                                 class="m-mini-product-card" href="{{ getSlugProduct($item->slug) }}">
                                                     <div class="m-mini-product-card__img-wrapper">
-                                                        <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}">
+                                                        <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}">
                                                     </div>
                                                     <div class="m-mini-product-card__info">
                                                         <div class="m-combined-product-name">

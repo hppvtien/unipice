@@ -142,7 +142,7 @@
                                                                         <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" class="m-product-card">
                                                                             <div class="m-product-card__content-wrapper">
                                                                                 <a class="m-product-card__img-wrapper" href="{{ $item->slug }}" title="{{ $item->name }}">
-                                                                                    <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file_product($item->thumbnail) }}">
+                                                                                    <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                                                                                 </a>
 
                                                                                 <form class="m-product-card__add-to-cart">
