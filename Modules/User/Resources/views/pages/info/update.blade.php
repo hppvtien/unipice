@@ -1,13 +1,13 @@
 @extends('pages.layouts.app_master_frontend')
 @section('contents')
-    <main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
+    <main id="maincontent">
 
         <div class="columns">
-            <div class="column main">
+            <div class="column main padding_css">
+                <div class="block block-dashboard-info">
                 <div class="page-title-wrapper">
-                    <h1 class="page-title">
-                        <span class="base" data-ui-id="page-title-wrapper">Thông tin tài khoản</span>
-                    </h1>
+                    <div class="block-title"><strong>Thông tin tài khoản</strong></div>
+                </div>
                 </div>
                 <div class="block block-dashboard-info">
                     <form class="form form-shipping-address" id="co-shipping-form" action="{{ route('get_user.info.edit',['id' => get_data_user('web')]) }}" method="POST">

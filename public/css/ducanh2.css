@@ -514,7 +514,7 @@ a.text-muted:focus {
 }
 
 #comment {
-    color: #fff;
+    color: #000;
     outline: none;
     border: 1px solid #000;
     -webkit-appearance: none;
@@ -524,7 +524,7 @@ a.text-muted:focus {
 }
 
 #telephone {
-    color: #fff;
+    color: #000;
     outline: none;
     border: 1px solid #000;
     -webkit-appearance: none;
@@ -534,7 +534,7 @@ a.text-muted:focus {
 }
 
 #email {
-    color: #fff;
+    color: #000;
     outline: none;
     border: 1px solid #000;
     -webkit-appearance: none;
@@ -544,7 +544,7 @@ a.text-muted:focus {
 }
 
 #name {
-    color: #fff;
+    color: #000;
     outline: none;
     border: 1px solid #000;
     -webkit-appearance: none;
@@ -611,6 +611,81 @@ a.text-muted:focus {
     box-sizing: border-box;
     font-weight: normal;
     border-radius: 0px;
+}
+
+.block-title {
+    margin-top: 20px;
+}
+
+#co-shipping-form #G11F99D {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#co-shipping-form #SAIFHCQ {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#co-shipping-form #CNBP3U7 {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#co-shipping-form #email {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#formforget #email_address {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.block .block-title {
+    margin: 0 0 30px;
+    margin-top: 0px;
+    margin-top: 20px;
 }
 
 #formRegister #password-confirmation {
