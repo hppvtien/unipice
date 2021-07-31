@@ -24,6 +24,7 @@ class UserShoppingCartController extends UserController
             {
                 // xử lý dữ liệu với khoá học
                 $uni_combo = $this->checkCombo($id);
+                $type_box = 'combo';
                 if (!$uni_combo){
                     return response([
                        'status' => 404
@@ -46,7 +47,8 @@ class UserShoppingCartController extends UserController
                         'price' => $uni_combo->price,
                         'weight' => 1,
                         'options' => [
-                            'images' => $uni_combo->thumbnail
+                            'images' => $uni_combo->thumbnail,
+                            'sale' => $type_box
                         ]
                     ]);
                 }

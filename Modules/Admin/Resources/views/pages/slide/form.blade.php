@@ -79,6 +79,11 @@
                         <input type="file" data-type="avatar" class="filepond" name="avatar">
                         <input type="hidden" name="s_banner" id="avatar_uploads">
                     </div>
+                    @if(isset($slide->s_banner))
+                    <p>
+                        <img src="{{ pare_url_file($slide->s_banner) }}" alt="" style="width: 100%;height: auto">
+                    </p>
+                    @endif
                 </div>
             </div>
         </div>
