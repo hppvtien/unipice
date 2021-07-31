@@ -53,6 +53,12 @@
                         <label for="exampleInputEmail1" class="required">Hình ảnh icon <span>(*)</span></label>
                         <input type="file" class="form-control"  name="icon_thumb" value=""> 
                     </div>
+                   
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Hình ảnh thumbnail trang chủ <span>(*)</span></label>
+                        <input type="file" class="form-control"  name="thumbnail" value=""> 
+                    </div>
+                   
                 </div>
             </div>
             <div class="card  box-shadow-0">

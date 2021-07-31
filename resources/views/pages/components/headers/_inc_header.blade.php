@@ -23,21 +23,15 @@
             <!-- #site-navigation -->
             <div class="header-info-wrapper">
                 <div class="header-phone-numbers">
-                    <div class="lang-menu">
-                        <div class="selected-lang">
-                            Vietnamses
-                        </div>
-                        <ul>
-                            <li>
-                                <a href="" class="en">English</a>
-                            </li>
-                            <li>
-                                <a href="#" class="de">German</a>
-                            </li>
-                        </ul>
-                        
-                    </div>
-                    <span id="" class="phone-number">{{ $configuration->hotline }}</span>
+                    <ul class="menu_class_menu">
+                        <li>
+                            <img src="https://www.countryflags.io/us/flat/32.png" alt="">                         
+                        </li>
+                        <li>
+                            <img src="https://www.countryflags.io/vn/flat/32.png" alt="">
+                        </li>
+                    </ul>
+                    <span id="" class="phone-number"><i class="fa fa-phone"></i>  {{ $configuration->hotline }}</span>
                 </div>
                 <ul class="site-header-cart-v2 menu">
                     <li class="cart-content ">
@@ -55,10 +49,17 @@
                         </a>
 
                         @if (get_data_user('web'))
-                        <a class="a-icon-text-btn a-icon-text-btn--icon-only js-search-btn" href="{{ route('get.login') }}">
-                            <span class="icon-account a-icon-text-btn__icon" aria-hidden="true"></span>
-                            <span class="a-icon-text-btn__label">Users</span>
-                        </a>
+                        <div class="dropdown" id="uni">
+                            <a class="a-icon-text-btn a-icon-text-btn--icon-only js-search-btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="icon-account a-icon-text-btn__icon" aria-hidden="true"></span>
+                            </a>
+                            <div class="dropdown-menu" id="uni-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ route('get_user.dashboard') }}">Tài khoản</a>
+                                <a class="dropdown-item" href="{{ route('get_user.list_order') }}">Đơn hàng</a>
+                                <a class="dropdown-item" href="{{ route('get_user.myfavorites') }}">Yêu thích</a>
+                                <a class="dropdown-item" href="{{ route('get.logout') }}">Đăng xuất</a>
+                            </div>
+                        </div>
                         @else
                         <a class="a-icon-text-btn a-icon-text-btn--icon-only js-search-btn" href="{{ route('get.login') }}">
                             <span class="icon-account a-icon-text-btn__icon" aria-hidden="true"></span>

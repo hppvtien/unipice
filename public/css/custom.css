@@ -15,7 +15,20 @@
     padding-right: 20px;
     width: auto;
 }
-
+#uni {
+    padding: .66em .9em;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    max-width: 225px;
+    float: left;
+}
+#uni-menu {
+    margin-left: -64px;
+}
+#uni-menu .dropdown-item {
+    color: black;
+}
 .m-text-input {
     width: 100%;
 }

@@ -34,16 +34,19 @@ class AdminUniCategoryController extends AdminController
 
     public function store(AdminUniCategoryRequest $request)
     {
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['banner','save','_token']);
         $data['created_at'] = Carbon::now();
         $data['created_by'] = get_data_user('web');
         if ($request->icon_thumb) {
             $data['icon_thumb'] = $this->processUploadFile($request->icon_thumb);
         } 
+        if ($request->icon_thumb) {
+            $data['thumbnail'] = $this->processUploadFile($request->thumnail);
+        } 
         if(!$request->meta_title)             $data['meta_title'] = $request->name;
         if(!$request->meta_description) $data['meta_desscription'] = $request->name;
         $menuID = Uni_Category::insertGetId($data);
-        if($menuID)
+        if($menuID) 
         {
             $this->showMessagesSuccess();
             return redirect()->route('get_admin.uni_category.index');
@@ -71,6 +74,13 @@ class AdminUniCategoryController extends AdminController
         Storage::delete('public/uploads_Product/'.$uni_category->icon_thumb);
        }else{
         $data['icon_thumb'] = $uni_category->icon_thumb;
+       }
+
+       if($request->thumbnail){
+        $data['thumbnail'] = $this->processUploadFile($request->thumbnail);
+        Storage::delete('public/uploads_Product/'.$uni_category->thumbnail);
+       }else{
+        $data['thumbnail'] = $uni_category->thumbnail;
        }
 
     if ($request->banner){
