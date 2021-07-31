@@ -88,7 +88,7 @@
                             </div>
                             <ul>
                                 <li>
-                                    <a href="#">Giới Thiệu</a>
+                                    <a href="{{ route('get.about') }}">Giới Thiệu</a>
                                 </li>
                                 <li>
                                     <a href="#">Dịch Vụ</a>
@@ -102,10 +102,10 @@
                             </ul>
                             <ul>
                                 <li>
-                                    <a href="#">Liên Hệ</a>
+                                    <a href="{{ route('get.uni_contact') }}">Liên Hệ</a>
                                 </li>
                                 <li>
-                                    <a href="#">Blog</a>
+                                    <a href="{{ route('get.find') }}">Tìm Cửa Hàng</a>
                                 </li>
                                 <li>
                                     <a href="#">Chính Sách</a>
@@ -155,29 +155,10 @@
     <div class="copyright">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text_center">
+                <div class="col-md-12 text_center">
                     <span>{{ $configuration->footer_bottom }}</span>
                 </div>
                 <!-- End Col -->
-                <div class="col-md-6 text_center">
-                    <div class="copyright-menu">
-                        <ul>
-                            <li>
-                                <a href="/">Trang Chủ</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('get.about') }}">Giới Thiệu</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('get.find') }}">Tìm Cửa Hàng</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('get.uni_contact') }}">Liên Hệ</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End col -->
             </div>
             <!-- End Row -->
         </div>
