@@ -83,7 +83,6 @@ class UserPayController extends UserController
     }
     public function getSuccsess(Request $request, $id){
         $order = Uni_Order::find($id); 
-        dd($order);
         return view('user::pages.pay.succsess',compact('order'));
     }
     public function check_vouchers(Request $request)
