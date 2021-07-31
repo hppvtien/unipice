@@ -285,6 +285,7 @@ h1.page-title {
     }
     .m-category-card .m-category-card__image-wrapper img {
         max-width: 176px;
+        margin: auto;
     }
     .c-media-card-2up {
         margin: 10px 0 15px;

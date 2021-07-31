@@ -4,6 +4,7 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Cart\Uni_Order;
+use App\Models\Uni_Store;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -13,12 +14,21 @@ class AdminUserController extends AdminController
 {
     public function index()
     {
-        $users = User::orderByDesc('id')->where('status', '!=', 2)->paginate(20);
+        $users = User::orderByDesc('id')->where('type', null)->where('status',1)->paginate(20);
        
         $viewData = [
             'users' => $users
         ];
         return view('admin::pages.user.index', $viewData);
+    }
+    public function store_index()
+    {
+        $users = User::orderByDesc('id')->where('type', 1)->where('status',1)->paginate(20);
+       
+        $viewData = [
+            'users' => $users
+        ];
+        return view('admin::pages.user.store_index', $viewData);
     }
     public function edit($id)
     {

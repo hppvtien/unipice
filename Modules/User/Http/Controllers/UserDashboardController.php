@@ -23,25 +23,9 @@ class UserDashboardController extends Controller
     public function index()
     {
         \SEOMeta::setTitle('Danh sách sản phẩm');
-        // $transactions = Transaction::where('t_user_id', get_data_user('web'))
-        //     ->where('t_status','!=',-1)
-        //     ->orderByDesc('id')
-        //     ->limit(10)
-        //     ->get();
-        
-        // $viewData = [
-        //     'transactions' => $transactions,
-        // ];
-        
         return view('user::pages.dashboard.index');
     }
-    // public function replaceOrder(Request $request)
-    // {
-    //     $id = $request->v_idOrder;
-    //     $order_edit = Transaction::where('id', $id)->first();
-    //     $order_edit->t_status = -1;
-    //     $order_edit->save();
-    // }
+
     public function listOrder()
     {
         $user_id = auth()->id();

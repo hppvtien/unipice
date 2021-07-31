@@ -77,6 +77,7 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
 
     Route::prefix('user')->group(function (){
         Route::get('/', 'AdminUserController@index')->name('get_admin.user.index')->middleware('permission:user_index|full');
+        Route::get('/store', 'AdminUserController@store_index')->name('get_admin.user.store_index')->middleware('permission:user_index|full');
         Route::get('movetrash', 'AdminUserController@indexmovetrash')->name('get.indexmovetrash');
         Route::get('update/{id}', 'AdminUserController@edit')->name('get_admin.user.edit')->middleware('permission:user_edit|full');
         Route::post('update/{id}', 'AdminUserController@update');
@@ -175,6 +176,7 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
     });
     Route::prefix('uni_store')->group(function (){
         Route::get('/', 'AdminUniStoreController@index')->name('get_admin.uni_store.index');
+        Route::get('view/{id}', 'AdminUniStoreController@view_store')->name('get_admin.uni_store.view');
         Route::get('/create', 'AdminUniStoreController@create')->name('get_admin.uni_store.create');
         Route::post('/create', 'AdminUniStoreController@store');
         Route::get('update/{id}', 'AdminUniStoreController@edit')->name('get_admin.uni_store.edit');

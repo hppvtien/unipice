@@ -22,6 +22,15 @@ class AdminUniStoreController extends AdminController
 
         return view('admin::pages.uni_store.index', $viewData);
     }
+    public function view_store($id)
+    {
+        $uni_store = Uni_Store::where('user_id',$id)->first();
+        $viewData = [
+            'uni_store' => $uni_store
+        ];
+
+        return view('admin::pages.uni_store.view', $viewData);
+    }
 
     public function create()
     {

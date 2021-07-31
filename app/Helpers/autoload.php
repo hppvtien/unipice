@@ -91,6 +91,10 @@ function execPostRequest($url, $data)
         $title_product = App\Models\Uni_Product::where('id','=',$product_id)->pluck('name')->first();
         return $title_product;
     }
+    function get_data_store($id){
+        $store_name = App\Models\Uni_Store::where('user_id','=',$id)->pluck('store_name')->first();
+        return $store_name;
+    }
 
     function get_link_blank($product_id){
         $link = App\Models\Uni_Product::where('id','=',$product_id)->pluck('slug')->first();

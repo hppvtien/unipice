@@ -6,53 +6,17 @@ return [
             'route' => 'get_admin.dashboard',
             'class-icon' => 'la la-tachometer-alt'
         ],
-        // [
-        //     'name' => 'Khoá học',
-        //     'class-icon' => 'la la-book-open',
-        //     'sub' => [
-        //         [
-        //             'name' => 'Từ khoá',
-        //             'route' => 'get_admin.tag.index'
-        //         ],
-        //         [
-        //             'name' => 'Danh mục',
-        //             'route' => 'get_admin.category.index'
-        //         ],
-        //         [
-        //             'name' => 'Giáo viên',
-        //             'route' => 'get_admin.teacher.index'
-        //         ],
-        //         [
-        //             'name' => 'Khoá học',
-        //             'route' => 'get_admin.course.index'
-        //         ],
-        //     ]
-        // ],
-        // [
-        //     'name' => 'Tin tức && Sự kiện',
-        //     'class-icon' => 'la la-edit',
-        //     'sub' => [
-        //         [
-        //             'name' => 'Từ khoá',
-        //             'route' => 'get_admin.keyword.index'
-        //         ],
-        //         [
-        //             'name' => 'Menu',
-        //             'route' => 'get_admin.menu.index'
-        //         ],
-        //         [
-        //             'name' => 'Bài viết',
-        //             'route' => 'get_admin.article.index'
-        //         ],
-        //     ]
-        // ],
         [
-            'name' => 'Người dùng',
+            'name' => 'Quản lý khách hàng',
             'class-icon' => 'la la-user',
             'sub' => [
                 [
-                    'name' => 'Thành viên',
+                    'name' => 'Thành viên thường',
                     'route' => 'get_admin.user.index'
+                ],
+                [
+                    'name' => 'Đại lý',
+                    'route' => 'get_admin.user.store_index'
                 ],
                 [
                     'name' => 'Tài khoản bị khóa',

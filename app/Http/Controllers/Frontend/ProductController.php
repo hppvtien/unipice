@@ -18,8 +18,9 @@ class ProductController extends Controller
     public function index($slug)
     {
         $id_product = Uni_Product::select('id')->where('slug',$slug)->first();
+        
         $noi_dung_comment = DB::table('uni_comment')->where('product_id', '=', $id_product->id)->get();
-        $user_ids = Auth::user()->id;
+        $user_ids = get_data_user('web');
 
         $product = Uni_Product::where('slug',$slug)->first();
         $trade_id = Product_Trade::where('product_id',$product->id)->pluck('trade_id')->first();
@@ -38,6 +39,7 @@ class ProductController extends Controller
             'user_id' => $user_ids,
             'slug' => $slug,
         ];
+        
         return view('pages.product.index',$viewdata);
     }
 

@@ -28,7 +28,7 @@ class LoginController extends Controller
                                 'message' => "Bạn đã đăng nhập thành công."
                             ]);
                         }
-                        return redirect()->route('get.home');
+                        return redirect()->route('get_user.dashboard');
                      }
                      return response([
                         'status' => 404,
