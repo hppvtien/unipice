@@ -33,7 +33,7 @@
                                 <tr>
                                     <th scope="row">{{ $item->id }}</th>
                                     <td>{{ $item->name }}</td>
-                                    <td><a href="{{ route('get_admin.uni_store.view',$item->id) }}" target="blank">{{ get_data_store($item->id) }}</a></td>
+                                    <td><a href="{{ route('get_admin.uni_store.edit', get_id_store($item->id)) }}">{{ get_data_store($item->id) }}</a></td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>

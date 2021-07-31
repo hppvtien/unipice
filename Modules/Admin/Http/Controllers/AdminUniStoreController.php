@@ -107,8 +107,6 @@ class AdminUniStoreController extends AdminController
             }
 
             $store_ab = array_merge($store_albumOld, $store_album);
-            // dd($store_albumOld);
-            // dd($store_ab);
             if ($request->store_thumbnail) {
                 Storage::delete('public/uploads/' . $uni_store->store_thumbnail);
                 $store_thumbnail = $request->store_thumbnail;
