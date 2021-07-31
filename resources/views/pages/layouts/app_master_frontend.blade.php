@@ -48,6 +48,8 @@
     <!-- <script src="https://www.coopmarket.com/sites/default/files/js/js_4e1EHEQaAQ0l19WVSnwlvDtYVVkiTDW1ktKsaMmVO6g.js"></script> -->
 
     <script src="{{ asset('fontend_js/jquery.min.js') }}"></script>
+    <script src="{{ asset('css/css_js/popper.min.js') }}"></script>
+    <script src="{{ asset('css/css_js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('css/css_js/jquery.zeynep.min.js') }}"></script>
     <script src="{{ asset('fontend_js/custom.js') }}"></script>
     <script src="{{ asset('js/frontends.js') }}"></script>

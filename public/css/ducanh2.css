@@ -577,6 +577,7 @@ a.text-muted:focus {
     border-radius: 0;
     position: relative;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 #formRegister #phone {
