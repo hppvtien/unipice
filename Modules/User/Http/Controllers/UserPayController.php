@@ -24,6 +24,7 @@ class UserPayController extends UserController
     {
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
+       
         if ($listCarts->isEmpty()) return redirect()->to('/');
         $viewData = [
      
@@ -38,6 +39,14 @@ class UserPayController extends UserController
        
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
+        foreach(json_decode($listCarts) as $item){
+            if($item->options->sale == 'combo'){
+                $combo_id = $item->id;
+            }else{
+                $combo_id = 0; 
+            };
+        };
+        // dd($listCarts);
         // $total_money = \Cart::total(0,0,'.');
         $order_data = [
             'user_id'=>get_data_user('web'),
@@ -50,6 +59,7 @@ class UserPayController extends UserController
             'taxcode'=>$request->taxcode,
             'type_pay'=>$request->type_pay,
             'cart_info'=>$listCarts,
+            'combo_id'=>$combo_id,
             'total_money'=>\Cart::total(0,0,'.'),
             'created_at'=>Carbon::now()
         ];
@@ -73,6 +83,7 @@ class UserPayController extends UserController
     }
     public function getSuccsess(Request $request, $id){
         $order = Uni_Order::find($id); 
+        dd($order);
         return view('user::pages.pay.succsess',compact('order'));
     }
     public function check_vouchers(Request $request)

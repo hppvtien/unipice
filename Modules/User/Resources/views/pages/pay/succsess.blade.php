@@ -1,4 +1,5 @@
 @extends('pages.layouts.app_master_frontend')
+@include('pages.components.headers.css_js')
 @section('contents')
 <style>
    
@@ -534,7 +535,7 @@
                                 <?php $carts = json_decode($order->cart_info, true); ?>
                                 @forelse ($carts as $key => $item)
                                 <tr>
-                                    <td class="item" scope="col"><a href="{{ get_link_blank_byname($item['name']) }}"><span>{{ $item['name'] }}</span></a></td>
+                                    <td class="item" scope="col"><a href="javascript:;" data-id-sale="{{ $item['id'] }}" onclick="get_product_sale(this);"><span>{{ $item['name'] }}</span></a></td>
                                     <td class="price" scope="col"><span>{{ $item['price'] }} đ</span></td>
                                     <td class="qty" scope="col"><span>{{ $item['qty'] }}</span></td>
                                     <td class="subtotal" scope="col"><span>{{ $item['subtotal'] }} đ</span></td>
@@ -542,7 +543,7 @@
                                 @empty
                                     
                                 @endforelse
-                              <tr style="background">
+                              <tr >
                                   <td colspan="3">TỔNG TIỀN</td>
                                   <td><span>{{ $order->total_money }} đ</span></td>
                               </tr>
@@ -551,7 +552,65 @@
                     </div>
                 </div>
         </div>
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            Chi Tiết Gói Sale
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        <div style="overflow-x:auto;">
+    <table>
+      <tr>
+        <th>Sản Phẩm</th>
+        <th>Số Lượng</th>
+        <th>Đơn Giá</th>
+        <th>Tổng Tiền</th>
+      </tr>
+                <tr>
+            <td><a href="http://127.0.0.1:8000/san-pham/san-pham-02" target="_blank" rel="noopener noreferrer">BSản phẩm 02</a></td>
+            <td>100</td>
+            <td>40,000</td>
+            <td>4,000,000</td>
+        </tr>
+                <tr>
+            <td><a href="http://127.0.0.1:8000/san-pham/san-pham-01" target="_blank" rel="noopener noreferrer">ASản phẩm 01</a></td>
+            <td>100</td>
+            <td>30,000</td>
+            <td>3,000,000</td>
+        </tr>
+         
+        <tr><td>Tổng Tiền Gói Sale</td><td></td><td></td><td>1000000</td></tr>
+    </table>
+  </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         @include('user::components._inc_menu_user')
     </div>
 </main>
 @stop
+<script>
+               
+
+                function get_product_sale(get_id) {
+                    var get_id = $(get_id).attr("data-id-sale");
+                    var get_total_price = $('h4.mr-1').attr('get-total-price');
+                    var price_id = $('#button_sale').attr('price-id');
+                    var price_slug = $('#button_sale').attr('price-slug');
+
+                    $.get("{{ route('get_user.get_product_flash_sale') }}", {
+                            get_id: get_id,
+                            get_total_price: get_total_price
+                        })
+                        .done(function(data) {
+                            $("#exampleModalLong .modal-body").html(data);
+                        });
+                }
+
+                
+            </script>
