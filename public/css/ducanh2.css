@@ -682,6 +682,19 @@ a.text-muted:focus {
     margin-bottom: 20px;
 }
 
+#co-store-form input {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    font-weight: normal;
+    border-radius: 0px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 .block .block-title {
     margin: 0 0 30px;
     margin-top: 0px;
