@@ -77,16 +77,16 @@ return [
                 ],
             ]
         ],
-        [
-            'name' => 'Quản lý cửa hàng',
-            'class-icon' => 'la la-book-open',
-            'sub' => [
-                [
-                    'name' => 'Danh sách cửa hàng',
-                    'route' => 'get_admin.uni_store.index'
-                ],
-            ]
-        ],
+        // [
+        //     'name' => 'Quản lý cửa hàng',
+        //     'class-icon' => 'la la-book-open',
+        //     'sub' => [
+        //         [
+        //             'name' => 'Danh sách cửa hàng',
+        //             'route' => 'get_admin.uni_store.index'
+        //         ],
+        //     ]
+        // ],
         [
             'name' => 'Gói Sale off',
             'class-icon' => 'la la-book-open',

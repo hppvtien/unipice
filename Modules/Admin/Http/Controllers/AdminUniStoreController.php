@@ -107,8 +107,6 @@ class AdminUniStoreController extends AdminController
             }
 
             $store_ab = array_merge($store_albumOld, $store_album);
-            // dd($store_albumOld);
-            // dd($store_ab);
             if ($request->store_thumbnail) {
                 Storage::delete('public/uploads/' . $uni_store->store_thumbnail);
                 $store_thumbnail = $request->store_thumbnail;
@@ -136,7 +134,7 @@ class AdminUniStoreController extends AdminController
 
             // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
             $this->showMessagesSuccess();
-            return redirect()->route('get_admin.uni_store.index');
+            return redirect()->route('get_admin.user.store_index');
         }
     }
 
