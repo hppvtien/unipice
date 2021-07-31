@@ -41,12 +41,12 @@
                                         <div class="d-flex flex-row align-items-center">
                                             <h4 class="mr-1" get-total-price="{{ number_format($l->price) }}">{{ number_format($l->price) }} VNĐ</h4>
                                         </div>
-                                        <h6 class="text-success">@if ($l->status == 1) Đang Áp Dụng @else Đã Hết Hạn  @endif</h6>
+                                        <h6 class="text-success">@if ($l->status == 1) Đang Áp Dụng @else Đã Hết Hạn @endif</h6>
                                         <div class="d-flex flex-column mt-4">
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" data-id-sale="{{ $l->id }}" onclick="get_product_sale(this);">
                                                 Xem Chi Tiết Gói Sale
                                             </button>
-                                           
+
                                             <button onclick="cart_order_now(this);" id="button_sale" class="btn btn-outline-primary btn-sm mt-2" data-url="{{ route('get_user.cart.add', ['id'=>$l->id,'type'=>'combo']) }}" price-id="{{ $l->id }}" price-slug="{{ $l->slug }}" type="button">Mua Ngay</button>
                                         </div>
                                     </div>
@@ -62,76 +62,77 @@
             </div>
             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                        Chi Tiết Gói Sale
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            Chi Tiết Gói Sale
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button onclick="cart_order_now(this);" id="cart_sale" type="button" class="btn btn-secondary" data-url="{{ route('get_user.cart.add') }}" price-id="" price-slug="" data-dismiss="modal">Đặt Ngay</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                      
-                    </div>
-                    <div class="modal-footer">
-                      <button onclick="cart_order_now(this);" id="cart_sale" type="button" class="btn btn-secondary" data-url="{{ route('get_user.cart.add') }}" price-id="" price-slug="" data-dismiss="modal">Đặt Ngay</button>
-                    </div>
-                  </div>
                 </div>
-              </div>
-    <script>
-
-        function cart_order_now(cart_order_now1){
-            var data_url = $( cart_order_now1 ).attr('data-url');
-            $.get( data_url ).fail(function() {
-                location.reload(); 
-            });
-        }
-
-        function get_product_sale(get_id){
-            var get_id = $( get_id ).attr( "data-id-sale" );
-            var get_total_price = $('h4.mr-1').attr('get-total-price');
-            var price_id = $('#button_sale').attr('price-id');
-            var price_slug = $('#button_sale').attr('price-slug');
-
-            $.get( "{{ route('get_user.get_product_flash_sale') }}", { get_id: get_id, get_total_price: get_total_price } )
-            .done(function( data ) {
-                $( "#exampleModalLong .modal-body" ).html( data );
-                $( '#cart_sale' ).attr( "price-slug", price_slug );
-                $( '#cart_sale' ).attr( "price-id", price_id );
-            });
-        }
-
-        $(function () {
-            $(".loadmore1").slice(0, 4).show();
-                $("#loadMore").on("click", function (e) {
-                    e.preventDefault();
-                    $(".loadmore1:hidden").slice(0, 4).slideDown();
-                    if ($(".loadmore1:hidden").length == 0) {
-                        $("#load").fadeOut("slow");
-                    }
-                    $("#show-product").animate({
-                        scrollTop: $(this).offset().top
-                    }, 1500);
-                });
-            });
-
-            $("a[href=#top]").click(function () {
-                $("#show-product").animate({
-                    scrollTop: 0
-                }, 600);
-                return false;
-            });
-
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 50) {
-                    $(".totop a").fadeIn();
-                } else {
-                    $(".totop a").fadeOut();
+            </div>
+            <script>
+                function cart_order_now(cart_order_now1) {
+                    var data_url = $(cart_order_now1).attr('data-url');
+                    $.get(data_url).fail(function() {
+                        location.reload();
+                    });
                 }
-            });
 
-    </script>
-    
+                function get_product_sale(get_id) {
+                    var get_id = $(get_id).attr("data-id-sale");
+                    var get_total_price = $('h4.mr-1').attr('get-total-price');
+                    var price_id = $('#button_sale').attr('price-id');
+                    var price_slug = $('#button_sale').attr('price-slug');
+
+                    $.get("{{ route('get_user.get_product_flash_sale') }}", {
+                            get_id: get_id,
+                            get_total_price: get_total_price
+                        })
+                        .done(function(data) {
+                            $("#exampleModalLong .modal-body").html(data);
+                            $('#cart_sale').attr("price-slug", price_slug);
+                            $('#cart_sale').attr("price-id", price_id);
+                        });
+                }
+
+                $(function() {
+                    $(".loadmore1").slice(0, 4).show();
+                    $("#loadMore").on("click", function(e) {
+                        e.preventDefault();
+                        $(".loadmore1:hidden").slice(0, 4).slideDown();
+                        if ($(".loadmore1:hidden").length == 0) {
+                            $("#load").fadeOut("slow");
+                        }
+                        $("#show-product").animate({
+                            scrollTop: $(this).offset().top
+                        }, 1500);
+                    });
+                });
+
+                $("a[href=#top]").click(function() {
+                    $("#show-product").animate({
+                        scrollTop: 0
+                    }, 600);
+                    return false;
+                });
+
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 50) {
+                        $(".totop a").fadeIn();
+                    } else {
+                        $(".totop a").fadeOut();
+                    }
+                });
+            </script>
+
 </main>
 
 @stop
