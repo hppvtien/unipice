@@ -14,6 +14,7 @@ class ContactController extends Controller
 
     public function index()
     {
+        \SEOMeta::setTitle('Liên hệ với chúng tôi');
         $config = Configuration::get();
         return view('pages.contact.index', compact('config'));
     }

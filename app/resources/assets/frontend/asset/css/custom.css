@@ -1,0 +1,12 @@
+
+.js-main-menu-panel a {
+    text-decoration: none;
+}
+span.text-strong.gd-danger {
+    color: red;
+    margin-top: 10px;
+}
+.uk-form-group {
+    margin-top: 10px;
+}
+label.uk-form-label {line-height: 2;}

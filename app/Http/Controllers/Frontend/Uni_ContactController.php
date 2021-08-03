@@ -10,7 +10,7 @@ use DB;
 class Uni_ContactController extends Controller
 {
     public function index(){
-        
+        \SEOMeta::setTitle('Liên hệ');
         $array_subject = [
             '1' => 'Chăm Sóc Khách Hàng',
             '2' => 'Tư Vấn Cá Nhân',

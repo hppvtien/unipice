@@ -21,9 +21,14 @@ class RegisterController extends Controller
 {
     public function index()
     {
+        \SEOMeta::setTitle('Đăng ký');
         return view('pages.register.index');
     }
-
+    public function indexb2b()
+    {
+         \SEOMeta::setTitle('Đăng ký');
+        return view('pages.registerb2b.index');
+    }
     public function register(RegisterRequest $request)
     {
         if ($request->ajax()) {
@@ -38,6 +43,39 @@ class RegisterController extends Controller
                 $data['provider_id']  = 0;
                 $data['code_verication']  = Str::random(40);
                 $data['type']  = $request->type;
+
+                $user = User::insertGetId($data);
+
+                if ($user) {
+                     Mail::to($data['email'])->send(new EmailVerificationMail($data));
+                    return response([
+                        'status'     => 200,
+                        'message' => "Xác nhận Email của bạn để hoàn tất đăng ký!"
+                    ]);
+                }
+            } catch (\Exception $exception) {
+                $code = 501;
+                Log::error("[Register]: " . $exception->getMessage());
+            }
+            return response()->json([
+                'code'     => $code,
+            ]);
+        }
+    }
+    public function registerb2b(RegisterRequest $request)
+    {
+        if ($request->ajax()) {
+            $code =  200;
+            try {
+                $data               = $request->except('_token', 'remember', 'code_verication','password_confirmation');
+
+                $data['created_at'] = Carbon::now();
+                $data['password'] = bcrypt($request->password);
+                $data['provider'] = 'register';
+                $data['avatar_social'] = '';
+                $data['provider_id']  = 0;
+                $data['code_verication']  = Str::random(40);
+                $data['type']  = 1;
 
                 $user = User::insertGetId($data);
 

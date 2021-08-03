@@ -9,6 +9,7 @@ class CartController extends Controller
 {
     public function index()
     {
+        \SEOMeta::setTitle('Giỏ hàng');
         return view('pages.cart.index');
     }
 }

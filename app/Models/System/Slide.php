@@ -24,6 +24,7 @@ class Slide extends Model
     const STATUS_TYPE_PRODUCT_CATE = 8;
     const STATUS_TYPE_PRODUCT_SINGLE = 9;
     const STATUS_TYPE_ABOUT = 10;
+    const STATUS_TYPE_COMBO = 11;
 
     protected $status = [
         self::STATUS_DEFAULT => [
@@ -78,6 +79,10 @@ class Slide extends Model
         ],
         self::STATUS_TYPE_ABOUT => [
             'name' => 'Banner About',
+            'class' => 'badge-success'
+        ],
+        self::STATUS_TYPE_COMBO => [
+            'name' => 'Banner Combo',
             'class' => 'badge-success'
         ]
     ];

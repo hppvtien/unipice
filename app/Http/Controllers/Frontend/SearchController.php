@@ -11,6 +11,7 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
+        \SEOMeta::setTitle('Tìm kiếm');
         $search = $request->search;
         $product = Uni_Product::where('name','like','%'.$search.'%')
             ->where('status', 1)

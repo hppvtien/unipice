@@ -12,6 +12,7 @@ class LoginController extends Controller
 {
     public function index()
     {
+        \SEOMeta::setTitle('Đăng nhập');
         return view('pages.login.index');
     }
     public function login(LoginRequest  $request)

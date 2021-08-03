@@ -29,6 +29,7 @@ class BlogHomeController extends Controller
             'blog_post' => $blog_post,
             'slide' => $slide
         ];
+        
         return view('pages.blog.index', $viewData);
     }
     public function fillter_post(Request $request)
@@ -49,9 +50,11 @@ class BlogHomeController extends Controller
         $post_category = Uni_PostCategory::orderByDesc('id')->get();
         $slide = Slide::where('s_type',7)->first();
         $blog_post = Uni_Post::where('slug',$slug)->first();
-        $user_ids = Auth::user()->id;
+        $user_ids = get_data_user('web');
 
         $current_cate = Uni_PostCategory::where('id',$blog_post->category_id)->first();
+        \SEOMeta::setTitle($blog_post->meta_title);
+        \SEOMeta::setDescription($blog_post->meta_desscription);
         $viewdata = [
             'blog_post'=>$blog_post,
             'post_category'=>$post_category,
@@ -86,6 +89,8 @@ class BlogHomeController extends Controller
         $current_cate = Uni_PostCategory::where('slug',$slug)->first();
         $blog_post  = Uni_Post::where('category_id', $cat_id)->orderBy('id', 'asc')->limit(8)->get();
         $slide = Slide::where('s_type',6)->first();
+        \SEOMeta::setTitle($current_cate->meta_title);
+        \SEOMeta::setDescription($current_cate->meta_desscription);
         $viewData = [
             'post_category' => $post_category,
             'blog_post' => $blog_post,

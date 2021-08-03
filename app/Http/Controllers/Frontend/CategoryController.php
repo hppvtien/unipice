@@ -15,7 +15,6 @@ class CategoryController extends Controller
 {
     public function index($slug)
     {
-
         $cat_id = Uni_Category::where('slug', $slug)->pluck('id')->first();
         $category = Uni_Category::where('id', $cat_id)->first();
         $trade = Uni_Trade::get();
@@ -23,6 +22,8 @@ class CategoryController extends Controller
         $group_id_product = Product_Category::where('category_id', $cat_id)->pluck('product_id');
         $product = Uni_Product::with('uni_product:id,name,thumbnail,slug')->whereIn('id', $group_id_product)->orderBy('id', 'asc')->limit(12)->get();
         $count_product = count($group_id_product);
+        \SEOMeta::setTitle($category->meta_title);
+        \SEOMeta::setDescription($category->meta_desscription);
         $uid = get_data_user('web');
         $viewdata = [
             'category' => $category,

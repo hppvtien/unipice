@@ -10,6 +10,8 @@ class FindStoreController extends Controller
 {
     public function index()
     {
+        \SEOMeta::setTitle('Danh sách cửa hàng');
+        \SEOMeta::setDescription('Danh sách cửa hàng Unispice');
         $uni_store = Uni_Store::get();
         $uni_province = Uni_Store::groupByRaw('store_province')->pluck('store_province');
         $view_data=[
