@@ -125,6 +125,10 @@ function execPostRequest($url, $data)
         $minbox = App\Models\Uni_Product::where('id',$id)->pluck('min_box')->first();
         return $minbox;
     }
+    function count_fav($id){
+        $count_fav = App\Models\Favourite::where('f_user_id',$id)->get();
+        return count($count_fav);
+    }
     
     function formatPhoneNumber($phoneNumber) {
         $phoneNumber = preg_replace('/[^0-9]/','',$phoneNumber);

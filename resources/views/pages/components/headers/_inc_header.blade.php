@@ -49,7 +49,14 @@
                         </a>
                         <a href="{{ route('get_user.myfavorites') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
                             <span class="icon-favorite  a-icon-text-btn__icon" id="js-minicart__trigger" aria-hidden="true"></span>
-                            <div></div>
+                            <?php if(count_fav(get_data_user('web'))){ ?>
+                                <div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">
+                                <span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">{{ count_fav(get_data_user('web')) }}</span>
+                            </div>
+                            <?php } else { ?>
+                                <div></div>
+                            <?php } ?>
+                            
                             <!-- <div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">
                                 <span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite"></span>
                             </div> -->

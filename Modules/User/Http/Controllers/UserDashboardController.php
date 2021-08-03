@@ -129,11 +129,16 @@ class UserDashboardController extends Controller
         
         if($request->id){
             $id_add = $request->id;
-            $user_id = auth()->id();
+            $user_id = get_data_user('web');
             if (Favourite::where('f_id', '=', $id_add)->exists()) {
                 $del_id_product = Favourite::where('f_id', $id_add)->delete();
                 if($del_id_product){
-                    return 'Đã Bỏ Thích Sản Phẩm '.$id_add;
+                    $count_fav = count(Favourite::where('f_user_id', $user_id)->get());
+                    return response([
+                        'status' => 200,
+                        'message' => 'Bạn đã hủy sản phẩm trong danh sách yêu thích',
+                        'count' => $count_fav
+                    ]);
                 }
                 else{
                     return 'Không Thể Xóa Sản Phẩm ';
@@ -144,7 +149,12 @@ class UserDashboardController extends Controller
                     ['f_user_id' => $user_id, 'f_id' => $id_add, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
                 );
                 if($id){
-                    return 'Bạn Đã Thích Sản Phẩm '. $id_add;
+                    $count_fav = count(Favourite::where('f_user_id', $user_id)->get());
+                    return response([
+                        'status' => 200,
+                        'message' => 'Bạn đã thêm sản phẩm vào danh sách yêu thích',
+                        'count' => $count_fav
+                    ]);
                 }
             }
         }

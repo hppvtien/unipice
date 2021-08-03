@@ -39,7 +39,7 @@
                             </span>
                         </a>
                         <a class="m-combined-product-name__link fav-product" href="{{ $item->slug }}">
-                            <span my-id="{{ $item->id }}" onclick="check_my_favorites(this);" class="icon-favorite  a-icon-text-btn__icon" aria-hidden="true"></span>
+                            <span my-id="{{ $item->id }}" onclick="check_my_favorites_add(this);" class="icon-favorite  a-icon-text-btn__icon" aria-hidden="true"></span>
                         </a>
                     </div>
                     <div class="m-combined-product-name">

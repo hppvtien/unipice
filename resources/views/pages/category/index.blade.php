@@ -144,8 +144,8 @@
                                                                                 <a class="m-product-card__img-wrapper" href="{{ $item->slug }}" title="{{ $item->name }}">
                                                                                     <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                                                                                 </a>
-                                                                                    <?php if (checkUid(get_data_user('web')) != null) { ?>                                                                                    
-                                                                                        <form class="m-product-card__add-to-cart">
+                                                                                <?php if (checkUid(get_data_user('web')) != null) { ?>
+                                                                                    <form class="m-product-card__add-to-cart">
                                                                                         <div class="a-btn a-btn--primary m-product-card__add-to-cart-btn">
                                                                                             <?php if ($item->qty_in_box != null) { ?>
                                                                                                 <p>Thùng: {{ $item->qty_in_box }} hộp</p>
@@ -175,9 +175,7 @@
                                                                                             {{ $item->name }}
                                                                                         </span>
                                                                                     </a>
-                                                                                    <a class="m-combined-product-name__link fav-product" href="{{ $item->slug }}">
-                                                                                        <span my-id="{{ $item->id }}" onclick="check_my_favorites(this);" class="icon-favorite  a-icon-text-btn__icon red" aria-hidden=""></span>
-                                                                                    </a>
+                                                                                    <span my-id="{{ $item->id }}" onclick="check_my_favorites_add(this);" class="icon-favorite  a-icon-text-btn__icon" aria-hidden=""></span>
                                                                                 </div>
                                                                                 <div class="m-combined-product-name">
                                                                                     <a class="m-combined-product-name__link" href="javascript:;">
@@ -216,8 +214,21 @@
                                                                     </span>
                                                                 </div>
                                                             </div>
-                                                            @empty @endforelse
-
+                                                            @empty
+                                                            @endforelse
+                                                            <script>
+                                                                function check_my_favorites_add(my_id) {
+                                                                    var title = $(my_id).attr('my-id');
+                                                                    $.get("{{ route('get_user.myfavorites_add') }}", {
+                                                                            id: title
+                                                                        })
+                                                                        .done(function(data) {
+                                                                            $('#js-minicart__trigger').html('<div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">' +
+                                                                                '<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">' + data.count + '</span>' +
+                                                                                '</div>');
+                                                                        });
+                                                                }
+                                                            </script>
 
                                                             <script>
                                                                 $(function() {
@@ -253,8 +264,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-xs-12">
-                                                            <a href="javascript:;" id="loadMore">Xem Thêm</a>
-                                                        </div>
+                                                    <a href="javascript:;" id="loadMore">Xem Thêm</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
