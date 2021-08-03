@@ -18,8 +18,9 @@
                     <div class="m-combined-product-name">
                         <a class="m-combined-product-name__link" href="{{ $item->slug }}">
                             <span class="a-folio">
-                                {{ $item->name }}
+                                {{ $item->name }}<span my-id="{{ $item->id }}" onclick="check_my_favorites(this);" class="icon-favorite  a-icon-text-btn__icon red" aria-hidden="true"></span>
                             </span>
+                            
                             <span class="a-product-name">
                                 {{ desscription_cut($item->desscription,60) }}
                             </span>

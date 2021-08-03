@@ -407,10 +407,13 @@ input {
     position: relative;
     z-index: 2;
 }
+
 .contact-info {
     margin-left: 75px;
     color: #fff;
 }
+
+
 /**
  * It's recommended that you don't attempt to style these elements.
  * Firefox's implementation doesn't respect box-sizing, padding, or width.
@@ -20020,6 +20023,7 @@ ul.products li.product .ywapo_input_container_radio.ywapo_input_container:nth-ch
 }
 
 .header-v1 .site-header-cart-v2 .cart-content>a {
+    width: 20%;
     padding: .66em .9em;
     color: #fff;
     display: flex;

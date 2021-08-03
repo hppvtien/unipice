@@ -25,13 +25,13 @@
                 <div class="header-phone-numbers">
                     <ul class="menu_class_menu">
                         <li>
-                            <img src="https://www.countryflags.io/us/flat/32.png" alt="">                         
+                            <img src="https://www.countryflags.io/us/flat/32.png" alt="">
                         </li>
                         <li>
                             <img src="https://www.countryflags.io/vn/flat/32.png" alt="">
                         </li>
                     </ul>
-                    <a href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i>  {{ formatPhoneNumber($configuration->hotline) }}</span></a>
+                    <a href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i> {{ formatPhoneNumber($configuration->hotline) }}</span></a>
                 </div>
                 <ul class="site-header-cart-v2 menu">
                     <li class="cart-content ">
@@ -47,6 +47,14 @@
                             @endif
 
                         </a>
+                        <a href="{{ route('get_user.myfavorites') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
+                            <span class="icon-favorite  a-icon-text-btn__icon" id="js-minicart__trigger" aria-hidden="true"></span>
+                            <div></div>
+                            <!-- <div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">
+                                <span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite"></span>
+                            </div> -->
+                        </a>
+
 
                         @if (get_data_user('web'))
                         <div class="dropdown" id="uni">
@@ -66,6 +74,9 @@
                             <span class="a-icon-text-btn__label">Users</span>
                         </a>
                         @endif
+                        <!-- <div id="wrap">
+                        <span my-id="1" onclick="check_my_favorites(this);" class="icon-favorite  a-icon-text-btn__icon red" aria-hidden="true"></span>
+                        </div> -->
                         <div id="wrap">
                             <form action="{{ route('get.search') }}" autocomplete="off">
                                 <input id="search" name="search" type="text" placeholder="Tìm kiếm...">

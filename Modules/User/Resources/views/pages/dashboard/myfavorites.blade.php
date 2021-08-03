@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="m-product-card__info">
                                     <div class="m-combined-product-name">
-                                        <a class="m-combined-product-name__link" href="{{ getSlugProduct($value->slug) }}"">
+                                        <a class="m-combined-product-name__link" href="{{ getSlugProduct($value->slug) }}">
                                             <span class="a-folio">{{ $value->name }}</span>
                                             <span class="a-product-name">{{ desscription_cut($value->desscription, 60) }}</span>
                                         </a>

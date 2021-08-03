@@ -7,8 +7,8 @@
                     <a class="m-product-card__img-wrapper" href="{{ $item->slug }}" title="{{ $item->name }}">
                         <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                     </a>
-                        <?php if (checkUid(get_data_user('web')) != null) { ?>                                                                                    
-                            <form class="m-product-card__add-to-cart">
+                    <?php if (checkUid(get_data_user('web')) != null) { ?>
+                        <form class="m-product-card__add-to-cart">
                             <div class="a-btn a-btn--primary m-product-card__add-to-cart-btn">
                                 <?php if ($item->qty_in_box != null) { ?>
                                     <p>Thùng: {{ $item->qty_in_box }} hộp</p>
@@ -32,16 +32,24 @@
                     <?php } ?>
                 </div>
                 <div class="m-product-card__info">
-                    <div class="m-combined-product-name">
+                    <div class="m-combined-product-name group-product">
                         <a class="m-combined-product-name__link" href="{{ $item->slug }}">
                             <span class="a-folio">
                                 {{ $item->name }}
                             </span>
+                        </a>
+                        <a class="m-combined-product-name__link fav-product" href="{{ $item->slug }}">
+                            <span my-id="{{ $item->id }}" onclick="check_my_favorites(this);" class="icon-favorite  a-icon-text-btn__icon" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="m-combined-product-name">
+                        <a class="m-combined-product-name__link" href="javascript:;">
                             <span class="a-product-name">
                                 {{ desscription_cut($item->desscription,60) }}
                             </span>
                         </a>
                     </div>
+
                     <div class="m-product-card__sku">SKU: {{ $item->id }}</div>
                     <div class="m-price-lockup m-product-card__price">
                         <span class="m-price-lockup__price">

@@ -15,6 +15,7 @@
     padding-right: 20px;
     width: auto;
 }
+
 #uni {
     padding: .66em .9em;
     color: #fff;
@@ -23,12 +24,15 @@
     max-width: 225px;
     float: left;
 }
+
 #uni-menu {
     margin-left: -64px;
 }
+
 #uni-menu .dropdown-item {
     color: black;
 }
+
 .m-text-input {
     width: 100%;
 }
@@ -172,12 +176,30 @@ h1.page-title {
     margin-top: 4px;
 }
 
-.block .box-actions .action {
+a.action.change-password.a-anchor,
+a.action.edit.a-anchor {
+    box-shadow: none;
     margin-right: 18px;
+    background: #0b2d25;
+    padding: 5px 20px;
+    color: #fff;
+    border-radius: 5px;
 }
 
-.block .box-actions .action {
-    margin-right: 18px;
+.fav-product {
+    display: block;
+    flex: auto!important;
+    pointer-events: none;
+}
+
+.block .box-actions .action:hover {
+    color: #fff;
+    background: linear-gradient(90deg, #0072ff 0%, #00d4ff 100%);
+    box-shadow: none;
+}
+
+.group-product {
+    flex-direction: unset!important;
 }
 
 @media screen and (min-width: 1024px) {
@@ -418,6 +440,6 @@ button.btn_store_submit.js-add-cart {
 
 button.btn_store_submit.js-add-cart:hover {
     background: #fff;
-    border:2px solid #fff;
+    border: 2px solid #fff;
     color: #0B2D25;
 }

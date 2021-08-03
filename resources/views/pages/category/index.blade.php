@@ -169,11 +169,18 @@
                                                                                 <?php } ?>
                                                                             </div>
                                                                             <div class="m-product-card__info">
-                                                                                <div class="m-combined-product-name">
+                                                                                <div class="m-combined-product-name group-product">
                                                                                     <a class="m-combined-product-name__link" href="{{ $item->slug }}">
                                                                                         <span class="a-folio">
                                                                                             {{ $item->name }}
                                                                                         </span>
+                                                                                    </a>
+                                                                                    <a class="m-combined-product-name__link fav-product" href="{{ $item->slug }}">
+                                                                                        <span my-id="{{ $item->id }}" onclick="check_my_favorites(this);" class="icon-favorite  a-icon-text-btn__icon red" aria-hidden=""></span>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="m-combined-product-name">
+                                                                                    <a class="m-combined-product-name__link" href="javascript:;">
                                                                                         <span class="a-product-name">
                                                                                             {{ desscription_cut($item->desscription,60) }}
                                                                                         </span>

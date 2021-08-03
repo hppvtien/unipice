@@ -112,6 +112,10 @@ function execPostRequest($url, $data)
         $checkUid = App\Models\Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('id')->first();
         return $checkUid;
     }
+    function getNameStore($id){
+        $storeName = App\Models\Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('store_name')->first();
+        return $storeName;
+    }
 
     function get_user_comment_product($product_id){
         $user = App\Models\User::where('id','=',$product_id)->pluck('name')->first();

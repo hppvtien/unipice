@@ -179,7 +179,7 @@
                                                                                         </span>
                                                                                     </a>
                                                                                 </div>
-                                                                                <div class="m-product-card__sku">SKU: {{ $item->id }} đ</div>
+                                                                                <div class="m-product-card__sku">SKU: {{ $item->id }}</div>
                                                                                 <div class="m-price-lockup m-product-card__price">
                                                                                     <span class="m-price-lockup__price">
                                                                                         <?php if (checkUid($uid)) { ?>
