@@ -100,11 +100,11 @@ class AdminUniStoreController extends AdminController
             } else {
                 $store_album = [];
             }
-            if ($request->store_thumbnail) {
-                $store_thumbnail = $request->store_thumbnail;
-            } else {
-                $store_thumbnail = $uni_store->store_thumbnail;
-            }
+            // if ($request->store_thumbnail) {
+            //     $store_thumbnail = $request->store_thumbnail;
+            // } else {
+            //     $store_thumbnail = $uni_store->store_thumbnail;
+            // }
 
             $store_ab = array_merge($store_albumOld, $store_album);
             if ($request->store_thumbnail) {

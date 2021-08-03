@@ -18,7 +18,7 @@ class StoreUserRequest extends FormRequest
             'store_address'=>'required',
             'store_province'=> 'required',
             'store_phone'=>'required',
-            'store_taxcode'=>'required',
+            'store_taxcode'=>'required|min:10|max:12',
         ];
     }
     public function messages()
@@ -30,6 +30,8 @@ class StoreUserRequest extends FormRequest
             'store_province.required'=> 'Nội dung không được bỏ trống',
             'store_phone.required'=> 'Nội dung không được bỏ trống',
             'store_taxcode.required'=> 'Nội dung không được bỏ trống',
+            'store_taxcode.min'=> 'Mã số thuế tối thiểu 10 ký tự',
+            'store_taxcode.max'=> 'Mã số thuế tối đa 12 ký tự'
         ];
     }
    

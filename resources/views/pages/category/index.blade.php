@@ -175,7 +175,7 @@
                                                                                             {{ $item->name }}
                                                                                         </span>
                                                                                     </a>
-                                                                                    <span my-id="{{ $item->id }}" onclick="check_my_favorites_add(this);" class="icon-favorite  a-icon-text-btn__icon" aria-hidden=""></span>
+                                                                                    <span my-id="{{ $item->id }}" id="red_heart{{ $item->id }}" onclick="check_my_favorites_add(this);" class="icon-favorite  a-icon-text-btn__icon  {{ red_heart($item->id,get_data_user('web')) != 0 ? 'red':''; }}" aria-hidden=""></span>
                                                                                 </div>
                                                                                 <div class="m-combined-product-name">
                                                                                     <a class="m-combined-product-name__link" href="javascript:;">
@@ -226,6 +226,14 @@
                                                                             $('#js-minicart__trigger').html('<div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">' +
                                                                                 '<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">' + data.count + '</span>' +
                                                                                 '</div>');
+                                                                                if(data.message =='add'){
+                                                                                    console.log(data);
+                                                                                    $('#red_heart'+title).addClass('red');
+                                                                                } else {
+                                                                                    console.log(data);
+                                                                                    $('#red_heart'+title).removeClass('red');
+                                                                                };
+                                                                                
                                                                         });
                                                                 }
                                                             </script>

@@ -81,9 +81,6 @@
                             <span class="a-icon-text-btn__label">Users</span>
                         </a>
                         @endif
-                        <!-- <div id="wrap">
-                        <span my-id="1" onclick="check_my_favorites(this);" class="icon-favorite  a-icon-text-btn__icon red" aria-hidden="true"></span>
-                        </div> -->
                         <div id="wrap">
                             <form action="{{ route('get.search') }}" autocomplete="off">
                                 <input id="search" name="search" type="text" placeholder="Tìm kiếm...">

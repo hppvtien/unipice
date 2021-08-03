@@ -176,6 +176,9 @@ h1.page-title {
     margin-top: 4px;
 }
 
+
+/* Tien css */
+
 a.action.change-password.a-anchor,
 a.action.edit.a-anchor {
     box-shadow: none;
@@ -200,6 +203,10 @@ a.action.edit.a-anchor {
 
 .group-product {
     flex-direction: unset!important;
+}
+
+#co-store-form input {
+    z-index: 1;
 }
 
 @media screen and (min-width: 1024px) {
@@ -311,6 +318,12 @@ a.action.edit.a-anchor {
 @media screen and (max-width: 1460px) {
     .js-main-menu-panel a {
         font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    table.cart thead th {
+        padding: 0;
     }
 }
 

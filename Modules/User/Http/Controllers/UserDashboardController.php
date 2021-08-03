@@ -136,7 +136,7 @@ class UserDashboardController extends Controller
                     $count_fav = count(Favourite::where('f_user_id', $user_id)->get());
                     return response([
                         'status' => 200,
-                        'message' => 'Bạn đã hủy sản phẩm trong danh sách yêu thích',
+                        'message' => 'delete',
                         'count' => $count_fav
                     ]);
                 }
@@ -152,7 +152,7 @@ class UserDashboardController extends Controller
                     $count_fav = count(Favourite::where('f_user_id', $user_id)->get());
                     return response([
                         'status' => 200,
-                        'message' => 'Bạn đã thêm sản phẩm vào danh sách yêu thích',
+                        'message' => 'add',
                         'count' => $count_fav
                     ]);
                 }

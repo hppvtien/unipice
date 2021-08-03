@@ -8,7 +8,9 @@ use App\Models\Uni_Store;
 use Modules\User\Http\Requests\StoreUserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
+
 class UserInfoController extends Controller
 {
 
@@ -18,6 +20,7 @@ class UserInfoController extends Controller
     }
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $data = $request->except('_token');
         User::find($id)->update($data);
         return redirect()->back();
@@ -33,60 +36,49 @@ class UserInfoController extends Controller
 
         return view('user::pages.info.store', $viewData);
     }
-    public function storeupdate(StoreUserRequest $request, $id)
+    public function storeUpdate(StoreUserRequest $request, $id)
     {
-       
-        if ($request->ajax()) {
-            $code =  200;
-            try {
-               $uni_store             = Uni_Store::findOrFail($id);
-            $store_albumOld = json_decode(Uni_Store::where('id', $id)->pluck('store_album')->first());
 
-            $data               = $request->except(['store_thumbnail', 'save', '_token', 'store_album']);
-           
-            if ($request->store_album) {
-                $store_album = [];
-                foreach ($request->store_album as $item) {
-                    $store_album[] = $this->processUploadFile($item);
-                }
-            } else {
-                $store_album = [];
-            }
-            
-            $store_ab = array_merge($store_albumOld, $store_album);
-            
-            
-            
+        if ($request) {
 
-            $param = [
-                
-                'store_name' => $request->store_name,
-                'created_at' => Carbon::now(),
-                'store_area' => $request->store_area,
-                'store_address' => $request->store_address,
-                'store_province' => $request->store_province,
-                'store_phone' => $request->store_phone,
-                'store_taxcode' => $request->store_taxcode,
-                'store_lat' => $request->store_lat,
-                'store_lng' => $request->store_lng,
-                'store_album' => json_encode($store_ab),
-                'store_status' => $request->store_status,
-            ];
-            // dd($param);
-            $uni_store->fill($param)->save();
-                if ($uni_store){
-                    return response([
-                        'status'     => 200,
-                        'message' => "Cập nhật thành công hãy đợi admin kiểm tra bạn sẽ nhận được email thông báo kết quả!"
-                    ]);
+            
+                $uni_store             = Uni_Store::where('user_id', $id)->first();
+                $store_albumOld = Uni_Store::where('id', $id)->pluck('store_album')->first();
+                if ($store_albumOld == null) {
+                    $albumOld = [];
+                } else {
+                    $albumOld = json_decode($store_albumOld);
                 }
-            } catch (\Exception $exception) {
-                $codes = 501;
-                Log::error("[Store]: " . $exception->getMessage());
-            }
-            return response()->json([
-                'codes'     => $codes,
-            ]);
+
+                $data               = $request->except(['store_thumbnail', 'save', '_token', 'store_album']);
+
+                if ($request->store_album) {
+                    $store_album = [];
+                    foreach ($request->store_album as $item) {
+                        $store_album[] = $this->processUploadFile($item);
+                    }
+                } else {
+                    $store_album = [];
+                }
+                $store_ab = array_merge($albumOld, $store_album);
+
+
+                $param = [
+
+                    'store_name' => $request->store_name,
+                    'created_at' => Carbon::now(),
+                    'store_area' => $request->store_area,
+                    'store_address' => $request->store_address,
+                    'store_province' => $request->store_province,
+                    'store_phone' => $request->store_phone,
+                    'store_taxcode' => $request->store_taxcode,
+                    'store_album' => json_encode($store_ab),
+                    'store_status' => 0
+                ];
+                $uni_store->fill($param)->save();
+                $this->showMessagesSuccess();
+            return redirect()->route('get_user.store.edit',$id);
+          
         }
     }
     public function processUploadFile($fileName)
@@ -114,5 +106,19 @@ class UserInfoController extends Controller
         }
 
         return  null;
+    }
+    public function showMessagesSuccess($message = 'Thêm mới thành công')
+    {
+        return \Session::flash('toastr',[
+            'type' => 'success',
+            'message' => $message
+        ]);
+    }
+    public function showMessagesError($message = 'Xử lý dữ liệu thất bại')
+    {
+        return \Session::flash('toastr',[
+            'type' => 'error',
+            'message' => $message
+        ]);
     }
 }

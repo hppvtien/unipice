@@ -129,6 +129,10 @@ function execPostRequest($url, $data)
         $count_fav = App\Models\Favourite::where('f_user_id',$id)->get();
         return count($count_fav);
     }
+    function red_heart($id,$uid){
+        $red_heart = App\Models\Favourite::where('f_user_id',$uid)->where('f_id',$id)->pluck('id');
+        return count($red_heart);
+    }
     
     function formatPhoneNumber($phoneNumber) {
         $phoneNumber = preg_replace('/[^0-9]/','',$phoneNumber);

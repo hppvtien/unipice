@@ -22,27 +22,12 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     Route::get('/danh-sach-san-pham/myfavorites/delete', 'UserDashboardController@myfavorites_delete')->name('get_user.myfavorites_delete');
     Route::get('/danh-sach-san-pham/myfavorites/filter', 'UserDashboardController@myfavorites_filter')->name('get_user.myfavorites_filter');
     Route::get('/danh-sach-san-pham/filter', 'UserDashboardController@productlist_filter')->name('get_user.productlist_filter');
-
     Route::get('/don-hang', 'UserDashboardController@listOrder')->name('get_user.list_order');
-    
-
-    // Route::group(['prefix' => 'don-hang'], function(){
-    //     Route::get('/', 'UserTransactionController@index')->name('get_user.transaction');
-
-    //     Route::post('/', 'UserTransactionController@get_info_order')->name('get_user.get_info_order');
-
-    //     Route::get('{idTransaction}/view', 'UserTransactionController@viewTransaction')->name('get_user.transaction.view');
-    //     Route::get('{idTransaction}/view/course/{idCourse}', 'UserCourseByOrderController@viewCourse')->name('get_user.transaction.view_course');
-    //     Route::get('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@vote')->name('get_user.transaction.vote');
-    //     Route::post('{idTransaction}/view/course/vote/{idCourse}', 'UserVoteController@storeVote');
-    // });
     Route::get('favourite', 'UserFavouriteController@index')->name('get_user.favourite');
-
     Route::get('info/edit/{id}', 'UserInfoController@edit')->name('get_user.info.edit');
     Route::post('info/edit/{id}', 'UserInfoController@update');
-
     Route::get('store/edit/{id}', 'UserInfoController@storeedit')->name('get_user.store.edit');
-    Route::post('store/edit/{id}', 'UserInfoController@storeupdate');
+    Route::post('store/edit/{id}', 'UserInfoController@storeUpdate');
 
     Route::prefix('cart')->group(function (){
         Route::post('save/{type}', 'UserPayController@processPayCart')->name('post_user.cart.pay');

@@ -13,13 +13,14 @@
                 <div class="block-content">
                     @if(get_data_user('web'))
                     <div class="box box-information">
-                        <strong class="box-title text-primary">
+                        <strong class="box-title">
                             <span>Thông tin liên lạc</span>
                         </strong>
                         <div class="box-content">
                             <p>
-                                <span class="text-info">Tên khách hàng: </span>{{ get_data_user('web','name') }}<br>
-                                <span class="text-info">Email: </span>{{ get_data_user('web','email') }}<br>
+                                {{ get_data_user('web','name') }}<br>
+                                {{ get_data_user('web','email') }}<br>
+                                
                             </p>
                         </div>
                         <div class="box-actions">
@@ -34,19 +35,11 @@
                     @if(get_data_user('web','type') == 1)
                     <div class="box box-newsletter">
                         <strong class="box-title">
-                            <span class="text-primary">Thông tin đại lý</span>
+                            <span>Thông tin đại lý</span>
                         </strong>
-                        <?php if(checkUid(get_data_user('web'))){ ?>
-                            <div class="box-content">
-                                <span class="newsletter-label text-success">Khách hàng: {{ getNameStore(get_data_user('web')) }}</span> <br>
-                            </div>
-                        <?php } else { ?>
-                            <div class="box-content">
-                            <span class="newsletter-label text-danger">Vui lòng cập nhật thông tin, Để hoàn tất thủ tục đăng ký</span> <br>
-                            <span class="newsletter-label text-danger">Nếu bạn nhập thông tin rồi vui lòng chở để quản trị kiểm tra.</span>
+                        <div class="box-content">
+                            <p class="newsletter-label">Hoàn tất thủ tục sau để trở thành đại lý.</p>
                         </div>
-                        <?php } ?>
-                        
                         <div class="box-actions">
                             <a class="action edit a-anchor" href="{{ route('get_user.store.edit',['id' => get_data_user('web')]) }}"><span>Cập nhật đại lý</span></a>
                         </div>
@@ -62,7 +55,7 @@
                 <div class="block-content">
                     <div class="box box-billing-address">
                         <strong class="box-title">
-                            <span class="text-primary">Địa chỉ giao hàng mặc định</span>
+                            <span>Địa chỉ giao hàng mặc định</span>
                         </strong>
                         <div class="box-content">
                             <address>
@@ -71,7 +64,7 @@
                     </div>
                     <div class="box box-shipping-address">
                         <strong class="box-title">
-                            <span class="text-primary">Địa chỉ giao hàng mặc định</span>
+                            <span>Địa chỉ giao hàng mặc định</span>
                         </strong>
                         <div class="box-content">
                             <address>
@@ -84,7 +77,7 @@
                 </div>
             </div>
         </div>
-    @include('user::pages.component._inc_menu_user')
+@include('user::pages.component._inc_menu_user')
 
     </div>
 </main>
