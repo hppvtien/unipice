@@ -25,17 +25,16 @@
                 <div class="mt-2 mb-5">
                     <div class="d-flex justify-content-center">
                         <div class="col-md-12">
-                           
+
                             <table class="table table-striped">
                                 <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Thông tin sản phẩm</th>
-                                        <th scope="col">Phương thức thanh toán</th>
-                                        <th scope="col">Tổng tiền thanh toán</th>
-                                        <th scope="col">Trạng thái</th>
-                                        <th scope="col">Địa chỉ</th>
-                                        <th scope="col">Điện thoại</th>
+                                    <tr class="order-list-li">
+                                        <th class="text-center" scope="col">#</th>
+                                        <th scope="col"  class="text-center">Mã hóa đơn</th>
+                                        <th scope="col"  class="text-center">Phương thức thanh toán</th>
+                                        <th scope="col"  class="text-center">Tổng tiền</th>
+                                        <th scope="col"  class="text-center">Trạng thái</th>
+                                        <th scope="col"  class="text-center">Xuất hóa đơn</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,19 +42,58 @@
                                         @foreach ($uni_order as $key => $item)
                                         <tr>
                                             <th scope="row">{{ $key+1 }}</th>
-                                            <td>
-                                                @foreach (json_decode($item->cart_info) as $keys => $items)
-                                                <span class="text-success">Sản phẩm :</span> <span>{{ $items->name }}</span> ||
-                                                <span class="text-success">Số lượng :</span> <span>{{ $items->qty }}</span> ||
-                                                <span class="text-success">Giá sản phẩm:</span> <span>{{ number_format($items->price) }}</span><br>
-                                                @endforeach
+                                            <td class="text-left" data-id="{{ $item->id }}">
+                                                <a type="button" class="btn text-primary mx-auto" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                                    {{ $item->code_invoice }}
+                                                </a>
                                             </td>
+                                            <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header btn-success">
+                                                            <h5 class="modal-title text-white" id="exampleModalLabel">Đơn hàng: {{ $item->code_invoice }}</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-1 text-info">#</div>
+                                                                <div class="col-4 text-info">Sản phẩm</div>
+                                                                <div class="col-3 text-info">Số lượng</div>
+                                                                <div class="col-4 text-info">Giá sản phẩm</div>
+                                                            </div>
+                                                            <?php $stt_p = 0; ?>
+                                                            @foreach (json_decode($item->cart_info) as $keys => $items)
+                                                            <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+                                                                <div class="col-1 text-info">{{ $stt_p ++}}</div>
+                                                                <div class="col-4">{{ $items->name }}</div>
+                                                                <div class="col-3">{{ $items->qty }}</div>
+                                                                <div class="col-4">{{ number_format($items->price) }} đ</div>
+                                                            </div>
+                                                            @endforeach
+                                                            <div class="row btn-success text-center" style="padding: 10px;">
+                                                                <h6 class="modal-title text-white ">Thông tin liên lạc</h6>
+                                                            </div>
+                                                            <div class="row">
+                                                                
+                                                                <div class="col-12"><p></p></div>
+                                                                <div class="col-12"><p><span class="text-success">Đại chỉ</span> :{{ $item->address }}</p></div>
+                                                                <div class="col-12"><p><span class="text-success">Số điện thoại</span> :{{ $item->phone }}</p></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <td class="text-center">{{ config('cart.pay_type')[$item->type_pay]['name'] }}</td>
-                                            <td class="text-center">{{ $item->type_pay }}</td>
-                                            <td class="text-center">{{ number_format((int)$item->total_money) }}</td>
+                                            <td class="text-center">{{ $item->total_money }} đ</td>
                                             <td class="text-center">{{ $item->status }}</td>
-                                            <td>{{ $item->address }}</td>
-                                            <td>{{ $item->phone }}</td>
+                                            <td class="text-center"><a class="btn btn-info">
+                                            <i class="fa fa-download text-white"></i>
+                                            </a></td>
                                         </tr>
                                         @endforeach
                                     <?php } else { ?>
@@ -65,13 +103,14 @@
                                     <?php } ?>
                                 </tbody>
                             </table>
-                         
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <script>
         function cart_order_now(cart_order_now1) {
             var data_url = $(cart_order_now1).attr('data-url');

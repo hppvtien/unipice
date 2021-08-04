@@ -48,7 +48,7 @@ class UserPayController extends UserController
                 $combo_id = 0; 
             };
         };
-        
+        $total_ship = 100000;
         // $total_money = \Cart::total(0,0,'.');
         $order_data = [
             'user_id'=>get_data_user('web'),
@@ -62,7 +62,11 @@ class UserPayController extends UserController
             'type_pay'=>$request->type_pay,
             'cart_info'=>$listCarts,
             'combo_id'=>$combo_id,
+            'status'=>1,
             'total_money'=>\Cart::total(0,0,'.'),
+            'total_vat'=>\Cart::tax(0,0,'.'),
+            'total_no_vat'=>\Cart::subtotal(0,0,'.'),
+            'total_ship'=>$total_ship,
             'created_at'=>Carbon::now(),
            
         ];
@@ -184,7 +188,7 @@ class UserPayController extends UserController
             $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
             $data = [
                 'pay_code' => $vnp_TxnRef,
-                'pay_note' =>  $vnp_OrderInfo
+                'pay_note' =>  $vnp_OrderInfo,
             ];
             $order->fill($data)->save();
             \Cart::destroy();
@@ -281,7 +285,7 @@ class UserPayController extends UserController
                 't_code' => $orderId,
                 't_note' =>  $orderInfo
             ];
-            $order->fill($data)->save();
+            $order->fill($data_mm)->save();
             \Cart::destroy();
             return $momo_Url;
         }

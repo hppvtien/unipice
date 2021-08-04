@@ -547,15 +547,15 @@
                                 
                               <tr >
                                   <td colspan="3">TỔNG TIỀN</td>
-                                  <td><span>{{ $order->total_money }} đ</span></td>
+                                  <td><span>{{ $order->total_no_vat }} đ</span></td>
                               </tr>
                               <tr >
                                   <td colspan="3">VAT</td>
-                                  <td><span></span></td>
+                                  <td><span>{{ $order->total_vat }} đ</span></td>
                               </tr>
                               <tr >
                                   <td colspan="3">TỔNG Đơn Hàng</td>
-                                  <td><span></span></td>
+                                  <td><span>{{ $order->total_money }} đ</span></td>
                               </tr>
                             </tbody>
                         </table>

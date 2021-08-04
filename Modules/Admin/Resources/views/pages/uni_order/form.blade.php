@@ -30,10 +30,6 @@
                         <input type="text" class="form-control keypress-count" disabled data-title-seo=".title_seo" value="{{ old('type_pay', $uni_order->type_pay ?? '') }}" name="type_pay">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Kiểu thanh toán <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" disabled data-title-seo=".title_seo" value="{{ old('type_pay', $uni_order->type_pay ?? '') }}" name="type_pay">
-                    </div>
-                    <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Ngày tạo đơn <span>(*)</span></label>
                         <input type="datetime" class="form-control keypress-count" disabled data-title-seo=".title_seo" value="{{ old('created_at', $uni_order->created_at ?? '') }}" name="created_at">
                     </div>

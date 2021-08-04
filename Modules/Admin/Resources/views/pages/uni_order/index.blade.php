@@ -45,7 +45,7 @@
                                             {{ config('cart.pay_type')[$item->type_pay-1]['name'] }}
                                         </td>
                                         <td>
-                                            <b>{{ number_format($item->total_money,0,',','.') }} đ</b>
+                                            <b>{{ $item->total_money }}</b>
                                         </td>
                                         <td>
                                             <span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span>

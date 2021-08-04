@@ -15,6 +15,7 @@
     padding-right: 20px;
     width: auto;
 }
+
 #uni {
     padding: .66em .9em;
     color: #fff;
@@ -23,12 +24,15 @@
     max-width: 225px;
     float: left;
 }
+
 #uni-menu {
     margin-left: -64px;
 }
+
 #uni-menu .dropdown-item {
     color: black;
 }
+
 .m-text-input {
     width: 100%;
 }
@@ -398,9 +402,11 @@ h1.page-title {
     text-decoration: none;
     margin-left: 10px;
 }
+
 .header-v1 .site-header-cart-v2 .cart-content>a span {
     padding-left: 0;
 }
+
 .c-sidebar-filters__filter .name-filler span.active {
     color: #C03235;
     font-weight: 600;
@@ -420,6 +426,6 @@ button.btn_store_submit.js-add-cart {
 
 button.btn_store_submit.js-add-cart:hover {
     background: #fff;
-    border:2px solid #fff;
+    border: 2px solid #fff;
     color: #0B2D25;
 }
