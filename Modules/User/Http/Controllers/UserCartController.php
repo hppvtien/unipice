@@ -7,7 +7,7 @@ use App\Models\Configuration;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\URL;
-use App\Models\Bill;
+use App\Models\Cart\Uni_Order;
 use Carbon\Carbon;
 use PDF;
 
@@ -32,40 +32,44 @@ class UserCartController extends Controller
         $view = view("user::pages.cart.include.cart_info",compact('listCarts'))->render();
         return $view;
         }
-    public function generatePDF()
-    {
-        $listCarts = \Cart::content();
+    public function generatePDF(Request $request)
+    {   
+        $id = $request->data_id;
+        $data_pdf = Uni_Order::find($id);
+        $configuration = Configuration::first();
         $data = [
-            'date' => date('m/d/Y'),
-            'listCarts' => $listCarts
+            'data_pdf' => $data_pdf,
+            'configuration' => $configuration
         ];
-        return view('user::pages.pay.myPDF', $data);
+        return view('user::pages.pay.downPDF', $data);
+        // $pdf = \PDF::loadView('user::pages.pay.downPDF', $data);
+        // return $pdf->download('hoa-don.pdf');
     }
-    public function viewPDF(Request $request)
-    {
-        $configuration = Configuration::first();
-        $bill_data = Bill::orderBy('id','desc')->first();
-        $listCart = \Cart::content();
-        $viewdata = [
-            'configuration' => $configuration,
-            'bill_data' => $bill_data,
-            'listCarts'=> $listCart
-        ];
-        return view('user::pages.pay.viewPDF', $viewdata);
-    }
+    // public function viewPDF(Request $request)
+    // {
+    //     $configuration = Configuration::first();
+    //     $bill_data = Bill::orderBy('id','desc')->first();
+    //     $listCart = \Cart::content();
+    //     $viewdata = [
+    //         'configuration' => $configuration,
+    //         'bill_data' => $bill_data,
+    //         'listCarts'=> $listCart
+    //     ];
+    //     return view('user::pages.pay.viewPDF', $viewdata);
+    // }
 
-    public function downPDF(Request $request)
-    {
-        $configuration = Configuration::first();
-        $bill_data = Bill::where('id_transaction',$request->id_transaction)->first();
-        $listCart = \Cart::content();
-        $viewdata = [
-            'configuration' => $configuration,
-            'bill_data' => $bill_data,
-            'listCarts'=> $listCart
-        ];
-        // return view('user::pages.pay.downPDF', $viewdata);
-        $pdf = PDF::loadView('user::pages.pay.downPDF', $viewdata);
-        return $pdf->download('hoa-don.pdf');
-    }
+    // public function downPDF(Request $request)
+    // {
+    //     $configuration = Configuration::first();
+    //     $bill_data = Bill::where('id_transaction',$request->id_transaction)->first();
+    //     $listCart = \Cart::content();
+    //     $viewdata = [
+    //         'configuration' => $configuration,
+    //         'bill_data' => $bill_data,
+    //         'listCarts'=> $listCart
+    //     ];
+    //     // return view('user::pages.pay.downPDF', $viewdata);
+    //     $pdf = PDF::loadView('user::pages.pay.downPDF', $viewdata);
+    //     return $pdf->download('hoa-don.pdf');
+    // }
 }

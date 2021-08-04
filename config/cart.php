@@ -76,7 +76,7 @@ return [
 
     ],
     'pay_type' => [
-        [
+        1=>[
             'name' => 'Chuyển khoản',
             'type' => '1',
             'class' => '',
@@ -86,7 +86,7 @@ return [
             'hotline' => '096999888',
             'email' => 'thacmac@gmail.com'
         ],
-        [
+        2=>[
             'name' => 'MOMO',
             'type' => '2',
             'class' => '',
@@ -106,7 +106,7 @@ return [
         //     'hotline' => '096999888',
         //     'email' => 'thacmac@gmail.com'
         // ],
-        [
+        4=>[
             'name' => 'VNPAY',
             'type' => '4',
             'class' => '',

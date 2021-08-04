@@ -31,6 +31,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                 @forelse($uni_order as $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
@@ -42,7 +43,7 @@
                                             {{ $item->t_code ?? "[N\A]" }}
                                         </td>
                                         <td>
-                                            {{ config('cart.pay_type')[$item->type_pay-1]['name'] }}
+                                            {{ config('cart.pay_type')[$item->type_pay]['name'] }}
                                         </td>
                                         <td>
                                             <b>{{ $item->total_money }}</b>

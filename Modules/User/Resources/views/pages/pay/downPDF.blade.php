@@ -148,7 +148,6 @@
         }
     </style>
 </head>
-
 <body>
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -157,7 +156,7 @@
 
                 <div class="header-modal">
                     <div class="logo">
-                        <img width="100%" alt="ADSMO Giải Pháp Digital Marketing Tổng Thể ĐỘT PHÁ Traffic" itemprop="logo" src="https://adsmo.vn/wp-content/uploads/2020/08/cropped-ADSMO-Giai-Phap-Digital-Marketing-Tong-The-DOT-PHA-Traffic-1.png">
+                        <img width="100%" alt="Unispice" itemprop="logo" src="{{ pare_url_file($configuration->logo) }}">
                     </div>
                     <div class="info-adsmo">
                         <p><span class="title-cc">Đơn vị bán hàng:</span> {{ $configuration->name }}</p>
@@ -172,72 +171,56 @@
 
             <div class="modal-body">
                 <div class="name_invoice">
-                    <p><span class="title-cc" style="font-size: 20px;letter-spacing:3px">Invoice:</span> {{ $bill_data->method_invoice }}</p>
-                    <p><span class="title-cc">Invoice Date:</span> {{ $bill_data->created_at->format('d-m-Y') }}</p>
+                    <p><span class="title-cc" style="font-size: 20px;letter-spacing:3px">Invoice:</span> {{ $data_pdf->code_invoice }}</p>
+                    <p><span class="title-cc">Invoice Date:</span> {{ $data_pdf->created_at->format('d-m-Y') }}</p>
                 </div>
                 <div class="name_invoice">
                     <h2 style="margin-top: 0;color:#122a67;letter-spacing:3px;font-size:20px">Invoice To</h2>
-                    <p><span class="title-cc">Tên khách hàng:</span> {{ $bill_data->method_customer }}</p>
-                    <p><span class="title-cc">Địa chỉ khách hàng:</span> {{ $bill_data->method_address }}</p>
-                    @if ($bill_data->group_buy == 1)
-                    <p><span class="title-cc">Tên Công Ty:</span> {{ $bill_data->method_company }}</p>
-                    <p><span class="title-cc">Mã số thuế:</span> {{ $bill_data->method_customer_code }}</p>
-                    <p><span class="title-cc">Hình thức thanh toán:</span>{{ config('cart.pay_type')[$bill_data->method_pay-1]['name'] }}</p>
-                    @else
-
-                    @endif
+                    <p><span class="title-cc">Tên khách hàng:</span> {{ $data_pdf->customer_name }}</p>
+                    <p><span class="title-cc">Địa chỉ khách hàng:</span> {{ $data_pdf->address }}</p>
+                    <p><span class="title-cc">Số điện thoại:</span> {{ $data_pdf->phone }}</p>
+                    <p><span class="title-cc">Mã số thuế:</span> {{ $data_pdf->taxcode }}</p>
                 </div>
                 <div class="invoice_content">
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">Tên khóa học</th>
+                                <th scope="col">Tên sản phẩm</th>
                                 <th scope="col">Sô lượng</th>
                                 <th scope="col">Đơn giá</th>
-                                <th scope="col">Thành tiền</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (json_decode($bill_data->method_course) as $item)
+                            @foreach (json_decode($data_pdf->cart_info) as $item)
                             <tr>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->qty }}</td>
-                                <td>{{ number_format(round($item->price ,1), 0, '', '.') }}đ</td>
-                                <td>{{ number_format(round($item->price ,1), 0, '', '.') }}đ</td>
+                                <td>{{ formatVnd($item->price) }}</td>
                             </tr>
                             @endforeach
                             <tr>
-                                <td colspan="3">Tổng tiền khóa học( Total amount )</td>
-                                <td>{{ $bill_data->total_no_vat }}</td>
+                                <td colspan="2">Tổng tiền khóa học( Total amount )</td>
+                                <td>{{ $data_pdf->total_no_vat }} đ</td>
                             </tr>
                             <tr>
                                 <td colspan="1">Thuế GTGT (VAT Rate): 10%</td>
-                                <td colspan="2">Tiền Thuế GTGT (VAT amount)</td>
-                                <td>{{ $bill_data->vat_total }}</td>
-                            </tr>
-                            @if ($bill_data->method_voucher != null)
-                            <tr>
-                                <td colspan="3">Tổng tiền VAT: </td>                             
-                                <td>{{ $bill_data->paid_total }}</td>
+                                <td colspan="1">Tiền Thuế GTGT (VAT amount)</td>
+                                <td>{{ $data_pdf->total_vat }} đ</td>
                             </tr>
                             <tr>
-                                <td colspan="1">Mã giảm giá: {{ $bill_data->method_voucher_percent }}%</td>
-                                <td colspan="2"> {{ $bill_data->method_voucher }}</td>
-                                @php
-                                    $tal = (int)str_replace('đ', '', str_replace('.', '', $bill_data->paid_total)) * $bill_data->method_voucher_percent/100;
-                                @endphp
-                                <td>-{{ number_format(round($tal,1) , 0, '', '.')}}đ</td>
+                                <td colspan="2">Tổng tiền thanh toán</td>
+                                <td>{{ $data_pdf->total_money }} đ</td>
                             </tr>
-                            @endif
+                       
                             <tr>
-                                <td colspan="3">Tổng cộng tiền thanh toán (Grand total)</td>
-                                <td>{{ number_format(round($bill_data->method_paid), 0, '', '.') }}đ</td>
+                                <td colspan="2">Tổng cộng tiền thanh toán (Grand total)</td>
+                                <td>{{ $data_pdf->total_money }} đ</td>
                             </tr>
                             <tr>
-                                <td colspan="4">Mã hóa đơn: {{ $bill_data->method_invoice }}</td>
+                                <td colspan="3">Mã hóa đơn: {{ $data_pdf->code_invoice }}</td>
                             </tr>
                             <tr>
-                                <td colspan="4" style="border:none">
+                                <td colspan="3" style="border:none">
                                     <table class="table-in">
                                         <tr>
                                             <td class="td-sign" style="text-align: center">

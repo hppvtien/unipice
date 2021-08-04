@@ -502,7 +502,7 @@
                               </tr>
                               <tr>
                                 <th scope="row">Hình thức thanh toán:</th>
-                                <th>{{ config('cart.pay_type')[$order->type_pay-1]['name'] }}</td>
+                                <th>{{ config('cart.pay_type')[$order->type_pay]['name'] }}</td>
                               </tr>
                               <tr>
                                 <th scope="row">Mã số thuế:</th>

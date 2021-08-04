@@ -84,7 +84,7 @@
                                                                     <span class="m-price-lockup__price">
                                                                         <?php if (checkUid(get_data_user('web')) != null) { ?>    
                                                                             <span class="a-price">
-                                                                                Giá: {{ $product->price_sale_store == '' ? 'liên hệ': formatVnd($item->qty_in_box * $item->price_sale_store) }}
+                                                                                Giá: {{ $product->price_sale_store == '' ? 'liên hệ': formatVnd($product->qty_in_box * $product->price_sale_store) }}
                                                                             </span>
                                                                         <?php } else { ?>
                                                                             <span class="a-price">

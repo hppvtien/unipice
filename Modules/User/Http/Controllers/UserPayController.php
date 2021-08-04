@@ -72,7 +72,6 @@ class UserPayController extends UserController
         ];
         
         $idOrder = Uni_Order::insertGetId($order_data); 
-        
         // \Cart::destroy();
         if($idOrder){
             $order_data_sucsses = Uni_Order::where('id',$idOrder)->where('user_id',get_data_user('web'))->first();
@@ -90,6 +89,8 @@ class UserPayController extends UserController
     }
     public function getSuccsess(Request $request, $id){
         $order = Uni_Order::find($id); 
+        
+
         \Cart::destroy();  
         return view('user::pages.pay.succsess',compact('order'));
     }

@@ -58,7 +58,6 @@ Route::middleware('checkLoginUser')->group(function() {
     Route::get('xoa-san-pham', 'UserCartController@deletecart')->name('get_user.deletecart');
     Route::get('in-pdf.html', 'UserCartController@generatePDF')->name('get_user.generatePDF');
     Route::post('in-pdf.html', 'UserCartController@viewPDF');
-    Route::get('down-pdf.html', 'UserCartController@downPDF')->name('get_user.downPDF');
     Route::get('thanh-toan/{id}', 'UserPayController@getSuccsess')->name('get_user.paysuccsess'); 
 
     Route::get('thanh-toan-vnpay/{id}', 'UserPayController@getVnPaySuccsess')->name('get_user.vnpaysuccsess'); 

@@ -481,38 +481,38 @@
 <main id="maincontent" class="">
     <div class="columns">
         <div class="column main padding_css">
-            <div class="block block-dashboard-info col-md-6 col-xs-12 noi_left cach_top_bottom">
+            <div class="block block-dashboard-info col-md-12 col-lg-6 col-xs-12 noi_left cach_top_bottom">
                 <div class="block-title"><strong>Thông tin khách hàng</strong></div>
                 <div class="block-content">
                     <table class="table table-sm color-abc">
                         <tbody>
                             <tr>
                                 <th scope="row">Chi tiết đơn hàng:</th>
-                                <th>{{ $order->code_invoice }}</td>
+                                <th>{{ $order->code_invoice }}</th>
                             </tr>
                             <tr>
                                 <th scope="row">Người mua:</th>
-                                <th>{{ $order->customer_name }}</td>
+                                <th>{{ $order->customer_name }}</th>
                             </tr>
                             <tr>
                                 <th scope="row">Địa chỉ:</th>
-                                <th>{{ $order->address }}</td>
+                                <th>{{ $order->address }}</th>
                             </tr>
                             <tr>
                                 <th scope="row">Số điênh thoại:</th>
-                                <th>{{ $order->phone }}</td>
+                                <th>{{ $order->phone }}</th>
                             </tr>
                             <tr>
                                 <th scope="row">Email:</th>
-                                <th>{{ $order->email }}</td>
+                                <th>{{ $order->email }}</th>
                             </tr>
                             <tr>
                                 <th scope="row">Hình thức thanh toán:</th>
-                                <th>{{ config('cart.pay_type')[$order->type_pay-1]['name'] }}</td>
+                                <th>{{ config('cart.pay_type')[$order->type_pay]['name'] }}</th>
                             </tr>
                             <tr>
                                 <th scope="row">Mã số thuế:</th>
-                                <th>{{ $order->taxcode }}</td>
+                                <th>{{ $order->taxcode }}</th>
                             </tr>
                         </tbody>
                     </table>
@@ -523,7 +523,7 @@
                     </div>
                 </div>
             </div>
-            <div class="block block-dashboard-info col-md-6 col-xs-12 noi_left cach_top_bottom">
+            <div class="block block-dashboard-info col-md-12 col-lg-6 col-xs-12 noi_left cach_top_bottom">
                 <div class="block-title"><strong>Thông tin giỏ hàng</strong></div>
                 <div class="column main" style="width:100%">
                     <h3></h3>

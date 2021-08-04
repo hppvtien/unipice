@@ -88,12 +88,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <td class="text-center">{{ config('cart.pay_type')[$item->type_pay]['name'] }}</td>
+                                            <td class="text-center">{{ config('cart.pay_type')[$item->type_pay - 1]['name'] }}</td>
                                             <td class="text-center">{{ $item->total_money }} đ</td>
                                             <td class="text-center">{{ $item->status }}</td>
-                                            <td class="text-center"><a class="btn btn-info">
+                                            <td class="text-center">
+                                                <a href="javascript:;" class="btn btn-info print_pdf" id="print_pdf" data-id="{{ $item->id }}" data-url="{{ route('get_user.generatePDF') }}">
                                             <i class="fa fa-download text-white"></i>
-                                            </a></td>
+                                            </a>
+                                        </td>
                                         </tr>
                                         @endforeach
                                     <?php } else { ?>
@@ -110,7 +112,6 @@
             </div>
         </div>
     </div>
-
     <script>
         function cart_order_now(cart_order_now1) {
             var data_url = $(cart_order_now1).attr('data-url');

@@ -1,11 +1,8 @@
 @extends('pages.layouts.app_master_frontend')
+@include('pages.components.headers.css_js')
 @section('contents')
-<style>
-    .columns .column.main {
-        padding-bottom: 40px;
-        width: 100%;
-    }
 
+<style>
     ul.checkout-methods-items li:before {
         content: '';
         display: none;
@@ -199,8 +196,7 @@
         color: inherit;
         text-decoration: none;
         padding: 0 0 2px;
-        box-shadow: inset 0 -2px var(--color-primary);
-        transition: box-shadow .2s ease-in-out;
+
         outline: none;
         display: inline-block;
         margin-right: 10px;
@@ -375,30 +371,11 @@
     }
 
     .minicart-items-wrapper.overflowed:last-child {
-
         border-bottom: none;
     }
 
-    span.title-info {
-        color: #0b2d25;
-        font-size: 20px;
-        font-weight: 700;
-    }
-
-
-    .column.main p {
-        margin-bottom: 16px;
-    }
-    .column.main .m-sort-by {
-    margin-bottom: 10px;
-}
-
-    span.info-detail {
-        font-weight: 600;
-    }
-    h3.title-cart{
-        text-align: center;
-    margin-top: 20px;
+    table.cart tbody tr td {
+        padding: 0 1em;
     }
 
     @media screen and (min-width: 1024px) {
@@ -493,93 +470,152 @@
             padding: 10px 0;
         }
     }
+
+    table.color-abc th {
+
+        background-color: transparent;
+        text-align: left;
+        color: #0b2d25;
+        font-weight: 700;
+        border-bottom: 2px solid #97ccc0;
+    }
 </style>
-
-<main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
-    <div class="page-title-wrapper">
-        <h1 class="page-title">
-            <span class="base">Thông tin thanh toán</span>
-        </h1>
-    </div>
+<main id="maincontent" class="">
     <div class="columns">
-        <div class="column main" style="width:100%">
-            <p><span class="title-info">Mã đơn hàng:</span> <span class="info-detail">{{ $order->code_invoice }}</span></p>
-            <p><span class="title-info">Người mua:</span> <span class="info-detail">{{ $order->customer_name }}</span></p>
-            <p><span class="title-info">Địa chỉ:</span> <span class="info-detail">{{ $order->address }}</span></p>
-            <p><span class="title-info">Số điênh thoại:</span class="info-detail"> <span>{{ $order->phone }}</span></p>
-            <p><span class="title-info">Email:</span> <span class="info-detail">{{ $order->email }}</span></p>
-            <p><span class="title-info">Hình thức thanh toán:</span> <span class="info-detail">{{ $order->type_pay }}</span></p>
-            <?php if(checkUid(get_data_user('web'))){ ?>
-                <p><span class="title-info">Mã số thuế:</span> <span class="info-detail">{{ $order->taxcode }}</span></p>
-            <?php } else { ?>
-                <p><span class="title-info">Mã giảm giá:</span> <span class="info-detail">{{ $order->vouchers }}</span></p>
-            <?php } ?>
-            <p>
-            <div class="m-sort-by">
-                <label class="m-sort-by__label" for="bank_code">Chọn ngân hàng</label>
-                <select class="m-sort-by__select frontier-custom-sort" name="bank_code" id="bank_code">
-                    <option value="" selected> Chọn ngân hàng thanh toán</option>
-                    <option value="NCB"> Ngan hang NCB</option>
-                    <option value="AGRIBANK"> Ngan hang Agribank</option>
-                    <option value="SCB"> Ngan hang SCB</option>
-                    <option value="SACOMBANK">Ngan hang SacomBank</option>
-                    <option value="EXIMBANK"> Ngan hang EximBank</option>
-                    <option value="MSBANK"> Ngan hang MSBANK</option>
-                    <option value="NAMABANK"> Ngan hang NamABank</option>
-                    <option value="VNMART"> Vi dien tu VnMart</option>
-                    <option value="VIETINBANK">Ngan hang Vietinbank</option>
-                    <option value="VIETCOMBANK"> Ngan hang VCB</option>
-                    <option value="HDBANK">Ngan hang HDBank</option>
-                    <option value="DONGABANK"> Ngan hang Dong A</option>
-                    <option value="TPBANK"> Ngân hàng TPBank</option>
-                    <option value="OJB"> Ngân hàng OceanBank</option>
-                    <option value="BIDV"> Ngân hàng BIDV</option>
-                    <option value="TECHCOMBANK"> Ngân hàng Techcombank</option>
-                    <option value="VPBANK"> Ngan hang VPBank</option>
-                    <option value="MBBANK"> Ngan hang MBBank</option>
-                    <option value="ACB"> Ngan hang ACB</option>
-                    <option value="OCB"> Ngan hang OCB</option>
-                    <option value="IVB"> Ngan hang IVB</option>
-                    <option value="VISA"> Thanh toan qua VISA/MASTER</option>
-                </select>
-                <span class="m-sort-by__arrow"></span>
-            </div>
-            <h3 class="title-cart">Thông tin giỏ hàng</h3>
-            <table id="shopping-cart-table" class="cart items data table cart-table">
-                <thead>
-                    <tr>
-                        <th class=" item" scope="col"><span>Sản phẩm</span></th>
-                        <th class=" price" scope="col"><span>Giá</span></th>
-                        <th class=" qty" scope="col"><span>Số lượng</span></th>
-                        <th class=" subtotal" scope="col"><span>Tổng tiền</span></th>
-                    </tr>
-                </thead>
-                <tbody class="cart item">
-                    <?php $carts = json_decode($order->cart_info, true); ?>
-                    @forelse ($carts as $key => $item)
-                    <tr>
-                        <td class="item" scope="col"><a href="{{ get_link_blank_byname($item['name']) }}"><span>{{ $item['name'] }}</span></a></td>
-                        <td class="price" scope="col"><span>{{ $item['price'] }} đ</span></td>
-                        <td class="qty" scope="col"><span>{{ $item['qty'] }}</span></td>
-                        <td class="subtotal" scope="col"><span>{{ $item['subtotal'] }} đ</span></td>
-                    </tr>
-                    @empty
-
-                    @endforelse
-                    <tr style="background">
-                        <td colspan="3">TỔNG TIỀN</td>
-                        <td><span>{{ $order->total_money }} đ</span></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="actions-toolbar">
-                <div class="primary">
-                    <button class="a-btn a-btn--primary action apply primary " id="btn-vnpay" data-url="{{ route('post_user.vnpaysuccsess',$order->id) }}" type="button" value="Pay Continue">
-                        <span>Tiến hành thanh toán</span>
-                    </button>
+        <div class="column main padding_css">
+            <div class="block block-dashboard-info col-md-12 col-lg-6 col-xs-12 noi_left cach_top_bottom">
+                <div class="block-title"><strong>Thông tin khách hàng</strong></div>
+                <div class="block-content">
+                    <table class="table table-sm color-abc">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Chi tiết đơn hàng:</th>
+                                <th>{{ $order->code_invoice }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Người mua:</th>
+                                <th>{{ $order->customer_name }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Địa chỉ:</th>
+                                <th>{{ $order->address }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Số điênh thoại:</th>
+                                <th>{{ $order->phone }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Email:</th>
+                                <th>{{ $order->email }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Hình thức thanh toán:</th>
+                                <th>{{ config('cart.pay_type')[$order->type_pay]['name'] }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Mã số thuế:</th>
+                                <th>{{ $order->taxcode }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Chọn ngân hàng:</th>
+                                <th>
+                                    <div class="m-sort-by">
+                                        <select class="m-sort-by__select frontier-custom-sort" name="bank_code" id="bank_code">
+                                            <option value="" selected> Chọn ngân hàng thanh toán</option>
+                                            <option value="NCB"> Ngan hang NCB</option>
+                                            <option value="AGRIBANK"> Ngan hang Agribank</option>
+                                            <option value="SCB"> Ngan hang SCB</option>
+                                            <option value="SACOMBANK">Ngan hang SacomBank</option>
+                                            <option value="EXIMBANK"> Ngan hang EximBank</option>
+                                            <option value="MSBANK"> Ngan hang MSBANK</option>
+                                            <option value="NAMABANK"> Ngan hang NamABank</option>
+                                            <option value="VNMART"> Vi dien tu VnMart</option>
+                                            <option value="VIETINBANK">Ngan hang Vietinbank</option>
+                                            <option value="VIETCOMBANK"> Ngan hang VCB</option>
+                                            <option value="HDBANK">Ngan hang HDBank</option>
+                                            <option value="DONGABANK"> Ngan hang Dong A</option>
+                                            <option value="TPBANK"> Ngân hàng TPBank</option>
+                                            <option value="OJB"> Ngân hàng OceanBank</option>
+                                            <option value="BIDV"> Ngân hàng BIDV</option>
+                                            <option value="TECHCOMBANK"> Ngân hàng Techcombank</option>
+                                            <option value="VPBANK"> Ngan hang VPBank</option>
+                                            <option value="MBBANK"> Ngan hang MBBank</option>
+                                            <option value="ACB"> Ngan hang ACB</option>
+                                            <option value="OCB"> Ngan hang OCB</option>
+                                            <option value="IVB"> Ngan hang IVB</option>
+                                            <option value="VISA"> Thanh toan qua VISA/MASTER</option>
+                                        </select>
+                                        <span class="m-sort-by__arrow"></span>
+                                    </div>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="primary">
+                        <button class="a-btn a-btn--primary action apply primary " id="btn-vnpay" data-url="{{ route('post_user.vnpaysuccsess',$order->id) }}" type="button" value="Pay Continue">
+                            <span>Thanh toán qua VNPAY</span>
+                        </button>
+                    </div>
                 </div>
             </div>
+            <div class="block block-dashboard-info col-md-12 col-lg-6 col-xs-12 noi_left cach_top_bottom">
+                <div class="block-title"><strong>Thông tin giỏ hàng</strong></div>
+                <div class="column main" style="width:100%">
+                    <h3></h3>
+
+                    <h3></h3>
+                    <table id="shopping-cart-table" class="cart items data table cart-table">
+                        <thead class="bg-primary">
+                            <tr>
+                                <th class="item text-white" scope="col"><span>Sản phẩm</span></th>
+                                <th class="item text-white text-center" scope="col"><span>Giá</span></th>
+                                <th class="item text-white text-center" scope="col"><span>Số lượng</span></th>
+                                <th class="item text-white text-center" scope="col"><span>Tổng tiền</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="cart item">
+                            <?php $carts = json_decode($order->cart_info, true); ?>
+                            @forelse ($carts as $key => $item)
+                            <tr>
+                                <td class="" scope="col"><a class="text-primary name-itemC" href="{{ get_link_blank_byname($item['name']) }}"><span>{{ $item['name'] }}</span></a></td>
+                                <td class="item text-center" scope="col"><a class="name-itemC" href="javascript:;"><span>{{ formatVnd($item['price']) }}</span></a></td>
+                                <td class="item text-center" scope="col"><a class="name-itemC" href="javascript:;"><span>{{ $item['qty'] }}</span></a></td>
+                                <td class="item text-center" scope="col"><a class="name-itemC" href="javascript:;"><span>{{ formatVnd($item['subtotal']) }}</span></a></td>
+                            </tr>
+                            @empty
+
+                            @endforelse
+                            <tr class="total-money">
+                                <td colspan="3" class="text-primary"><a class="name-itemC" href="javascript:;"><span>TỔNG TIỀN</span></a></td>
+                                <td><a class="name-itemC" href="javascript:;"><span>{{ $order->total_money }} đ</span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+
+            </div>
         </div>
+
+
+        @include('user::pages.component._inc_menu_user')
     </div>
 </main>
 @stop
+<script>
+    function get_product_sale(get_id) {
+        var get_id = $(get_id).attr("data-id-sale");
+        var get_total_price = $('h4.mr-1').attr('get-total-price');
+        var price_id = $('#button_sale').attr('price-id');
+        var price_slug = $('#button_sale').attr('price-slug');
+
+        $.get("{{ route('get_user.get_product_flash_sale') }}", {
+                get_id: get_id,
+                get_total_price: get_total_price
+            })
+            .done(function(data) {
+                $("#exampleModalLong .modal-body").html(data);
+            });
+    }
+</script>

@@ -1,33 +1,4 @@
-// $("body").on("click",".js-login", function(event){
-//     let URL = $("#formLogin").attr('action')
-//     event.preventDefault()
-//     $(".gd-danger").remove()
-//     $.ajax({
-//         url: URL,
-//         method : "POST",
-//         data:$('#formLogin').serialize(),
-//         success: function(results) {
-//             if(results.status === 404)
-//             {
-//                 Toastr.error(results.message)
-//                 return  false
-//             }
-//             if(results.status === 200)
-//             {
-//                 Toastr.success(results.message)
-//                 window.location.href = '/'                       
 
-//             }
-//         },
-//         error: function(xhr) {
-//             $('#validation-errors').html('');
-//             $.each(xhr.responseJSON.errors,function(field_name,error){
-//                 $("#formLogin").find('[name='+field_name+']').after('<span class="text-strong gd-danger">' +error+ '</span>')
-//             })
-
-//         },
-//     });
-// })
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -133,7 +104,7 @@ $(".js-add-cart").on('click', function() {
         },
         success: function(data) {
             console.log(data);
-            $('.js-minicart__trigger').append('<div class="c-header__minicart-count" style="bottom: -10px;right: -5px;"><span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">' +
+            $('#count-cart').append('<div class="c-header__minicart-count" style="bottom: -10px;right: -5px;"><span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">' +
                 data.count + '</span> </div>');
         },
 
@@ -193,12 +164,6 @@ $(".remove_cart_action").on('click', function() {
 
 });
 
-// function cart_order_now(cart_order_now1) {
-//     var data_url = $(cart_order_now1).attr('data-url');
-//     $.get(data_url).fail(function() {
-//         location.reload();
-//     });
-// }
 
 $('#check_vouchers').on('click', function() {
     let URL = $(this).attr('data-url');
@@ -307,5 +272,25 @@ $(function() {
         $("#show-product").animate({
             scrollTop: $(this).offset().top
         }, 1500);
+    });
+});
+$('.print_pdf').on('click', function() {
+    let data_id = $(this).attr('data-id');
+    let data_url = $(this).attr('data-url');
+    $.ajax({
+        url: data_url,
+        type: "get",
+        dataType: "text",
+        data: {
+            data_id: data_id
+        },
+        success: function(result) {
+            console.log(result);
+            window.open("/in-pdf.html?data_id=" + data_id + "")
+            // $('#myModal').html(result);
+        },
+        error: function(result) {
+            // console.log(result);
+        }
     });
 });

@@ -223,7 +223,8 @@
                                                                             id: title
                                                                         })
                                                                         .done(function(data) {
-                                                                            $('#js-minicart__trigger').html('<div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">' +
+                                                                            console.log(data);
+                                                                            $('#count-fav').html('<div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">' +
                                                                                 '<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">' + data.count + '</span>' +
                                                                                 '</div>');
                                                                                 if(data.message =='add'){
