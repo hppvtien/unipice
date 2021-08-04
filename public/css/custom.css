@@ -15,7 +15,6 @@
     padding-right: 20px;
     width: auto;
 }
-
 #uni {
     padding: .66em .9em;
     color: #fff;
@@ -24,15 +23,12 @@
     max-width: 225px;
     float: left;
 }
-
 #uni-menu {
     margin-left: -64px;
 }
-
 #uni-menu .dropdown-item {
     color: black;
 }
-
 .m-text-input {
     width: 100%;
 }
@@ -176,37 +172,12 @@ h1.page-title {
     margin-top: 4px;
 }
 
-
-/* Tien css */
-
-a.action.change-password.a-anchor,
-a.action.edit.a-anchor {
-    box-shadow: none;
+.block .box-actions .action {
     margin-right: 18px;
-    background: #0b2d25;
-    padding: 5px 20px;
-    color: #fff;
-    border-radius: 5px;
 }
 
-.fav-product {
-    display: block;
-    flex: auto!important;
-    pointer-events: none;
-}
-
-.block .box-actions .action:hover {
-    color: #fff;
-    background: linear-gradient(90deg, #0072ff 0%, #00d4ff 100%);
-    box-shadow: none;
-}
-
-.group-product {
-    flex-direction: unset!important;
-}
-
-#co-store-form input {
-    z-index: 1;
+.block .box-actions .action {
+    margin-right: 18px;
 }
 
 @media screen and (min-width: 1024px) {
@@ -321,12 +292,6 @@ a.action.edit.a-anchor {
     }
 }
 
-@media screen and (max-width: 768px) {
-    table.cart thead th {
-        padding: 0;
-    }
-}
-
 @media screen and (min-width: 768px) {
     table.cart .qty {
         padding: 0!important
@@ -433,7 +398,9 @@ a.action.edit.a-anchor {
     text-decoration: none;
     margin-left: 10px;
 }
-
+.header-v1 .site-header-cart-v2 .cart-content>a span {
+    padding-left: 0;
+}
 .c-sidebar-filters__filter .name-filler span.active {
     color: #C03235;
     font-weight: 600;
@@ -453,6 +420,6 @@ button.btn_store_submit.js-add-cart {
 
 button.btn_store_submit.js-add-cart:hover {
     background: #fff;
-    border: 2px solid #fff;
+    border:2px solid #fff;
     color: #0B2D25;
 }

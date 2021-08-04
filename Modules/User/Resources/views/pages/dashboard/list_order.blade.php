@@ -50,6 +50,7 @@
                                                 <span class="text-success">Giá sản phẩm:</span> <span>{{ number_format($items->price) }}</span><br>
                                                 @endforeach
                                             </td>
+                                            <td class="text-center">{{ config('cart.pay_type')[$item->type_pay]['name'] }}</td>
                                             <td class="text-center">{{ $item->type_pay }}</td>
                                             <td class="text-center">{{ number_format((int)$item->total_money) }}</td>
                                             <td class="text-center">{{ $item->status }}</td>

@@ -220,7 +220,8 @@
         top: 0;
     }
 
-    .checkout {
+    a.a-btn.a-btn--primary.action.primary.checkout{
+        color: #fff;
         width: 100%;
     }
 
@@ -348,12 +349,6 @@
     <div class="columns">
         <div class="column main"><input name="form_key" type="hidden" value="GXhjnhZzwPqQ9aXV">
             <div class="cart-container">
-                <div class="cart-messaging__shipping">
-                    <div class="cart-messaging__inner">
-                        <p class="cart-messaging__text">
-                            Miễn phí giao hàng với đơn hàng 10 triệu trở lên </p>
-                    </div>
-                </div>
                 <div class="text-center text-danger" id="text-qtyerr">
                 </div>
                 <div class="cart-summary"><strong class="summary title">Thông tin chi phí</strong>

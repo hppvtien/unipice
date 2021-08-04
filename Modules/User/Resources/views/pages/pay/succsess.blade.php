@@ -502,7 +502,7 @@
                               </tr>
                               <tr>
                                 <th scope="row">Hình thức thanh toán:</th>
-                                <th>{{ $order->type_pay }}</td>
+                                <th>{{ config('cart.pay_type')[$order->type_pay-1]['name'] }}</td>
                               </tr>
                               <tr>
                                 <th scope="row">Mã số thuế:</th>
@@ -527,7 +527,7 @@
                                 <tr>
                                     <th class=" item" scope="col"><span>Sản phẩm</span></th>
                                     <th class=" price" scope="col"><span>Giá</span></th>
-                                    <th class=" qty" scope="col"><span>Số lượng</span></th>
+                                    <th class=" price" scope="col"><span>Số lượng</span></th>
                                     <th class=" subtotal" scope="col"><span>Tổng tiền</span></th>
                                 </tr>
                             </thead>
@@ -537,9 +537,9 @@
                                 @forelse ($carts as $key => $item)
                                 <tr>
                                     <td class="item" scope="col"><a href="javascript:;" data-id-sale="{{ $item['id'] }}" onclick="get_product_sale(this);"><span>{{ $item['name'] }}</span></a></td>
-                                    <td class="price" scope="col"><span>{{ $item['price'] }} đ</span></td>
-                                    <td class="qty" scope="col"><span>{{ $item['qty'] }}</span></td>
-                                    <td class="subtotal" scope="col"><span>{{ $item['subtotal'] }} đ</span></td>
+                                    <td class="price" scope="col"><span>{{ formatVnd($item['price']) }} </span></td>
+                                    <td class="price" scope="col"><span>{{ $item['qty'] }}</span></td>
+                                    <td class="subtotal" scope="col"><span>{{ formatVnd($item['subtotal']) }} đ</span></td>
                                 </tr>
                                 @empty
                                     
@@ -548,6 +548,14 @@
                               <tr >
                                   <td colspan="3">TỔNG TIỀN</td>
                                   <td><span>{{ $order->total_money }} đ</span></td>
+                              </tr>
+                              <tr >
+                                  <td colspan="3">VAT</td>
+                                  <td><span></span></td>
+                              </tr>
+                              <tr >
+                                  <td colspan="3">TỔNG Đơn Hàng</td>
+                                  <td><span></span></td>
                               </tr>
                             </tbody>
                         </table>

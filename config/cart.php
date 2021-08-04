@@ -96,16 +96,16 @@ return [
             'hotline' => '096999888',
             'email' => 'thacmac@gmail.com'
         ],
-        [
-            'name' => 'Thẻ Visa/  Mastercard',
-            'type' => '3',
-            'class' => '',
-            'bank' => 'Visa - Quốc tế',
-            'account' => '111444555522',
-            'address' => 'Hai Phong',
-            'hotline' => '096999888',
-            'email' => 'thacmac@gmail.com'
-        ],
+        // [
+        //     'name' => 'Thẻ Visa/  Mastercard',
+        //     'type' => '3',
+        //     'class' => '',
+        //     'bank' => 'Visa - Quốc tế',
+        //     'account' => '111444555522',
+        //     'address' => 'Hai Phong',
+        //     'hotline' => '096999888',
+        //     'email' => 'thacmac@gmail.com'
+        // ],
         [
             'name' => 'VNPAY',
             'type' => '4',

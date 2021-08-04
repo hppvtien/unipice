@@ -515,7 +515,7 @@
                     <div class="opc-wrapper">
 
                         <div id="checkout-step-shipping" class="step-content" data-role="content">
-                            
+
                             <!--Cái này để cho phần khách hàng được thăng cấp Vàng hay kim cương gì đó-->
                             <!--<div class="block discount active" id="block-discount" data-collapsible="true" role="tablist">-->
                             <!--    <div class="content" data-role="content" aria-labelledby="block-discount-heading" role="tabpanel" aria-hidden="false" style="display: block;">-->
@@ -539,8 +539,8 @@
                             <!--        </form>-->
                             <!--    </div>-->
                             <!--</div>-->
-                            
-                            <h4 class="step-title" data-role="title">Thông tin khách hàng</h4>
+
+                            <h4 class="step-title" data-role="title"> Địa chỉ giao hàng </h4>
                             <form class="form form-shipping-address" id="co-shipping-form" data-hasrequired="* Required Fields">
                                 <div id="shipping-new-address-form" class="fieldset address">
                                     <input type="hidden" class="form-control" name="code_invoice" id="method_invoice" value="#00<?php echo rand(1000, 9999); ?>">
@@ -550,7 +550,7 @@
                                                 <label class="a-form-label m-text-input__label" for="G11F99D">
                                                     <span>Họ tên khách hàng</span>
                                                 </label>
-                                                <input class="a-text-input m-text-input__input" type="text" name="customer_name" aria-required="true" aria-invalid="false" id="customer_name">
+                                                <input class="a-text-input m-text-input__input" value="{{ $store->store_name }}" type="text" name="customer_name" aria-required="true" aria-invalid="false" id="customer_name">
                                             </div>
                                         </div>
                                     </div>
@@ -567,7 +567,7 @@
                                     <div class="field _required" name="shippingAddress.company">
                                         <div class="control">
                                             <div class="m-text-input  ">
-                                                <input class="a-text-input m-text-input__input" type="text" name="address" aria-invalid="false" id="addressck">
+                                                <input class="a-text-input m-text-input__input" value="{{ $store->store_address }}"  type="text" name="address" aria-invalid="false" id="addressck">
 
                                                 <label class="a-form-label m-text-input__label" for="addressck">
                                                     <span>Địa chỉ</span>
@@ -576,23 +576,22 @@
                                         </div>
                                     </div>
                                     <?php if (checkUid(get_data_user('web'))) { ?>
-                                    <div class="field _required" name="shippingAddress.telephone">
-                                        <div class="control _with-tooltip">
-                                            <div class="m-text-input  ">
-                                                <input class="a-text-input m-text-input__input" type="text" name="taxcode" aria-required="true" aria-invalid="false" id="taxcodeck">
-                                                <label class="a-form-label m-text-input__label" for="taxcodeck">
-                                                    <span>Mã số thuế</span>
-                                                </label>
+                                        <div class="field _required" name="shippingAddress.telephone">
+                                            <div class="control _with-tooltip">
+                                                <div class="m-text-input  ">
+                                                    <input class="a-text-input m-text-input__input" type="text"  value="{{ $store->store_taxcode }}"  name="taxcode" aria-required="true" aria-invalid="false" id="taxcodeck">
+                                                    <label class="a-form-label m-text-input__label" for="taxcodeck">
+                                                        <span>Mã số thuế</span>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <?php } else {
-
                                     } ?>
                                     <div class="field _required" name="shippingAddress.fax">
                                         <div class="control">
                                             <div class="m-text-input  ">
-                                                <input class="a-text-input m-text-input__input" type="text" name="phone" aria-invalid="false" id="phoneck">
+                                                <input class="a-text-input m-text-input__input"  value="{{ $store->store_phone }}"  type="text" name="phone" aria-invalid="false" id="phoneck">
                                                 <label class="a-form-label m-text-input__label" for="phoneck">
                                                     <span>Số điện thoại</span>
                                                 </label>
@@ -602,7 +601,7 @@
                                     <div class="field _required pay_type">
                                         @foreach (config('cart.pay_type') as $key => $item)
                                         <div class="validContainer addressOption selected m-radio-button">
-                                            <input type="radio" class="validAddress m-radio-button__input" name="type_pay" {{ $key == 0 ? "checked" : " "; }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
+                                            <input type="radio" class="validAddress m-radio-button__input" name="type_pay" {{ $key == 0 ? 'checked' : ' '; }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
                                             <label class="addressLabel" for="valid-{{ $item['type'] }}">
                                                 <span class="m-radio-button__circle"></span>
                                                 <div class="optionTitle m-radio-button__text-label">{{ $item['name'] }}</div>
@@ -631,13 +630,11 @@
                             <div id="opc-sidebar">
                                 <div class="opc-block-summary">
                                     <div class="order-summary__heading" style="margin-left: 20px">
-                                        <span class="title">Thông tin đơn hàng</span>
+                                        <h5 class="title">Thông tin đơn hàng</span>
                                     </div>
                                     <div class="block items-in-cart" data-collapsible="true" role="tablist">
                                         <div class="title items-in-cart__title" style="margin-left: 20px" data-role="title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
-                                            <span>
-                                                <span>Sản phẩm đã mua</span>
-                                            </span>
+                                            <h6 class="title">Sản phẩm đã mua</h3>
                                         </div>
                                         <div class="content minicart-items" data-role="content" role="tabpanel" aria-hidden="true">
                                             @foreach ($listCarts as $key => $item)
@@ -659,18 +656,18 @@
                                                                             <span class="value">{{ $item->qty }}</span>
                                                                         </div>
                                                                     </div>
-                                                                   
+
                                                                     <div class="subtotal">
                                                                         <span class="label">Đơn giá: </span><br>
-                                                                       <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ formatVnd($item->price) }} 
-                                                                                <?php if($item->options->sale == 'combo' ){
-                                                                                    echo '/ combo';
-                                                                                } elseif($item->options->sale == 'user'){
-                                                                                    echo '/ hộp';
-                                                                                } else {
-                                                                                    echo '/ thùng';
-                                                                                } ?>
-                                                                        </span> 
+                                                                        <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ formatVnd($item->price) }}
+                                                                            <?php if ($item->options->sale == 'combo') {
+                                                                                echo '/ combo';
+                                                                            } elseif ($item->options->sale == 'user') {
+                                                                                echo '/ hộp';
+                                                                            } else {
+                                                                                echo '/ thùng';
+                                                                            } ?>
+                                                                        </span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -679,6 +676,35 @@
                                                 </ol>
                                             </div>
                                             @endforeach
+                                            <div class="minicart-items-wrapper overflowed">
+                                                <ul class="minicart-items list-priceCart" style="margin-left: 20px;">
+                                                    <li class="product-item">
+                                                        <div class="product-item-name-block">
+                                                            <div class="details-qty">
+                                                                <span class="label">Tổng tiền: </span>
+                                                                <span class="value">{{ \Cart::subtotal(0,0,'.') }} đ</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="product-item">
+                                                        <div class="product-item-name-block">
+                                                            <div class="details-qty">
+                                                                <span class="label">Vat: </span>
+                                                                <span class="value">{{ \Cart::tax(0,0,'.') }} đ</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="product-item">
+                                                        <div class="product-item-name-block">
+                                                            <div class="details-qty">
+                                                                <span class="label">Tổng đơn hàng: </span>
+                                                                <span class="value">{{ \Cart::total(0,0,'.') }} đ</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

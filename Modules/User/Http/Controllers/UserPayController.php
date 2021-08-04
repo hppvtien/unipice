@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use App\Models\Configuration;
 use App\Models\Voucher;
 use App\Models\Uni_Product;
+use App\Models\Uni_Store;
 use App\Models\User_voucher;
 use Modules\Admin\Http\Requests\BillRequest;
 use GuzzleHttp\Psr7\Message;
@@ -24,10 +25,10 @@ class UserPayController extends UserController
     {
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
-       
+        $uni_store = Uni_Store::where('user_id', get_data_user('web'))->first();
         if ($listCarts->isEmpty()) return redirect()->to('/');
         $viewData = [
-     
+            'store'=>$uni_store,
             'listCarts' => $listCarts
         ];
         // \Cart::destroy();    
@@ -38,6 +39,7 @@ class UserPayController extends UserController
     { 
        
         \SEOMeta::setTitle('Thanh toán');
+        
         $listCarts = \Cart::content();
         foreach(json_decode($listCarts) as $item){
             if($item->options->sale == 'combo'){
@@ -61,7 +63,8 @@ class UserPayController extends UserController
             'cart_info'=>$listCarts,
             'combo_id'=>$combo_id,
             'total_money'=>\Cart::total(0,0,'.'),
-            'created_at'=>Carbon::now()
+            'created_at'=>Carbon::now(),
+           
         ];
         
         $idOrder = Uni_Order::insertGetId($order_data); 
