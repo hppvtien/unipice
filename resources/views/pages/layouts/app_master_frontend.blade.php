@@ -59,7 +59,9 @@
 
     <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
         <div class="layout-container">
-            @include('pages.components.headers._inc_header') @yield('contents') @include('pages.components.footer._inc_footer')
+            @include('pages.components.headers._inc_header') 
+            @yield('contents') 
+            @include('pages.components.footer._inc_footer')
         </div>
     </div>
 

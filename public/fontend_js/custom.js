@@ -294,3 +294,12 @@ $('.print_pdf').on('click', function() {
         }
     });
 });
+$( window ).on('scroll',function() {
+    let height_d = $(window).scrollTop();
+    if(height_d > 120){
+        $('.site-header').addClass('fixed-menu');
+    } else {
+        $('.site-header').removeClass('fixed-menu'); 
+    }
+  });
+

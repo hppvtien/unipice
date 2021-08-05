@@ -308,9 +308,12 @@ tr.order-list-li th {
     .site-header {
         z-index: 10000;
         padding: 10px 0;
-        position: fixed;
+        /* position: fixed; */
         width: 100%;
         top: 0px;
+    }
+    .fixed-menu{
+        position: fixed;
     }
     .pizzaro-logo {
         max-height: fit-content;

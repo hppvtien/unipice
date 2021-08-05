@@ -20,4 +20,6 @@ Route::prefix('blog-post')->namespace('Blog Post')->group(function (){
         Route::get('delete/{id}', 'AdminPostController@delete')->name('get_admin.post.delete');
     });
     
+    
 });
+

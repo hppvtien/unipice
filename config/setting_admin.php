@@ -60,7 +60,7 @@ return [
                     'name' => 'Lô hàng',
                     'route' => 'get_admin.uni_lotproduct.index'
                 ],
-               
+
             ]
         ],
         [
@@ -145,16 +145,20 @@ return [
                 ],
             ]
         ],
-        // [
-        //     'name' => 'Free Ebook',
-        //     'class-icon' => 'la la-database',
-        //     'sub' => [
-        //         [
-        //             'name' => 'Danh sách',
-        //             'route' => 'get_admin.free_book.index'
-        //         ],
-        //     ]
-        // ],
+        [
+            'name' => 'Đánh giá và bình luận',
+            'class-icon' => 'la la-database',
+            'sub' => [
+                [
+                    'name' => 'Bình luận',
+                    'route' => 'get_admin.uni_comment.index'
+                ],
+                [
+                    'name' => 'Đánh giá',
+                    'route' => 'get_admin.uni_comment.index_rv'
+                ],
+            ]
+        ],
         // [
         //     'name' => 'Jobs',
         //     'class-icon' => 'la la-database',
@@ -211,7 +215,7 @@ return [
                 ],
             ]
         ],
-        
-        
+
+
     ]
 ];

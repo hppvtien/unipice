@@ -39,7 +39,14 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('delete/{id}', 'AdminCategoryController@delete')->name('get_admin.category.delete')->middleware('permission:category_delete|full');
     });
 
-
+    Route::prefix('comment_review')->group(function (){
+        Route::get('/question', 'AdminUniCommentController@index')->name('get_admin.uni_comment.index');
+        Route::get('/review', 'AdminUniCommentController@index_rv')->name('get_admin.uni_comment.index_rv');
+        Route::post('/review', 'AdminUniCommentController@editRv')->name('get_admin.uni_comment.editrv');
+        Route::get('update/{id}', 'AdminUniCommentController@edit')->name('get_admin.uni_comment.edit');
+        Route::post('update/{id}', 'AdminUniCommentController@update');
+        Route::get('delete/{id}', 'AdminUniCommentController@delete')->name('get_admin.uni_comment.delete');
+    });
     Route::prefix('slide')->group(function (){
         Route::get('/', 'AdminSlideController@index')->name('get_admin.slide.index')->middleware('permission:slide_index|full');
         Route::get('/create', 'AdminSlideController@create')->name('get_admin.slide.create')->middleware('permission:slide_create|full');

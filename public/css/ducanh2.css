@@ -845,8 +845,9 @@ textarea,
     cursor: pointer;
     padding: 14px 16px;
     font-size: 17px;
-    width: 50%;
-    border-bottom: 1px solid #11332b;
+    width: 100%;
+    box-shadow: inset 1px -1px 20px rgb(232, 128, 18);
+        transition: box-shadow .2s ease-in-out;
 }
 
 .tablink:hover {
@@ -864,11 +865,33 @@ textarea,
 .tabcontent {
     color: #0b2d25;
     display: none;
-    padding: 100px 20px;
+    padding: 50px 20px;
     height: 100%;
 }
 
-.form-control {
-    color: transparent;
-    text-shadow: 0 0 0 #495057;
+
+textarea#noi_dung_commnet,textarea#noi_dung_question {
+    color: #0b2d25;
+    border: 1px solid #b1b1b1;
+    text-shadow: 0 0 0 #c5c8ca;
+}
+.m-text-input .label-comt{
+    border: 1px solid #b1b1b1;
+    border-radius: 5px;
+}
+label.m-text-input__label{
+    top: 10px;
+}
+.label-lb{
+    top: 10px!important;
+}
+.group-cmt:last-child{
+    margin-bottom: 10px;
+}
+.answer-gr {
+    margin-left: 30px;
+}
+.answer-gr .mar-btm a {
+    margin-top: 0;
+    margin-bottom: 0;
 }
