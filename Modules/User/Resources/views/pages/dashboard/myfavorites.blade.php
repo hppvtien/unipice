@@ -25,7 +25,7 @@
                             <select onchange="get_data1();" class="m-sort-by__select frontier-custom-sort" id="sort_by" name="sort_by" aria-label="Sort By">
                                 <option value="0" selected="">Chọn Danh Mục Sản Phẩm</option>
                                 @foreach ($category_menu as $l)
-                                    <option value="{{ $l->id }}">{{ $l->name }}</option>
+                                <option value="{{ $l->id }}">{{ $l->name }}</option>
                                 @endforeach
                             </select>
                             <span class="m-sort-by__arrow"></span>
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="t-plp__grid js-plp-grid show-product" id="show-product">
-                
+
                 @foreach ($product_list as $value)
                 <div class="loadmore1 t-plp__product margin_top_list" data-animate-grid-id="0.7226111054869209" style="transform-origin: 0px 0px;">
                     <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;">
@@ -55,7 +55,7 @@
                                     <form class="m-product-card__add-to-cart">
                                         <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn" type="submit">Thêm Vào Giỏ</button>
                                         <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" type="&quot;submit&quot;">
-                                        <span class="icon-add-to-cart"></span>
+                                            <span class="icon-add-to-cart"></span>
                                         </button>
                                     </form>
                                 </div>
@@ -80,62 +80,70 @@
                 </div>
                 @endforeach
             </div>
-            <div >
-                <a href="#" id="loadMore">Xem Thêm</a>
-            </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
-    <script>
-        function get_data1(){
-            var sort_by = $('#sort_by').val();
-            var order_by = $('#order_by').val();
+            <?php if (count($product_list) > 4) { ?>
+                <div>
+                    <a href="#" id="loadMore">Xem Thêm</a>
+                </div>
+            <?php } else { ?>
+                
+            <?php } ?>
 
-            $.get( "{{ route('get_user.myfavorites_filter') }}", { sort_by: sort_by, order_by: order_by } )
-                .done(function( data ) {
-                $( "#show-product" ).html( data );
-            });
-        }
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+            <script>
+                function get_data1() {
+                    var sort_by = $('#sort_by').val();
+                    var order_by = $('#order_by').val();
 
-        function check_my_favorites(my_id){
-            var title = $(my_id).attr('my-id');
-            $.get( "{{ route('get_user.myfavorites_delete') }}", { id: title} )
-            .done(function( data ) {
-                alert(data);
-                location.reload();
-            });
-        }
-        
-       
-        $(function () {
-            $(".loadmore1").slice(0, 4).show();
-                $("#loadMore").on("click", function (e) {
-                    e.preventDefault();
-                    $(".loadmore1:hidden").slice(0, 4).slideDown();
-                    if ($(".loadmore1:hidden").length == 0) {
-                        $("#load").fadeOut("slow");
-                    }
-                    $("#show-product").animate({
-                        scrollTop: $(this).offset().top
-                    }, 1500);
-                });
-            });
-
-            $("a[href=#top]").click(function () {
-                $("#show-product").animate({
-                    scrollTop: 0
-                }, 600);
-                return false;
-            });
-
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 50) {
-                    $(".totop a").fadeIn();
-                } else {
-                    $(".totop a").fadeOut();
+                    $.get("{{ route('get_user.myfavorites_filter') }}", {
+                            sort_by: sort_by,
+                            order_by: order_by
+                        })
+                        .done(function(data) {
+                            $("#show-product").html(data);
+                        });
                 }
-            });
-            
-    </script>
+
+                function check_my_favorites(my_id) {
+                    var title = $(my_id).attr('my-id');
+                    $.get("{{ route('get_user.myfavorites_delete') }}", {
+                            id: title
+                        })
+                        .done(function(data) {
+                            alert(data);
+                            location.reload();
+                        });
+                }
+
+
+                $(function() {
+                    $(".loadmore1").slice(0, 4).show();
+                    $("#loadMore").on("click", function(e) {
+                        e.preventDefault();
+                        $(".loadmore1:hidden").slice(0, 4).slideDown();
+                        if ($(".loadmore1:hidden").length == 0) {
+                            $("#load").fadeOut("slow");
+                        }
+                        $("#show-product").animate({
+                            scrollTop: $(this).offset().top
+                        }, 1500);
+                    });
+                });
+
+                $("a[href=#top]").click(function() {
+                    $("#show-product").animate({
+                        scrollTop: 0
+                    }, 600);
+                    return false;
+                });
+
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 50) {
+                        $(".totop a").fadeIn();
+                    } else {
+                        $(".totop a").fadeOut();
+                    }
+                });
+            </script>
 </main>
 
 @stop
-

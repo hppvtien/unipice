@@ -84,8 +84,35 @@
                                                                 <span class="m-price-lockup__price">
                                                                     <?php if (checkUid(get_data_user('web')) != null) { ?>
                                                                         <span class="a-price">
-                                                                            Giá: {{ $product->price_sale_store == '' ? 'liên hệ': formatVnd($product->qty_in_box * $product->price_sale_store) }}
+                                                                            Giá: {{ $product->price_sale_store == '' ? 'liên hệ': $product->price_sale_store }}
                                                                         </span>
+                                                                        <div role="article" class="m-product-overview__price-wrapper">
+                                                                            <div class="m-price-lockup">
+                                                                                <span class="m-price-lockup__price">
+                                                                                    <span class="a-qty">
+                                                                                        Thùng: {{ $product->qty_in_box == null ? 'Đang cập nhật' : $product->qty_in_box }} hộp
+                                                                                    </span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div role="article" class="m-product-overview__price-wrapper">
+                                                                            <div class="m-price-lockup">
+                                                                                <span class="m-price-lockup__price">
+                                                                                    <span class="a-qty">
+                                                                                        Số lượng: {{ $product->min_box == null ? 'Đang cập nhật' : $product->min_box }} trở lên
+                                                                                    </span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div role="article" class="m-product-overview__price-wrapper">
+                                                                            <div class="m-price-lockup">
+                                                                                <span class="m-price-lockup__price">
+                                                                                    <span class="a-qty">
+                                                                                        Giá: {{ formatVnd($product->qty_in_box * $product->price_sale_store == null ? 'Đang cập nhật' : $product->qty_in_box * $product->price_sale_store) }}/thùng
+                                                                                    </span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
                                                                     <?php } else { ?>
                                                                         <span class="a-price">
                                                                             Giá: {{ $product->price == '' ? 'liên hệ': formatVnd($product->price) }}
@@ -134,32 +161,16 @@
                                                                 </div>
                                                             <?php } else { ?>
                                                                 <div class="m-product-card__add-to-cart col-md-6 col-lg-6 col-12" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
-                                                                    <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">
-                                                                        <?php if (get_data_user('web')) {
-                                                                            echo "Thêm giỏ hàng";
-                                                                        } else {
-                                                                            echo "Đăng nhập để mua hàng";
-                                                                        } ?>
+                                                                    <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">
+                                                                        Thêm giỏ hàng
                                                                     </button>
                                                                 </div>
                                                             <?php } ?>
                                                             <div class="m-product-card__add-to-cart col-md-6 col-lg-6 col-12" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
-                                                                <button style="display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn " onclick="check_my_favorites_add(this);" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">Yêu thích</button>
+                                                                <button style="display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn " data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user('web') !=null ? get_data_user('web') : 0 }} onclick="{{ get_data_user('web') !=null ? 'check_my_favorites_add(this)' : 'unset' }};" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">Yêu thích</button>
 
                                                             </div>
                                                         </div>
-                                                        <script>
-                                                            function check_my_favorites_add(my_id) {
-                                                                var title = $(my_id).attr('data-id');
-                                                                $.get("{{ route('get_user.myfavorites_add') }}", {
-                                                                        id: title
-                                                                    })
-                                                                    .done(function(data) {
-                                                                        alert(data);
-                                                                        location.reload();
-                                                                    });
-                                                            }
-                                                        </script>
                                                     </div>
                                                     <!-- Review :: this should be removed -->
                                                     <div id="share">
@@ -286,7 +297,6 @@
                                             </div>
                                         </div>
                                         <div>
-
                                             <div>
                                                 <!-- Newsfeed Content -->
                                                 <!--===================================================-->
@@ -309,8 +319,6 @@
                                                     </div>
                                                 </div>
                                                 @endforeach
-
-
                                                 <!--===================================================-->
                                                 <!-- End Newsfeed Content -->
                                             </div>
@@ -434,7 +442,6 @@
                                             </a>
                                         </li>
                                         @empty @endforelse
-
 
                                     </ul>
                                     <div class="a-carousel-indicator a-carousel-indicator--no-bullets a-carousel-indicator--arrows c-categories-slider__arrows">

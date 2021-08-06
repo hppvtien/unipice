@@ -565,12 +565,16 @@ a.text-muted:focus {
 }
 
 #formLogin #pass {
+    border: 1px solid #0b2d25;
     color: #0b2d25;
     outline: none;
     -webkit-appearance: none;
     box-sizing: border-box;
     font-weight: normal;
     border-radius: 0px;
+}
+span.rigister-text{
+    color: #fff;
 }
 
 input[type="text"],
@@ -908,10 +912,13 @@ label.m-text-input__label{
 } 
 .icon-favorite.a-icon-text-btn__icon {
     flex: 0 0 20%;
-    max-width: 20%;
+    max-width: 100%;
     margin: auto;
 }
 button.btn.btn-sm.btn-primary.pull-right{
     height: 48px;
     width: 100%;
+}
+.header-v1 .site-header-cart-v2 .cart-content {
+    margin-left: calc(100% - 250px);
 }

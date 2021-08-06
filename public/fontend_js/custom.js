@@ -193,6 +193,10 @@ $("#pay_success").on('click', function() {
     var address = $("input[name='address']").val();
     var type_pay = $("input[name='type_pay']:checked").val();
     var vouchers = $("input[name='vouchers']").val();
+    if(customer_name == ''){
+        
+    }
+    alert(customer_name);
     $.ajax({
         url: data_url,
         method: "post",
@@ -209,7 +213,7 @@ $("#pay_success").on('click', function() {
         },
         success: function success(results) {
             console.log(results);
-            window.location.href = results;
+            // window.location.href = results;
         },
         error: function error(results) {
             console.log('Loizzzzzzzzz');

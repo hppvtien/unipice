@@ -51,7 +51,7 @@
                                 <p>Tạo tài khoản có nhiều lợi ích: Thanh toán nhanh hơn, theo dõi đơn đặt hàng và hơn thế nữa.</p>
                                 <div class="actions-toolbar">
                                     <div class="primary">
-                                        <a href="{{ route('get.register') }}" class="a-btn a-btn--primary create primary"><span>Tạo tài khoản khách hàng</span></a>
+                                        <a href="{{ route('get.register') }}" class="a-btn a-btn--primary create primary"><span class="rigister-text">Tạo tài khoản khách hàng</span></a>
                                     </div>
                                 </div>
                             </div>

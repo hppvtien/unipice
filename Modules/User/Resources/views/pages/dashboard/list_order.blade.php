@@ -88,7 +88,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <td class="text-center">{{ config('cart.pay_type')[$item->type_pay - 1]['name'] }}</td>
+                                            <td class="text-center">{{ config('cart.pay_type')[$item->type_pay]['name'] }}</td>
                                             <td class="text-center">{{ $item->total_money }} đ</td>
                                             <td class="text-center">{{ $item->status }}</td>
                                             <td class="text-center">

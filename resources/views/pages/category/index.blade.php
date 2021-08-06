@@ -161,8 +161,8 @@
                                                                                     </form>
                                                                                 <?php } else { ?>
                                                                                     <form class="m-product-card__add-to-cart">
-                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
-                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" type="&quot;submit&quot;">
+                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
+                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" data-target=".login-js" data-toggle="modal" type="&quot;submit&quot;">
                                                                                             <span class="icon-add-to-cart"></span>
                                                                                         </button>
                                                                                     </form>
@@ -175,7 +175,7 @@
                                                                                             {{ $item->name }}
                                                                                         </span>
                                                                                     </a>
-                                                                                    <span my-id="{{ $item->id }}" id="red_heart{{ $item->id }}" onclick="check_my_favorites_add(this);" class="icon-favorite  a-icon-text-btn__icon  {{ red_heart($item->id,get_data_user('web')) != 0 ? 'red':''; }}" aria-hidden=""></span>
+                                                                                    <span my-id="{{ $item->id }}" id="red_heart{{ $item->id }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user('web') !=null ? get_data_user('web') : 0 }} onclick="{{ get_data_user('web') !=null ? 'check_my_favorites_add(this)' : 'unset' }};" class="icon-favorite  a-icon-text-btn__icon  {{ red_heart($item->id,get_data_user('web')) != 0 ? 'red':''; }}" aria-hidden=""></span>
                                                                                 </div>
                                                                                 <div class="m-combined-product-name">
                                                                                     <a class="m-combined-product-name__link" href="javascript:;">
@@ -216,9 +216,12 @@
                                                             </div>
                                                             @empty
                                                             @endforelse
+
                                                             <script>
                                                                 function check_my_favorites_add(my_id) {
                                                                     var title = $(my_id).attr('my-id');
+                                                                    var uid = $(my_id).attr('data-uid');
+
                                                                     $.get("{{ route('get_user.myfavorites_add') }}", {
                                                                             id: title
                                                                         })
@@ -227,15 +230,17 @@
                                                                             $('#count-fav').html('<div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">' +
                                                                                 '<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">' + data.count + '</span>' +
                                                                                 '</div>');
-                                                                                if(data.message =='add'){
-                                                                                    console.log(data);
-                                                                                    $('#red_heart'+title).addClass('red');
-                                                                                } else {
-                                                                                    console.log(data);
-                                                                                    $('#red_heart'+title).removeClass('red');
-                                                                                };
-                                                                                
+                                                                            if (data.message == 'add') {
+                                                                                console.log(data);
+                                                                                $('#red_heart' + title).addClass('red');
+                                                                            } else {
+                                                                                console.log(data);
+                                                                                $('#red_heart' + title).removeClass('red');
+                                                                            };
+
                                                                         });
+
+
                                                                 }
                                                             </script>
 
@@ -272,9 +277,13 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12 col-xs-12">
-                                                    <a href="javascript:;" id="loadMore">Xem Thêm</a>
-                                                </div>
+                                                <?php if (count($product) > 4) { ?>
+                                                    <div>
+                                                        <a href="#" id="loadMore">Xem Thêm</a>
+                                                    </div>
+                                                <?php } else { ?>
+
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>

@@ -203,6 +203,11 @@ tr.order-list-li th {
     .secondary-navigation ul.nav-menu > li.menu-item > a {
         padding: 0;
     }
+    .m-category-card {
+        height: auto;
+        width: 349px;
+        max-height: 380px;
+    }
     .header-v1 .main-navigation {
         width: 10%;
     }
