@@ -3,8 +3,8 @@
     <div class="container-fluid">
         <div class="main-header-left ">
             <div class="responsive-logo">
-                <a href="/"><img src="{{ asset('img/brand/logo.png') }}" class="logo-1" alt="logo"></a>
-                <a href="/"><img src="{{ asset('img/brand/logo-white.png') }}" class="dark-logo-1" alt="logo"></a>
+                <a href="/"><img src="{{ pare_url_file($configuration->logo) }}" class="logo-1" alt="logo"></a>
+                <a href="/"><img src="{{ pare_url_file($configuration->logo) }}" class="dark-logo-1" alt="logo"></a>
                 <a href="/"><img src="{{ asset('img/brand/favicon.png') }}" class="logo-2" alt="logo"></a>
                 <a href="/"><img src="{{ asset('img/brand/favicon.png') }}" class="dark-logo-2" alt="logo"></a>
             </div>

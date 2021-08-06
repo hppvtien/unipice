@@ -488,18 +488,15 @@
                     </div>
                     <div class="cart main actions">
                         <div class="cart-actions">
-                            <button type="button" onClick="window.location.reload();" name="update_cart_action" title="Update Shopping Cart" class="a-btn a-btn--primary action update update_cart_action">
-                                <span>Cập nhật giỏ hàng</span>
-                            </button>
-                            {{-- <button type="button" name="update_cart_action" data-cart-empty="" value="empty_cart" title="Clear Shopping Cart" class="a-btn a-btn--secondary action clear" id="empty_cart_button">
-                                <span>Xóa giỏ hàng</span>
-                            </button> --}}
+                            <a href="{{ route('get.home') }}" type="button" name="update_cart_action" title="Update Shopping Cart" class="a-btn a-btn--primary action update update_cart_action">
+                                <span>Tiếp tục mua hàng</span>
+                            </a>
                         </div>
 
                         <div class="cart-continue">
-                            <a class="action continue a-anchor" href="/" title="Continue Shopping">
-                                <span>Tiếp tục mua hàng</span>
-                            </a>
+                            <button class="action continue a-anchor" onClick="window.location.reload();" title="Continue Shopping">
+                                <span>Cập nhật giỏ hàng</span>
+                            </button>
                         </div>
                     </div>
                 </form>

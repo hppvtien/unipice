@@ -196,7 +196,6 @@ $("#pay_success").on('click', function() {
     if(customer_name == ''){
         
     }
-    alert(customer_name);
     $.ajax({
         url: data_url,
         method: "post",
@@ -212,8 +211,8 @@ $("#pay_success").on('click', function() {
             email: email
         },
         success: function success(results) {
-            console.log(results);
-            // window.location.href = results;
+            // console.log(results);
+            window.location.href = results;
         },
         error: function error(results) {
             console.log('Loizzzzzzzzz');

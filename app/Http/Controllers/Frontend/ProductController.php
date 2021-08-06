@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Uni_Product;
 use App\Models\Product_Category;
+use App\Models\Uni_Category;
 use App\Models\Product_Trade;
 use App\Models\Uni_Trade;
 use App\Models\Uni_Comment;
@@ -21,15 +22,13 @@ class ProductController extends Controller
     public function index($slug)
     {
         $id_product = Uni_Product::select('id')->where('slug', $slug)->first();
-
         $noi_dung_comment = Uni_Comment::where('product_id', '=', $id_product->id)->where('type_comment', 'product')->where('status', 1)->where('type','review')->get();
         $noi_dung_question = Uni_Comment::where('product_id', '=', $id_product->id)->where('type_comment', 'product')->where('status', 1)->where('type','question')->get();
-
         $user_ids = get_data_user('web');
-
         $product = Uni_Product::where('slug', $slug)->first();
         $trade_id = Product_Trade::where('product_id', $product->id)->pluck('trade_id')->first();
         $cat_id = Product_Category::where('product_id', $product->id)->pluck('category_id')->first();
+        $cat_data = Uni_Category::where('id', $cat_id)->first();
         $grp_id = Product_Category::where('category_id', $cat_id)->pluck('product_id');
         $trade_name = Uni_Trade::where('id', $trade_id)->pluck('name')->first();
         $uid = get_data_user('web');
@@ -42,6 +41,7 @@ class ProductController extends Controller
             ->first();
         $viewdata = [
             'product' => $product,
+            'cat_data' => $cat_data,
             'trade_name' => $trade_name,
             'uid' => $uid,
             'product_related' => $product_related,

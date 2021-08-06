@@ -17,6 +17,9 @@
                                                 <a class="a-anchor" href="/">Home</a>
                                             </li>
                                             <li class="m-breadcrumb__item">
+                                                <a class="a-anchor" href="{{ getSlugCategory($cat_data->name) }}">{{ $cat_data->name }}</a>
+                                            </li>
+                                            <li class="m-breadcrumb__item">
                                                 <a class="a-anchor" href="{{ getSlugProduct($product->slug) }}"> {{ $product->name }} </a>
                                             </li>
                                         </ol>
@@ -201,15 +204,15 @@
 
                         <div class="layout layout--onecol">
                             <div class="col-md-12 container">
-                                <div class="row no-gutters">
+                                <div class="row">
                                     <div class="col-md-4 col-lg-4 col-12">
-                                        <button class="tablink " onclick="openPage('Home', this, '#e88012')">Chi Tiết</button>
+                                        <button id="defaultOpen" class="tablink " onclick="openPage('Home', this, '#e88012')">Chi Tiết</button>
                                     </div>
                                     <div class="col-md-4 col-lg-4 col-12">
                                         <button class="tablink" onclick="openPage('News', this, '#e88012')">Đánh Giá</button>
                                     </div>
                                     <div class="col-md-4 col-lg-4 col-12">
-                                        <button id="defaultOpen" class="tablink" onclick="openPage('question', this, '#e88012')">Đặt câu hỏi</button>
+                                        <button class="tablink" onclick="openPage('question', this, '#e88012')">Đặt câu hỏi</button>
                                     </div>
                                 </div>
                                 <div id="Home" class="tabcontent">
@@ -218,10 +221,12 @@
 
                                 <div id="News" class="tabcontent">
                                     <div class="">
-                                        <div>
-                                            <textarea id="noi_dung_commnet" class="form-control" rows="2" placeholder="Hãy để lại bình luận của bạn...!"></textarea>
-                                            <div class="mar-top clearfix">
-                                                <button token="{{ csrf_token() }}" data-type="review" onclick="add_comment_user(this);" product_id="{{ $product->id }}" user_id="@php echo $user_id; @endphp" class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Bình Luận</button>
+                                        <div class="row" id="review-box">
+                                            <textarea id="noi_dung_commnet" class="form-control col-12" rows="2" placeholder="Hãy để lại bình luận của bạn...!"></textarea>
+                                            <div class="mar-top clearfix col-md-4 col-lg-4 col col-12">
+                                                <button token="{{ csrf_token() }}" data-type="review" onclick="add_comment_user(this);" product_id="{{ $product->id }}" 
+                                                user_id="@php echo $user_id; @endphp" class="btn btn-sm btn-primary pull-right" 
+                                                type="submit"><i class="fa fa-pencil fa-fw"></i> Bình Luận</button>
                                             </div>
                                         </div>
                                         <div>
@@ -263,7 +268,7 @@
 
                                             <textarea id="noi_dung_question" class="form-control" rows="2" placeholder="Hãy để lại câu hỏi của bạn...!"></textarea>
                                             <div class="row">
-                                                <div class="col-md-6 col-lg-6 col-12 group-name">
+                                                <div class="col-md-6 col-lg-4 col-12 group-name">
                                                     <div class="field email required">
                                                         <div class="m-text-input m-text-input--placeholder-label control group-cmt">
                                                             <input name="name" id="name" type="email" class="m-text-input__input input-text label-comt" title="Name">
@@ -271,7 +276,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 col-lg-6 col-12 group-name">
+                                                <div class="col-md-6 col-lg-4 col-12 group-name">
                                                     <div class="field email required">
                                                         <div class="m-text-input m-text-input--placeholder-label control group-cmt">
                                                             <input name="phone" id="phone" type="email" class="m-text-input__input input-text label-comt" title="Phone">
@@ -279,7 +284,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 col-lg-6 col-12 group-name">
+                                                <div class="col-md-6 col-lg-4 col-12 group-name">
                                                     <div class="field email required">
                                                         <div class="m-text-input m-text-input--placeholder-label control group-cmt">
                                                             <input name="email" id="email" type="email" class="m-text-input__input input-text label-comt" title="Email">
@@ -287,10 +292,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 col-lg-6 col-12 group-name">
+                                                <div class="col-md-6 col-lg-4 col-12 group-name">
                                                     <div class="field email required">
                                                         <div class="m-text-input m-text-input--placeholder-label control group-cmt">
-                                                            <button token="{{ csrf_token() }}" data-type="question" onclick="add_comment_user(this);" product_id="{{ $product->id }}" user_id="@php echo $user_id; @endphp" class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Bình Luận</button>
+                                                            <button token="{{ csrf_token() }}" data-type="question" onclick="add_comment_user(this);" product_id="{{ $product->id }}" user_id="@php echo $user_id; @endphp" class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Gửi câu hỏi</button>
                                                         </div>
                                                     </div>
                                                 </div>

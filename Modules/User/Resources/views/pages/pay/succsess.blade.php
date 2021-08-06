@@ -562,7 +562,8 @@
                     </div>
                 </div>
                 <div class="block block-dashboard-info col-md-12 col-xs-12 noi_left cach_top_bottom">
-                    <h2 class="text-success text-center" style="margin:0 auto">Đơn hàng của bạn đang được xử lý</h2>
+                    <h2 class="text-success text-center" style="margin:0 auto">Vui Lòng thanh toán đơn hàng {{ $order->code_invoice }} của bạn. 
+                        Đơn hàng {{ $order->code_invoice }} của bạn chỉ có giá trị khi bạn đã thanh toán</h2>
                 </div>
         </div>
         

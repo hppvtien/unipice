@@ -13,7 +13,7 @@
                 <div class="primary-navigation">
                     <ul id="menu-main-menu" class="menu nav-menu" aria-expanded="false">
                         <li class="menu-item"><a href="{{ route('get.register.b2b') }}">B2B</a></li>
-                        <li class="menu-item"><a href="shop-grid-3-column.html">Spice Club</a></li>
+                        <li class="menu-item"><a href="javascript:;">Spice Club</a></li>
                         <li class="menu-item"><a href="{{ route('get.find') }}">Tìm Cửa hàng</a></li>
                         <li class="menu-item"><a href="{{ route('get.about') }}">Giới Thiệu</a></li>
                     </ul>
@@ -25,27 +25,21 @@
                 <div class="header-phone-numbers">
                     <ul class="menu_class_menu">
                         <li>
-                            <img src="https://www.countryflags.io/us/flat/32.png" alt="">
+                            <img src="{{ asset('img/brand/32_UA.png') }}" alt="">
                         </li>
                         <li>
-                            <img src="https://www.countryflags.io/vn/flat/32.png" alt="">
+                            <img src="{{ asset('img/brand/32_VN.png') }}" alt="">
                         </li>
                     </ul>
                     <a href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i> {{ formatPhoneNumber($configuration->hotline) }}</span></a>
                 </div>
                 <ul class="site-header-cart-v2 menu">
                     <li class="cart-content ">
-                        <a href="{{ route('get_user.cart') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger" id="count-cart">
-                            <span class="icon-cart a-icon-text-btn__icon" aria-hdden="true"></span>
-                            <span class="a-icon-text-btn__label">My Cart </span>
-                            <?php $dem = count(\Cart::content()); ?>
-                            @if(get_data_user('web') == null || $dem == 0)
-                            <div></div>
-                            @else
-                            <div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">
-                                <span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">{{ $dem }}</span>
-                            </div>
-                            @endif
+                        <a href="javascript:;" id="wrap">
+                            <form action="{{ route('get.search') }}" autocomplete="off">
+                                <input id="search" name="search" type="text" placeholder="Tìm kiếm...">
+                                <span class="icon-search a-icon-text-btn__icon" aria-hidden="true"></span>
+                            </form>
                         </a>
                         <a href="{{ route('get_user.myfavorites') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
                             <span class="icon-favorite  a-icon-text-btn__icon" id="count-fav" aria-hidden="true"></span>
@@ -57,8 +51,18 @@
                                 <div></div>
                             <?php } ?>
                         </a>
+                        <a href="{{ route('get_user.cart') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger" id="count-cart">
+                            <span class="icon-cart a-icon-text-btn__icon" aria-hdden="true"></span>
+                            <span class="a-icon-text-btn__label">
+                                My Cart </span> @php $dem = count(\Cart::content()); @endphp @if($dem == 0)
+                            <div></div>
+                            @else
+                            <div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">
+                                <span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">{{ $dem }}</span>
+                            </div>
+                            @endif
 
-
+                        </a>
                         @if (get_data_user('web'))
                         <div class="dropdown" id="uni">
                             <a class="a-icon-text-btn a-icon-text-btn--icon-only js-search-btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -77,12 +81,6 @@
                             <span class="a-icon-text-btn__label">Users</span>
                         </a>
                         @endif
-                        <div id="wrap">
-                            <form action="{{ route('get.search') }}" autocomplete="off">
-                                <input id="search" name="search" type="text" placeholder="Tìm kiếm...">
-                                <span class="icon-search a-icon-text-btn__icon" aria-hidden="true"></span>
-                            </form>
-                        </div>
                     </li>
                 </ul>
             </div>
@@ -93,6 +91,5 @@
         <nav class="secondary-navigation" aria-label="Secondary Navigation">
             @include('pages.components.headers._inc_menu')
         </nav>
-        <!-- #secondary-navigation -->
     </div>
 </header>
