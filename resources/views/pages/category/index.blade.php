@@ -170,13 +170,14 @@
                                                                             </div>
                                                                             <div class="m-product-card__info">
                                                                                 <div class="m-combined-product-name group-product">
-                                                                                    <a class="m-combined-product-name__link" href="{{ $item->slug }}">
+                                                                                    <a class="m-combined-product-name__link product-name-fio" href="{{ $item->slug }}">
                                                                                         <span class="a-folio">
                                                                                             {{ $item->name }}
                                                                                         </span>
                                                                                     </a>
                                                                                     <span my-id="{{ $item->id }}" id="red_heart{{ $item->id }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user('web') !=null ? get_data_user('web') : 0 }} onclick="{{ get_data_user('web') !=null ? 'check_my_favorites_add(this)' : 'unset' }};" class="icon-favorite  a-icon-text-btn__icon  {{ red_heart($item->id,get_data_user('web')) != 0 ? 'red':''; }}" aria-hidden=""></span>
                                                                                 </div>
+                                                                                <div class="m-product-card__sku"> <span> SKU: {{ $item->id }}</span></div>
                                                                                 <div class="m-combined-product-name">
                                                                                     <a class="m-combined-product-name__link" href="javascript:;">
                                                                                         <span class="a-product-name">
@@ -184,7 +185,7 @@
                                                                                         </span>
                                                                                     </a>
                                                                                 </div>
-                                                                                <div class="m-product-card__sku">SKU: {{ $item->id }} đ</div>
+
                                                                                 <div class="m-price-lockup m-product-card__price">
                                                                                     <span class="m-price-lockup__price">
                                                                                         <?php if (checkUid($uid)) { ?>
@@ -207,6 +208,11 @@
                                                                                         <?php } ?>
 
                                                                                     </span>
+                                                                                </div>
+                                                                                <div class="buttons_added">
+                                                                                    <input class="minus is-form" type="button" value="-">
+                                                                                    <input aria-label="quantity" class="input-qty" id="js-qty{{ $item->id }}" max="10" min="1" name="" type="number" value="1">
+                                                                                    <input class="plus is-form" type="button" value="+">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="m-product-card__cta"></div>

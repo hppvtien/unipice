@@ -10,7 +10,7 @@
             font-size: 12px;
             color: #122a67;
             letter-spacing: 1px;
-           color: #08532f;
+           color: #0b2d25;
         }
 
         .col-item-c p {
@@ -73,13 +73,13 @@
         }
 
         .info-adsmo p span{
-            color: #08532f;
+            color: #0b2d25;
         }
         .name_invoice p {
             color: #fff;
         }
         .info-adsmo p {
-            color: #08532f;
+            color: #0b2d25;
         }
 
         .info-adsmo p span {

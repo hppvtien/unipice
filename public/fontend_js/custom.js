@@ -104,13 +104,30 @@ $(".js-add-cart").on('click', function() {
         },
         success: function(data) {
             console.log(data);
-            $('#count-cart').append('<div class="c-header__minicart-count" style="bottom: -10px;right: -5px;"><span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">' +
-                data.count + '</span> </div>');
+            $('.count-cart-s').addClass('c-header__minicart-count').html('<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">' +data.count+'</span>');
         },
 
     });
 
 });
+$('input.input-qty').each(function() {
+    var $this = $(this),
+      qty = $this.parent().find('.is-form'),
+      min = Number($this.attr('min')),
+      max = Number($this.attr('max'))
+    if (min == 0) {
+      var d = 0
+    } else d = min
+    $(qty).on('click', function() {
+      if ($(this).hasClass('minus')) {
+        if (d > min) d += -1
+      } else if ($(this).hasClass('plus')) {
+        var x = Number($this.val()) + 1
+        if (x <= max) d += 1
+      }
+      $this.attr('value', d).val(d)
+    })
+  })
 $(".update-qty").on('keyup', function() {
     let URL = $(this).attr('data-url');
     let item_id = $(this).attr('item-id');

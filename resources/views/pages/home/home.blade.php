@@ -352,7 +352,7 @@
                                             <div class="c-products-slider__switcher-select-wrapper">
                                                 <select class="c-products-slider__switcher-select" id="trade-product" data-url={{ route('get.product_trade') }}>
                                                   @foreach ($trade as $key => $item)
-                                                    <option style="color: #0B2D25;font-size: 16px" value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    <option style="color: #0b2d25;font-size: 16px" value="{{ $item->id }}">{{ $item->name }}</option>
                                                   @endforeach
                                                 </select>
                                                 <span class="c-products-slider__switcher-select-icon icon-arrow-down"></span>
