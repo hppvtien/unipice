@@ -80,10 +80,6 @@
                                                         <!-- /TODO :: ADD RATING -->
                                                         <div role="article" class="m-product-overview__price-wrapper">
                                                             <div class="m-price-lockup">
-                                                                <!--<span class="m-price-lockup__price">-->
-                                                                <!--<span class="a-price">-->
-                                                                <!--    Giá: {{ $product->price == '' ? 'liên hệ': formatVnd($product->price) }}-->
-                                                                <!--</span>-->
                                                                 <span class="m-price-lockup__price">
                                                                     <?php if (checkUid(get_data_user('web')) != null) { ?>
                                                                         <span class="a-price">
@@ -93,7 +89,7 @@
                                                                             <div class="m-price-lockup">
                                                                                 <span class="m-price-lockup__price">
                                                                                     <span class="a-qty">
-                                                                                        Thùng: {{ $product->qty_in_box == null ? 'Đang cập nhật' : $product->qty_in_box }} hộp
+                                                                                        Thùng: {{ $product->qty_in_box == null ? 'Đang cập nhật' : $product->qty_in_box.'hộp' }} 
                                                                                     </span>
                                                                                 </span>
                                                                             </div>
@@ -102,7 +98,7 @@
                                                                             <div class="m-price-lockup">
                                                                                 <span class="m-price-lockup__price">
                                                                                     <span class="a-qty">
-                                                                                        Số lượng: {{ $product->min_box == null ? 'Đang cập nhật' : $product->min_box }} trở lên
+                                                                                        Số lượng: {{ $product->min_box == null ? 'Đang cập nhật' : $product->min_box.'trở lên' }} 
                                                                                     </span>
                                                                                 </span>
                                                                             </div>
@@ -111,14 +107,14 @@
                                                                             <div class="m-price-lockup">
                                                                                 <span class="m-price-lockup__price">
                                                                                     <span class="a-qty">
-                                                                                        Giá: {{ formatVnd($product->qty_in_box * $product->price_sale_store == null ? 'Đang cập nhật' : $product->qty_in_box * $product->price_sale_store) }}/thùng
+                                                                                        Giá: {{ $product->price_sale_store == null ? 'Đang cập nhật' : formatVnd($product->qty_in_box * $product->price_sale_store) }}/thùng
                                                                                     </span>
                                                                                 </span>
                                                                             </div>
                                                                         </div>
                                                                     <?php } else { ?>
                                                                         <span class="a-price">
-                                                                            Giá: {{ $product->price == '' ? 'liên hệ': formatVnd($product->price) }}
+                                                                            Giá: {{ $product->price == null ? 'liên hệ': formatVnd($product->price) }}
                                                                         </span>
                                                                     <?php } ?>
                                                                 </span>
