@@ -9,7 +9,8 @@
             font-family: DejaVu Sans;
             font-size: 12px;
             color: #122a67;
-            letter-spacing: 1px
+            letter-spacing: 1px;
+           color: #08532f;
         }
 
         .col-item-c p {
@@ -25,6 +26,8 @@
         .modal-dialog {
             width: 100%;
             margin: auto;
+            position: relative;
+            overflow: hidden;
         }
 
         .modal-content {
@@ -69,9 +72,14 @@
             text-align: right;
         }
 
-        .info-adsmo p,
+        .info-adsmo p span{
+            color: #08532f;
+        }
         .name_invoice p {
-            color: #122a67;
+            color: #fff;
+        }
+        .info-adsmo p {
+            color: #08532f;
         }
 
         .info-adsmo p span {
@@ -83,7 +91,7 @@
         }
 
         .name_invoice {
-            background: #bb9f57;
+            background: #0b2d25;
             padding: 1px 10px;
             margin-bottom: 20px;
         }
@@ -122,7 +130,7 @@
 
         span.title-cc {
             font-weight: bold;
-            color: #122a67
+            color: #fff
         }
 
         .modal-dialog h1,
@@ -146,10 +154,38 @@
             border: none;
 
         }
+
+        .un-paid {
+            position: absolute;
+            background: red;
+            width: 100%;
+            height: 80px;
+            right: -70%;
+            opacity: .5;
+            top: 8%;
+            /* transform: scaleX(1.5); */
+            transform: rotate(45deg);
+        }
+
+        .un-paid p.pun-paid {
+            color: #111;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 20px;
+            padding-bottom: 40px;
+        }
     </style>
 </head>
-<body>
+
+<body style="margin:auto">
+
     <div class="modal-dialog">
+        <div class="un-paid">
+            <p class="pun-paid">
+                UNPAID
+            </p>
+        </div>
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -175,7 +211,7 @@
                     <p><span class="title-cc">Invoice Date:</span> {{ $data_pdf->created_at->format('d-m-Y') }}</p>
                 </div>
                 <div class="name_invoice">
-                    <h2 style="margin-top: 0;color:#122a67;letter-spacing:3px;font-size:20px">Invoice To</h2>
+                    <h2 style="margin-top: 0;color:#fff;letter-spacing:3px;font-size:20px">Invoice To</h2>
                     <p><span class="title-cc">Tên khách hàng:</span> {{ $data_pdf->customer_name }}</p>
                     <p><span class="title-cc">Địa chỉ khách hàng:</span> {{ $data_pdf->address }}</p>
                     <p><span class="title-cc">Số điện thoại:</span> {{ $data_pdf->phone }}</p>
@@ -211,7 +247,7 @@
                                 <td colspan="2">Tổng tiền thanh toán</td>
                                 <td>{{ $data_pdf->total_money }} đ</td>
                             </tr>
-                       
+
                             <tr>
                                 <td colspan="2">Tổng cộng tiền thanh toán (Grand total)</td>
                                 <td>{{ $data_pdf->total_money }} đ</td>

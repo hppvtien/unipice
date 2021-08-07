@@ -31,6 +31,7 @@
                                     <tr class="order-list-li">
                                         <th class="text-center" scope="col">#</th>
                                         <th scope="col"  class="text-center">Mã hóa đơn</th>
+                                        <th scope="col"  class="text-center">Ngày đặt</th>
                                         <th scope="col"  class="text-center">Phương thức thanh toán</th>
                                         <th scope="col"  class="text-center">Tổng tiền</th>
                                         <th scope="col"  class="text-center">Trạng thái</th>
@@ -88,9 +89,10 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <td class="text-center">{{ $item->created_at }}</td>
                                             <td class="text-center">{{ config('cart.pay_type')[$item->type_pay]['name'] }}</td>
                                             <td class="text-center">{{ $item->total_money }} đ</td>
-                                            <td class="text-center">{{ $item->status }}</td>
+                                            <td class="text-center"><span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span></td>
                                             <td class="text-center">
                                                 <a href="javascript:;" class="btn btn-info print_pdf" id="print_pdf" data-id="{{ $item->id }}" data-url="{{ route('get_user.generatePDF') }}">
                                             <i class="fa fa-download text-white"></i>

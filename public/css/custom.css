@@ -78,7 +78,20 @@ h1.page-title {
     padding-bottom: 8px;
     color: #0b2d25;
 }
+#shopping-cart-table{
+    margin-bottom: 0;
+    border: 1px solid #f3f3f3;
+    margin-left: 5px;
+    border-left: 5px solid #f3f3f3;
+}
 
+tr.th-payCart th{
+    color: #0b2d25;
+    font-weight: 600;
+}
+a.ahr-text{
+    margin: 0;
+}
 .block-title>strong {
     font-size: 24px;
     margin-top: 5px;
@@ -91,9 +104,15 @@ h1.page-title {
 }
 
 .column.main .block:last-child {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
-
+.column.main .block:first-child {
+    margin-bottom: 20px;
+    padding-right: 20px!important;
+}
+.block-dashboard-info h2{
+    font-size: 1.5em;
+}
 .column.main .block {
     margin-bottom: 40px;
 }
@@ -183,6 +202,7 @@ h1.page-title {
 .block .box-actions .action {
     margin-right: 18px;
 }
+
 
 @media screen and (min-width: 1024px) {
     .c-header__logo img {
@@ -290,16 +310,16 @@ h1.page-title {
     }
 }
 
-@media screen and (max-width: 1460px) {
-    .js-main-menu-panel a {
-        font-size: 12px;
-    }
+@media screen and (max-width: 767px) {
+ 
 }
 
 @media screen and (min-width: 768px) {
     table.cart .qty {
         padding: 0!important
     }
+
+    
     .m-category-card .m-category-card__image-wrapper img {
         max-width: 176px;
         margin: auto;

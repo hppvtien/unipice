@@ -3,15 +3,16 @@
 @section('contents')
 
 <style>
-   
     ul.checkout-methods-items li:before {
         content: '';
         display: none;
     }
+
     .optionTitle.m-radio-button__text-label {
         float: left;
         margin-right: 10px;
     }
+
     .cart-container .cart-summary .shipping .m-text-input,
     .cart-container .cart-summary .shipping .m-select-menu {
         margin-top: 20px;
@@ -21,16 +22,19 @@
     .checkout-container {
         position: relative;
     }
+
     .m-radio-button {
         position: relative;
         margin-bottom: 10px;
         flex: 0 0 25%;
         max-width: 100%;
     }
+
     .pay_type {
         display: flex;
-        margin-top: 20px!important;
+        margin-top: 20px !important;
     }
+
     .a-select-menu {
         position: relative;
         padding-right: 40px;
@@ -463,6 +467,7 @@
             padding: 10px 0;
         }
     }
+
     table.color-abc th {
 
         background-color: transparent;
@@ -474,121 +479,109 @@
 </style>
 <main id="maincontent" class="">
     <div class="columns">
-        <div class="column main padding_css">
-                <div class="block block-dashboard-info col-md-6 col-xs-12 noi_left cach_top_bottom">
-                    <div class="block-title"><strong>Thông tin khách hàng</strong></div>
-                    <div class="block-content">
-                        <table class="table table-sm color-abc">
-                            <tbody>
-                              <tr>
+        <div class="column main padding_css row no-gutters">
+            <div class="block block-dashboard-info col-md-6 col-lg-5 col-xs-12 noi_left cach_top_bottom">
+                <div class="block-title"><strong>Thông tin khách hàng</strong></div>
+                <div class="block-content">
+                    <table class="table table-sm color-abc">
+                        <tbody>
+                            <tr>
                                 <th scope="row">Chi tiết đơn hàng:</th>
                                 <th>{{ $order->code_invoice }}</td>
-                              </tr>
-                              <tr>
+                            </tr>
+                            <tr>
                                 <th scope="row">Người mua:</th>
                                 <th>{{ $order->customer_name }}</td>
-                              </tr>
-                              <tr>
+                            </tr>
+                            <tr>
                                 <th scope="row">Địa chỉ:</th>
                                 <th>{{ $order->address }}</td>
-                              </tr>
-                              <tr>
+                            </tr>
+                            <tr>
                                 <th scope="row">Số điênh thoại:</th>
                                 <th>{{ $order->phone }}</td>
-                              </tr>
-                              <tr>
+                            </tr>
+                            <tr>
                                 <th scope="row">Email:</th>
                                 <th>{{ $order->email }}</td>
-                              </tr>
-                              <tr>
+                            </tr>
+                            <tr>
                                 <th scope="row">Hình thức thanh toán:</th>
                                 <th>{{ config('cart.pay_type')[$order->type_pay]['name'] }}</td>
-                              </tr>
-                              <tr>
+                            </tr>
+                            <tr>
                                 <th scope="row">Mã số thuế:</th>
                                 <th>{{ $order->taxcode }}</td>
-                              </tr>
-                              <!--<tr>-->
-                              <!--  <th scope="row">Mã giảm giá:</th>-->
-                              <!--  <th>{{ $order->vouchers }}</td>-->
-                              <!--</tr>-->
-                            </tbody>
-                          </table>
-                    </div>
+                            </tr>
+                            <!--<tr>-->
+                            <!--  <th scope="row">Mã giảm giá:</th>-->
+                            <!--  <th>{{ $order->vouchers }}</td>-->
+                            <!--</tr>-->
+                        </tbody>
+                    </table>
                 </div>
-                <div class="block block-dashboard-info col-md-6 col-xs-12 noi_left cach_top_bottom">
-                    <div class="block-title"><strong>Thông tin giỏ hàng</strong></div>
-                    <div class="column main" style="width:100%">
-                        <h3></h3>
-                            
-                        <h3></h3>
-                        <table id="shopping-cart-table" class="cart items data table cart-table">
-                            <thead>
-                                <tr>
-                                    <th class=" item" scope="col"><span>Sản phẩm</span></th>
-                                    <th class=" price" scope="col"><span>Giá</span></th>
-                                    <th class=" price" scope="col"><span>Số lượng</span></th>
-                                    <th class=" subtotal" scope="col"><span>Tổng tiền</span></th>
-                                </tr>
-                            </thead>
-                            <tbody class="cart item">
-                                <?php $carts = json_decode($order->cart_info, true); ?>
-                                
-                                @forelse ($carts as $key => $item)
-                                <tr>
-                                    <td class="item" scope="col"><a href="javascript:;" data-id-sale="{{ $item['id'] }}" onclick="get_product_sale(this);"><span>{{ $item['name'] }}</span></a></td>
-                                    <td class="price" scope="col"><span>{{ formatVnd($item['price']) }} </span></td>
-                                    <td class="price" scope="col"><span>{{ $item['qty'] }}</span></td>
-                                    <td class="subtotal" scope="col"><span>{{ formatVnd($item['subtotal']) }} đ</span></td>
-                                </tr>
-                                @empty
-                                    
-                                @endforelse
-                                
-                              <tr >
-                                  <td colspan="3">TỔNG TIỀN</td>
-                                  <td><span>{{ $order->total_no_vat }} đ</span></td>
-                              </tr>
-                              <tr >
-                                  <td colspan="3">VAT</td>
-                                  <td><span>{{ $order->total_vat }} đ</span></td>
-                              </tr>
-                              <tr >
-                                  <td colspan="3">TỔNG Đơn Hàng</td>
-                                  <td><span>{{ $order->total_money }} đ</span></td>
-                              </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            </div>
+            <div class="block block-dashboard-info col-md-6 col-lg-7 col-xs-12 noi_left cach_top_bottom">
+                <div class="block-title"><strong>Thông tin giỏ hàng</strong></div>
+                <div class="column main" style="width:100%">
+                    <table class="table">
+                        <thead>
+                            <tr class="th-payCart">
+                                <th scope="col" class="color-text">Sản phẩm</th>
+                                <th scope="col" class="color-text">Đơn giá</th>
+                                <th scope="col" class="color-text">Số lượng</th>
+                                <th scope="col" class="color-text">Tổng tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $carts = json_decode($order->cart_info, true); ?>
+                            @forelse ($carts as $key => $item)
+                            <tr>
+                                <td><a href="javascript:;" data-id-sale="{{ $item['id'] }}" class="ahr-text" onclick="get_product_sale(this);"><span>{{ $item['name'] }}</span></a></td>
+                                <td><span>{{ formatVnd($item['price']) }} </span></td>
+                                <td><span>{{ $item['qty'] }}</span></td>
+                                <td><span>{{ formatVnd($item['subtotal']) }} đ</span></td>
+                            </tr>
+                            @empty
+                            @endforelse
+                            <tr>
+                                <td colspan="3">TỔNG TIỀN</td>
+                                <td><span>{{ $order->total_no_vat }} đ</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">VAT</td>
+                                <td><span>{{ $order->total_vat }} đ</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">TỔNG Đơn Hàng</td>
+                                <td><span>{{ $order->total_money }} đ</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="block block-dashboard-info col-md-12 col-xs-12 noi_left cach_top_bottom">
-                    <h2 class="text-success text-center" style="margin:0 auto">Vui Lòng thanh toán đơn hàng {{ $order->code_invoice }} của bạn. 
-                        Đơn hàng {{ $order->code_invoice }} của bạn chỉ có giá trị khi bạn đã thanh toán</h2>
-                </div>
+            </div>
+            <div class="block block-dashboard-info col-md-12 col-xs-12 noi_left cach_top_bottom">
+                <h2 class="text-success text-center" style="margin:0 auto">Vui Lòng thanh toán đơn hàng <span class="text-danger">{{ $order->code_invoice }}</span> của bạn. <br>
+                    Đơn hàng <span class="text-danger">{{ $order->code_invoice }}</span> của bạn chỉ có giá trị khi bạn đã thanh toán</h2>
+            </div>
         </div>
-        
-        
-         @include('user::pages.component._inc_menu_user')
+        @include('user::pages.component._inc_menu_user')
     </div>
 </main>
 @stop
 <script>
-               
+    function get_product_sale(get_id) {
+        var get_id = $(get_id).attr("data-id-sale");
+        var get_total_price = $('h4.mr-1').attr('get-total-price');
+        var price_id = $('#button_sale').attr('price-id');
+        var price_slug = $('#button_sale').attr('price-slug');
 
-                function get_product_sale(get_id) {
-                    var get_id = $(get_id).attr("data-id-sale");
-                    var get_total_price = $('h4.mr-1').attr('get-total-price');
-                    var price_id = $('#button_sale').attr('price-id');
-                    var price_slug = $('#button_sale').attr('price-slug');
-
-                    $.get("{{ route('get_user.get_product_flash_sale') }}", {
-                            get_id: get_id,
-                            get_total_price: get_total_price
-                        })
-                        .done(function(data) {
-                            $("#exampleModalLong .modal-body").html(data);
-                        });
-                }
-
-                
-            </script>
+        $.get("{{ route('get_user.get_product_flash_sale') }}", {
+                get_id: get_id,
+                get_total_price: get_total_price
+            })
+            .done(function(data) {
+                $("#exampleModalLong .modal-body").html(data);
+            });
+    }
+</script>

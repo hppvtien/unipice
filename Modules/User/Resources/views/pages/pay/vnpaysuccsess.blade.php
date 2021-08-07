@@ -483,7 +483,7 @@
 <main id="maincontent" class="">
     <div class="columns">
         <div class="column main padding_css">
-            <div class="block block-dashboard-info col-md-12 col-lg-6 col-xs-12 noi_left cach_top_bottom">
+            <div class="block block-dashboard-info col-md-6 col-lg-5 col-xs-12 noi_left cach_top_bottom">
                 <div class="block-title"><strong>Thông tin khách hàng</strong></div>
                 <div class="block-content">
                     <table class="table table-sm color-abc">
@@ -501,7 +501,7 @@
                                 <th>{{ $order->address }}</th>
                             </tr>
                             <tr>
-                                <th scope="row">Số điênh thoại:</th>
+                                <th scope="row">Điện thoại:</th>
                                 <th>{{ $order->phone }}</th>
                             </tr>
                             <tr>
@@ -528,22 +528,6 @@
                                             <option value="SACOMBANK">Ngan hang SacomBank</option>
                                             <option value="EXIMBANK"> Ngan hang EximBank</option>
                                             <option value="MSBANK"> Ngan hang MSBANK</option>
-                                            <option value="NAMABANK"> Ngan hang NamABank</option>
-                                            <option value="VNMART"> Vi dien tu VnMart</option>
-                                            <option value="VIETINBANK">Ngan hang Vietinbank</option>
-                                            <option value="VIETCOMBANK"> Ngan hang VCB</option>
-                                            <option value="HDBANK">Ngan hang HDBank</option>
-                                            <option value="DONGABANK"> Ngan hang Dong A</option>
-                                            <option value="TPBANK"> Ngân hàng TPBank</option>
-                                            <option value="OJB"> Ngân hàng OceanBank</option>
-                                            <option value="BIDV"> Ngân hàng BIDV</option>
-                                            <option value="TECHCOMBANK"> Ngân hàng Techcombank</option>
-                                            <option value="VPBANK"> Ngan hang VPBank</option>
-                                            <option value="MBBANK"> Ngan hang MBBank</option>
-                                            <option value="ACB"> Ngan hang ACB</option>
-                                            <option value="OCB"> Ngan hang OCB</option>
-                                            <option value="IVB"> Ngan hang IVB</option>
-                                            <option value="VISA"> Thanh toan qua VISA/MASTER</option>
                                         </select>
                                         <span class="m-sort-by__arrow"></span>
                                     </div>
@@ -558,43 +542,44 @@
                     </div>
                 </div>
             </div>
-            <div class="block block-dashboard-info col-md-12 col-lg-6 col-xs-12 noi_left cach_top_bottom">
+            <div class="block block-dashboard-info col-md-6 col-lg-7 col-xs-12 noi_left cach_top_bottom">
                 <div class="block-title"><strong>Thông tin giỏ hàng</strong></div>
                 <div class="column main" style="width:100%">
-                    <h3></h3>
-
-                    <h3></h3>
-                    <table id="shopping-cart-table" class="cart items data table cart-table">
-                        <thead class="bg-primary">
-                            <tr>
-                                <th class="item text-white" scope="col"><span>Sản phẩm</span></th>
-                                <th class="item text-white text-center" scope="col"><span>Giá</span></th>
-                                <th class="item text-white text-center" scope="col"><span>Số lượng</span></th>
-                                <th class="item text-white text-center" scope="col"><span>Tổng tiền</span></th>
+                    <table class="table">
+                        <thead>
+                            <tr class="th-payCart">
+                                <th scope="col" class="color-text">Sản phẩm</th>
+                                <th scope="col" class="color-text">Đơn giá</th>
+                                <th scope="col" class="color-text">Số lượng</th>
+                                <th scope="col" class="color-text">Tổng tiền</th>
                             </tr>
                         </thead>
-                        <tbody class="cart item">
+                        <tbody>
                             <?php $carts = json_decode($order->cart_info, true); ?>
                             @forelse ($carts as $key => $item)
                             <tr>
-                                <td class="" scope="col"><a class="text-primary name-itemC" href="{{ get_link_blank_byname($item['name']) }}"><span>{{ $item['name'] }}</span></a></td>
-                                <td class="item text-center" scope="col"><a class="name-itemC" href="javascript:;"><span>{{ formatVnd($item['price']) }}</span></a></td>
-                                <td class="item text-center" scope="col"><a class="name-itemC" href="javascript:;"><span>{{ $item['qty'] }}</span></a></td>
-                                <td class="item text-center" scope="col"><a class="name-itemC" href="javascript:;"><span>{{ formatVnd($item['subtotal']) }}</span></a></td>
+                                <td><a href="javascript:;" data-id-sale="{{ $item['id'] }}" class="ahr-text" onclick="get_product_sale(this);"><span>{{ $item['name'] }}</span></a></td>
+                                <td><span>{{ formatVnd($item['price']) }} </span></td>
+                                <td><span>{{ $item['qty'] }}</span></td>
+                                <td><span>{{ formatVnd($item['subtotal']) }}</span></td>
                             </tr>
                             @empty
-
                             @endforelse
-                            <tr class="total-money">
-                                <td colspan="3" class="text-primary"><a class="name-itemC" href="javascript:;"><span>TỔNG TIỀN</span></a></td>
-                                <td><a class="name-itemC" href="javascript:;"><span>{{ $order->total_money }} đ</span></a></td>
+                            <tr>
+                                <td colspan="3">TỔNG TIỀN</td>
+                                <td><span>{{ $order->total_no_vat }} đ</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">VAT</td>
+                                <td><span>{{ $order->total_vat }} đ</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">TỔNG Đơn Hàng</td>
+                                <td><span>{{ $order->total_money }} đ</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="actions-toolbar">
-
             </div>
         </div>
 
