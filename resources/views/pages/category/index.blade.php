@@ -243,9 +243,13 @@
                                                                             id: title
                                                                         })
                                                                         .done(function(data) {
-                                                                            $('.c-header__minicart-count').html('' +
-                                                                                '<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">' + data.count + '</span>' +
-                                                                                '');
+                                                                            if(data.count != 0){
+                                                                                $('#count-fav').html('<div class="c-header__minicart-count count-fav" style="bottom: -10px;right: -5px"><span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">' + data.count + '</span>' +
+                                                                                '</div>');
+                                                                            } else  {
+                                                                                $('#count-fav').html('');
+                                                                            }
+                                                                           
                                                                             if (data.message == 'add') {
                                                                                 $('#toast-container').html(' <div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Sản phẩm được thêm vào danh sách yêu thích</div></div>'), 4000;
                                                                                 setTimeout(function() {

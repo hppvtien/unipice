@@ -42,24 +42,30 @@
                             </form>
                         </a>
                         <a href="{{ route('get_user.myfavorites') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
-                            <span class="icon-favorite  a-icon-text-btn__icon" id="count-fav" aria-hidden="true"></span>
-                            <?php if (count_fav(get_data_user('web'))) { ?>
-                                <div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">
-                                    <span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">{{ count_fav(get_data_user('web')) }}</span>
+                            <span class="icon-favorite  a-icon-text-btn__icon" id="count-fff" aria-hidden="true"></span>
+                            <?php if (count_fav(get_data_user('web')) == 0 || get_data_user('web') == null) { ?>
+                                <div id="count-fav">
+                                    <div class="c-header__minicart-count count-fav" style="bottom: -10px;right: -5px;border:none">
+
+                                    </div>
                                 </div>
                             <?php } else { ?>
-                                <div></div>
+                                <div id="count-fav">
+                                    <div class="c-header__minicart-count count-fav" id="count-fav" style="bottom: -10px;right: -5px;">
+                                        <span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">{{ count_fav(get_data_user('web')) }}</span>
+                                    </div>
+                                </div>
                             <?php } ?>
                         </a>
                         <a href="{{ route('get_user.cart') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger" id="count-cart">
                             <span class="icon-cart a-icon-text-btn__icon" aria-hdden="true"></span>
                             <span class="a-icon-text-btn__label">
-                                My Cart </span> 
-                            @php 
-                                $dem = count(\Cart::content()); 
+                                My Cart </span>
+                            @php
+                            $dem = count(\Cart::content());
                             @endphp
                             @if($dem == 0 || get_data_user('web') == null)
-                                <div class="count-cart-s" style="bottom: -10px;right: -5px;"></div>
+                            <div class="count-cart-s" style="bottom: -10px;right: -5px;"></div>
                             @else
                             <div class="c-header__minicart-count count-cart-s" style="bottom: -10px;right: -5px;">
                                 <span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">{{ $dem }}</span>
