@@ -92,11 +92,12 @@ $(".js-add-cart").on('click', function() {
     let data_qtyinbox = $(this).attr('data-qtyinbox');
     let data_minbox = $(this).attr('data-minbox');
     let data_count = $(this).attr('data-count');
-
+    let qty_user = $('#js-qty'+data_id).val();
     $.ajax({
         url: URL,
         method: "get",
         data: {
+            qty_user: qty_user,
             data_id: data_id,
             data_uid: data_uid,
             data_qtyinbox: data_qtyinbox,
@@ -110,24 +111,6 @@ $(".js-add-cart").on('click', function() {
     });
 
 });
-$('input.input-qty').each(function() {
-    var $this = $(this),
-      qty = $this.parent().find('.is-form'),
-      min = Number($this.attr('min')),
-      max = Number($this.attr('max'))
-    if (min == 0) {
-      var d = 0
-    } else d = min
-    $(qty).on('click', function() {
-      if ($(this).hasClass('minus')) {
-        if (d > min) d += -1
-      } else if ($(this).hasClass('plus')) {
-        var x = Number($this.val()) + 1
-        if (x <= max) d += 1
-      }
-      $this.attr('value', d).val(d)
-    })
-  })
 $(".update-qty").on('keyup', function() {
     let URL = $(this).attr('data-url');
     let item_id = $(this).attr('item-id');
@@ -162,6 +145,25 @@ $(".update-qty").on('keyup', function() {
 
 
 });
+$('input.input-qty').each(function() {
+    var $this = $(this),
+      qty = $this.parent().find('.is-form'),
+      min = Number($this.attr('min')),
+      max = Number($this.attr('max'))
+    if (min == 0) {
+      var d = 0
+    } else d = min
+    $(qty).on('click', function() {
+      if ($(this).hasClass('minus')) {
+        if (d > min) d += -1
+      } else if ($(this).hasClass('plus')) {
+        var x = Number($this.val()) + 1
+        if (x <= max) d += 1
+      }
+      $this.attr('value', d).val(d)
+    })
+  })
+
 $(".remove_cart_action").on('click', function() {
     let URL = $(this).attr('data-url');
     let item_row = $(this).attr('data-row');

@@ -54,7 +54,7 @@ class UserShoppingCartController extends UserController
                 }
                 return response([
                     'status' => 200,
-                    'message' => !$checkExist ? "Đã thêm sản phẩm vào giỏ" : "Sản phẩm đã có trong giỏ",
+                    'message' => !$checkExist ? "Thêm sản phẩm thành công" : "Sản phẩm đã có trong giỏ",
                     'count' => count($listCarts)
                 ]);
                 
@@ -68,7 +68,7 @@ class UserShoppingCartController extends UserController
                 } else {
                     $price_cart = $uni_product->price;
                     $type_box = 'user';
-                    $qty_cart = 1;
+                    $qty_cart = $request->qty_user;
                 }
                 if (!$uni_product){
                     return response([
@@ -101,7 +101,7 @@ class UserShoppingCartController extends UserController
 
                 return response([
                     'status' => 200,
-                    'message' => !$checkExist ? "Đã thêm sản phẩm vào giỏ" : "Sản phẩm đã có trong giỏ",
+                    'message' => !$checkExist ? "Thêm sản phẩm thành công" : "Sản phẩm đã có trong giỏ",
                     'count' => count($listCarts)
                 ]);
             }

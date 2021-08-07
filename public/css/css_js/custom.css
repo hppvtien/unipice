@@ -209,6 +209,9 @@ input#search:focus::placeholder{
     color: crimson;
     display: contents!important;
 }
+input#search {
+    border: none;
+}
 input#search:focus {
     width: 375px;
     z-index: 1;
@@ -233,12 +236,14 @@ a.product-name-fio span{
     opacity: 0.8;
 }
 .buttons_added {
-    opacity:1;
-    display:inline-block;
-    display:-ms-inline-flexbox;
-    display:inline-flex;
-    white-space:nowrap;
-    vertical-align:top;
+    opacity: 1;
+    display: inline-block;
+    display: -ms-inline-flexbox;
+    display: block;
+    white-space: nowrap;
+    /* vertical-align: top; */
+    text-align: center;
+    margin: 5px auto 0;
 }
 .buttons_added .is-form {
     color: #0b2d25;
@@ -280,6 +285,43 @@ a.product-name-fio span{
 .buttons_added .input-qty::-webkit-outer-spin-button,.input-qty::-webkit-inner-spin-button {
     -webkit-appearance:none;
     margin:0;
+}
+/* Tien cssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss */
+span.g-price{
+    height: 20px;
+    color: #666;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: line-through;
+}
+.m-product-card__sku span:first-child,.m-product-overview__unit-and-sku span:first-child{
+    float: left;
+    background: #f5eeee;
+    padding: 0 5px;
+}
+.m-product-card__sku span:last-child,.m-product-overview__unit-and-sku span:last-child{
+    float: right;
+}
+.m-product-card__sku span>img,
+.m-product-overview__unit-and-sku span>img{
+    display: inline-flex;
+    padding-bottom: 5px;
+}
+.m-product-overview__price-wrapper.d-block{
+  margin: 10px auto;
+}
+
+.icon-favorite.a-icon-text-btn__icon {
+    flex: 0 0 15%;
+    /* margin: auto; */
+}
+.sigle {
+    font-size: 20px!important;
+}
+.trade-name{
+    background: #ea7236;
+    padding: 10px;
+    color: #fff;
 }
 @media screen and (min-width: 768px) {
     .secondary-navigation ul.nav-menu > li.menu-item > a {

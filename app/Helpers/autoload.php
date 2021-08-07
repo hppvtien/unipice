@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Routing\Route;
 use phpDocumentor\Reflection\Types\Null_;
 
@@ -77,6 +78,12 @@ function execPostRequest($url, $data)
         $count_contact = count($contact);
         return $count_contact;
     }
+    function getActive($slug)
+    {
+        $curent_url = \Request::url();
+        $trueUrl = strpos($curent_url,$slug);
+        return $trueUrl;
+    }
     function formatVnd($price)
     {
         $vndfm = number_format($price, 0, '', ','). ' đ';
@@ -85,6 +92,11 @@ function execPostRequest($url, $data)
     function get_category_id($product_id){
         $catid = App\Models\Product_Category::where('product_id','=', $product_id)->pluck('category_id')->first();
         return $catid;
+    }
+    function countReview($product_id){
+        $product_id = App\Models\Uni_Comment::where('product_id','=', $product_id)->pluck('product_id');
+        $count_product = count($product_id);
+        return $count_product;
     }
 
     function get_title_product($product_id){

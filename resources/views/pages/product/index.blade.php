@@ -17,7 +17,7 @@
                                                 <a class="a-anchor" href="/">Home</a>
                                             </li>
                                             <li class="m-breadcrumb__item">
-                                                <a class="a-anchor" href="{{ getSlugCategory($cat_data->name) }}">{{ $cat_data->name }}</a>
+                                                <a class="a-anchor" href="/{{ getSlugCategory($cat_data->slug) }}">{{ $cat_data->name }}</a>
                                             </li>
                                             <li class="m-breadcrumb__item">
                                                 <a class="a-anchor" href="{{ getSlugProduct($product->slug) }}"> {{ $product->name }} </a>
@@ -74,22 +74,36 @@
                                                             </div>
                                                             <!-- FC-2249:: Remove markup that should only be available to authenticated users -->
                                                         </div>
-                                                        <div class="m-product-overview__unit-and-sku">
-                                                            <span class="m-product-overview__sku">Mã sản phẩm: {{ $product->id }}</span>
+                                                        <div class="m-product-card__sku">
+                                                            <span> SKU: {{ $product->id }}</span>
+                                                            <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""> ({{ countReview($product->id) }} đánh giá)</span>
+                                                        </div>
+                                                        <div role="article" class="m-product-overview__price-wrapper d-block">
+                                                            <div class="m-price-lockup">
+
+                                                                <span class="m-price-lockup__price">
+                                                                    <span class="a-product-name a-title-des">
+                                                                        Mô tả về sản phẩm: </br>
+                                                                    </span>
+                                                                    <span class="a-folio">
+                                                                        {{ $product->desscription }}
+                                                                    </span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                         <!-- /TODO :: ADD RATING -->
-                                                        <div role="article" class="m-product-overview__price-wrapper">
+                                                        <div role="article" class="m-product-overview__price-wrapper d-block">
                                                             <div class="m-price-lockup">
                                                                 <span class="m-price-lockup__price">
                                                                     <?php if (checkUid(get_data_user('web')) != null) { ?>
                                                                         <span class="a-price">
-                                                                            Giá: {{ $product->price_sale_store == '' ? 'liên hệ': formatVnd($product->price_sale_store) }}
+                                                                            Giá: {{ $product->price_sale_store == null ? 'liên hệ': formatVnd($product->price_sale_store) }}
                                                                         </span>
                                                                         <div role="article" class="m-product-overview__price-wrapper">
                                                                             <div class="m-price-lockup">
                                                                                 <span class="m-price-lockup__price">
                                                                                     <span class="a-qty">
-                                                                                        Thùng: {{ $product->qty_in_box == null ? 'Đang cập nhật' : $product->qty_in_box.' hộp' }} 
+                                                                                        Thùng: {{ $product->qty_in_box == null ? 'Đang cập nhật' : $product->qty_in_box.' hộp' }}
                                                                                     </span>
                                                                                 </span>
                                                                             </div>
@@ -98,7 +112,7 @@
                                                                             <div class="m-price-lockup">
                                                                                 <span class="m-price-lockup__price">
                                                                                     <span class="a-qty">
-                                                                                        Số lượng: {{ $product->min_box == null ? 'Đang cập nhật' : $product->min_box.' trở lên' }} 
+                                                                                        Số lượng: {{ $product->min_box == null ? 'Đang cập nhật' : $product->min_box.' trở lên' }}
                                                                                     </span>
                                                                                 </span>
                                                                             </div>
@@ -113,40 +127,38 @@
                                                                             </div>
                                                                         </div>
                                                                     <?php } else { ?>
+                                                                        <?php if ($product->qty) { ?>
+                                                                            <a href="{{ route('get.uni_contact') }}"><span class="a-price text-success sigle"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span></a>
+                                                                        <?php } else { ?>
+                                                                            <a href="{{ route('get.uni_contact') }}"><span class="a-price text-primary sigle"><i class="fa fa-phone"></i>Liên hệ</span></a>
+                                                                        <?php } ?>
+                                                                        <span class="g-price">
+                                                                            {{ formatVnd($product->price) }}
+                                                                        </span>
+                                                                        <span class="text-danger paid-save">
+                                                                            (Tiết kiệm: {{ 100-round($product->price_sale*100/$product->price) }}% )
+                                                                        </span>
+                                                                        <span>Còn:</span>
                                                                         <span class="a-price">
-                                                                            Giá: {{ $product->price == null ? 'liên hệ': formatVnd($product->price) }}
+                                                                            {{ formatVnd($product->price_sale) }}
+                                                                        </span>
+                                                                        <br>
+                                                                        <span class="row">
+                                                                            <div class="buttons_added col-12">
+                                                                                <input class="minus is-form" type="button" value="-">
+                                                                                <input aria-label="quantity" class="input-qty update-qty" id="js-qty{{ $product->id }}" max="10" min="1" name="qty-user" type="number" value="1">
+                                                                                <input class="plus is-form" type="button" value="+">
+                                                                            </div>
                                                                         </span>
                                                                     <?php } ?>
                                                                 </span>
                                                                 <!--</span>-->
                                                             </div>
                                                         </div>
-                                                        <div class="m-product-overview__unit-and-sku">
-                                                            <span class="a-folio">
+                                                        <div class="m-product-overview__price-wrapper d-block">
+                                                            <span class="a-folio trade-name">
                                                                 {{ $trade_name }}
                                                             </span>
-                                                        </div>
-                                                        <div role="article" class="m-product-overview__price-wrapper">
-                                                            <div class="m-price-lockup">
-                                                                <span class="m-price-lockup__price">
-                                                                    <span class="a-qty">
-                                                                        Số lượng: {{ $product->qty == '' ? 'Hiện tại hết hàng': $product->qty }}
-                                                                    </span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <div role="article" class="m-product-overview__price-wrapper">
-                                                            <div class="m-price-lockup">
-
-                                                                <span class="m-price-lockup__price">
-                                                                    <span class="a-product-name a-title-des">
-                                                                        Mô tả về sản phẩm: </br>
-                                                                    </span>
-                                                                    <span class="a-folio">
-                                                                        {{ $product->desscription }}
-                                                                    </span>
-                                                                </span>
-                                                            </div>
                                                         </div>
                                                         <form class="m-product-overview__add-to-cart">
                                                         </form>
@@ -220,9 +232,7 @@
                                         <div class="row" id="review-box">
                                             <textarea id="noi_dung_commnet" class="form-control col-12" rows="2" placeholder="Hãy để lại bình luận của bạn...!"></textarea>
                                             <div class="mar-top clearfix col-md-4 col-lg-4 col col-12">
-                                                <button token="{{ csrf_token() }}" data-type="review" onclick="add_comment_user(this);" product_id="{{ $product->id }}" 
-                                                user_id="@php echo $user_id; @endphp" class="btn btn-sm btn-primary pull-right" 
-                                                type="submit"><i class="fa fa-pencil fa-fw"></i> Bình Luận</button>
+                                                <button token="{{ csrf_token() }}" data-type="review" onclick="add_comment_user(this);" product_id="{{ $product->id }}" user_id="@php echo $user_id; @endphp" class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Bình Luận</button>
                                             </div>
                                         </div>
                                         <div>

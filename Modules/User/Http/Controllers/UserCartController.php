@@ -45,31 +45,4 @@ class UserCartController extends Controller
         $pdf = \PDF::loadView('user::pages.pay.downPDF', $data);
         return $pdf->download('hoa-don.pdf');
     }
-    // public function viewPDF(Request $request)
-    // {
-    //     $configuration = Configuration::first();
-    //     $bill_data = Bill::orderBy('id','desc')->first();
-    //     $listCart = \Cart::content();
-    //     $viewdata = [
-    //         'configuration' => $configuration,
-    //         'bill_data' => $bill_data,
-    //         'listCarts'=> $listCart
-    //     ];
-    //     return view('user::pages.pay.viewPDF', $viewdata);
-    // }
-
-    // public function downPDF(Request $request)
-    // {
-    //     $configuration = Configuration::first();
-    //     $bill_data = Bill::where('id_transaction',$request->id_transaction)->first();
-    //     $listCart = \Cart::content();
-    //     $viewdata = [
-    //         'configuration' => $configuration,
-    //         'bill_data' => $bill_data,
-    //         'listCarts'=> $listCart
-    //     ];
-    //     // return view('user::pages.pay.downPDF', $viewdata);
-    //     $pdf = PDF::loadView('user::pages.pay.downPDF', $viewdata);
-    //     return $pdf->download('hoa-don.pdf');
-    // }
 }

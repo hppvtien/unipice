@@ -48,8 +48,11 @@
                         </a>
                     </div>
 
-                    <div class="m-product-card__sku">SKU: {{ $item->id }}</div>
-                    <div class="m-price-lockup m-product-card__price">
+                    <div class="m-product-card__sku">
+                        <span> SKU: {{ $item->id }}</span>
+                        <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""> ({{ countReview($item->id) }} đánh giá)</span>
+                    </div>
+                    <div class="m-price-lockup m-product-card__pric<div class=" m-price-lockup m-product-card__price">
                         <span class="m-price-lockup__price">
                             <?php if (checkUid($uid)) { ?>
                                 <?php if ($item->price_sale_store != null) { ?>
@@ -57,18 +60,37 @@
                                         {{ formatVnd($item->price_sale_store) }}
                                     </span>
                                 <?php } else { ?>
-                                    <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
+                                    <a href="{{ route('get.uni_contact') }}"><span class="a-price">Liên hệ để biết thông tin</span></a>
                                 <?php } ?>
                             <?php } else { ?>
-                                <?php if ($item->price != null) { ?>
-                                    <span class="a-price">
+                                <?php if ($item->price_sale != null) { ?>
+                                    <span class="g-price">
                                         {{ formatVnd($item->price) }}
                                     </span>
+                                    <span class="text-danger paid-save">
+                                        (Tiết kiệm: {{ 100-round($item->price_sale*100/$item->price) }}% )
+                                    </span>
+                                    <br>
+                                    <span class="a-price">
+                                        {{ formatVnd($item->price_sale) }}
+                                    </span>
+                                    <br>
+                                    <span class="row">
+                                        <div class="buttons_added col-12">
+                                            <input class="minus is-form" type="button" value="-">
+                                            <input aria-label="quantity" class="input-qty update-qty" id="js-qty{{ $item->id }}" max="10" min="1" name="qty-user" type="number" value="1">
+                                            <input class="plus is-form" type="button" value="+">
+                                        </div>
+                                    </span>
+                                    <?php if ($item->qty) { ?>
+                                        <a href="{{ route('get.uni_contact') }}"><span class="a-price text-success"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span></a>
+                                    <?php } else { ?>
+                                        <a href="{{ route('get.uni_contact') }}"><span class="a-price text-primary"><i class="fa fa-phone"></i>Liên hệ</span></a>
+                                    <?php } ?>
                                 <?php } else { ?>
-                                    <a href="/lien-he"><span class="a-price">Liên hệ để biết thông tin</span></a>
+                                    <a href="{{ route('get.uni_contact') }}"><span class="a-price text-primary"><i class="fa fa-phone"></i>Liên hệ</span></a>
                                 <?php } ?>
                             <?php } ?>
-
                         </span>
                     </div>
                 </div>

@@ -54,10 +54,14 @@
                         <a href="{{ route('get_user.cart') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger" id="count-cart">
                             <span class="icon-cart a-icon-text-btn__icon" aria-hdden="true"></span>
                             <span class="a-icon-text-btn__label">
-                                My Cart </span> @php $dem = count(\Cart::content()); @endphp @if($dem == 0)
-                            <div></div>
+                                My Cart </span> 
+                            @php 
+                                $dem = count(\Cart::content()); 
+                            @endphp
+                            @if($dem == 0 || get_data_user('web') == null)
+                                <div class="count-cart-s" style="bottom: -10px;right: -5px;"></div>
                             @else
-                            <div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">
+                            <div class="c-header__minicart-count count-cart-s" style="bottom: -10px;right: -5px;">
                                 <span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">{{ $dem }}</span>
                             </div>
                             @endif

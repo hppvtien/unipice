@@ -492,12 +492,6 @@
                                 <span>Tiếp tục mua hàng</span>
                             </a>
                         </div>
-
-                        <div class="cart-continue">
-                            <button class="action continue a-anchor" onClick="window.location.reload();" title="Continue Shopping">
-                                <span>Cập nhật giỏ hàng</span>
-                            </button>
-                        </div>
                     </div>
                 </form>
 
