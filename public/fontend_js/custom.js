@@ -106,6 +106,13 @@ $(".js-add-cart").on('click', function() {
         success: function(data) {
             console.log(data);
             $('.count-cart-s').addClass('c-header__minicart-count').html('<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">' +data.count+'</span>');
+            if (data.status === 200) {
+                $('#toast-container').html(' <div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' +data.message+'</div></div>'),4000;
+                setTimeout(function() {
+                    $('.toast-success').remove();
+                  }, 2000);
+            }
+            
         },
 
     });

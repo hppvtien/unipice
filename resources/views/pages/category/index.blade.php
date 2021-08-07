@@ -228,6 +228,9 @@
                                                                     </span>
                                                                 </div>
                                                             </div>
+                                                            <div id="toast-container" class="toast-top-right">
+
+                                                            </div>
                                                             @empty
                                                             @endforelse
 
@@ -240,14 +243,20 @@
                                                                             id: title
                                                                         })
                                                                         .done(function(data) {
-                                                                            console.log(data);
-                                                                            $('#count-fav').html('<div class="c-header__minicart-count" style="bottom: -10px;right: -5px;">' +
+                                                                            $('.c-header__minicart-count').html('' +
                                                                                 '<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">' + data.count + '</span>' +
-                                                                                '</div>');
+                                                                                '');
                                                                             if (data.message == 'add') {
-                                                                                console.log(data);
+                                                                                $('#toast-container').html(' <div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Sản phẩm được thêm vào danh sách yêu thích</div></div>'), 4000;
+                                                                                setTimeout(function() {
+                                                                                    $('.toast-success').remove();
+                                                                                }, 2000);
                                                                                 $('#red_heart' + title).addClass('red');
                                                                             } else {
+                                                                                $('#toast-container').html(' <div class="toast toast-warning" aria-live="assertive" style=""><div class="toast-message">Sản phẩm được xóa khỏi danh sách yêu thích</div></div>'), 4000;
+                                                                                setTimeout(function() {
+                                                                                    $('.toast-warning').remove();
+                                                                                }, 2000);
                                                                                 console.log(data);
                                                                                 $('#red_heart' + title).removeClass('red');
                                                                             };

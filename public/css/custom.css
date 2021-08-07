@@ -390,6 +390,9 @@ a.ahr-text{
     }
     #search_name::placeholder {
         color: #ff7759;
+        display: block!important;
+        animation: none!important;
+        opacity: 0!important;
     }
     #search_name {
         padding: 10px!important;
