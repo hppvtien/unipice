@@ -15,7 +15,18 @@
     padding-right: 20px;
     width: auto;
 }
-
+.text-success-uni {
+    margin-left: 86px;
+}
+.m-product-qty{
+    margin: 10px 0px 10px;
+}
+.ad {
+    display: flex;
+}
+.ad a {
+    margin: 0px;
+}
 #uni {
     padding: .66em .9em;
     color: #fff;
