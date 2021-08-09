@@ -70,9 +70,9 @@ h1.page-title {
     font-weight: 700;
     display: block;
     width: 100%;
-    border-bottom: 2px solid #0b2d25;
+    border-bottom: 2px solid #08532f;
     padding-bottom: 8px;
-    color: #0b2d25;
+    color: #08532f;
 }
 
 .block-title>strong {
@@ -426,5 +426,5 @@ button.btn_store_submit.js-add-cart {
 button.btn_store_submit.js-add-cart:hover {
     background: #fff;
     border:2px solid #fff;
-    color: #0b2d25;
+    color: #08532f;
 }

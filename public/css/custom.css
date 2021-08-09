@@ -203,7 +203,43 @@ a.ahr-text{
     margin-right: 18px;
 }
 
+.pl-md-5, .px-md-5 {
+    padding-left: 9rem !important;
+}
+.can_tren_duoi {
+    width: 200px;
+    margin: 25px 0;
+}
+.footer-left-widget {
+    padding-left: 130px;
+}
+.header_thunho {
+    background-color: #0b2d25;
+    padding: 0 6rem;
+        padding-top: 0px;
+        padding-bottom: 0px;
+}
+.site-header .site-branding {
+    max-width: 180px;
+    padding: 0;
+    margin: 0 2.5rem;
+}
+.dk-footer-box-info {
+    position: absolute;
+    top: -100px;
+    background: #104438;
+    padding: 30px;
+    z-index: 2;
+    border-radius: 60px;
+    box-shadow: 2px 2px #202020;
+}
+.foooter_cach_le_duoi {
+    padding-bottom: 1rem !important;
+}
 
+.footer-widget ul{
+    width: 100%!important;
+}
 @media screen and (min-width: 1024px) {
     .c-header__logo img {
         margin: 4px auto;
