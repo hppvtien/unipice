@@ -1,11 +1,60 @@
 /* ĐỨC ANH CSS */
-.contact-info a {
-    color: #fff;
+
+
+/*==================================*/
+
+ul.menu_foooter_1 {
+    float: right;
+    margin-bottom: 0;
 }
 
-.contact-info a:hover {
-    color: #fff;
+ul.menu_foooter_1 li {
+    float: left;
+    margin: 10px;
 }
+
+ul.menu_foooter_2 {
+    float: left;
+    margin-bottom: 0;
+}
+
+ul.menu_foooter_2 li {
+    float: left;
+    margin: 10px;
+}
+
+@media screen and (max-width:768px) {
+    ul.menu_foooter_2 {
+        float: left;
+    }
+    ul.menu_foooter_1 {
+        float: left;
+    }
+}
+
+.header_thunho {
+    background-color: #0b2d25;
+    padding: 0 6rem;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+@media screen and (min-width:768px) {
+    .site-header {
+        padding-top: 2.617924em;
+    }
+}
+
+@media screen and (max-width:1199px) {
+    .site-header {
+        z-index: 10000;
+        padding: 1.618em 0;
+    }
+}
+
+
+/*==============================================*/
+
 .modal-dialog {
     margin-top: 10%;
 }
@@ -573,7 +622,8 @@ a.text-muted:focus {
     font-weight: normal;
     border-radius: 0px;
 }
-span.rigister-text{
+
+span.rigister-text {
     color: #fff;
 }
 
@@ -851,7 +901,7 @@ textarea,
     font-size: 17px;
     width: 100%;
     box-shadow: inset 1px -1px 20px rgb(232, 128, 18);
-        transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
 }
 
 .tablink:hover {
@@ -873,35 +923,43 @@ textarea,
     height: 100%;
 }
 
-
-textarea#noi_dung_commnet,textarea#noi_dung_question {
+textarea#noi_dung_commnet,
+textarea#noi_dung_question {
     color: #0b2d25;
     border: 1px solid #b1b1b1;
     text-shadow: 0 0 0 #c5c8ca;
 }
-.m-text-input .label-comt{
+
+.m-text-input .label-comt {
     border: 1px solid #b1b1b1;
     border-radius: 5px;
 }
-label.m-text-input__label{
+
+label.m-text-input__label {
     top: 10px;
 }
-.label-lb{
+
+.label-lb {
     top: 10px!important;
 }
-.group-cmt:last-child{
+
+.group-cmt:last-child {
     margin-bottom: 10px;
 }
+
 .answer-gr {
     margin-left: 30px;
 }
+
 .answer-gr .mar-btm a {
     margin-top: 0;
     margin-bottom: 0;
 }
-.m-combined-product-name.group-product{
+
+.m-combined-product-name.group-product {
     flex-direction: row;
 }
+
 .m-combined-product-name__link {
     display: flex;
     flex-direction: column;
@@ -909,50 +967,61 @@ label.m-text-input__label{
     flex: 0 0 80%;
     text-decoration: none;
     max-width: 80%;
-} 
+}
+
 .icon-favorite.a-icon-text-btn__icon {
     flex: 0 0 20%;
     max-width: 100%;
     margin: auto;
 }
-button.btn.btn-sm.btn-primary.pull-right{
+
+button.btn.btn-sm.btn-primary.pull-right {
     height: 48px;
     width: 100%;
     background: #0b2d25;
 }
+
 .header-v1 .site-header-cart-v2 .cart-content {
     margin-left: calc(100% - 250px);
 }
-button.btn.btn-sm.btn-primary.pull-right:hover, button.btn.btn-sm.btn-primary.pull-right:focus {
+
+button.btn.btn-sm.btn-primary.pull-right:hover,
+button.btn.btn-sm.btn-primary.pull-right:focus {
     color: #fff;
     background-color: #137f62!important;
 }
-#review-box{
+
+#review-box {
     margin: 0;
 }
-a.a-anchor:hover{
+
+a.a-anchor:hover {
     color: #ff6214;
 }
+
 .m-breadcrumb__item::after {
     content: '>';
     display: inline-block;
     padding: 0 5px;
     color: #0b2d25;
 }
+
 .m-breadcrumb__item:last-child::after {
     content: '';
     display: inline-block;
     padding: 0 5px;
     color: #0b2d25;
 }
+
 a.a-btn.a-btn--primary.action.update.update_cart_action {
     color: #fff;
 }
+
 @media screen and (max-width: 768px) {
-    .tabcontent{
+    .tabcontent {
         padding: 50px 0;
     }
-    .mar-top.clearfix.col-md-4.col-lg-4.col.col-12{
+    .mar-top.clearfix.col-md-4.col-lg-4.col.col-12 {
         padding: 0;
     }
 }

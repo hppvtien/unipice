@@ -78,20 +78,23 @@ h1.page-title {
     padding-bottom: 8px;
     color: #0b2d25;
 }
-#shopping-cart-table{
+
+#shopping-cart-table {
     margin-bottom: 0;
     border: 1px solid #f3f3f3;
     margin-left: 5px;
     border-left: 5px solid #f3f3f3;
 }
 
-tr.th-payCart th{
+tr.th-payCart th {
     color: #0b2d25;
     font-weight: 600;
 }
-a.ahr-text{
+
+a.ahr-text {
     margin: 0;
 }
+
 .block-title>strong {
     font-size: 24px;
     margin-top: 5px;
@@ -106,13 +109,16 @@ a.ahr-text{
 .column.main .block:last-child {
     margin-bottom: 20px;
 }
+
 .column.main .block:first-child {
     margin-bottom: 20px;
     padding-right: 20px!important;
 }
-.block-dashboard-info h2{
+
+.block-dashboard-info h2 {
     font-size: 1.5em;
 }
+
 .column.main .block {
     margin-bottom: 40px;
 }
@@ -203,27 +209,28 @@ a.ahr-text{
     margin-right: 18px;
 }
 
-.pl-md-5, .px-md-5 {
-    padding-left: 9rem !important;
-}
 .can_tren_duoi {
     width: 200px;
     margin: 25px 0;
 }
+
 .footer-left-widget {
     padding-left: 130px;
 }
+
 .header_thunho {
     background-color: #0b2d25;
     padding: 0 6rem;
-        padding-top: 0px;
-        padding-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
+
 .site-header .site-branding {
     max-width: 180px;
     padding: 0;
     margin: 0 2.5rem;
 }
+
 .dk-footer-box-info {
     position: absolute;
     top: -100px;
@@ -233,13 +240,15 @@ a.ahr-text{
     border-radius: 60px;
     box-shadow: 2px 2px #202020;
 }
+
 .foooter_cach_le_duoi {
     padding-bottom: 1rem !important;
 }
 
-.footer-widget ul{
+.footer-widget ul {
     width: 100%!important;
 }
+
 @media screen and (min-width: 1024px) {
     .c-header__logo img {
         margin: 4px auto;
@@ -346,16 +355,12 @@ a.ahr-text{
     }
 }
 
-@media screen and (max-width: 767px) {
- 
-}
+@media screen and (max-width: 767px) {}
 
 @media screen and (min-width: 768px) {
     table.cart .qty {
         padding: 0!important
     }
-
-    
     .m-category-card .m-category-card__image-wrapper img {
         max-width: 176px;
         margin: auto;
