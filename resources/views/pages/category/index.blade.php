@@ -161,7 +161,10 @@
                                                                                     </form>
                                                                                 <?php } else { ?>
                                                                                     <form class="m-product-card__add-to-cart">
-                                                                                    <span my-id="{{ $item->id }}" id="red_heart{{ $item->id }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user('web') !=null ? get_data_user('web') : 0 }} onclick="{{ get_data_user('web') !=null ? 'check_my_favorites_add(this)' : 'unset' }};" class="icon-favorite  a-icon-text-btn__icon  {{ red_heart($item->id,get_data_user('web')) != 0 ? 'red':''; }}" aria-hidden=""></span>
+                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
+                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" data-target=".login-js" data-toggle="modal" type="&quot;submit&quot;">
+                                                                                            <span class="icon-add-to-cart"></span>
+                                                                                        </button>
                                                                                     </form>
                                                                                 <?php } ?>
                                                                             </div>
@@ -172,6 +175,7 @@
                                                                                             {{ $item->name }}
                                                                                         </span>
                                                                                     </a>
+                                                                                    <span my-id="{{ $item->id }}" id="red_heart{{ $item->id }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user('web') !=null ? get_data_user('web') : 0 }} onclick="{{ get_data_user('web') !=null ? 'check_my_favorites_add(this)' : 'unset' }};" class="icon-favorite  a-icon-text-btn__icon  {{ red_heart($item->id,get_data_user('web')) != 0 ? 'red':''; }}" aria-hidden=""></span>
                                                                                 </div>
                                                                                 <div class="m-product-card__sku">
                                                                                     <span> SKU: {{ $item->id }}</span>
@@ -195,21 +199,20 @@
                                                                                                 <span class="text-danger paid-save">
                                                                                                     (Tiết kiệm: {{ 100-round($item->price_sale*100/$item->price) }}% )
                                                                                                 </span>
-                                                                                                <div class='ad'>
+                                                                                                <br>
                                                                                                 <span class="a-price">
                                                                                                     {{ formatVnd($item->price_sale) }}
                                                                                                 </span>
-                                                                                                <?php if ($item->qty) { ?>
-                                                                                                    <span class="text-success-uni"><i class="fa fa-check" aria-hidden="true"></i> Còn hàng</span>
-                                                                                                </div>
-                                                                                                <div class="m-product-qty">
+                                                                                                <br>
+                                                                                                <span class="row">
                                                                                                     <div class="buttons_added col-12">
                                                                                                         <input class="minus is-form" type="button" value="-">
                                                                                                         <input aria-label="quantity" class="input-qty update-qty" id="js-qty{{ $item->id }}" max="10" min="1" name="qty-user" type="number" value="1">
                                                                                                         <input class="plus is-form" type="button" value="+">
                                                                                                     </div>
-                                                                                                    </div>
                                                                                                 </span>
+                                                                                                <?php if ($item->qty) { ?>
+                                                                                                    <a href="{{ route('get.uni_contact') }}"><span class="a-price text-success"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span></a>
                                                                                                 <?php } else { ?>
                                                                                                     <a href="{{ route('get.uni_contact') }}"><span class="a-price text-primary"><i class="fa fa-phone"></i>Liên hệ</span></a>
                                                                                                 <?php } ?>
@@ -219,12 +222,6 @@
                                                                                         <?php } ?>
                                                                                     </span>
                                                                                 </div>
-                                                                                <form class="m-product-card__add-to-uni">
-                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
-                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" data-target=".login-js" data-toggle="modal" type="&quot;submit&quot;">
-                                                                                            <span class="icon-add-to-cart"></span>
-                                                                                        </button>
-                                                                                    </form>
                                                                             </div>
                                                                             <div class="m-product-card__cta"></div>
                                                                         </div>
