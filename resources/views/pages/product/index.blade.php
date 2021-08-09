@@ -133,18 +133,23 @@
                                                                             <a href="{{ route('get.uni_contact') }}"><span class="a-price text-primary sigle"><i class="fa fa-phone"></i>Liên hệ</span></a>
                                                                         <?php } ?>
                                                                         <span class="g-price">
-                                                                            {{ formatVnd($product->price) }}
+                                                                            {{ formatVnd($product->view_price) }}
                                                                         </span>
                                                                         <span class="text-danger paid-save">
-                                                                            (Tiết kiệm: {{ 100-round($product->price_sale*100/$product->price) }}% )
+                                                                            (Tiết kiệm: {{ 100-round($product->view_price_sale*100/$product->view_price) }}% )
                                                                         </span>
                                                                         <span>Còn:</span>
                                                                         <span class="a-price">
-                                                                            {{ formatVnd($product->price_sale) }}
+                                                                            {{ formatVnd($product->view_price_sale) }}
                                                                         </span>
                                                                         <br>
+                                                                        <span class="m-product-overview__price-wrapper d-block">
+                                                                            <span class="a-folio trade-name">
+                                                                                {{ $trade_name }}
+                                                                            </span>
+                                                                        </span>
                                                                         <span class="row">
-                                                                            <div class="buttons_added col-12">
+                                                                            <div class="buttons_added col-12 text-center">
                                                                                 <input class="minus is-form" type="button" value="-">
                                                                                 <input aria-label="quantity" class="input-qty update-qty" id="js-qty{{ $product->id }}" max="10" min="1" name="qty-user" type="number" value="1">
                                                                                 <input class="plus is-form" type="button" value="+">
@@ -155,11 +160,7 @@
                                                                 <!--</span>-->
                                                             </div>
                                                         </div>
-                                                        <div class="m-product-overview__price-wrapper d-block">
-                                                            <span class="a-folio trade-name">
-                                                                {{ $trade_name }}
-                                                            </span>
-                                                        </div>
+                                                        
                                                         <form class="m-product-overview__add-to-cart">
                                                         </form>
                                                     </div>

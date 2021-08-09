@@ -156,9 +156,9 @@ html:not(.no-transition) body,
     top: calc(50% - 14px);
 }
 
-button.btn_store_submit.js-add-cart {
+/* button.btn_store_submit.js-add-cart {
     margin: auto;
-}
+} */
 
 #toast-container>.toast-007BFF {
     background-color: #00b9ff;

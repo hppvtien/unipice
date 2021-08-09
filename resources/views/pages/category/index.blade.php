@@ -68,10 +68,8 @@
                                                                             <option value="asc" selected>Asc</option>
                                                                             <option value="desc">Desc</option>
                                                                         </select>
-
                                                                         <span class="m-sort-by__arrow"></span>
                                                                     </div>
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -142,31 +140,11 @@
                                                                         <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" class="m-product-card">
                                                                             <div class="m-product-card__content-wrapper">
                                                                                 <a class="m-product-card__img-wrapper" href="{{ $item->slug }}" title="{{ $item->name }}">
-                                                                                    <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
+                                                                                    <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                                                                                 </a>
-                                                                                <?php if (checkUid(get_data_user('web')) != null) { ?>
-                                                                                    <form class="m-product-card__add-to-cart">
-                                                                                        <div class="a-btn a-btn--primary m-product-card__add-to-cart-btn">
-                                                                                            <?php if ($item->qty_in_box != null) { ?>
-                                                                                                <p>Thùng: {{ $item->qty_in_box }} hộp</p>
-                                                                                                <p>Số lượng: {{ $item->min_box }} trở lên</p>
-                                                                                                <p>Giá: {{ formatVnd($item->qty_in_box * $item->price_sale_store) }}/thùng</p>
-                                                                                                <button class="btn_store_submit js-add-cart" data-min-box="{{ $item->min_box }}" data-qtyinbox="{{ $item->qty_in_box }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
-                                                                                            <?php } else { ?>
-                                                                                                <p class="text-center">Dữ liệu về sản phẩm</p>
-                                                                                                <p class="text-center">đang được cập nhật</p>
-                                                                                            <?php } ?>
-                                                                                        </div>
-
-                                                                                    </form>
-                                                                                <?php } else { ?>
-                                                                                    <form class="m-product-card__add-to-cart">
-                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
-                                                                                        <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" data-target=".login-js" data-toggle="modal" type="&quot;submit&quot;">
-                                                                                            <span class="icon-add-to-cart"></span>
-                                                                                        </button>
-                                                                                    </form>
-                                                                                <?php } ?>
+                                                                                <a class="fav-product">
+                                                                                    <span my-id="{{ $item->id }}" id="red_heart{{ $item->id }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user('web') !=null ? get_data_user('web') : 0 }} onclick="{{ get_data_user('web') !=null ? 'check_my_favorites_add(this)' : 'unset' }};" class="icon-favorite  a-icon-text-btn__icon  {{ red_heart($item->id,get_data_user('web')) != 0 ? 'red':''; }}" aria-hidden=""></span>
+                                                                                </a>
                                                                             </div>
                                                                             <div class="m-product-card__info">
                                                                                 <div class="m-combined-product-name group-product">
@@ -175,7 +153,6 @@
                                                                                             {{ $item->name }}
                                                                                         </span>
                                                                                     </a>
-                                                                                    <span my-id="{{ $item->id }}" id="red_heart{{ $item->id }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user('web') !=null ? get_data_user('web') : 0 }} onclick="{{ get_data_user('web') !=null ? 'check_my_favorites_add(this)' : 'unset' }};" class="icon-favorite  a-icon-text-btn__icon  {{ red_heart($item->id,get_data_user('web')) != 0 ? 'red':''; }}" aria-hidden=""></span>
                                                                                 </div>
                                                                                 <div class="m-product-card__sku">
                                                                                     <span> SKU: {{ $item->id }}</span>
@@ -184,43 +161,89 @@
                                                                                 <div class="m-price-lockup m-product-card__price">
                                                                                     <span class="m-price-lockup__price">
                                                                                         <?php if (checkUid($uid)) { ?>
-                                                                                            <?php if ($item->price_sale_store != null) { ?>
-                                                                                                <span class="a-price">
-                                                                                                    {{ formatVnd($item->price_sale_store) }}
+                                                                                            <?php if ($item->view_price_sale_store != null) { ?>
+                                                                                                <span class="g-price">
+                                                                                                    {{ formatVnd($item->view_price) }}
                                                                                                 </span>
+                                                                                                <span class="text-danger paid-save">
+                                                                                                    @if ($item->view_price_sale_store == null || $item->view_price == null)
+
+                                                                                                    @else
+                                                                                                    (Tiết kiệm: {{ 100-round($item->view_price_sale_store*100/$item->view_price) }}% )
+                                                                                                    @endif
+                                                                                                </span>
+                                                                                                <br>
+                                                                                                <span class="a-price font-weight-bold">
+                                                                                                    {{ formatVnd($item->view_price_sale_store) }}
+                                                                                                </span>
+                                                                                                <?php if ($item->qty) { ?>
+                                                                                                    <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
+                                                                                                <?php } else { ?>
+                                                                                                    <span class="a-price text-dark product-notnull"><i class="fa fa-warning" aria-hidden="true"></i>Hết hàng</span>
+                                                                                                <?php } ?>
                                                                                             <?php } else { ?>
                                                                                                 <a href="{{ route('get.uni_contact') }}"><span class="a-price">Liên hệ để biết thông tin</span></a>
                                                                                             <?php } ?>
                                                                                         <?php } else { ?>
-                                                                                            <?php if ($item->price_sale != null) { ?>
+                                                                                            <?php if ($item->view_price_sale != null) { ?>
                                                                                                 <span class="g-price">
-                                                                                                    {{ formatVnd($item->price) }}
+                                                                                                    {{ formatVnd($item->view_price) }}
                                                                                                 </span>
                                                                                                 <span class="text-danger paid-save">
-                                                                                                    (Tiết kiệm: {{ 100-round($item->price_sale*100/$item->price) }}% )
+                                                                                                    @if ($item->view_price_sale == null || $item->view_price == null)
+
+                                                                                                    @else
+                                                                                                    (Tiết kiệm: {{ 100-round($item->view_price_sale*100/$item->view_price) }}% )
+                                                                                                    @endif
+
                                                                                                 </span>
                                                                                                 <br>
-                                                                                                <span class="a-price">
-                                                                                                    {{ formatVnd($item->price_sale) }}
-                                                                                                </span>
-                                                                                                <br>
-                                                                                                <span class="row">
-                                                                                                    <div class="buttons_added col-12">
-                                                                                                        <input class="minus is-form" type="button" value="-">
-                                                                                                        <input aria-label="quantity" class="input-qty update-qty" id="js-qty{{ $item->id }}" max="10" min="1" name="qty-user" type="number" value="1">
-                                                                                                        <input class="plus is-form" type="button" value="+">
-                                                                                                    </div>
+                                                                                                <span class="a-price font-weight-bold">
+                                                                                                    {{ formatVnd($item->view_price_sale) }}
                                                                                                 </span>
                                                                                                 <?php if ($item->qty) { ?>
-                                                                                                    <a href="{{ route('get.uni_contact') }}"><span class="a-price text-success"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span></a>
+                                                                                                    <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
+                                                                                                    <span class="row">
+                                                                                                        <div class="buttons_added add-qty col-12">
+                                                                                                            <input class="minus is-form" type="button" value="-">
+                                                                                                            <input aria-label="quantity" class="input-qty update-qty" id="js-qty{{ $item->id }}" max="10" min="1" name="qty-user" type="number" value="1">
+                                                                                                            <input class="plus is-form" type="button" value="+">
+                                                                                                        </div>
+                                                                                                    </span>
                                                                                                 <?php } else { ?>
-                                                                                                    <a href="{{ route('get.uni_contact') }}"><span class="a-price text-primary"><i class="fa fa-phone"></i>Liên hệ</span></a>
+                                                                                                    <p class="a-price text-dark text-null-product"><i class="fa fa-warning" aria-hidden="true"></i>Sản phẩm tạm thời hết!</p>
                                                                                                 <?php } ?>
-                                                                                            <?php } else { ?>
-                                                                                                <a href="{{ route('get.uni_contact') }}"><span class="a-price text-primary"><i class="fa fa-phone"></i>Liên hệ</span></a>
                                                                                             <?php } ?>
+
                                                                                         <?php } ?>
                                                                                     </span>
+                                                                                </div>
+                                                                                <div class="m-combined-product-name group-product group-product-cart">
+                                                                                    <?php if (checkUid(get_data_user('web')) != null) { ?>
+                                                                                        <div class="info-sale-store">
+                                                                                            <img src="{{ pare_url_file($item->thumbnail) }}" alt="">
+                                                                                            <p><span class="text-white font-weight-bold">Thùng:</span> {{ $item->qty_in_box }} hộp</p>
+                                                                                            <p><span class="text-white font-weight-bold">Số lượng:</span> {{ $item->min_box }} trở lên</p>
+                                                                                            <p><span class="text-white font-weight-bold">Giá:</span> {{ formatVnd($item->qty_in_box * $item->view_price_sale_store) }}/thùng</p>
+                                                                                        </div>
+                                                                                        <?php if ($item->qty == null) { ?>
+                                                                                            <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn contact-btn" type="button">Liên hệ</a>
+                                                                                        <?php } else { ?>
+                                                                                            <button class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-min-box="{{ $item->min_box }}" data-qtyinbox="{{ $item->qty_in_box }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
+                                                                                        <?php } ?>
+
+                                                                                    <?php } else { ?>
+                                                                                        <?php if ($item->qty == null) { ?>
+                                                                                            <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn" type="button">Liên hệ</a>
+                                                                                        <?php } else { ?>
+                                                                                            <form>
+                                                                                                <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
+                                                                                                <button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" data-target=".login-js" data-toggle="modal" type="&quot;submit&quot;">
+                                                                                                    <span class="icon-add-to-cart"></span>
+                                                                                                </button>
+                                                                                            </form>
+                                                                                        <?php } ?>
+                                                                                    <?php } ?>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="m-product-card__cta"></div>
@@ -243,13 +266,13 @@
                                                                             id: title
                                                                         })
                                                                         .done(function(data) {
-                                                                            if(data.count != 0){
+                                                                            if (data.count != 0) {
                                                                                 $('#count-fav').html('<div class="c-header__minicart-count count-fav" style="bottom: -10px;right: -5px"><span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">' + data.count + '</span>' +
-                                                                                '</div>');
-                                                                            } else  {
+                                                                                    '</div>');
+                                                                            } else {
                                                                                 $('#count-fav').html('');
                                                                             }
-                                                                           
+
                                                                             if (data.message == 'add') {
                                                                                 $('#toast-container').html(' <div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Sản phẩm được thêm vào danh sách yêu thích</div></div>'), 4000;
                                                                                 setTimeout(function() {

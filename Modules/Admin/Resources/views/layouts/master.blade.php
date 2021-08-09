@@ -74,7 +74,12 @@
 </script>
 <script>
     $("#meta_title").keyup(function() {
-        $("#count_title").text("Ký tự: " + ($(this).val().length) + " (Tiêu đề seo <= 70 ký tự)");
+        $("#count_title").text("Ký tự: " + ($(this).val().length) + " (Tiêu đề seo 50 - 70 ký tự)");
+        if($(this).val().length >= 50 && $(this).val().length <=70){
+            $("#count_title").removeClass('text-danger').addClass('text-success')
+        } else {
+            $("#count_title").removeClass('text-success').addClass('text-danger')
+        }
     });
     $("#meta_desscription").keyup(function() {
         $("#count_des").text("Ký tự: " + ($(this).val().length) + " (Mô tả seo <= 150 ký tự)");
