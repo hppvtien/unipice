@@ -5,7 +5,7 @@
             <div class="card  box-shadow-0">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Name<span>(*)</span></label>
                         <input type="text" class="form-control keypress-count" data-title-seo=".meta_title" value="{{ old('name', $trade->name ?? '') }}" data-slug=".slug" name="name">
                         @if($errors->first('name'))
                         <span class="text-danger">{{ $errors->first('name') }}</span>

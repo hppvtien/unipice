@@ -74,18 +74,23 @@
 </script>
 <script>
     $("#meta_title").keyup(function() {
-        $("#count_title").text("Ký tự: " + ($(this).val().length) + " (Tiêu đề seo 50 - 70 ký tự)");
-        if($(this).val().length >= 50 && $(this).val().length <=70){
-            $("#count_title").removeClass('text-danger').addClass('text-success')
-        } else {
-            $("#count_title").removeClass('text-success').addClass('text-danger')
-        }
-    });
-    $("#meta_desscription").keyup(function() {
-        $("#count_des").text("Ký tự: " + ($(this).val().length) + " (Mô tả seo <= 150 ký tự)");
-    });
-     
-</script>
+          $("#count_title").text("Ký tự: " + ($(this).val().length) + " (Tiêu đề seo 50 - 70 ký tự)");
+          if($(this).val().length >= 50 && $(this).val().length <=70){
+              $("#count_title").removeClass('text-danger').addClass('text-success')
+          } else {
+              $("#count_title").removeClass('text-success').addClass('text-danger')
+          }
+      });
+      $("#meta_desscription").keyup(function() {
+          $("#count_des").text("Ký tự: " + ($(this).val().length) + " (Mô tả seo từ 100 -> 150 ký tự)");
+          if($(this).val().length >= 100 && $(this).val().length <=150){
+              $("#count_des").removeClass('text-danger').addClass('text-success')
+          } else {
+              $("#count_des").removeClass('text-success').addClass('text-danger')
+          }
+      });
+       
+  </script>
 @yield('scriptck')
 </body>
 </html>

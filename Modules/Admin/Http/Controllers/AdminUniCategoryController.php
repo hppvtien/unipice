@@ -43,8 +43,8 @@ class AdminUniCategoryController extends AdminController
         if ($request->icon_thumb) {
             $data['thumbnail'] = $this->processUploadFile($request->thumnail);
         } 
-        if(!$request->meta_title)             $data['meta_title'] = $request->name;
-        if(!$request->meta_description) $data['meta_desscription'] = $request->name;
+        if(!$request->meta_title)             $data['meta_title'] = $request->meta_title;
+        if(!$request->meta_description) $data['meta_desscription'] = $request->meta_desscription;
         $menuID = Uni_Category::insertGetId($data);
         if($menuID) 
         {
@@ -92,8 +92,8 @@ class AdminUniCategoryController extends AdminController
     } elseif ($request->banner && !$uni_category->banner) {
         $data['banner'] = $request->banner;         
     }
-        if(!$request->meta_title)             $data['meta_title'] = $request->name;
-        if(!$request->meta_description) $data['meta_desscription'] = $request->name;
+        if(!$request->meta_title)             $data['meta_title'] = $request->meta_title;
+        if(!$request->meta_description) $data['meta_desscription'] = $request->meta_desscription;
         
         
         $uni_category->fill($data)->save();
