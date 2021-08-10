@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         try {
             $configuration = Configuration::first();
-            $category_mn = Uni_Category::orderBy('order', 'asc')->get();
+            $category_mn = Uni_Category::orderBy('order', 'asc')->where('status',1)->where('parent_id',0)->get();
         } catch (\Exception $exception) {
 
         }
