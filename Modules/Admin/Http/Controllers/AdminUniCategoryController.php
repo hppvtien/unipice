@@ -34,7 +34,7 @@ class AdminUniCategoryController extends AdminController
 
     public function store(AdminUniCategoryRequest $request)
     {
-        $data = $request->except(['banner','save','_token']);
+        $data = $request->except(['banner','icon_thumb','save','_token','thumbnail','delete_thumbnail']);
         $data['created_at'] = Carbon::now();
         $data['created_by'] = get_data_user('web');
         if ($request->icon_thumb) {
@@ -66,7 +66,7 @@ class AdminUniCategoryController extends AdminController
     {
         
         $uni_category = Uni_Category::findOrFail($id);
-        $data = $request->except(['banner','save','_token']);
+        $data = $request->except(['banner','icon_thumb','save','_token','thumbnail','delete_thumbnail']);
         $data['updated_at'] = Carbon::now();
         // $data['updated_by'] = get_data_user('web');
        if($request->icon_thumb){

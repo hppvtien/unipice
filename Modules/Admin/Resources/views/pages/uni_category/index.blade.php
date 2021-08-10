@@ -71,6 +71,9 @@
 
                             </table>
                         </div>
+                        <div>
+                            {!! $uni_category->links() !!}
+                        </div>
                     </div>
                 </div>
             </div>
