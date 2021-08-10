@@ -9,130 +9,15 @@
                     <header>
                         <div data-frontier-type="products_categories" id="taxonomy-term-521" class="taxonomy-term vocabulary-products-categories">
                             <div class="content">
+                                @include('pages.category._banner')
                                 <div class="layout layout--onecol">
                                     <div class="layout__region layout__region--content">
-                                        <div data-block-plugin-id="entity_view:taxonomy_term">
-                                            <div class="c-page-header c-page-header--light">
-                                                <picture class="c-page-header__image">
-                                                    <source media="(min-width: 1024px)" data-srcset="{{ pare_url_file($category->banner) }}">
-                                                    <img class="lazyload" data-src="{{ pare_url_file($category->banner) }}" alt="{{ $category->name }}">
-                                                </picture>
-                                                <div class="c-page-header__content">
-                                                    <h1 class="c-page-header__headline">
-                                                        <div class="field field--name-name field--type-string field--label-hidden field__item">{{ $category->name }}</div>
-                                                    </h1>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="layout layout--onecol">
-                                    <div class="layout__region layout__region--content">
-                                        <div class="views-element-container" data-block-plugin-id="views_block:page_listing_page_recipe_products_-product_listing_page">
+                                        <div class="views-element-container">
                                             <div class="views-element-container">
                                                 <div class="t-plp js-plp" id="js-plp">
-                                                    <div class="t-plp__nav">
-                                                        <nav class="m-breadcrumb" aria-label="Breadcrumb">
-                                                            <h2 class="visually-hidden">Breadcrumb</h2>
-                                                            <ol class="m-breadcrumb__list">
-                                                                <li class="m-breadcrumb__item">
-                                                                    <a class="a-anchor" href="/">Home</a>
-                                                                </li>
-                                                                <li class="m-breadcrumb__item m-breadcrumb__item--active">
-                                                                    <a class="a-anchor" aria-current="page">{{ $category->name }}</a>
-                                                                </li>
-                                                            </ol>
-                                                        </nav>
-                                                        <div class="t-plp__filter-bar js-filter-bar">
-                                                            <div class="c-filter-bar">
-                                                                <button class="c-filter-bar__filter-btn a-icon-text-btn a-icon-text-btn--icon-right js-toggle-filters" type="button">
-                                                                    <span class="icon-filters a-icon-text-btn__icon" aria-hidden="true"></span>
-                                                                    <span class="a-icon-text-btn__label">
-                                                                        <span class="c-filter-bar__label--show">Show Filters</span>
-                                                                        <span class="c-filter-bar__label--hide">Hide Filters</span>
-                                                                    </span>
-                                                                </button>
-                                                                <div class="c-filter-bar__sorting">
-                                                                    <div class="m-sort-by">
-                                                                        <label class="m-sort-by__label" for="sort_by">Sort By</label>
-                                                                        <select class="m-sort-by__select frontier-custom-sort" id="sort_by" name="sort_by" aria-label="Sort By">
-                                                                            <option value="price" selected>Price</option>
-                                                                            <option value="name">Name</option>
-                                                                        </select>
-                                                                        <span class="m-sort-by__arrow"></span>
-                                                                    </div>
-                                                                    <div class="m-sort-by">
-                                                                        <label class="m-sort-by__label" for="order_by">Order By</label>
-                                                                        <select class="m-sort-by__select frontier-custom-sort" id="order_by" name="order_by" aria-label="Order By">
-                                                                            <option value="asc" selected>Asc</option>
-                                                                            <option value="desc">Desc</option>
-                                                                        </select>
-                                                                        <span class="m-sort-by__arrow"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="t-plp__quick-filters js-mobile-quick-filters">
-                                                        </div>
-                                                    </div>
+                                                    @include('pages.category._fillterOptions')
                                                     <div class="t-plp__container js-plp-container">
-                                                        <div class="t-plp__filters js-filters">
-                                                            <div class="c-sidebar-filters">
-                                                                <div class="c-sidebar-filters__close-filters">
-                                                                    <!-- BASE -->
-                                                                    <button class="a-icon-text-btn  a-icon-text-btn--icon-only js-close-filters" type="button">
-                                                                        <span class="icon-close a-icon-text-btn__icon" aria-hidden="true"></span>
-                                                                        <span class="a-icon-text-btn__label">Ẩn bộ lọc</span>
-                                                                    </button>
-                                                                    <!-- /BASE -->
-                                                                </div>
-                                                                <div class="c-sidebar-filters__heading">
-                                                                    <p class="c-sidebar-filters__title">Lọc với:</p>
-                                                                </div>
-                                                                <div class="c-sidebar-filters__list">
-
-                                                                    <div data-drupal-facet-id="product_brand_plp" data-drupal-facet-alias="product_brand_plp" class="facet-inactive js-facets-checkbox-links m-accordion js-filter-accordion">
-                                                                        <div class="m-accordion__title m-accordion__title--open js-accordion-trigger">
-                                                                            <span class="m-accordion__title-label">Thương hiêu</span>
-                                                                        </div>
-                                                                        <div class="m-accordion__content m-accordion__content--open js-accordion-content">
-                                                                            <div class="m-accordion__content-inner js-accordion-content-inner js-frontier-facet">
-                                                                                @forelse ($trade as $key => $item)
-                                                                                <div class="facet-item m-checkbox c-sidebar-filters__filter">
-                                                                                    <a href="javascript:;" class="name-filler" rel="nofollow" data-url="{{ route('get.fillter',$category->slug) }}" data-slug-trade="{{ $item->slug }}" data-drupal-facet-item-id="product-brand-plp-1171">
-                                                                                        <span class="m-checkbox__text-label facet-item__value">
-                                                                                            {{ $item->name }}
-                                                                                            <span class="facet-item__count"></span>
-                                                                                        </span>
-                                                                                    </a>
-                                                                                </div>
-                                                                                @empty @endforelse
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div data-drupal-facet-id="product_categories" data-drupal-facet-alias="product_categories" class="facet-inactive js-facets-checkbox-links m-accordion js-filter-accordion">
-                                                                        <div class="m-accordion__title m-accordion__title--open js-accordion-trigger">
-                                                                            <span class="m-accordion__title-label">Danh mục gia vị</span>
-                                                                        </div>
-                                                                        <div class="m-accordion__content m-accordion__content--open js-accordion-content">
-                                                                            <div class="m-accordion__content-inner js-accordion-content-inner js-frontier-facet">
-                                                                                @forelse ($categories as $key => $item)
-                                                                                <div class="facet-item m-checkbox c-sidebar-filters__filter">
-                                                                                    <a href="javascript:;" class="name-filler" rel="nofollow" data-url="{{ route('get.fillter',$category->slug) }}" data-slug-cat="{{ $item->slug }}">
-                                                                                        <span class="m-checkbox__text-label facet-item__value">
-                                                                                            {{ $item->name }}
-                                                                                            <span class="facet-item__count"></span>
-                                                                                        </span>
-                                                                                    </a>
-                                                                                </div>
-                                                                                @empty @endforelse
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        @include('pages.category._fillterBy')
                                                         <div class="t-plp__grid js-plp-grid show-product" id="show-product">
                                                             @forelse ($product as $key => $item)
                                                             <div class="loadmore1 t-plp__product" style="transform-origin: 0px 0px;">
@@ -179,7 +64,7 @@
                                                                                                 <?php if ($item->qty) { ?>
                                                                                                     <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
                                                                                                 <?php } else { ?>
-                                                                                                    <span class="a-price text-dark product-notnull"><i class="fa fa-warning" aria-hidden="true"></i>Hết hàng</span>
+                                                                                                    <span class="a-price text-dark product-notnull"><i class="fa fa-question-circle" aria-hidden="true"></i>Hết hàng</span>
                                                                                                 <?php } ?>
                                                                                             <?php } else { ?>
                                                                                                 <a href="{{ route('get.uni_contact') }}"><span class="a-price">Liên hệ để biết thông tin</span></a>
@@ -202,7 +87,12 @@
                                                                                                     {{ formatVnd($item->view_price_sale) }}
                                                                                                 </span>
                                                                                                 <?php if ($item->qty) { ?>
+                                                                                                    
                                                                                                     <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
+                                                                                                    
+                                                                                                    <?php } else { ?>
+                                                                                                        <span class="a-price text-info product-notnull"><i class="fa fa-phone"></i>Liên hệ</span>
+                                                                                                    <?php } ?>
                                                                                                     <span class="row">
                                                                                                         <div class="buttons_added add-qty col-12">
                                                                                                             <input class="minus is-form" type="button" value="-">
@@ -210,9 +100,6 @@
                                                                                                             <input class="plus is-form" type="button" value="+">
                                                                                                         </div>
                                                                                                     </span>
-                                                                                                <?php } else { ?>
-                                                                                                    <p class="a-price text-dark text-null-product"><i class="fa fa-warning" aria-hidden="true"></i>Sản phẩm tạm thời hết!</p>
-                                                                                                <?php } ?>
                                                                                             <?php } ?>
 
                                                                                         <?php } ?>
@@ -236,7 +123,7 @@
 
                                                                                     <?php } else { ?>
                                                                                         <?php if ($item->qty == null) { ?>
-                                                                                            <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn" type="button">Liên hệ</a>
+                                                                                            <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn contact-btn" type="button">Liên hệ</a>
                                                                                         <?php } else { ?>
                                                                                             <form>
                                                                                                 <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
