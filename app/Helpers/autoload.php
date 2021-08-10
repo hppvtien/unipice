@@ -74,7 +74,7 @@ function execPostRequest($url, $data)
     }
     function getCatParent($id)
     {
-        $parent_pid = App\Models\Uni_Category::where('parent_id',$id)->get();
+        $parent_pid = App\Models\Uni_Category::where('parent_id',$id)->where('parent_id','!=',0)->get();
         return $parent_pid;
     }
     function count_order()
