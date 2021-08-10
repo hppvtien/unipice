@@ -6,6 +6,7 @@ use App\Models\Page;
 use Illuminate\Support\Facades\URL;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Modules\Admin\Http\Requests\AdminPageRequest;
 
@@ -51,15 +52,15 @@ class AdminPageController extends AdminController
 
     public function update(Request $request, $id)
     {
-        
         $page = Page::find($id);
-        $data = $request->except(['avatar', 'save', '_token']);
+        $data = $request->except(['p_banner', 'save', '_token']);
+        // dd($request->p_banner);
         $data['updated_at'] = Carbon::now();
         if($request->p_banner){
-            Storage::delete('public/uploads/'.$request->d_avatar);
-            $data['s_banner'] = $request->p_banner;
+            Storage::delete('public/uploads_product/'.$page->p_banner);
+            $data['p_banner'] = $request->p_banner;
         } else{
-            $data['s_banner'] = $page->p_banner;
+            $data['p_banner'] = $page->p_banner;
         }
         $page->fill($data)->save();
 
