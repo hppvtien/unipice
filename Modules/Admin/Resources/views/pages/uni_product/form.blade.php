@@ -127,21 +127,21 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="required">Giá bán lẻ<span>(*)</span></label>
-                                    <input type="number" class="form-control" name="view_price" value="{{ old('qty_in_box', $uni_product->qty_in_box ?? '0') }}">
+                                    <input type="number" class="form-control" name="view_price" value="{{ old('qty_in_box', $uni_product->view_price ?? '0') }}">
                                     <span class="d-block text-warning">Giá bán cho khách hàng mua lẻ</span>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="required">Giá bán sale <span>(*)</span></label>
-                                    <input type="number" class="form-control" name="view_price_sale" value="{{ old('min_box', $uni_product->min_box ?? '0') }}">
+                                    <input type="number" class="form-control" name="view_price_sale" value="{{ old('min_box', $uni_product->view_price_sale ?? '0') }}">
                                     <span class="d-block text-warning">Giá sale cho khách hàng mua lẻ</span>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="required">Giá bán đại lý<span>(*)</span></label>
-                                    <input type="number" class="form-control" name="view_price_sale_store" value="{{ old('min_box', $uni_product->min_box ?? '0') }}">
+                                    <input type="number" class="form-control" name="view_price_sale_store" value="{{ old('min_box', $uni_product->view_price_sale_store ?? '0') }}">
                                     <span class="d-block text-warning">Giá bán cho khách hàng đại lý</span>
                                 </div>
                             </div>

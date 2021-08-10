@@ -109,7 +109,9 @@ class AdminUniCategoryController extends AdminController
             $uni_category = Uni_Category::findOrFail($id);
             if ($uni_category)
             {
-                ProductCategory::where('category_id', $id)->delete();
+                Storage::delete('public/uploads/'.$uni_category->banner);
+                Storage::delete('public/uploads_Product/'.$uni_category->icon_thumb);
+                Storage::delete('public/uploads_Product/'.$uni_category->thumbnail);
                 $uni_category->delete();
             }
             return response()->json([

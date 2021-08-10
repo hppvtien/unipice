@@ -112,6 +112,9 @@ class AdminUniProductController extends AdminController
             'thumbnail' => $thumbnail,
             'album' => json_encode($album),
             'status' => $request->status,
+            'view_price' => $request->view_price,
+            'view_price_sale' => $request->view_price_sale,
+            'view_price_sale_store' => $request->view_price_sale_store,
         ];
         $productID = Uni_Product::insertGetId($param);
 
@@ -202,6 +205,10 @@ class AdminUniProductController extends AdminController
             'album' => json_encode($store_ab),
             'meta_title' => $request->meta_title,
             'meta_desscription' => $request->meta_desscription,
+            'view_price' => $request->view_price,
+            'view_price_sale' => $request->view_price_sale,
+            'view_price_sale_store' => $request->view_price_sale_store,
+
         ];
         // dd($param);
         $uni_product->fill($param)->save();
