@@ -19,9 +19,9 @@
                                                     @include('pages.category._fillterBy')
                                                     <div class="">
                                                         <div class="cat-desscription">
-                                                            <h2>
+                                                            <p class="font-weight-bold">
                                                                 {{ $category->desscription }}
-                                                            </h2>
+</p>
                                                             <p>
                                                                 {{ $category->content }}
                                                             </p>
@@ -41,7 +41,7 @@
                                                     </div>
                                                     <div class="t-plp__grid js-plp-grid show-product" id="show-product">
                                                         @forelse ($product as $key => $item)
-                                                        <div class="loadmore1 t-plp__product" style="transform-origin: 0px 0px;">
+                                                        <div class="loadmore11 t-plp__product" style="transform-origin: 0px 0px;">
                                                             <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
                                                                     <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" class="m-product-card">
                                                                         <div class="m-product-card__content-wrapper">
@@ -62,7 +62,7 @@
                                                                             </div>
                                                                             <div class="m-product-card__sku">
                                                                                 <span> SKU: {{ $item->id }}</span>
-                                                                                <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""> ({{ countReview($item->id) }} đánh giá)</span>
+                                                                                <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""> ({{ countReview($item->id) }})</span>
                                                                             </div>
                                                                             <div class="m-price-lockup m-product-card__price">
                                                                                 <span class="m-price-lockup__price">
@@ -215,9 +215,10 @@
                                         </div>
                                         
                                     </div>
-                                    @include('pages.category._item_product_rel')
-                                        @include('pages.category._item_product_review')
+                                   
                                 </div>
+                                @include('pages.category._item_product_rel')
+                                @include('pages.category._item_product_review')
                             </div>
                     </header>
                 </div>

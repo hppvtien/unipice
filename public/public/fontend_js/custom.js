@@ -297,7 +297,7 @@ $('#momo-success').on('click', function() {
     });
 });
 $(function() {
-    $(".loadmore1").slice(0, 12).show();
+    $(".loadmore1").slice(0, 12).toggle();
     $("#loadMore").on("click", function(e) {
         e.preventDefault();
         $(".loadmore1:hidden").slice(0, 12).slideDown();

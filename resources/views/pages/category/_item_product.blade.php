@@ -1,6 +1,5 @@
 @forelse ($product as $key => $item)
-
-<div class="loadmore1 t-plp__product" style="transform-origin: 0px 0px;">
+<div class="loadmore11 t-plp__product" style="transform-origin: 0px 0px;">
     <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
             <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" class="m-product-card">
                 <div class="m-product-card__content-wrapper">
@@ -21,7 +20,7 @@
                     </div>
                     <div class="m-product-card__sku">
                         <span> SKU: {{ $item->id }}</span>
-                        <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""> ({{ countReview($item->id) }} đánh giá)</span>
+                        <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""> ({{ countReview($item->id) }})</span>
                     </div>
                     <div class="m-price-lockup m-product-card__price">
                         <span class="m-price-lockup__price">
@@ -121,7 +120,9 @@
     </div>
 </div>
 @empty
-
+<div class="loadmore11 t-plp__product" style="transform-origin: 0px 0px;height:500px">
+    <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;">
+        Sản phẩm đang được cấp nhật
+    </div>
+</div>
 @endforelse
-
-
