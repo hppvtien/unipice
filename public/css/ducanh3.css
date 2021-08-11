@@ -1006,8 +1006,9 @@ section {
     }
 }
 
-.pizzaro-secondary-navigation .sub_menu1 {
-    display: none;
+ul li ul li::before {
+    content: '';
+    padding: 0 15px 0 30px;
 }
 
 

@@ -5799,7 +5799,7 @@ video {
     }
     .secondary-navigation .menu ul a {
         padding: .326em 0.875em;
-        background: rgba(0, 0, 0, 0.05);
+        background: #fff;
     }
     .secondary-navigation .menu ul li:first-child a {
         padding-top: 1em;
@@ -12450,7 +12450,6 @@ button.menu-toggle .close-icon {
     .secondary-navigation ul li {
         position: relative;
         display: inline-block;
-        text-align: left;
     }
     .primary-navigation ul li a,
     .secondary-navigation ul li a {
@@ -12486,12 +12485,12 @@ button.menu-toggle .close-icon {
     .secondary-navigation ul ul.sub-menu,
     .secondary-navigation ul ul.children {
         float: left;
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: auto;
         z-index: 99999;
         display: none;
-        border-radius: 6px;
-        box-shadow: 0 0 6px 0 rgba(1, 1, 1, 0.3);
+        width: 100%;
+        background-color: #fff;
     }
     .primary-navigation ul ul.sub-menu li a,
     .primary-navigation ul ul.children li a,
@@ -12589,12 +12588,6 @@ button.menu-toggle .close-icon {
     .secondary-navigation ul.nav-menu ul ul {
         margin-left: 0;
         box-shadow: none;
-    }
-    .secondary-navigation ul.menu ul a:hover,
-    .secondary-navigation ul.menu ul li:hover>a,
-    .secondary-navigation ul.nav-menu ul a:hover,
-    .secondary-navigation ul.nav-menu ul li:hover>a {
-        background-color: rgba(0, 0, 0, 0.025);
     }
     .secondary-navigation a {
         padding: 0 1em 2.244em;
@@ -19600,15 +19593,6 @@ ul.products li.product .ywapo_input_container_radio.ywapo_input_container:nth-ch
     border-radius: 14px;
 }
 
-.widget_nav_menu .menu li,
-.page-template-template-homepage-v6 .secondary-navigation .menu li {
-    margin-bottom: 0;
-    padding: 0 30px;
-    height: 50px;
-    margin-top: -1px;
-    position: relative;
-}
-
 .widget_nav_menu .menu li::before,
 .page-template-template-homepage-v6 .secondary-navigation .menu li::before {
     display: none;
@@ -19635,23 +19619,6 @@ ul.products li.product .ywapo_input_container_radio.ywapo_input_container:nth-ch
     border-bottom-color: transparent;
 }
 
-.widget_nav_menu .menu li::before,
-.page-template-template-homepage-v6 .secondary-navigation .menu li::before {
-    font-family: "FontAwesome", sans-serif;
-    content: "\f105";
-    color: #fff;
-    display: block;
-    right: -6px;
-    font-size: 20px;
-    font-weight: bold;
-    z-index: 1;
-    position: absolute;
-    opacity: 1;
-    top: 50%;
-    transform: translateY(-50%);
-    visibility: hidden;
-}
-
 .widget_nav_menu .menu li::after,
 .page-template-template-homepage-v6 .secondary-navigation .menu li::after {
     transform: rotate(45deg);
@@ -19673,7 +19640,6 @@ ul.products li.product .ywapo_input_container_radio.ywapo_input_container:nth-ch
     padding: 10px 0;
     display: block;
     height: 50px;
-    border-bottom: 1px solid #d9d9d9;
 }
 
 .widget_nav_menu .menu li a i,
