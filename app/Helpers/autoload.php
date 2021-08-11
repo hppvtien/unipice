@@ -184,9 +184,3 @@ function execPostRequest($url, $data)
     
         return $phoneNumber;
     }
-
-    function getCatParent($id)
-    {
-        $parent_pid = App\Models\Uni_Category::where('parent_id',$id)->get();
-        return $parent_pid;
-    }

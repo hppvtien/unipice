@@ -12448,7 +12448,6 @@ button.menu-toggle .close-icon {
     }
     .primary-navigation ul li,
     .secondary-navigation ul li {
-        position: relative;
         display: inline-block;
     }
     .primary-navigation ul li a,
@@ -12485,7 +12484,7 @@ button.menu-toggle .close-icon {
     .secondary-navigation ul ul.sub-menu,
     .secondary-navigation ul ul.children {
         float: left;
-        position: fixed;
+        position: absolute;
         top: auto;
         z-index: 99999;
         display: none;
@@ -27187,4 +27186,9 @@ a:hover {
 #span_menu1 {
     font-size: 40px;
     margin-left: -50px;
+}
+
+#ul_li_active {
+    color: #ff661a;
+    font-weight: 700;
 }

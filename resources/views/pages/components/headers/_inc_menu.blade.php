@@ -1,32 +1,11 @@
 <ul class="menu">
-
-<<<<<<< HEAD
     @forelse ($category_mn as $key => $item) @if ($item->parent_id == 0)
-    <li class="mega-drop-down {{ getActive(getSlugCategory($item->slug)) == true ? '1111111':'222222222' }}">
-        <a href="/{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+    <li class="mega-drop-down">
+        <a href="#" id="{{ getActive(getSlugCategory($item->slug)) == true ? 'ul_li_active':'' }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+
         <ul class="sub-menu col-md-12">
             <li id="menu-item-626" class="menu-item menu-item-type-post_type menu-item-object-static_block menu-item-626">
                 <div class="yamm-content">
-=======
-    <ul class="menu">
-        @forelse ($category_mn as $key => $item)
-        <li class="menu-item {{ getActive(getSlugCategory($item->slug)) == true ? 'active':'' }}">
-            <a href="/{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
-            <ul class="sub_menu1">
-                <li>Bột Gia Vị</li>
-                <li>Gia Vị Dạng Lát, Miếng</li>
-                <li>Gia Vị Dạng Hạt, Quả, Thân</li>
-                <li>Gia Vị Dạng Lá, Nhụy, Hoa</li>
-                <li>Gia Vị Làm Bánh</li>
-            </ul>
-        </li>
-        @empty
-            
-        @endforelse
-        
-    </ul>
->>>>>>> 0ad4e0f201e8984b71b9f1f257e3f1a6f82b970b
-
                     <section class="kc-elm kc-css-3629547 kc_row">
                         <div class="kc-row-container kc-container">
                             <div class="kc-wrap-columns">
@@ -35,71 +14,21 @@
                                         <div class="widget widget_nav_menu kc-elm kc-css-527118">
                                             <div class="menu-pages-menu-1-container">
                                                 <ul id="menu-pages-menu-5" class="menu">
+                                                    @foreach (getCatParent($item->id) as $vl)
                                                     <li class="nav-title menu-item menu-item-type-custom menu-item-object-custom menu-item-569">
                                                         <a href="/essential-oils/roll-ons" class="m-menu-media-card   ">
                                                             <div class="m-menu-media-card__img-wrapper">
-                                                                <img class="m-menu-media-card__img ls-is-cached lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/menu_media_card/public/acquiadam/2020-11/Home-and-Pet-Green-Cleaning.jpg?itok=x5vA-IC_" alt="Roll Ons" src="https://www.coopmarket.com/sites/default/files/styles/menu_media_card/public/acquiadam/2020-11/Home-and-Pet-Green-Cleaning.jpg?itok=x5vA-IC_">
+                                                                <img class="m-menu-media-card__img ls-is-cached lazyloaded" data-src="/storage/uploads_Product/icon-bath-and-body-1627701283.jpg" alt="Roll Ons" src="/storage/uploads_Product/icon-bath-and-body-1627701283.jpg">
                                                             </div>
 
                                                             <div class="m-menu-media-card__label">
                                                                 <span class="m-menu-media-card__label-text">
-                                                                    <div class="field field--name-name field--type-string field--label-hidden field__item">Roll Ons</div>
+                                                                    <div class="field field--name-name field--type-string field--label-hidden field__item">{{ $vl->name }}</div>
                                                               </span>
                                                             </div>
                                                         </a>
                                                     </li>
-                                                    <li class="nav-title menu-item menu-item-type-custom menu-item-object-custom menu-item-569">
-                                                        <a href="/essential-oils/roll-ons" class="m-menu-media-card   ">
-                                                            <div class="m-menu-media-card__img-wrapper">
-                                                                <img class="m-menu-media-card__img ls-is-cached lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/menu_media_card/public/acquiadam/2020-11/Home-and-Pet-Green-Cleaning.jpg?itok=x5vA-IC_" alt="Roll Ons" src="https://www.coopmarket.com/sites/default/files/styles/menu_media_card/public/acquiadam/2020-11/Home-and-Pet-Green-Cleaning.jpg?itok=x5vA-IC_">
-                                                            </div>
-
-                                                            <div class="m-menu-media-card__label">
-                                                                <span class="m-menu-media-card__label-text">
-                                                                    <div class="field field--name-name field--type-string field--label-hidden field__item">Roll Ons</div>
-                                                              </span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-title menu-item menu-item-type-custom menu-item-object-custom menu-item-569">
-                                                        <a href="/essential-oils/roll-ons" class="m-menu-media-card   ">
-                                                            <div class="m-menu-media-card__img-wrapper">
-                                                                <img class="m-menu-media-card__img ls-is-cached lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/menu_media_card/public/acquiadam/2020-11/Home-and-Pet-Green-Cleaning.jpg?itok=x5vA-IC_" alt="Roll Ons" src="https://www.coopmarket.com/sites/default/files/styles/menu_media_card/public/acquiadam/2020-11/Home-and-Pet-Green-Cleaning.jpg?itok=x5vA-IC_">
-                                                            </div>
-
-                                                            <div class="m-menu-media-card__label">
-                                                                <span class="m-menu-media-card__label-text">
-                                                                    <div class="field field--name-name field--type-string field--label-hidden field__item">Roll Ons</div>
-                                                              </span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-title menu-item menu-item-type-custom menu-item-object-custom menu-item-569">
-                                                        <a href="/essential-oils/roll-ons" class="m-menu-media-card   ">
-                                                            <div class="m-menu-media-card__img-wrapper">
-                                                                <img class="m-menu-media-card__img ls-is-cached lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/menu_media_card/public/acquiadam/2020-11/Home-and-Pet-Green-Cleaning.jpg?itok=x5vA-IC_" alt="Roll Ons" src="https://www.coopmarket.com/sites/default/files/styles/menu_media_card/public/acquiadam/2020-11/Home-and-Pet-Green-Cleaning.jpg?itok=x5vA-IC_">
-                                                            </div>
-
-                                                            <div class="m-menu-media-card__label">
-                                                                <span class="m-menu-media-card__label-text">
-                                                                    <div class="field field--name-name field--type-string field--label-hidden field__item">Roll Ons</div>
-                                                              </span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-title menu-item menu-item-type-custom menu-item-object-custom menu-item-569">
-                                                        <a href="/essential-oils/roll-ons" class="m-menu-media-card   ">
-                                                            <div class="m-menu-media-card__img-wrapper">
-                                                                <img class="m-menu-media-card__img ls-is-cached lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/menu_media_card/public/acquiadam/2020-11/Home-and-Pet-Green-Cleaning.jpg?itok=x5vA-IC_" alt="Roll Ons" src="https://www.coopmarket.com/sites/default/files/styles/menu_media_card/public/acquiadam/2020-11/Home-and-Pet-Green-Cleaning.jpg?itok=x5vA-IC_">
-                                                            </div>
-
-                                                            <div class="m-menu-media-card__label">
-                                                                <span class="m-menu-media-card__label-text">
-                                                                    <div class="field field--name-name field--type-string field--label-hidden field__item">Roll Ons</div>
-                                                              </span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
@@ -115,3 +44,4 @@
     @endif @empty @endforelse
 
 </ul>
+

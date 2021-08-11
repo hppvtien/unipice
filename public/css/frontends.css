@@ -2117,12 +2117,8 @@ textarea::placeholder,
 .m-submenu-heading__label,
 .m-menu-info-block__heading {
     color: var(--color-foreground);
-    font-family: montserrat, sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    font-size: 1.25rem;
+    font-size: 11px;
     line-height: 1.2;
-    text-transform: uppercase
 }
 
 html {
@@ -3079,7 +3075,8 @@ ul li ul:first-child,
 ul li ol:first-child,
 ol li ul:first-child,
 ol li ol:first-child {
-    margin: 10px 0
+    margin: 30px 0;
+    padding-bottom: 15px;
 }
 
 ul li:before {
