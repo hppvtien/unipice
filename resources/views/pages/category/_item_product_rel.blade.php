@@ -23,10 +23,9 @@
                             </div>
                             <div class="m-combined-product-name group-product">
                                 <a class="m-combined-product-name__link product-name-fio align-items-center produc-rel-link" href="{{ $item->slug }}" title="{{ $item->meta_title }}">
-                                    <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""></span>
-                                    <br>
-                                    <span> ({{ countReview($item->id) }}đánh giá)</span>
+                                    <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""></span>  
                                 </a>
+                                <a class="text-center"><b> {{ countReview($item->id) !=0 ? '('.countReview($item->id).' đánh giá)':'' }}</b></a>
                             </div>
                         </div>
                     </div>
