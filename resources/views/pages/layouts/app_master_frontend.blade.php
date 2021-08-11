@@ -42,10 +42,23 @@
             <a href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i>  {{ formatPhoneNumber($configuration->hotline) }}</span></a>
         </div>
     </div>
+   
     <ul>
         @forelse ($category_mn as $key => $item)
-        <li>
-            <a href="/{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+        <li class="has-submenu">
+            <a data-submenu="menu_{{ $item->id }}" href="{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+            <div id="menu_{{ $item->id }}" class="submenu">
+                <div class="submenu-header" data-submenu-close="menu_{{ $item->id }}">
+                    <a href="#">{{ $item->name }}</a>
+                </div>
+                <ul>
+                    @foreach (getCatParent($item->id) as $vl)
+                    <li>
+                        <a href="{{ getSlugCategory($vl->slug) }}">{{ $vl->name }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
         </li>
         @empty @endforelse
     </ul>
@@ -189,6 +202,8 @@
             });
         });
     </script>
+
+    
 
 
 </body>

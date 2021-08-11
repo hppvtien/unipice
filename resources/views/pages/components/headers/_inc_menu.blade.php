@@ -1,7 +1,7 @@
 <ul class="menu">
     @forelse ($category_mn as $key => $item) @if ($item->parent_id == 0)
     <li class="mega-drop-down">
-        <a href="#" id="{{ getActive(getSlugCategory($item->slug)) == true ? 'ul_li_active':'' }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+        <a href="{{ getSlugCategory($item->slug) }}" id="{{ getActive(getSlugCategory($item->slug)) == true ? 'ul_li_active':'' }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
 
         <ul class="sub-menu col-md-12">
             <li id="menu-item-626" class="menu-item menu-item-type-post_type menu-item-object-static_block menu-item-626">
