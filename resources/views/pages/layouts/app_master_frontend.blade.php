@@ -46,10 +46,11 @@
     <ul>
         @forelse ($category_mn as $key => $item)
         <li class="has-submenu">
-            <a data-submenu="menu_{{ $item->id }}" href="{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+            <a  href="{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="30px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+            <span data-submenu="menu_{{ $item->id }}" style="float: right;margin: -30px 20px 0 0;" class="fa fa-chevron-right"></span>
             <div id="menu_{{ $item->id }}" class="submenu">
-                <div class="submenu-header" data-submenu-close="menu_{{ $item->id }}">
-                    <a href="#">{{ $item->name }}</a>
+                <div class="submenu-header" style="padding-left:26px" data-submenu-close="menu_{{ $item->id }}">
+                    <a href="#">{{ $item->name }} <img src="{{ asset('/images/icon_menu/back.png') }}" alt="" style="width:30px; float: right;"></a>
                 </div>
                 <ul>
                     @foreach (getCatParent($item->id) as $vl)
