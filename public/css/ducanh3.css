@@ -195,7 +195,7 @@
     font-weight: 300;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-family: "Poppins", sans-serif;
+    font-family: poppins, Arial, sans-serif;
 }
 
 #header .logo a {
@@ -493,7 +493,7 @@
     font-weight: 700;
     line-height: 56px;
     color: #fff;
-    font-family: "Poppins", sans-serif;
+    font-family: poppins, Arial, sans-serif;
 }
 
 #hero h1 span {
@@ -666,17 +666,13 @@
 # Sections General
 --------------------------------------------------------------*/
 
-section {
-    padding: 60px 0;
-    overflow: hidden;
-}
-
 .section-bg {
     background-color: #1a1814;
 }
 
 .section-title {
     padding-bottom: 40px;
+    padding-top: 60px;
 }
 
 .section-title h2 {
@@ -688,7 +684,7 @@ section {
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #fff;
-    font-family: "Poppins", sans-serif;
+    font-family: poppins, Arial, sans-serif;
 }
 
 .section-title h2::after {
@@ -1063,7 +1059,7 @@ ul li ul li::before {
 
 .events .event-item .price {
     font-size: 26px;
-    font-family: "Open Sans", sans-serif;
+    font-family: poppins, Arial, sans-serif;
     font-weight: 700;
     margin-bottom: 15px;
 }
@@ -1305,7 +1301,6 @@ ul li ul li::before {
 
 #gallery {
     margin-bottom: 0;
-    padding: 60px 0 0 0;
     background-color: #c13538;
 }
 
@@ -1437,7 +1432,7 @@ ul li ul li::before {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 5px;
-    font-family: "Poppins", sans-serif;
+    font-family: poppins, Arial, sans-serif;
 }
 
 .contact .info p {
@@ -1605,14 +1600,14 @@ ul li ul li::before {
     line-height: 1;
     font-weight: 300;
     text-transform: uppercase;
-    font-family: "Poppins", sans-serif;
+    font-family: poppins, Arial, sans-serif;
 }
 
 #footer .footer-top .footer-info p {
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 0;
-    font-family: "Playfair Display", serif;
+    font-family: poppins, Arial, sans-serif;
     color: #fff;
 }
 
@@ -2018,7 +2013,7 @@ body.hc-nav-open {
 }
 
 body.theme-default .hc-offcanvas-nav {
-    font-family: sans-serif
+    font-family: poppins, Arial, sans-serif;
 }
 
 body.theme-default .hc-offcanvas-nav::after,
@@ -2455,7 +2450,7 @@ body.theme-default .hc-offcanvas-nav.rtl .nav-wrapper-5 li.nav-item .nav-item-li
 }
 
 body.theme-carbon .hc-offcanvas-nav {
-    font-family: sans-serif
+    font-family: poppins, Arial, sans-serif;
 }
 
 body.theme-carbon .hc-offcanvas-nav .nav-container,
@@ -2882,11 +2877,9 @@ header,
 ul,
 li,
 a {
-    margin: 0;
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
     vertical-align: baseline
 }
 
@@ -2934,7 +2927,7 @@ ul {
     min-height: 100vh;
     height: 100%;
     background: linear-gradient(-134deg, #517FA4 0%, #243949 100%);
-    font-family: 'Raleway', sans-serif;
+    font-family: poppins, Arial, sans-serif;
     text-align: center;
     color: #fffce1
 }
@@ -3149,7 +3142,6 @@ footer .swm:not(:hover) svg .l-3 {
 
 main {
     flex: 1 0 auto;
-    padding-bottom: 30px;
     text-align: left
 }
 
@@ -3319,7 +3311,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.add>.nav-item-wrapper a::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -3345,7 +3337,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.new>.nav-item-wrapper .nav-item-link::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -3371,7 +3363,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.cryptocurrency>.nav-item-wrapper .nav-item-link::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -3397,7 +3389,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.devices>.nav-item-wrapper .nav-item-link::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -3423,7 +3415,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.mobile>.nav-item-wrapper .nav-item-link::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -3449,7 +3441,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.television>.nav-item-wrapper .nav-item-link::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -3475,7 +3467,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.camera>.nav-item-wrapper .nav-item-link::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -3501,7 +3493,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.magazines>.nav-item-wrapper .nav-item-link::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -3527,7 +3519,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.store>.nav-item-wrapper .nav-item-link::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -3564,7 +3556,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.collections>.nav-item-wrapper .nav-item-link::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -3590,7 +3582,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.nolink>.nav-item-wrapper .nav-item-link::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -3616,7 +3608,7 @@ main .thumb.active {
 }
 
 .hc-offcanvas-nav li.disabled>.nav-item-wrapper .nav-item-link::before {
-    font-family: 'Material Icons';
+    font-family: poppins, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
