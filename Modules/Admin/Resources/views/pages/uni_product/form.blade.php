@@ -110,14 +110,39 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="required">Số lượng trong thùng<span>(*)</span></label>
                                     <input type="number" class="form-control" name="qty_in_box" value="{{ old('qty_in_box', $uni_product->qty_in_box ?? '0') }}">
-                                    <span class="d-block text-warning">Số lượng trên một lốc</span>
+                                    <span class="d-block text-warning">Số lượng trên một thùng</span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="required">Số lượng thùng tối thiểu để được giá đại lý <span>(*)</span></label>
                                     <input type="number" class="form-control" name="min_box" value="{{ old('min_box', $uni_product->min_box ?? '0') }}">
-                                    <span class="d-block text-warning">Số lượng lốc tối thiểu để được giá đại lý</span>
+                                    <span class="d-block text-warning">Số lượng thùng tối thiểu để được giá đại lý</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="required">Giá bán lẻ<span>(*)</span></label>
+                                    <input type="number" class="form-control" name="view_price" value="{{ old('qty_in_box', $uni_product->view_price ?? '0') }}">
+                                    <span class="d-block text-warning">Giá bán cho khách hàng mua lẻ</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="required">Giá bán sale <span>(*)</span></label>
+                                    <input type="number" class="form-control" name="view_price_sale" value="{{ old('min_box', $uni_product->view_price_sale ?? '0') }}">
+                                    <span class="d-block text-warning">Giá sale cho khách hàng mua lẻ</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="required">Giá bán đại lý<span>(*)</span></label>
+                                    <input type="number" class="form-control" name="view_price_sale_store" value="{{ old('min_box', $uni_product->view_price_sale_store ?? '0') }}">
+                                    <span class="d-block text-warning">Giá bán cho khách hàng đại lý</span>
                                 </div>
                             </div>
                         </div>
@@ -161,20 +186,20 @@
                 </div>
                 <div class="card-body pt-3 box-seo hide">
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Meta Title <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Tiêu đề SEO<span>(*)</span></label>
                         <input type="text" class="form-control meta_title" name="meta_title" id="meta_title" value="{{ old('meta_title', $uni_product->meta_title ?? '') }}">
                         @if($errors->first('meta_title'))
                         <span class="text-danger">{{ $errors->first('meta_title') }}</span><br>
                         @endif
-                        <span class="text-danger" id="count_title">(Tiêu đề seo <= 70 ký tự)</span>
+                        <span class="text-danger" id="count_title"></span>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Meta Description <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Mô tả SEO <span>(*)</span></label>
                         <input type="text" class="form-control meta_desscription" name="meta_desscription" id="meta_desscription" value="{{ old('meta_desscription', $uni_product->meta_desscription ?? '') }}">
                         @if($errors->first('meta_desscription'))
                         <span class="text-danger">{{ $errors->first('meta_desscription') }}</span><br>
                         @endif
-                        <span class="text-danger" id="count_des">(Mô tả seo <= 150 ký tự)</span>
+                        <span class="text-danger" id="count_des"></span>
                     </div>
 
                     <div class="form-group">

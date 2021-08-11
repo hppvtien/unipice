@@ -34,7 +34,7 @@ class AdminUniCategoryController extends AdminController
 
     public function store(AdminUniCategoryRequest $request)
     {
-        $data = $request->except(['banner','save','_token']);
+        $data = $request->except(['banner','icon_thumb','save','_token','thumbnail','delete_thumbnail']);
         $data['created_at'] = Carbon::now();
         $data['created_by'] = get_data_user('web');
         if ($request->icon_thumb) {
@@ -43,8 +43,8 @@ class AdminUniCategoryController extends AdminController
         if ($request->icon_thumb) {
             $data['thumbnail'] = $this->processUploadFile($request->thumnail);
         } 
-        if(!$request->meta_title)             $data['meta_title'] = $request->name;
-        if(!$request->meta_description) $data['meta_desscription'] = $request->name;
+        if(!$request->meta_title)             $data['meta_title'] = $request->meta_title;
+        if(!$request->meta_description) $data['meta_desscription'] = $request->meta_desscription;
         $menuID = Uni_Category::insertGetId($data);
         if($menuID) 
         {
@@ -66,7 +66,7 @@ class AdminUniCategoryController extends AdminController
     {
         
         $uni_category = Uni_Category::findOrFail($id);
-        $data = $request->except(['banner','save','_token']);
+        $data = $request->except(['banner','icon_thumb','save','_token','thumbnail','delete_thumbnail']);
         $data['updated_at'] = Carbon::now();
         // $data['updated_by'] = get_data_user('web');
        if($request->icon_thumb){
@@ -92,8 +92,8 @@ class AdminUniCategoryController extends AdminController
     } elseif ($request->banner && !$uni_category->banner) {
         $data['banner'] = $request->banner;         
     }
-        if(!$request->meta_title)             $data['meta_title'] = $request->name;
-        if(!$request->meta_description) $data['meta_desscription'] = $request->name;
+        if(!$request->meta_title)             $data['meta_title'] = $request->meta_title;
+        if(!$request->meta_description) $data['meta_desscription'] = $request->meta_desscription;
         
         
         $uni_category->fill($data)->save();
@@ -109,7 +109,9 @@ class AdminUniCategoryController extends AdminController
             $uni_category = Uni_Category::findOrFail($id);
             if ($uni_category)
             {
-                ProductCategory::where('category_id', $id)->delete();
+                Storage::delete('public/uploads/'.$uni_category->banner);
+                Storage::delete('public/uploads_Product/'.$uni_category->icon_thumb);
+                Storage::delete('public/uploads_Product/'.$uni_category->thumbnail);
                 $uni_category->delete();
             }
             return response()->json([

@@ -66,6 +66,17 @@ function execPostRequest($url, $data)
         $getSlug = '/danh-muc-bai-viet/'.$tring;
         return $getSlug;
     }
+    function checkParent($id)
+    {
+        $group_pid = App\Models\Uni_Category::where('parent_id',$id)->pluck('id');
+        $count_cid = count($group_pid);
+        return $count_cid;
+    }
+    function getCatParent($id)
+    {
+        $parent_pid = App\Models\Uni_Category::where('parent_id',$id)->where('parent_id','!=',0)->get();
+        return $parent_pid;
+    }
     function count_order()
     {
         $order = App\Models\Cart\Uni_Order::where('created_at','<',date_format(Carbon\Carbon::now(), 'Y-m-d'))->get();

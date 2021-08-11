@@ -8,6 +8,7 @@ use App\Models\Uni_Trade;
 use App\Models\Uni_Product;
 use App\Models\Product_Category;
 use App\Models\Product_Trade;
+use App\Models\Uni_Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
@@ -20,14 +21,19 @@ class CategoryController extends Controller
         $trade = Uni_Trade::get();
         $categories = Uni_Category::get();
         $group_id_product = Product_Category::where('category_id', $cat_id)->pluck('product_id');
-        $product = Uni_Product::with('uni_product:id,name,thumbnail,slug')->whereIn('id', $group_id_product)->orderBy('id', 'asc')->limit(12)->get();
+        $product = Uni_Product::whereIn('id', $group_id_product)->orderBy('id', 'asc')->limit(12)->get();
+        $product_rel = Uni_Product::whereIn('id', $group_id_product)->where('is_hot',1)->orderBy('id', 'asc')->limit(12)->get();
+        $grp_id_cmt = Uni_Comment::where('star', '>', 4)->where('status', 1)->pluck('product_id');
+        $product_hotreview = Uni_Product::whereIn('id', $grp_id_cmt)->orderBy('id', 'asc')->limit(12)->get();
         $count_product = count($group_id_product);
         \SEOMeta::setTitle($category->meta_title);
         \SEOMeta::setDescription($category->meta_desscription);
         $uid = get_data_user('web');
         $viewdata = [
             'category' => $category,
+            'product_hotreview' => $product_hotreview,
             'product' => $product,
+            'product_rel' => $product_rel,
             'count_product' => $count_product,
             'trade' => $trade,
             'categories' => $categories,

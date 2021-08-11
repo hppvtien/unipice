@@ -1,29 +1,32 @@
-
 $.ajaxSetup({
     headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
     }
 });
-$('#trade-product').on('change', function() {
-    let URL = $(this).attr('data-url');
+$("#trade-product").on("change", function() {
+    let URL = $(this).attr("data-url");
     let id_trade = this.value;
     $.ajax({
         url: URL,
         method: "POST",
         data: {
-            id_trade: id_trade,
+            id_trade: id_trade
         },
         success: function(data) {
-            $('#group-product').html(data);
-        },
+            $("#group-product").html(data);
+        }
     });
 });
-$('.name-filler').on('click', function() {
-    let data_slug_trade = $(this).attr('data-slug-trade');
-    let data_slug_cat = $(this).attr('data-slug-cat');
-    let data_url = $(this).attr('data-url');
-    let data_sort = $('#sort_by').find(":selected").val();
-    let data_order = $('#order_by').find(":selected").val();
+$(".name-filler").on("click", function() {
+    let data_slug_trade = $(this).attr("data-slug-trade");
+    let data_slug_cat = $(this).attr("data-slug-cat");
+    let data_url = $(this).attr("data-url");
+    let data_sort = $("#sort_by")
+        .find(":selected")
+        .val();
+    let data_order = $("#order_by")
+        .find(":selected")
+        .val();
     $.ajax({
         url: data_url,
         method: "POST",
@@ -34,26 +37,24 @@ $('.name-filler').on('click', function() {
             data_order: data_order
         },
         success: function(data) {
-            $('#show-product').html(data);
+            $("#show-product").html(data);
         },
         error: function(data) {
             console.log(data);
         }
-
     });
 });
-$('.get-map-google').on('click', function() {
+$(".get-map-google").on("click", function() {
     $(this).each(function(index, el) {
-        var data_lat = $(this).attr('data-lat');
-        var data_lng = $(this).attr('data-lng');
-        $('#ren_map').html(data_lat);
+        var data_lat = $(this).attr("data-lat");
+        var data_lng = $(this).attr("data-lng");
+        $("#ren_map").html(data_lat);
     });
 });
 
-
-$("#search_name").on('keyup', function() {
-    let store_name = $('input[name=search_name]').val();
-    let data_url = $(this).attr('data-url');
+$("#search_name").on("keyup", function() {
+    let store_name = $("input[name=search_name]").val();
+    let data_url = $(this).attr("data-url");
     $.ajax({
         url: data_url,
         method: "POST",
@@ -62,14 +63,13 @@ $("#search_name").on('keyup', function() {
         },
         success: function(data) {
             console.log(data);
-            $('#show-store').html(data);
-        },
-
+            $("#show-store").html(data);
+        }
     });
 });
 
-$('.search_province').on('change', function() {
-    let data_url = $(this).attr('data-url');
+$(".search_province").on("change", function() {
+    let data_url = $(this).attr("data-url");
     let store_province = $(".search_province option:selected").val();
     $.ajax({
         url: data_url,
@@ -79,20 +79,19 @@ $('.search_province').on('change', function() {
         },
         success: function(data) {
             console.log(data);
-            $('#show-store').html(data);
-        },
-
+            $("#show-store").html(data);
+        }
     });
 });
 
-$(".js-add-cart").on('click', function() {
-    let URL = $(this).attr('data-url');
-    let data_id = $(this).attr('data-id');
-    let data_uid = $(this).attr('data-uid');
-    let data_qtyinbox = $(this).attr('data-qtyinbox');
-    let data_minbox = $(this).attr('data-minbox');
-    let data_count = $(this).attr('data-count');
-    let qty_user = $('#js-qty'+data_id).val();
+$(".js-add-cart").on("click", function() {
+    let URL = $(this).attr("data-url");
+    let data_id = $(this).attr("data-id");
+    let data_uid = $(this).attr("data-uid");
+    let data_qtyinbox = $(this).attr("data-qtyinbox");
+    let data_minbox = $(this).attr("data-minbox");
+    let data_count = $(this).attr("data-count");
+    let qty_user = $("#js-qty" + data_id).val();
     $.ajax({
         url: URL,
         method: "get",
@@ -105,31 +104,39 @@ $(".js-add-cart").on('click', function() {
         },
         success: function(data) {
             console.log(data);
-            $('.count-cart-s').addClass('c-header__minicart-count').html('<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">' +data.count+'</span>');
+            $(".count-cart-s")
+                .addClass("c-header__minicart-count")
+                .html(
+                    '<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">' +
+                        data.count +
+                        "</span>"
+                );
             if (data.status === 200) {
-                $('#toast-container').html(' <div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' +data.message+'</div></div>'),4000;
+                $("#toast-container").html(
+                    ' <div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' +
+                        data.message +
+                        "</div></div>"
+                ),
+                    4000;
                 setTimeout(function() {
-                    $('.toast-success').remove();
-                  }, 2000);
+                    $(".toast-success").remove();
+                }, 2000);
             }
-            
-        },
-
+        }
     });
-
 });
-$(".update-qty").on('keyup', function() {
-    let URL = $(this).attr('data-url');
-    let item_id = $(this).attr('item-id');
-    let item_qty = $('#cart-' + item_id + '-qty').val();
-    let item_row = $(this).attr('data-row');
-    let item_min = $(this).attr('min');
-    let data_price = $(this).attr('data-price');
-    let total_price = item_qty*data_price;
+$(".update-qty").on("keyup", function() {
+    let URL = $(this).attr("data-url");
+    let item_id = $(this).attr("item-id");
+    let item_qty = $("#cart-" + item_id + "-qty").val();
+    let item_row = $(this).attr("data-row");
+    let item_min = $(this).attr("min");
+    let data_price = $(this).attr("data-price");
+    let total_price = item_qty * data_price;
     if (item_qty < item_min) {
-        $('#text-qtyerr').text('Số lượng nhỏ nhất là: ' + item_min);
+        $("#text-qtyerr").text("Số lượng nhỏ nhất là: " + item_min);
     } else {
-        $('#text-qtyerr').text('');
+        $("#text-qtyerr").text("");
         $.ajax({
             url: URL,
             method: "get",
@@ -140,40 +147,39 @@ $(".update-qty").on('keyup', function() {
             },
             success: function(data) {
                 function formatNumber(num) {
-                        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-                      }
+                    return num
+                        .toString()
+                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                }
                 console.log(data);
-                $('#cart-totals').html(data);
-                $('#price'+item_id).html(formatNumber(total_price + ' đ'));
-            },
-
+                $("#cart-totals").html(data);
+                $("#price" + item_id).html(formatNumber(total_price + " đ"));
+            }
         });
     }
-
-
 });
-$('input.input-qty').each(function() {
+$("input.input-qty").each(function() {
     var $this = $(this),
-      qty = $this.parent().find('.is-form'),
-      min = Number($this.attr('min')),
-      max = Number($this.attr('max'))
+        qty = $this.parent().find(".is-form"),
+        min = Number($this.attr("min")),
+        max = Number($this.attr("max"));
     if (min == 0) {
-      var d = 0
-    } else d = min
-    $(qty).on('click', function() {
-      if ($(this).hasClass('minus')) {
-        if (d > min) d += -1
-      } else if ($(this).hasClass('plus')) {
-        var x = Number($this.val()) + 1
-        if (x <= max) d += 1
-      }
-      $this.attr('value', d).val(d)
-    })
-  })
+        var d = 0;
+    } else d = min;
+    $(qty).on("click", function() {
+        if ($(this).hasClass("minus")) {
+            if (d > min) d += -1;
+        } else if ($(this).hasClass("plus")) {
+            var x = Number($this.val()) + 1;
+            if (x <= max) d += 1;
+        }
+        $this.attr("value", d).val(d);
+    });
+});
 
-$(".remove_cart_action").on('click', function() {
-    let URL = $(this).attr('data-url');
-    let item_row = $(this).attr('data-row');
+$(".remove_cart_action").on("click", function() {
+    let URL = $(this).attr("data-url");
+    let item_row = $(this).attr("data-row");
     $.ajax({
         url: URL,
         method: "get",
@@ -183,16 +189,13 @@ $(".remove_cart_action").on('click', function() {
         success: function(data) {
             console.log(data);
             location.reload();
-            $('#show-store').html(data);
-        },
-
+            $("#show-store").html(data);
+        }
     });
-
 });
 
-
-$('#check_vouchers').on('click', function() {
-    let URL = $(this).attr('data-url');
+$("#check_vouchers").on("click", function() {
+    let URL = $(this).attr("data-url");
     $.ajax({
         url: URL,
         type: "post",
@@ -201,15 +204,15 @@ $('#check_vouchers').on('click', function() {
             check_vouchers: $("input[name='vouchers']").val()
         },
         success: function(result) {
-            $('.messager_check').html(result);
+            $(".messager_check").html(result);
         },
         error: function(result) {
-            $('.messager_check').html(result);
+            $(".messager_check").html(result);
         }
     });
 });
-$("#pay_success").on('click', function() {
-    var data_url = $(this).attr('data-url');
+$("#pay_success").on("click", function() {
+    var data_url = $(this).attr("data-url");
     var taxcode = $("input[name='taxcode']").val();
     var code_invoice = $("input[name='code_invoice']").val();
     var vouchers = $("input[name='vouchers']").val();
@@ -219,8 +222,7 @@ $("#pay_success").on('click', function() {
     var address = $("input[name='address']").val();
     var type_pay = $("input[name='type_pay']:checked").val();
     var vouchers = $("input[name='vouchers']").val();
-    if(customer_name == ''){
-        
+    if (customer_name == "") {
     }
     $.ajax({
         url: data_url,
@@ -241,14 +243,14 @@ $("#pay_success").on('click', function() {
             window.location.href = results;
         },
         error: function error(results) {
-            console.log('Loizzzzzzzzz');
+            console.log("Loizzzzzzzzz");
         }
     });
 });
-$("#bank_code").on('change', function() {
+$("#bank_code").on("change", function() {
     let bank_code = $(this).val();
-    $('#btn-vnpay').on('click', function() {
-        var data_url = $(this).attr('data-url');
+    $("#btn-vnpay").on("click", function() {
+        var data_url = $(this).attr("data-url");
         $.ajax({
             url: data_url,
             type: "post",
@@ -263,21 +265,20 @@ $("#bank_code").on('change', function() {
                 window.location.href = result;
             },
             error: function(result) {
-                console.log('loixxxxxxxxxxxxxxxxxxxx');
+                console.log("loixxxxxxxxxxxxxxxxxxxx");
             }
-
         });
-    })
+    });
 });
-$('#momo-success').on('click', function() {
-    let data_url = $(this).attr('data-url');
+$("#momo-success").on("click", function() {
+    let data_url = $(this).attr("data-url");
 
     $.ajax({
         url: data_url,
         type: "post",
         dataType: "text",
         data: {
-            t_note: $("input[name='t_note']").val(),
+            t_note: $("input[name='t_note']").val()
         },
         success: function(results) {
             console.log(results);
@@ -287,25 +288,31 @@ $('#momo-success').on('click', function() {
         error: function(results) {
             console.log(results);
         }
-
     });
 });
 $(function() {
-    $(".loadmore1").slice(0, 4).show();
+    $(".loadmore1")
+        .slice(0, 12)
+        .show();
     $("#loadMore").on("click", function(e) {
         e.preventDefault();
-        $(".loadmore1:hidden").slice(0, 4).slideDown();
+        $(".loadmore1:hidden")
+            .slice(0, 12)
+            .slideDown();
         if ($(".loadmore1:hidden").length == 0) {
             $("#load").fadeOut("slow");
         }
-        $("#show-product").animate({
-            scrollTop: $(this).offset().top
-        }, 1500);
+        $("#show-product").animate(
+            {
+                scrollTop: $(this).offset().top
+            },
+            1500
+        );
     });
 });
-$('.print_pdf').on('click', function() {
-    let data_id = $(this).attr('data-id');
-    let data_url = $(this).attr('data-url');
+$(".print_pdf").on("click", function() {
+    let data_id = $(this).attr("data-id");
+    let data_url = $(this).attr("data-url");
     $.ajax({
         url: data_url,
         type: "get",
@@ -315,7 +322,7 @@ $('.print_pdf').on('click', function() {
         },
         success: function(result) {
             console.log(result);
-            window.open("/in-pdf.html?data_id=" + data_id + "")
+            window.open("/in-pdf.html?data_id=" + data_id + "");
             // $('#myModal').html(result);
         },
         error: function(result) {
@@ -323,12 +330,19 @@ $('.print_pdf').on('click', function() {
         }
     });
 });
-$( window ).on('scroll',function() {
+$(window).on("scroll", function() {
     let height_d = $(window).scrollTop();
-    if(height_d > 120){
-        $('.site-header').addClass('fixed-menu');
+    if (height_d > 120) {
+        $(".site-header").addClass("fixed-menu");
     } else {
-        $('.site-header').removeClass('fixed-menu'); 
+        $(".site-header").removeClass("fixed-menu");
     }
-  });
-
+});
+$(".show-catp").on('click',function() {
+    let data_pid = $(this).attr("data-id");
+    $('#facet-item'+data_pid).toggleClass('text-success font-weight-bold text-uppercase text-justify')
+    $("#m-catParent" + data_pid).toggle(500);
+    $("#togle-idc" + data_pid).toggleClass('fa-chevron-down').toggleClass('fa-chevron-up');
+    // $("#togle-idc" + data_pid).toggleClass('fa-chevron-up');
+    // $("#togle-idc" + data_pid).toggle('<i class="fa fa-chevron-up"></i>');
+});

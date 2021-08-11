@@ -7,6 +7,7 @@ use App\Models\Blog\SeoBlog;
 use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Modules\Admin\Http\Controllers\AdminController;
 use Modules\Admin\Http\Requests\AdminUniTradeRequest;
 
@@ -32,11 +33,11 @@ class AdminUniTradeController extends AdminController
 
     public function store(AdminUniTradeRequest  $request)
     {
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['avatar','save','_token','banner','delete_thumbnail']);
         $data['created_at'] = Carbon::now();
 
-        if(!$request->meta_title)             $data['meta_title'] = $request->name;
-        if(!$request->meta_description) $data['meta_desscription'] = $request->name;
+        if(!$request->meta_title)             $data['meta_title'] = $request->meta_title;
+        if(!$request->meta_description) $data['meta_desscription'] = $request->meta_desscription;
 
         $menuID = Uni_Trade::insertGetId($data);
         if($menuID)
@@ -59,11 +60,20 @@ class AdminUniTradeController extends AdminController
     public function update(AdminUniTradeRequest $request, $id)
     {
         $uni_trade = Uni_Trade::findOrFail($id);
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['avatar','save','_token','banner','delete_thumbnail']);
         $data['updated_at'] = Carbon::now();
 
-        if(!$request->meta_title)             $data['meta_title'] = $request->name;
-        if(!$request->meta_description) $data['meta_desscription'] = $request->name;
+        if ($request->banner){
+            Storage::delete('public/uploads/'.$request->delete_thumbnail);    
+            $data['banner'] = $request->banner;
+        } elseif (!$request->banner) {
+            $data['banner'] = $request->delete_thumbnail;         
+        
+        } elseif ($request->banner && !$uni_trade->banner) {
+            $data['banner'] = $request->banner;         
+        }
+        if(!$request->meta_title)             $data['meta_title'] = $request->meta_title;
+        if(!$request->meta_description) $data['meta_desscription'] = $request->meta_desscription;
 
         $uni_trade->fill($data)->save();
         RenderUrlSeoBLogService::update($request->slug,SeoBlog::TYPE_MENU, $id);
@@ -72,15 +82,15 @@ class AdminUniTradeController extends AdminController
     }
 
 
-    public function delete(AdminUniTradeRequest $request, $id)
+    public function delete(Request $request, $id)
     {
         if($request->ajax())
         {
             $menu = Uni_Trade::findOrFail($id);
             if ($menu)
             {
+                Storage::delete('public/uploads/'.$menu->banner);
                 $menu->delete();
-                RenderUrlSeoBLogService::deleteUrlSeo(SeoBlog::TYPE_MENU, $id);
             }
             return response()->json([
                 'status' => 200,

@@ -1,11 +1,31 @@
 <ul class="menu">
 
+<<<<<<< HEAD
     @forelse ($category_mn as $key => $item) @if ($item->parent_id == 0)
     <li class="mega-drop-down {{ getActive(getSlugCategory($item->slug)) == true ? '1111111':'222222222' }}">
         <a href="/{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
         <ul class="sub-menu col-md-12">
             <li id="menu-item-626" class="menu-item menu-item-type-post_type menu-item-object-static_block menu-item-626">
                 <div class="yamm-content">
+=======
+    <ul class="menu">
+        @forelse ($category_mn as $key => $item)
+        <li class="menu-item {{ getActive(getSlugCategory($item->slug)) == true ? 'active':'' }}">
+            <a href="/{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+            <ul class="sub_menu1">
+                <li>Bột Gia Vị</li>
+                <li>Gia Vị Dạng Lát, Miếng</li>
+                <li>Gia Vị Dạng Hạt, Quả, Thân</li>
+                <li>Gia Vị Dạng Lá, Nhụy, Hoa</li>
+                <li>Gia Vị Làm Bánh</li>
+            </ul>
+        </li>
+        @empty
+            
+        @endforelse
+        
+    </ul>
+>>>>>>> 0ad4e0f201e8984b71b9f1f257e3f1a6f82b970b
 
                     <section class="kc-elm kc-css-3629547 kc_row">
                         <div class="kc-row-container kc-container">
