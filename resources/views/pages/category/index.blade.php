@@ -21,7 +21,7 @@
                                                         <div class="cat-desscription">
                                                             <p class="font-weight-bold">
                                                                 {{ $category->desscription }}
-</p>
+                                                            </p>
                                                             <p>
                                                                 {{ $category->content }}
                                                             </p>
