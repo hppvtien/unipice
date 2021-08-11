@@ -84,10 +84,15 @@
 
                                                                 <span class="m-price-lockup__price">
                                                                     <span class="a-product-name a-title-des text-dark">
-                                                                        Mô tả về sản phẩm: </br>
+                                                                        Mô tả về sản phẩm: 
                                                                     </span>
                                                                     <span class="a-folio text-dark text-lowercase font-weight-normal">
                                                                         {{ $product->desscription }}
+                                                                    </span>
+                                                                    <span class="m-product-overview__price-wrapper d-block">
+                                                                        <span class="a-folio text-dark text-lowercase font-weight-normal">
+                                                                            {{ $trade_name }}
+                                                                        </span>
                                                                     </span>
                                                                 </span>
                                                             </div>
@@ -140,11 +145,7 @@
 
                                                                             </div>
                                                                         </div>
-                                                                        <span class="m-product-overview__price-wrapper d-block">
-                                                                            <span class="a-folio trade-name">
-                                                                                {{ $trade_name }}
-                                                                            </span>
-                                                                        </span>
+                                                                        
                                                                     <?php } else { ?>
 
                                                                         <span class="g-price">
@@ -162,12 +163,7 @@
                                                                         <?php } else { ?>
                                                                             <span class="text-dark float-right line-height-single4"><i class="fa fa-phone" aria-hidden="true"></i>Liên hệ</span>
                                                                         <?php } ?>
-                                                                        <br>
-                                                                        <span class="m-product-overview__price-wrapper d-block">
-                                                                            <span class="a-folio trade-name">
-                                                                                {{ $trade_name }}
-                                                                            </span>
-                                                                        </span>
+                                                                      
                                                                         <span class="row">
                                                                             <div class="buttons_added col-12 text-center">
                                                                                 <input class="minus is-form" type="button" value="-">
@@ -239,14 +235,14 @@
                         <div class="layout layout--onecol">
                             <div class="col-md-12 container">
                                 <div>
-                                    <h3>Mô tả sản phẩm</h3>
+                                    <h2>Mô tả về sản phẩm</h2>
                                 </div>
                                 <div>
                                     {!! $product->content !!}
                                 </div>
                             </div>
                             <div class="col-md-12 container">
-                                <h4 class="text-center">Đánh giá</h4>
+                                <h3 class="text-center">Đánh giá</h3>
                                 <p class="text-center">Mọi người nói gì về {{ $product->name }}</p>
                             </div>
                             <div class="col-md-12 container text-center">
@@ -259,224 +255,10 @@
                                 <p>13 Đánh giá, 2 Câu hỏi</p>
                             </div>
                         </div>
-
-                        <div class="layout layout--onecol">
-                            <div class="container" style="position: relative;">
-                                <div class="d-block group-btn">
-                                    <div class="btn btn-comment">
-                                        <button class="tablink" onclick="openPage('News', this, '#e88012')"><i class="fa fa-pencil"></i></i>Viết đánh giá</button>
-                                    </div>
-                                    <div class="btn btn-comment">
-                                        <button class="tablink" onclick="openPage('question', this, '#e88012')"><i class="fa fa-comments"></i>Đặt câu hỏi</button>
-                                    </div>
-                                </div>
-                                <div id="News" class="tabcontent not-padding">
-                                    <div class='rating-stars text-center'>
-                                        <ul id='stars'>
-                                            <li class='star' title='Poor' data-value='1'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star' title='Fair' data-value='2'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star' title='Good' data-value='3'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star' title='Excellent' data-value='4'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star' title='WOW!!!' data-value='5'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="">
-                                        <div class="row" id="review-box">
-                                            <textarea id="noi_dung_commnet" class="form-control col-12" rows="2" placeholder="Hãy để lại bình luận của bạn...!"></textarea>
-                                            <div class="mar-top clearfix col-md-4 col-lg-4 col col-12 btn-submitrv not-padding-left">
-                                                <button token="{{ csrf_token() }}" data-type="review" onclick="add_comment_user(this);" product_id="{{ $product->id }}" user_id="@php echo $user_id; @endphp" class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Bình Luận</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="question" class="tabcontent not-padding">
-                                    <div class="">
-                                        <div>
-                                            <div class="field email required">
-                                                <div class="m-text-input m-text-input--placeholder-label control group-cmt">
-                                                    <input name="title" id="title" type="email" class="m-text-input__input input-text label-comt" title="Tiêu đề">
-                                                    <label class="m-text-input__label label-lb" for="title"><span>Tiêu đề</span></label>
-                                                </div>
-                                            </div>
-
-                                            <textarea id="noi_dung_question" class="form-control" rows="2" placeholder="Hãy để lại câu hỏi của bạn...!"></textarea>
-                                            <div class="row">
-                                                <div class="col-md-6 col-lg-4 col-12 group-name">
-                                                    <div class="field email required">
-                                                        <div class="m-text-input m-text-input--placeholder-label control group-cmt">
-                                                            <input name="name" id="name" type="email" class="m-text-input__input input-text label-comt" title="Name">
-                                                            <label class="m-text-input__label label-lb" for="name"><span>Họ tên</span></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-lg-4 col-12 group-name">
-                                                    <div class="field email required">
-                                                        <div class="m-text-input m-text-input--placeholder-label control group-cmt">
-                                                            <input name="phone" id="phone" type="email" class="m-text-input__input input-text label-comt" title="Phone">
-                                                            <label class="m-text-input__label label-lb" for="Phone"><span>Số điện thoại</span></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-lg-4 col-12 group-name">
-                                                    <div class="field email required">
-                                                        <div class="m-text-input m-text-input--placeholder-label control group-cmt">
-                                                            <input name="email" id="email" type="email" class="m-text-input__input input-text label-comt" title="Email">
-                                                            <label class="m-text-input__label label-lb" for="email"><span>Email</span></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-lg-4 col-12 group-name">
-                                                    <div class="field email required">
-                                                        <div class="m-text-input m-text-input--placeholder-label control group-cmt">
-                                                            <button token="{{ csrf_token() }}" data-type="question" onclick="add_comment_user(this);" product_id="{{ $product->id }}" user_id="@php echo $user_id; @endphp" class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Gửi câu hỏi</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layout layout--onecol">
-                            <div class="container">
-                                <div class="d-block float-left">
-                                    <div class="btn btn-comment">
-                                        <button class="tablink" onclick="openPageTwo('view_review', this, '#e88012')">Đánh giá</button>
-                                    </div>
-                                    <div class="btn btn-comment">
-                                        <button class="tablink" id="defaultOpen" onclick="openPageTwo('view_question', this, '#e88012')">Câu hỏi</button>
-                                    </div>
-                                </div>
-
-                                <div id="view_review" class="tabcontents not-padding">
-                                    <div class="">
-                                        <div>
-                                            <div>
-                                                @foreach ($noi_dung_comment as $item)
-                                                <div class="media-block">
-                                                    <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
-                                                    <div class="media-body">
-                                                        <div class="mar-btm">
-                                                            <a href="#" class="btn-link text-semibold media-heading box-inline">{{ $item->name }}</a>
-
-                                                        </div>
-                                                        <p class="margin-left1">{{ $item->noi_dung_comment }}</p>
-
-                                                        <hr>
-                                                    </div>
-                                                </div>
-                                                @endforeach
-
-
-                                                <!--===================================================-->
-                                                <!-- End Newsfeed Content -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="view_question" class="tabcontents not-padding">
-                                    <div class="">
-                                        <div>
-                                            <div>
-                                                <!-- Newsfeed Content -->
-                                                <!--===================================================-->
-                                                @foreach ($noi_dung_question as $item)
-                                                <div class="media-block">
-                                                    <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
-                                                    <div class="media-body">
-                                                        <div class="mar-btm">
-                                                            <a href="javascript:;" class="btn-link text-semibold media-heading box-inline">{{ $item->name }}</a>
-                                                        </div>
-                                                        <p class="margin-left1">{{ $item->noi_dung_question }}</p>
-                                                        <div class="answer-gr">
-                                                            <div class="mar-btm">
-                                                                <a href="javascript:;" class="btn-link text-semibold media-heading box-inline">Unimall</a>
-                                                            </div>
-                                                            <p class="margin-left1">{{ $item->noi_dung_answer }}</p>
-                                                        </div>
-
-                                                        <hr>
-                                                    </div>
-                                                </div>
-                                                @endforeach
-                                                <!--===================================================-->
-                                                <!-- End Newsfeed Content -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @include('pages.product.write_comment')
+                        @include('pages.product.view_comment')
                     </div>
-                    <div class="non-visible layout layout--onecol">
-                        <div class="c-categories-slider layout layout--onecol">
-
-                            <div class="layout__region layout__region--heading">
-                                <div class="c-categories-slider__heading-wrapper layout-builder__add-block">
-
-
-                                    <div class="m-heading">
-                                        <h2 class="m-heading__headline">
-                                            Sản phẩm Yêu Thích
-                                        </h2>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            <div class="layout__region layout__region--content">
-                                <div class="c-categories-slider__container js-swiper-container">
-                                    <ul class="c-categories-slider__slider js-swiper-wrapper">
-                                        @forelse ($product_fav as $key => $item)
-                                        <li class="c-categories-slider__item js-swiper-slide">
-                                            <a class="m-category-card m-category-card--bordered" href="{{ $item->slug }}">
-                                                <div class="m-category-card__image-wrapper">
-                                                    <picture>
-                                                        <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($item->thumbnail) }}">
-                                                        <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ pare_url_file($item->thumbnail) }}">
-                                                    </picture>
-                                                    <div class="m-category-card__caption">
-                                                        <span class="m-category-card__caption-text">{{ $item->name }}</span>
-                                                    </div>
-                                                    <div class="m-category-card__caption">
-                                                        <p>{{ desscription_cut($item->desscription,60) }}</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        @empty @endforelse
-                                    </ul>
-                                    <div class="a-carousel-indicator a-carousel-indicator--no-bullets a-carousel-indicator--arrows c-categories-slider__arrows">
-                                        <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--left js-swiper-button-prev" type="button" aria-label="Prev">
-                                            <span class="icon-arrow-left"></span>
-                                        </button>
-                                        <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--right js-swiper-button-next" type="button" aria-label="Next">
-                                            <span class="icon-arrow-right"></span>
-                                        </button>
-                                    </div>
-                                    <div class="c-products-slider__scrollbar">
-                                        <div class="a-slider-scrollbar">
-                                            <div class="a-slider-scrollbar__inner js-swiper-scrollbar">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('pages.product.product_hotpic')
                     <div class="layout layout--onecol">
                         <div class="layout__region layout__region--content">
                             <div data-block-plugin-id="inline_block:media_block" data-inline-block-uuid="ee168006-3fe9-4f1c-bbc5-ba42ddc90f9a" class="c-media-block c-media-block--template-">
@@ -489,72 +271,12 @@
 
                                 <div class="c-media-block__content">
                                     <div class="c-media-block__headline">Baking soda baths are a great way to detox. Check out the benefits of baking soda baths and how to do one at home!</div>
-
-
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                    <div class="non-visible layout layout--onecol">
-                        <div class="c-categories-slider layout layout--onecol">
-
-                            <div class="layout__region layout__region--heading">
-                                <div class="c-categories-slider__heading-wrapper layout-builder__add-block">
-
-
-                                    <div class="m-heading">
-                                        <h2 class="m-heading__headline">
-                                            Sản phẩm liên quan
-                                        </h2>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            <div class="layout__region layout__region--content">
-                                <div class="c-categories-slider__container js-swiper-container">
-                                    <ul class="c-categories-slider__slider js-swiper-wrapper">
-                                        @forelse ($product_related as $key => $item)
-                                        <li class="c-categories-slider__item js-swiper-slide">
-                                            <a class="m-category-card m-category-card--bordered" href="{{ $item->slug }}">
-                                                <div class="m-category-card__image-wrapper">
-                                                    <picture>
-                                                        <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($item->thumbnail) }}">
-                                                        <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ pare_url_file($item->thumbnail) }}">
-                                                    </picture>
-                                                    <div class="m-category-card__caption">
-                                                        <span class="m-category-card__caption-text">{{ $item->name }}</span>
-                                                    </div>
-                                                    <div class="m-category-card__caption">
-                                                        <p>{{ desscription_cut($item->desscription,60) }}</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        @empty @endforelse
-
-                                    </ul>
-                                    <div class="a-carousel-indicator a-carousel-indicator--no-bullets a-carousel-indicator--arrows c-categories-slider__arrows">
-                                        <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--left js-swiper-button-prev" type="button" aria-label="Prev">
-                                            <span class="icon-arrow-left"></span>
-                                        </button>
-                                        <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--right js-swiper-button-next" type="button" aria-label="Next">
-                                            <span class="icon-arrow-right"></span>
-                                        </button>
-                                    </div>
-                                    <div class="c-products-slider__scrollbar">
-                                        <div class="a-slider-scrollbar">
-                                            <div class="a-slider-scrollbar__inner js-swiper-scrollbar">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('pages.product.product_rel')
             </div>
             <div class="layout layout--onecol">
                 <div class="layout__region layout__region--content">
@@ -567,83 +289,5 @@
         </div>
         </article>
     </div>
-    </div>
-    </div>
-
-    <script>
-        function openPage(pageName, elmnt, color) {
-            // Hide all elements with class="tabcontent" by default */
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-
-                tabcontent[i].style.display = "none";
-            }
-            // Remove the background color of all tablinks/buttons
-            tablinks = document.getElementsByClassName("tablink");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].style.backgroundColor = "";
-            }
-            // Show the specific tab content
-            document.getElementById(pageName).style.display = "block";
-
-            // Add the specific color to the button used to open the tab content
-            elmnt.style.backgroundColor = color;
-        }
-
-        function openPageTwo(pageName, elmnt, color) {
-            // Hide all elements with class="tabcontent" by default */
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontents");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            // Remove the background color of all tablinks/buttons
-            tablinks = document.getElementsByClassName("tablink");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].style.backgroundColor = "";
-            }
-            // Show the specific tab content
-            document.getElementById(pageName).style.display = "block";
-            document.getElementById(pageName).style.height = "100%";
-            // Add the specific color to the button used to open the tab content
-            elmnt.style.backgroundColor = color;
-        }
-
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-
-        function add_comment_user(id) {
-            let num_rate = $("#stars star").find("selected").attr('data-value');
-            var user_id = $(id).attr('user_id');
-            var type_question = $(id).attr('data-type');
-            var product_id = $(id).attr('product_id');
-            var token = $(id).attr('token');
-            var noi_dung_commnet = $('#noi_dung_commnet').val();
-            var noi_dung_question = $('#noi_dung_question').val();
-            var title_question = $('#title').val();
-            var name_question = $('#name').val();
-            var phone_question = $('#phone').val();
-            var email_question = $('#email').val();
-alert(num_rate);
-            $.post("{{ route('get.product_comment',['slug'=>$slug]) }}", {
-                    token: token,
-                    user_id: user_id,
-                    product_id: product_id,
-                    noi_dung_commnet: noi_dung_commnet,
-                    noi_dung_question: noi_dung_question,
-                    type_question: type_question,
-                    name_question: name_question,
-                    phone_question: phone_question,
-                    title_question: title_question,
-                    email_question: email_question
-                })
-                .done(function(data) {
-                    // console.log(data);
-                    location.reload();
-                });
-        }
-    </script>
-
 </main>
 @stop

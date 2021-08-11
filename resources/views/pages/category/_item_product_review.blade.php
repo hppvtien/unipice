@@ -1,6 +1,6 @@
 <div class="t-plp__container js-plp-container product-rel">
-    <h3>Top sản phẩm được đánh giá nhiều nhất</h3>
-    <div class="row no-gutters">
+    <h3 class="text-center">Top sản phẩm được đánh giá nhiều nhất</h3>
+    <div class="">
         @forelse($product_hotreview as $key_hot => $item)
         <div class="loadmore11 t-plp__product" style="transform-origin: 0px 0px; display: block;" data-animate-grid-id="0.8579037597911499">
             <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">

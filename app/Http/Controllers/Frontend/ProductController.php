@@ -58,27 +58,27 @@ class ProductController extends Controller
 
     public function thembinhluan(Request $request)
     {
-
+        
         $type_product = 'product';
         $data = [
             'user_id' => $request->user_id != null ? $request->user_id : 0,
             'product_id' => $request->product_id,
             'type_comment' => $type_product,
             'title' => $request->title_question,
+            'star' => $request->ratingValue == null ? 5 : $request->ratingValue,
             'name' => $request->name_question,
             'phone' => $request->phone_question,
             'email' => $request->email_question,
             'type' => $request->type_question,
-            'noi_dung_comment' => $request->noi_dung_commnet != null ? $request->noi_dung_commnet : '',
+            'noi_dung_comment' => $request->noi_dung_comment != null ? $request->noi_dung_comment : '',
             'noi_dung_question' => $request->noi_dung_question != null ? $request->noi_dung_question : '',
-            'created_at' => Carbon::now(),
-            'update_at' => NULL
+            'created_at' => Carbon::now()
         ];
         $id = Uni_Comment::insertGetId($data);
         if ($id) {
-            $this->showMessagesSuccess();
+            $this->showMessagesSuccess('Đã gửi bình luận thành công');
         } else {
-            $this->showMessagesError();
+            $this->showMessagesError('Đã gửi bình luận thất bại');
         }
     }
     public function showMessagesSuccess($message = 'Thêm mới thành công')
