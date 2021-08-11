@@ -23,7 +23,7 @@ class AdminUniCategoryRequest extends FormRequest
         return [
             'name.required' => 'Dữ liệu không được để trống',
             'desscription.required' => 'Dữ liệu không được để trống',
-            'desscription.min'=> 'Mô tả phải có ít nhất 100 lý tự',
+            'desscription.min'=> 'Mô tả phải có ít nhất 100 ký tự',
             'desscription.max'=> 'Mô tả chỉ được tối đa 150 ký tự',
             'slug.required' => 'Dữ liệu không được để trống',
             'slug.unique'   => 'Slug đã tồn tại',

@@ -28,6 +28,7 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>SEO</th>
+                                        <th>Type</th>
                                         <th>Time</th>
                                         <th>Action</th>
                                     </tr>
@@ -49,6 +50,13 @@
                                                     <span class="page-description-seo meta-desscription">{{ $item->meta_desscription }}</span>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td> 
+                                            @if ($item->type == 0)
+                                            <p><span class="slug">Product</span></p>
+                                            @else
+                                            <p><span class="slug">Blog</span></p>
+                                            @endif
                                         </td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>

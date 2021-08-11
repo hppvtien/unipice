@@ -17,9 +17,10 @@ class AdminUniTagController extends AdminController
     {
         $uni_tag = Uni_Tag::orderByDesc('id')
             ->paginate(20);
-
+        $t_status = Uni_Tag::getStatusGlobal();
         $viewData = [
-            'uni_tag' => $uni_tag
+            'uni_tag' => $uni_tag,
+            't_status' => $t_status
         ];
         return view('admin::pages.uni_tag.index', $viewData);
     }
@@ -36,8 +37,8 @@ class AdminUniTagController extends AdminController
         $data = $request->except(['save','_token']);
         $data['created_at'] = Carbon::now();
 
-        if(!$request->meta_title)             $data['meta_title'] = $request->name;
-        if(!$request->meta_description) $data['meta_desscription'] = $request->name;
+        if(!$request->meta_title)             $data['meta_title'] = $request->meta_title;
+        if(!$request->meta_description) $data['meta_desscription'] = $request->meta_desscription;
 
         $menuID = Uni_Tag::insertGetId($data);
         if($menuID)
@@ -54,7 +55,14 @@ class AdminUniTagController extends AdminController
     {
         $tags = Uni_Tag::findOrFail($id);
         $uni_tag = Uni_Tag::orderByDesc('id')->get();
-        return view('admin::pages.uni_tag.update',compact('tags','uni_tag'));
+        $t_status = Uni_Tag::getStatusGlobal();
+        $viewData = [
+            'tags' => $tags,
+            'uni_tag' => $uni_tag,
+            't_status' => $t_status
+        ];
+
+        return view('admin::pages.uni_tag.update', $viewData);
     }
 
     public function update(AdminUniTagRequest $request, $id)
@@ -63,8 +71,8 @@ class AdminUniTagController extends AdminController
         $data = $request->except(['save','_token']);
         $data['updated_at'] = Carbon::now();
 
-        if(!$request->meta_title)             $data['meta_title'] = $request->name;
-        if(!$request->meta_description) $data['meta_desscription'] = $request->name;
+        if(!$request->meta_title)             $data['meta_title'] = $request->meta_title;
+        if(!$request->meta_description) $data['meta_desscription'] = $request->meta_desscription;
 
         $uni_tag->fill($data)->save();
         RenderUrlSeoBLogService::update($request->slug,SeoBlog::TYPE_MENU, $id);

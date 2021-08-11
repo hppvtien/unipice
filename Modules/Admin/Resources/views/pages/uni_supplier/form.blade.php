@@ -48,7 +48,6 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Action <span>(*)</span></label>
                         <div>
                             <button class="btn btn-info"><i class="la la-save"></i> Save</button>
                             <button class="btn btn-success"><i class="la la-check-circle"></i> Save & Edit</button>
@@ -72,10 +71,16 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Avatar </label>
+                        <label for="exampleInputEmail1"> Thumbnail </label>
+                        <input type="hidden" name="delete_thumbnail" value="{{ old('meta_keyword', $uni_product->thumbnail ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
-                        <input type="hidden" name="avatar" id="avatar_uploads">
+                        <input type="hidden" name="thumbnail" id="avatar_uploads">
                     </div>
+                    @if(isset($uni_product->thumbnail))
+                    <p>
+                        <img src="{{ pare_url_file($uni_product->thumbnail) }}" alt="" style="width: 100%;height: auto">
+                    </p>
+                    @endif
                 </div>
             </div>
         </div>

@@ -45,18 +45,28 @@
                     </div>
                 </div>
                 <div class="card-body pt-3 box-seo hide">
-                <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Meta Title <span>(*)</span></label>
-                        <input type="text" class="form-control meta_title" name="meta_title" value="{{ old('meta_title', $tags->meta_title ?? '') }}">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Tiêu đề SEO<span>(*)</span></label>
+                        <input type="text" class="form-control meta_title" name="meta_title" id="meta_title" value="{{ old('meta_title', $tags->meta_title ?? '') }}">
                         @if($errors->first('meta_title'))
-                        <span class="text-danger">{{ $errors->first('meta_title') }}</span>
+                        <span class="text-danger">{{ $errors->first('meta_title') }}</span><br>
                         @endif
+                        <span class="text-danger" id="count_title"></span>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Meta Description <span>(*)</span></label>
-                        <input type="text" class="form-control meta_desscription" name="meta_desscription" value="{{ old('meta_desscription', $tags->meta_desscription ?? '') }}">
+                        <label for="exampleInputEmail1" class="required">Mô tả SEO <span>(*)</span></label>
+                        <input type="text" class="form-control meta_desscription" name="meta_desscription" id="meta_desscription" value="{{ old('meta_desscription', $tags->meta_desscription ?? '') }}">
                         @if($errors->first('meta_desscription'))
-                        <span class="text-danger">{{ $errors->first('meta_desscription') }}</span>
+                        <span class="text-danger">{{ $errors->first('meta_desscription') }}</span><br>
+                        @endif
+                        <span class="text-danger" id="count_des"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Meta keyword <span>(*)</span></label>
+                        <input type="text" class="form-control meta_keyword" name="meta_keyword" value="{{ old('meta_keyword', $tags->meta_keyword ?? '') }}">
+                        @if($errors->first('meta_keyword'))
+                        <span class="text-danger">{{ $errors->first('meta_keyword') }}</span>
                         @endif
                     </div>
                 </div>
@@ -66,10 +76,24 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Action <span>(*)</span></label>
                         <div>
                             <button class="btn btn-info"><i class="la la-save"></i> Save</button>
                             <button class="btn btn-success"><i class="la la-check-circle"></i> Save & Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card  box-shadow-0 ">
+                <div class="card-body pt-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1"> Type <span>(*)</span></label>
+                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button"
+                            aria-expanded="true">
+                            <select name="type" class="form-control SlectBox SumoUnder" tabindex="-1">
+                                @foreach ($t_status as $key => $item)
+                                    <option title="Public" value="{{ $key }}" {{ $tags->type == $key ? "selected" : "" }}>{{ $item['name'] }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>

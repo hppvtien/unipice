@@ -6,6 +6,7 @@ use App\Models\Uni_supplier;
 use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Modules\Admin\Http\Controllers\AdminController;
 use Modules\Admin\Http\Requests\AdminUniSupplierRequest;
 
@@ -31,7 +32,7 @@ class AdminUniSupplierController extends AdminController
 
     public function store(AdminUniSupplierRequest $request)
     {
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['avatar','save','_token','banner','delete_thumbnail']);
         $data['created_at'] = Carbon::now();
 
         $menuID = Uni_supplier::insertGetId($data);
@@ -54,22 +55,31 @@ class AdminUniSupplierController extends AdminController
     public function update(AdminUniSupplierRequest $request, $id)
     {
         $uni_supplier = Uni_supplier::findOrFail($id);
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['avatar','save','_token','banner','delete_thumbnail']);
         $data['updated_at'] = Carbon::now();
-
+        if ($request->banner){
+            Storage::delete('public/uploads/'.$request->delete_thumbnail);    
+            $data['banner'] = $request->banner;
+        } elseif (!$request->banner) {
+            $data['banner'] = $request->delete_thumbnail;         
+        
+        } elseif ($request->banner && !$uni_supplier->banner) {
+            $data['banner'] = $request->banner;         
+        }
         $uni_supplier->fill($data)->save();
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.uni_supplier.index');
     }
 
 
-    public function delete(AdminUniSupplierRequest $request, $id)
+    public function delete(Request $request, $id)
     {
         if($request->ajax())
         {
             $menu = Uni_supplier::findOrFail($id);
             if ($menu)
             {
+                Storage::delete('public/uploads/'.$menu->banner);
                 $menu->delete();
             }
             return response()->json([

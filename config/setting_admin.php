@@ -25,6 +25,16 @@ return [
             ]
         ],
         [
+            'name' => 'Tags',
+            'class-icon' => 'la la-database',
+            'sub' => [
+                [
+                    'name' => 'Danh sách',
+                    'route' => 'get_admin.uni_tag.index'
+                ]
+            ]
+        ],
+        [
             'name' => 'Quản lý sản phẩm',
             'class-icon' => 'la la-book-open',
             'sub' => [
@@ -51,10 +61,6 @@ return [
                 [
                     'name' => 'Nhà cung cấp',
                     'route' => 'get_admin.uni_supplier.index'
-                ],
-                [
-                    'name' => 'Tags',
-                    'route' => 'get_admin.uni_tag.index'
                 ],
                 [
                     'name' => 'Lô hàng',

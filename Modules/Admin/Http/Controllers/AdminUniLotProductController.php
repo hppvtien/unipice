@@ -42,7 +42,7 @@ class AdminUniLotProductController extends AdminController
         return view('admin::pages.uni_lotproduct.create',$viewData);
     }
 
-    public function store(Request $request)
+    public function store(AdminUniLotProductRequest $request)
     {
         $data = $request->except(['save','_token']);
         $data['created_at'] = Carbon::now();
@@ -76,10 +76,11 @@ class AdminUniLotProductController extends AdminController
         return view('admin::pages.uni_lotproduct.update',$viewData);
     }
 
-    public function update(Request $request, $id)
+    public function update(AdminUniLotProductRequest $request, $id)
     {
+        
         $uni_lotproduct = Uni_LotProduct::findOrFail($id);
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['save','_token']);
         $data['updated_at'] = Carbon::now();
 
         $uni_lotproduct->fill($data)->save();
