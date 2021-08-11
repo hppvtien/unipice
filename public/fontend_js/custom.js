@@ -343,16 +343,40 @@ $(".show-catp").on('click', function () {
     $('#facet-item' + data_pid).toggleClass('text-success font-weight-bold text-uppercase text-justify')
     $("#m-catParent" + data_pid).toggle(500);
     $("#togle-idc" + data_pid).toggleClass('fa-chevron-down').toggleClass('fa-chevron-up');
-    // $("#togle-idc" + data_pid).toggleClass('fa-chevron-up');
-    // $("#togle-idc" + data_pid).toggle('<i class="fa fa-chevron-up"></i>');
 });
+
+    function openPage(pageName, elmnt, color) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
+    }
+    function openPageTwo(pageName, elmnt, color) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontents");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
+    }
+    document.getElementById("defaultOpen").click();
+
 $(document).ready(function () {
 
-    /* 1. Visualizing things on Hover - See next part for action on click */
     $('#stars li').on('mouseover', function () {
         var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
-
-        // Now highlight all the stars that's not after the current hovered star
         $(this).parent().children('li.star').each(function (e) {
             if (e < onStar) {
                 $(this).addClass('hover');
@@ -367,11 +391,8 @@ $(document).ready(function () {
             $(this).removeClass('hover');
         });
     });
-
-
-    /* 2. Action to perform on click */
     $('#stars li').on('click', function () {
-        var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+        var onStar = parseInt($(this).data('value'), 10); 
         var stars = $(this).parent().children('li.star');
 
         for (i = 0; i < stars.length; i++) {
@@ -381,21 +402,8 @@ $(document).ready(function () {
         for (i = 0; i < onStar; i++) {
             $(stars[i]).addClass('selected');
         }
-
-        // JUST RESPONSE (Not needed)
-        var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
-        var msg = "";
-        if (ratingValue > 1) {
-            msg = "Thanks! You rated this " + ratingValue + " stars.";
-        }
-        else {
-            msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
-        }
-        responseMessage(msg);
-
+        let ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);  
     });
-
-
 });
 
 
@@ -403,3 +411,65 @@ function responseMessage(msg) {
     $('.success-box').fadeIn(200);
     $('.success-box div.text-message').html("<span>" + msg + "</span>");
 }
+$('.btn-comment-rv').on('click', function () {
+    var user_id = $(this).attr('user_id');
+    var data_url = $(this).attr('data-url');
+    let ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+    var type_question = $(this).attr('data-type');
+    var product_id = $(this).attr('product_id');
+    var title_question = $('#title_rv').val();
+    var noi_dung_question = $('#noi_dung_commnet').val();
+    var name_question = $('#name_rv').val();
+    var phone_question = $('#phone_rv').val();
+    var email_question = $('#email_rv').val();
+    $.ajax({
+        url: data_url,
+        type: "post",
+        dataType: "text",
+        data: {
+            user_id: user_id,
+            product_id: product_id,
+            noi_dung_question: noi_dung_question,
+            type_question: type_question,
+            name_question: name_question,
+            phone_question: phone_question,
+            title_question: title_question,
+            email_question: email_question,
+            ratingValue: ratingValue
+        },
+        success: function (result) {
+            location.reload();
+        },
+        error: function (result) {
+        }
+    });
+});
+$('.btn-comment-qs').on('click', function () {
+    var user_id = $(this).attr('user_id');
+    var data_url = $(this).attr('data-url');
+    var type_question = $(this).attr('data-type');
+    var product_id = $(this).attr('product_id');
+    var noi_dung_comment = $('#noi_dung_question').val();
+    var name_question = $('#name_qs').val();
+    var phone_question = $('#phone_qs').val();
+    var email_question = $('#email_qs').val();
+    $.ajax({
+        url: data_url,
+        type: "post",
+        dataType: "text",
+        data: {
+            user_id: user_id,
+            product_id: product_id,
+            noi_dung_comment: noi_dung_comment,
+            type_question: type_question,
+            name_question: name_question,
+            phone_question: phone_question,
+            email_question: email_question,
+        },
+        success: function (result) {
+            location.reload();
+        },
+        error: function (result) {
+        }
+    });
+});
