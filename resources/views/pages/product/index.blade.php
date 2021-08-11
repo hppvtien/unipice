@@ -245,48 +245,56 @@
                                     {!! $product->content !!}
                                 </div>
                             </div>
-                        </div>
-                        <div class="layout layout--onecol">
                             <div class="col-md-12 container">
-                                <div class="row">
+                                <h4 class="text-center">Đánh giá</h4>
+                                <p class="text-center">Mọi người nói gì về {{ $product->name }}</p>
+                            </div>
+                            <div class="col-md-12 container text-center">
+                                <span class="font-weight-bold">4.4</span>
+                                <span class="fa fa-star checked-star"></span>
+                                <span class="fa fa-star checked-star"></span>
+                                <span class="fa fa-star checked-star"></span>
+                                <span class="fa fa-star checked-star"></span>
+                                <span class="fa fa-star-half-full checked-star"></span>
+                                <p>13 Đánh giá, 2 Câu hỏi</p>
+                            </div>
+                        </div>
 
-                                    <div class="col-md-4 col-lg-4 col-12">
-                                        <button id="defaultOpen" class="tablink" onclick="openPage('News', this, '#e88012')">Đánh Giá</button>
+                        <div class="layout layout--onecol">
+                            <div class="container" style="position: relative;">
+                                <div class="d-block group-btn">
+                                    <div class="btn btn-comment">
+                                        <button class="tablink" onclick="openPage('News', this, '#e88012')"><i class="fa fa-pencil"></i></i>Viết đánh giá</button>
                                     </div>
-                                    <div class="col-md-4 col-lg-4 col-12">
-                                        <button class="tablink" onclick="openPage('question', this, '#e88012')">Đặt câu hỏi</button>
+                                    <div class="btn btn-comment">
+                                        <button class="tablink" onclick="openPage('question', this, '#e88012')"><i class="fa fa-comments"></i>Đặt câu hỏi</button>
                                     </div>
                                 </div>
-
                                 <div id="News" class="tabcontent not-padding">
+                                    <div class='rating-stars text-center'>
+                                        <ul id='stars'>
+                                            <li class='star' title='Poor' data-value='1'>
+                                                <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star' title='Fair' data-value='2'>
+                                                <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star' title='Good' data-value='3'>
+                                                <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star' title='Excellent' data-value='4'>
+                                                <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                            <li class='star' title='WOW!!!' data-value='5'>
+                                                <i class='fa fa-star fa-fw'></i>
+                                            </li>
+                                        </ul>
+                                    </div>
                                     <div class="">
                                         <div class="row" id="review-box">
                                             <textarea id="noi_dung_commnet" class="form-control col-12" rows="2" placeholder="Hãy để lại bình luận của bạn...!"></textarea>
                                             <div class="mar-top clearfix col-md-4 col-lg-4 col col-12 btn-submitrv not-padding-left">
                                                 <button token="{{ csrf_token() }}" data-type="review" onclick="add_comment_user(this);" product_id="{{ $product->id }}" user_id="@php echo $user_id; @endphp" class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Bình Luận</button>
-                                            </div>
-                                        </div>
-                                        <div>
-
-                                            <div>
-                                                @foreach ($noi_dung_comment as $item)
-                                                <div class="media-block">
-                                                    <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
-                                                    <div class="media-body">
-                                                        <div class="mar-btm">
-                                                            <a href="#" class="btn-link text-semibold media-heading box-inline">{{ $item->name }}</a>
-
-                                                        </div>
-                                                        <p class="margin-left1">{{ $item->noi_dung_comment }}</p>
-
-                                                        <hr>
-                                                    </div>
-                                                </div>
-                                                @endforeach
-
-
-                                                <!--===================================================-->
-                                                <!-- End Newsfeed Content -->
                                             </div>
                                         </div>
                                     </div>
@@ -336,6 +344,49 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layout layout--onecol">
+                            <div class="container">
+                                <div class="d-block float-left">
+                                    <div class="btn btn-comment">
+                                        <button class="tablink" onclick="openPageTwo('view_review', this, '#e88012')">Đánh giá</button>
+                                    </div>
+                                    <div class="btn btn-comment">
+                                        <button class="tablink" id="defaultOpen" onclick="openPageTwo('view_question', this, '#e88012')">Câu hỏi</button>
+                                    </div>
+                                </div>
+
+                                <div id="view_review" class="tabcontents not-padding">
+                                    <div class="">
+                                        <div>
+                                            <div>
+                                                @foreach ($noi_dung_comment as $item)
+                                                <div class="media-block">
+                                                    <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
+                                                    <div class="media-body">
+                                                        <div class="mar-btm">
+                                                            <a href="#" class="btn-link text-semibold media-heading box-inline">{{ $item->name }}</a>
+
+                                                        </div>
+                                                        <p class="margin-left1">{{ $item->noi_dung_comment }}</p>
+
+                                                        <hr>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+
+
+                                                <!--===================================================-->
+                                                <!-- End Newsfeed Content -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="view_question" class="tabcontents not-padding">
+                                    <div class="">
                                         <div>
                                             <div>
                                                 <!-- Newsfeed Content -->
@@ -528,28 +579,42 @@
 
                 tabcontent[i].style.display = "none";
             }
-
             // Remove the background color of all tablinks/buttons
             tablinks = document.getElementsByClassName("tablink");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].style.backgroundColor = "";
-
-
             }
-
             // Show the specific tab content
             document.getElementById(pageName).style.display = "block";
 
             // Add the specific color to the button used to open the tab content
             elmnt.style.backgroundColor = color;
+        }
 
-
+        function openPageTwo(pageName, elmnt, color) {
+            // Hide all elements with class="tabcontent" by default */
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontents");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            // Remove the background color of all tablinks/buttons
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            // Show the specific tab content
+            document.getElementById(pageName).style.display = "block";
+            document.getElementById(pageName).style.height = "100%";
+            // Add the specific color to the button used to open the tab content
+            elmnt.style.backgroundColor = color;
         }
 
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
 
         function add_comment_user(id) {
+            let num_rate = $("#stars star").find("selected").attr('data-value');
             var user_id = $(id).attr('user_id');
             var type_question = $(id).attr('data-type');
             var product_id = $(id).attr('product_id');
@@ -560,7 +625,7 @@
             var name_question = $('#name').val();
             var phone_question = $('#phone').val();
             var email_question = $('#email').val();
-
+alert(num_rate);
             $.post("{{ route('get.product_comment',['slug'=>$slug]) }}", {
                     token: token,
                     user_id: user_id,

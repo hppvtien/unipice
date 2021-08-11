@@ -655,6 +655,71 @@ span.a-qty {
     padding-left: 0!important;
     padding-right: 0!important;
 }
+.d-block.group-btn{
+    float: right;
+}
+.tablink {
+    background-color: #fff!important;
+    padding: 0!important;
+    width: 140px!important;
+    border: solid 1px #e3e3e3!important;
+    box-shadow: none!important;
+    font-weight: 500;
+}
+
+.btn-comment .tablink>i{
+    padding-right: 10px;
+    color: #08532f;
+}
+.btn.btn-comment {
+    padding: 0;
+}
+.btn.btn-comment:hover .tablink,.btn.btn-comment:focus {
+    border: solid 1px #08532f!important;
+}
+.tablink:focus{
+    color: unset!important;
+    border: solid 1px #08532f!important;
+}
+.tabcontents {
+    color: #0b2d25;
+    display: none;
+    padding: 50px 20px;
+    height: 100%;
+}
+.checked-star {
+    color: orange;
+  }
+ 
+  /* Rating Star Widgets Style */
+  .rating-stars ul {
+    list-style-type:none;
+    padding:0;
+    
+    -moz-user-select:none;
+    -webkit-user-select:none;
+  }
+  .rating-stars ul > li.star {
+    display:inline-block;
+    
+  }
+  
+  /* Idle State of the stars */
+  .rating-stars ul > li.star > i.fa {
+    font-size:2.5em; /* Change the size of the stars */
+    color:#ccc; /* Color on idle state */
+  }
+  
+  /* Hover state of the stars */
+  .rating-stars ul > li.star.hover > i.fa {
+    color:#FFCC36;
+  }
+  
+  /* Selected state of the stars */
+  .rating-stars ul > li.star.selected > i.fa {
+    color:#FF912C;
+  }
+  
 @media screen and (min-width: 768px){
     .c-sidebar-filters {
         padding-top: 0;
