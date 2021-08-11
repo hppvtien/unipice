@@ -110,7 +110,7 @@
                                                                         <?php if ($product->qty) { ?>
                                                                             <span class="a-price text-success sigle float-right line-height-single4"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
                                                                         <?php } else { ?>
-                                                                            <span class="text-dark float-right line-height-single4"><i class="fa fa-warning" aria-hidden="true"></i>Hết hàng!</span>
+                                                                            <span class="text-dark float-right line-height-single4"><i class="fa fa-phone" aria-hidden="true"></i>Liên hệ</span>
                                                                         <?php } ?>
                                                                         <div role="article" class="m-product-overview__price-wrapper">
                                                                             <div class="m-price-lockup">
@@ -160,7 +160,7 @@
                                                                         <?php if ($product->qty) { ?>
                                                                             <span class="a-price text-success sigle line-height-single4"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
                                                                         <?php } else { ?>
-                                                                            <span class="text-dark float-right line-height-single4"><i class="fa fa-question-circle" aria-hidden="true"></i>Hết hàng!</span>
+                                                                            <span class="text-dark float-right line-height-single4"><i class="fa fa-phone" aria-hidden="true"></i>Liên hệ</span>
                                                                         <?php } ?>
                                                                         <br>
                                                                         <span class="m-product-overview__price-wrapper d-block">
