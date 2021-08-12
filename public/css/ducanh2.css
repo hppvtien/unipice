@@ -1024,3 +1024,11 @@ a.a-btn.a-btn--primary.action.update.update_cart_action {
         padding: 0;
     }
 }
+
+.do_cao {
+    height: 136px;
+}
+
+.m-product-card__add-to-cart-icon {
+    width: 100%;
+}
