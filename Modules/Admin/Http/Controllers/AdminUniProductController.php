@@ -237,9 +237,10 @@ class AdminUniProductController extends AdminController
 
             if($item->qty == 0) {
                 $item['status'] = 0;
-                $item['key_lot'] = $key;
+                $item['key_lot'] = 0;
             } else {
                 $item['status'] = 1;
+                $item['key_lot'] = $key+1;
             }
             
         }

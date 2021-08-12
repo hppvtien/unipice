@@ -546,7 +546,7 @@
                                     <div class="field _required" name="shippingAddress.company">
                                         <div class="control">
                                             <div class="m-text-input  ">
-                                                <input class="a-text-input m-text-input__input" require value="{{ $store != null ? $store->store_address : ''  }}"  type="text" name="address" aria-invalid="false" id="addressck">
+                                                <input class="a-text-input m-text-input__input" require value="{{ $store != null ? $store->store_address : ''  }}" type="text" name="address" aria-invalid="false" id="addressck">
 
                                                 <label class="a-form-label m-text-input__label" for="addressck">
                                                     <span>Địa chỉ</span>
@@ -559,7 +559,7 @@
                                         <div class="field _required" name="shippingAddress.telephone">
                                             <div class="control _with-tooltip">
                                                 <div class="m-text-input  ">
-                                                    <input class="a-text-input m-text-input__input" require type="text"  value="{{ $store != null ? $store->store_taxcode : ''  }}"  name="taxcode" aria-required="true" aria-invalid="false" id="taxcodeck">
+                                                    <input class="a-text-input m-text-input__input" require type="text" value="{{ $store != null ? $store->store_taxcode : ''  }}" name="taxcode" aria-required="true" aria-invalid="false" id="taxcodeck">
                                                     <label class="a-form-label m-text-input__label" for="taxcodeck">
                                                         <span>Mã số thuế</span>
                                                     </label>
@@ -572,17 +572,26 @@
                                     <div class="field _required" name="shippingAddress.fax">
                                         <div class="control">
                                             <div class="m-text-input  ">
-                                                <input class="a-text-input m-text-input__input" require value="{{ $store != null ? $store->store_phone : ''  }}"  type="text" name="phone" aria-invalid="false" id="phoneck">
+                                                <input class="a-text-input m-text-input__input" require value="{{ $store != null ? $store->store_phone : ''  }}" type="text" name="phone" aria-invalid="false" id="phoneck">
                                                 <label class="a-form-label m-text-input__label" for="phoneck">
                                                     <span>Số điện thoại</span>
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="field _required">
+                                        <label class="" for="method_shpping">Phương thức vận chuyển</label>
+                                        <select class="custom-select" id="method_shpping">
+                                            <option selected>Chọn phương thức vận chuyển</option>
+                                            <option value="1">Giao hàng tiết kiệm</option>
+                                            <option value="2">Giao hàng nhanh</option>
+                                            <option value="3">Viettel Post</option>
+                                        </select>
+                                    </div>
                                     <div class="field _required pay_type">
                                         @foreach (config('cart.pay_type') as $key => $item)
                                         <div class="validContainer addressOption selected m-radio-button">
-                                            <input type="radio" class="validAddress m-radio-button__input" name="type_pay" {{ $key == 1 ? 'checked' : ' '; }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
+                                            <input type="radio" class="validAddress m-radio-button__input" name="type_pay" {{ $key == 1 ? 'checked' : ''; }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
                                             <label class="addressLabel" for="valid-{{ $item['type'] }}">
                                                 <span class="m-radio-button__circle"></span>
                                                 <div class="optionTitle m-radio-button__text-label">{{ $item['name'] }}</div>

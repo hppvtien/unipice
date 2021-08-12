@@ -432,7 +432,7 @@
                                     <td data-th="Price">
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price" id="hihihihi" gia="{{ $item->view_price }}">{{ formatVnd($item->view_price) }} 
+                                                <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ formatVnd($item->price) }} 
                                                         <?php if($item->options->sale == 'combo' ){
                                                             echo '/ combo';
                                                         } elseif($item->options->sale == 'user'){
@@ -451,7 +451,7 @@
                                                     <input id="cart-{{ $item->id }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}" 
                                                     class="input-text qty update-qty"  data-url="{{ route('get_user.updatecart',$item->id) }}" 
                                                     name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" 
-                                                    size="4"  min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" data-price="{{ $item->view_price }}" max="100" step="any" title="Qty">
+                                                    size="4"  min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" data-price="{{ $item->price }}" max="100" step="any" title="Qty">
                                                     <span style="order:2;margin-top: 5px;margin-left: 5px">
                                                          <?php if($item->options->sale == 'combo' ){
                                                             echo 'combo';
@@ -468,7 +468,7 @@
                                     <td data-th="Tổng tiền">
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price" id="price{{ $item->id }}">{{ formatVnd($item->view_price * $item->qty)}}</span> 
+                                                <span class="price" id="price{{ $item->id }}">{{ formatVnd($item->price * $item->qty)}}</span> 
                                             </span>
                                         </span>
                                     </td>
