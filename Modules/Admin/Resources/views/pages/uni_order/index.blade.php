@@ -31,14 +31,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
-                                @forelse($uni_order as $item)
+                                @forelse($uni_order as $key => $item)
+                                
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>
                                             <p><span>Name: </span> <span class="text-success">{{ $item->user->name ?? "[N\A]" }}</span></p>
                                             <p><span>Email: </span> <span class="text-success">{{ $item->user->email ?? "[N\A]" }}</span></p>
                                         </td>
+                                        
                                         <td>
                                             {{ $item->t_code ?? "[N\A]" }}
                                         </td>
@@ -54,6 +55,7 @@
                                         <td>
                                             {{ $item->created_at }}
                                         </td>
+                                        
                                         <td>
                                             <a href="{{ route('get_admin.uni_order.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                             <a href="{{ route('get_admin.uni_order.movetrash', $item->id) }}" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>
@@ -61,9 +63,13 @@
                                     </tr>
                                 @empty
                                 @endforelse
+                               
                                 </tbody>
+                                
                             </table>
+                            
                         </div>
+                        
                     </div>
                 </div>
             </div>
