@@ -17,10 +17,8 @@ class AdminUniTagController extends AdminController
     {
         $uni_tag = Uni_Tag::orderByDesc('id')
             ->paginate(20);
-        $t_status = Uni_Tag::getStatusGlobal();
         $viewData = [
             'uni_tag' => $uni_tag,
-            't_status' => $t_status
         ];
         return view('admin::pages.uni_tag.index', $viewData);
     }
@@ -55,11 +53,10 @@ class AdminUniTagController extends AdminController
     {
         $tags = Uni_Tag::findOrFail($id);
         $uni_tag = Uni_Tag::orderByDesc('id')->get();
-        $t_status = Uni_Tag::getStatusGlobal();
+        
         $viewData = [
             'tags' => $tags,
             'uni_tag' => $uni_tag,
-            't_status' => $t_status
         ];
 
         return view('admin::pages.uni_tag.update', $viewData);

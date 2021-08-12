@@ -52,7 +52,7 @@ class AdminUniProductController extends AdminController
     {
         $uni_color = Uni_Color::orderByDesc('id')->get();
         $uni_size = Uni_Size::orderByDesc('id')->get();
-        $uni_tag = Uni_Tag::orderByDesc('id')->get();
+        $uni_tag = Uni_Tag::where('type', 0)->get();
         $uni_trade = Uni_Trade::orderByDesc('id')->get();
         $uni_category = Uni_Category::orderByDesc('id')->get();
         $tagOld = [];
@@ -101,8 +101,6 @@ class AdminUniProductController extends AdminController
             'slug' => $request->slug,
             'desscription' => $request->desscription,
             'content' => $request->content,
-            'meta_title' => $request->name,
-            'meta_desscription' => $request->desscription,
             'created_at' => Carbon::now(),
             'created_by' => get_data_user('web'),
             'status' => $request->status,
@@ -112,6 +110,8 @@ class AdminUniProductController extends AdminController
             'thumbnail' => $thumbnail,
             'album' => json_encode($album),
             'status' => $request->status,
+            'meta_title' => $request->meta_title,
+            'meta_desscription' => $request->meta_desscription,
             'view_price' => $request->view_price,
             'view_price_sale' => $request->view_price_sale,
             'view_price_sale_store' => $request->view_price_sale_store,
@@ -133,7 +133,7 @@ class AdminUniProductController extends AdminController
     public function edit($id)
     {
         $uni_product     = Uni_Product::findOrFail($id);
-        $uni_tag       = Uni_Tag::all();
+        $uni_tag       = Uni_Tag::where('type', 0)->get();
         $uni_color       = Uni_Color::all();
         $uni_size       = Uni_Size::all();
         $uni_trade       = Uni_Trade::all();
@@ -189,8 +189,6 @@ class AdminUniProductController extends AdminController
             'slug' => $request->slug,
             'desscription' => $request->desscription,
             'content' => $request->content,
-            'meta_title' => $request->name,
-            'meta_desscription' => $request->desscription,
             'updated_at' => Carbon::now(),
             'updated_by' => get_data_user('web'),
             'status' => $request->status,
@@ -380,7 +378,7 @@ class AdminUniProductController extends AdminController
         if (in_array($request->name_img, $album_product)) {
             $album_product = \array_diff($album_product, [$request->name_img]);
             
-            Storage::delete('public/uploads_product/' . $request->name_img);
+            Storage::delete('public/uploads_Product/' . $request->name_img);
             array_multisort($album_product);
             $param['album'] = json_encode($album_product);
             $product->fill($param)->save();
@@ -399,7 +397,7 @@ class AdminUniProductController extends AdminController
             if ($product) {
                 if($uni_product){
                     foreach(json_decode($uni_product) as $item){
-                        Storage::delete('public/uploads_product/'.$item);
+                        Storage::delete('public/uploads_Product/'.$item);
                     }
                 }              
                 Storage::delete('public/uploads/'.$product->thumbnail);
