@@ -4775,6 +4775,7 @@ label.inline input {
 fieldset {
     padding: 0;
     border: 0;
+    margin-bottom: 1.618em;
 }
 
 fieldset legend {
@@ -12548,6 +12549,7 @@ button.menu-toggle .close-icon {
     .secondary-navigation ul.nav-menu>li>a:hover,
     .secondary-navigation ul.nav-menu>li>a:focus {
         color: #fff;
+        text-shadow: 0 0 .65px #fff, 0 0 .65px #fff;
     }
     .secondary-navigation ul.menu>li+li,
     .secondary-navigation ul.nav-menu>li+li {
@@ -27147,7 +27149,7 @@ Contact
 
 /* Credit to https://bootsnipp.com/snippets/ooa9M  */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 780px) {
     .footer-left-widget {
         padding-left: 0px;
     }
@@ -27204,59 +27206,12 @@ a:hover {
     .footer-left-widget {
         padding-left: 50px;
     }
-    .header-phone-numbers .phone-number {
-        font-weight: 800;
-        color: #fff;
-        font-size: 16px;
-        line-height: 1;
-        letter-spacing: -0.01em;
-        display: block;
-    }
-    .header-v1 .header-phone-numbers {
-        padding-right: 40px !important;
-    }
 }
 
-@media only screen and (max-width: 414px) {
-    .footer-left-widget {
-        padding-left: 0px;
-    }
-    .dk-footer-box-info {
-        position: absolute;
-        top: -100px;
-        background: #0b2d25;
-        padding: 30px;
-        z-index: 2;
-        margin: 0 auto;
-        display: contents;
-    }
-    .padding-left-0 {
-        margin-left: -80px;
-    }
-    .footer-awarad p {
-        color: #fff;
-        font-size: 24px;
-        font-weight: 700;
-        margin-left: 0px;
-        padding-top: 0px;
-    }
-}
-
-a:hover {
-    color: #fff;
+.zeynep ul>li>a {
+    font-size: 14px;
+    color: #ffffff;
+    display: block;
+    font-weight: bold;
     text-decoration: none;
-}
-
-#main-content {
-    display: none;
-}
-
-#span_menu1 {
-    font-size: 40px;
-    margin-left: -50px;
-}
-
-#ul_li_active {
-    color: #ff661a;
-    font-weight: 700;
 }

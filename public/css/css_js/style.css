@@ -11132,3 +11132,42 @@ a[data-toggle=collapse] {
 .subscribe-form .form-control {
     background: rgba(255, 255, 255, .2)
 }
+
+
+/*======================================DUCANHDANGSUA*/
+
+.foooter_cach_le_duoi {
+    padding-bottom: 1rem !important;
+}
+
+.footer-logo {
+    margin-bottom: 1em;
+}
+
+.footer_cach_top {
+    margin-top: -20px;
+}
+
+.footer-left-widget {
+    padding-left: 130px;
+}
+
+.dk-footer {
+    padding: 30px 0 0;
+    background-color: #0b2d25;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-info p {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.contact-info a {
+    color: #fff;
+}
+
+.contact-info a:hover {
+    color: #fff;
+}

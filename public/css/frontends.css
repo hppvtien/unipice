@@ -5314,7 +5314,6 @@ table tfoot td {
 }
 
 .m-product-overview__price-wrapper {
-    margin-bottom: 20px;
     display: flex;
     align-items: center
 }
@@ -5379,9 +5378,6 @@ table tfoot td {
     .m-product-overview__rating {
         margin-top: 8px;
         margin-bottom: 32px
-    }
-    .m-product-overview__price-wrapper {
-        margin-bottom: 15px
     }
     .m-product-overview__discontinued {
         margin-left: 20px
