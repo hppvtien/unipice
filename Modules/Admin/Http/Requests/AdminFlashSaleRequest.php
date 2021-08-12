@@ -4,19 +4,24 @@ namespace Modules\Admin\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminUniPostRequest extends FormRequest
+class AdminFlashSaleRequest extends FormRequest
 {
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
     public function rules()
     {
         return [
             'name' => 'required',
-            'content' => 'required',
-            'desscription' => 'required',
-            'slug' => 'required|unique:uni_post,slug,' . $this->id,
-            'tags' => 'required',
-            'category_id' => 'required',
+            'desscription'=>'required',
+            'slug' => 'required|unique:uni_flash_sale,slug,'.$this->id,
             'meta_title'=>'required|min:50|max:70',
             'meta_desscription'=>'required|min:100|max:150',
+            'qty'=>'required',
+            'content'=>'required',
+            'sale_off'=>'required',
         ];
     }
 
@@ -24,12 +29,12 @@ class AdminUniPostRequest extends FormRequest
     {
         return [
             'name.required' => 'Dữ liệu không được để trống',
-            'content.required' => 'Dữ liệu không được để trống',
             'desscription.required' => 'Dữ liệu không được để trống',
             'slug.required' => 'Dữ liệu không được để trống',
-            'slug.unique' => 'Slug đã tồn tại',
-            'tags.required' => 'Dữ liệu không được để trống',
-            'category_id.required' => 'Dữ liệu không được để trống',
+            'slug.unique'   => 'Slug đã tồn tại',
+            'qty.required' => 'Số lượng không được để trống',
+            'content.required' => 'Nội dung không được để trống',
+            'sale_off.required' => 'Hạn combo không được để trống',
             'meta_title.required' => 'Tiêu đề SEO không được để trống',
             'meta_title.min'   => 'Tiêu đề SEO không được nhỏ hơn 50 ký tự',
             'meta_title.max'   => 'Tiêu đề SEO không được lớn hơn 70 ký tự',

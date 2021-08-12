@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-// use Modules\Admin\Http\Requests\AdminCourseRequest;
+ use Modules\Admin\Http\Requests\AdminFlashSaleRequest;
 
 class AdminUniFlashSaleController extends AdminController
 {
@@ -34,7 +34,7 @@ class AdminUniFlashSaleController extends AdminController
         return view('admin::pages.uni_flashsale.create', $viewData);
     }
 
-    public function store(Request $request)
+    public function store(AdminFlashSaleRequest $request)
     {
       
         $data                 = $request->except(['thumbnail', 'save', '_token']);
@@ -90,14 +90,13 @@ class AdminUniFlashSaleController extends AdminController
 
         return view('admin::pages.uni_flashsale.update', $viewData);
     }
-    public function update(Request $request, $id)
+    public function update(AdminFlashSaleRequest $request, $id)
     {
         if ($request) {
            
             $uni_flashsale             = Uni_FlashSale::findOrFail($id);
             $data               = $request->except(['thumbnail', 'save', '_token']);
             $data['updated_at'] = Carbon::now();
-            $data['created_by'] = get_data_user('web');
             $product_sale = [];
             foreach ($request->product_sale as $item) {
                 if (count($item) == 4) {
@@ -127,10 +126,7 @@ class AdminUniFlashSaleController extends AdminController
                 "updated_at" => $data['updated_at'],
                 "info_sale" => $data['info_sale']
             ];
-            // dd($param);
             $uni_flashsale->fill($param)->save();
-
-            // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
             $this->showMessagesSuccess();
             return redirect()->route('get_admin.uni_flashsale.index');
         }
@@ -139,22 +135,9 @@ class AdminUniFlashSaleController extends AdminController
     {
         if ($request->ajax()) {
             $product = Uni_FlashSale::findOrFail($id);
-            $uni_product = Uni_FlashSale::where('id', $id)->pluck('album')->first();
-
-            if ($product) {
-                if ($uni_product) {
-                    foreach (json_decode($uni_product) as $item) {
-                        Storage::delete('public/uploads_product/' . $item);
-                    }
-                }
-
-                Storage::delete('public/uploads_product/' . $product->thumbnail);
+            if ($product) {             
+                Storage::delete('public/uploads/' . $product->thumbnail);
                 $product->delete();
-                ProductTag::where('product_id', $id)->delete();
-                ProductCategory::where('product_id', $id)->delete();
-                ProductTrade::where('product_id', $id)->delete();
-                ProductColor::where('product_id', $id)->delete();
-                ProductSize::where('product_id', $id)->delete();
             }
             return response()->json([
                 'status'  => 200,
@@ -163,31 +146,5 @@ class AdminUniFlashSaleController extends AdminController
         }
 
         return redirect()->to('/');
-    }
-    public function processUploadFile($fileName)
-    {
-        try {
-            $ext = $fileName->getClientOriginalExtension();
-
-            $extension = [
-                'jpg', 'png', 'jpeg'
-            ];
-            $time_img =  Carbon::now();
-            if (!in_array($ext, $extension)) return false;
-
-            $filename = str_replace($ext, '', $fileName->getClientOriginalName());
-            $filename = Str::slug($filename) . '-' . $time_img->getTimestamp() . '.' . $ext;
-            $path = public_path() . '/storage/uploads_Store/';
-
-            if (!\File::exists($path)) mkdir($path, 0777, true);
-
-            $fileName->move($path, $filename);
-
-            return  $filename;
-        } catch (\Exception $exception) {
-            Log::error("[processUploadFile] :" . $exception->getMessage());
-        }
-
-        return  null;
     }
 }

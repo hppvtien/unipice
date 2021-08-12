@@ -90,9 +90,8 @@
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button"
                             aria-expanded="true">
                             <select name="type" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                @foreach ($t_status as $key => $item)
-                                    <option title="Public" value="{{ $key }}" {{ $tags->type == $key ? "selected" : "" }}>{{ $item['name'] }}</option>
-                                @endforeach
+                                <option title="Product" value="0">Product</option>
+                                <option title="blog" value="1">Blog</option>
                             </select>
                         </div>
                     </div>

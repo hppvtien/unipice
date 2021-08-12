@@ -147,7 +147,7 @@ class AdminUniStoreController extends AdminController
 
         if (in_array($request->name_img, $store_album)) {
             $store_album = \array_diff($store_album, [$request->name_img]);
-            Storage::delete('public/uploads_store/' . $request->name_img);
+            Storage::delete('public/uploads_Product/' . $request->name_img);
             array_multisort($store_album);
             $param['store_album'] = json_encode($store_album);
             $store->fill($param)->save();
@@ -166,11 +166,11 @@ class AdminUniStoreController extends AdminController
             if ($product) {
                 if ($uni_product) {
                     foreach (json_decode($uni_product) as $item) {
-                        Storage::delete('public/uploads_product/' . $item);
+                        Storage::delete('public/uploads_Product/' . $item);
                     }
                 }
 
-                Storage::delete('public/uploads_product/' . $product->thumbnail);
+                Storage::delete('public/uploads_Product/' . $product->thumbnail);
                 $product->delete();
                 ProductTag::where('product_id', $id)->delete();
                 ProductCategory::where('product_id', $id)->delete();
@@ -199,7 +199,7 @@ class AdminUniStoreController extends AdminController
 
             $filename = str_replace($ext, '', $fileName->getClientOriginalName());
             $filename = Str::slug($filename) . '-' . $time_img->getTimestamp() . '.' . $ext;
-            $path = public_path() . '/storage/uploads_Store/';
+            $path = public_path() . '/storage/uploads_Product/';
 
             if (!\File::exists($path)) mkdir($path, 0777, true);
 

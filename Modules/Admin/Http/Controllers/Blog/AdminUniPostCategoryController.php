@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Modules\Admin\Http\Controllers\AdminController;
-use Modules\Admin\Http\Requests\AdminUniCategoryRequest;
+use Modules\Admin\Http\Requests\AdminUniBlogCategoryRequest;
 
 class AdminUniPostCategoryController extends AdminController
 {
@@ -32,14 +32,10 @@ class AdminUniPostCategoryController extends AdminController
         return view('admin::pages.blog_post.uni_post_category.create', compact('uni_postcategory'));
     }
 
-    public function store(Request $request)
+    public function store(AdminUniBlogCategoryRequest $request)
     {
-        $data = $request->except(['avatar', 'save', '_token', 'banner']);
-        $data['created_at'] = Carbon::now();
-        $data['created_by'] = get_data_user('web');
-        // $banner = $this->processUploadFile($request->banner);
-        if (!$request->meta_title)             $data['meta_title'] = $request->name;
-        if (!$request->meta_description) $data['meta_desscription'] = $request->name;
+        $data = $request->except(['avatar', 'save', '_token', 'banner','thumbnail','delete_thumbnail']);
+       
         if ($request->banner) {
             $banner = $this->processUploadFile($request->banner);
         }
@@ -48,13 +44,12 @@ class AdminUniPostCategoryController extends AdminController
             'slug' => $request->slug,
             'desscription' => $request->desscription,
             'content' => $request->content,
-            'meta_title' => $request->name,
-            'meta_desscription' => $request->desscription,
+            'meta_title' => $request->meta_title,
+            'meta_desscription' => $request->meta_desscription,
             'created_at' => Carbon::now(),
-            'created_by' => get_data_user('web'),
+            'created_by' => Carbon::now(),
             'status' => $request->status,
             'parent_id' => $request->parent_id,
-            'order' => $request->order,
             'order' => $request->order,
             'thumbnail' => $request->thumbnail,
             'banner' => $banner,
@@ -75,45 +70,42 @@ class AdminUniPostCategoryController extends AdminController
         return view('admin::pages.blog_post.uni_post_category.update', compact('postcategory', 'uni_postcategory'));
     }
 
-    public function update(Request $request, $id)
+    public function update(AdminUniBlogCategoryRequest $request, $id)
     {
         $uni_postcategory = Uni_PostCategory::findOrFail($id);
-        $data = $request->except(['avatar', 'save', '_token', 'banner']);
-        $data['updated_at'] = Carbon::now();
+        $data = $request->except(['avatar', 'save', '_token', 'banner','thumbnail','delete_thumbnail']);
 
-        if (!$request->meta_title)             $data['meta_title'] = $request->name;
-        if (!$request->meta_description) $data['meta_description'] = $request->desscription;
         if ($request->banner) {
-            Storage::delete('public/uploads_product/' . $uni_postcategory->banner);
+            Storage::delete('public/uploads_Post/' . $uni_postcategory->banner);
             $banner = $this->processUploadFile($request->banner);
         } else {
             $banner = $uni_postcategory->banner;
         }
-        if ($request->thumbnail) {
-            Storage::delete('public/uploads_product/' . $uni_postcategory->thumbnail);
-            $thumbnail = $this->processUploadFile($request->thumbnail);
-        } else {
-            $thumbnail = $uni_postcategory->thumbnail;
+        if ($request->thumbnail){
+            Storage::delete('public/uploads/'.$request->delete_thumbnail);    
+            $thumbnail = $request->thumbnail;
+        } elseif (!$request->thumbnail) {
+            $thumbnail = $request->delete_thumbnail;         
+        } elseif ($request->thumbnail && !$uni_postcategory->thumbnail) {
+            $thumbnail = $request->thumbnail;         
         }
         $param = [
             'name' => $request->name,
             'slug' => $request->slug,
             'desscription' => $request->desscription,
             'content' => $request->content,
-            'meta_title' => $request->name,
-            'meta_desscription' => $request->desscription,
+            'meta_title' => $request->meta_title,
+            'meta_desscription' => $request->meta_desscription,
             'updated_at' => Carbon::now(),
-            'updated_by' => get_data_user('web'),
+            'updated_by' => Carbon::now(),
             'status' => $request->status,
             'parent_id' => $request->parent_id,
-            'order' => $request->order,
             'order' => $request->order,
             'thumbnail' => $thumbnail,
             'banner' => $banner,
             'status' => $request->status,
         ];
         $uni_postcategory->fill($param)->save();
-        // RenderUrlSeoBLogService::update($request->slug, SeoBlog::TYPE_MENU, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.post_category.index');
     }
@@ -124,11 +116,11 @@ class AdminUniPostCategoryController extends AdminController
         if($request->ajax())
         {
             $uni_postcategory = Uni_PostCategory::findOrFail($id);
-            PostCategory::where('category_id',$id)->delete();
             if ($uni_postcategory)
             {
+                Storage::delete('public/uploads/'.$uni_postcategory->thumbnail);
+                Storage::delete('public/uploads_Post/'.$uni_postcategory->banner);
                 $uni_postcategory->delete();
-                // RenderUrlSeoBLogService::deleteUrlSeo(SeoBlog::TYPE_MENU, $id);
             }
             return response()->json([
                 'status' => 200,
