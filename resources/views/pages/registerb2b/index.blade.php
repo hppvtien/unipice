@@ -1,6 +1,6 @@
 @extends('pages.layouts.app_master_frontend') @section('contents')
 <main id="maincontent">
-    <div class="bg-contact2" style="background-image: url('https://colorlib.com/etc/cf/ContactFrom_v2/images/bg-01.jpg');">
+    <div class="bg-contact2" style="background-image: url('{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}');">
         <div class="container-contact2">
             <div class="wrap-contact2">
                 <div>
@@ -132,11 +132,6 @@
         justify-content: center;
         align-items: center;
         padding: 15px;
-        background: #db1563;
-        background: -webkit-linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
-        background: -o-linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
-        background: -moz-linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
-        background: linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
     }
     
     .wrap-contact2 {
@@ -144,7 +139,8 @@
         background: #fff;
         border-radius: 10px;
         overflow: hidden;
-        padding: 72px 55px 90px
+        padding: 72px 55px 90px;
+        box-shadow: 5px 5px 5px 5px #353535;
     }
     
     .wrap-input2 {
@@ -185,11 +181,6 @@
         -o-transition: all .4s;
         -moz-transition: all .4s;
         transition: all .4s;
-        background: #db1563;
-        background: -webkit-linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
-        background: -o-linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
-        background: -moz-linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
-        background: linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
     }
     
     .focus-input2::after {
@@ -271,11 +262,6 @@
         z-index: -1;
         width: 300%;
         height: 100%;
-        background: #db1563;
-        background: -webkit-linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
-        background: -o-linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
-        background: -moz-linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
-        background: linear-gradient(45deg, rgba(20, 255, 0, 0.8), rgba(255, 2, 2, 0.8));
         top: 0;
         left: -100%;
         -webkit-transition: all .4s;

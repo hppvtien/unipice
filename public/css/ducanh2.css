@@ -667,6 +667,7 @@ textarea,
     border-radius: 0;
     position: relative;
     width: 100%;
+    z-index: 1;
 }
 
 #formRegister #email_address {
@@ -678,6 +679,7 @@ textarea,
     font-weight: normal;
     border-radius: 0px;
     width: 100%;
+    z-index: 1;
 }
 
 #formRegister #password {

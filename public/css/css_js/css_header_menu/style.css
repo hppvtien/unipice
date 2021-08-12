@@ -4775,7 +4775,6 @@ label.inline input {
 fieldset {
     padding: 0;
     border: 0;
-    margin-bottom: 1.618em;
 }
 
 fieldset legend {

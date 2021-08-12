@@ -1,9 +1,10 @@
 @extends('pages.layouts.app_master_frontend')
 @section('contents')
-<main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
-    <div class="columns">
-        <div class="column main"><input name="form_key" type="hidden" value="GXhjnhZzwPqQ9aXV">
-            <div class="c-login">
+<main id="maincontent">
+    <div class="container">
+        <div class="col-md-12  row mt-4 pt-4 pb-4">
+            <div class="col-md-6">
+                <input name="form_key" type="hidden" value="GXhjnhZzwPqQ9aXV">
                 <div class="c-login__content" style="padding:0;margin-right:20px">
                     <div class="login-container">
                         <div class="page-title-wrapper c-login__heading">
@@ -58,13 +59,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="c-login__image">
-                    <div data-content-type="row" data-appearance="full-bleed" data-enable-parallax="0" data-parallax-speed="0.5" data-background-images="{}" data-background-type="image" data-video-loop="true" data-video-play-only-visible="true" data-video-lazy-load="true" data-video-fallback-src="" data-element="main" style="justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;">
-                        <div data-content-type="text" data-appearance="default" data-element="main" style="border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;">
-                            <p><img src="https://shop.coopmarket.com/media/wysiwyg/hero/contact-us-hero.png" alt=""></p>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <div class="col-md-6 d-none d-md-block mb-4" style="background: #fff url({{ asset('/images/icon_menu/anh_nen_login.jpg') }}) no-repeat top">
             </div>
         </div>
     </div>
