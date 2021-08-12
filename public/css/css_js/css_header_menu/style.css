@@ -27192,3 +27192,29 @@ a:hover {
     color: #ff661a;
     font-weight: 700;
 }
+
+@media screen and (max-width:1440px) {
+    .footer-widget h3 {
+        font-size: 18px;
+        color: #fff;
+        position: relative;
+        margin-bottom: 15px;
+        max-width: -webkit-fit-content;
+        max-width: -moz-fit-content;
+        max-width: fit-content;
+    }
+    .footer-left-widget {
+        padding-left: 50px;
+    }
+    .header-phone-numbers .phone-number {
+        font-weight: 800;
+        color: #fff;
+        font-size: 16px;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        display: block;
+    }
+    .header-v1 .header-phone-numbers {
+        padding-right: 40px !important;
+    }
+}

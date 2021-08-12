@@ -655,7 +655,6 @@ textarea,
     border-radius: 0;
     position: relative;
     width: 100%;
-    margin-bottom: 20px;
 }
 
 #formRegister #phone {
@@ -678,7 +677,7 @@ textarea,
     box-sizing: border-box;
     font-weight: normal;
     border-radius: 0px;
-    width: 99%;
+    width: 100%;
 }
 
 #formRegister #password {

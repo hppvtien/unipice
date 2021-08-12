@@ -3111,16 +3111,13 @@ ol ul li:before {
     color: inherit;
     text-decoration: none;
     padding: 0 0 2px;
-    box-shadow: inset 0 -2px var(--color-primary);
     transition: box-shadow 200ms ease-in-out;
     outline: none;
     display: inline-block
 }
 
 .a-anchor:hover,
-.a-anchor:focus {
-    box-shadow: inset 0 -3px var(--color-primary)
-}
+.a-anchor:focus {}
 
 button.a-anchor {
     background: 0 0;
@@ -7720,16 +7717,13 @@ body._has-modal {
 }
 
 .m-breadcrumb__item a {
-    font-size: 12px;
-    font-size: .75rem;
     padding: 0;
     line-height: 1.25;
-    box-shadow: inset 0 -1px var(--color-primary)
 }
 
 .m-breadcrumb__item a:hover,
 .m-breadcrumb__item a:focus {
-    box-shadow: inset 0 -2px var(--color-primary)
+    box-shadow: inset 0 -1px var(--color-primary)
 }
 
 .m-breadcrumb__item:after {
