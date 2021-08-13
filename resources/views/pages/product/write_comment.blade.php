@@ -8,7 +8,7 @@
                 <button class="tablink" onclick="openPage('question', this, '#e88012')"><i class="fa fa-comments"></i>Đặt câu hỏi</button>
             </div>
         </div>
-        <div id="News" class="tabcontent not-padding">
+        <div id="News" class="tabcontent not-padding"  style="display: block">
             <div class='rating-stars text-center'>
                 <ul id='stars'>
                     <li class='star selected' title='Poor' data-value='1'>

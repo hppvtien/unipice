@@ -241,7 +241,7 @@
                         </div>
 
                         <div class="layout layout--onecol">
-                            <div class="col-md-12 container">
+                            <div class="container">
                                 <div>
                                     <h2>Mô tả về sản phẩm</h2>
                                 </div>
