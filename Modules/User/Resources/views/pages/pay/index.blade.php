@@ -580,13 +580,33 @@
                                         </div>
                                     </div>
                                     <div class="field _required">
-                                        <label class="" for="method_shpping">Phương thức vận chuyển</label>
-                                        <select class="custom-select" id="method_shpping">
-                                            <option selected>Chọn phương thức vận chuyển</option>
-                                            <option value="1">Giao hàng tiết kiệm</option>
-                                            <option value="2">Giao hàng nhanh</option>
-                                            <option value="3">Viettel Post</option>
-                                        </select>
+                                            <label class="" for="method_shpping">Phương thức vận chuyển</label>
+                                            <select class="custom-select" id="method_shpping">
+                                                <option selected>Chọn phương thức vận chuyển</option>
+                                                <option value="1">Giao hàng nhanh</option>
+                                                <option value="2">Giao hàng nhanh</option>
+                                                <option value="3">Giao hàng tiết kiệm</option>
+                                            </select>
+                                    </div>
+                                    <div class="field _required row no-gutters">
+                                        <div class="col-md-4 col-sm-4 col-12">
+                                            <select class="w-75" id="province" name="province" required="" onchange="chanFunction()">
+                                                <option value="" selected>Tỉnh / Thành phố</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-12">
+                                            <select class="w-75" id="district" name="district" required="" onchange="chanFunctionDistrict()">
+                                                <option value="" selected>Quận / Huyện</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-12">
+                                            <select class="w-75" id="ward" name="ward" required="" onchange="chanFunctionWard()">
+                                                <option value="" selected>Phường / Xã</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="field _required">
+                                        <p class="text-danger">Phí vận chuyển:<span id="fee_ship" class="text-warning">000.000</span></p>
                                     </div>
                                     <div class="field _required pay_type">
                                         @foreach (config('cart.pay_type') as $key => $item)
@@ -711,4 +731,108 @@
         </div>
     </div>
 </main>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var province = document.getElementById("province");
+        window.onload = function() {
+            $.ajax({
+                url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/province',
+                headers: {
+                    'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                    'Content-Type': 'application/json'
+                },
+                method: "GET",
+                dataType: 'json',
+                success: function(response) {
+                    var str = "<option selected>Tỉnh / thành</option>";
+                    for (var i = 0; i < response.data.length; i++) {
+                        str = str + "<option class='provinceId' data-province='" + response.data[i].ProvinceID + "'>'" + response.data[i].ProvinceName + "'</option>"
+                    }
+                    province.innerHTML = str;
+                }
+            });
+        };
+    }, false);
+
+    function chanFunction() {
+        var selectBox = document.getElementById("province");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].getAttribute('data-province');
+        var district = document.getElementById("district");
+        $.ajax({
+            url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/district',
+            headers: {
+                'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                'Content-Type': 'application/json'
+            },
+            method: "GET",
+            dataType: 'json',
+            success: function(response) {
+                var str = "<option selected>Quận / huyện</option>";
+                for (var i = 0; i < response.data.length; i++) {
+                    if (response.data[i].ProvinceID == selectedValue)
+                        str = str + "<option class='districtId' data-district='" + response.data[i].DistrictID + "'>'" + response.data[i].DistrictName + "'</option>"
+                }
+                district.innerHTML = str;
+            }
+        });
+    };
+
+    function chanFunctionDistrict() {
+        var selectBox = document.getElementById("district");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].getAttribute('data-district');
+        var ward = document.getElementById("ward");
+        $.ajax({
+            url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id=' + selectedValue,
+            headers: {
+                'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                'Content-Type': 'application/json'
+            },
+            method: "GET",
+            dataType: 'json',
+            success: function(response) {
+                var str = "<option selected>Phường / xã</option>";
+                for (var i = 0; i < response.data.length; i++) {
+                    str = str + "<option class='wardId' data-ward='" + response.data[i].WardCode + "'>'" + response.data[i].WardName + "'</option>"
+                }
+                ward.innerHTML = str;
+
+            }
+        });
+    }
+
+    function chanFunctionWard() {
+        let to_district_id = $("#district").find(":selected").attr('data-district');
+        let to_ward = $("#ward").find(":selected").attr('data-ward');
+        let to_ward_code = "'"+to_ward+"'";
+        alert(to_ward_code);
+        $.ajax({
+            url: 'https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee',
+            headers: {
+                'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                'Content-Type': 'application/json',
+                'ShopId': '1925108',
+                'Content-Type': 'text/plain'
+            },
+            method: "GET",
+            dataType: 'json',
+            data: {
+                "from_district_id": 1454,
+                "service_id": 53320,
+                "service_type_id": null,
+                "to_district_id": to_district_id,
+                "to_ward_code": to_ward_code,
+                "height": 50,
+                "length": 20,
+                "weight": 200,
+                "width": 20,
+                "insurance_fee": 0,
+                "coupon": null
+            },
+            success: function(response) {
+                console.log(response.data.total);
+                $('#fee_ship').text(response.data.total);
+            }
+        });
+    }
+</script>
 @stop

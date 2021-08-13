@@ -28,78 +28,130 @@ class UserPayController extends UserController
         $uni_store = Uni_Store::where('user_id', get_data_user('web'))->first();
         if ($listCarts->isEmpty()) return redirect()->to('/');
         $viewData = [
-            'store'=>$uni_store,
+            'store' => $uni_store,
             'listCarts' => $listCarts
         ];
         // \Cart::destroy();    
         // dd($viewData);
         return view('user::pages.pay.index', $viewData);
     }
+    public function getFeeShip(Request $request)
+    {
+        $mehod_ship = $request->mehod_ship;
+        if ($mehod_ship) {
+            $data_string = json_encode(array("offset" => 0, "limit" => 50, "client_phone" => ""));
+            $curl = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shop/all');
+
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt(
+                $curl,
+                CURLOPT_HTTPHEADER,
+                array(
+                    'Content-Type: application/json',
+                    'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf'
+                )
+            );
+            $result = json_decode(curl_exec($curl));
+            $dataShops = $result->data->shops[0];
+        }
+
+        // $shop
+        curl_close($curl);
+        return $mehod_ship;
+    }
     public function getPaySuccsess(Request $request)
-    { 
-       
+    {
+        // dd($request->all());
         \SEOMeta::setTitle('Thanh toán');
-        
+        $method_ship = $request->method_ship;
+        $ward_code_to = $request->ward_code_to;
+        $district_id_to = $request->district_id_to;
+
+        if ($method_ship == 1) {
+            $data_string = json_encode(array("offset" => 0, "limit" => 50, "client_phone" => ""));
+            $curl = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create');
+
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt(
+                $curl,
+                CURLOPT_HTTPHEADER,
+                array(
+                    'Content-Type: application/json',
+                    'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                    'ShopId: 1925108',
+                )
+            );
+            $result = json_decode(curl_exec($curl));
+            $dataShops = $result->data->shops[0];
+            $ward_code_from = $dataShops->ward_code;
+            $district_id_from = $dataShops->district_id;
+        }
+
+
         $listCarts = \Cart::content();
-        foreach(json_decode($listCarts) as $item){
-            if($item->options->sale == 'combo'){
+        foreach (json_decode($listCarts) as $item) {
+            if ($item->options->sale == 'combo') {
                 $combo_id = $item->id;
-            }else{
-                $combo_id = 0; 
+            } else {
+                $combo_id = 0;
             };
         };
         $total_ship = 100000;
-        // $total_money = \Cart::total(0,0,'.');
         $order_data = [
-            'user_id'=>get_data_user('web'),
-            'code_invoice'=>$request->code_invoice,
-            'vouchers'=>$request->vouchers,
-            'customer_name'=>$request->customer_name,
-            'email'=>$request->email,
-            'address'=>$request->address,
-            'phone'=>$request->phone,
-            'taxcode'=>$request->taxcode,
-            'type_pay'=>$request->type_pay,
-            'cart_info'=>$listCarts,
-            'combo_id'=>$combo_id,
-            'status'=>1,
-            'total_money'=>\Cart::total(0,0,'.'),
-            'total_vat'=>\Cart::tax(0,0,'.'),
-            'total_no_vat'=>\Cart::subtotal(0,0,'.'),
-            'total_ship'=>$total_ship,
-            'created_at'=>Carbon::now(),
-           
+            'user_id' => get_data_user('web'),
+            'code_invoice' => $request->code_invoice,
+            'vouchers' => $request->vouchers,
+            'customer_name' => $request->customer_name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'taxcode' => $request->taxcode,
+            'type_pay' => $request->type_pay,
+            'cart_info' => $listCarts,
+            'combo_id' => $combo_id,
+            'status' => 1,
+            'total_money' => \Cart::total(0, 0, '.'),
+            'total_vat' => \Cart::tax(0, 0, '.'),
+            'total_no_vat' => \Cart::subtotal(0, 0, '.'),
+            'total_ship' => $total_ship,
+            'created_at' => Carbon::now(),
+
         ];
-        
-        $idOrder = Uni_Order::insertGetId($order_data); 
+
+        $idOrder = Uni_Order::insertGetId($order_data);
         // \Cart::destroy();
-        if($idOrder){
-            $order_data_sucsses = Uni_Order::where('id',$idOrder)->where('user_id',get_data_user('web'))->first();
+        if ($idOrder) {
+            $order_data_sucsses = Uni_Order::where('id', $idOrder)->where('user_id', get_data_user('web'))->first();
             if ($order_data_sucsses->type_pay == 4) {
-                $url = '/thanh-toan-vnpay/'.$idOrder;
+                $url = '/thanh-toan-vnpay/' . $idOrder;
                 return $url;
             } elseif ($order_data_sucsses->type_pay == 2) {
-                $url = '/thanh-toan-momo/'.$idOrder;
+                $url = '/thanh-toan-momo/' . $idOrder;
                 return $url;
             } else {
-                $url = '/thanh-toan/'.$idOrder;
+                $url = '/thanh-toan/' . $idOrder;
                 return $url;
             }
         }
     }
-    public function getSuccsess(Request $request, $id){
-        $order = Uni_Order::find($id); 
-        
+    public function getSuccsess(Request $request, $id)
+    {
+        $order = Uni_Order::find($id);
+
 
         // \Cart::destroy();  
-        return view('user::pages.pay.succsess',compact('order'));
+        return view('user::pages.pay.succsess', compact('order'));
     }
     public function check_vouchers(Request $request)
     {
         $check_vouchers = $request->check_vouchers;
         $data_voucher = Voucher::where('code', $check_vouchers)->first();
         if ($data_voucher) {
-           if($data_voucher->expires_at > date('Y-m-d', strtotime(Carbon::now()))){
+            if ($data_voucher->expires_at > date('Y-m-d', strtotime(Carbon::now()))) {
                 if ($data_voucher->model_qty > 0) {
                     $check_user_voucher = User_voucher::where('user_id', get_data_user('web'))->where('voucher_id', $data_voucher->id)->first();
                     if ($check_user_voucher) {
@@ -113,34 +165,33 @@ class UserPayController extends UserController
                     $message = 'Mã giảm giá này tạm thời đã hết';
                     return $message;
                 }
-           }else{
-            $message = 'Mã giảm giá hết hạn';
-            return $message;
-           }
+            } else {
+                $message = 'Mã giảm giá hết hạn';
+                return $message;
+            }
         } else {
             $message = 'Vui lòng kiểm tra lại mã giảm giá';
             return $message;
         }
     }
-    
+
     public function getVnPaySuccsess(Request $request, $id)
     {
-        $order = Uni_Order::find($id); 
-        return view('user::pages.pay.vnpaysuccsess',compact('order'));
+        $order = Uni_Order::find($id);
+        return view('user::pages.pay.vnpaysuccsess', compact('order'));
     }
 
     public function processVnPayCart(Request $request, $id)
     {
-        $order = Uni_Order::find($id); 
-        
+        $order = Uni_Order::find($id);
         session(['cost_id' => $id]);
         session(['url_prev' => url()->previous()]);
         $vnp_TmnCode = "I007EUZ2"; //Mã website tại VNPAY 
         $vnp_HashSecret = "VOTYNULEGABAXIXGKRZDIUPLAFLOEQUG"; //Chuỗi bí mật
         $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-      
+
         $vnp_Returnurl = route('get_user.result_vnpay');
-        
+
         $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
         $vnp_OrderType = 'billpayment';
@@ -195,7 +246,7 @@ class UserPayController extends UserController
             \Cart::destroy();
             return $vnp_Url;
         }
-        
+
         // return redirect($vnp_Url);
     }
 
@@ -206,9 +257,9 @@ class UserPayController extends UserController
         $responseTime = $request->vnp_PayDate;
         $data['t_note_message'] = $errorCode . '-' . $localMessage . '[' . $responseTime . ']';
         $order       = Uni_Order::where('pay_code', $request->vnp_TxnRef)->first();
-       
+
         if ($request['vnp_ResponseCode'] == '00') {
-            foreach(json_decode($order->cart_info) as $items){
+            foreach (json_decode($order->cart_info) as $items) {
                 $uni_product       = Uni_Product::where('id', $items->id)->first();
                 $product['qty'] = $uni_product->qty - $items->qty;
                 $uni_product->fill($product)->save();
@@ -216,37 +267,36 @@ class UserPayController extends UserController
             $data['status'] = 1;
             $order->fill($data)->save();
             $message = 'Cám ơn quý khách đã tin tưởng và ủng hộ chúng tao !!!';
-            return view('user::pages.pay.finish_pay',compact('message'));
+            return view('user::pages.pay.finish_pay', compact('message'));
         } else {
             $data['status'] = 0;
             $order->fill($data)->save();
             echo "GD Khong thanh cong";
         }
-        
     }
 
     public function getmomoSuccsess(Request $request, $id)
     {
-        $order = Uni_Order::find($id); 
+        $order = Uni_Order::find($id);
         // dd($viewData);
         return view('user::pages.pay.momosuccsess', compact('order'));
     }
 
     public function processmomoCart(Request $request, $id)
     {
-        $order = Uni_Order::find($id); 
-       
+        $order = Uni_Order::find($id);
+
         $endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
         $partnerCode = 'MOMOFGH020210603';
         $accessKey = '9QGcOW38zWHhnWEF';
         $secretKey = '1hcI4q537bq4m1Zop3MrHS7M0t7XIuSf';
         $orderInfo = "Thanh toán qua MoMo";
         $amount = '1000000';
-       
+
         // $amount = '10000';
         $orderId = time() . "";
         $returnUrl = route('get_user.result_momo');
-   
+
         $notifyurl = "https://momo.vn/";
         // Lưu ý: link notifyUrl không phải là dạng localhost
         $extraData = "merchantName=Payment";
@@ -254,7 +304,7 @@ class UserPayController extends UserController
         $orderId = date("YmdHis"); // Mã đơn hàng
         $requestId = time() . "";
         $requestType = "captureMoMoWallet";
-        
+
         //before sign HMAC SHA256 signature
         $rawHash = "partnerCode=" . $partnerCode . "&accessKey=" . $accessKey . "&requestId=" . $requestId . "&amount=" . $amount . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&returnUrl=" . $returnUrl . "&notifyUrl=" . $notifyurl . "&extraData=" . $extraData;
         $signature = hash_hmac("sha256", $rawHash, $secretKey);
@@ -271,13 +321,13 @@ class UserPayController extends UserController
             'requestType' => $requestType,
             'signature' => $signature
         );
-       
+
         $result = execPostRequest($endpoint, json_encode($data));
-       
+
         $jsonResult = json_decode($result, true);  // decode json
-        
+
         $momo_Url = $jsonResult['payUrl'];
-      
+
         if ($momo_Url) {
             $data_mm = [
                 't_user_id' => get_data_user('web'),
@@ -315,7 +365,7 @@ class UserPayController extends UserController
             $extraData = $request->extraData;
             $m2signature = $request->signature; //MoMo signature
             $order       = Uni_Order::where('pay_code', $orderId)->first();
-// dd($order);
+            // dd($order);
             $data['pay_node'] = $errorCode . '-' . $localMessage . '[' . $responseTime . ']';
             if ($errorCode == '0') {
                 $data['status'] = 1;
@@ -335,13 +385,13 @@ class UserPayController extends UserController
 
             if ($m2signature == $partnerSignature) {
                 if ($errorCode == '0') {
-                    foreach(json_decode($order->cart_info) as $items){
+                    foreach (json_decode($order->cart_info) as $items) {
                         $uni_product       = Uni_Product::where('id', $items->id)->first();
                         $product['qty'] = $uni_product->qty - $items->qty;
                         $uni_product->fill($product)->save();
                     };
                     $message = 'Cám ơn quý khách đã tin tưởng và ủng hộ chúng tao !!!';
-                    return view('user::pages.pay.finish_pay',compact('message'));
+                    return view('user::pages.pay.finish_pay', compact('message'));
                 } else {
                     $result = '<div class="alert alert-danger"><strong>Payment status: </strong>' . $message . '/' . $localMessage . '</div>';
                     return $result;

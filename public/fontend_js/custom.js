@@ -213,6 +213,10 @@ $("#check_vouchers").on("click", function () {
 });
 $("#pay_success").on("click", function () {
     var data_url = $(this).attr("data-url");
+    let method_ship = $('#method_shpping').find(":selected").val();
+    let ward_code_to = $('#ward').find(":selected").attr('data-ward');
+    let district_id_to = $('#district').find(":selected").attr('data-district');
+    let fee_ship = $('#fee_ship').text();
     var taxcode = $("input[name='taxcode']").val();
     var code_invoice = $("input[name='code_invoice']").val();
     var vouchers = $("input[name='vouchers']").val();
@@ -222,8 +226,6 @@ $("#pay_success").on("click", function () {
     var address = $("input[name='address']").val();
     var type_pay = $("input[name='type_pay']:checked").val();
     var vouchers = $("input[name='vouchers']").val();
-    if (customer_name == "") {
-    }
     $.ajax({
         url: data_url,
         method: "post",
@@ -236,10 +238,13 @@ $("#pay_success").on("click", function () {
             address: address,
             email: email,
             customer_name: customer_name,
-            email: email
+            method_ship: method_ship,
+            district_id_to: district_id_to,
+            ward_code_to: ward_code_to,
+            email: email,
+            fee_ship: fee_ship
         },
         success: function success(results) {
-            // console.log(results);
             window.location.href = results;
         },
         error: function error(results) {
@@ -371,7 +376,7 @@ $(".show-catp").on('click', function () {
         document.getElementById(pageName).style.display = "block";
         elmnt.style.backgroundColor = color;
     }
-    document.getElementById("defaultOpen").click();
+    // document.getElementById("defaultOpen").click();
 
 $(document).ready(function () {
 
