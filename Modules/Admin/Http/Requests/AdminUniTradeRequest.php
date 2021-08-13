@@ -11,7 +11,7 @@ class AdminUniTradeRequest extends FormRequest
         return [
             'name' => 'required',
             'desscription'=>'required|min:100|max:150',
-            'slug' => 'required|unique:uni_product_category,slug,'.$this->id,
+            'slug' => 'required|unique:uni_trade,slug,'.$this->id,
             'meta_title'=>'required|min:50|max:70',
             'meta_desscription'=>'required|min:100|max:150',
         ];

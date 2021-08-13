@@ -12,7 +12,7 @@ class AdminUniProductRequest extends FormRequest
             'name' => 'required',
             'content' => 'required',
             'desscription' => 'required|max:250',
-            'slug' => 'required|unique:uni_post,slug,' . $this->id,
+            'slug' => 'required|unique:uni_product,slug,' . $this->id,
             'category' => 'required',
             'tags' => 'required', 
             'qty_in_box' => 'required', 

@@ -5,7 +5,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">Free Book</h4>
+                <h4 class="content-title mb-0 my-auto">Page</h4>
                 <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ index</span>
             </div>
         </div>

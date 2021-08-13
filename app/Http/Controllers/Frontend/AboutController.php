@@ -7,6 +7,7 @@ use App\Models\Page;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
+use App\Models\Product_Category;
 
 
 
@@ -27,9 +28,12 @@ class AboutController extends Controller
         $page = Page::where('p_style','about-us')->first();
         $menu = Uni_Category::where('parent_id',0)->where('status',1)->get();
 
+        $menu1 = Uni_Category::where('parent_id', '=', 0)->whereNotIn('id', [2,5,8])->get();
+
         $viewdata = [
             'page'=>$page,
             'menu' => $menu,
+            'menu1' => $menu1,
         ];
         return view('pages.about.index', $viewdata);
     }
