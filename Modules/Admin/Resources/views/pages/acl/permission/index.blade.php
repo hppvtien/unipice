@@ -50,6 +50,9 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div>
+                            {!! $permissions->links() !!}
+                        </div>
                     </div>
                 </div>
             </div>

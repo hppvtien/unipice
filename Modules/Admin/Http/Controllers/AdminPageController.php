@@ -29,9 +29,9 @@ class AdminPageController extends AdminController
         return view('admin::pages.page.create');
     }
 
-    public function store(Request $request)
+    public function store(AdminPageRequest $request)
     {
-        $data = $request->except(['avatar', 'save', '_token']);
+        $data = $request->except(['avatar', 'save', '_token','p_banner']);
         $data['created_at'] = Carbon::now();
 
         $pageID = Page::insertGetId($data);
@@ -50,14 +50,13 @@ class AdminPageController extends AdminController
         return view('admin::pages.page.update', compact('pages'));
     }
 
-    public function update(Request $request, $id)
+    public function update(AdminPageRequest $request, $id)
     {
         $page = Page::find($id);
-        $data = $request->except(['p_banner', 'save', '_token']);
-        // dd($request->p_banner);
+        $data = $request->except(['avatar','p_banner', 'save', '_token']);
         $data['updated_at'] = Carbon::now();
         if($request->p_banner){
-            Storage::delete('public/uploads_product/'.$page->p_banner);
+            Storage::delete('public/uploads/'.$page->p_banner);
             $data['p_banner'] = $request->p_banner;
         } else{
             $data['p_banner'] = $page->p_banner;
