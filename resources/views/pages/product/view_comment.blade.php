@@ -1,13 +1,13 @@
 <div class="layout layout--onecol group-view">
     <div class="container">
-        <div class="d-block float-left padding-top10">
+        <!--<div class="d-block float-left padding-top10">
             <div class="btn btn-comment">
                 <button class="tablink" onclick="openPageTwo('view_review', this, '#e88012')">Đánh giá</button>
             </div>
             <div class="btn btn-comment">
                 <button class="tablink" id="defaultOpen" onclick="openPageTwo('view_question', this, '#e88012')">Câu hỏi</button>
             </div>
-        </div>
+        </div>-->
 
         <div id="view_review" class="tabcontents not-padding">
             <div class="">

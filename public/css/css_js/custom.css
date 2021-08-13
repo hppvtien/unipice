@@ -262,6 +262,7 @@ a.product-name-fio span {
     /* vertical-align: top; */
     text-align: center;
     margin: 5px auto 0;
+    margin-bottom: 10px;
 }
 
 .buttons_added .is-form {
@@ -343,7 +344,7 @@ span.g-price {
 }
 
 .m-product-overview__price-wrapper.d-block {
-    margin: 10px auto;
+    margin: 0 auto;
 }
 
 .icon-favorite.a-icon-text-btn__icon {

@@ -447,7 +447,7 @@ a.text-muted:focus {
 
 #share i {
     position: relative;
-    top: 50%;
+    top: 30%;
     transform: translateY(-50%);
 }
 
