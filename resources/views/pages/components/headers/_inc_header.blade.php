@@ -12,7 +12,7 @@
                 </button>
                 <div class="primary-navigation">
                     <ul id="menu-main-menu" class="menu nav-menu" aria-expanded="false">
-                        <li class="menu-item"><a href="{{ route('get.register.b2b') }}">B2B</a></li>
+                        <li class="menu-item"><a href="@if (get_data_user('web')) {{ route('get_user.dashboard') }} @else {{ route('get.register.b2b') }} @endif">B2B</a></li>
                         <li class="menu-item"><a href="{{ route('get.spice_club') }}">Spice Club</a></li>
                         <li class="menu-item"><a href="{{ route('get.find') }}">Tìm Cửa hàng</a></li>
                         <li class="menu-item"><a href="{{ route('get.about') }}">Giới Thiệu</a></li>
