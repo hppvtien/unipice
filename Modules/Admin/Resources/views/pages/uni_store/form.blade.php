@@ -87,7 +87,6 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Action <span>(*)</span></label>
                         <div>
                             <button class="btn btn-info"><i class="la la-save"></i> Save</button>
                             <button class="btn btn-success"><i class="la la-check-circle"></i> Save & Edit</button>

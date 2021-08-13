@@ -4,11 +4,7 @@
         <div class="col-lg-8">
             <div class="card  box-shadow-0">
                 <div class="card-body pt-3">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Nguời mua <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" disabled data-title-seo=".title_seo" value="{{ old('user_id', $uni_order->user_id ?? '') }}" name="user_id">
-                    </div>
-                   
+                  
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Khách hàng <span>(*)</span></label>
                         <input type="text" class="form-control keypress-count" disabled data-title-seo=".title_seo" value="{{ old('customer_name', $uni_order->customer_name ?? '') }}" name="customer_name">
@@ -27,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Kiểu thanh toán <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" disabled data-title-seo=".title_seo" value="{{ old('type_pay', $uni_order->type_pay ?? '') }}" name="type_pay">
+                        <input type="text" class="form-control keypress-count" disabled data-title-seo=".title_seo" value="{{ config('cart.pay_type')[$uni_order->type_pay]['name'] }}" name="type_pay">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Ngày tạo đơn <span>(*)</span></label>
@@ -41,10 +37,10 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>Hình ảnh</th>
                                         <th>Tên sản phẩm</th>
                                         <th>Số lượng</th>
                                         <th>Giá</th>
-                                        <th>Hình ảnh</th>
                                         <th>Tổng tiền</th>
                                     </tr>
                                 </thead>
@@ -52,6 +48,9 @@
                                 @forelse(json_decode($uni_order->cart_info) as $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
+                                        <td style="width: 10%;">
+                                            <img class="ad-product" style="width: 70%;" src="{{ $item->options->images }}"  alt="{{ $item->name }}">
+                                        </td>
                                         <td>
                                             <p><span class="text-success">{{ $item->name }}</span></p>
                                         </td>
@@ -59,13 +58,11 @@
                                             {{ $item->qty }}
                                         </td>
                                         <td>
-                                            {{ $item->price }}
+                                            {{ formatVnd($item->price) }}
                                         </td>
+                                        
                                         <td>
-                                            {{ $item->options->images }}
-                                        </td>
-                                        <td>
-                                            {{ $item->subtotal }}
+                                            {{ formatVnd($item->subtotal) }}
                                         </td>
                                     </tr>
                                 @empty

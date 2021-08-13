@@ -215,10 +215,6 @@ return [
                     'name' => 'Quản trị viên',
                     'route' => 'get_admin.account.index'
                 ],
-                [
-                    'name' => 'Votes',
-                    'route' => 'get_admin.votes.index'
-                ],
             ]
         ],
 

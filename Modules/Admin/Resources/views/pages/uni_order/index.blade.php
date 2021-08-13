@@ -5,7 +5,7 @@
         <div class="breadcrumb-header justify-content-between">
             <div class="my-auto">
                 <div class="d-flex">
-                    <h4 class="content-title mb-0 my-auto">uni_order</h4>
+                    <h4 class="content-title mb-0 my-auto">Order</h4>
                     <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ index</span>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                                             {{ config('cart.pay_type')[$item->type_pay]['name'] }}
                                         </td>
                                         <td>
-                                            <b>{{ $item->total_money }}</b>
+                                            <b>{{ $item->total_money }} đ</b>
                                         </td>
                                         <td>
                                             <span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span>

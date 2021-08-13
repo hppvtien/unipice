@@ -1,30 +1,24 @@
 
 <?php
 
-Route::prefix('blog')->namespace('Blog')->group(function (){
+Route::prefix('blog-post')->namespace('Blog')->group(function (){
 
-    Route::prefix('keyword')->group(function (){
-        Route::get('/', 'AdminKeywordController@index')->name('get_admin.keyword.index')->middleware('permission:keyword_index|full');
-        Route::get('/create', 'AdminKeywordController@create')->name('get_admin.keyword.create')->middleware('permission:keyword_create|full');
-        Route::post('/create', 'AdminKeywordController@store');
-        Route::get('update/{id}', 'AdminKeywordController@edit')->name('get_admin.keyword.edit')->middleware('permission:keyword_edit|full');
-        Route::post('update/{id}', 'AdminKeywordController@update');
-        Route::get('delete/{id}', 'AdminKeywordController@delete')->name('get_admin.keyword.delete')->middleware('permission:keyword_delete|full');
+    Route::prefix('post_category')->group(function (){
+        Route::get('/', 'AdminUniPostCategoryController@index')->name('get_admin.post_category.index')->middleware('permission:post_category_index|full');
+        Route::get('/create', 'AdminUniPostCategoryController@create')->name('get_admin.post_category.create')->middleware('permission:post_category_create|full');
+        Route::post('/create', 'AdminUniPostCategoryController@store');
+        Route::get('update/{id}', 'AdminUniPostCategoryController@edit')->name('get_admin.post_category.edit')->middleware('permission:post_category_edit|full');
+        Route::post('update/{id}', 'AdminUniPostCategoryController@update');
+        Route::get('delete/{id}', 'AdminUniPostCategoryController@delete')->name('get_admin.post_category.delete')->middleware('permission:post_category_delete|full');
     });
-    Route::prefix('menu')->group(function (){
-        Route::get('/', 'AdminMenuController@index')->name('get_admin.menu.index')->middleware('permission:menu_index|full');
-        Route::get('/create', 'AdminMenuController@create')->name('get_admin.menu.create')->middleware('permission:menu_create|full');
-        Route::post('/create', 'AdminMenuController@store');
-        Route::get('update/{id}', 'AdminMenuController@edit')->name('get_admin.menu.edit')->middleware('permission:menu_edit|full');
-        Route::post('update/{id}', 'AdminMenuController@update');
-        Route::get('delete/{id}', 'AdminMenuController@delete')->name('get_admin.menu.delete')->middleware('permission:menu_delete|full');
+    Route::prefix('post')->group(function (){
+        Route::get('/', 'AdminUniPostController@index')->name('get_admin.post.index')->middleware('permission:post_index|full');
+        Route::get('/create', 'AdminUniPostController@create')->name('get_admin.post.create')->middleware('permission:post_create|full');
+        Route::post('/create', 'AdminUniPostController@store');
+        Route::get('update/{id}', 'AdminUniPostController@edit')->name('get_admin.post.edit')->middleware('permission:post_edit|full');
+        Route::post('update/{id}', 'AdminUniPostController@update');
+        Route::get('delete/{id}', 'AdminUniPostController@delete')->name('get_admin.post.delete')->middleware('permission:post_delete|full');
     });
-    Route::prefix('article')->group(function (){
-        Route::get('/', 'AdminArticleController@index')->name('get_admin.article.index')->middleware('permission:article_index|full');
-        Route::get('/create', 'AdminArticleController@create')->name('get_admin.article.create')->middleware('permission:article_create|full');
-        Route::post('/create', 'AdminArticleController@store');
-        Route::get('update/{id}', 'AdminArticleController@edit')->name('get_admin.article.edit')->middleware('permission:article_edit|full');
-        Route::post('update/{id}', 'AdminArticleController@update');
-        Route::get('delete/{id}', 'AdminArticleController@delete')->name('get_admin.article.delete')->middleware('permission:article_delete|full');
-    });
+    
 });
+
