@@ -359,13 +359,6 @@ function openPage(pageName, elmnt, color) {
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].style.backgroundColor = "";
     }
-<<<<<<< HEAD
-    // document.getElementById("defaultOpen").click();
-=======
-    document.getElementById(pageName).style.display = "block";
-    elmnt.style.backgroundColor = color;
-}
->>>>>>> 47e8b07766c7028f705debb9bd208f6ca1d8c84c
 
 function openPageTwo(pageName, elmnt, color) {
     var i, tabcontent, tablinks;
