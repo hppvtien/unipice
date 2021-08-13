@@ -1,17 +1,47 @@
 @include('pages.components.follow-me')
 <footer id="dk-footer" class="dk-footer">
-    <div class="container">
+    <div class="col-md-12 p-md-5 foooter_cach_le_duoi">
         <div class="row">
-            <div class="col-md-12 col-lg-4">
+            <div class="col-md-12 col-lg-5 ">
                 <div class="dk-footer-box-info">
                     <a href="index.html" class="footer-logo">
-                        <img src="{{ pare_url_file($configuration->logo) }}" alt="footer_logo" class="img-fluid">
+                        <img src="{{ pare_url_file($configuration->logo) }}" alt="footer_logo" class="img-fluid" style="width:40%">
                     </a>
                     <p class="footer-info-text">
-                        Công ty chúng tôi mang tầm cỡ quốc tế
+                        Công ty chúng tôi mang tầm cỡ quốc tế Baking soda baths are a great way to detox. Check out the benefits of baking soda baths and how to do one at home! Baking soda baths are a great way to detox
                     </p>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="contact-icon">
+                                <i class="fa fa-map-o" aria-hidden="true"></i>
+                            </div>
+                            <!-- End contact Icon -->
+                            <div class="contact-info">
+                                <a href="https://goo.gl/maps/QrCzDdS4gKivind79" rel="nofollow" target="blank">
+                                    <p>{{ $configuration->address }}</p>
+                                </a>
+                            </div>
+                            <!-- End Contact Info -->
+                            <!-- End Contact Us -->
+                        </div>
+                        <!-- End Col -->
+                        <div class="col-md-12">
+                            <div class="contact-icon">
+                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                            </div>
+                            <!-- End contact Icon -->
+                            <div class="contact-info">
+
+                                <p>{{ formatPhoneNumber($configuration->hotline) }}</p>
+                            </div>
+                            <!-- End Contact Info -->
+                            <!-- End Contact Us -->
+                        </div>
+                        <!-- End Col -->
+                    </div>
                     <div class="footer-social-link">
-                        <h3>Follow us</h3>
+                        <h3>Theo Dõi Ngay</h3>
                         <ul>
                             <li>
                                 <a href="{{ $configuration->facebook }}">
@@ -37,76 +67,58 @@
                     </div>
                     <!-- End Social link -->
                 </div>
+
             </div>
             <!-- End Col -->
-            <div class="col-md-12 col-lg-8">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="contact-us padding-left-0">
-                            <div class="contact-icon">
-                                <i class="fa fa-map-o" aria-hidden="true"></i>
-                            </div>
-                            <!-- End contact Icon -->
-                            <div class="contact-info">
-                                <a href="https://goo.gl/maps/QrCzDdS4gKivind79" rel="nofollow" target="blank">
-                                    <p>{{ $configuration->address }}</p>
-                                </a>
-                            </div>
-                            <!-- End Contact Info -->
-                        </div>
-                        <!-- End Contact Us -->
-                    </div>
-                    <!-- End Col -->
-                    <div class="col-md-6" style="margin-top: 20px;">
-                        <div class="contact-us contact-us-last">
-                            <div class="contact-icon">
-                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
-                            </div>
-                            <!-- End contact Icon -->
-                            <div class="contact-info">
+            <div class="col-md-12 col-lg-7 footer_cach_top">
 
-                                <p>{{ formatPhoneNumber($configuration->hotline) }}</p>
-                            </div>
-                            <!-- End Contact Info -->
-                        </div>
-                        <!-- End Contact Us -->
-                    </div>
-                    <!-- End Col -->
-                </div>
-                <!-- End Contact Row -->
                 <div class="row">
                     <div class="col-md-12 col-lg-6">
                         <div class="footer-widget footer-left-widget">
                             <div class="section-heading">
-                                <h3>Giới Thiệu {{ $configuration->name }}</h3>
+                                <h3>Danh Mục Sản Phẩm</h3>
                                 <span class="animate-border border-black"></span>
                             </div>
                             <ul>
                                 <li>
-                                    <a href="{{ route('get.about') }}">Giới Thiệu</a>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/gia-vi-tu-nhien-1627641704.png" alt="" width="30px"> Gia Vị Tự Nhiên
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="#">Dịch Vụ</a>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/gia-vi-hoan-chinh-1627642574.png" alt="" width="30px"> Gia Vị Hoàn Chỉnh
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="#">Các Đối Tác</a>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/bbq-1627644022.png" alt="" width="30px"> Gia Vị Tẩm Ướp & Bột BBQ
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('get_blog.home') }}">Bài Viết</a>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <a href="{{ route('get.uni_contact') }}">Liên Hệ</a>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/muoi-1627644047.png" alt="" width="30px"> Gia Vị & Muối
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('get.find') }}">Tìm Cửa Hàng</a>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/tea-1627644059.png" alt="" width="30px"> Trà
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="#">Chính Sách</a>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/san-pham-moi-1-1627644137.png" alt="" width="30px"> Sản Phẩm Mới
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="#">Bảo Mật</a>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/qua-tang-1627644256.png" alt="" width="30px"> Gia Vị Quà Tặng
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/khuyen-mai-1627644111.png" alt="" width="30px"> Khuyến Mãi
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -114,44 +126,79 @@
                     </div>
                     <!-- End col -->
                     <div class="col-md-12 col-lg-6">
-                        <div class="footer-widget">
+                        <div class="footer-widget footer-left-widget">
                             <div class="section-heading">
-                                <h3>Đăng Ký Ngay</h3>
+                                <h3>Thông Tin Hữu Ích</h3>
                                 <span class="animate-border border-black"></span>
                             </div>
-                            <p class="color-p">
-                                <!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
-                                {{ $configuration->footer_bottom }}</p>
-                            <form action="#">
-                                <div class="form-row">
-                                    <div class="col dk-footer-form">
-                                        <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
-                                        <button type="submit">
-                                                <i class="fa fa-send"></i>
-                                            </button>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- End form -->
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/blogging.png" alt="" width="30px"> Blog
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/football-club.png" alt="" width="30px"> Spice Club
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/location.png" alt="" width="30px"> Tìm Cửa Hàng
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/shipping.png" alt="" width="30px"> Chính Sách Giao Hàng
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/exchange.png" alt="" width="30px"> Chính Sách Đổi Trả
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="col-md-12 row"><img src="/images/icon_menu/pay_methods.png" alt=""></div>
+                            <div class="col-md-12 row"><img src="/images/icon_menu/bo_cong_thuong.png" alt="" class="can_tren_duoi"></div>
                         </div>
-                        <!-- End footer widget -->
+
                     </div>
+
                     <!-- End Col -->
                 </div>
-                <!-- End Row -->
             </div>
-            <!-- End Col -->
+            <!-- End Contact Info -->
         </div>
-        <!-- End Widget Row -->
+        <!-- End Contact Us -->
+    </div>
+    <!-- End Col -->
+    </div>
+
+    <!-- End Contact Row -->
+
+    <!-- End Row -->
+    </div>
+    <!-- End Col -->
+    </div>
+    <!-- End Widget Row -->
     </div>
     <!-- End Contact Container -->
 
 
     <div class="copyright">
-        <div class="container">
+        <div class="col-md-12">
             <div class="row">
-                <div class="col-md-12 text_center">
-                    <span>{{ $configuration->footer_bottom }}</span>
+                <div class="col-md-6 col-xs-12  pl-md-5 padding_top_footer_1">
+                    <ul class="menu_foooter_2">
+                        <li><a href="#">{{ $configuration->footer_bottom }}</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-xs-12 pr-md-5">
+                    <ul class="menu_foooter_1">
+                        <li><a href="#">Chính Sách</a></li>
+                        <li><a href="#">Bảo Mật</a></li>
+                        <li><a href="#">FQA</a></li>
+                    </ul>
                 </div>
                 <!-- End Col -->
             </div>
@@ -168,3 +215,4 @@
     </div>
     <!-- End Back to top -->
 </footer>
+
