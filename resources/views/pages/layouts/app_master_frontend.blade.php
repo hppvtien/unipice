@@ -80,13 +80,7 @@
     </div>
 
 
-    <script src="{{ asset('fontend_js/jquery.min.js') }}"></script>
-    <script src="{{ asset('css/css_js/popper.min.js') }}"></script>
-    <script src="{{ asset('css/css_js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('css/css_js/jquery.zeynep.min.js') }}"></script>
-    <script src="{{ asset('fontend_js/custom.js') }}"></script>
-    <script src="{{ asset('js/frontends.js') }}"></script>
-    <script src="{{ asset('fontend_js/unijs.js') }}"></script>
+    
     <div id="login" class="modal fade login-js" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -147,6 +141,31 @@
             </div>
         </div>
     </div>
+
+    
+    <!-- CONTACT JS  -->
+    <!-- revolution JS FILES -->
+    <script src="{{ asset('fontend_js/jquery.min.js') }}"></script>
+    <script src="{{ asset('css/css_js/popper.min.js') }}"></script>
+    <script src="{{ asset('css/css_js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('css/css_js/jquery.zeynep.min.js') }}"></script>
+    <script src="{{ asset('fontend_js/custom.js') }}"></script>
+    <script src="{{ asset('js/frontends.js') }}"></script>
+    <script src="{{ asset('fontend_js/unijs.js') }}"></script>
+    <script src="https://restroking.dexignzone.com/xhtml/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="https://restroking.dexignzone.com/xhtml/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="https://restroking.dexignzone.com/xhtml/plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="https://restroking.dexignzone.com/xhtml/plugins/revolution/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="https://restroking.dexignzone.com/xhtml/plugins/revolution/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="https://restroking.dexignzone.com/xhtml/js/rev.slider.js"></script>
+    <script>
+        jQuery(document).ready(function() {
+            dz_rev_slider_1();
+        }); /*ready*/
+    </script>
+
+    <!-- CUSTOM FUCTIONS  -->
+
     <script>
         jQuery(document).ready(function() {
 

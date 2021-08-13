@@ -1,151 +1,641 @@
 @extends('pages.layouts.app_master_frontend') @section('contents')
+
+
+
+
+<style>
+
+</style>
+<!-- Revolution Slider Css -->
+
+
+
+
 <main role="main">
-    <a id="main-content" tabindex="-1"></a>
-    <div class="layout-content">
-        <div class="region region-content">
-            <div data-drupal-messages-fallback="" class="hidden"></div>
-            <div id="block-frontiercoop-market-content" data-block-plugin-id="system_main_block">
-                <div class="views-element-container">
-                    <header>
-                        <div about="/community/about" data-frontier-type="page_categories" id="taxonomy-term-1026" class="taxonomy-term vocabulary-page-categories">
-                            <div class="content">
-                                <div class="layout layout--onecol">
-                                    <div class="layout__region layout__region--content">
-                                        <div class="views-element-container" data-block-plugin-id="views_block:taxonomy_term_content-block_1">
 
+    <!-- Slider Banner -->
+    <div class="rev-slider-full">
+        <div id="rev_slider_14_1_wrapper" class="rev_slider_wrapper fullscreen-container bg-primary" data-alias="gravitydesign1" data-source="gallery" style="padding:0px;">
+            <!-- START REVOLUTION SLIDER 5.4.1 fullscreen mode -->
+            <div id="rev_slider_14_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.1">
+                <ul>
+                    <!-- SLIDE  -->
+                    <li data-index="rs-100" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="Slide"
+                        data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                        <!-- MAIN IMAGE -->
+                        <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/transparent.png" data-bgcolor="" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
 
-                                            <div class="views-element-container">
-                                                <div class="js-view-dom-id-56ce0377d15aca2f4d999ae137c17bddb6e14f38a572ffa5210aa0eb25728823">
-                                                    <div class="views-row">
-                                                        <div about="{{ $page->p_name }}" class="c-page-header c-page-header--light">
-                                                            <picture class="c-page-header__image">
-                                                                <source media="(min-width: 1024px)" data-srcset="{{ pare_url_file($page->p_banner) }}">
-                                                                <img class=" lazyloaded" data-src="{{ pare_url_file($page->p_banner) }}" alt=" " src="{{ pare_url_file($page->p_banner) }}">
-                                                            </picture>
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-resizeme rs-parallaxlevel-1 tp-pizza-title" id="slide-100-layer-1" data-x="['left','left','center','center']" data-hoffset="['40','90','0','0']" data-y="['top','top','top','top']" data-voffset="['150','150','150','100']" data-fontsize="['85','60','65','45']"
+                            data-lineheight="['100','75','75','55']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-frames='[{"delay":1300,"speed":2000,"frame":"0","from":"sX:2;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6; white-space: nowrap; font-weight: 700; font-family: 'Barlow', sans-serif; text-transform:uppercase; color:#fff; font-family: 'Poppins', sans-serif;">
+                            <div class="rs-looped rs-wave" data-speed="3" data-angle="0" data-radius="2px" data-origin="50% 50%">Super <br/> Delicious <br/> Pizza</div>
+                        </div>
 
-                                                            <div class="c-page-header__content">
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption tp-resizeme rs-parallaxlevel-1" id="slide-100-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['0','0','0','0']" data-width="full-proportional"
+                            data-height="full-proportional" data-whitespace="nowrap" data-type="image" data-basealign="slide" data-responsive_offset="on" data-frames='[{"delay":500,"speed":2000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
+                            <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/slide4.png" class="rs-looped rs-wave" data-speed="3" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['full-proportional','full-proportional','full-proportional','full-proportional']"
+                                data-hh="['full-proportional','full-proportional','full-proportional','full-proportional']" width="1920" height="1080" data-no-retina>
+                        </div>
 
-                                                                <h1 class="c-page-header__headline">{{ $page->p_name }}</h1>
-                                                                <p class="c-page-header__description">{{ $page->p_title_seo }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption tp-resizeme rs-parallaxlevel-1" id="slide-100-layer-3" data-x="['left','left','center','center']" data-hoffset="['40','45','0','0']" data-y="['top','top','top','top']" data-voffset="['570','470','460','320']" data-fontsize="['17','17','18','17']"
+                            data-lineheight="['30','28','28','24']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-frames='[{"delay":850,"speed":2000,"frame":"0","from":"sX:1.1;sY:1.1;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6; white-space: nowrap; font-size: 22px; line-height: 28px; font-weight: 400; color:#fff; font-family: 'Poppins', sans-serif;">
+                            <div class="rs-looped rs-wave" data-speed="3" data-angle="0" data-radius="2px" data-origin="50% 50%">
+                                Aliquam vulputate, tortor nec commodo ultricies, <br/>vitae viverra urna nulla sed turpis. Nullam lacinia <br/>faucibus risus, a euismod.</div>
+                        </div>
 
-                                        </div>
+                        <!-- LAYER NR. 4 -->
+                        <div class="tp-caption tp-resizeme rs-parallaxlevel-1" id="slide-100-layer-4" data-x="['left','left','center','center']" data-hoffset="['0','70','0','0']" data-y="['top','top','top','top']" data-voffset="['475','400','390','240']" data-fontsize="['17','17','16','15']"
+                            data-lineheight="['28','28','28','28']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-frames='[{"delay":850,"speed":2000,"frame":"0","from":"sX:1.1;sY:1.1;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6; white-space: nowrap; font-size: 22px; line-height: 28px; font-weight: 400; color:#5f5f5f;font-family: 'Poppins', sans-serif;">
+                            <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/slide5.png" class="rs-looped rs-wave" data-speed="3" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['500px','356px','356px','400px']" data-hh="['70px','50px','50px','56px']"
+                                width="500" height="70" data-no-retina>
+                        </div>
 
-                                    </div>
-                                </div>
-                                <div class="layout layout--onecol">
-                                    <div class="layout__region layout__region--content">
-                                        <div data-block-plugin-id="system_breadcrumb_block">
-                                            <nav class="m-breadcrumb" aria-label="Breadcrumb">
-                                                <ol class="m-breadcrumb__list">
-                                                    <li class="m-breadcrumb__item">
-                                                        <a class="a-anchor" href="/">Trang Chủ</a>
-                                                    </li>
-                                                    <li class="m-breadcrumb__item m-breadcrumb__item--active">
-                                                        <a title="{{ $page->p_name }}" href="javascript:;" class="a-anchor" aria-current="page">{{ $page->p_name }}</a>
-                                                    </li>
-                                                </ol>
-                                            </nav>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="layout layout--frontierbase_cmscontentcomponent layout--frontierbase_cmscontentcomponent--25-75">
-                                    <div class="t-cms__with-nav">
+                        <!-- LAYER NR. 5 -->
+                        <div class="tp-caption tp-resizeme rs-parallaxlevel-4" id="slide-100-layer-5" data-x="['right','right','center','center']" data-hoffset="['-350','-200','0','0']" data-y="['top','top','top','bottom']" data-voffset="['100','100','500','-150']" data-width="none"
+                            data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":250,"speed":5000,"frame":"0","from":"y:100px;rZ:15deg;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
+                            <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/slide9.png" class="rs-looped rs-wave" data-speed="5" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['1012px','700px','700px','600px']" data-hh="['859px','594px','594px','509px']"
+                                width="988" height="731" data-no-retina>
+                        </div>
 
-                                        <div class="layout__region layout__region--first">
-                                            <div data-block-plugin-id="menu_item_fields:page-categories-menu-co-op-marke">
-                                                <div class="m-sidebar-nav">
-                                                    <div class="m-accordion js-sidebar-nav-accordion js-accordion--mobile-only">
-                                                        <div class="m-accordion__title js-accordion-trigger" id="accordion-trigger-0" aria-expanded="false" aria-controls="accordion-content-0">
-                                                            <span class="m-accordion__title-label">Menu</span>
-                                                        </div>
-                                                        <div class="m-accordion__content js-accordion-content" id="accordion-content-0" aria-labelledby="accordion-trigger-0">
-                                                            <div class="m-sidebar-nav__links m-accordion__content-inner js-accordion-content-inner">
-                                                                @foreach ($menu as $menu)
-                                                                <a class="m-sidebar-nav__link" title="{{ $menu->name }}" href="{{ getSlugCategory($menu->slug) }}">{{ $menu->name }}</a> @endforeach
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="layout__region layout__region--second">
-                                            <div class="views-element-container" data-block-plugin-id="views_block:taxonomy_term_content-block_3">
-                                                <div class="views-element-container">
-                                                    <div class="js-view-dom-id-da21b1b57e679e3378bf6c41b72ae5b74885a5ce872e3d44b72f98b5b26deae3">
-                                                        <div class="views-row">
-                                                            <div class="c-intro-block">
-                                                                <h2 class="c-intro-block__heading">{{ $page->p_title_seo }}</h2>
-                                                                <p class="c-intro-block__copy">{{ $page->p_desscription }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                        <!-- LAYER NR. 6 -->
+                        <div class="tp-caption tp-resizeme rs-parallaxlevel-2" id="slide-100-layer-6" data-x="['right','right','center','center']" data-hoffset="['-350','-200','0','0']" data-y="['top','top','top','bottom']" data-voffset="['100','100','500','-150']" data-width="none"
+                            data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":250,"speed":5000,"frame":"0","from":"y:100px;rZ:15deg;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
+                            <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/slide6.png" class="rs-looped rs-wave" data-speed="2" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['1012px','700px','700px','600px']" data-hh="['859px','594px','594px','509px']"
+                                width="988" height="731" data-no-retina>
+                        </div>
 
-                                            </div>
-                                            <div id="share">
-                                                <!-- facebook -->
-                                                <a class="facebook" href="https://www.facebook.com/share.php?u=url&title=title" target="blank"><i class="fa fa-facebook"></i></a>
-                                                <!-- twitter -->
-                                                <a class="twitter" href="https://twitter.com/intent/tweet?status=title+url" target="blank"><i class="fa fa-twitter"></i></a>
-                                                <!-- google plus -->
-                                                <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank"><i class="fa fa-google-plus"></i></a>
-                                                <!-- linkedin -->
-                                                <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank"><i class="fa fa-linkedin"></i></a>
-                                                <!-- pinterest -->
-                                                <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank"><i class="fa fa-pinterest-p"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="layout layout--onecol container">
-                                    <div class="layout__region layout__region--content">
-                                        <div class="views-element-container" data-block-plugin-id="views_block:taxonomy_term-block_story_block">
-                                            <div class="views-element-container">
-                                                <div class="t-cms__content ">
-                                                    {!! $page->p_content !!}
-                                                </div>
-                                                <div class="t-plp__pagination">
-                                                </div>
-                                            </div>
+                        <!-- LAYER NR. 7 -->
+                        <div class="tp-caption tp-resizeme rs-parallaxlevel-3" id="slide-100-layer-7" data-x="['right','right','center','center']" data-hoffset="['-350','-200','0','0']" data-y="['top','top','top','bottom']" data-voffset="['100','100','500','-150']" data-width="none"
+                            data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":250,"speed":5000,"frame":"0","from":"y:100px;rZ:15deg;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
+                            <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/slide7.png" class="rs-looped rs-wave" data-speed="8" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['1012px','700px','700px','600px']" data-hh="['859px','594px','594px','509px']"
+                                width="988" height="731" data-no-retina>
+                        </div>
 
-                                        </div>
+                        <!-- LAYER NR. 8 -->
+                        <div class="tp-caption tp-resizeme rs-parallaxlevel-1" id="slide-100-layer-8" data-x="['right','right','center','center']" data-hoffset="['-350','-200','0','0']" data-y="['top','top','top','bottom']" data-voffset="['100','100','500','-150']" data-width="none"
+                            data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":250,"speed":5000,"frame":"0","from":"y:100px;rZ:15deg;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
+                            <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/slide8.png" class="rs-looped rs-wave" data-speed="4" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['1012px','700px','700px','600px']" data-hh="['859px','594px','594px','509px']"
+                                width="988" height="731" data-no-retina>
+                        </div>
 
-                                    </div>
-                                </div>
-                                <div class="layout layout--onecol">
-                                    <div class="layout__region layout__region--content">
-                                        <div class="views-element-container non-visible" data-block-plugin-id="views_block:listing_page_media_block_aligned-block_lp_media_block_aligned">
-                                            <div class="views-element-container">
-                                                <div class="c-media-block-aligned c-media-block-aligned--template- template-clp">
-                                                    <div class="c-media-block-aligned__content-wrapper">
-                                                        <div class="m-media-block-aligned">
-                                                            <div class="m-media-block-aligned__image-wrapper">
-                                                                <picture>
-                                                                    <source media="(min-width: 768px)" data-srcset="/sites/default/files/styles/720x550/public/acquiadam/2020-09/Frontier-our-growers.jpg?itok=itHFms3-">
-                                                                    <img class="lazyload" data-src="/sites/default/files/styles/345x160/public/acquiadam/2020-09/Frontier-our-growers.jpg?itok=HWJa2CWN" alt=" ">
-                                                                </picture>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                        <!-- LAYER NR. 9 -->
+                        <div class="tp-caption rev-btn rs-parallaxlevel-2" id="slide-100-layer-9" data-x="['left','left','center','center']" data-hoffset="['180','185','0','0']" data-y="['top','top','top','top']" data-voffset="['680','580','570','420']" data-fontsize="['16','16','16','16']"
+                            data-lineheight="['20','20','20','20']" data-width="['none','none','none','320']" data-height="none" data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text" data-responsive_offset="on" data-frames='[{"delay":250,"speed":5000,"frame":"0","from":"y:100px;rZ:15deg;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','center']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 12; font-size: 16px;">
+                            <a href="shop-product-details.html" class="btn white radius-xl rs-looped rs-wave" data-speed="3" data-angle="0" data-radius="2px" data-origin="50% 50%">Buy Now</a>
+                        </div>
 
-                                        </div>
+                        <!-- LAYER NR. 10 -->
+                        <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme" id="slide-100-layer-10" data-x="['center','center','center','center']" data-hoffset="['-4','-4','-4','-4']" data-y="['top','top','top','top']" data-voffset="['221','201','301','300']" data-width="['390','390','390','180']"
+                            data-height="2" data-whitespace="nowrap" data-type="shape" data-responsive_offset="on" data-frames='[{"delay":"bytrigger","speed":500,"frame":"0","from":"sX:0;opacity:1;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"bytrigger","speed":300,"frame":"999","to":"sX:0;opacity:1;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-lasttriggerstate="reset" style="z-index: 13;background-color:rgba(255,255,255,1);"></div>
+                    </li>
+                </ul>
+                <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+            </div>
+        </div>
+        <!-- END REVOLUTION SLIDER -->
+    </div>
+    <!-- Slider Banner -->
 
-                                    </div>
-                                </div>
+    <!-- Faq And Our Info -->
+    <div class="section-full bg-white">
 
+        <div class="row manu-box-reverse sp0">
+            <div class="col-lg-6 p-5" style="padding: 9rem !important">
+                <div class="menu-box">
+                    <div class="section-head style-2">
+                        <h4 class="sub-title">Pizza Menu</h4>
+                        <h2 class="title">Festive Season Offers</h2>
+                    </div>
+                    <ul class="menu-list-2">
+                        <li>
+                            <div class="info-price">
+                                <h5 class="title">Pepperoni Pizza</h5>
+                                <div class="line"></div>
+                                <span class="price">14.99</span>
+                            </div>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+                        </li>
+                        <li>
+                            <div class="info-price">
+                                <h5 class="title">Apricot Chicken</h5>
+                                <div class="line"></div>
+                                <span class="price">07.99</span>
+                            </div>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+                        </li>
+                        <li>
+                            <div class="info-price">
+                                <h5 class="title">Pizza Veronese</h5>
+                                <div class="line"></div>
+                                <span class="price">14.99</span>
+                            </div>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+                        </li>
+                        <li>
+                            <div class="info-price">
+                                <h5 class="title">Summer Pizza</h5>
+                                <div class="line"></div>
+                                <span class="price">23.99</span>
+                            </div>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+                        </li>
+                        <li>
+                            <div class="info-price">
+                                <h5 class="title">Italian Tuna</h5>
+                                <div class="line"></div>
+                                <span class="price">79.99</span>
+                            </div>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+                        </li>
+                        <li>
+                            <div class="info-price">
+                                <h5 class="title">Liguria Pizza</h5>
+                                <div class="line"></div>
+                                <span class="price">22.99</span>
+                            </div>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 p-5" style="padding: 9rem !important">
+                <img src="https://restroking.dexignzone.com/xhtml/images/menu/pic2.jpg" alt="" class="img-cover" width="100%" />
+            </div>
+        </div>
+    </div>
+    <!-- Faq And Our Info End -->
+
+    <div class="section-full bg-white pizza-full-menu">
+        <div class="bg-primary pizza-items" style="background: #0b2d25 !important;">
+            <div class="container">
+                <ul class="nav nav-tabs pizza-items" id="myTab" role="tablist">
+                    @foreach ($menu1 as $item)
+                    <li class="nav-item item">
+                        <a class="item-icon-box nav-link active" id="pizza-tab{{ $item->id }}" data-toggle="tab" href="#pizza{{ $item->id }}" role="tab" aria-controls="pizza{{ $item->id }}" aria-selected="true">
+                            <i class="flaticon-pizza-slice"></i>
+                            <span>{{ $item->name }}</span>
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        <div class="content-inner" style="padding:0 9rem">
+            <div class="container-fluid tab-content" id="myTabContent">
+                <div class="row tab-pane fade show active" id="pizza" role="tabpanel" aria-labelledby="pizza-tab">
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/pizza/pic1.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
                             </div>
                         </div>
-                    </header>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/pizza/pic2.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/pizza/pic3.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Apricot Chicken</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/pizza/pic4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/pizza/pic5.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row tab-pane fade" id="burger" role="tabpanel" aria-labelledby="burger-tab">
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/burger/pic1.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/burger/pic2.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/burger/pic3.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Apricot Chicken</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/burger/pic4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/burger/pic5.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row tab-pane fade" id="fries" role="tabpanel" aria-labelledby="fries-tab">
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item1.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item2.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item3.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Apricot Chicken</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/pizza/pic4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row tab-pane fade" id="cola" role="tabpanel" aria-labelledby="cola-tab">
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/pizza/pic4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item3.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item2.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Apricot Chicken</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item7.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/burger/pic4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row tab-pane fade" id="hotdog" role="tabpanel" aria-labelledby="hotdog-tab">
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item3.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item6.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Apricot Chicken</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/burger/pic4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item2.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row tab-pane fade" id="cookies" role="tabpanel" aria-labelledby="cookies-tab">
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item1.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item2.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item3.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Apricot Chicken</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/pizza/pic4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row tab-pane fade" id="sandwich" role="tabpanel" aria-labelledby="sandwich-tab">
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item3.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/pizza/pic4.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Apricot Chicken</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item6.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Pepperoni Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dz-col col m-b30 pt-5 pb-5 ">
+                        <div class="item-box shop-item style2">
+                            <div class="item-img">
+                                <img src="https://restroking.dexignzone.com/xhtml/images/product/item7.jpg" alt="">
+                            </div>
+                            <div class="item-info text-center">
+                                <h4 class="item-title"><a href="shop-product-details.html">Summer Pizza</a></h4>
+                                <h5 class="price text-primary"><del>45</del><span>$40</span></h5>
+                                <div class="cart-btn"><a href="shop-product-details.html" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Add To Cart</a></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
 </main>
+
+
+
 @stop
