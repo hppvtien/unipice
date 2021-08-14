@@ -226,31 +226,37 @@ $("#pay_success").on("click", function() {
     var address = $("input[name='address']").val();
     var type_pay = $("input[name='type_pay']:checked").val();
     var vouchers = $("input[name='vouchers']").val();
-   $.ajax({
-        url: data_url,
-        method: "post",
-        data: {
-            code_invoice: code_invoice,
-            vouchers: vouchers,
-            phone: phone,
-            taxcode: taxcode,
-            type_pay: type_pay,
-            address: address,
-            email: email,
-            customer_name: customer_name,
-            method_ship: method_ship,
-            district_id_to: district_id_to,
-            ward_code_to: ward_code_to,
-            email: email,
-            fee_ship: fee_ship
-        },
-        success: function success(results) {
-            window.location.href = results;
-        },
-        error: function error(results) {
-            console.log("Loizzzzzzzzz");
-        }
-    });
+    if(method_ship == 4){
+        $('#err-ship').text('Bạn phải chọn phương thức vận chuyển');
+        return false;
+    } else {
+        $.ajax({
+            url: data_url,
+            method: "post",
+            data: {
+                code_invoice: code_invoice,
+                vouchers: vouchers,
+                phone: phone,
+                taxcode: taxcode,
+                type_pay: type_pay,
+                address: address,
+                email: email,
+                customer_name: customer_name,
+                method_ship: method_ship,
+                district_id_to: district_id_to,
+                ward_code_to: ward_code_to,
+                email: email,
+                fee_ship: fee_ship
+            },
+            success: function success(results) {
+                // window.location.href = results;
+            },
+            error: function error(results) {
+                console.log("Loizzzzzzzzz");
+            }
+        });
+    }
+   
 });
 $("#bank_code").on("change", function() {
     let bank_code = $(this).val();
@@ -359,6 +365,7 @@ function openPage(pageName, elmnt, color) {
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].style.backgroundColor = "";
     }
+}
 
 function openPageTwo(pageName, elmnt, color) {
     var i, tabcontent, tablinks;
@@ -373,7 +380,7 @@ function openPageTwo(pageName, elmnt, color) {
     document.getElementById(pageName).style.display = "block";
     elmnt.style.backgroundColor = color;
 }
-document.getElementById("defaultOpen").click();
+// document.getElementById("defaultOpen").click();
 
 $(document).ready(function() {
 
@@ -469,6 +476,6 @@ $('.btn-comment-qs').on('click', function() {
         success: function(result) {
             location.reload();
         },
-        error: function(result) {}
+        error: function(result) {},
     });
 });

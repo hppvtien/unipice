@@ -582,7 +582,7 @@
                                     <div class="field _required">
                                             <label class="" for="method_shpping">Phương thức vận chuyển</label>
                                             <select class="custom-select" id="method_shpping">
-                                                <option selected>Chọn phương thức vận chuyển</option>
+                                                <option value="4">Chọn phương thức vận chuyển</option>
                                                 <option value="1">Giao hàng nhanh</option>
                                                 <option value="2">Giao hàng nhanh</option>
                                                 <option value="3">Giao hàng tiết kiệm</option>
@@ -607,6 +607,7 @@
                                     </div>
                                     <div class="field _required">
                                         <p class="text-danger">Phí vận chuyển:<span id="fee_ship" class="text-warning">000.000</span></p>
+                                        <p class="text-danger" id="err-ship"></p>
                                     </div>
                                     <div class="field _required pay_type">
                                         @foreach (config('cart.pay_type') as $key => $item)

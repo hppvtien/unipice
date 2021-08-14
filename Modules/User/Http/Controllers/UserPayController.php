@@ -19,6 +19,8 @@ use Modules\Admin\Http\Requests\BillRequest;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Support\Facades\Mail as FacadesMail;
 
+use function GuzzleHttp\json_decode;
+
 class UserPayController extends UserController
 {
     public function getPay()
@@ -65,34 +67,29 @@ class UserPayController extends UserController
     {
         // dd($request->all());
         \SEOMeta::setTitle('Thanh toán');
+        $listCarts = \Cart::content();
+        // dd($listCarts);
+        // $data_items =[];
+        foreach (json_decode($listCarts) as $key => $item) {
+            $data_item[] = json_decode(
+                '{
+                "name":"' . $item->name . '",
+                "code":"' . $item->id . '",
+                "quantity": ' . $item->qty . ',
+                "price": ' . $item->price . ',
+                "length": 12,
+                "width": 12,
+                "height": 12,
+                "category": { "level1":"Áo" }
+            }'
+            );
+        };
         $method_ship = $request->method_ship;
         $ward_code_to = $request->ward_code_to;
-        $district_id_to = $request->district_id_to;
+        $district_id_to = (int)$request->district_id_to;
+        // dd($data_item);
 
-        if ($method_ship == 1) {
-            $data_string = json_encode(array("offset" => 0, "limit" => 50, "client_phone" => ""));
-            $curl = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create');
-
-            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt(
-                $curl,
-                CURLOPT_HTTPHEADER,
-                array(
-                    'Content-Type: application/json',
-                    'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
-                    'ShopId: 1925108',
-                )
-            );
-            $result = json_decode(curl_exec($curl));
-            $dataShops = $result->data->shops[0];
-            $ward_code_from = $dataShops->ward_code;
-            $district_id_from = $dataShops->district_id;
-        }
-
-
-        $listCarts = \Cart::content();
+        $total_ship = (int)$request->fee_ship;
         foreach (json_decode($listCarts) as $item) {
             if ($item->options->sale == 'combo') {
                 $combo_id = $item->id;
@@ -100,7 +97,6 @@ class UserPayController extends UserController
                 $combo_id = 0;
             };
         };
-        $total_ship = 100000;
         $order_data = [
             'user_id' => get_data_user('web'),
             'code_invoice' => $request->code_invoice,
@@ -121,10 +117,80 @@ class UserPayController extends UserController
             'created_at' => Carbon::now(),
 
         ];
-
+        // dd($order_data);
         $idOrder = Uni_Order::insertGetId($order_data);
         // \Cart::destroy();
         if ($idOrder) {
+            if ($method_ship == 1) {
+                $data_string = json_encode(array("offset" => 1, "limit" => 50, "client_phone" => ""));
+                $curl = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shop/all');
+
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt(
+                    $curl,
+                    CURLOPT_HTTPHEADER,
+                    array(
+                        'Content-Type: application/json',
+                        'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf'
+                    )
+                );
+                $result = json_decode(curl_exec($curl));
+                // dd($result);
+                $dataShops = $result->data->shops[1];
+                $ward_code_from = $dataShops->ward_code;
+                $district_id_from = $dataShops->district_id;
+                $data_creatorder = '{
+                    "payment_type_id": 2,
+                    "note": "Tintest 123",
+                    "required_note": "KHONGCHOXEMHANG",
+                    "return_phone": "' . $dataShops->phone . '",
+                    "return_address": "' . $dataShops->address . '",
+                    "return_district_id": ' . $district_id_from . ',
+                    "return_ward_code": "' . $ward_code_from . '",
+                    "client_order_code": "",
+                    "to_name": "' . $request->customer_name . '",
+                    "to_phone": "' . $request->phone . '",
+                    "to_address": "' . $request->address . '",
+                    "to_ward_code": "' . $ward_code_to . '",
+                    "to_district_id": ' . $district_id_to . ',
+                    "cod_amount": 0,
+                    "content": "Theo New York Times",
+                    "weight": 200,
+                    "length": 1,
+                    "width": 19,
+                    "height": 10,
+                    "pick_station_id": 1444,
+                    "deliver_station_id": null,
+                    "insurance_value": 10000000,
+                    "service_id": 53320,
+                    "service_type_id":2,
+                    "order_value":,
+                    "coupon":null,
+                    "pick_shift":[2],
+                    "items": ' . json_encode($data_item) . '
+                    }';
+                $curl_creat_ = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create');
+                curl_setopt($curl_creat_, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($curl_creat_, CURLOPT_POSTFIELDS, $data_creatorder);
+                curl_setopt($curl_creat_, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt(
+                    $curl_creat_,
+                    CURLOPT_HTTPHEADER,
+                    array(
+                        'Content-Type: application/json',
+                        'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                        'ShopId: 1925108'
+                    )
+                );
+                $result_cr = json_decode(curl_exec($curl_creat_));
+                $order_new = Uni_Order::find($idOrder);
+                $order_code['order_code'] = $result_cr->data->order_code;
+                $order_new->fill($order_code)->save();
+                curl_close($curl);
+            }
+           
             $order_data_sucsses = Uni_Order::where('id', $idOrder)->where('user_id', get_data_user('web'))->first();
             if ($order_data_sucsses->type_pay == 4) {
                 $url = '/thanh-toan-vnpay/' . $idOrder;
@@ -141,9 +207,7 @@ class UserPayController extends UserController
     public function getSuccsess(Request $request, $id)
     {
         $order = Uni_Order::find($id);
-
-
-        // \Cart::destroy();  
+        \Cart::destroy();  
         return view('user::pages.pay.succsess', compact('order'));
     }
     public function check_vouchers(Request $request)
