@@ -189,3 +189,12 @@ function execPostRequest($url, $data)
         return $parent_pid;
     }
 
+    function get_product_cat($id_cat){
+        $mang = App\Models\Product_Category::where('category_id', '=', $id_cat)->pluck('product_id');
+        return $mang;
+    }
+
+    function get_product_id($id_product){
+        $mang = App\Models\Uni_Product::select('name','slug','id','thumbnail','desscription')->where('id','=',$id_product)->get();
+        return $mang;
+    }

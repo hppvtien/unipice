@@ -2026,7 +2026,49 @@ a.a-btn.a-btn--primary.action.update.update_cart_action {
 .btnhover {
     overflow: hidden;
     position: relative;
-    z-index: 1
+    z-index: 1;
+    color: #000;
+}
+
+.btnhover:visited {
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+    color: #000;
+}
+
+.text-primary {
+    color: #0b2d25 !important;
+}
+
+.pading_about {
+    padding: 9rem !important;
+}
+
+.can_trai_phai {
+    padding: 0 9rem;
+}
+
+@media screen and (max-width:768px) {
+    .pading_about {
+        padding: 0rem 1rem !important;
+    }
+    .can_trai_phai {
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (max-width:1440px) {
+    .can_trai_phai {
+        padding: 0 1rem;
+    }
+    .pading_about {
+        padding: 8 rem 2rem !important;
+    }
+    .header-v1 .header-phone-numbers {
+        padding-left: 0 !important;
+        padding-right: 32px !important;
+    }
 }
 
 .btnhover:after {
@@ -3425,7 +3467,7 @@ ol.comment-list li.comment .reply a {
 
 .item-icon-box:after {
     content: "";
-    width: 1px;
+    width: 2px;
     height: 60px;
     position: absolute;
     background: #fff;
@@ -3436,7 +3478,7 @@ ol.comment-list li.comment .reply a {
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
-    opacity: .3
+    opacity: 1
 }
 
 li:last-child .item-icon-box:after {
