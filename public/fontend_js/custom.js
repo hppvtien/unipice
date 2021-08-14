@@ -245,7 +245,7 @@ $("#pay_success").on("click", function() {
             fee_ship: fee_ship
         },
         success: function success(results) {
-            window.location.href = results;
+            // window.location.href = results;
         },
         error: function error(results) {
             console.log("Loizzzzzzzzz");
@@ -359,6 +359,7 @@ function openPage(pageName, elmnt, color) {
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].style.backgroundColor = "";
     }
+}
 
 function openPageTwo(pageName, elmnt, color) {
     var i, tabcontent, tablinks;
@@ -373,7 +374,7 @@ function openPageTwo(pageName, elmnt, color) {
     document.getElementById(pageName).style.display = "block";
     elmnt.style.backgroundColor = color;
 }
-document.getElementById("defaultOpen").click();
+// document.getElementById("defaultOpen").click();
 
 $(document).ready(function() {
 
@@ -469,6 +470,6 @@ $('.btn-comment-qs').on('click', function() {
         success: function(result) {
             location.reload();
         },
-        error: function(result) {}
+        error: function(result) {},
     });
 });

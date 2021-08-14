@@ -477,6 +477,7 @@
         border-bottom: 2px solid #97ccc0;
     }
 </style>
+
 <main id="maincontent" class="">
     <div class="columns">
         <div class="column main padding_css row no-gutters">
@@ -521,6 +522,7 @@
                     </table>
                 </div>
             </div>
+
             <div class="block block-dashboard-info col-md-6 col-lg-7 col-xs-12 noi_left cach_top_bottom">
                 <div class="block-title"><strong>Thông tin giỏ hàng</strong></div>
                 <div class="column main" style="width:100%">

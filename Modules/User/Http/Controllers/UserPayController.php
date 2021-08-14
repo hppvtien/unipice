@@ -67,11 +67,11 @@ class UserPayController extends UserController
         \SEOMeta::setTitle('Thanh toán');
         $method_ship = $request->method_ship;
         $ward_code_to = $request->ward_code_to;
-        $district_id_to = $request->district_id_to;
+        $district_id_to = (int)$request->district_id_to;
 
         if ($method_ship == 1) {
-            $data_string = json_encode(array("offset" => 0, "limit" => 50, "client_phone" => ""));
-            $curl = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create');
+            $data_string = json_encode(array("offset" => 1, "limit" => 50, "client_phone" => ""));
+            $curl = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shop/all');
 
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
             curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
@@ -81,14 +81,74 @@ class UserPayController extends UserController
                 CURLOPT_HTTPHEADER,
                 array(
                     'Content-Type: application/json',
-                    'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
-                    'ShopId: 1925108',
+                    'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf'
                 )
             );
             $result = json_decode(curl_exec($curl));
-            $dataShops = $result->data->shops[0];
-            $ward_code_from = $dataShops->ward_code;
+            // dd($result);
+            $dataShops = $result->data->shops[1];
+            // dd($dataShops);
+            // dd($dataShops->ward_code);
+            // ward_code_from and district_id_from by store
+            $ward_code_from = (string)$dataShops->ward_code;
             $district_id_from = $dataShops->district_id;
+            $data_creatorder = json_encode(array(
+                "payment_type_id"=> 2,
+                "note"=> "Tintest 123",
+                "required_note"=> "KHONGCHOXEMHANG",
+                "return_phone"=> "0979467612",
+                "return_address"=> "39 NTT",
+                "return_district_id"=> $district_id_from,
+                "return_ward_code"=> $ward_code_from,
+                "client_order_code"=> "",
+                "to_name"=> "TinTest124",
+                "to_phone"=> "0987654321",
+                "to_address"=> "72 Thành Thái, Phường 14, Quận 10, Hồ Chí Minh, Vietnam",
+                "to_ward_code"=> $ward_code_to,
+                "to_district_id"=> $district_id_to,
+                "cod_amount"=> 200000,
+                "content"=> "Theo New York Times",
+                "weight"=> 200,
+                "length"=> 1,
+                "width"=> 19,
+                "height"=> 10,
+                "pick_station_id"=> 1444,
+                "deliver_station_id"=> null,
+                "insurance_value"=> 10000000,
+                "service_id"=> 53320,
+                "service_type_id"=>2,
+                "order_value"=>130000,
+                "coupon"=>null,
+                "pick_shift"=>[2],
+                "items"=> [
+                        "name"=>"Áo Polo",
+                        "code"=>"Polo123",
+                        "quantity"=> 1,
+                        "price"=> 200000,
+                        "length"=> 12,
+                        "width"=> 12,
+                        "height"=> 12,
+                        "category"=> json_encode(["level1"=>"Áo"])     
+                ]
+            ));
+            return $data_creatorder;
+            dd(json_decode($data_creatorder));
+            $curl_creat_ = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create');
+
+            curl_setopt($curl_creat_, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($curl_creat_, CURLOPT_POSTFIELDS, $data_creatorder);
+            curl_setopt($curl_creat_, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt(
+                $curl_creat_,
+                CURLOPT_HTTPHEADER,
+                array(
+                    'Content-Type: application/json',
+                    'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                    'ShopId: 1925108'
+                )
+            );
+            $result_cr = json_decode(curl_exec($curl_creat_));
+            return $result_cr;
         }
 
 

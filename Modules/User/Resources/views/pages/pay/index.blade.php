@@ -493,6 +493,14 @@
         }
     }
 </style>
+<?php
+$fruits = array(
+    "fruits"  => [json_encode(array("a" => "orange", "b" => "banana", "c" => "apple"))],
+    "numbers" => array(1, 2, 3, 4, 5, 6),
+    "holes"   => array("first", 5 => "second", "third")
+);
+dd($fruits);
+?>
 <main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
     <div class="page-title-wrapper">
         <h1 class="page-title">
