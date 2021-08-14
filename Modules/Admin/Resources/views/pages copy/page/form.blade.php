@@ -42,9 +42,6 @@
                 </div>
             </div>
             <div class="card  box-shadow-0">
-                <a href="{{ route('get_admin.content_page.create', $pages->id) }}" class="btn btn-xs btn-success"><i class="la la-file-import"></i>Thêm mới</a>
-            </div>
-            <div class="card  box-shadow-0">
                 <div class="card-header">
                     <h4 class="card-title mb-1">SEO <a href="" class="js-action-seo" style="float: right"><i class="la la-edit"></i> Edit</a></h4>
                     <div class="view-seo">

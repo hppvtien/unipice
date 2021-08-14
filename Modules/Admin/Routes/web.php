@@ -45,6 +45,13 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::post('update/{id}', 'AdminPageController@update');
         Route::get('delete/{id}', 'AdminPageController@delete')->name('get_admin.page.delete')->middleware('permission:page_delete|full');
     });
+    Route::prefix('content_page')->group(function (){
+        Route::get('/create/{id}', 'AdminContentPageController@create')->name('get_admin.content_page.create')->middleware('permission:content_page_create|full');
+        Route::post('/create/{id}', 'AdminContentPageController@store');
+        Route::get('update/{id}', 'AdminContentPageController@edit')->name('get_admin.content_page.edit')->middleware('permission:content_page_edit|full');
+        Route::post('update/{id}', 'AdminContentPageController@update');
+        Route::get('delete/{id}', 'AdminContentPageController@delete')->name('get_admin.content_page.delete')->middleware('permission:content_page_delete|full');
+    });
     Route::prefix('voucher')->group(function (){
         Route::get('/', 'AdminVoucherController@index')->name('get_admin.voucher.index')->middleware('permission:voucher_index|full');
         Route::post('/generate_code', 'AdminVoucherController@generate_code')->name('get_admin.voucher.generate_code');
