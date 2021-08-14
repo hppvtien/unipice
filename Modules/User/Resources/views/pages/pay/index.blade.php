@@ -493,14 +493,6 @@
         }
     }
 </style>
-<?php
-$fruits = array(
-    "fruits"  => [json_encode(array("a" => "orange", "b" => "banana", "c" => "apple"))],
-    "numbers" => array(1, 2, 3, 4, 5, 6),
-    "holes"   => array("first", 5 => "second", "third")
-);
-dd($fruits);
-?>
 <main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
     <div class="page-title-wrapper">
         <h1 class="page-title">
@@ -590,7 +582,7 @@ dd($fruits);
                                     <div class="field _required">
                                             <label class="" for="method_shpping">Phương thức vận chuyển</label>
                                             <select class="custom-select" id="method_shpping">
-                                                <option selected>Chọn phương thức vận chuyển</option>
+                                                <option value="4">Chọn phương thức vận chuyển</option>
                                                 <option value="1">Giao hàng nhanh</option>
                                                 <option value="2">Giao hàng nhanh</option>
                                                 <option value="3">Giao hàng tiết kiệm</option>
@@ -615,6 +607,7 @@ dd($fruits);
                                     </div>
                                     <div class="field _required">
                                         <p class="text-danger">Phí vận chuyển:<span id="fee_ship" class="text-warning">000.000</span></p>
+                                        <p class="text-danger" id="err-ship"></p>
                                     </div>
                                     <div class="field _required pay_type">
                                         @foreach (config('cart.pay_type') as $key => $item)
