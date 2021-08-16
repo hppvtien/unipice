@@ -580,13 +580,13 @@
                                         </div>
                                     </div>
                                     <div class="field _required">
-                                            <label class="" for="method_shpping">Phương thức vận chuyển</label>
-                                            <select class="custom-select" id="method_shpping">
-                                                <option value="4">Chọn phương thức vận chuyển</option>
-                                                <option value="1">Giao hàng nhanh</option>
-                                                <option value="2">Giao hàng nhanh</option>
-                                                <option value="3">Giao hàng tiết kiệm</option>
-                                            </select>
+                                        <label class="" for="method_shpping">Phương thức vận chuyển</label>
+                                        <select class="custom-select" id="method_shpping">
+                                            <option value="4">Chọn phương thức vận chuyển</option>
+                                            <option value="1">Giao hàng nhanh</option>
+                                            <option value="2">Giao hàng tiết kiệm</option>
+                                            <option value="3">Tự lấy</option>
+                                        </select>
                                     </div>
                                     <div class="field _required row no-gutters">
                                         <div class="col-md-4 col-sm-4 col-12">
@@ -732,6 +732,9 @@
         </div>
     </div>
 </main>
+<div id="toast-container" class="toast-top-right"></div>
+
+                                                
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var province = document.getElementById("province");
@@ -804,36 +807,84 @@
     function chanFunctionWard() {
         let to_district_id = $("#district").find(":selected").attr('data-district');
         let to_ward = $("#ward").find(":selected").attr('data-ward');
-        let to_ward_code = "'"+to_ward+"'";
-        alert(to_ward_code);
-        $.ajax({
-            url: 'https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee',
-            headers: {
-                'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
-                'Content-Type': 'application/json',
-                'ShopId': '1925108',
-                'Content-Type': 'text/plain'
-            },
-            method: "GET",
-            dataType: 'json',
-            data: {
-                "from_district_id": 1454,
-                "service_id": 53320,
-                "service_type_id": null,
-                "to_district_id": to_district_id,
-                "to_ward_code": to_ward_code,
-                "height": 50,
-                "length": 20,
-                "weight": 200,
-                "width": 20,
-                "insurance_fee": 0,
-                "coupon": null
-            },
-            success: function(response) {
-                console.log(response.data.total);
-                $('#fee_ship').text(response.data.total);
-            }
-        });
+        let to_ward_code = "'" + to_ward + "'";
+        let method_ship = $('#method_shpping').find(":selected").val();
+        if (method_ship == 1) {
+            $.ajax({
+                url: 'https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee',
+                headers: {
+                    'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                    'Content-Type': 'application/json',
+                    'ShopId': '1925108',
+                    'Content-Type': 'text/plain'
+                },
+                method: "GET",
+                dataType: 'json',
+                data: {
+                    "from_district_id": 1454,
+                    "service_id": 53320,
+                    "service_type_id": null,
+                    "to_district_id": to_district_id,
+                    "to_ward_code": to_ward_code,
+                    "height": 12,
+                    "length": 12,
+                    "weight": 200,
+                    "width": 8,
+                    "insurance_fee": 0,
+                    "coupon": null
+                },
+                success: function(response) {
+                    if (response.data.code === 200) {
+                        $('#fee_ship').text(response.data.total);
+                    }
+                },
+                error: function(response) {
+                    $("#toast-container").html(
+                    ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn pương thức thanh toán</div></div>'),
+                    4000;
+                setTimeout(function () {
+                    $(".toast-error").remove();
+                }, 2000);
+                }
+            });
+        } else if (method_ship == 2) {
+            let province_name_to = $('#province').find(":selected").text();
+            let ward_name_to = $('#ward').find(":selected").text();
+            let district_name_to = $('#district').find(":selected").text();
+            $.ajax({
+                url: "{{ route('get_user.feeship') }}",
+                method: "POST",
+                dataType: 'json',
+                data: {
+                    method_ship: method_ship,
+                    ward_code_to: ward_name_to,
+                    province_code_to: province_name_to,
+                    district_id_to: district_name_to
+
+                },
+                success: function(response) {
+                    console.log(response.fee);
+                    if(response.fee.delivery === false){
+                        $('#fee_ship').text('GTHK chưa hỗ trợ giao đến khu vực này');
+                    } else {
+                    $('#fee_ship').text(response.fee.fee);
+                    }
+                },
+                error: function(response) {
+                    console.log(response.fee);
+                }
+            });
+        } else {
+            $("#toast-container").html(
+                    ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn pương thức thanh toán</div></div>'),
+                    4000;
+                setTimeout(function () {
+                    $(".toast-error").remove();
+                }, 2000);
+        };
+
+
+
     }
 </script>
 @stop
