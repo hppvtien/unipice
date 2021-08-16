@@ -18,7 +18,7 @@
 <div class="container-fluid">
     <div class="row no-gutter">
         <!-- The image half -->
-        <div class="col-md-6 col-lg-6 col-xl-7 d-none d-md-flex bg-primary-transparent">
+        <div class="col-md-6 col-lg-6 col-xl-7 d-none d-md-flex bg-primary-transparent" style="background-color: #fff !important;">
             <div class="row wd-100p mx-auto text-center">
                 <div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p">
                     <img src="{{ asset('images/login.png') }}" class="my-auto ht-xl-80p wd-md-100p wd-xl-80p mx-auto"

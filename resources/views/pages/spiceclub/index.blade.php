@@ -1,5 +1,19 @@
+@section('css_js_spice_club')
+<link href="{{ asset('css/ducanh3.css') }}" rel="stylesheet">
+    <!-- Vendor JS Files -->
+    <script src="https://technext.github.io/restaurantly/assets/vendor/aos/aos.js"></script>
+  <script src="https://technext.github.io/restaurantly/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://technext.github.io/restaurantly/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="https://technext.github.io/restaurantly/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="https://technext.github.io/restaurantly/assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://technext.github.io/restaurantly/assets/vendor/swiper/swiper-bundle.min.js"></script> 
+
+    <!-- Template Main JS File -->
+    <script src="https://technext.github.io/restaurantly/assets/js/main.js"></script>
+@stop
+
 @extends('pages.layouts.app_master_frontend') @section('contents')
-    <link href="{{ asset('css/ducanh3.css') }}" rel="stylesheet">
+    
     <main id="main">
         <section id="about" class="about" style="background: url({{ pare_url_file($page->p_banner) }}) center center;">
             <div class="container" data-aos="fade-up">
@@ -10,7 +24,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                        <h3>{{ $content_page_1->name }}</h3>
+                        <h1 class="mau_chu">{{ $content_page_1->name }}</h1>
                         <p class="fst-italic">
                             {!! $content_page_1->content !!}
                         </p>
@@ -19,7 +33,7 @@
 
             </div>
         </section>
-        <section id="specials" class="specials">
+        <section id="specials" class="specials p-5">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
@@ -197,16 +211,7 @@
     </main><!-- End #main -->
 
 
-    <!-- Vendor JS Files -->
-    {{-- <script src="https://technext.github.io/restaurantly/assets/vendor/aos/aos.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/swiper/swiper-bundle.min.js"></script> --}}
 
-    <!-- Template Main JS File -->
-    <script src="https://technext.github.io/restaurantly/assets/js/main.js"></script>
     <main role="main">
         <a id="main-content" tabindex="-1"></a>
         <div class="layout-content">

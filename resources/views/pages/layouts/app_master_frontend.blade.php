@@ -24,7 +24,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
     <link href="{{ asset('css/css_js/custom.css') }}" rel="stylesheet">
-
+    @yield('css_js_spice_club')
 
 </head>
 <div class="zeynep">
@@ -140,7 +140,6 @@
         </div>
     </div>
 
-
     <!-- CONTACT JS  -->
     <!-- revolution JS FILES -->
     <script src="{{ asset('fontend_js/jquery.min.js') }}"></script>
@@ -165,8 +164,6 @@
     <script src="{{ asset('/css/revolution/revolution.extension.parallax.min.js') }}"></script>
     <script src="{{ asset('/css/revolution/revolution.extension.slideanims.min.js') }}"></script>
     <script src="{{ asset('/css/revolution/revolution.extension.video.min.js') }}"></script>
-
-
 
     <!-- CUSTOM FUCTIONS  -->
 
