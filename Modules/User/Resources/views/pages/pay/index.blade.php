@@ -580,28 +580,29 @@
                                         </div>
                                     </div>
                                     <div class="field _required">
-                                        <label class="" for="method_shpping">Phương thức vận chuyển</label>
-                                        <select class="custom-select" id="method_shpping">
-                                            <option value="4">Chọn phương thức vận chuyển</option>
-                                            <option value="1">Giao hàng nhanh</option>
-                                            <option value="2">Giao hàng tiết kiệm</option>
-                                            <option value="3">Tự lấy</option>
-                                        </select>
+                                        <div class="control">
+                                            <label class="a-form-label m-text-input__label" for="method_shpping">Phương thức vận chuyển</label>
+                                            <select class="custom-select" id="method_shpping" onchange="chanFunctionMethodTran()">
+                                                <option value="4">Chọn phương thức vận chuyển</option>
+                                                <option value="1" data-url="{{ route('get_user.feeship') }}">Giao hàng nhanh</option>
+                                                <option value="2" data-url="{{ route('get_user.feeshipghn') }}">Giao hàng tiết kiệm</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="field _required row no-gutters">
                                         <div class="col-md-4 col-sm-4 col-12">
-                                            <select class="w-75" id="province" name="province" required="" onchange="chanFunction()">
-                                                <option value="" selected>Tỉnh / Thành phố</option>
+                                            <select class="w-70" id="province" name="province" required="" onchange="chanFunction()">
+                                                <option value="" selected>Tỉnh / thành</option>
                                             </select>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-12">
-                                            <select class="w-75" id="district" name="district" required="" onchange="chanFunctionDistrict()">
-                                                <option value="" selected>Quận / Huyện</option>
+                                            <select class="w-70" id="district" name="district" required="" onchange="chanFunctionDistrict()">
+                                                <option value="" selected>Quận / huyện</option>
                                             </select>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-12">
-                                            <select class="w-75" id="ward" name="ward" required="" onchange="chanFunctionWard()">
-                                                <option value="" selected>Phường / Xã</option>
+                                            <select class="w-70" id="ward" name="ward" required="" onchange="chanFunctionWard()">
+                                                <option value="" selected>Phường / xã</option>
                                             </select>
                                         </div>
                                     </div>
@@ -736,155 +737,6 @@
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var province = document.getElementById("province");
-        window.onload = function() {
-            $.ajax({
-                url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/province',
-                headers: {
-                    'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
-                    'Content-Type': 'application/json'
-                },
-                method: "GET",
-                dataType: 'json',
-                success: function(response) {
-                    var str = "<option selected>Tỉnh / thành</option>";
-                    for (var i = 0; i < response.data.length; i++) {
-                        str = str + "<option class='provinceId' data-province='" + response.data[i].ProvinceID + "'>'" + response.data[i].ProvinceName + "'</option>"
-                    }
-                    province.innerHTML = str;
-                }
-            });
-        };
-    }, false);
-
-    function chanFunction() {
-        var selectBox = document.getElementById("province");
-        var selectedValue = selectBox.options[selectBox.selectedIndex].getAttribute('data-province');
-        var district = document.getElementById("district");
-        $.ajax({
-            url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/district',
-            headers: {
-                'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
-                'Content-Type': 'application/json'
-            },
-            method: "GET",
-            dataType: 'json',
-            success: function(response) {
-                var str = "<option selected>Quận / huyện</option>";
-                for (var i = 0; i < response.data.length; i++) {
-                    if (response.data[i].ProvinceID == selectedValue)
-                        str = str + "<option class='districtId' data-district='" + response.data[i].DistrictID + "'>'" + response.data[i].DistrictName + "'</option>"
-                }
-                district.innerHTML = str;
-            }
-        });
-    };
-
-    function chanFunctionDistrict() {
-        var selectBox = document.getElementById("district");
-        var selectedValue = selectBox.options[selectBox.selectedIndex].getAttribute('data-district');
-        var ward = document.getElementById("ward");
-        $.ajax({
-            url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id=' + selectedValue,
-            headers: {
-                'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
-                'Content-Type': 'application/json'
-            },
-            method: "GET",
-            dataType: 'json',
-            success: function(response) {
-                var str = "<option selected>Phường / xã</option>";
-                for (var i = 0; i < response.data.length; i++) {
-                    str = str + "<option class='wardId' data-ward='" + response.data[i].WardCode + "'>'" + response.data[i].WardName + "'</option>"
-                }
-                ward.innerHTML = str;
-
-            }
-        });
-    }
-
-    function chanFunctionWard() {
-        let to_district_id = $("#district").find(":selected").attr('data-district');
-        let to_ward = $("#ward").find(":selected").attr('data-ward');
-        let to_ward_code = "'" + to_ward + "'";
-        let method_ship = $('#method_shpping').find(":selected").val();
-        if (method_ship == 1) {
-            $.ajax({
-                url: 'https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee',
-                headers: {
-                    'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
-                    'Content-Type': 'application/json',
-                    'ShopId': '1925108',
-                    'Content-Type': 'text/plain'
-                },
-                method: "GET",
-                dataType: 'json',
-                data: {
-                    "from_district_id": 1454,
-                    "service_id": 53320,
-                    "service_type_id": null,
-                    "to_district_id": to_district_id,
-                    "to_ward_code": to_ward_code,
-                    "height": 12,
-                    "length": 12,
-                    "weight": 200,
-                    "width": 8,
-                    "insurance_fee": 0,
-                    "coupon": null
-                },
-                success: function(response) {
-                    if (response.data.code === 200) {
-                        $('#fee_ship').html('<span class="text-warning"><span>Phí vận chuyển:</span></span>  ' + (response.data.total + '</span>'));
-                    }
-                },
-                error: function(response) {
-                    $("#toast-container").html(
-                            ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn pương thức thanh toán</div></div>'),
-                        4000;
-                    setTimeout(function() {
-                        $(".toast-error").remove();
-                    }, 2000);
-                }
-            });
-        } else if (method_ship == 2) {
-            let province_name_to = $('#province').find(":selected").text();
-            let ward_name_to = $('#ward').find(":selected").text();
-            let district_name_to = $('#district').find(":selected").text();
-            $.ajax({
-                url: "{{ route('get_user.feeship') }}",
-                method: "POST",
-                dataType: 'json',
-                data: {
-                    method_ship: method_ship,
-                    ward_code_to: ward_name_to,
-                    province_code_to: province_name_to,
-                    district_id_to: district_name_to
-
-                },
-                success: function(response) {
-                    console.log(response.fee.fee);
-                    if (response.fee.delivery === false) {
-                        $('#fee_ship').html('<span class="text-warning"><span>Phí vận chuyển:</span></span>  GHTK chưa hỗ trợ vận chuyển đến khu vực này</span>');
-                    } else {
-                        $('#fee_ship').html('<span class="text-warning"><span>Phí vận chuyển:</span></span>  ' + (response.fee.fee + '</span>'));
-                    }
-                },
-                error: function(response) {
-                    console.log(response.fee.fee);
-                }
-            });
-        } else {
-            $("#toast-container").html(
-                    ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn pương thức thanh toán</div></div>'),
-                4000;
-            setTimeout(function() {
-                $(".toast-error").remove();
-            }, 2000);
-        };
-
-
-
-    }
+    
 </script>
 @stop

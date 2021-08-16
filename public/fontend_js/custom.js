@@ -237,7 +237,7 @@ $("#pay_success").on("click", function () {
 
     if (method_ship == 4) {
         $("#toast-container").html(
-            ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn pương thức thanh toán</div></div>'),
+            ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn phương thức vận chuyển</div></div>'),
             4000;
         setTimeout(function () {
             $(".toast-error").remove();
@@ -264,7 +264,7 @@ $("#pay_success").on("click", function () {
                 fee_ship: fee_ship
             },
             success: function success(results) {
-                // window.location.href = results;
+                window.location.href = results;
             },
             error: function error(results) {
                 console.log("Loizzzzzzzzz");
@@ -494,3 +494,139 @@ $('.btn-comment-qs').on('click', function () {
         error: function (result) { },
     });
 });
+function chanFunctionMethodTran() {
+    $('#province').prop('selectedIndex', 0);
+    $('#district').prop('selectedIndex', 0);
+    $('#ward').prop('selectedIndex', 0);
+    $('#fee_ship').html('');
+}
+document.addEventListener("DOMContentLoaded", function() {
+    var province = document.getElementById("province");
+    window.onload = function() {
+        $.ajax({
+            url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/province',
+            headers: {
+                'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                'Content-Type': 'application/json'
+            },
+            method: "GET",
+            dataType: 'json',
+            success: function(response) {
+                var str = "<option selected>Tỉnh / thành</option>";
+                for (var i = 0; i < response.data.length; i++) {
+                    str = str + "<option class='provinceId' data-province='" + response.data[i].ProvinceID + "'>'" + response.data[i].ProvinceName + "'</option>"
+                }
+                province.innerHTML = str;
+            }
+        });
+    };
+}, false);
+
+function chanFunction() {
+    var selectBox = document.getElementById("province");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].getAttribute('data-province');
+    var district = document.getElementById("district");
+    $.ajax({
+        url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/district',
+        headers: {
+            'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+            'Content-Type': 'application/json'
+        },
+        method: "GET",
+        dataType: 'json',
+        success: function(response) {
+            var str = "<option selected>Quận / huyện</option>";
+            for (var i = 0; i < response.data.length; i++) {
+                if (response.data[i].ProvinceID == selectedValue)
+                    str = str + "<option class='districtId' data-district='" + response.data[i].DistrictID + "'>'" + response.data[i].DistrictName + "'</option>"
+            }
+            district.innerHTML = str;
+        }
+    });
+};
+
+function chanFunctionDistrict() {
+    var selectBox = document.getElementById("district");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].getAttribute('data-district');
+    var ward = document.getElementById("ward");
+    $.ajax({
+        url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id=' + selectedValue,
+        headers: {
+            'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+            'Content-Type': 'application/json'
+        },
+        method: "GET",
+        dataType: 'json',
+        success: function(response) {
+            var str = "<option selected>Phường / xã</option>";
+            for (var i = 0; i < response.data.length; i++) {
+                str = str + "<option class='wardId' data-ward='" + response.data[i].WardCode + "'>'" + response.data[i].WardName + "'</option>"
+            }
+            ward.innerHTML = str;
+
+        }
+    });
+}
+
+function chanFunctionWard() {
+    let to_district_id = $("#district").find(":selected").attr('data-district');
+    let to_ward_code = $("#ward").find(":selected").attr('data-ward');
+    let method_ship = $('#method_shpping').find(":selected").val();
+    let url_ship = $('#method_shpping').find(":selected").attr('data-url');
+    if (method_ship == 1) {
+        $.ajax({
+            url: url_ship,
+            method: "POST",
+            dataType: 'json',
+            data: {
+                to_district_id: to_district_id,
+                to_ward_code: to_ward_code,
+            },
+            success: function(response) {
+                if (response.code === 200) {
+                    $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span></span>  ' + response.data.total + ' đ</span>');
+                } else {
+                    $('#fee_ship').html('<span class="red-text">GHN chưa hỗ trợ hoặc do lý do Covid-19 nên đã dừng vận chuyển đến khu vực này</span>');
+                }
+            },
+
+        });
+    } else if (method_ship == 2) {
+        let province_name_to = $('#province').find(":selected").text();
+        let ward_name_to = $('#ward').find(":selected").text();
+        let district_name_to = $('#district').find(":selected").text();
+        $.ajax({
+            url: url_ship,
+            method: "POST",
+            dataType: 'json',
+            data: {
+                method_ship: method_ship,
+                ward_code_to: ward_name_to,
+                province_code_to: province_name_to,
+                district_id_to: district_name_to
+
+            },
+            success: function(response) {
+                console.log(response.fee.fee);
+                if (response.fee.delivery === false) {
+                    $('#fee_ship').html('<span class="red-text"> GHTK chưa hỗ trợ hoặc do lý do Covid-19 nên đã dừng vận chuyển đến khu vực này</span>');
+                } else {
+                    $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span></span>  ' + response.fee.fee + ' đ</span>');
+                }
+            },
+            error: function(response) {
+                console.log(response.fee.fee);
+            }
+        });
+    } else if (method_ship == 4) {
+        $("#toast-container").html(
+                ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn pương thức vận chuyển</div></div>'),
+            4000;
+        setTimeout(function() {
+            $(".toast-error").remove();
+        }, 2000);
+    };
+
+
+
+}

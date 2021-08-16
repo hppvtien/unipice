@@ -51,6 +51,7 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
 Route::middleware('checkLoginUser')->group(function() {
     Route::get('thanh-toan.html', 'UserPayController@getPay')->name('get_user.pay');
     Route::post('thanh-toan.html', 'UserPayController@getPaySuccsess')->name('get_user.postpay');
+    Route::post('fee-ship-ghn', 'UserPayController@getFeeShipGHN')->name('get_user.feeshipghn');
     Route::post('fee-ship', 'UserPayController@getFeeShip')->name('get_user.feeship');
     Route::post('gio-hang.html', 'UserPayController@check_vouchers')->name('get_user.check_vouchers');
     Route::get('hoan-tat-don-hang.html', 'UserPayController@getSuccsess')->name('get_user.paysuccsess'); 
