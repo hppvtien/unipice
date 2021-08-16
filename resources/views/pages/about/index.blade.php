@@ -7,11 +7,11 @@
             <div id="rev_slider_2_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.8.1">
                 <ul>
                     <!-- SLIDE  -->
-                    <li data-index="rs-7" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}"
+                    <li  data-index="rs-7" data-responsive="on" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}"
                         data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description=""
                         data-liquideffect='{"image":"{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}","imagesize":"external","autoplay":true,"scalex":4,"scaley":4,"speedx":0.5,"speedy":-0.5,"rotationx":0,"rotationy":0,"rotation":0,"transtime":2000,"easing":"Power3.easeOut","transcross":false,"transpower":false,"transitionx":0,"transitiony":0,"transpeedx":0,"transpeedy":0,"transrotx":0,"transroty":0,"transrot":0}'>
                         <!-- MAIN IMAGE -->
-                        <video controls autoplay loop style="opacity: 0.6;">
+                        <video controls autoplay loop style="opacity: 0.6;width:100%;" >
                             <source src="{{ asset('/images/icon_menu/video_about.mp4') }}" type="video/mp4">
                           </video> 
                         <!--<img src="{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}" alt="Image" data-duration="4000" data-lazyload="{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}" data-bgposition="center center"
@@ -20,7 +20,7 @@
 
                         <!-- LAYER NR. 1 -->
                         <h1 class="tp-caption font-primary" id="slide-7-layer-13-1" data-x="['left','left','middle','middle']" data-hoffset="['0','30','0','0']" data-y="['middle','middle','top','top']" data-voffset="['-200','-200','80','20']" data-fontsize="['54','54','54','40']"
-                            data-width="auto" data-height="auto" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-frames='[{"delay":1200,"split":"words","splitdelay":0.05,"speed":1000,"split_direction":"forward","frame":"0","from":"x:50px;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","split":"words","splitdelay":0.02,"speed":300,"split_direction":"backward","frame":"999","to":"auto:auto;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-width="auto" data-height="auto" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-responsive="on" data-frames='[{"delay":1200,"split":"words","splitdelay":0.05,"speed":1000,"split_direction":"forward","frame":"0","from":"x:50px;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","split":"words","splitdelay":0.02,"speed":300,"split_direction":"backward","frame":"999","to":"auto:auto;fb:0;","ease":"Power3.easeInOut"}]'
                             data-textAlign="['inherit','inherit','inherit','inherit']" style="z-index: 7; white-space: nowrap; font-size: 54px; line-height: 54px; letter-spacing: 0px; color:#fff">{{ $content_page_1->name}}</h1>
 
                         <!-- LAYER NR. 2 -->
