@@ -22,6 +22,8 @@ class AdminFlashSaleRequest extends FormRequest
             'qty'=>'required',
             'content'=>'required',
             'sale_off'=>'required',
+            'is_flash'=>'required',
+            'product_sale[]'=>'required',
         ];
     }
 
@@ -29,8 +31,10 @@ class AdminFlashSaleRequest extends FormRequest
     {
         return [
             'name.required' => 'Dữ liệu không được để trống',
+            'product_sale[].required' => 'Dữ liệu không được để trống',
             'desscription.required' => 'Dữ liệu không được để trống',
             'slug.required' => 'Dữ liệu không được để trống',
+            'is_flash.required' => 'Dữ liệu không được để trống',
             'slug.unique'   => 'Slug đã tồn tại',
             'qty.required' => 'Số lượng không được để trống',
             'content.required' => 'Nội dung không được để trống',

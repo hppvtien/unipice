@@ -36,7 +36,7 @@ class AdminUniFlashSaleController extends AdminController
 
     public function store(AdminFlashSaleRequest $request)
     {
-      
+      dd($request->all());
         $data                 = $request->except(['thumbnail', 'save', '_token']);
         $data['created_at']   = Carbon::now();
         $product_sale = [];
@@ -51,6 +51,7 @@ class AdminUniFlashSaleController extends AdminController
         $param = [
             "name" => $request->name,
             "slug" => $request->slug,
+            "is_flash" => $request->is_flash,
             "desscription" => $request->desscription,
             "price" => $request->price_all_subtotal,
             "sale_off" => $request->sale_off,
@@ -67,10 +68,10 @@ class AdminUniFlashSaleController extends AdminController
 
         if ($storeID) {
             $this->showMessagesSuccess();
-            return redirect()->route('get_admin.uni_flashsale.index');
+            // return redirect()->route('get_admin.uni_flashsale.index');
         }
         $this->showMessagesError();
-        return redirect()->back();
+        // return redirect()->back();
     }
     public function edit($id)
     {
@@ -92,8 +93,8 @@ class AdminUniFlashSaleController extends AdminController
     }
     public function update(AdminFlashSaleRequest $request, $id)
     {
+    
         if ($request) {
-           
             $uni_flashsale             = Uni_FlashSale::findOrFail($id);
             $data               = $request->except(['thumbnail', 'save', '_token']);
             $data['updated_at'] = Carbon::now();
@@ -114,6 +115,7 @@ class AdminUniFlashSaleController extends AdminController
             $param = [
                 "name" => $request->name,
                 "slug" => $request->slug,
+                "is_flash" => $request->is_flash,
                 "desscription" => $request->desscription,
                 "price" => $request->price_all_subtotal,
                 "qty" => $request->qty,

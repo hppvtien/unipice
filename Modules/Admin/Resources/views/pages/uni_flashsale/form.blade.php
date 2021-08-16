@@ -218,6 +218,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="card-body pt-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1"> FlashSale giành cho <span>(*)</span></label>
+                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                            <select name="is_flash" class="form-control SlectBox SumoUnder" tabindex="-1">
+                                <option title="hide" value="user">Khách mua lẻ</option>
+                                <option title="Public" value="store">Đại lý</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">

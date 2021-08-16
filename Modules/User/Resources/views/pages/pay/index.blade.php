@@ -606,7 +606,7 @@
                                         </div>
                                     </div>
                                     <div class="field _required">
-                                        <p class="text-danger">Phí vận chuyển:<span id="fee_ship" class="text-warning">000.000</span></p>
+                                        <p class="text-danger" id="fee_ship"></p>
                                         <p class="text-danger" id="err-ship"></p>
                                     </div>
                                     <div class="field _required pay_type">
@@ -734,7 +734,7 @@
 </main>
 <div id="toast-container" class="toast-top-right"></div>
 
-                                                
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var province = document.getElementById("province");
@@ -835,16 +835,16 @@
                 },
                 success: function(response) {
                     if (response.data.code === 200) {
-                        $('#fee_ship').text(response.data.total);
+                        $('#fee_ship').html('<span class="text-warning"><span>Phí vận chuyển:</span></span>  ' + (response.data.total + '</span>'));
                     }
                 },
                 error: function(response) {
                     $("#toast-container").html(
-                    ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn pương thức thanh toán</div></div>'),
-                    4000;
-                setTimeout(function () {
-                    $(".toast-error").remove();
-                }, 2000);
+                            ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn pương thức thanh toán</div></div>'),
+                        4000;
+                    setTimeout(function() {
+                        $(".toast-error").remove();
+                    }, 2000);
                 }
             });
         } else if (method_ship == 2) {
@@ -863,24 +863,24 @@
 
                 },
                 success: function(response) {
-                    console.log(response.fee);
-                    if(response.fee.delivery === false){
-                        $('#fee_ship').text('GTHK chưa hỗ trợ giao đến khu vực này');
+                    console.log(response.fee.fee);
+                    if (response.fee.delivery === false) {
+                        $('#fee_ship').html('<span class="text-warning"><span>Phí vận chuyển:</span></span>  GHTK chưa hỗ trợ vận chuyển đến khu vực này</span>');
                     } else {
-                    $('#fee_ship').text(response.fee.fee);
+                        $('#fee_ship').html('<span class="text-warning"><span>Phí vận chuyển:</span></span>  ' + (response.fee.fee + '</span>'));
                     }
                 },
                 error: function(response) {
-                    console.log(response.fee);
+                    console.log(response.fee.fee);
                 }
             });
         } else {
             $("#toast-container").html(
                     ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn pương thức thanh toán</div></div>'),
-                    4000;
-                setTimeout(function () {
-                    $(".toast-error").remove();
-                }, 2000);
+                4000;
+            setTimeout(function() {
+                $(".toast-error").remove();
+            }, 2000);
         };
 
 
