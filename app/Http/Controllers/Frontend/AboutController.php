@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 use App\Models\Uni_Category;
+use App\Models\Content_Page;
 use App\Models\Blog\Uni_Post;
 use App\Models\Page;
 use App\Http\Controllers\Controller;
@@ -27,13 +28,16 @@ class AboutController extends Controller
 
         $page = Page::where('p_style','about-us')->first();
         $menu = Uni_Category::where('parent_id',0)->where('status',1)->get();
-
         $menu1 = Uni_Category::where('parent_id', '=', 0)->whereNotIn('id', [2,5,8])->get();
-
+        $content_page_1 = Content_Page::where('page_id',$page->id)->where('order',0)->first();
+        $content_page_2 = Content_Page::where('page_id',$page->id)->where('order',1)->first();
+        // dd($content_page_1);
         $viewdata = [
             'page'=>$page,
             'menu' => $menu,
             'menu1' => $menu1,
+            'content_page_1' => $content_page_1,
+            'content_page_2' => $content_page_2,
         ];
         return view('pages.about.index', $viewdata);
     }

@@ -26,10 +26,7 @@
                         <span class="text-danger">{{ $errors->first('content') }}</span>
                         @endif
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Album </label>
-                        <input type="file" class="form-control" name="album[]" value="" multiple>
-                    </div>
+                    
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Sắp xếp <span>(*)</span></label>
                         <input type="number" class="form-control" name="order"
@@ -54,7 +51,6 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Ảnh </label>
-                        <input type="hidden" name="delete_thumbnail" value="{{ old('thumbnail', $content_pages->thumbnail ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="thumbnail" id="avatar_uploads">
                     </div>

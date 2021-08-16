@@ -42,6 +42,52 @@
                 </div>
             </div>
             <div class="card  box-shadow-0">
+                <a href="{{ route('get_admin.content_page.create', $pages->id) }}" class="btn btn-xs btn-success"><i class="la la-file-import"></i>Thêm mới</a>
+            </div>
+            <div class="card  box-shadow-0">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table mg-b-0 text-md-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Ảnh</th>
+                                    <th>Thứ tự</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($content_pages as $item)
+                                <tr>
+                                    <th scope="row">{{ $item->id }}</th>
+                                    <td>
+                                        <a title="{{ $item->name }}">{{ $item->name }}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ $item->thumbnail }}" target="_blank" style="width: 200px;height: 100px;display: inline-block">
+                                            <img style="height: 100%;border-radius: 10px;border: 1px solid #dedede;width: 100%" src="/storage/uploads/{{ $item->thumbnail }}" alt="">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:;" title="{{ $item->order }}">{{ $item->order }}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('get_admin.content_page.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
+                                        <a href="{{ route('get_admin.content_page.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
+                                    </td>
+                                </tr>
+                                @empty
+
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="card  box-shadow-0">
                 <div class="card-header">
                     <h4 class="card-title mb-1">SEO <a href="" class="js-action-seo" style="float: right"><i class="la la-edit"></i> Edit</a></h4>
                     <div class="view-seo">

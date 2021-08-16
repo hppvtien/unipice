@@ -17,6 +17,6 @@
         </div>
         <!-- breadcrumb -->
         <!-- row -->
-        @include('admin::pages.page.form')
+        @include('admin::pages.page.form_update')
     </div>
 @stop

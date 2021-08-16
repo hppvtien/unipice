@@ -41,9 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card  box-shadow-0">
-                <a href="{{ route('get_admin.content_page.create', $pages->id) }}" class="btn btn-xs btn-success"><i class="la la-file-import"></i>Thêm mới</a>
-            </div>
+            
             <div class="card  box-shadow-0">
                 <div class="card-header">
                     <h4 class="card-title mb-1">SEO <a href="" class="js-action-seo" style="float: right"><i class="la la-edit"></i> Edit</a></h4>
@@ -95,7 +93,6 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Banner </label>
-                        <input type="hidden" name="d_avatar" value="{{ old('p_banner', $pages->p_banner ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="p_banner" id="avatar_uploads">
                     </div>

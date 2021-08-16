@@ -3,6 +3,7 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\Content_Page;
 use Illuminate\Support\Facades\URL;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -47,7 +48,12 @@ class AdminPageController extends AdminController
     public function edit($id)
     {
         $pages = Page::find($id);
-        return view('admin::pages.page.update', compact('pages'));
+        $content_pages = Content_Page::where('page_id', $id)->get();
+        $viewData = [
+            'pages' => $pages,
+            'content_pages' => $content_pages
+        ];
+        return view('admin::pages.page.update', $viewData);
     }
 
     public function update(AdminPageRequest $request, $id)
