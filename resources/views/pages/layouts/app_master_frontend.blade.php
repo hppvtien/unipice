@@ -16,12 +16,12 @@
     <link href="{{ asset('css/css_js/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/css_js/font-awesome.css') }}" /> 
-    
+    <link rel="stylesheet" href="{{ asset('css/css_js/font-awesome.css') }}" />
+
     <link rel="stylesheet" href="{{ asset('css/ducanh.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css_js/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/ducanh2.css') }}">
-    
+
     <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
     <link href="{{ asset('css/css_js/custom.css') }}" rel="stylesheet">
 
@@ -42,11 +42,11 @@
             <a href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i>  {{ formatPhoneNumber($configuration->hotline) }}</span></a>
         </div>
     </div>
-   
+
     <ul>
         @forelse ($category_mn as $key => $item)
         <li class="has-submenu">
-            <a  href="{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="30px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+            <a href="{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="30px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
             <span data-submenu="menu_{{ $item->id }}" style="float: right;margin: -30px 20px 0 0;" class="fa fa-chevron-right"></span>
             <div id="menu_{{ $item->id }}" class="submenu">
                 <div class="submenu-header" style="padding-left:26px" data-submenu-close="menu_{{ $item->id }}">
@@ -73,14 +73,12 @@
 
     <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
         <div class="layout-container">
-            @include('pages.components.headers._inc_header') 
-            @yield('contents') 
-            @include('pages.components.footer._inc_footer')
+            @include('pages.components.headers._inc_header') @yield('contents') @include('pages.components.footer._inc_footer')
         </div>
     </div>
 
 
-    
+
     <div id="login" class="modal fade login-js" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -142,7 +140,7 @@
         </div>
     </div>
 
-    
+
     <!-- CONTACT JS  -->
     <!-- revolution JS FILES -->
     <script src="{{ asset('fontend_js/jquery.min.js') }}"></script>
@@ -152,17 +150,23 @@
     <script src="{{ asset('fontend_js/custom.js') }}"></script>
     <script src="{{ asset('js/frontends.js') }}"></script>
     <script src="{{ asset('fontend_js/unijs.js') }}"></script>
-    <script src="https://restroking.dexignzone.com/xhtml/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script src="https://restroking.dexignzone.com/xhtml/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript" src="https://restroking.dexignzone.com/xhtml/plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="https://restroking.dexignzone.com/xhtml/plugins/revolution/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript" src="https://restroking.dexignzone.com/xhtml/plugins/revolution/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script src="https://restroking.dexignzone.com/xhtml/js/rev.slider.js"></script>
-    <script>
-        jQuery(document).ready(function() {
-            dz_rev_slider_1();
-        }); /*ready*/
-    </script>
+
+    <!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
+    <script src="{{ asset('/css/revolution/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ asset('/css/revolution/jquery.themepunch.revolution.min.js') }}"></script>
+
+    <!-- SLIDER REVOLUTION EXTENSIONS  -->
+    <script src="{{ asset('/css/revolution/revolution.extension.actions.min.js') }}"></script>
+    <script src="{{ asset('/css/revolution/revolution.extension.carousel.min.js') }}"></script>
+    <script src="{{ asset('/css/revolution/revolution.extension.kenburn.min.js') }}"></script>
+    <script src="{{ asset('/css/revolution/revolution.extension.layeranimation.min.js') }}"></script>
+    <script src="{{ asset('/css/revolution/revolution.extension.migration.min.js') }}"></script>
+    <script src="{{ asset('/css/revolution/revolution.extension.navigation.min.js') }}"></script>
+    <script src="{{ asset('/css/revolution/revolution.extension.parallax.min.js') }}"></script>
+    <script src="{{ asset('/css/revolution/revolution.extension.slideanims.min.js') }}"></script>
+    <script src="{{ asset('/css/revolution/revolution.extension.video.min.js') }}"></script>
+
+
 
     <!-- CUSTOM FUCTIONS  -->
 
@@ -188,7 +192,7 @@
 
         });
     </script>
-    
+
     <script>
         $(function() {
             // init zeynepjs
@@ -222,10 +226,67 @@
             });
         });
     </script>
-
-    
-
-
+    <script>
+        jQuery("#rev_slider_2_1").show().revolution({
+            sliderType: "standard",
+            sliderLayout: "fullscreen",
+            dottedOverlay: "none",
+            delay: 9000,
+            navigation: {
+                keyboardNavigation: "off",
+                keyboard_direction: "horizontal",
+                mouseScrollNavigation: "off",
+                mouseScrollReverse: "default",
+                onHoverStop: "off",
+                arrows: {
+                    style: "uranus",
+                    enable: true,
+                    hide_onmobile: false,
+                    hide_onleave: false,
+                    tmp: '',
+                    left: {
+                        h_align: "right",
+                        v_align: "bottom",
+                        h_offset: 80,
+                        v_offset: 30
+                    },
+                    right: {
+                        h_align: "right",
+                        v_align: "bottom",
+                        h_offset: 20,
+                        v_offset: 30
+                    }
+                }
+            },
+            responsiveLevels: [1200, 992, 768, 576],
+            visibilityLevels: [1200, 992, 768, 576],
+            gridwidth: [1200, 992, 768, 576],
+            gridheight: [868, 768, 960, 720],
+            lazyType: "all",
+            shadow: 0,
+            spinner: "off",
+            stopLoop: "off",
+            stopAfterLoops: -1,
+            stopAtSlide: -1,
+            shuffle: "off",
+            autoHeight: "on",
+            fullScreenAutoWidth: "off",
+            fullScreenAlignForce: "off",
+            fullScreenOffsetContainer: "0",
+            fullScreenOffset: "",
+            disableProgressBar: "off",
+            hideThumbsOnMobile: "off",
+            hideSliderAtLimit: 0,
+            hideCaptionAtLimit: 0,
+            hideAllCaptionAtLilmit: 0,
+            debugMode: false,
+            fallbacks: {
+                simplifyAll: "off",
+                nextSlideOnWindowFocus: "off",
+                disableFocusListener: false,
+            }
+        });
+    </script>
 </body>
 
 </html>

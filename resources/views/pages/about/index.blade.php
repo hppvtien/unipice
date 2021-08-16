@@ -1,99 +1,59 @@
 @extends('pages.layouts.app_master_frontend') @section('contents')
 
-
-
-
-<style>
-
-</style>
-<!-- Revolution Slider Css -->
-
-
-
-
 <main role="main">
 
     <!-- Slider Banner -->
     <div class="rev-slider-full">
         <div id="rev_slider_14_1_wrapper" class="rev_slider_wrapper fullscreen-container bg-primary" data-alias="gravitydesign1" data-source="gallery" style="padding:0px;">
             <!-- START REVOLUTION SLIDER 5.4.1 fullscreen mode -->
-            <div id="rev_slider_14_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.1">
+            <!-- START REVOLUTION SLIDER 5.4.8.1 fullscreen mode -->
+            <div id="rev_slider_2_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.8.1">
                 <ul>
                     <!-- SLIDE  -->
-                    <li data-index="rs-100" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="Slide"
-                        data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                    <li data-index="rs-7" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}"
+                        data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description=""
+                        data-liquideffect='{"image":"{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}","imagesize":"external","autoplay":true,"scalex":4,"scaley":4,"speedx":0.5,"speedy":-0.5,"rotationx":0,"rotationy":0,"rotation":0,"transtime":2000,"easing":"Power3.easeOut","transcross":false,"transpower":false,"transitionx":0,"transitiony":0,"transpeedx":0,"transpeedy":0,"transrotx":0,"transroty":0,"transrot":0}'>
                         <!-- MAIN IMAGE -->
-                        <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/transparent.png" data-bgcolor="" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
+                        <img src="{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}" alt="Image" data-duration="4000" data-lazyload="{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}" data-bgposition="center center"
+                            data-bgfit="cover" data-bgparallax="4" class="rev-slidebg" data-no-retina>
+                        <!-- LAYERS -->
 
                         <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-resizeme rs-parallaxlevel-1 tp-pizza-title" id="slide-100-layer-1" data-x="['left','left','center','center']" data-hoffset="['40','90','0','0']" data-y="['top','top','top','top']" data-voffset="['150','150','150','100']" data-fontsize="['65','60','65','20']"
-                            data-lineheight="['100','75','75','55']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-frames='[{"delay":1300,"speed":2000,"frame":"0","from":"sX:2;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
-                            data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6; white-space: nowrap; font-weight: 700; font-family: 'Barlow', sans-serif; text-transform:uppercase; color:#fff; font-family: 'Poppins', sans-serif;">
-                            <div class="rs-looped rs-wave" data-speed="3" data-angle="0" data-radius="2px" data-origin="50% 50%">UniMall <br/> Hương Vị <br/> Cuộc Sống</div>
-                        </div>
+                        <h3 class="tp-caption font-primary" id="slide-7-layer-13-1" data-x="['left','left','middle','middle']" data-hoffset="['0','30','0','0']" data-y="['middle','middle','top','top']" data-voffset="['-200','-200','80','20']" data-fontsize="['54','54','54','40']"
+                            data-width="auto" data-height="auto" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-frames='[{"delay":1200,"split":"words","splitdelay":0.05,"speed":1000,"split_direction":"forward","frame":"0","from":"x:50px;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","split":"words","splitdelay":0.02,"speed":300,"split_direction":"backward","frame":"999","to":"auto:auto;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" style="z-index: 7; white-space: nowrap; font-size: 54px; line-height: 54px; letter-spacing: 0px; color:#FFF">Avocado and Egg Toast</h3>
 
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption tp-resizeme rs-parallaxlevel-1" id="slide-100-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['0','0','0','0']" data-width="full-proportional"
-                            data-height="full-proportional" data-whitespace="nowrap" data-type="image" data-basealign="slide" data-responsive_offset="on" data-frames='[{"delay":500,"speed":2000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                            <img src="{{ asset('/images/icon_menu/anhnen4.png') }}" class="rs-looped rs-wave" data-speed="3" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['full-proportional','full-proportional','full-proportional','full-proportional']"
-                                data-hh="['full-proportional','full-proportional','full-proportional','full-proportional']" width="1920" height="1080" data-no-retina>
-                        </div>
+                        <p class="tp-caption Restaurant-Description " id="slide-7-layer-13-2" data-x="['left','left','middle','middle']" data-hoffset="['0','30','0','0']" data-y="['middle','middle','top','top']" data-voffset="['-100','-100','180','80']" data-fontsize="['18','18','18','18']"
+                            data-lineheight="['30','30','30','30']" data-fontweight="['400','400','400','400']" data-width="['480','400','480','400']" data-height="auto" data-visibility="['on', 'on', 'off', 'off']" data-type="text" data-responsive_offset="on"
+                            data-frames='[{"delay":1500,"split":"words","splitdelay":0.05,"speed":1000,"split_direction":"forward","frame":"0","from":"x:50px;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","split":"words","splitdelay":0.02,"speed":300,"split_direction":"backward","frame":"999","to":"auto:auto;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['left','left','center','center']" style="z-index: 5; min-width: 480px; max-width: 480px; white-space: normal; letter-spacing: 0px; color:#FFF">Appropriately provide access to front-end potentialities via synergistic experiences. Competently maximize open-source imperatives after corporate systems.</p>
 
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption tp-resizeme rs-parallaxlevel-1" id="slide-100-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['0','0','0','0']" data-width="full-proportional"
-                            data-height="full-proportional" data-whitespace="nowrap" data-type="image" data-basealign="slide" data-responsive_offset="on" data-frames='[{"delay":500,"speed":2000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                            <img src="{{ asset('/images/icon_menu/anhnen5.png') }}" class="rs-looped rs-wave" data-speed="3" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['full-proportional','full-proportional','full-proportional','full-proportional']"
-                                data-hh="['full-proportional','full-proportional','full-proportional','full-proportional']" width="1920" height="1080" data-no-retina>
-                        </div>
-
-                        <!-- LAYER NR. 4 -->
-                        <div class="tp-caption tp-resizeme rs-parallaxlevel-1" id="slide-100-layer-4" data-x="['left','left','center','center']" data-hoffset="['0','70','0','0']" data-y="['top','top','top','top']" data-voffset="['475','400','390','240']" data-fontsize="['17','17','16','15']"
-                            data-lineheight="['28','28','28','28']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-frames='[{"delay":850,"speed":2000,"frame":"0","from":"sX:1.1;sY:1.1;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
-                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6; white-space: nowrap; font-size: 22px; line-height: 28px; font-weight: 400; color:#5f5f5f;font-family: 'Poppins', sans-serif;">
-                            <img src="{{ asset('/images/icon_menu/khuyenmai.png') }}" class="rs-looped rs-wave" data-speed="3" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['500px','356px','356px','400px']" data-hh="['70px','50px','50px','56px']"
-                                width="500" height="70" data-no-retina>
-                        </div>
-
-                        <!-- LAYER NR. 5 -->
-                        <div class="tp-caption tp-resizeme rs-parallaxlevel-4" id="slide-100-layer-5" data-x="['right','right','center','center']" data-hoffset="['-350','-200','0','0']" data-y="['top','top','top','bottom']" data-voffset="['100','100','500','-150']" data-width="none"
-                            data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":250,"speed":5000,"frame":"0","from":"y:100px;rZ:15deg;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
-                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                            <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/slide9.png" class="rs-looped rs-wave" data-speed="5" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['1012px','700px','700px','600px']" data-hh="['859px','594px','594px','509px']"
-                                width="988" height="731" data-no-retina>
-                        </div>
+                        <!-- LAYER NR. 3 -->
+                        <!--<div class="tp-caption" id="slide-7-layer-12" data-x="['right','right','middle','middle']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','-70','-10']" data-width="auto" data-height="auto" data-whitespace="normal"
+                            data-type="image" data-responsive_offset="on" data-frames='[{"delay":1500,"speed":1500,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.8;sY:0.8;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6;">
+                            <div class="rs-looped rs-rotate" data-easing="Linear.easeNone" data-startdeg="0" data-enddeg="180" data-speed="40" data-origin="50% 50%"><img src="{{ asset('/images/icon_menu/anh_nen_login.jpg') }}" alt="Image" data-ww="['530px','400px','200px','200px']" data-hh="['530px','400px','200px','200px']" data-lazyload="{{ asset('/images/icon_menu/anh_nen_login.jpg') }}"
+                                    data-no-retina> </div>
+                        </div>-->
 
                         <!-- LAYER NR. 6 -->
-                        <!--<div class="tp-caption tp-resizeme rs-parallaxlevel-2" id="slide-100-layer-6" data-x="['right','right','center','center']" data-hoffset="['-350','-200','0','0']" data-y="['top','top','top','bottom']" data-voffset="['100','100','500','-150']" data-width="none"
-                            data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":250,"speed":5000,"frame":"0","from":"y:100px;rZ:15deg;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
-                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                            <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/slide6.png" class="rs-looped rs-wave" data-speed="2" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['1012px','700px','700px','600px']" data-hh="['859px','594px','594px','509px']"
-                                width="988" height="731" data-no-retina>
-                        </div>-->
+                        <div class="tp-caption  " id="slide-7-layer-20" data-x="['left','left','middle','middle']" data-hoffset="['0','30','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','90','130']" data-width="auto" data-fontsize="['20','18','20','20']"
+                            data-height="auto" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-frames='[{"delay":2600,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 14; white-space: nowrap; font-size: 20px; line-height: 22px; font-weight: 400; color: #ffffff; letter-spacing: 0px;"><span class="me-3"><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star2"></i></span> <strong>4.0 </strong><span style="font-weight: 300">(2,123 Reviews)</span>
+                        </div>
 
-                        <!-- LAYER NR. 7 -->
-                        <!--<div class="tp-caption tp-resizeme rs-parallaxlevel-3" id="slide-100-layer-7" data-x="['right','right','center','center']" data-hoffset="['-350','-200','0','0']" data-y="['top','top','top','bottom']" data-voffset="['100','100','500','-150']" data-width="none"
-                            data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":250,"speed":5000,"frame":"0","from":"y:100px;rZ:15deg;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
-                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                            <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/slide7.png" class="rs-looped rs-wave" data-speed="8" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['1012px','700px','700px','600px']" data-hh="['859px','594px','594px','509px']"
-                                width="988" height="731" data-no-retina>
-                        </div>-->
 
-                        <!-- LAYER NR. 8 -->
-                        <!--<div class="tp-caption tp-resizeme rs-parallaxlevel-1" id="slide-100-layer-8" data-x="['right','right','center','center']" data-hoffset="['-350','-200','0','0']" data-y="['top','top','top','bottom']" data-voffset="['100','100','500','-150']" data-width="none"
-                            data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames='[{"delay":250,"speed":5000,"frame":"0","from":"y:100px;rZ:15deg;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
-                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                            <img src="https://restroking.dexignzone.com/xhtml/images/main-slider/slide8.png" class="rs-looped rs-wave" data-speed="4" data-angle="0" data-radius="2px" data-origin="50% 50%" alt="" data-ww="['1012px','700px','700px','600px']" data-hh="['859px','594px','594px','509px']"
-                                width="988" height="731" data-no-retina>
-                        </div>-->
-                        <!-- LAYER NR. 10 -->
-                        <!--<div class="tp-caption tp-shape tp-shapewrapper tp-resizeme" id="slide-100-layer-10" data-x="['center','center','center','center']" data-hoffset="['-4','-4','-4','-4']" data-y="['top','top','top','top']" data-voffset="['221','201','301','300']" data-width="['390','390','390','180']"
-                            data-height="2" data-whitespace="nowrap" data-type="shape" data-responsive_offset="on" data-frames='[{"delay":"bytrigger","speed":500,"frame":"0","from":"sX:0;opacity:1;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"bytrigger","speed":300,"frame":"999","to":"sX:0;opacity:1;","ease":"Power3.easeInOut"}]'
-                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-lasttriggerstate="reset" style="z-index: 13;background-color:rgba(255,255,255,1);"></div>-->
+
+                        <a class="tp-caption rev-btn button button-large m-0 button-white fw-bold button-circle button-light" href="demos/recipes/recipe-single.html" target="_blank" id="slide-7-layer-13" data-x="['left','left','middle','middle']" data-hoffset="['0','30','0','0']"
+                            data-y="['middle','middle','bottom','bottom']" data-voffset="['200','200','30','0']" data-textAlign="['center','center','center','center']" data-width="200" data-height="auto" data-type="button" data-actions='' data-responsive_offset="off" data-responsive="off" data-fontsize="['17', '17', '15', '15']"
+                            data-lineheight="['40', '40', '30', '30']" data-frames='[{"delay":3000,"speed":1600,"frame":"0","from":"x:50px;z:0;rX:0;rY:0;rZ:0;sX:1.1;sY:1.1;skX:0;skY:0;opacity:0;fbr:100;","bgcolor":"#FFF","to":"o:1;fbr:100;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","bgcolor":"#FFF","to":"opacity:0;fbr:100;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"150","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;fbr:90%;","style":"c:#fff;"}]'
+                            style="z-index: 9; background-color: #0b2d25; padding: 4px 28px; color:#fff; text-align: center;"><span>View Recipe</span> <i class="icon-angle-right"></i>
+								</a>
                     </li>
+                    <!-- SLIDE  -->
                 </ul>
-                <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+                <div class="tp-bannertimer" style="height: 6px; background: rgba(255,255,255,0.15);"></div>
             </div>
         </div>
         <!-- END REVOLUTION SLIDER -->
