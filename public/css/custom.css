@@ -883,3 +883,14 @@ button.btn_store_submit.js-add-cart:hover {
     border: none!important;
     outline: none!important;
 } */
+.red-text{
+    color: red!important;
+}
+.w-70{
+    width: 70%;
+}
+#method_shpping{
+    width: 90%;
+    height: 50px;
+    border: 1px solid;
+}

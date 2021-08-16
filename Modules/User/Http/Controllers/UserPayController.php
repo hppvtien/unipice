@@ -37,6 +37,48 @@ class UserPayController extends UserController
         // dd($viewData);
         return view('user::pages.pay.index', $viewData);
     }
+    public function getFeeShipGHN(Request $request)
+    {
+        // dd($request->all());
+        // $method_ship = $request->method_ship;
+        $listCarts = \Cart::content();
+        $ward_code_to = $request->to_ward_code;
+        $district_id_to = (int)$request->to_district_id;
+        // $province_id_to = (int)$request->province_code_to;
+
+        $data_string = array(
+            "from_district_id"=> 1726,
+            "service_id"=> 53320,
+            "service_type_id"=> null,
+            "to_district_id"=> $district_id_to,
+            "to_ward_code"=> $ward_code_to,
+            "height"=> 12,
+            "length"=> 12,
+            "weight"=> 200,
+            "width"=> 8,
+            "insurance_fee"=> 0,
+            "coupon"=> null
+        );
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST=> "POST",
+            CURLOPT_POSTFIELDS=> json_encode($data_string),
+            CURLOPT_HTTPHEADER => array(
+                'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                    'Content-Type: application/json',
+                    'ShopId: 1925108',
+                    'Content-Type: text/plain'
+            ),
+        ));
+        $response = json_decode(curl_exec($curl));
+        curl_close($curl);
+        return $response;
+
+        // $shop
+    }
     public function getFeeShip(Request $request)
     {
         $method_ship = $request->method_ship;
@@ -185,7 +227,7 @@ class UserPayController extends UserController
                     "insurance_value": 1000000,
                     "service_id": 53320,
                     "service_type_id":2,
-                    "order_value":,
+                    "order_value":0,
                     "coupon":null,
                     "pick_shift":[2],
                     "items": ' . json_encode($data_item) . '
@@ -204,44 +246,12 @@ class UserPayController extends UserController
                     )
                 );
                 $result_cr = json_decode(curl_exec($curl_creat_));
-                return $result_cr;
                 $order_new = Uni_Order::find($idOrder);
                 $order_code['order_code'] = $result_cr->data->order_code;
                 $order_new->fill($order_code)->save();
                 curl_close($curl);
             } elseif ($method_ship == 2) {
-                // $curl_from = curl_init();
-
-                // curl_setopt_array($curl_from, array(
-                //     CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/list_pick_add",
-                //     CURLOPT_RETURNTRANSFER => true,
-                //     CURLOPT_CUSTOMREQUEST => "GET",
-                //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                //     CURLOPT_HTTPHEADER => array(
-                //         "Token: AbBDa3930B238e6a0686A8E96c0A6ACff7724D27",
-                //     ),
-                // ));
-
-                // $response_from = json_decode(curl_exec($curl_from));
-                // $data_address4 = array(
-                //     "province" => "Hải Phòng",
-                //     "district" => "Huyện Thủy Nguyên",
-                //     "ward_street" => "Thị Trấn Núi Đèo",
-                //     "address" => "",
-                // );
-                // $curl_address4 = curl_init();
-                
-                // curl_setopt_array($curl_address4, array(
-                //     CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/address/getAddressLevel4?" . http_build_query($data_address4),
-                //     CURLOPT_RETURNTRANSFER => true,
-                //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                //     CURLOPT_HTTPHEADER => array(
-                //         "Token: AbBDa3930B238e6a0686A8E96c0A6ACff7724D27",
-                //     ),
-                // ));
-                
-                // $response_address4 = json_decode(curl_exec($curl_address4));
-                // dd($data_item_ghtk);
+               
                 $order_ghtk = '{
                     "products": ' . json_encode($data_item_ghtk) . ',
                     "order": {
