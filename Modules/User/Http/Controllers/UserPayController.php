@@ -39,37 +39,46 @@ class UserPayController extends UserController
     }
     public function getFeeShip(Request $request)
     {
-        $mehod_ship = $request->mehod_ship;
-        if ($mehod_ship) {
-            $data_string = json_encode(array("offset" => 0, "limit" => 50, "client_phone" => ""));
-            $curl = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shop/all');
+        $method_ship = $request->method_ship;
+        $listCarts = \Cart::content();
+        $ward_code_to = str_replace("'", "", $request->ward_code_to);
+        $district_id_to = str_replace("'", "", $request->district_id_to);
+        $province_id_to = str_replace("'", "", $request->province_code_to);
 
-            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt(
-                $curl,
-                CURLOPT_HTTPHEADER,
-                array(
-                    'Content-Type: application/json',
-                    'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf'
-                )
-            );
-            $result = json_decode(curl_exec($curl));
-            $dataShops = $result->data->shops[0];
-        }
+        $data_string = array(
+            "address" => "P.503 tòa nhà Auu Việt, số 1 Lê Đức Thọ",
+            "province" => $province_id_to,
+            "district" => $district_id_to,
+            "pick_province" => $province_id_to,
+            "pick_district" => $ward_code_to,
+            "weight" => 1000,
+            "value" => (int)\Cart::total() * 1000,
+            "tags"  => [1]
+        );
+        // dd($data_string);
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/fee?" . http_build_query($data_string),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_HTTPHEADER => array(
+                "Token: AbBDa3930B238e6a0686A8E96c0A6ACff7724D27",
+                'Content-Type: application/json',
+                'Content-Type: text/plain'
+            ),
+        ));
+        $response = json_decode(curl_exec($curl));
+        curl_close($curl);
+        return $response;
 
         // $shop
-        curl_close($curl);
-        return $mehod_ship;
     }
     public function getPaySuccsess(Request $request)
     {
         // dd($request->all());
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
-        // dd($listCarts);
-        // $data_items =[];
         foreach (json_decode($listCarts) as $key => $item) {
             $data_item[] = json_decode(
                 '{
@@ -80,7 +89,15 @@ class UserPayController extends UserController
                 "length": 12,
                 "width": 12,
                 "height": 12,
-                "category": { "level1":"Áo" }
+                "category": { "level1":"Gia vị" }
+            }'
+            );
+            $data_item_ghtk[] = json_decode(
+                '{
+                "name":"' . $item->name . '",
+                "product_code":"' . $item->id . '",
+                "quantity": ' . $item->qty . ',
+                "weight": 0.1
             }'
             );
         };
@@ -119,6 +136,8 @@ class UserPayController extends UserController
         ];
         // dd($order_data);
         $idOrder = Uni_Order::insertGetId($order_data);
+        $order_data_sucsses = Uni_Order::where('id', $idOrder)->where('user_id', get_data_user('web'))->first();
+        // dd($order_data_sucsses);
         // \Cart::destroy();
         if ($idOrder) {
             if ($method_ship == 1) {
@@ -159,11 +178,11 @@ class UserPayController extends UserController
                     "content": "Theo New York Times",
                     "weight": 200,
                     "length": 1,
-                    "width": 19,
-                    "height": 10,
+                    "width": 8,
+                    "height": 12,
                     "pick_station_id": 1444,
                     "deliver_station_id": null,
-                    "insurance_value": 10000000,
+                    "insurance_value": 1000000,
                     "service_id": 53320,
                     "service_type_id":2,
                     "order_value":,
@@ -185,12 +204,93 @@ class UserPayController extends UserController
                     )
                 );
                 $result_cr = json_decode(curl_exec($curl_creat_));
+                return $result_cr;
                 $order_new = Uni_Order::find($idOrder);
                 $order_code['order_code'] = $result_cr->data->order_code;
                 $order_new->fill($order_code)->save();
                 curl_close($curl);
+            } elseif ($method_ship == 2) {
+                // $curl_from = curl_init();
+
+                // curl_setopt_array($curl_from, array(
+                //     CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/list_pick_add",
+                //     CURLOPT_RETURNTRANSFER => true,
+                //     CURLOPT_CUSTOMREQUEST => "GET",
+                //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                //     CURLOPT_HTTPHEADER => array(
+                //         "Token: AbBDa3930B238e6a0686A8E96c0A6ACff7724D27",
+                //     ),
+                // ));
+
+                // $response_from = json_decode(curl_exec($curl_from));
+                // $data_address4 = array(
+                //     "province" => "Hải Phòng",
+                //     "district" => "Huyện Thủy Nguyên",
+                //     "ward_street" => "Thị Trấn Núi Đèo",
+                //     "address" => "",
+                // );
+                // $curl_address4 = curl_init();
+                
+                // curl_setopt_array($curl_address4, array(
+                //     CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/address/getAddressLevel4?" . http_build_query($data_address4),
+                //     CURLOPT_RETURNTRANSFER => true,
+                //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                //     CURLOPT_HTTPHEADER => array(
+                //         "Token: AbBDa3930B238e6a0686A8E96c0A6ACff7724D27",
+                //     ),
+                // ));
+                
+                // $response_address4 = json_decode(curl_exec($curl_address4));
+                // dd($data_item_ghtk);
+                $order_ghtk = '{
+                    "products": ' . json_encode($data_item_ghtk) . ',
+                    "order": {
+                        "id": "' . $idOrder . '",
+                        "pick_name": "Đai Nguyễn",
+                        "pick_address": "22 Phố Mới Thủy Sơn",
+                        "pick_province": "Hải Phòng",
+                        "pick_district": "Thủy Nguyên",
+                        "pick_ward": "Thị trấn Núi Đèo",
+                        "pick_tel": "0356105488",
+                        "tel": "' . $order_data_sucsses->phone . '",
+                        "name": "' . $order_data_sucsses->customer_name . '",
+                        "address": "' . $order_data_sucsses->address . '",
+                        "province": "'.$request->province_name_to.'",
+                        "district": "'.$request->district_id_to.'",
+                        "ward": "'.$request->ward_code_to.'",
+                        "hamlet": "Khác",
+                        "is_freeship": "1",
+                        "pick_date": "2016-09-30",
+                        "pick_money": 47000,
+                        "note": "Khối lượng tính cước tối đa: 1.00 kg",
+                        "value": 3000000,
+                        "transport": "fly",
+                        "pick_option":"cod",      
+                        "deliver_option" : "xteam",  
+                        "pick_session" : 2,
+                        "tags": [ 1]
+                    }
+                }';
+                $curl_ghtk = curl_init();
+
+                curl_setopt_array($curl_ghtk, array(
+                    CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/order",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => $order_ghtk,
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: application/json",
+                        "Token: AbBDa3930B238e6a0686A8E96c0A6ACff7724D27",
+                        "Content-Length: " . strlen($order_ghtk),
+                    ),
+                ));
+
+                $response_ghtk = curl_exec($curl_ghtk);
+                dd(json_decode($response_ghtk));
+                curl_close($curl_ghtk);
             }
-           
+
             $order_data_sucsses = Uni_Order::where('id', $idOrder)->where('user_id', get_data_user('web'))->first();
             if ($order_data_sucsses->type_pay == 4) {
                 $url = '/thanh-toan-vnpay/' . $idOrder;
@@ -207,7 +307,7 @@ class UserPayController extends UserController
     public function getSuccsess(Request $request, $id)
     {
         $order = Uni_Order::find($id);
-        \Cart::destroy();  
+        \Cart::destroy();
         return view('user::pages.pay.succsess', compact('order'));
     }
     public function check_vouchers(Request $request)
