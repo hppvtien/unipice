@@ -3,6 +3,9 @@
 use App\Models\Uni_Contact;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,5 +69,5 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::post('bai-viet/{slug}/add_comment_post', 'BlogHomeController@add_comment_post')->name('get_blog.add_comment_post');
     Route::get('danh-muc-bai-viet/{slug}', 'BlogHomeController@SingleCat')->name('get_blog.single_cat');
     
-
+    Route::get('sitemap','SitemapController@sitemap')->name('get_site_map');
 });
