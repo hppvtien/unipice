@@ -4,8 +4,15 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
 use App\Models\Page;
 use App\Models\Content_Page;
+use App\Models\User;
+use Mail;
+use Carbon\Carbon;
+use App\Mail\EmailVerificationMail;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class SpiceClubController extends Controller
 {
@@ -41,5 +48,56 @@ class SpiceClubController extends Controller
             'content_page_9' => $content_page_9,
         ];
         return view('pages.spiceclub.index', $viewdata);
+    }
+    function spiceclub(){
+        \SEOMeta::setTitle('Đăng ký');
+        return view('pages.register_spice_club.index');
+    }
+    function registerspiceclub(RegisterRequest $request){
+        if ($request->ajax()) {
+            $code =  200;
+            try {
+                $data               = $request->except('_token', 'remember', 'code_verication','password_confirmation');
+
+                $data['created_at'] = Carbon::now();
+                $data['password'] = bcrypt($request->password);
+                $data['provider'] = 'register';
+                $data['avatar_social'] = '';
+                $data['provider_id']  = 0;
+                $data['code_verication']  = Str::random(40);
+                $data['type']  = 2;
+
+                $user = User::insertGetId($data);
+
+                if ($user) {
+                     Mail::to($data['email'])->send(new EmailVerificationMail($data));
+                    return response([
+                        'status'     => 200,
+                        'message' => "Xác nhận Email của bạn để hoàn tất đăng ký!"
+                    ]);
+                }
+            } catch (\Exception $exception) {
+                $code = 501;
+                Log::error("[Register]: " . $exception->getMessage());
+            }
+            return response()->json([
+                'code'     => $code,
+            ]);
+        }
+    }
+    function update_spiceclub(Request $request, $id){
+        $data = $request->except('_token');
+        $users = User::find($id)->update($data);
+        if ($users) {
+        $this->showMessagesSuccess('Hãy nạp tiền để hoàn tất đăng ký');
+        return redirect()->route('get_user.dashboard');
+        }
+    }
+    public function showMessagesSuccess($message)
+    {
+        return \Session::flash('toastr', [
+            'type' => 'success',
+            'message' => $message
+        ]);
     }
 }

@@ -38,14 +38,7 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
         Route::post('{id}/{type}/add', 'UserFavouriteController@processFavourite')->name('get_user.favourite.add');
     });
 
-    Route::prefix('jobs')->group(function (){
-        Route::get('/', 'UserJobsController@index')->name('get_user.jobs');
-        Route::get('/addjob', 'UserJobsController@create')->name('get_user.addjobs');
-        Route::post('/addjob', 'UserJobsController@addJobs');
-        Route::get('/editjob/{id}', 'UserJobsController@edit')->name('get_user.editJobs');
-        Route::post('/editjob/{id}', 'UserJobsController@update');
-        Route::get('/{id}', 'UserJobsController@delete')->name('get_user.delete');
-    });
+    Route::post('/recharge', 'UserInfoController@storeUpdate')->name('get.Recharge');
 });
 
 Route::middleware('checkLoginUser')->group(function() {

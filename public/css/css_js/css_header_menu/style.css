@@ -1113,7 +1113,7 @@ button.menu-toggle .close-icon {
 
 .main-navigation ul li:hover>a,
 .main-navigation ul li.focus>a {
-    color: #e6e6e6;
+    color: #ea7236;
 }
 
 @media (min-width: 768px) {
@@ -1230,8 +1230,8 @@ button.menu-toggle .close-icon {
     .secondary-navigation ul.menu>li>a:focus,
     .secondary-navigation ul.nav-menu>li>a:hover,
     .secondary-navigation ul.nav-menu>li>a:focus {
-        color: #fff;
-        text-shadow: 0 0 .65px #fff, 0 0 .65px #fff;
+        color: #ea7236;
+        /*text-shadow: 0 0 .65px #fff, 0 0 .65px #fff;*/
     }
     .secondary-navigation ul.menu>li+li,
     .secondary-navigation ul.nav-menu>li+li {
@@ -2235,7 +2235,7 @@ p {
 }
 
 .footer-widget a:hover {
-    color: #fff;
+    color: #ea7236;
 }
 
 .footer-widget:after {
@@ -2348,7 +2348,7 @@ Contact
 }
 
 .copyright a:hover {
-    color: #0b2d25;
+    color: #ea7236;
 }
 
 .copyright-menu ul {

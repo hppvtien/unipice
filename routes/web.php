@@ -3,6 +3,9 @@
 use App\Models\Uni_Contact;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +31,9 @@ Route::group(['namespace' => 'Frontend'], function (){
 
     Route::get('/dang-nhap','LoginController@index')->name('get.login');
     Route::post('/dang-nhap','LoginController@login')->name('post.login');
+    Route::get('/dang-ky-spice-club','SpiceClubController@spiceclub')->name('get.register.spiceclub');
+    Route::post('/dang-ky-spice-club','SpiceClubController@registerspiceclub')->name('post.register.spiceclub');
+    Route::post('/dang-ky-spice-club/edit/{id}', 'SpiceClubController@update_spiceclub')->name('post_edit_user.register.spiceclub');
     Route::get('/b2b','RegisterController@indexb2b')->name('get.register.b2b');
     Route::post('/b2b','RegisterController@registerb2b')->name('post.register.b2b');
     Route::get('/dang-ky','RegisterController@index')->name('get.register');
@@ -63,5 +69,5 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::post('bai-viet/{slug}/add_comment_post', 'BlogHomeController@add_comment_post')->name('get_blog.add_comment_post');
     Route::get('danh-muc-bai-viet/{slug}', 'BlogHomeController@SingleCat')->name('get_blog.single_cat');
     
-
+    Route::get('sitemap','SitemapController@sitemap')->name('get_site_map');
 });
