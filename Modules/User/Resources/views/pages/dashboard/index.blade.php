@@ -61,7 +61,7 @@
                             <span class="text-strong gd-danger">Vui lòng nạp tiền, Để hoàn tất thủ tục đăng ký</span> <br>
                         </div>
                         <div class="box-actions">
-                            <a class="action edit a-anchor" href="{{ route('get.Recharge') }}"><span>Nạp tiền</span></a>
+                            <a class="action edit a-anchor" href="{{ route('get.recharge') }}"><span>Nạp tiền</span></a>
                         </div>
                     </div>
                     @endif

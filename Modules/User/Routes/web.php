@@ -38,7 +38,8 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
         Route::post('{id}/{type}/add', 'UserFavouriteController@processFavourite')->name('get_user.favourite.add');
     });
 
-    Route::post('/recharge', 'UserInfoController@storeUpdate')->name('get.Recharge');
+    Route::get('/recharge', 'RechargeController@index')->name('get.recharge');
+    Route::post('thanh-toan-nap.html', 'RechargeController@getPayNap')->name('get_user.pay.nap');
 });
 
 Route::middleware('checkLoginUser')->group(function() {
