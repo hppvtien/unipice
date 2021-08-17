@@ -28,6 +28,9 @@ Route::group(['namespace' => 'Frontend'], function (){
 
     Route::get('/dang-nhap','LoginController@index')->name('get.login');
     Route::post('/dang-nhap','LoginController@login')->name('post.login');
+    Route::get('/dang-ky-spice-club','SpiceClubController@spiceclub')->name('get.register.spiceclub');
+    Route::post('/dang-ky-spice-club','SpiceClubController@registerspiceclub')->name('post.register.spiceclub');
+    Route::post('/dang-ky-spice-club/edit/{id}', 'SpiceClubController@update_spiceclub')->name('post_edit_user.register.spiceclub');
     Route::get('/b2b','RegisterController@indexb2b')->name('get.register.b2b');
     Route::post('/b2b','RegisterController@registerb2b')->name('post.register.b2b');
     Route::get('/dang-ky','RegisterController@index')->name('get.register');
