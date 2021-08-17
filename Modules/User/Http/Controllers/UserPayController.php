@@ -88,13 +88,16 @@ class UserPayController extends UserController
         $province_id_to = str_replace("'", "", $request->province_code_to);
 
         $data_string = array(
-            "address" => "P.503 tòa nhà Auu Việt, số 1 Lê Đức Thọ",
-            "province" => $province_id_to,
-            "district" => $district_id_to,
             "pick_province" => $province_id_to,
             "pick_district" => $ward_code_to,
+            "pick_address_id"=>"14416997",
+            "province" => $province_id_to,
+            "district" => $district_id_to,
+            "address" => "Thôn 6, Xã Thiên Hương, Huyện Thủy Nguyên, Hải Phòng",
             "weight" => 1000,
-            "value" => (int)\Cart::total() * 1000,
+            "value" => 1000000,
+            "transport" => "fly",
+            "deliver_option" => "xteam",
             "tags"  => [1]
         );
         // dd($data_string);
@@ -105,12 +108,10 @@ class UserPayController extends UserController
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_HTTPHEADER => array(
-                "Token: AbBDa3930B238e6a0686A8E96c0A6ACff7724D27",
-                'Content-Type: application/json',
-                'Content-Type: text/plain'
+                "Token: AbBDa3930B238e6a0686A8E96c0A6ACff7724D27"
             ),
         ));
-        $response = json_decode(curl_exec($curl));
+        $response = curl_exec($curl);
         curl_close($curl);
         return $response;
 
@@ -118,7 +119,6 @@ class UserPayController extends UserController
     }
     public function getPaySuccsess(Request $request)
     {
-        // dd($request->all());
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
         foreach (json_decode($listCarts) as $key => $item) {
@@ -147,8 +147,7 @@ class UserPayController extends UserController
         $ward_code_to = $request->ward_code_to;
         $district_id_to = (int)$request->district_id_to;
         // dd($data_item);
-
-        $total_ship = (int)$request->fee_ship;
+        $total_ship = (int)str_replace(".","",str_replace(" VND","",$request->fee_ship));
         foreach (json_decode($listCarts) as $item) {
             if ($item->options->sale == 'combo') {
                 $combo_id = $item->id;
@@ -163,29 +162,26 @@ class UserPayController extends UserController
             'customer_name' => $request->customer_name,
             'email' => $request->email,
             'address' => $request->address,
+            'method_ship' => $method_ship,
             'phone' => $request->phone,
             'taxcode' => $request->taxcode,
             'type_pay' => $request->type_pay,
             'cart_info' => $listCarts,
             'combo_id' => $combo_id,
-            'status' => 1,
-            'total_money' => \Cart::total(0, 0, '.'),
-            'total_vat' => \Cart::tax(0, 0, '.'),
-            'total_no_vat' => \Cart::subtotal(0, 0, '.'),
+            'status' => 0,
+            'total_money' => (int)str_replace(".","",\Cart::total(0, 0, '.')),
+            'total_vat' => (int)str_replace(".","",\Cart::tax(0, 0, '.')),
+            'total_no_vat' => (int)str_replace(".","",\Cart::subtotal(0, 0, '.')),
             'total_ship' => $total_ship,
             'created_at' => Carbon::now(),
 
         ];
-        // dd($order_data);
         $idOrder = Uni_Order::insertGetId($order_data);
         $order_data_sucsses = Uni_Order::where('id', $idOrder)->where('user_id', get_data_user('web'))->first();
-        // dd($order_data_sucsses);
-        // \Cart::destroy();
         if ($idOrder) {
             if ($method_ship == 1) {
                 $data_string = json_encode(array("offset" => 1, "limit" => 50, "client_phone" => ""));
                 $curl = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shop/all');
-
                 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -198,11 +194,10 @@ class UserPayController extends UserController
                     )
                 );
                 $result = json_decode(curl_exec($curl));
-                // dd($result);
                 $dataShops = $result->data->shops[1];
                 $ward_code_from = $dataShops->ward_code;
                 $district_id_from = $dataShops->district_id;
-                $data_creatorder = '{
+                $order_ship['ship_info'] = '{
                     "payment_type_id": 2,
                     "note": "Tintest 123",
                     "required_note": "KHONGCHOXEMHANG",
@@ -232,27 +227,11 @@ class UserPayController extends UserController
                     "pick_shift":[2],
                     "items": ' . json_encode($data_item) . '
                     }';
-                $curl_creat_ = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create');
-                curl_setopt($curl_creat_, CURLOPT_CUSTOMREQUEST, "POST");
-                curl_setopt($curl_creat_, CURLOPT_POSTFIELDS, $data_creatorder);
-                curl_setopt($curl_creat_, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt(
-                    $curl_creat_,
-                    CURLOPT_HTTPHEADER,
-                    array(
-                        'Content-Type: application/json',
-                        'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
-                        'ShopId: 1925108'
-                    )
-                );
-                $result_cr = json_decode(curl_exec($curl_creat_));
                 $order_new = Uni_Order::find($idOrder);
-                $order_code['order_code'] = $result_cr->data->order_code;
-                $order_new->fill($order_code)->save();
+                $order_new->fill($order_ship)->save();
                 curl_close($curl);
             } elseif ($method_ship == 2) {
-               
-                $order_ghtk = '{
+                $order_ghtk['ship_info'] = '{
                     "products": ' . json_encode($data_item_ghtk) . ',
                     "order": {
                         "id": "' . $idOrder . '",
@@ -281,24 +260,11 @@ class UserPayController extends UserController
                         "tags": [ 1]
                     }
                 }';
-                $curl_ghtk = curl_init();
-
-                curl_setopt_array($curl_ghtk, array(
-                    CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/order",
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                    CURLOPT_CUSTOMREQUEST => "POST",
-                    CURLOPT_POSTFIELDS => $order_ghtk,
-                    CURLOPT_HTTPHEADER => array(
-                        "Content-Type: application/json",
-                        "Token: AbBDa3930B238e6a0686A8E96c0A6ACff7724D27",
-                        "Content-Length: " . strlen($order_ghtk),
-                    ),
-                ));
-
-                $response_ghtk = curl_exec($curl_ghtk);
-                dd(json_decode($response_ghtk));
-                curl_close($curl_ghtk);
+                
+                $order_new = Uni_Order::find($idOrder);
+                
+                $order_new->fill($order_ghtk)->save();
+                
             }
 
             $order_data_sucsses = Uni_Order::where('id', $idOrder)->where('user_id', get_data_user('web'))->first();
@@ -440,7 +406,7 @@ class UserPayController extends UserController
             };
             $data['status'] = 1;
             $order->fill($data)->save();
-            $message = 'Cám ơn quý khách đã tin tưởng và ủng hộ chúng tao !!!';
+            $message = 'Cám ơn quý khách đã tin tưởng và ủng hộ chúng tôi !!!';
             return view('user::pages.pay.finish_pay', compact('message'));
         } else {
             $data['status'] = 0;
@@ -564,7 +530,7 @@ class UserPayController extends UserController
                         $product['qty'] = $uni_product->qty - $items->qty;
                         $uni_product->fill($product)->save();
                     };
-                    $message = 'Cám ơn quý khách đã tin tưởng và ủng hộ chúng tao !!!';
+                    $message = 'Cám ơn quý khách đã tin tưởng và ủng hộ chúng tôi !!!';
                     return view('user::pages.pay.finish_pay', compact('message'));
                 } else {
                     $result = '<div class="alert alert-danger"><strong>Payment status: </strong>' . $message . '/' . $localMessage . '</div>';

@@ -3,6 +3,9 @@
 use App\Models\Uni_Contact;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +55,8 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::get('faq','FaqsController@index')->name('get.faq');
     Route::get('cua-hang','FindStoreController@index')->name('get.find');
     Route::post('cua-hang','FindStoreController@searchName');
+    Route::get('khuyen-mai','FlashSaleController@index')->name('get.flashsale');
+    Route::get('khuyen-mai/{slug}','FlashSaleController@singleFlashSale')->name('get.flashsale.single');
     Route::get('member','MembershipController@index')->name('get.membership');
     Route::get('san-pham/{slug}','ProductController@index')->name('get.product');
     Route::post('san-pham/{slug}/thembinhluan','ProductController@thembinhluan')->name('get.product_comment');
@@ -66,5 +71,5 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::post('bai-viet/{slug}/add_comment_post', 'BlogHomeController@add_comment_post')->name('get_blog.add_comment_post');
     Route::get('danh-muc-bai-viet/{slug}', 'BlogHomeController@SingleCat')->name('get_blog.single_cat');
     
-
+    Route::get('sitemap','SitemapController@sitemap')->name('get_site_map');
 });

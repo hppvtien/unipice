@@ -224,7 +224,7 @@ $("#pay_success").on("click", function () {
         district_id_to = $('#district').find(":selected").attr('data-district');
     }
     let province_name_to = $('#province').find(":selected").text();
-    let fee_ship = $('#fee_ship').text();
+    let fee_ship = $('#fee-ship').text();
     var taxcode = $("input[name='taxcode']").val();
     var code_invoice = $("input[name='code_invoice']").val();
     var vouchers = $("input[name='vouchers']").val();
@@ -234,7 +234,6 @@ $("#pay_success").on("click", function () {
     var address = $("input[name='address']").val();
     var type_pay = $("input[name='type_pay']:checked").val();
     var vouchers = $("input[name='vouchers']").val();
-
     if (method_ship == 4) {
         $("#toast-container").html(
             ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn phương thức vận chuyển</div></div>'),
@@ -499,6 +498,8 @@ function chanFunctionMethodTran() {
     $('#district').prop('selectedIndex', 0);
     $('#ward').prop('selectedIndex', 0);
     $('#fee_ship').html('');
+    $('#total-ship').html('')
+    $('#total-all').html('')
 }
 document.addEventListener("DOMContentLoaded", function() {
     var province = document.getElementById("province");
@@ -573,6 +574,9 @@ function chanFunctionWard() {
     let to_ward_code = $("#ward").find(":selected").attr('data-ward');
     let method_ship = $('#method_shpping').find(":selected").val();
     let url_ship = $('#method_shpping').find(":selected").attr('data-url');
+    let total_cart_string = $('#total-cart').text();
+    let total_cart_noship = parseInt(total_cart_string.replace(" đ", "").replace(".", ""));
+    let total_cart = '';
     if (method_ship == 1) {
         $.ajax({
             url: url_ship,
@@ -584,7 +588,10 @@ function chanFunctionWard() {
             },
             success: function(response) {
                 if (response.code === 200) {
-                    $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span></span>  ' + response.data.total + ' đ</span>');
+                    total_cart = (total_cart_noship + response.data.total).toLocaleString('it-IT', {style : 'currency', currency : 'vnd'});
+                    $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span><span id="fee-ship">  ' + (response.data.total).toLocaleString('it-IT', {style : 'currency', currency : 'vnd'}) + '</span></span>');
+                    $('#total-ship').html('<span class="label">Phí ship: </span><span class="value">' + (response.data.total).toLocaleString('it-IT', {style : 'currency', currency : 'vnd'}) + '</span>');
+                    $('#total-all').html('<span class="label">Tổng đơn hàng + vận chuyển: </span><span class="value">' + total_cart + '</span>');
                 } else {
                     $('#fee_ship').html('<span class="red-text">GHN chưa hỗ trợ hoặc do lý do Covid-19 nên đã dừng vận chuyển đến khu vực này</span>');
                 }
@@ -597,7 +604,7 @@ function chanFunctionWard() {
         let district_name_to = $('#district').find(":selected").text();
         $.ajax({
             url: url_ship,
-            method: "POST",
+            method: "get",
             dataType: 'json',
             data: {
                 method_ship: method_ship,
@@ -607,15 +614,18 @@ function chanFunctionWard() {
 
             },
             success: function(response) {
-                console.log(response.fee.fee);
-                if (response.fee.delivery === false) {
+                console.log(response.fee);
+                if (response.success == false) {
                     $('#fee_ship').html('<span class="red-text"> GHTK chưa hỗ trợ hoặc do lý do Covid-19 nên đã dừng vận chuyển đến khu vực này</span>');
                 } else {
-                    $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span></span>  ' + response.fee.fee + ' đ</span>');
+                    total_cart = (total_cart_noship + response.fee.fee).toLocaleString('it-IT', {style : 'currency', currency : 'vnd'});
+                    $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span><span id="fee-ship">  ' + (response.fee.fee).toLocaleString('it-IT', {style : 'currency', currency : 'vnd'}) + '</span></span>');
+                    $('#total-ship').html('<span class="label">Phí ship: </span><span class="value">' + (response.fee.fee).toLocaleString('it-IT', {style : 'currency', currency : 'vnd'}) + '</span>');
+                    $('#total-all').html('<span class="label">Tổng đơn hàng + vận chuyển: </span><span class="value">' + total_cart + ' đ</span>');
                 }
             },
             error: function(response) {
-                console.log(response.fee.fee);
+                console.log(response.success);
             }
         });
     } else if (method_ship == 4) {
