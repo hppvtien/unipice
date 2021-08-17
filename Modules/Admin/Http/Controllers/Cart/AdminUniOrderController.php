@@ -59,7 +59,7 @@ class AdminUniOrderController extends AdminController
     public function update(Request $request, $id)
     {
         $uni_order = Uni_Order::findOrFail($id);
-        
+
         $data['status'] = $request->status;
         if ($data['status'] == 1) {
             if ($uni_order->method_ship == 1) {
@@ -79,8 +79,8 @@ class AdminUniOrderController extends AdminController
                 $result_cr = json_decode(curl_exec($curl_creat_));
                 $data['order_code'] = $result_cr->data->order_code;
                 curl_close($curl_creat_);
-
             } else if ($uni_order->method_ship == 2) {
+
                 $curl_ghtk = curl_init();
 
                 curl_setopt_array($curl_ghtk, array(
@@ -97,12 +97,48 @@ class AdminUniOrderController extends AdminController
                 ));
 
                 $response_ghtk = json_decode(curl_exec($curl_ghtk));
-                $data['order_code'] = $response_ghtk->data->order_code;
+                $data['order_code'] = $response_ghtk->order->label;
                 curl_close($curl_ghtk);
+            }
+        } else if ($data['status'] == 4) {
+            if ($uni_order->method_ship == 1) {
+                $order_del = '{"order_codes":["'.$uni_order->order_code.'"]}';
+                // dd($order_del);
+                $curl_creat_ = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/switch-status/cancel');
+                curl_setopt($curl_creat_, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($curl_creat_, CURLOPT_POSTFIELDS, $order_del);
+                curl_setopt($curl_creat_, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt(
+                    $curl_creat_,
+                    CURLOPT_HTTPHEADER,
+                    array(
+                        'Content-Type: application/json',
+                        'token: 29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                        'ShopId: 1925108'
+                    )
+                );
+                $result_cr = json_decode(curl_exec($curl_creat_));
+                curl_close($curl_creat_);
+            } else if ($uni_order->method_ship == 2) {
+
+                $curl = curl_init();
+
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/cancel/partner_id:".$id,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_HTTPHEADER => array(
+                        "Token: APITokenSample-ca441e70288cB0515F310742",
+                    ),
+                ));
+
+                $response = curl_exec($curl);
+                curl_close($curl);
             }
         }
         $uni_order->fill($data)->update();
         $this->showMessagesSuccess('Cập nhật thành công');
-        // return redirect()->back();
+        return redirect()->back();
     }
 }

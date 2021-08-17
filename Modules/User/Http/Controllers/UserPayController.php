@@ -90,9 +90,10 @@ class UserPayController extends UserController
         $data_string = array(
             "pick_province" => $province_id_to,
             "pick_district" => $ward_code_to,
+            "pick_address_id"=>"14416997",
             "province" => $province_id_to,
             "district" => $district_id_to,
-            "address" => "",
+            "address" => "Thôn 6, Xã Thiên Hương, Huyện Thủy Nguyên, Hải Phòng",
             "weight" => 1000,
             "value" => 1000000,
             "transport" => "fly",
@@ -111,7 +112,6 @@ class UserPayController extends UserController
             ),
         ));
         $response = curl_exec($curl);
-      dd($response);
         curl_close($curl);
         return $response;
 
@@ -168,7 +168,7 @@ class UserPayController extends UserController
             'type_pay' => $request->type_pay,
             'cart_info' => $listCarts,
             'combo_id' => $combo_id,
-            'status' => 1,
+            'status' => 0,
             'total_money' => (int)str_replace(".","",\Cart::total(0, 0, '.')),
             'total_vat' => (int)str_replace(".","",\Cart::tax(0, 0, '.')),
             'total_no_vat' => (int)str_replace(".","",\Cart::subtotal(0, 0, '.')),
