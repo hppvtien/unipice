@@ -55,6 +55,8 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::get('faq','FaqsController@index')->name('get.faq');
     Route::get('cua-hang','FindStoreController@index')->name('get.find');
     Route::post('cua-hang','FindStoreController@searchName');
+    Route::get('khuyen-mai','FlashSaleController@index')->name('get.flashsale');
+    Route::get('khuyen-mai/{slug}','FlashSaleController@singleFlashSale')->name('get.flashsale.single');
     Route::get('member','MembershipController@index')->name('get.membership');
     Route::get('san-pham/{slug}','ProductController@index')->name('get.product');
     Route::post('san-pham/{slug}/thembinhluan','ProductController@thembinhluan')->name('get.product_comment');
