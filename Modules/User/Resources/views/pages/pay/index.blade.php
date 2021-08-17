@@ -584,8 +584,8 @@
                                             <label class="a-form-label m-text-input__label" for="method_shpping">Phương thức vận chuyển</label>
                                             <select class="custom-select" id="method_shpping" onchange="chanFunctionMethodTran()">
                                                 <option value="4">Chọn phương thức vận chuyển</option>
-                                                <option value="1" data-url="{{ route('get_user.feeship') }}">Giao hàng nhanh</option>
-                                                <option value="2" data-url="{{ route('get_user.feeshipghn') }}">Giao hàng tiết kiệm</option>
+                                                <option value="1" data-url="{{ route('get_user.feeshipghn') }}">Giao hàng nhanh</option>
+                                                <option value="2" data-url="{{ route('get_user.feeship') }}">Giao hàng tiết kiệm</option>
                                             </select>
                                         </div>
                                     </div>
@@ -708,9 +708,23 @@
                                                     </li>
                                                     <li class="product-item">
                                                         <div class="product-item-name-block">
+                                                            <div class="details-qty" id="total-ship">
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="product-item">
+                                                        <div class="product-item-name-block">
                                                             <div class="details-qty">
                                                                 <span class="label">Tổng đơn hàng: </span>
-                                                                <span class="value">{{ \Cart::total(0,0,'.') }} đ</span>
+                                                                <span class="value" id="total-cart"><span>{{ \Cart::total(0,0,'.') }} đ</span></span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="product-item">
+                                                        <div class="product-item-name-block">
+                                                            <div class="details-qty" id="total-all">
+                                                                
                                                             </div>
                                                         </div>
                                                     </li>
@@ -734,9 +748,4 @@
     </div>
 </main>
 <div id="toast-container" class="toast-top-right"></div>
-
-
-<script>
-    
-</script>
 @stop

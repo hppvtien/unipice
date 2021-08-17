@@ -220,11 +220,12 @@
                 </div>
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> FlashSale giành cho <span>(*)</span></label>
+                        <label for="exampleInputEmail1"> Chiến dịch loại <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="is_flash" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                <option title="hide" value="user">Khách mua lẻ</option>
-                                <option title="Public" value="store">Đại lý</option>
+                                <option title="Flashsale" value="flash">Flashsale (Tất cả khách hàng)</option>
+                                <option title="Bulksale" value="bulk">Bulksale (Đại lý)</option>
+                                <option title="Combo" value="combo">Combo (Đại lý)</option>
                             </select>
                         </div>
                     </div>

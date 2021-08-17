@@ -36,7 +36,6 @@ class AdminUniFlashSaleController extends AdminController
 
     public function store(AdminFlashSaleRequest $request)
     {
-      dd($request->all());
         $data                 = $request->except(['thumbnail', 'save', '_token']);
         $data['created_at']   = Carbon::now();
         $product_sale = [];
@@ -68,10 +67,10 @@ class AdminUniFlashSaleController extends AdminController
 
         if ($storeID) {
             $this->showMessagesSuccess();
-            // return redirect()->route('get_admin.uni_flashsale.index');
+            return redirect()->route('get_admin.uni_flashsale.index');
         }
         $this->showMessagesError();
-        // return redirect()->back();
+        return redirect()->back();
     }
     public function edit($id)
     {

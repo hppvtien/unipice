@@ -42,7 +42,7 @@ function execPostRequest($url, $data)
         return $description_string;
     }
        /**
-     * Show the form for editing the specified resource.
+     * get slug category.
      * @param string $tring
      * @return string $slug
      */
@@ -51,20 +51,75 @@ function execPostRequest($url, $data)
         $getSlug = '/san-pham/'.$tring.'.html';
         return $getSlug;
     }
+       /**
+     * get slug product.
+     * @param string $tring
+     * @return string $slug
+     */
     function getSlugProduct($tring)
     {
         $getSlug = '/san-pham/'.$tring;
         return $getSlug;
     }
+        /**
+     * get slug post.
+     * @param string $tring
+     * @return string $slug
+     */
     function getSlugPost($tring)
     {
         $getSlug = '/bai-viet/'.$tring;
         return $getSlug;
     }
+        /**
+     * get slug category post.
+     * @param string $tring
+     * @return string $slug
+     */
     function getSlugPostCate($tring)
     {
         $getSlug = '/danh-muc-bai-viet/'.$tring;
         return $getSlug;
+    }
+        /**
+     * get slug Single flashsale.
+     * @param string $tring
+     * @return string $slug
+     */
+    function getSlugFlashSale($tring)
+    {
+        $getSlug = '/khuyen-mai/'.$tring;
+        return $getSlug;
+    }
+        /**
+     * get Name Product.
+     * @param string $tring
+     * @return string $slug
+     */
+    function getNameProduct($id)
+    {
+        $name_peoduct = App\Models\Uni_Product::where('id',$id)->pluck('name')->first();
+        return $name_peoduct;
+    }
+        /**
+     * get Thumb Product.
+     * @param string $tring
+     * @return string $slug
+     */
+    function getThumbProduct($id)
+    {
+        $thumb_product = App\Models\Uni_Product::where('id',$id)->pluck('thumbnail')->first();
+        return $thumb_product;
+    }
+        /**
+     * get Thumb Product.
+     * @param string $tring
+     * @return string $slug
+     */
+    function getSlugProductById($id)
+    {
+        $slug_product = App\Models\Uni_Product::where('id',$id)->pluck('slug')->first();
+        return $slug_product;
     }
     function checkParent($id)
     {
@@ -131,6 +186,7 @@ function execPostRequest($url, $data)
         $checkUid = App\Models\Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('id')->first();
         return $checkUid;
     }
+ 
     function getNameStore($id){
         $storeName = App\Models\Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('store_name')->first();
         return $storeName;

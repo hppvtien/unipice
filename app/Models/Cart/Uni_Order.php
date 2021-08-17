@@ -30,7 +30,7 @@ class Uni_Order extends Model
             'class' => 'badge-primary'
         ],
         self::STATUS_PROCESS => [
-            'name' => 'Đang xử lý',
+            'name' => 'Kiểm tra và gửi hàng',
             'class' => 'badge-success'
         ],
         self::STATUS_SUCCESS => [

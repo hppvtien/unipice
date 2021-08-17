@@ -542,21 +542,29 @@
                                 <td><a href="javascript:;" data-id-sale="{{ $item['id'] }}" class="ahr-text" onclick="get_product_sale(this);"><span>{{ $item['name'] }}</span></a></td>
                                 <td><span>{{ formatVnd($item['price']) }} </span></td>
                                 <td><span>{{ $item['qty'] }}</span></td>
-                                <td><span>{{ formatVnd($item['subtotal']) }} đ</span></td>
+                                <td><span>{{ formatVnd($item['subtotal']) }}</span></td>
                             </tr>
                             @empty
                             @endforelse
                             <tr>
                                 <td colspan="3">TỔNG TIỀN</td>
-                                <td><span>{{ $order->total_no_vat }} đ</span></td>
+                                <td><span>{{ formatVnd($order->total_no_vat) }} </span></td>
                             </tr>
                             <tr>
                                 <td colspan="3">VAT</td>
-                                <td><span>{{ $order->total_vat }} đ</span></td>
+                                <td><span>{{ formatVnd($order->total_vat) }} </span></td>
                             </tr>
                             <tr>
-                                <td colspan="3">TỔNG Đơn Hàng</td>
-                                <td><span>{{ $order->total_money }} đ</span></td>
+                                <td colspan="3">Phí ship</td>
+                                <td><span>{{ formatVnd($order->total_ship) }}</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Tổng Đơn Hàng</td>
+                                <td><span>{{ formatVnd($order->total_money) }}</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Tổng Đơn Hàng + ship</td>
+                                <td><span>{{ formatVnd($order->total_money + $order->total_ship) }}</span></td>
                             </tr>
                         </tbody>
                     </table>
