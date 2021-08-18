@@ -11,7 +11,7 @@
                 <div class="field _required" >
                     <div class="control _with-tooltip">
                         <div class="m-text-input m-text-input--placeholder-label">
-                            <input class="a-text-input m-text-input__input" type="text" name="price_nap" value="500000" >
+                            <input class="a-text-input m-text-input__input"  type="text" name="price_nap" value="500000" >
                         </div>
                     </div>
                 </div>

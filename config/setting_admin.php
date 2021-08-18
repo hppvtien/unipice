@@ -128,6 +128,20 @@ return [
             ]
         ],
         [
+            'name' => 'Nạp tiền spice club',
+            'class-icon' => 'la la-cart-arrow-down',
+            'sub' => [
+                [
+                    'name' => 'Danh sách',
+                    'route' => 'get_admin.uni_spice_club.index'
+                ],
+                [
+                    'name' => 'Nạp thẻ bị loại',
+                    'route' => 'get_admin.uni_spice_club.trash'
+                ]
+            ]
+        ],
+        [
             'name' => 'Quản lý Page',
             'class-icon' => 'la la-cart-arrow-down',
             'sub' => [
