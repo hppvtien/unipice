@@ -91,7 +91,11 @@ class AdminUniStoreController extends AdminController
 
             $data               = $request->except(['store_thumbnail', 'save', '_token', 'store_album']);
             $data['updated_at'] = Carbon::now();
-            $data['created_by'] = get_data_user('web');
+            if($uni_store->end_date == null){
+                $data['end_date'] = Carbon::now()->subDays(-365);
+            } else {
+                $data['end_date'] = $uni_store->end_date;
+            }
             if ($request->store_album) {
                 $store_album = [];
                 foreach ($request->store_album as $item) {
@@ -117,6 +121,7 @@ class AdminUniStoreController extends AdminController
             $param = [
                 
                 'store_name' => $request->store_name,
+                'end_date' => $data['end_date'],
                 'created_at' => Carbon::now(),
                 'store_area' => $request->store_area,
                 'store_address' => $request->store_address,

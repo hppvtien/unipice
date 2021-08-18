@@ -23,6 +23,8 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Tên cửa hàng</th>
+                                    <th>Cấp bậc</th>
+                                    <th>Tổng điểm</th>
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Action</th>
@@ -38,6 +40,9 @@
                                     @else
                                     <td>Đại lý chưa cập nhật thông tin</td>
                                     @endif
+                                    <td>{{ getTypeStore($item->id) }}</td>
+                                    <td>{{ getPoinStore($item->id) }}</td>
+                                    <td>{{ $item->store_name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>
