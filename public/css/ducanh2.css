@@ -5176,3 +5176,10 @@ td.fc-event-container {
 .item-img img {
     width: 100%;
 }
+
+@media screen and (min-width: 1440px) {
+    video {
+        width: 100%;
+        opacity: 0.6;
+    }
+}

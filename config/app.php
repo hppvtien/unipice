@@ -172,7 +172,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
@@ -238,6 +238,7 @@ return [
         // or
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Pusher' => Pusher\Pusher::class,
     ],
 
 ];

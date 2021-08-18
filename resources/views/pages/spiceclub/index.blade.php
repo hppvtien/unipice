@@ -226,9 +226,10 @@
                                     class="c-page-header c-page-header--centered c-page-header--light">
                                     <picture class="c-page-header__image">
                                         <source media="(min-width: 1024px)"
-                                            data-srcset="{{ pare_url_file($page->p_banner) }}">
+
+                                            data-srcset="{{ pare_url_file($content_page_7->thumbnail) }}">
                                         <img class="lazyload"
-                                            data-src="{{ pare_url_file($page->p_banner) }}"
+                                            data-src="{{ pare_url_file($content_page_7->thumbnail) }}"
                                             alt="">
                                     </picture>
                                     <div class="c-page-header__content">

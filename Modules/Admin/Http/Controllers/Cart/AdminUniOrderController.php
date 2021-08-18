@@ -3,6 +3,8 @@
 namespace Modules\Admin\Http\Controllers\Cart;
 
 use App\Models\Cart\Uni_Order;
+use App\Models\Uni_Store;
+use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -102,7 +104,7 @@ class AdminUniOrderController extends AdminController
             }
         } else if ($data['status'] == 4) {
             if ($uni_order->method_ship == 1) {
-                $order_del = '{"order_codes":["'.$uni_order->order_code.'"]}';
+                $order_del = '{"order_codes":["' . $uni_order->order_code . '"]}';
                 // dd($order_del);
                 $curl_creat_ = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/switch-status/cancel');
                 curl_setopt($curl_creat_, CURLOPT_CUSTOMREQUEST, "POST");
@@ -124,7 +126,7 @@ class AdminUniOrderController extends AdminController
                 $curl = curl_init();
 
                 curl_setopt_array($curl, array(
-                    CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/cancel/partner_id:".$id,
+                    CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/cancel/partner_id:" . $id,
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CUSTOMREQUEST => "POST",
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
@@ -136,9 +138,18 @@ class AdminUniOrderController extends AdminController
                 $response = curl_exec($curl);
                 curl_close($curl);
             }
+        } elseif ($data['status'] == 2) {
+            $order_poin = (int)(str_replace('.','',$uni_order->total_money));
+            $data['order_poin'] = $order_poin / 1000000;
+            if (checkUid($uni_order->user_id) != null) {
+                $uni_store = Uni_Store::where('user_id', $uni_order->user_id)->first();
+                $data_store['poin_store'] = $uni_store->poin_store + $data['order_poin'];
+                
+            }
         }
         $uni_order->fill($data)->update();
         $this->showMessagesSuccess('Cập nhật thành công');
         return redirect()->back();
     }
+   
 }

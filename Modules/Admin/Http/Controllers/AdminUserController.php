@@ -24,7 +24,6 @@ class AdminUserController extends AdminController
     public function store_index()
     {
         $users = User::orderByDesc('id')->where('type', 1)->where('status',1)->paginate(20);
-       
         $viewData = [
             'users' => $users
         ];
@@ -51,6 +50,15 @@ class AdminUserController extends AdminController
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.user.index');
     }
+    // public function update_level()
+    // {
+    //     $users = User::find($id);
+    //     $data = $request->except(['save', '_token']);
+    //     $data['updated_at'] = Carbon::now();
+    //     $users->fill($data)->save();
+    //     $this->showMessagesSuccess();
+    //     return redirect()->route('get_admin.user.index');
+    // }
     public function indexmovetrash()
     {
         $users = User::orderByDesc('id')->where('status', '=', 2)->paginate(20);

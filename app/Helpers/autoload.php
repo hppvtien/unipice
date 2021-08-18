@@ -113,7 +113,7 @@ function execPostRequest($url, $data)
     }
         /**
      * get Thumb Product.
-     * @param string $tring
+     * @param int $id
      * @return string $slug
      */
     function getSlugProductById($id)
@@ -121,6 +121,29 @@ function execPostRequest($url, $data)
         $slug_product = App\Models\Uni_Product::where('id',$id)->pluck('slug')->first();
         return $slug_product;
     }
+   
+        /**
+     * get type store.
+     * @param int $id
+     * @return string $type_store kim cuong
+     */
+    function getTypeStore($id)
+    {
+        $type_store = App\Models\Uni_Store::where('user_id',$id)->pluck('type_store')->first();
+        return $type_store;
+    }
+   
+        /**
+     * get type store.
+     * @param int $id
+     * @return float $poin_store 11.222
+     */
+    function getPoinStore($id)
+    {
+        $poin_store = App\Models\Uni_Store::where('user_id',$id)->pluck('poin_store')->first();
+        return $poin_store;
+    }
+   
     function checkParent($id)
     {
         $group_pid = App\Models\Uni_Category::where('parent_id',$id)->pluck('id');
