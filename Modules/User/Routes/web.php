@@ -40,6 +40,13 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
 
     Route::get('/recharge', 'RechargeController@index')->name('get.recharge');
     Route::post('thanh-toan-nap.html', 'RechargeController@getPayNap')->name('get_user.pay.nap');
+    Route::get('thanh-toan-nap/{id}', 'RechargeController@getSuccsess')->name('get_user.paysuccsess.nap'); 
+    Route::get('thanh-toan-vnpay-nap/{id}', 'RechargeController@getVnPaySuccsess')->name('get_user.vnpaysuccsess.nap'); 
+    Route::post('thanh-toan-vnpay-nap/{id}', 'RechargeController@processVnPayCart')->name('post_user.vnpaysuccsess.nap'); 
+    Route::get('thanh-toan-momo-nap/{id}', 'RechargeController@getmomoSuccsess')->name('get_user.momosuccsess.nap'); 
+    Route::post('thanh-toan-momo-nap/{id}', 'RechargeController@processmomoCart')->name('post_user.momosuccsess.nap');
+    Route::get('thong-bao-thanh-toan-momo-nap.html', 'UserPayController@resultmomo')->name('get_user.result_momo.nap');
+    Route::get('return-vnpay.html', 'RechargeController@returnvnpay')->name('get_user.result_vnpay.nap');
 });
 
 Route::middleware('checkLoginUser')->group(function() {
@@ -62,6 +69,7 @@ Route::middleware('checkLoginUser')->group(function() {
     Route::post('thanh-toan-momo/{id}', 'UserPayController@processmomoCart')->name('post_user.momosuccsess'); 
     Route::get('thong-bao-thanh-toan-momo.html', 'UserPayController@resultmomo')->name('get_user.result_momo');
     Route::get('return-vnpay.html', 'UserPayController@returnvnpay')->name('get_user.result_vnpay');
+    
 });
 
 

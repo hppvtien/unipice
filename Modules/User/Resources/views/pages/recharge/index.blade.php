@@ -11,7 +11,7 @@
                 <div class="field _required" >
                     <div class="control _with-tooltip">
                         <div class="m-text-input m-text-input--placeholder-label">
-                            <input class="a-text-input m-text-input__input" type="text" name="nap_price" value="500000" >
+                            <input class="a-text-input m-text-input__input" type="text" name="price_nap" value="500000" >
                         </div>
                     </div>
                 </div>
@@ -20,8 +20,8 @@
                         <label class="a-form-label m-text-input__label" for="method_date">Hình thức thanh toán</label>
                         <select class="custom-select" id="method_date" name="type_pay" onchange="chanFunctionMethodTran()" >
                             <option value="1">Chuyển khoản ngân hàng</option>
-                            <option value="2">Thanh toán VNPAY</option>
-                            <option value="3">Thanh toán MOMO</option>
+                            <option value="4">Thanh toán VNPAY</option>
+                            <option value="2">Thanh toán MOMO</option>
                         </select>
                     </div>
                 </div>
