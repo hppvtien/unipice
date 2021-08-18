@@ -25,7 +25,7 @@
                                                                     {{ $category->desscription }}
                                                                 </p>
                                                                 <p style="color: #000; background-color:transparent; text-align:justify;opacity: 1;">
-                                                                    {{ $category->content }}
+                                                                    {!! $category->content !!}
                                                                 </p>
 
                                                             </div>
@@ -40,7 +40,7 @@
                                                             <div class="row">
                                                                 @foreach(getCatParent($category->id) as $parentItem)
                                                                 <div class="col-md-3 col-lg-3 col-sm-4 col-12 parent-item">
-                                                                    <a class="btn btn-parent" href="/{{ getSlugCategory($parentItem->slug) }}">
+                                                                    <a class="btn btn-parent" href="{{ getSlugCategory($parentItem->slug) }}">
                                                                         {{ $parentItem->name }}
                                                                     </a>
                                                                 </div>
