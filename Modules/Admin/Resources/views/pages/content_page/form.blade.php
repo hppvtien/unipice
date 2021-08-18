@@ -5,8 +5,7 @@
             <div class="card box-shadow-0">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Name @php
-                        @endphp<span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
                         <input type="text" class="form-control keypress-count"  value="{{ old('name', $content_pages->name ?? '') }}" data-slug=".slug" name="name">
                         @if($errors->first('name'))
                         <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -26,13 +25,27 @@
                         <span class="text-danger">{{ $errors->first('content') }}</span>
                         @endif
                     </div>
-                    
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Sắp xếp <span>(*)</span></label>
                         <input type="number" class="form-control" name="order"
                             value="{{ old('order', $content_pages->order ?? '0') }}">
                         <span class="d-block text-warning">Thứ thự được sắp xếp từ bé đến lớn</span>
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Name button <span>(*)</span></label>
+                        <input type="text" class="form-control keypress-count"  value="{{ old('name', $content_pages->name_but ?? '') }}" data-slug=".slug" name="name_but">
+                        @if($errors->first('name_but'))
+                        <span class="text-danger">{{ $errors->first('name_but') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Url button <span>(*)</span></label>
+                        <input type="text" class="form-control keypress-count"  value="{{ old('name', $content_pages->url_but ?? '') }}" data-slug=".slug" name="url_but">
+                        @if($errors->first('url_but'))
+                        <span class="text-danger">{{ $errors->first('url_but') }}</span>
+                        @endif
+                    </div>
+
                 </div>
             </div>
         </div>

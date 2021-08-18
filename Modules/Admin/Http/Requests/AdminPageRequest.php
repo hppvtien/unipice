@@ -13,7 +13,7 @@ class AdminPageRequest extends FormRequest
             'p_slug' => 'required|unique:pages,p_slug,'.$this->id,
             'p_desscription' => 'required',
             'p_style' => 'required',
-            'p_content' => 'required',
+            
             'p_title_seo'=>'required|min:50|max:70',
             'p_desscription_seo'=>'required|min:100|max:150',
         ];
@@ -26,7 +26,7 @@ class AdminPageRequest extends FormRequest
             'p_slug.required' => 'Dữ liệu không được để trống',
             'p_slug.unique'   => 'Slug đã tồn tại',
             'p_style.required' => 'Kiểu không được để trống',
-            'p_content.required' => 'Nội dung không được để trống',
+            
             'p_title_seo.required' => 'Tiêu đề SEO không được để trống',
             'p_title_seo.min'   => 'Tiêu đề SEO không được nhỏ hơn 50 ký tự',
             'p_title_seo.max'   => 'Tiêu đề SEO không được lớn hơn 70 ký tự',

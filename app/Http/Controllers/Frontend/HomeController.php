@@ -11,6 +11,7 @@ use App\Models\Uni_Trade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Models\Page;
+use App\Models\Content_Page;
 
 class HomeController extends Controller
 {
@@ -44,21 +45,17 @@ class HomeController extends Controller
             \OpenGraph::addProperty('type', 'articles');
         }
 
-        // $viewData = [
-            
-        // ];
+        $page = Page::where('p_style','home')->first();
+        $content_page_1 = Content_Page::where('page_id',$page->id)->where('order',0)->first();
+        $content_page_2 = Content_Page::where('page_id',$page->id)->where('order',1)->first();
+        $content_page_3 = Content_Page::where('page_id',$page->id)->where('order',2)->first();
+        $content_page_4 = Content_Page::where('page_id',$page->id)->where('order',3)->first();
+       
         $slides = Slide::where('s_status', Slide::STATUS_DEFAULT)
         ->where('s_type',Slide::STATUS_TYPE_HEADER)
         ->orderBy('s_sort', 'asc')
         ->get();
-        $slides_home_first = Slide::where('s_type',Slide::STATUS_TYPE_HOME_1)
-        ->first();
-        $slides_home_thirst = Slide::where('s_type',Slide::STATUS_TYPE_HOME_2)
-        ->first();
-        $slides_home_three = Slide::where('s_type',Slide::STATUS_TYPE_HOME_3)
-        ->first();
-        $slides_home_four = Slide::where('s_type',Slide::STATUS_TYPE_HOME_4)
-        ->first();
+       
 
         $product_hot = Uni_Product::where('is_hot', 1)
         ->where('status', 1)
@@ -88,10 +85,10 @@ class HomeController extends Controller
             'product_feauture'=>$product_feauture,
             'product_new'=>$product_new,
             'category'=>$category,
-            'slides_home_first'=>$slides_home_first,
-            'slides_home_thirst'=>$slides_home_thirst,
-            'slides_home_three'=>$slides_home_three,
-            'slides_home_four'=>$slides_home_four,
+            'content_page_1' => $content_page_1,
+            'content_page_2' => $content_page_2,
+            'content_page_3' => $content_page_3,
+            'content_page_4' => $content_page_4,
             'trade'=>$trade,
             'product_trade'=>$product_trade
         ];
