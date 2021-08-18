@@ -226,9 +226,9 @@
                                     class="c-page-header c-page-header--centered c-page-header--light">
                                     <picture class="c-page-header__image">
                                         <source media="(min-width: 1024px)"
-                                            data-srcset="https://www.coopmarket.com/sites/default/files/styles/1440x380/public/acquiadam/2020-12/membership-hero-desktop.png?itok=aZRBseW2">
+                                            data-srcset="{{ pare_url_file($content_page_7->thumbnail) }}">
                                         <img class="lazyload"
-                                            data-src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc"
+                                            data-src="{{ pare_url_file($content_page_7->thumbnail) }}"
                                             alt="">
                                     </picture>
                                     <div class="c-page-header__content">

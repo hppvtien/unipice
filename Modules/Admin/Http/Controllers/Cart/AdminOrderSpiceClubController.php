@@ -61,4 +61,8 @@ class AdminOrderSpiceClubController extends AdminController
         $this->showMessagesSuccess('Cập nhật thành công');
         return redirect()->back();
     }
+
+    public function update_status(Request $request){
+        
+    }
 }

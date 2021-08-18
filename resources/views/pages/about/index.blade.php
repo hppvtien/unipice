@@ -11,7 +11,7 @@
                         data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description=""
                         data-liquideffect='{"image":"{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}","imagesize":"external","autoplay":true,"scalex":4,"scaley":4,"speedx":0.5,"speedy":-0.5,"rotationx":0,"rotationy":0,"rotation":0,"transtime":2000,"easing":"Power3.easeOut","transcross":false,"transpower":false,"transitionx":0,"transitiony":0,"transpeedx":0,"transpeedy":0,"transrotx":0,"transroty":0,"transrot":0}'>
                         <!-- MAIN IMAGE -->
-                        <video controls autoplay loop style="opacity: 0.6;width:100%;" >
+                        <video controls autoplay loop >
                             <source src="{{ asset('/images/icon_menu/video_about.mp4') }}" type="video/mp4">
                           </video> 
                         <!--<img src="{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}" alt="Image" data-duration="4000" data-lazyload="{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}" data-bgposition="center center"

@@ -45,8 +45,8 @@
                                             {{ config('cart.pay_type')[$item->type_pay]['name'] }}
                                         </td>
                                         
-                                        <td>
-                                            {{ $item->end_year }}
+                                        <td >
+                                            <a onclick="load_update_nap( {{ $item->id }}, Date.parse('{{ $item->end_year }}'), Date.parse('{{ $item->created_at }}'));">{{ $item->end_year }}</a>
                                         </td>
                                         <td>
                                             <span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span>
@@ -71,4 +71,19 @@
         </div>
         <!-- row closed -->
     </div>
+
+    <script>
+       function load_update_nap(id_user_nap, ngay_het_han){
+            var today = new Date();
+            var time1 = Date.parse(today.getFullYear()) - ngay_het_han;
+            alert(time1);
+            if(time1 < 0 ){
+                $.post( "{{ route('get_admin.uni_spice_club.update_status') }}", { id_user_nap: id_user_nap })
+                .done(function( data ) {
+                    alert( "Data Loaded: " + data );
+                });
+            }
+        }
+    </script>
+    
 @stop

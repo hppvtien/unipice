@@ -72,4 +72,5 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::get('danh-muc-bai-viet/{slug}', 'BlogHomeController@SingleCat')->name('get_blog.single_cat');
     
     Route::get('sitemap','SitemapController@sitemap')->name('get_site_map');
+
 });

@@ -7,13 +7,39 @@ use App\Models\Uni_FlashSale;
 use App\Models\Blog\Uni_Post;
 use App\Models\Uni_Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use App\Models\Page;
 
 class FlashSaleController extends Controller
 {
     public function index()
     {
-        \SEOMeta::setTitle('Danh sách các gói khuyến mại');
-        \SEOMeta::setDescription('Danh sách các gói khuyến mại');
+        $slug_page = URL::current();
+        $doamin_page = URL::to('/');
+        $str = str_replace( URL::to('/'), '', URL::current() );
+        $str = str_replace('/','',$str);
+        $info_page = PAGE::where('p_slug', 'like', '%'.$str.'%')->get();
+        if($str != ''){
+            foreach($info_page as $item){
+                \SEOMeta::setTitle($item->p_name);
+                \SEOMeta::setDescription($item->p_desscription);
+                \SEOMeta::setCanonical(URL::current());
+                \OpenGraph::setDescription($item->p_desscription);
+                \OpenGraph::setTitle($item->p_name);
+                \OpenGraph::setUrl(URL::current());
+                \OpenGraph::addProperty('type', 'articles');
+            }
+        }
+        else{
+            \SEOMeta::setTitle('Đây là trang chủ');
+            \SEOMeta::setDescription('Đây là mô tả');
+            \SEOMeta::setCanonical(\Request::url());
+            \OpenGraph::setDescription('Đây là mô tả');
+            \OpenGraph::setTitle('Đây là trang chủ');
+            \OpenGraph::setUrl(\Request::url());
+            \OpenGraph::addProperty('type', 'articles');
+        }
+        
         $uni_flashsale = Uni_FlashSale::get();
         $uni_product = Uni_Product::where('is_hot',1)->limit(8)->get();
         $uni_post = Uni_Post::limit(4)->get();
