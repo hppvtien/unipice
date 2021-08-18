@@ -43,7 +43,11 @@
             @empty @endforelse
         </ul>
     </li>
+   
     @endif @empty @endforelse
+    <li class="mega-drop-down">
+        <a href="{{ route('get.flashsale') }}" id="{{ getActive('khuyen-mai') == true ? 'ul_li_active':'' }}"><img style="float: left;padding: 5px;" width="45px" src="/storage/uploads_Product/khuyen-mai-1627644111.png" alt=""><span> Khuyến mại</span></a>
+    </li>
 
 </ul>
 

@@ -515,8 +515,6 @@
                     <div class="opc-wrapper">
 
                         <div id="checkout-step-shipping" class="step-content" data-role="content">
-
-
                             <h4 class="step-title" data-role="title"> Địa chỉ giao hàng </h4>
                             <form class="form form-shipping-address" id="co-shipping-form" data-hasrequired="* Required Fields">
                                 <div id="shipping-new-address-form" class="fieldset address">
@@ -528,14 +526,16 @@
                                                     <span>Họ tên khách hàng</span>
                                                 </label>
                                                 <span class="store_name text-danger text-center"></span>
-                                                <input class="a-text-input m-text-input__input" require value="{{ $store != null ? $store->store_name : '' }}" type="text" name="customer_name" aria-required="true" aria-invalid="false" id="customer_name">
+                                                <input class="a-text-input m-text-input__input" require value="{{ checkUid(get_data_user('web')) != null ? $store->store_name : $uni_user->name }}" type="text" name="customer_name" aria-required="true" aria-invalid="false" id="customer_name">
                                             </div>
                                         </div>
                                     </div>
+                                    <input class="a-text-input m-text-input__input"  value="{{ checkUid(get_data_user('web')) }}" type="hidden" name="check_store" id="check_store">
+
                                     <div class="field _required" name="shippingAddress.lastname">
                                         <div class="control">
                                             <div class="m-text-input  ">
-                                                <input class="a-text-input m-text-input__input" type="text" name="email" aria-required="true" aria-invalid="false" id="emailck">
+                                                <input class="a-text-input m-text-input__input" type="text" name="email" value="{{ $uni_user->email }}" aria-required="true" aria-invalid="false" id="emailck">
                                                 <label class="a-form-label m-text-input__label" for="emailck">
                                                     <span>Email</span>
                                                 </label>
@@ -546,7 +546,7 @@
                                     <div class="field _required" name="shippingAddress.company">
                                         <div class="control">
                                             <div class="m-text-input  ">
-                                                <input class="a-text-input m-text-input__input" require value="{{ $store != null ? $store->store_address : ''  }}" type="text" name="address" aria-invalid="false" id="addressck">
+                                                <input class="a-text-input m-text-input__input" require value="{{ checkUid(get_data_user('web')) != null ? $store->store_address : $uni_user->address }}" type="text" name="address" aria-invalid="false" id="addressck">
 
                                                 <label class="a-form-label m-text-input__label" for="addressck">
                                                     <span>Địa chỉ</span>
@@ -572,13 +572,14 @@
                                     <div class="field _required" name="shippingAddress.fax">
                                         <div class="control">
                                             <div class="m-text-input  ">
-                                                <input class="a-text-input m-text-input__input" require value="{{ $store != null ? $store->store_phone : ''  }}" type="text" name="phone" aria-invalid="false" id="phoneck">
+                                                <input class="a-text-input m-text-input__input" require value="{{ checkUid(get_data_user('web')) != null ? $store->store_phone : $uni_user->phone }}" type="text" name="phone" aria-invalid="false" id="phoneck">
                                                 <label class="a-form-label m-text-input__label" for="phoneck">
                                                     <span>Số điện thoại</span>
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
+                                    @if (checkUid(get_data_user('web')) == null)
                                     <div class="field _required">
                                         <div class="control">
                                             <label class="a-form-label m-text-input__label" for="method_shpping">Phương thức vận chuyển</label>
@@ -610,6 +611,16 @@
                                         <p class="text-danger" id="fee_ship"></p>
                                         <p class="text-danger" id="err-ship"></p>
                                     </div>
+                                    @else
+                                    <div class="field _required">
+                                        <p class="text-warning">Hình thức vận chuyển:</p>
+                                        <p class="text-danger" style="margin-top: 10px">
+                                            Giá trên đơn hàng là giá  Ex-works tại kho Hải Phòng Phương thức vận chuyển và chi phí vận chuyển sẽ được tính toán <br> dựa trên tổng số lượng hàng và vị trí giao hàng tại từng thời điểm đặt hàng
+                                        </p>
+                                    </div>
+                                    
+                                    @endif
+                                    
                                     <div class="field _required pay_type">
                                         @foreach (config('cart.pay_type') as $key => $item)
                                         <div class="validContainer addressOption selected m-radio-button">

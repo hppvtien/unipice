@@ -80,44 +80,18 @@
                                 <span class="animate-border border-black"></span>
                             </div>
                             <ul>
+                                
+                                @forelse ($category_mn as $key => $item) 
                                 <li>
-                                    <a href="#">
-                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/gia-vi-tu-nhien-1627641704.png" alt="" width="30px"> Gia Vị Tự Nhiên
+                                    <a href="{{ getSlugCategory($item->slug) }}" >
+                                        <img style="float: left;padding: 5px;" width="30px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt="">{{ $item->name }}
                                     </a>
                                 </li>
+                                @empty
+                                @endforelse
                                 <li>
-                                    <a href="#">
-                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/gia-vi-hoan-chinh-1627642574.png" alt="" width="30px"> Gia Vị Hoàn Chỉnh
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/bbq-1627644022.png" alt="" width="30px"> Gia Vị Tẩm Ướp & Bột BBQ
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/muoi-1627644047.png" alt="" width="30px"> Gia Vị & Muối
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/tea-1627644059.png" alt="" width="30px"> Trà
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/san-pham-moi-1-1627644137.png" alt="" width="30px"> Sản Phẩm Mới
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/qua-tang-1627644256.png" alt="" width="30px"> Gia Vị Quà Tặng
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img style="float: left;padding: 5px;" src="/storage/uploads_Product/khuyen-mai-1627644111.png" alt="" width="30px"> Khuyến Mãi
+                                    <a href="{{ route('get.flashsale') }}" >
+                                        <img style="float: left;padding: 5px;" width="30px" src="/storage/uploads_Product/khuyen-mai-1627644111.png" alt="">Khuyến mại
                                     </a>
                                 </li>
                             </ul>
@@ -133,27 +107,27 @@
                             </div>
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('get_blog.home') }}">
                                         <img style="float: left;padding: 5px;" src="/images/icon_menu/blogging.png" alt="" width="30px"> Blog
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('get.spice_club') }}">
                                         <img style="float: left;padding: 5px;" src="/images/icon_menu/football-club.png" alt="" width="30px"> Spice Club
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('get.find') }}">
                                         <img style="float: left;padding: 5px;" src="/images/icon_menu/location.png" alt="" width="30px"> Tìm Cửa Hàng
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="javascript:;">
                                         <img style="float: left;padding: 5px;" src="/images/icon_menu/shipping.png" alt="" width="30px"> Chính Sách Giao Hàng
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="javascript:;">
                                         <img style="float: left;padding: 5px;" src="/images/icon_menu/exchange.png" alt="" width="30px"> Chính Sách Đổi Trả
                                     </a>
                                 </li>
@@ -190,14 +164,14 @@
             <div class="row">
                 <div class="col-md-6 col-xs-12  pl-md-5 padding_top_footer_1">
                     <ul class="menu_foooter_2">
-                        <li><a href="#">{{ $configuration->footer_bottom }}</a></li>
+                        <li><a href="javascript:;">{{ $configuration->footer_bottom }}</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 col-xs-12 pr-md-5">
                     <ul class="menu_foooter_1">
-                        <li><a href="#">Chính Sách</a></li>
-                        <li><a href="#">Bảo Mật</a></li>
-                        <li><a href="#">FQA</a></li>
+                        <li><a href="javascript:;">Chính Sách</a></li>
+                        <li><a href="javascript:;">Bảo Mật</a></li>
+                        <li><a href="{{ route('get.faq') }}">FAQ</a></li>
                     </ul>
                 </div>
                 <!-- End Col -->
