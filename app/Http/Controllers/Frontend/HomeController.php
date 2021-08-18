@@ -9,19 +9,40 @@ use App\Models\Uni_Product;
 use App\Models\Uni_Category;
 use App\Models\Uni_Trade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use App\Models\Page;
 
 class HomeController extends Controller
 {
 
     public function index()
     {
-        \SEOMeta::setTitle('Đây là trang chủ');
-        \SEOMeta::setDescription('Đây là mô tả');
-        \SEOMeta::setCanonical(\Request::url());
-        \OpenGraph::setDescription('Đây là mô tả');
-        \OpenGraph::setTitle('Đây là trang chủ');
-        \OpenGraph::setUrl(\Request::url());
-        \OpenGraph::addProperty('type', 'articles');
+
+        $slug_page = URL::current();
+        $doamin_page = URL::to('/');
+        $str = str_replace( URL::to('/'), '', URL::current() );
+        $str = str_replace('/','',$str);
+        $info_page = PAGE::where('p_slug', 'like', '%'.$str.'%')->get();
+        if($str != ''){
+            foreach($info_page as $item){
+                \SEOMeta::setTitle($item->p_name);
+                \SEOMeta::setDescription($item->p_desscription);
+                \SEOMeta::setCanonical(URL::current());
+                \OpenGraph::setDescription($item->p_desscription);
+                \OpenGraph::setTitle($item->p_name);
+                \OpenGraph::setUrl(URL::current());
+                \OpenGraph::addProperty('type', 'articles');
+            }
+        }
+        else{
+            \SEOMeta::setTitle('Đây là trang chủ');
+            \SEOMeta::setDescription('Đây là mô tả');
+            \SEOMeta::setCanonical(\Request::url());
+            \OpenGraph::setDescription('Đây là mô tả');
+            \OpenGraph::setTitle('Đây là trang chủ');
+            \OpenGraph::setUrl(\Request::url());
+            \OpenGraph::addProperty('type', 'articles');
+        }
 
         // $viewData = [
             
