@@ -640,7 +640,22 @@ function chanFunctionWard() {
             $(".toast-error").remove();
         }, 2000);
     };
-
-
-
 }
+$(window).on('load', function() {
+    $.ajax({
+        url: "http://127.0.0.1:8000/update_level/",
+        method: "post",
+        dataType: 'json',
+        data: {
+            url: 'abc',
+
+        },
+        success: function(response) {
+            console.log(response);
+
+        },
+        error: function(response) {
+            console.log(response);
+        }
+    });
+});

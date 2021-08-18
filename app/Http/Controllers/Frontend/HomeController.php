@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product_Trade;
+use App\Models\Uni_Store;
 use App\Models\System\Slide;
 use App\Models\Uni_Product;
 use App\Models\Uni_Category;
+use Carbon\Carbon;
 use App\Models\Uni_Trade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -20,11 +22,11 @@ class HomeController extends Controller
 
         $slug_page = URL::current();
         $doamin_page = URL::to('/');
-        $str = str_replace( URL::to('/'), '', URL::current() );
-        $str = str_replace('/','',$str);
-        $info_page = PAGE::where('p_slug', 'like', '%'.$str.'%')->get();
-        if($str != ''){
-            foreach($info_page as $item){
+        $str = str_replace(URL::to('/'), '', URL::current());
+        $str = str_replace('/', '', $str);
+        $info_page = PAGE::where('p_slug', 'like', '%' . $str . '%')->get();
+        if ($str != '') {
+            foreach ($info_page as $item) {
                 \SEOMeta::setTitle($item->p_name);
                 \SEOMeta::setDescription($item->p_desscription);
                 \SEOMeta::setCanonical(URL::current());
@@ -33,8 +35,7 @@ class HomeController extends Controller
                 \OpenGraph::setUrl(URL::current());
                 \OpenGraph::addProperty('type', 'articles');
             }
-        }
-        else{
+        } else {
             \SEOMeta::setTitle('Đây là trang chủ');
             \SEOMeta::setDescription('Đây là mô tả');
             \SEOMeta::setCanonical(\Request::url());
@@ -45,68 +46,90 @@ class HomeController extends Controller
         }
 
         // $viewData = [
-            
+
         // ];
         $slides = Slide::where('s_status', Slide::STATUS_DEFAULT)
-        ->where('s_type',Slide::STATUS_TYPE_HEADER)
-        ->orderBy('s_sort', 'asc')
-        ->get();
-        $slides_home_first = Slide::where('s_type',Slide::STATUS_TYPE_HOME_1)
-        ->first();
-        $slides_home_thirst = Slide::where('s_type',Slide::STATUS_TYPE_HOME_2)
-        ->first();
-        $slides_home_three = Slide::where('s_type',Slide::STATUS_TYPE_HOME_3)
-        ->first();
-        $slides_home_four = Slide::where('s_type',Slide::STATUS_TYPE_HOME_4)
-        ->first();
+            ->where('s_type', Slide::STATUS_TYPE_HEADER)
+            ->orderBy('s_sort', 'asc')
+            ->get();
+        $slides_home_first = Slide::where('s_type', Slide::STATUS_TYPE_HOME_1)
+            ->first();
+        $slides_home_thirst = Slide::where('s_type', Slide::STATUS_TYPE_HOME_2)
+            ->first();
+        $slides_home_three = Slide::where('s_type', Slide::STATUS_TYPE_HOME_3)
+            ->first();
+        $slides_home_four = Slide::where('s_type', Slide::STATUS_TYPE_HOME_4)
+            ->first();
 
         $product_hot = Uni_Product::where('is_hot', 1)
-        ->where('status', 1)
-        ->orderBy('id', 'asc')
-        ->get();
+            ->where('status', 1)
+            ->orderBy('id', 'asc')
+            ->get();
         $product_feauture = Uni_Product::where('is_feauture', 1)
-        ->where('status', 1)
-        ->orderBy('id', 'asc')
-        ->get();
+            ->where('status', 1)
+            ->orderBy('id', 'asc')
+            ->get();
         $product_new = Uni_Product::where('status', 1)
-        ->orderBy('id', 'asc')
-        ->get();
+            ->orderBy('id', 'asc')
+            ->get();
         $category = Uni_Category::where('status', 1)
-        ->orderBy('id', 'asc')
-        ->get();
+            ->orderBy('id', 'asc')
+            ->get();
         $trade = Uni_Trade::where('status', 1)
-        ->orderBy('id', 'asc')
-        ->get();
+            ->orderBy('id', 'asc')
+            ->get();
         $product_groupId = Product_Trade::where('trade_id', 1)
-        ->pluck('product_id');
+            ->pluck('product_id');
         $product_trade = Uni_Product::whereIn('id', $product_groupId)
-        ->orderBy('id', 'asc')
-        ->get();
-        $viewData=[
-            'slides'=>$slides,
-            'product_hot'=>$product_hot,
-            'product_feauture'=>$product_feauture,
-            'product_new'=>$product_new,
-            'category'=>$category,
-            'slides_home_first'=>$slides_home_first,
-            'slides_home_thirst'=>$slides_home_thirst,
-            'slides_home_three'=>$slides_home_three,
-            'slides_home_four'=>$slides_home_four,
-            'trade'=>$trade,
-            'product_trade'=>$product_trade
+            ->orderBy('id', 'asc')
+            ->get();
+        $viewData = [
+            'slides' => $slides,
+            'product_hot' => $product_hot,
+            'product_feauture' => $product_feauture,
+            'product_new' => $product_new,
+            'category' => $category,
+            'slides_home_first' => $slides_home_first,
+            'slides_home_thirst' => $slides_home_thirst,
+            'slides_home_three' => $slides_home_three,
+            'slides_home_four' => $slides_home_four,
+            'trade' => $trade,
+            'product_trade' => $product_trade
         ];
-        return view('pages.home.home',$viewData);
+        return view('pages.home.home', $viewData);
     }
-    public function product_trade(Request $request){
+    public function product_trade(Request $request)
+    {
         $trade_id = $request->id_trade;
         $product_trade = Product_Trade::where('trade_id', $trade_id)
-        ->pluck('product_id');
+            ->pluck('product_id');
         $product = Uni_Product::whereIn('id', $product_trade)
-        ->orderBy('id', 'asc')
-        ->get();
-        $html = view('pages.home.product_trade',compact('product'))->render();
+            ->orderBy('id', 'asc')
+            ->get();
+        $html = view('pages.home.product_trade', compact('product'))->render();
         return $html;
     }
-    
-
+    public function update_level(Request $request)
+    {
+        $uni_store = Uni_Store::get();
+        foreach ($uni_store as $key => $store) {
+            $uni_store_tt = Uni_Store::where('id', $store->id)->first();
+            $as_time = strtotime($uni_store_tt->end_date) - strtotime(Carbon::now());
+            if ($store->poin_store >= 30000 && $as_time < 0 && $store->poin_store < 75000) {
+                $data_store['type_store'] = 'Gold';
+                $uni_store_tt->fill($data_store)->update();
+            } elseif ($store->poin_store >= 75000 &&  $as_time < 0 && $store->poin_store < 135000) {
+                $data_store['type_store'] = 'Diamond';
+                $uni_store_tt->fill($data_store)->update();
+            } elseif ($store->poin_store >= 135000 &&  $as_time < 0) {
+                $data_store['type_store'] = 'Platinum';
+                $uni_store_tt->fill($data_store)->update();
+            } elseif ($store->poin_store < 30000 &&  $as_time < 0) {
+                $data_store['type_store'] = 'Default';
+                $uni_store_tt->fill($data_store)->update();
+            }
+        }
+        $mes = 'load to page';
+        return $mes;
+    }
 }
