@@ -30,8 +30,8 @@
 <div class="zeynep">
     <div class="col-md-12 col-xs-12 border_menu_mobile">
         <div class="row menu_can_giua">
-            <span class="gach_flag"><img src="https://www.countryflags.io/vn/flat/32.png" alt=""></span>
-            <span class="gach_flag"><img src="https://www.countryflags.io/us/flat/32.png" alt=""></span>
+            <span class="gach_flag"><img src="{{ asset('images/icon_menu/32.png') }}" alt=""></span>
+            <span class="gach_flag"><img src="{{ asset('images/icon_menu/31.png') }}" alt=""></span>
         </div>
         <div class="col-lg-12 kich_co">
             <span class="icon-account font_icon_new"> <b>Tài Khoản</b> </span>
@@ -303,14 +303,6 @@
             $( "#view_review" ).hide( "slow" );
         });
     </script>
-    <style>
-        #News{
-            display: none;
-        }
-        #question{
-            display: none;
-        }
-    </style>
 </body>
 
 </html>

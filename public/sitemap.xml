@@ -2,18 +2,29 @@
 <?xml-stylesheet href="/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 	<url>
+	<loc>http://127.0.0.1:8000/home</loc>
+		<priority>1.0</priority>
+		<lastmod>2021-08-18T10:25:08+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/home-1629282358.jpg</image:loc>
+			<image:title>Home</image:title>
+			<image:caption>home home home home home home home home home home home home home home home home home</image:caption>
+		</image:image>
+	</url>
+	<url>
 	<loc>http://127.0.0.1:8000/spice-club</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-16T02:36:28+00:00</lastmod>
 		<changefreq>daily</changefreq>
 		<image:image>
-			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-banner-spice-club-1629081639.jpg</image:loc>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-nen-gioi-thieu-1629281488.jpg</image:loc>
 			<image:title>Spice Club</image:title>
 			<image:caption>Spice Club Spice Club Spice Club Spice Club Spice Club Spice Club Spice Club</image:caption>
 		</image:image>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/gioi-thieu</loc>
+	<loc>http://127.0.0.1:8000/gioi-thieu-ve-adsmo</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-05-15T03:47:10+00:00</lastmod>
 		<changefreq>daily</changefreq>
@@ -21,28 +32,6 @@
 			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-banner-trang-bb-1628828639.jpg</image:loc>
 			<image:title>Giới thiệu</image:title>
 			<image:caption>Giới thiệu về chúng tồi</image:caption>
-		</image:image>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/khuyen-mai</loc>
-		<priority>1.0</priority>
-		<lastmod>2021-05-15T03:47:10+00:00</lastmod>
-		<changefreq>daily</changefreq>
-		<image:image>
-			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-banner-trang-bb-1628828639.jpg</image:loc>
-			<image:title>Khuyến Mãi</image:title>
-			<image:caption>Khuyến mãi của chúng tôi</image:caption>
-		</image:image>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/cua-hang</loc>
-		<priority>1.0</priority>
-		<lastmod>2021-05-15T03:47:10+00:00</lastmod>
-		<changefreq>daily</changefreq>
-		<image:image>
-			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-banner-trang-bb-1628828639.jpg</image:loc>
-			<image:title>Cửa Hàng</image:title>
-			<image:caption>Khuyến mãi của chúng tôi</image:caption>
 		</image:image>
 	</url>
 	<url>
@@ -395,6 +384,50 @@
 			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-blog-1628754919.jpg</image:loc>
 			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night2</image:title>
 			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
+	</url>
+	<url>
+	<loc>http://127.0.0.1:8000/san-pham/bot-gung</loc>
+		<priority>1.0</priority>
+		<lastmod>2021-08-19T04:39:46+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nghe-lo-cccccc-1629347983.png</image:loc>
+			<image:title>Bột gừng</image:title>
+			<image:caption>Bột gừng UniSpice được người đầu bếp kết hợp cùng các các nguyên liệu khác để tạo nên những món ăn có hương vị thơm ngon, mang đậm văn hóa ẩm thực Việt.</image:caption>
+		</image:image>
+	</url>
+	<url>
+	<loc>http://127.0.0.1:8000/san-pham/bot-ca-ri</loc>
+		<priority>1.0</priority>
+		<lastmod>2021-08-19T04:27:56+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nghe-lo-cccccc-1629347314.png</image:loc>
+			<image:title>Bột cà ri</image:title>
+			<image:caption>Bột cà ri của UniSpice sử dụng trong chế biến thực phẩm giúp tạo màu sắc hấp dẫn và hương vị đặc biệt cho món ăn, kích thích vị giác người dùng.</image:caption>
+		</image:image>
+	</url>
+	<url>
+	<loc>http://127.0.0.1:8000/san-pham/gia-vi-tam-uop-bbq-hai-san</loc>
+		<priority>1.0</priority>
+		<lastmod>2021-08-19T04:16:36+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1629346593.png</image:loc>
+			<image:title>Gia vị tẩm ướp BBQ hải sản</image:title>
+			<image:caption>Bột gia vị tẩm ướp BBQ hải sản của UniSpice được nhiều khách sạn, nhà hàng, người nội trợ lựa chọn để tạo nên những món nướng thơm ngon và hấp dẫn.</image:caption>
+		</image:image>
+	</url>
+	<url>
+	<loc>http://127.0.0.1:8000/san-pham/gia-vi-tam-uop-bbq-han-quoc</loc>
+		<priority>1.0</priority>
+		<lastmod>2021-08-19T04:05:43+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nghe-lo-cccccc-1629345500.png</image:loc>
+			<image:title>Gia vị tẩm ướp BBQ Hàn Quốc</image:title>
+			<image:caption>Sản phẩm bột gia vị tẩm ướp BBQ Hàn Quốc của UniSpice có hương vị đậm đà, dậy mùi thơm ngon, là sự lựa chọn hoàn hảo cho các bữa ăn, các bữa tiệc BBQ.</image:caption>
 		</image:image>
 	</url>
 	<url>

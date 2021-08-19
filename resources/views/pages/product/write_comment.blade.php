@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="row can_trong">
-                <div id="News" class="tabcontent not-padding">
+                <div id="News" class="tabcontent not-padding col-md-12" >
                     <div class='rating-stars text-center'>
                         <ul id='stars'>
                             <li class='star selected' title='Poor' data-value='1'>
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="question" class="tabcontent not-padding">
+                <div id="question" class="tabcontent not-padding col-md-12">
                     <div class="">
                         <div>
                             <textarea id="noi_dung_question" class="form-control" rows="2" placeholder="Hãy để lại câu hỏi của bạn...!"></textarea>

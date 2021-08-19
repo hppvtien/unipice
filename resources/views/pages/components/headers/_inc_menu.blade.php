@@ -7,7 +7,7 @@
         @forelse (getCatParent($item->id) as $vl)
             <li id="menu-item-626" class="menu-item menu-item-type-post_type menu-item-object-static_block menu-item-626">
                 <div class="yamm-content">
-                    <section class="kc-elm kc-css-3629547 kc_row">
+                    <section class="kc-elm kc-css-3629547 kc_row" id="bo_padding">
                         <div class="kc-row-container kc-container">
                             <div class="kc-wrap-columns">
                                 <div class="kc-elm kc-css-2137457 kc_col-sm-3 kc_column kc_col-sm-3">

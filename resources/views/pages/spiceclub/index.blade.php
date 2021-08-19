@@ -1,15 +1,15 @@
 @section('css_js_spice_club')
 <link href="{{ asset('css/ducanh3.css') }}" rel="stylesheet">
     <!-- Vendor JS Files -->
-    <script src="https://technext.github.io/restaurantly/assets/vendor/aos/aos.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/swiper/swiper-bundle.min.js"></script> 
+    <script src="{{ asset('css/css_js/aos.js') }}"></script>
+  <script src="{{ asset('css/css_js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('css/css_js/glightbox.min.js') }}"></script>
+  <script src="{{ asset('css/css_js/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ asset('css/css_js/validate.js') }}"></script>
+  <script src="{{ asset('css/css_js/swiper-bundle.min.js') }}"></script> 
 
     <!-- Template Main JS File -->
-    <script src="https://technext.github.io/restaurantly/assets/js/main.js"></script>
+    <script src="{{ asset('css/css_js/main.js') }}"></script>
 @stop
 
 @extends('pages.layouts.app_master_frontend') @section('contents')
