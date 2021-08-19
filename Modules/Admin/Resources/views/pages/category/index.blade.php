@@ -26,7 +26,6 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
                                         <th>SEO</th>
                                         <th>Sort</th>
                                         <th>Status</th>
@@ -39,9 +38,9 @@
                                 @forelse($categories as $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
-                                        <td>{{ $item->c_name }}</td>
                                         <td>
                                             <div class="existed-seo-meta">
+                                                <h5>{{ $item->c_name }}</h5>
                                                 <span class="page-title-seo title_seo">{{ $item->c_title_seo }}</span>
                                                 <div class="page-url-seo ws-nm">
                                                     <p><span class="slug">{{ $item->c_slug }}</span></p>

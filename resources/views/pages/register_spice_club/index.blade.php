@@ -56,11 +56,9 @@
                                 @endif
                                 @if (get_data_user('web'))
                                     @if(get_data_user('web','type') == 1)
-                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                         <div class="form-create-account-box">
                                             <h2 class="c-login__block-heading" id="block-customer-login-heading">Spice Club chỉ áp dụng cho tài khoản mua lẻ không áp dụng cho tài khoản đại lý.</h2>
                                         </div>
-                                    </div>
                                     @else
                                  
                                         <div class="form-create-account-box">

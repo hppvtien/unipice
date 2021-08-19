@@ -81,13 +81,7 @@ class AdminUniProductController extends AdminController
 
     public function store(AdminUniProductRequest $request)
     {
-        $data                 = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
-        $data['created_at']   = Carbon::now();
-        $data['created_by'] = get_data_user('web');
-
-        if ($request->thumbnail) {
-                $thumbnail = $this->processUploadFile($request->thumbnail);
-        } 
+        $data                 = $request->except(['thumbnail', 'save', '_token', 'tags', 'album','avatar']);
         if ($request->album) {
             $album = [];
             foreach ($request->album as $item) {
@@ -102,12 +96,11 @@ class AdminUniProductController extends AdminController
             'desscription' => $request->desscription,
             'content' => $request->content,
             'created_at' => Carbon::now(),
-            'created_by' => get_data_user('web'),
             'status' => $request->status,
             'is_hot' => $request->is_hot,
             'is_feauture' => $request->is_feauture,
             'order' => $request->order,
-            'thumbnail' => $thumbnail,
+            'thumbnail' => $request->thumbnail,
             'album' => json_encode($album),
             'status' => $request->status,
             'meta_title' => $request->meta_title,
@@ -116,6 +109,7 @@ class AdminUniProductController extends AdminController
             'view_price_sale' => $request->view_price_sale,
             'view_price_sale_store' => $request->view_price_sale_store,
         ];
+        
         $productID = Uni_Product::insertGetId($param);
 
         if ($productID) {

@@ -1,4 +1,4 @@
-<header id="masthead" class="site-header header-v1" style="background-color: #0b2d25;">
+<header id="masthead" class="site-header header-v1 header_thunho">
     <div class="">
         <div class="header-wrap">
             <div class="site-branding">
@@ -12,8 +12,8 @@
                 </button>
                 <div class="primary-navigation">
                     <ul id="menu-main-menu" class="menu nav-menu" aria-expanded="false">
-                        <li class="menu-item"><a href="{{ route('get.register.b2b') }}">B2B</a></li>
-                        <li class="menu-item"><a href="javascript:;">Spice Club</a></li>
+                        <li class="menu-item"><a href="@if (get_data_user('web')) {{ route('get_user.dashboard') }} @else {{ route('get.register.b2b') }} @endif">B2B</a></li>
+                        <li class="menu-item"><a href="{{ route('get.spice_club') }}">Spice Club</a></li>
                         <li class="menu-item"><a href="{{ route('get.find') }}">Tìm Cửa hàng</a></li>
                         <li class="menu-item"><a href="{{ route('get.about') }}">Giới Thiệu</a></li>
                     </ul>
@@ -45,7 +45,7 @@
                             <span class="icon-favorite  a-icon-text-btn__icon" id="count-fff" aria-hidden="true"></span>
                             <?php if (count_fav(get_data_user('web')) == 0 || get_data_user('web') == null) { ?>
                                 <div id="count-fav">
-                                    <div class="c-header__minicart-count count-fav" style="bottom: -10px;right: -5px;border:none">
+                                    <div class=" count-fav" style="bottom: -10px;right: -5px">
 
                                     </div>
                                 </div>

@@ -38,6 +38,7 @@
                                             <th scope="row">{{ $item->id }}</th>
                                             <td>
                                                 <div class="existed-seo-meta">
+                                                    <h5>{{ $item->name }}</h5>
                                                     <span class="page-title-seo title_seo">{{ $item->meta_title }}</span>
                                                     <div class="page-url-seo ws-nm">
                                                         <p><span class="slug">{{ $item->slug }}</span></p>

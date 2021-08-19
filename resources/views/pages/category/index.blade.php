@@ -139,12 +139,12 @@
                                                                             <div class="m-combined-product-name group-product group-product-cart">
                                                                                 <?php if (checkUid(get_data_user('web')) != null) { ?>
                                                                                     <div class="info-sale-store">
-                                                                                        <a href="{{ $item->slug }}" title="{{ $item->name }}">
+                                                                                        <a href="{{ $item->slug }}" title="{{ $item->name }}" class="text-center">
                                                                                             <img src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}">
                                                                                         </a>
-                                                                                        <p><span class="text-warning font-weight-bold">SL/ Thùng:</span> {{ $item->qty_in_box }} hộp</p>
-                                                                                        <p><span class="text-warning font-weight-bold">SL mua tối thiểu:</span> {{ $item->min_box }} thùng</p>
-                                                                                        <p><span class="text-warning font-weight-bold">Giá:</span> {{ formatVnd($item->qty_in_box * $item->view_price_sale_store) }}/thùng</p>
+                                                                                        <p><span class="font-weight-bold" style="color:#ea7236">SL/ Thùng:</span> {{ $item->qty_in_box }} hộp</p>
+                                                                                        <p><span class="font-weight-bold" style="color:#ea7236">SL mua tối thiểu:</span> {{ $item->min_box }} thùng</p>
+                                                                                        <p><span class="font-weight-bold" style="color:#ea7236">Giá:</span> {{ formatVnd($item->qty_in_box * $item->view_price_sale_store) }}/thùng</p>
                                                                                     </div>
                                                                                     <?php if ($item->qty == null) { ?>
                                                                                         <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn contact-btn" type="button">Liên hệ</a>
