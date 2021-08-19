@@ -222,11 +222,12 @@
                 <div class="card-body pt-3">
                     <div class="form-group level-store">
                         <label for="exampleInputEmail1"> Level đại lý <span>(*)</span></label>
-                        <div class="SumoSelect js-sumo-select sumo_somename"><select name="type_buy" class="form-control SlectBox">
-                                <option title="Platinum" value="Platinum">Platinum</option>
-                                <option title="Diamond" value="Diamond">Diamond</option>
-                                <option title="Gold" value="Gold">Gold</option>
-                                <option title="Silver" value="Silver">Silver</option>
+                        <div class="SumoSelect js-sumo-select sumo_somename">
+                            <select name="type_buy" class="form-control SlectBox">
+                                @foreach($status as $key => $item)
+                                
+                                    <option title="Public" value="{{ $key }}" {{ old('type_buy',$uni_flashsale->type_buy ?? '') == $key ? 'selected' : '' }}>{{ $item['name'] }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

@@ -25,11 +25,14 @@ class AdminUniFlashSaleController extends AdminController
 
     public function create()
     {
+        $status = Uni_FlashSale::getStatusGlobal();
         $uni_product = Uni_Product::orderByDesc('id')->get();
         $uni_flashsale = [];
         $viewData = [
             'uni_product' => $uni_product,
-            'uni_flashsale' => $uni_flashsale
+            'uni_flashsale' => $uni_flashsale,
+            'status' => $status,
+
         ];
         return view('admin::pages.uni_flashsale.create', $viewData);
     }
@@ -75,6 +78,7 @@ class AdminUniFlashSaleController extends AdminController
     }
     public function edit($id)
     {
+        $status = Uni_FlashSale::getStatusGlobal();
         $uni_product      = Uni_Product::get();
         $uni_flashsale     = Uni_FlashSale::findOrFail($id);
         foreach($uni_product as $key => $item){
@@ -86,7 +90,8 @@ class AdminUniFlashSaleController extends AdminController
         }
         $viewData = [
             'uni_flashsale'       => $uni_flashsale,
-            'uni_product'       => $uni_product
+            'uni_product'       => $uni_product,
+            'status'       => $status
         ];
 
         return view('admin::pages.uni_flashsale.update', $viewData);
