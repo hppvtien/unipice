@@ -43,7 +43,7 @@
                                     <?php if ($item->qty) { ?>
                                         <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
                                     <?php } else { ?>
-                                        <span class="a-price text-dark product-notnull"><i class="fa fa-question-circle" aria-hidden="true"></i>Hết hàng</span>
+                                        <span class="a-price text-dark product-notnull"><i class="fa fa-phone" aria-hidden="true"></i>Liên hệ</span>
                                     <?php } ?>
                                 <?php } else { ?>
                                     <a href="{{ route('get.uni_contact') }}"><span class="a-price">Liên hệ để biết thông tin</span></a>
