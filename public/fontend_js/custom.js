@@ -443,7 +443,7 @@ $('.btn-comment-rv').on('click', function() {
     var type_question = $(this).attr('data-type');
     var product_id = $(this).attr('product_id');
     var title_question = $('#title_rv').val();
-    var noi_dung_question = $('#noi_dung_commnet').val();
+    var noi_dung_comment = $('#noi_dung_commnet').val();
     var name_question = $('#name_rv').val();
     var phone_question = $('#phone_rv').val();
     var email_question = $('#email_rv').val();
@@ -454,7 +454,7 @@ $('.btn-comment-rv').on('click', function() {
         data: {
             user_id: user_id,
             product_id: product_id,
-            noi_dung_question: noi_dung_question,
+            noi_dung_comment: noi_dung_comment,
             type_question: type_question,
             name_question: name_question,
             phone_question: phone_question,
@@ -473,7 +473,7 @@ $('.btn-comment-qs').on('click', function() {
     var data_url = $(this).attr('data-url');
     var type_question = $(this).attr('data-type');
     var product_id = $(this).attr('product_id');
-    var noi_dung_comment = $('#noi_dung_question').val();
+    var noi_dung_question = $('#noi_dung_question').val();
     var name_question = $('#name_qs').val();
     var phone_question = $('#phone_qs').val();
     var email_question = $('#email_qs').val();
@@ -484,7 +484,7 @@ $('.btn-comment-qs').on('click', function() {
         data: {
             user_id: user_id,
             product_id: product_id,
-            noi_dung_comment: noi_dung_comment,
+            noi_dung_question: noi_dung_question,
             type_question: type_question,
             name_question: name_question,
             phone_question: phone_question,
