@@ -50,7 +50,7 @@
                                                     </div>
                                                     <div class="t-plp__grid js-plp-grid show-product" id="show-product">
                                                         @forelse ($product as $key => $item)
-                                                        <div class="loadmore11 t-plp__product" style="transform-origin: 0px 0px;">
+                                                        <div class="loadmore1 t-plp__product" style="transform-origin: 0px 0px;">
                                                             <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
                                                                     <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" class="m-product-card">
                                                                         <div class="m-product-card__content-wrapper">
@@ -80,61 +80,61 @@
                                                                                             <span class="g-price">
                                                                                                 {{ formatVnd($item->view_price) }}
                                                                                             </span>
-                                                                                                <span class="text-danger paid-save font_chu_mau_do">
+                                                                                            <span class="text-danger paid-save font_chu_mau_do">
 
-                                                                                                    @if ($item->view_price_sale_store == null || $item->view_price == null)
+                                                                                                @if ($item->view_price_sale_store == null || $item->view_price == null)
 
-                                                                                                    @else
-                                                                                                    (Tiết kiệm: {{ 100-round($item->view_price_sale_store*100/$item->view_price) }}% )
-                                                                                                    @endif
-                                                                                                </span>
-                                                                                                <br>
-                                                                                                <span class="a-price font-weight-bold">
-                                                                                                    {{ formatVnd($item->view_price_sale_store) }}
-                                                                                                </span>
-                                                                                                <?php if ($item->qty) { ?>
-                                                                                                    <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
-                                                                                                <?php } else { ?>
-                                                                                                    <span class="a-price text-dark product-notnull"><i class="fa fa-question-circle" aria-hidden="true"></i>Hết hàng</span>
-                                                                                                <?php } ?>
+                                                                                                @else
+                                                                                                (Tiết kiệm: {{ 100-round($item->view_price_sale_store*100/$item->view_price) }}% )
+                                                                                                @endif
+                                                                                            </span>
+                                                                                            <br>
+                                                                                            <span class="a-price font-weight-bold">
+                                                                                                {{ formatVnd($item->view_price_sale_store) }}
+                                                                                            </span>
+                                                                                            <?php if ($item->qty) { ?>
+                                                                                                <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
                                                                                             <?php } else { ?>
-                                                                                                <a href="{{ route('get.uni_contact') }}"><span class="a-price">Liên hệ để biết thông tin</span></a>
+                                                                                                <span class="a-price text-dark product-notnull"><i class="fa fa-question-circle" aria-hidden="true"></i>Hết hàng</span>
                                                                                             <?php } ?>
                                                                                         <?php } else { ?>
-                                                                                            <?php if ($item->view_price_sale != null) { ?>
-                                                                                                <span class="g-price">
-                                                                                                    {{ formatVnd($item->view_price) }}
-                                                                                                </span>
-                                                                                                <span class="text-danger paid-save font_chu_mau_do">
-                                                                                                    @if ($item->view_price_sale == null || $item->view_price == null)
-
-                                                                                                    @else
-                                                                                                    (Tiết kiệm: {{ 100-round($item->view_price_sale*100/$item->view_price) }}% )
-                                                                                                    @endif
-
-                                                                                                </span>
-                                                                                                <br>
-                                                                                                <span class="a-price font-weight-bold">
-                                                                                                    {{ formatVnd($item->view_price_sale) }}
-                                                                                                </span>
-                                                                                                <?php if ($item->qty) { ?>
-
-                                                                                                    <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
-
-                                                                                                <?php } else { ?>
-                                                                                                    <span class="a-price text-info product-notnull"><i class="fa fa-phone"></i>Liên hệ</span>
-                                                                                                <?php } ?>
-                                                                                                <span class="row">
-                                                                                                    <div class="buttons_added add-qty col-12">
-                                                                                                        <input class="minus is-form" type="button" value="-">
-                                                                                                        <input aria-label="quantity" class="input-qty update-qty" id="js-qty{{ $item->id }}" max="10" min="1" name="qty-user" type="number" value="1">
-                                                                                                        <input class="plus is-form" type="button" value="+">
-                                                                                                    </div>
-                                                                                                </span>
-                                                                                            <?php } ?>
-
+                                                                                            <a href="{{ route('get.uni_contact') }}"><span class="a-price">Liên hệ để biết thông tin</span></a>
                                                                                         <?php } ?>
+                                                                                    <?php } else { ?>
+                                                                                        <?php if ($item->view_price_sale != null) { ?>
+                                                                                            <span class="g-price">
+                                                                                                {{ formatVnd($item->view_price) }}
                                                                                             </span>
+                                                                                            <span class="text-danger paid-save font_chu_mau_do">
+                                                                                                @if ($item->view_price_sale == null || $item->view_price == null)
+
+                                                                                                @else
+                                                                                                (Tiết kiệm: {{ 100-round($item->view_price_sale*100/$item->view_price) }}% )
+                                                                                                @endif
+
+                                                                                            </span>
+                                                                                            <br>
+                                                                                            <span class="a-price font-weight-bold">
+                                                                                                {{ formatVnd($item->view_price_sale) }}
+                                                                                            </span>
+                                                                                            <?php if ($item->qty) { ?>
+
+                                                                                                <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
+
+                                                                                            <?php } else { ?>
+                                                                                                <span class="a-price text-info product-notnull"><i class="fa fa-phone"></i>Liên hệ</span>
+                                                                                            <?php } ?>
+                                                                                            <span class="row">
+                                                                                                <div class="buttons_added add-qty col-12">
+                                                                                                    <input class="minus is-form" type="button" value="-">
+                                                                                                    <input aria-label="quantity" class="input-qty update-qty" id="js-qty{{ $item->id }}" max="10" min="1" name="qty-user" type="number" value="1">
+                                                                                                    <input class="plus is-form" type="button" value="+">
+                                                                                                </div>
+                                                                                            </span>
+                                                                                        <?php } ?>
+
+                                                                                    <?php } ?>
+                                                                                </span>
                                                                             </div>
                                                                             <div class="m-combined-product-name group-product group-product-cart">
                                                                                 <?php if (checkUid(get_data_user('web')) != null) { ?>
@@ -211,14 +211,11 @@
                                                             }
                                                         </script>
                                                     </div>
-                                                </div>
-                                                <?php if (count($product) > 12) { ?>
-                                                    <div>
-                                                        <a href="#" id="loadMore">Xem Thêm</a>
+                                                    <div class="class_xem_them">
+                                                        <a href="javascript:;" id="loadMore">Xem Thêm</a>
                                                     </div>
-                                                <?php } else { ?>
-
-                                                <?php } ?>
+                                                </div>
+                                                
                                             </div>
 
                                         </div>

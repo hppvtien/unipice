@@ -142,6 +142,7 @@
                                             <a href="#" class="btn-link text-semibold media-heading box-inline">{{ $item->name }}</a>
         
                                         </div>
+                                        <p class="margin-left1 font-weight-bold">{{ $item->title_rv }}</p>
                                         <p class="margin-left1">{{ $item->noi_dung_comment }}</p>
         
                                         <hr>

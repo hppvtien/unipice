@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="class_xem_them">
-                <a href="#" id="loadMore">Xem Thêm</a>
+                <a href="javascript:;" id="loadMore">Xem Thêm</a>
             </div>
             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -114,7 +114,7 @@
                         }
                         $("#show-product").animate({
                             scrollTop: $(this).offset().top
-                        }, 1500);
+                        }, 5000);
                     });
                 });
 

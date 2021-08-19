@@ -21,7 +21,7 @@ class CategoryController extends Controller
         $trade = Uni_Trade::get();
         $categories = Uni_Category::get();
         $group_id_product = Product_Category::where('category_id', $cat_id)->pluck('product_id');
-        $product = Uni_Product::whereIn('id', $group_id_product)->orderBy('id', 'asc')->limit(12)->get();
+        $product = Uni_Product::whereIn('id', $group_id_product)->orderBy('id', 'asc')->get();
         $product_rel = Uni_Product::whereIn('id', $group_id_product)->where('is_hot',1)->orderBy('id', 'asc')->limit(12)->get();
         $grp_id_cmt = Uni_Comment::where('star', '>', 4)->where('status', 1)->pluck('product_id');
         $product_hotreview = Uni_Product::whereIn('id', $grp_id_cmt)->orderBy('id', 'asc')->limit(12)->get();

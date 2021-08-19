@@ -319,22 +319,17 @@ $("#momo-success").on("click", function() {
     });
 });
 $(function() {
-    $(".loadmore1")
-        .slice(0, 12)
-        .show();
+    $(".loadmore1").slice(0, 4).show();
     $("#loadMore").on("click", function(e) {
+        alert('asdasdasd');
         e.preventDefault();
-        $(".loadmore1:hidden")
-            .slice(0, 12)
-            .slideDown();
+        $(".loadmore1:hidden").slice(0, 4).slideDown();
         if ($(".loadmore1:hidden").length == 0) {
             $("#load").fadeOut("slow");
         }
         $("#show-product").animate({
-                scrollTop: $(this).offset().top
-            },
-            1500
-        );
+            scrollTop: $(this).offset().top
+        }, 1500);
     });
 });
 $(".print_pdf").on("click", function() {
