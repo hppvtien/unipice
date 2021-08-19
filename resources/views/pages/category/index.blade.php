@@ -214,6 +214,7 @@
                                                     <div class="class_xem_them">
                                                         <a href="javascript:;" id="loadMore">Xem Thêm</a>
                                                     </div>
+ 
                                                 </div>
                                                 
                                             </div>

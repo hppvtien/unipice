@@ -31,7 +31,7 @@
                                 <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""></span>
                             </div>
                             <div class="m-category-card__caption do_cao">
-                                <span> <b> {{ countReview($item->id) !=0 ? '('.countReview($item->id).' đánh giá)':'' }}</b></span>
+                                <span>  {{ countReview($item->id) !=0 ? '('.countReview($item->id).' đánh giá)':'' }}</span>
                             </div>
                         </div>
                     </a>
