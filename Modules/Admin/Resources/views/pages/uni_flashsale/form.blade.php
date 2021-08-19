@@ -74,25 +74,25 @@
                                         <th scope="row">{{ $key+1 }}</th>
                                         <td class="text-center">
                                             <div class="form-group">
-                                                <input class="form-check-input" <?= isset($item->flash_sale) ? 'checked' : '' ?> data-sub="" data-key={{ $key }} require type="checkbox" name="product_sale[{{ $key }}][id]" id="inlineCheckbox{{ $key }}" value="{{ $item->id }}">
-                                                <label class="form-check-label" for="inlineCheckbox{{ $key }}">{{ $item->name }}</label>
+                                                <input class="form-check-input" <?= isset($item->flash_sale) ? 'checked' : '' ?> data-sub="" data-key={{ $key }} require type="checkbox" name="product_sale[{{ $key }}][id]" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
+                                                <label class="form-check-label" for="inlineCheckbox{{ $item->id }}">{{ $item->name }}</label>
                                             </div>
                                         </td>
                                         <td>{{ $item->qty }}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>
                                             <div class="form-group">
-                                                <input type="number" class="form-control keypress-count" id="qty_sale_{{ $key }}" data-key={{ $key }} name="product_sale[{{ $key }}][qty_sale]" value="{{ old('qty_sale', $item->flash_sale->qty_sale ?? '') }}">
+                                                <input type="number" class="form-control keypress-count" id="qty_sale_{{ $key }}" data-key={{ $key }} readonly name="product_sale[{{ $key }}][qty_sale]" value="{{ old('qty_sale', $item->flash_sale->qty_sale ?? '') }}">
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <input type="number" class="form-control keypress-count" id="price_sale_{{ $key }}" data-key={{ $key }} name="product_sale[{{ $key }}][price_sale]" value="{{ old('price_sale', $item->flash_sale->price_sale ?? '') }}">
+                                                <input type="number" class="form-control keypress-count" id="price_sale_{{ $key }}" data-key={{ $key }} readonly name="product_sale[{{ $key }}][price_sale]" value="{{ old('price_sale', $item->flash_sale->price_sale ?? '') }}">
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <input type="number" class="form-control keypress-count price_subtotal" id="price_subtotal_{{ $key }}" data-key={{ $key }} readonly="readonly" name="product_sale[{{ $key }}][price_subtotal]" value="{{ old('price_subtotal', $item->flash_sale->price_subtotal ?? '') }}">
+                                                <input type="number" class="form-control keypress-count price_subtotal" id="price_subtotal_{{ $key }}" data-key={{ $key }} readonly name="product_sale[{{ $key }}][price_subtotal]" value="{{ old('price_subtotal', $item->flash_sale->price_subtotal ?? '') }}">
                                             </div>
                                         </td>
                                     </tr>

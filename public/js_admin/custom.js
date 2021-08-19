@@ -43,10 +43,24 @@ $('.close-img').on('click', function() {
 
 $('.form-check-input').on('change', function() {
     let key_data = $(this).attr('data-key');
+    let val_data = $(this).val();
+    console.log(key_data);
+    if ($('#inlineCheckbox' + val_data).is(':checked') == true) {
+        $("input#qty_sale_" + val_data).removeAttr('readonly');
+        $("input#price_sale_" + val_data).removeAttr('readonly');
+    } else if ($('#inlineCheckbox' + val_data).is(':checked') == false) {
+        $("input#qty_sale_" + val_data).attr('readonly', 'readonly');
+        $("input#price_sale_" + val_data).attr('readonly', 'readonly');
+    };
+
+
     if ($('#inlineCheckbox' + key_data).is(':checked')) {
         $('.keypress-count').on('keyup', function() {
+
             let qty_sale = $("#qty_sale_" + key_data).val();
             let price_sale = $("#price_sale_" + key_data).val();
+
+
             if (qty_sale && price_sale) {
                 let price_subtotal = qty_sale * price_sale;
                 $("#price_subtotal_" + key_data).val(price_subtotal);
