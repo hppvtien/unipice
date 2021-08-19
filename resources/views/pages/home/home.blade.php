@@ -65,7 +65,7 @@
                                 <ul class="c-expandable-products-slider__products">
                                     @forelse ($product_hot as $key => $item)
                                     <li class="c-expandable-products-slider__item layout-builder__add-block">
-                                        <a data-history-node-id="305426" role="article" about="" class="m-expandable-product-card" href="{{ getSlugProduct($item->slug) }}">
+                                        <a data-history-node-id="305426" role="article" about="" class="m-expandable-product-card can_tren_duoi_home" href="{{ getSlugProduct($item->slug) }}">
                                             <div class="m-expandable-product-card__content-wrapper">
                                                 <div class="m-expandable-product-card__img-wrapper">
                                                     <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}">
@@ -73,9 +73,10 @@
                                                 <div class="m-expandable-product-card__info">
                                                     <div class="m-expandable-product-card__info-left">
                                                         <div class="m-combined-product-name">
-                                                            <span class="a-folio">
+                                                            <span class="a-folio font_chu_home">
                                                                 {{ $item->name }}
                                                             </span>
+                                                            <br>
                                                             <span class="a-product-name">
                                                                 {{ desscription_cut($item->desscription,60) }}
                                                             </span>
@@ -371,9 +372,10 @@
                                                     </div>
                                                     <div class="m-mini-product-card__info">
                                                         <div class="m-combined-product-name">
-                                                            <span class="a-folio" style="--color-brand: var(--color-simply-organic)">
+                                                            <span class="a-folio font_chu_home" style="--color-brand: var(--color-simply-organic)">
                                                                 {{ $item->name }}
                                                             </span>
+                                                            <br>
                                                             <span class="a-product-name">
                                                                 {{ desscription_cut($item->desscription,60) }}
                                                             </span>

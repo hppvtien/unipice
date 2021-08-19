@@ -421,7 +421,7 @@ span.g-price {
 @media screen and (min-width: 1600px) {
     .secondary-navigation ul.menu>li>a,
     .secondary-navigation ul.nav-menu>li>a {
-        padding: 2em 0;
+        padding: 1em 0;
     }
 }
 

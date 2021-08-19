@@ -5183,3 +5183,44 @@ td.fc-event-container {
         opacity: 0.6;
     }
 }
+
+.can_tren_duoi_home {
+    margin: 0;
+}
+
+.font_chu_home {
+    font-size: 1.2rem;
+}
+
+.font_chu_mau_do {
+    color: #c03235 !important;
+}
+
+.can_detail_danhgia_cauhoi {
+    border-bottom: 1px solid #000;
+    margin: 20px auto;
+}
+
+.can_detail_danhgia_cauhoi .can_trong {
+    padding: 10px 0;
+}
+
+#view_review {
+    display: block;
+}
+
+.cachle_trai_detail_danhgia_cauhoi {
+    margin-left: 78%;
+}
+
+@media screen and (max-width:375px) {
+    .cachle_trai_detail_danhgia_cauhoi {
+        margin-left: -15px;
+    }
+}
+
+@media screen and (max-width:414px) {
+    .cachle_trai_detail_danhgia_cauhoi {
+        margin-left: -15px;
+    }
+}

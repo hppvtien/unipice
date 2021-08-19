@@ -134,7 +134,7 @@
                                                                         <span class="g-price">
                                                                             {{ formatVnd($product->view_price) }}
                                                                         </span>
-                                                                        <span class="text-danger paid-save" style="color: #c03235 !important;">
+                                                                        <span class="text-danger paid-save font_chu_mau_do">
                                                                             (Tiết kiệm: {{ 100-round($product->view_price_sale_store*100/$product->view_price) }}% )
                                                                         </span>
                                                                         <br>
@@ -152,7 +152,7 @@
                                                                         <span class="g-price">
                                                                             {{ formatVnd($product->view_price) }}
                                                                         </span>
-                                                                        <span class="text-danger paid-save" style="color: #c03235 !important;">
+                                                                        <span class="text-danger paid-save font_chu_mau_do" >
                                                                             (Tiết kiệm: {{ 100-round($product->view_price_sale*100/$product->view_price) }}% )
                                                                         </span>
                                                                         <br>
@@ -293,4 +293,6 @@
         </article>
     </div>
 </main>
+
+
 @stop

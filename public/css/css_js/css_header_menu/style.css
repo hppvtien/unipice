@@ -474,7 +474,7 @@
 .header-v1 .header-wrap {
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .header-v1 .main-navigation {
@@ -2479,7 +2479,7 @@ a:hover {
         max-width: fit-content;
     }
     .footer-left-widget {
-        padding-left: 0px;
+        padding-left: 0px !important;
         margin-top: 20px;
     }
 }
