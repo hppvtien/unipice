@@ -1,4 +1,3 @@
-
 <div class="c-categories-slider layout layout--onecol c-categories-slider--template-homepage" style="background-color: #0b2d25;">
 
     <div class="layout__region layout__region--heading">
@@ -14,46 +13,39 @@
     <div class="layout__region layout__region--content">
         <div class="c-categories-slider__container js-swiper-container">
             <ul class="c-categories-slider__slider js-swiper-wrapper">
+
+
+
                 @forelse($product_rel as $key_rel => $item)
                 <li class="c-categories-slider__item js-swiper-slide">
-                    <div class="loadmore11 t-plp__product" style="transform-origin: 0px 0px; display: block;" data-animate-grid-id="0.8579037597911499">
-                        <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
-                                <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" data-product-brand="frontiercoop_market" class="m-product-card">
-                                    <div class="m-product-card__content-wrapper">
-                                        <a class="m-product-card__img-wrapper product-review" href="{{ $item->slug }}" title="{{ $item->meta_title }}">
-                                            <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->meta_title }}" src="{{ pare_url_file($item->thumbnail) }}">
-                                        </a>
-                                    </div>
-                                    <div class="m-product-card__info do_cao">
-                                        <div class="m-combined-product-name group-product">
-                                            <a class="m-combined-product-name__link product-name-fio align-items-center produc-rel-link" href="{{ $item->slug }}" title="{{ $item->meta_title }}">
-                                                <span class="a-folio">
-                                                    {{ $item->name }}
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="m-combined-product-name group-product">
-                                            <a class="m-combined-product-name__link product-name-fio align-items-center produc-rel-link" href="{{ $item->slug }}" title="{{ $item->meta_title }}">
-                                                <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""></span>  
-                                            </a>
-                                            <a class="text-center"><b> {{ countReview($item->id) !=0 ? '('.countReview($item->id).' đánh giá)':'' }}</b></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </span>
+                    <a class="m-category-card m-category-card--bordered" href="{{ getSlugProduct($item->slug) }}">
+                        <div class="m-category-card__image-wrapper">
+                            <picture>
+                                <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($item->thumbnail) }}" srcset="{{ pare_url_file($item->thumbnail) }}">
+                                <img class=" lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
+                            </picture>
+                            <div class="m-category-card__caption product-name-fio">
+                                <span class="m-category-card__caption-text a-folio" style="font-size: 1em!important">{{ $item->name }}</span>
+                            </div>
+                            <div class="m-category-card__caption">
+                                <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""></span>
+                            </div>
+                            <div class="m-category-card__caption do_cao">
+                                <span> <b> {{ countReview($item->id) !=0 ? '('.countReview($item->id).' đánh giá)':'' }}</b></span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </li>
                 @empty
                 @endforelse
             </ul>
             <div class="a-carousel-indicator a-carousel-indicator--no-bullets a-carousel-indicator--arrows c-categories-slider__arrows">
                 <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--left js-swiper-button-prev" type="button" aria-label="Prev">
-        <span class="icon-arrow-left"></span>
-    </button>
+                    <span class="icon-arrow-left"></span>
+                </button>
                 <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--right js-swiper-button-next" type="button" aria-label="Next">
-        <span class="icon-arrow-right"></span>
-    </button>
+                    <span class="icon-arrow-right"></span>
+                </button>
             </div>
             <div class="c-products-slider__scrollbar">
                 <div class="a-slider-scrollbar">

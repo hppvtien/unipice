@@ -48,6 +48,7 @@ class AdminUniFlashSaleController extends AdminController
         $data['info_sale'] = json_encode($product_sale);
        
         $param = [
+            "type_buy" => $request->type_buy,
             "name" => $request->name,
             "slug" => $request->slug,
             "is_flash" => $request->is_flash,
@@ -107,11 +108,12 @@ class AdminUniFlashSaleController extends AdminController
             if ($request->thumbnail) {
                 $thumbnail = $request->thumbnail;
                 Storage::delete('public/uploads/' . $uni_flashsale->thumbnail);
-            }else {
+            } else {
                 $thumbnail = $uni_flashsale->thumbnail;           
             }
 
             $param = [
+                "type_buy" => $request->type_buy,
                 "name" => $request->name,
                 "slug" => $request->slug,
                 "is_flash" => $request->is_flash,

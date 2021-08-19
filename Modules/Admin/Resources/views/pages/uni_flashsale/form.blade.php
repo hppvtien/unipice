@@ -43,7 +43,7 @@
                         <label for="exampleInputEmail1" class="required">Hạn Combo <span>(*)</span></label>
                         <input type="date" class="form-control keypress-count" data-title-seo=".title_seo" value="{{ old('sale_off',$uni_flashsale->sale_off ?? '') }}" name="sale_off">
                         @if($errors->first('sale_off'))
-                            <span class="text-danger">{{ $errors->first('sale_off') }}</span>
+                        <span class="text-danger">{{ $errors->first('sale_off') }}</span>
                         @endif
                     </div>
                 </div>
@@ -68,40 +68,34 @@
                             </thead>
                             <tbody>
                                 <?php if ($uni_flashsale) { ?>
-                                   
+
                                     @foreach ($uni_product as $key => $item)
-                                            <tr>
-                                                <th scope="row">{{ $key+1 }}</th>
-                                                <td class="text-center">
-                                                    <div class="form-group">
-                                                        <input class="form-check-input" 
-                                                        <?= isset($item->flash_sale) ? 'checked' : '' ?> 
-                                                        data-sub="" data-key={{ $key }} require type="checkbox" 
-                                                        name="product_sale[{{ $key }}][id]" id="inlineCheckbox{{ $key }}" value="{{ $item->id }}">
-                                                        <label class="form-check-label" for="inlineCheckbox{{ $key }}">{{ $item->name }}</label>
-                                                    </div>
-                                                </td>
-                                                <td>{{ $item->qty }}</td>
-                                                <td>{{ $item->price }}</td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input type="number" class="form-control keypress-count" id="qty_sale_{{ $key }}" data-key={{ $key }} 
-                                                        name="product_sale[{{ $key }}][qty_sale]" value="{{ old('qty_sale', $item->flash_sale->qty_sale ?? '') }}">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input type="number" class="form-control keypress-count" id="price_sale_{{ $key }}" data-key={{ $key }} 
-                                                        name="product_sale[{{ $key }}][price_sale]" value="{{ old('price_sale', $item->flash_sale->price_sale ?? '') }}">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input type="number" class="form-control keypress-count price_subtotal" id="price_subtotal_{{ $key }}" data-key={{ $key }} readonly="readonly" 
-                                                        name="product_sale[{{ $key }}][price_subtotal]" value="{{ old('price_subtotal', $item->flash_sale->price_subtotal ?? '') }}">
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                    <tr>
+                                        <th scope="row">{{ $key+1 }}</th>
+                                        <td class="text-center">
+                                            <div class="form-group">
+                                                <input class="form-check-input" <?= isset($item->flash_sale) ? 'checked' : '' ?> data-sub="" data-key={{ $key }} require type="checkbox" name="product_sale[{{ $key }}][id]" id="inlineCheckbox{{ $key }}" value="{{ $item->id }}">
+                                                <label class="form-check-label" for="inlineCheckbox{{ $key }}">{{ $item->name }}</label>
+                                            </div>
+                                        </td>
+                                        <td>{{ $item->qty }}</td>
+                                        <td>{{ $item->price }}</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control keypress-count" id="qty_sale_{{ $key }}" data-key={{ $key }} name="product_sale[{{ $key }}][qty_sale]" value="{{ old('qty_sale', $item->flash_sale->qty_sale ?? '') }}">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control keypress-count" id="price_sale_{{ $key }}" data-key={{ $key }} name="product_sale[{{ $key }}][price_sale]" value="{{ old('price_sale', $item->flash_sale->price_sale ?? '') }}">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control keypress-count price_subtotal" id="price_subtotal_{{ $key }}" data-key={{ $key }} readonly="readonly" name="product_sale[{{ $key }}][price_subtotal]" value="{{ old('price_subtotal', $item->flash_sale->price_subtotal ?? '') }}">
+                                            </div>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 <?php } else { ?>
                                     @foreach ($uni_product as $key => $item)
@@ -164,30 +158,26 @@
                 <div class="card-body pt-3 box-seo hide">
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Tiêu đề SEO <span>(*)</span></label>
-                        <input type="text" class="form-control meta_title" name="meta_title" id="meta_title"
-                            value="{{ old('meta_title', $uni_flashsale->meta_title ?? '') }}">
+                        <input type="text" class="form-control meta_title" name="meta_title" id="meta_title" value="{{ old('meta_title', $uni_flashsale->meta_title ?? '') }}">
                         @if ($errors->first('meta_title'))
-                            <span class="text-danger">{{ $errors->first('meta_title') }}</span>
+                        <span class="text-danger">{{ $errors->first('meta_title') }}</span>
                         @endif
                         <span class="text-danger" id="count_title"></span>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Mô tả SEO <span>(*)</span></label>
-                        <input type="text" class="form-control meta_desscription" name="meta_desscription"
-                            id="meta_desscription"
-                            value="{{ old('meta_desscription', $uni_flashsale->meta_desscription ?? '') }}">
+                        <input type="text" class="form-control meta_desscription" name="meta_desscription" id="meta_desscription" value="{{ old('meta_desscription', $uni_flashsale->meta_desscription ?? '') }}">
                         @if ($errors->first('meta_desscription'))
-                            <span class="text-danger">{{ $errors->first('meta_desscription') }}</span>
+                        <span class="text-danger">{{ $errors->first('meta_desscription') }}</span>
                         @endif
                         <span class="text-danger" id="count_des"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Từ khóa <span>(*)</span></label>
-                        <input type="text" class="form-control meta_keyword" name="meta_keyword"
-                            value="{{ old('meta_keyword', $uni_flashsale->meta_keyword ?? '') }}">
+                        <input type="text" class="form-control meta_keyword" name="meta_keyword" value="{{ old('meta_keyword', $uni_flashsale->meta_keyword ?? '') }}">
                         @if ($errors->first('meta_keyword'))
-                            <span class="text-danger">{{ $errors->first('meta_keyword') }}</span>
+                        <span class="text-danger">{{ $errors->first('meta_keyword') }}</span>
                         @endif
                     </div>
                 </div>
@@ -222,10 +212,21 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Chiến dịch loại <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                            <select name="is_flash" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                <option title="Flashsale" value="flash">Flashsale (Tất cả khách hàng)</option>
-                                <option title="Bulksale" value="bulk">Bulksale (Đại lý)</option>
-                                <option title="Combo" value="combo">Combo (Đại lý)</option>
+                            <select name="is_flash" class="form-control SlectBox SumoUnder" id="is_flash_sale" tabindex="-1">
+                                <option title="Flashsale" value="0" {{ ($uni_flashsale->is_flash ?? 0) == 0 ? 'selected' : '' }}>Flashsale (Tất cả khách hàng)</option>
+                                <option title="Combo" value="1" {{ ($uni_flashsale->is_flash ?? 0) == 1 ? 'selected' : '' }}>Combo (Đại lý)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-3">
+                    <div class="form-group level-store">
+                        <label for="exampleInputEmail1"> Level đại lý <span>(*)</span></label>
+                        <div class="SumoSelect js-sumo-select sumo_somename"><select name="type_buy" class="form-control SlectBox">
+                                <option title="Platinum" value="Platinum">Platinum</option>
+                                <option title="Diamond" value="Diamond">Diamond</option>
+                                <option title="Gold" value="Gold">Gold</option>
+                                <option title="Silver" value="Silver">Silver</option>
                             </select>
                         </div>
                     </div>

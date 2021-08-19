@@ -74,3 +74,13 @@ $('.form-check-input').on('change', function() {
         });
     }
 });
+
+$('#is_flash_sale').on('click', function() {
+    let html_level_store = '';
+
+    if (store_level == 1) {
+        $('.level-store').html(html_level_store).slideToggle('slow');
+    } else {
+        $('.level-store').html('').slideToggle('slow');
+    }
+});
