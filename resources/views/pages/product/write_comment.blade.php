@@ -130,7 +130,7 @@
                 </div>
             </div>
             <div class="row can_trong">
-                <div id="view_review" class="tabcontents not-padding">
+                <div id="view_review" class="tabcontents not-padding col-md-12">
                     <div class="">
                         <div>
                             <div>
@@ -139,13 +139,18 @@
                                     <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
                                     <div class="media-body">
                                         <div class="mar-btm">
-                                            <a href="#" class="btn-link text-semibold media-heading box-inline">{{ $item->name }}</a>
-        
+                                            <a href="#" class="btn-link text-semibold media-heading box-inline" style="color:#08532f">
+                                                {{ ($item->name != '') ? $item->name : 'Khách Hàng '.$item->id }} -- {{ ($item->title != '') ? '( '.$item->title.' )' : '( Bình Luận Sản Phẩm )' }}
+                                                <br>
+                                                Đánh Giá: {{ $item->star }} @for ($i = 0; $i < $item->star; $i++)
+                                                <span class="fa fa-star checked-star"></span>
+                                                @endfor
+                                                <hr>
+                                            </a>
+                                            
                                         </div>
                                         <p class="margin-left1 font-weight-bold">{{ $item->title_rv }}</p>
                                         <p class="margin-left1">{{ $item->noi_dung_comment }}</p>
-        
-                                        <hr>
                                     </div>
                                 </div>
                                 @endforeach
@@ -155,7 +160,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="view_question" class="tabcontents not-padding">
+                <div id="view_question" class="tabcontents not-padding col-md-12">
 
                     <!-- Newsfeed Content -->
                     <!--===================================================-->
