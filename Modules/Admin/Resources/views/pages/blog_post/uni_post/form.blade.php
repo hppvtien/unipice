@@ -183,8 +183,8 @@
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button"
                             aria-expanded="true">
                             <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                <option title="hide" value="0">No Active</option>
-                                <option title="Public" value="1">Active</option>
+                                <option title="hide" value="0" {{ ($uni_post->status ?? 0) == 0 ? 'selected' : '' }}>No Active</option>
+                                <option title="Public" value="1" {{ ($uni_post->status ?? 0) == 1 ? 'selected' : '' }}>Active</option>
                             </select>
                         </div>
                     </div>
