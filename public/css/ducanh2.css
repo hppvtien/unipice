@@ -5537,3 +5537,15 @@ section .section-title {
 #bo_padding {
     padding: 0;
 }
+
+.can_product_list_1 {
+    margin: 0;
+}
+
+.can_product_list_2 {
+    margin: 5px 0;
+}
+
+.co_chu_1 {
+    font-size: 15px;
+}

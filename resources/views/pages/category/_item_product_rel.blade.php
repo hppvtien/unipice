@@ -24,14 +24,14 @@
                                 <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($item->thumbnail) }}" srcset="{{ pare_url_file($item->thumbnail) }}">
                                 <img class=" lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                             </picture>
-                            <div class="m-category-card__caption product-name-fio">
+                            <div class="m-category-card__caption product-name-fio can_product_list_1">
                                 <span class="m-category-card__caption-text a-folio" style="font-size: 1em!important">{{ $item->name }}</span>
                             </div>
-                            <div class="m-category-card__caption">
+                            <div class="m-category-card__caption can_product_list_1">
                                 <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""></span>
                             </div>
-                            <div class="m-category-card__caption do_cao">
-                                <span>  {{ countReview($item->id) !=0 ? '('.countReview($item->id).' đánh giá)':'' }}</span>
+                            <div class="m-category-card__caption do_cao can_product_list_2">
+                                <span class="co_chu_1">  {{ countReview($item->id) !=0 ? '('.countReview($item->id).' đánh giá)':'' }}</span>
                             </div>
                         </div>
                     </a>
