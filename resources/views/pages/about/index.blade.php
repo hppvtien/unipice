@@ -11,7 +11,7 @@
                         data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description=""
                         data-liquideffect='{"image":"{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}","imagesize":"external","autoplay":true,"scalex":4,"scaley":4,"speedx":0.5,"speedy":-0.5,"rotationx":0,"rotationy":0,"rotation":0,"transtime":2000,"easing":"Power3.easeOut","transcross":false,"transpower":false,"transitionx":0,"transitiony":0,"transpeedx":0,"transpeedy":0,"transrotx":0,"transroty":0,"transrot":0}'>
                         <!-- MAIN IMAGE -->
-                        <video controls autoplay loop style="opacity: 0.6;width:100%;" >
+                        <video controls autoplay loop >
                             <source src="{{ asset('/images/icon_menu/video_about.mp4') }}" type="video/mp4">
                           </video> 
                         <!--<img src="{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}" alt="Image" data-duration="4000" data-lazyload="{{ asset('/images/icon_menu/anh_nen_b2b.jpg') }}" data-bgposition="center center"
@@ -27,7 +27,7 @@
                         <p class="tp-caption Restaurant-Description " id="slide-7-layer-13-2" data-x="['left','left','middle','middle']" data-hoffset="['0','30','0','0']" data-y="['middle','middle','top','top']" data-voffset="['-100','-100','180','80']" data-fontsize="['18','18','18','18']" data-fontsize="['50','50','50','50']"
                             data-lineheight="['30','30','30','30']" data-fontweight="['700','700','700','700']" data-width="['480','400','480','400']" data-height="auto" data-visibility="['on', 'on', 'off', 'off']" data-type="text" data-responsive_offset="on"
                             data-frames='[{"delay":1500,"split":"words","splitdelay":0.05,"speed":1000,"split_direction":"forward","frame":"0","from":"x:50px;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","split":"words","splitdelay":0.02,"speed":300,"split_direction":"backward","frame":"999","to":"auto:auto;fb:0;","ease":"Power3.easeInOut"}]'
-                            data-textAlign="['left','left','center','center']" style="z-index: 5; min-width: 480px; max-width: 480px; white-space: normal; letter-spacing: 0px; color:#fff">Appropriately provide access to front-end potentialities via synergistic experiences. Competently maximize open-source imperatives after corporate systems.</p>
+                            data-textAlign="['left','left','center','center']" style="z-index: 5; min-width: 480px; max-width: 480px; white-space: normal; letter-spacing: 0px; color:#fff">{{ $content_page_1->desscription}}</p>
 
                         <!-- LAYER NR. 3 -->
                         <!--<div class="tp-caption" id="slide-7-layer-12" data-x="['right','right','middle','middle']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','-70','-10']" data-width="auto" data-height="auto" data-whitespace="normal"
@@ -45,10 +45,10 @@
 
 
 
-                        <a class="tp-caption rev-btn button button-large m-0 button-white fw-bold button-circle button-light" href="demos/recipes/recipe-single.html" target="_blank" id="slide-7-layer-13" data-x="['left','left','middle','middle']" data-hoffset="['0','30','0','0']"
+                        <a class="tp-caption rev-btn button button-large m-0 button-white fw-bold button-circle button-light" href="{{ $content_page_1->url_but}}" target="_blank" id="slide-7-layer-13" data-x="['left','left','middle','middle']" data-hoffset="['0','30','0','0']"
                             data-y="['middle','middle','bottom','bottom']" data-voffset="['200','200','30','0']" data-textAlign="['center','center','center','center']" data-width="200" data-height="auto" data-type="button" data-actions='' data-responsive_offset="off" data-responsive="off" data-fontsize="['17', '17', '15', '15']"
                             data-lineheight="['40', '40', '30', '30']" data-frames='[{"delay":3000,"speed":1600,"frame":"0","from":"x:50px;z:0;rX:0;rY:0;rZ:0;sX:1.1;sY:1.1;skX:0;skY:0;opacity:0;fbr:100;","bgcolor":"#FFF","to":"o:1;fbr:100;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","bgcolor":"#FFF","to":"opacity:0;fbr:100;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"150","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;fbr:90%;","style":"c:#fff;"}]'
-                            style="z-index: 9; background-color: #0b2d25; padding: 4px 28px; color:#fff; text-align: center;"><span>Xem Thêm</span> <i class="icon-angle-right"></i>
+                            style="z-index: 9; background-color: #0b2d25; padding: 4px 28px; color:#fff; text-align: center;"><span>{{ $content_page_1->name_but}}</span> <i class="icon-angle-right"></i>
 								</a>
                     </li>
                     <!-- SLIDE  -->

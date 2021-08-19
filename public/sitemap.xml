@@ -2,454 +2,884 @@
 <?xml-stylesheet href="/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 	<url>
+	<loc>http://127.0.0.1:8000/home</loc>
+		<priority>1.0</priority>
+		<lastmod>2021-08-18T10:25:08+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/home-1629282358.jpg</image:loc>
+			<image:title>Home</image:title>
+			<image:caption>home home home home home home home home home home home home home home home home home</image:caption>
+		</image:image>
+	</url>
+	<url>
 	<loc>http://127.0.0.1:8000/spice-club</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-16T02:36:28+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-nen-gioi-thieu-1629281488.jpg</image:loc>
+			<image:title>Spice Club</image:title>
+			<image:caption>Spice Club Spice Club Spice Club Spice Club Spice Club Spice Club Spice Club</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/gioi-thieu-ve-adsmo</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-05-15T03:47:10+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-banner-trang-bb-1628828639.jpg</image:loc>
+			<image:title>Giới thiệu</image:title>
+			<image:caption>Giới thiệu về chúng tồi</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/popcorn-seasonings-toppings-perfect-for-your-next-m</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-12T10:14:40+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-blog-1-1628763277.jpg</image:loc>
+			<image:title>Popcorn Seasonings &amp; Toppings Perfect For Your Next M</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seas</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night15</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night15</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night14</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night14</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night13</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night13</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie12</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie12</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie11</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie11</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie10</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie10</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie9</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie9</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie8</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie8</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie7</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie7</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie6</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie6</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie5</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie5</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie4</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie4</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie3</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie3</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie2</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie2</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie1</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie1</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night9</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night9</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night8</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night8</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night7</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night7</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night6</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night6</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night5</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night5</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night4</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night4</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night3</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night3</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night1</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night1</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/bai-viet/6-healthy-popcorn-seasonings-toppings-perfect-for-your-next-movie-night2</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T03:26:49+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-blog-1628754919.jpg</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night2</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/danh-muc-bai-viet/gia-vi-hoan-chinh</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T02:43:10+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-blog-1628754919.jpg</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night2</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/danh-muc-bai-viet/khuyen-mai</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T02:43:10+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-blog-1628754919.jpg</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night2</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/danh-muc-bai-viet/gia-vi-qua-tang</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T02:43:10+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-blog-1628754919.jpg</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night2</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/danh-muc-bai-viet/gia-vi-tu-nhien</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T02:43:10+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-blog-1628754919.jpg</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night2</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/danh-muc-bai-viet/san-pham-moi</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T02:43:10+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-blog-1628754919.jpg</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night2</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/danh-muc-bai-viet/gia-vi-tam-uop-bot-bbq</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T02:43:10+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-blog-1628754919.jpg</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night2</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/danh-muc-bai-viet/gia-vi-muoi</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-16T02:43:10+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/anh-blog-1628754919.jpg</image:loc>
+			<image:title>6 Healthy Popcorn Seasonings &amp; Toppings Perfect For Your Next Movie Night2</image:title>
+			<image:caption>Nothing says movie night like a bowl of fresh-popped popcorn. While popcorn can make a light, healthy snack, most popcorn seasonings and toppings are loaded with butter and salt. Plain popcorn can taste bland, so what can you do instead?</image:caption>
+		</image:image>
+	</url>
+	<url>
+	<loc>http://127.0.0.1:8000/san-pham/bot-gung</loc>
+		<priority>1.0</priority>
+		<lastmod>2021-08-19T04:39:46+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nghe-lo-cccccc-1629347983.png</image:loc>
+			<image:title>Bột gừng</image:title>
+			<image:caption>Bột gừng UniSpice được người đầu bếp kết hợp cùng các các nguyên liệu khác để tạo nên những món ăn có hương vị thơm ngon, mang đậm văn hóa ẩm thực Việt.</image:caption>
+		</image:image>
+	</url>
+	<url>
+	<loc>http://127.0.0.1:8000/san-pham/bot-ca-ri</loc>
+		<priority>1.0</priority>
+		<lastmod>2021-08-19T04:27:56+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nghe-lo-cccccc-1629347314.png</image:loc>
+			<image:title>Bột cà ri</image:title>
+			<image:caption>Bột cà ri của UniSpice sử dụng trong chế biến thực phẩm giúp tạo màu sắc hấp dẫn và hương vị đặc biệt cho món ăn, kích thích vị giác người dùng.</image:caption>
+		</image:image>
+	</url>
+	<url>
+	<loc>http://127.0.0.1:8000/san-pham/gia-vi-tam-uop-bbq-hai-san</loc>
+		<priority>1.0</priority>
+		<lastmod>2021-08-19T04:16:36+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1629346593.png</image:loc>
+			<image:title>Gia vị tẩm ướp BBQ hải sản</image:title>
+			<image:caption>Bột gia vị tẩm ướp BBQ hải sản của UniSpice được nhiều khách sạn, nhà hàng, người nội trợ lựa chọn để tạo nên những món nướng thơm ngon và hấp dẫn.</image:caption>
+		</image:image>
+	</url>
+	<url>
+	<loc>http://127.0.0.1:8000/san-pham/gia-vi-tam-uop-bbq-han-quoc</loc>
+		<priority>1.0</priority>
+		<lastmod>2021-08-19T04:05:43+00:00</lastmod>
+		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nghe-lo-cccccc-1629345500.png</image:loc>
+			<image:title>Gia vị tẩm ướp BBQ Hàn Quốc</image:title>
+			<image:caption>Sản phẩm bột gia vị tẩm ướp BBQ Hàn Quốc của UniSpice có hương vị đậm đà, dậy mùi thơm ngon, là sự lựa chọn hoàn hảo cho các bữa ăn, các bữa tiệc BBQ.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-09</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-14T06:50:03+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698205.png</image:loc>
+			<image:title>Sản phẩm 09</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-10</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-14T06:49:46+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nghe-lo-90g-1627698174.png</image:loc>
+			<image:title>Sản phẩm 10</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-11</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-14T06:49:37+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-me-lo-120g-04-1627698121.png</image:loc>
+			<image:title>Sản phẩm 11</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 01.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-12</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-14T06:49:26+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698044.png</image:loc>
+			<image:title>Sản phẩm 12</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 01.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-13</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-14T06:49:14+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-me-lo-120g-04-1627697950.png</image:loc>
+			<image:title>Sản phẩm 13</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-14</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-14T06:49:03+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627697663.png</image:loc>
+			<image:title>Sản phẩm 14</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-15</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-14T06:48:52+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nghe-lo-90g-1627697166.png</image:loc>
+			<image:title>Sản phẩm 15</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-01</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-14T06:47:08+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698578.png</image:loc>
+			<image:title>Sản phẩm 01</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 01.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-02</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-14T06:45:06+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-me-lo-120g-04-1627698552.png</image:loc>
+			<image:title>Sản phẩm 02</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-03</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:29:28+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nghe-lo-90g-1627698524.png</image:loc>
+			<image:title>Sản phẩm 03</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-04</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:29:28+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nghe-lo-cccccc-1627708706.png</image:loc>
+			<image:title>Sản phẩm 04</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-05</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:29:28+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698484.png</image:loc>
+			<image:title>Sản phẩm 05</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-06</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:29:28+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nghe-lo-90g-1627698439.png</image:loc>
+			<image:title>Sản phẩm 06</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-07</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:29:28+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-me-lo-120g-04-1627698386.png</image:loc>
+			<image:title>Sản phẩm 07</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-08</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:29:28+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/hat-kho.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:42:43+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/bot-rau-dinh-duong.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:42:11+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/rau-xay-kho.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:41:35+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/xot-gia-vi-bbq.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:40:27+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/bot-gia-vi-tam-uop-bbq.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:38:11+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/bot-gia-vi-hai-san.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:37:09+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/bot-gia-vi-ga.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:36:32+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/bot-gia-vi-heo.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:35:50+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/bot-gia-vi-bo.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:28:03+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/bot-gia-vi-tam-uop.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:27:01+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/bot-gia-vi-mon-lau.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:25:37+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/bot-gia-vi-mon-kho.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:24:55+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/bot-nem-bot-canh.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:23:29+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/gia-vi-lam-banh.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:21:59+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/gia-vi-dang-la-nhuy-hoa.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:20:35+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/gia-vi-dang-hat-qua-tham.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:19:17+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/gia-vi-dang-lat-mieng.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T04:10:57+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/bot-gia-vi.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-08-10T03:56:19+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/khuyen-mai.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-15T03:02:08+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/gia-vi-qua-tang.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-15T03:01:33+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/gia-vi-tu-nhien.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:13:10+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/san-pham-moi.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:12:31+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/gia-vi-bot-xot-bbq.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:12:05+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/nong-san-kho.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:11:26+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/tra.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:10:57+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/san-pham/gia-vi-hoan-chinh.html</loc>
 		<priority>1.0</priority>
 		<lastmod>2021-07-13T10:10:20+00:00</lastmod>
 		<changefreq>daily</changefreq>
+		<image:image>
+			<image:loc>http://127.0.0.1:8000/storage/uploads/bot-nhuc-dau-khau-lo-120g-03-1627698329.png</image:loc>
+			<image:title>Sản phẩm 08</image:title>
+			<image:caption>Sốt Chấm là chất lỏng sánh, có độ đặc nhất định,có mùi thơm dịu nhẹ, được tạo nên từ nhiều loại gia vị 02.</image:caption>
+		</image:image>
 	</url>
 </urlset>
 

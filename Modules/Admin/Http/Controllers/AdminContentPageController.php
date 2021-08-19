@@ -22,12 +22,14 @@ class AdminContentPageController extends AdminController
     public function store(Request $request, $id)
     {
        
-        $data = $request->except(['avatar', 'save', '_token','thumbnail','content','name','desscription']);
+        $data = $request->except(['avatar', 'save', '_token','thumbnail','content','name','desscription','name_but','url_but']);
         $data['page_id'] = $id;
         $data['name'] = $request->name;
         $data['desscription'] = $request->desscription;
         $data['content'] = $request->content;
         $data['thumbnail'] = $request->thumbnail;
+        $data['name_but'] = $request->name_but;
+        $data['url_but'] = $request->url_but;
         $pageID = Content_Page::insertGetId($data);
         if ($pageID) {
             $this->showMessagesSuccess();
@@ -47,10 +49,12 @@ class AdminContentPageController extends AdminController
     public function update(Request $request, $id)
     {
         $content_page = Content_Page::find($id);
-        $data = $request->except(['avatar', 'save', '_token','thumbnail','content']);
+        $data = $request->except(['avatar', 'save', '_token','thumbnail','content','name_but','url_but']);
         $data['name'] = $request->name;
         $data['desscription'] = $request->desscription;
         $data['content'] = $request->content;
+        $data['name_but'] = $request->name_but;
+        $data['url_but'] = $request->url_but;
         $data['updated_at'] = Carbon::now();
         if($request->thumbnail){
             Storage::delete('public/uploads/'.$content_page->thumbnail);

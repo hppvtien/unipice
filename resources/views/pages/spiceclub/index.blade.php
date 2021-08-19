@@ -1,15 +1,15 @@
 @section('css_js_spice_club')
 <link href="{{ asset('css/ducanh3.css') }}" rel="stylesheet">
     <!-- Vendor JS Files -->
-    <script src="https://technext.github.io/restaurantly/assets/vendor/aos/aos.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://technext.github.io/restaurantly/assets/vendor/swiper/swiper-bundle.min.js"></script> 
+    <script src="{{ asset('css/css_js/aos.js') }}"></script>
+  <script src="{{ asset('css/css_js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('css/css_js/glightbox.min.js') }}"></script>
+  <script src="{{ asset('css/css_js/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ asset('css/css_js/validate.js') }}"></script>
+  <script src="{{ asset('css/css_js/swiper-bundle.min.js') }}"></script> 
 
     <!-- Template Main JS File -->
-    <script src="https://technext.github.io/restaurantly/assets/js/main.js"></script>
+    <script src="{{ asset('css/css_js/main.js') }}"></script>
 @stop
 
 @extends('pages.layouts.app_master_frontend') @section('contents')
@@ -226,13 +226,14 @@
                                     class="c-page-header c-page-header--centered c-page-header--light">
                                     <picture class="c-page-header__image">
                                         <source media="(min-width: 1024px)"
-                                            data-srcset="https://www.coopmarket.com/sites/default/files/styles/1440x380/public/acquiadam/2020-12/membership-hero-desktop.png?itok=aZRBseW2">
+
+                                            data-srcset="{{ pare_url_file($content_page_7->thumbnail) }}">
                                         <img class="lazyload"
-                                            data-src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc"
+                                            data-src="{{ pare_url_file($content_page_7->thumbnail) }}"
                                             alt="">
                                     </picture>
                                     <div class="c-page-header__content">
-                                        <h1 class="c-page-header__headline">Become an Associate Member</h1>
+                                        <h1 class="c-page-header__headline">TRỞ THÀNH THÀNH VIÊN <br>SPICE CLUB</h1>
                                     </div>
                                 </div>
                             </div>
@@ -259,8 +260,8 @@
                                                     <div class="m-heading ">
                                                         <h2 class="m-heading__headline">{{ $content_page_8->name}} </h2>
                                                         <div class="m-heading__cta">
-                                                            <a href="#"><span
-                                                                    class="m-heading__cta--text">Become a Member</span>
+                                                            <a href="{{ $content_page_8->url_but}}"><span
+                                                                    class="m-heading__cta--text">{{ $content_page_8->name_but}}</span>
                                                                 <span class="icon-arrow"></span></a>
                                                         </div>
                                                     </div>
@@ -283,8 +284,8 @@
                                                     <div class="m-heading ">
                                                         <h2 class="m-heading__headline">{{ $content_page_9->name}}</h2>
                                                         <div class="m-heading__cta">
-                                                            <a href="#"><span
-                                                                    class="m-heading__cta--text">Become a Member</span>
+                                                            <a href="{{ $content_page_9->url_but}}"><span
+                                                                    class="m-heading__cta--text">{{ $content_page_9->name_but}}</span>
                                                                 <span class="icon-arrow"></span></a>
                                                         </div>
                                                     </div>
@@ -301,13 +302,13 @@
                             <div class="layout__region layout__region--content">
                                 <div data-block-plugin-id="inline_block:cta_banner"
                                     data-inline-block-uuid="728e2342-c0b1-413a-a643-7ad65411c78a"
-                                    style="--illustration-top:url(&#039;https://shop.coopmarket.com/customer/account/create/&#039;)"
+                                    style="--illustration-top:url({{ pare_url_file($page->p_banner) }})"
                                     class="c-cta-banner c-cta-banner--torn-edge c-cta-banner--isLight c-cta-banner--illustrations c-cta-banner--bgImg">
                                     <div class="c-cta-banner__content">
                                         <span class="c-cta-banner__heading">Tham Gia Club Để Nhận Ưu Đãi!</span>
                                         <p class="c-cta-banner__subheading"></p>
                                         <a class="a-btn a-btn--primary"
-                                            href="https://shop.coopmarket.com/customer/account/create/">Đăng Ký</a>
+                                            href="/dang-ky-spice-club">Đăng Ký</a>
                                     </div>
                                 </div>
                             </div>

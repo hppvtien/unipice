@@ -79,8 +79,9 @@
                                                                                         <?php if ($item->view_price_sale_store != null) { ?>
                                                                                             <span class="g-price">
                                                                                                 {{ formatVnd($item->view_price) }}
-                                                                                            </span>
-                                                                                            <span class="text-danger paid-save">
+
+                                                                    <span class="text-danger paid-save font_chu_mau_do">
+
                                                                                                 @if ($item->view_price_sale_store == null || $item->view_price == null)
 
                                                                                                 @else
@@ -104,7 +105,7 @@
                                                                                             <span class="g-price">
                                                                                                 {{ formatVnd($item->view_price) }}
                                                                                             </span>
-                                                                                            <span class="text-danger paid-save">
+                                                                    <span class="text-danger paid-save font_chu_mau_do">
                                                                                                 @if ($item->view_price_sale == null || $item->view_price == null)
 
                                                                                                 @else

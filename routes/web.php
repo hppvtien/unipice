@@ -64,14 +64,13 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('lien-he/', 'Uni_ContactController@index')->name('get.uni_contact');
     Route::post('lien-he/', 'Uni_ContactController@getformsubmit')->name('post.uni_contact');
     Route::get('tim-kiem', 'SearchController@search')->name('get.search');
-
     Route::get('spice-club', 'SpiceClubController@index')->name('get.spice_club');
     Route::get('bai-viet', 'BlogHomeController@index')->name('get_blog.home');
     Route::post('bai-viet', 'BlogHomeController@fillter_post');
     Route::get('bai-viet/{slug}', 'BlogHomeController@SingleBlog')->name('get_blog.single_blog');
     Route::post('bai-viet/{slug}/add_comment_post', 'BlogHomeController@add_comment_post')->name('get_blog.add_comment_post');
     Route::get('danh-muc-bai-viet/{slug}', 'BlogHomeController@SingleCat')->name('get_blog.single_cat');
-
     Route::get('sitemap', 'SitemapController@sitemap')->name('get_site_map');
     Route::post('update_level', 'HomeController@update_level')->name('adm.update_level');
+
 });

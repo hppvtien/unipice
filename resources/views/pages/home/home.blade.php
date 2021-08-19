@@ -65,7 +65,7 @@
                                 <ul class="c-expandable-products-slider__products">
                                     @forelse ($product_hot as $key => $item)
                                     <li class="c-expandable-products-slider__item layout-builder__add-block">
-                                        <a data-history-node-id="305426" role="article" about="" class="m-expandable-product-card" href="{{ getSlugProduct($item->slug) }}">
+                                        <a data-history-node-id="305426" role="article" about="" class="m-expandable-product-card can_tren_duoi_home" href="{{ getSlugProduct($item->slug) }}">
                                             <div class="m-expandable-product-card__content-wrapper">
                                                 <div class="m-expandable-product-card__img-wrapper">
                                                     <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}">
@@ -73,9 +73,10 @@
                                                 <div class="m-expandable-product-card__info">
                                                     <div class="m-expandable-product-card__info-left">
                                                         <div class="m-combined-product-name">
-                                                            <span class="a-folio">
+                                                            <span class="a-folio font_chu_home">
                                                                 {{ $item->name }}
                                                             </span>
+                                                            <br>
                                                             <span class="a-product-name">
                                                                 {{ desscription_cut($item->desscription,60) }}
                                                             </span>
@@ -84,7 +85,7 @@
                                                             @if ($item->price)
                                                             {{ $item->price }} VND
                                                             @else
-                                                                Đang cấp nhật
+                                                                Đang cập nhật
                                                             @endif
                                                             
                                                         </span>
@@ -121,20 +122,20 @@
                                     <div data-block-plugin-id="inline_block:media_block_aligned" data-inline-block-uuid="216dee36-5fb1-40fa-af69-b56ccbaf373a" class="c-media-block-aligned c-media-block-aligned--reverse-bg m-media-block-aligned m-media-block-aligned--bottom">
                                         <div class="m-media-block-aligned__image-wrapper">
                                             <picture>
-                                                <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($slides_home_first->s_banner) }}">
-                                                <img class="lazyload" data-src="{{ pare_url_file($slides_home_first->s_banner) }}" alt=" ">
+                                                <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($content_page_1->thumbnail) }}">
+                                                <img class="lazyload" data-src="{{ pare_url_file($content_page_1->thumbnail) }}" alt="{{ $content_page_1->name }}">
                                             </picture>
                                         </div>
 
                                         <div class="m-media-block-aligned__content">
                                             <div class="m-heading ">
-                                                <h2 class="m-heading__headline">{{ $slides_home_first->s_name }}</h2>
+                                                <h2 class="m-heading__headline">{{ $content_page_1->name }}</h2>
                                                 <div class="m-heading__cta">
-                                                    <a href="{{ $slides_home_first->s_link }}"><span class="m-heading__cta--text">Xem thêm</span>
+                                                    <a href="{{ $content_page_1->url_but }}"><span class="m-heading__cta--text">{{ $content_page_1->name_but }}</span>
                                                         <span class="icon-arrow"></span></a>
                                                 </div>
                                             </div>
-                                            <p class="m-media-block-aligned__description">{{ $slides_home_first->s_desscription }}</p>
+                                            <p class="m-media-block-aligned__description">{{ $content_page_1->desscription }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -220,21 +221,21 @@
                                     <div data-block-plugin-id="inline_block:media_block_aligned" data-inline-block-uuid="ecd5c07f-5ad6-4ac8-ab91-923f78df592c" class="c-media-block-aligned m-media-block-aligned m-media-block-aligned--bottom">
                                         <div class="m-media-block-aligned__image-wrapper">
                                             <picture>
-                                                <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($slides_home_thirst->s_banner) }}">
-                                                <img class="lazyload" data-src="{{ pare_url_file($slides_home_thirst->s_banner) }}" alt="{{ $slides_home_thirst->s_name }}">
+                                                <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($content_page_2->thumbnail) }}">
+                                                <img class="lazyload" data-src="{{ pare_url_file($content_page_2->thumbnail) }}" alt="{{ $content_page_2->name }}">
                                             </picture>
                                         </div>
 
                                         <div class="m-media-block-aligned__content">
                                             <div class="m-heading ">
-                                                <h2 class="m-heading__headline">{{ $slides_home_thirst->s_name }}</h2>
+                                                <h2 class="m-heading__headline">{{ $content_page_2->name }}</h2>
                                                 <div class="m-heading__cta">
-                                                    <a href="{{ $slides_home_thirst->s_link }}" title="{{ $slides_home_thirst->s_name }}">
-                                                        <span class="m-heading__cta--text">Read More</span>
+                                                    <a href="{{ $content_page_2->url_but }}" title="{{ $content_page_2->name_but }}">
+                                                        <span class="m-heading__cta--text">{{ $content_page_2->name_but }}</span>
                                                         <span class="icon-arrow"></span></a>
                                                 </div>
                                             </div>
-                                            <p class="m-media-block-aligned__description">{{ $slides_home_thirst->s_desscription }}</p>
+                                            <p class="m-media-block-aligned__description">{{ $content_page_2->desscription }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -317,16 +318,16 @@
                                     <div class="c-media-block-aligned m-media-block-aligned">
                                         <div class="m-media-block-aligned__image-wrapper">
                                             <picture>
-                                                <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($slides_home_three->s_banner) }}">
-                                                <img class="lazyload" data-src="{{ pare_url_file($slides_home_three->s_banner) }}" alt="{{ $slides_home_three->s_name }}">
+                                                <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($content_page_3->thumbnail) }}">
+                                                <img class="lazyload" data-src="{{ pare_url_file($content_page_3->thumbnail) }}" alt="{{ $content_page_3->name }}">
                                             </picture>
                                         </div>
 
                                         <div class="m-media-block-aligned__content">
                                             <div class="m-heading ">
-                                                <h2 class="m-heading__headline">{{ $slides_home_three->s_name }}</h2>
+                                                <h2 class="m-heading__headline">{{ $content_page_3->name }}</h2>
                                                 <div class="m-heading__cta">
-                                                    <a href="{{ $slides_home_three->s_link }}"><span class="m-heading__cta--text">Learn More</span>
+                                                    <a href="{{ $content_page_3->url_but }}"><span class="m-heading__cta--text">{{ $content_page_3->name_but }}</span>
                                                         <span class="icon-arrow"></span></a>
                                                 </div>
                                             </div>
@@ -371,9 +372,10 @@
                                                     </div>
                                                     <div class="m-mini-product-card__info">
                                                         <div class="m-combined-product-name">
-                                                            <span class="a-folio" style="--color-brand: var(--color-simply-organic)">
+                                                            <span class="a-folio font_chu_home" style="--color-brand: var(--color-simply-organic)">
                                                                 {{ $item->name }}
                                                             </span>
+                                                            <br>
                                                             <span class="a-product-name">
                                                                 {{ desscription_cut($item->desscription,60) }}
                                                             </span>
@@ -430,13 +432,13 @@
                             <div data-block-plugin-id="inline_block:media_block" data-inline-block-uuid="ee168006-3fe9-4f1c-bbc5-ba42ddc90f9a" class="c-media-block c-media-block--template-">
                                 <div class="c-media-block__image-wrapper">
                                     <picture>
-                                        <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($slides_home_four->s_banner) }}">
-                                        <img class="lazyload" data-src="{{ pare_url_file($slides_home_four->s_banner) }}" alt=" ">
+                                        <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($content_page_4->thumbnail) }}">
+                                        <img class="lazyload" data-src="{{ pare_url_file($content_page_4->thumbnail) }}" alt=" ">
                                     </picture>
                                 </div>
 
                                 <div class="c-media-block__content">
-                                    <div class="c-media-block__headline">{{ $slides_home_four->s_desscription }}</div>
+                                    <div class="c-media-block__headline">{{ $content_page_4->name }}</div>
 
 
                                 </div>

@@ -695,11 +695,11 @@ span.a-qty {
 }
 
 .c-categories-slider.layout.layout--onecol {
-    background: transparent;
+    /*background: transparent;*/
 }
 
 .not-padding-top {
-    padding-top: 0!important;
+    /*padding-top: 0!important;*/
 }
 
 .padding-top10 {
@@ -826,11 +826,9 @@ textarea,
 }
 
 .group-write {
-    border-top: 1px solid #111;
-    padding-top: 20px;
+    padding: 20px 0;
+    margin: 30px auto;
 }
-
-
 
 
 /* a.text-white.a-btn.a-btn--primary.m-product-card__add-to-cart-btn {
@@ -853,20 +851,23 @@ button.btn_store_submit.js-add-cart:hover {
     border: none!important;
     outline: none!important;
 } */
-.group-sale{
+
+.group-sale {
     border: 1px solid rgb(63, 63, 63);
     padding: 30px;
     padding-bottom: 60px;
     margin: 30px auto;
     position: relative;
 }
+
 h3.title-product-sale {
     position: absolute;
     background: #FFF;
     top: -5%;
     color: #ff7750;
 }
-button.btn-add-cart-sale{
+
+button.btn-add-cart-sale {
     position: absolute;
     bottom: 10px;
     background: #0b2d25;
@@ -877,11 +878,12 @@ button.btn-add-cart-sale{
     padding: 10px;
     border-radius: 5px;
 }
-.card a{
+
+.card a {
     margin-top: 0;
 }
 
-a.btn-km{
+a.btn-km {
     background: #0b2d25;
     opacity: 0.8;
     width: 70%;
@@ -890,36 +892,45 @@ a.btn-km{
     border-radius: 5px;
     text-align: center;
 }
-a.btn-km:hover{
+
+a.btn-km:hover {
     background: #08532f;
     opacity: 0.8;
 }
-.card-title-cd{
+
+.card-title-cd {
     color: #111!important;
     font-size: 20px;
 }
-.title-post-km{
+
+.title-post-km {
     font-size: 16px;
     font-weight: 700;
     text-transform: initial;
 }
-.red-text{
+
+.red-text {
     color: red!important;
 }
-.w-70{
+
+.w-70 {
     width: 70%;
 }
-#method_shpping{
+
+#method_shpping {
     width: 90%;
     height: 50px;
     border: 1px solid;
 }
-.card-item{
+
+.card-item {
     margin-bottom: 20px;
 }
+
 .km-fav {
     margin: 20px auto;
 }
+
 #star6 {
     width: 0;
     height: 0;
@@ -929,8 +940,9 @@ a.btn-km:hover{
     position: relative;
     top: -10px;
     left: -10px;
-   }
-   #star6:after {
+}
+
+#star6:after {
     width: 0;
     height: 0;
     border-left: 15px solid transparent;
@@ -940,8 +952,9 @@ a.btn-km:hover{
     content: "";
     top: 10px;
     left: -15px;
-   }
-   span.number-prd {
+}
+
+span.number-prd {
     position: absolute;
     z-index: 1;
     top: 7px;
@@ -950,6 +963,7 @@ a.btn-km:hover{
     color: #fff;
     font-weight: 700;
 }
+
 @media screen and (min-width: 768px) {
     .c-sidebar-filters {
         padding-top: 0;
@@ -957,39 +971,38 @@ a.btn-km:hover{
 }
 
 @media screen and (max-width: 1200px) {
-    .card-text{
+    .card-text {
         height: 84px;
     }
 }
+
 @media screen and (max-width: 1024px) {
     .card-text {
         height: auto;
         margin: auto;
     }
-    .info-group-post{
+    .info-group-post {
         padding: 10px!important;
     }
     .img-post-salesigle {
         width: 40%;
-    height: auto;
-    object-fit: cover;
+        height: auto;
+        object-fit: cover;
     }
-    
     .h3-post-sile-sale {
         line-height: 1.5;
         height: 50px;
         overflow: hidden;
     }
-    
     .p-post-sile-sale {
         height: 50px;
         overflow: hidden;
         line-height: 1.5;
     }
-    
 }
+
 @media screen and (max-width: 768px) {
-    .card-text{
+    .card-text {
         height: 50px;
         overflow: hidden
     }
@@ -997,8 +1010,8 @@ a.btn-km:hover{
         width: 100%;
     }
 }
+
 @media screen and (max-width: 768px) {
-    
     .group-write {
         display: block;
         margin-bottom: 10px!important;
