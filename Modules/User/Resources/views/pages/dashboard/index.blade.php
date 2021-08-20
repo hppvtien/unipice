@@ -53,17 +53,77 @@
                     </div>
                     @endif
                     @if(get_data_user('web','type') == 2)
-                    <div class="box box-newsletter">
-                        <strong class="box-title">
-                            <span class="text-primary">Tài khoản Spice Club</span>
-                        </strong>
-                        <div class="box-content">
-                            <span class="text-strong gd-danger">Vui lòng nạp tiền, Để hoàn tất thủ tục đăng ký</span> <br>
+                    
+                        @if(!$uni_order_nap)
+                        <div class="box box-newsletter">
+                            <strong class="box-title">
+                                <span class="text-primary">Tài khoản Spice Club</span>
+                            </strong>
+                            <div class="box-content">
+                                <span class="text-strong gd-danger">Vui lòng nạp tiền, Để hoàn tất thủ tục đăng ký.</span> <br>
+                            </div>
+                            <div class="box-actions">
+                                <a class="action edit a-anchor" href="{{ route('get.recharge') }}"><span>Nạp tiền</span></a>
+                            </div>
                         </div>
-                        <div class="box-actions">
-                            <a class="action edit a-anchor" href="{{ route('get.recharge') }}"><span>Nạp tiền</span></a>
-                        </div>
-                    </div>
+                        @else
+                            @if($uni_order_nap->status == 0 )
+                            <div class="box box-newsletter">
+                                <strong class="box-title">
+                                    <span class="text-primary">Tài khoản Spice Club</span>
+                                </strong>
+                                <div class="box-content">
+                                    <span class="text-strong gd-danger">Admin đã tiếp nhận, xin vui lòng đợi Admin duyệt</span><br>
+                                    @if($uni_order_nap->type_pay == 1 )
+                                    <span class="text-strong gd-danger">Hình thức thanh toán:
+                                        Chuyển khoản<br>Tên tài khoản: NGUYEN VAN A<br>Số Tài khoản: 123456789
+                                        </span>
+                                     @endif
+                                </div>
+                            </div>
+                            @elseif($uni_order_nap->status == 1)
+                            <div class="box box-newsletter">
+                                <strong class="box-title">
+                                    <span class="text-primary">Tài khoản Spice Club</span>
+                                </strong>
+                                <div class="box-content">
+                                    <span class="text-strong gd-danger">Admin đang xử lý</span>
+                                </div>
+                            </div>
+                            @elseif($uni_order_nap->status == 2)
+                            <div class="box box-newsletter">
+                                <strong class="box-title">
+                                    <span class="text-primary">Tài khoản Spice Club</span>
+                                </strong>
+                                <div class="box-content">
+                                    <span class="text-strong alert-success">Tài khoản đã được: active</span><br>
+                                    <span class="text-strong gd-danger">Ngày hết hạn: {{date_format(date_create($uni_order_nap->end_year),"d/m/Y") }}</span>
+                                </div>
+                            </div>
+                            @elseif($uni_order_nap->status == 3 || $uni_order_nap->status == 4)
+                            <div class="box box-newsletter">
+                                <strong class="box-title">
+                                    <span class="text-primary">Tài khoản Spice Club</span>
+                                </strong>
+                                <div class="box-content">
+                                    <span class="text-strong gd-danger">Bạn đã quá hạn thanh toán xin vui lòng liên hệ để biết thêm chi tiết</span>
+                                </div>
+                            </div>
+                            @elseif($uni_order_nap->status == 5)
+                            <div class="box box-newsletter">
+                                <strong class="box-title">
+                                    <span class="text-primary">Tài khoản Spice Club</span>
+                                </strong>
+                                <div class="box-content">
+                                    <span class="text-strong gd-danger">Tài khoản Spice Clup đã hết hạn xin vui lòng nạp tiền để nhận các ưu đã.</span> <br>
+                                </div>
+                                <div class="box-actions">
+                                    <a class="action edit a-anchor" href="{{ route('get.recharge') }}"><span>Nạp tiền</span></a>
+                                </div>
+                            </div>
+                            @endif
+                        @endif
+
                     @endif
                 </div>
                

@@ -90,8 +90,8 @@
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button"
                             aria-expanded="true">
                             <select name="type" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                <option title="Product" value="0">Product</option>
-                                <option title="blog" value="1">Blog</option>
+                                <option title="Product" value="0" {{ ($tags->type ?? 0) == 0 ? 'selected' : '' }}>Product</option>
+                                <option title="blog" value="1" {{ ($tags->type ?? 0) == 1 ? 'selected' : '' }}>Blog</option>
                             </select>
                         </div>
                     </div>

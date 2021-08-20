@@ -15,6 +15,7 @@ use Sentry;
 use App\Models\Favourite;
 use App\Models\Uni_FlashSale;
 use Carbon\Carbon;
+use App\Models\Cart\Uni_Order_Nap;
 
 // use Illuminate\Routing\Controller;
 class UserDashboardController extends Controller
@@ -24,7 +25,11 @@ class UserDashboardController extends Controller
     public function index()
     {
         \SEOMeta::setTitle('Thông tin khách hàng');
-        return view('user::pages.dashboard.index');
+        $uni_order_nap = Uni_Order_Nap::where('user_id',get_data_user('web'))->where('status','!=',5)->first();
+        $viewData = [
+            'uni_order_nap' => $uni_order_nap,
+        ];
+        return view('user::pages.dashboard.index',$viewData);
     }
 
     public function listOrder()

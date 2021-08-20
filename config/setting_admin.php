@@ -103,16 +103,16 @@ return [
                 ],
             ]
         ],
-        [
-            'name' => 'Voucher',
-            'class-icon' => 'la la-cart-arrow-down',
-            'sub' => [
-                [
-                    'name' => 'Danh sách voucher',
-                    'route' => 'get_admin.voucher.index'
-                ],
-            ]
-        ],
+        // [
+        //     'name' => 'Voucher',
+        //     'class-icon' => 'la la-cart-arrow-down',
+        //     'sub' => [
+        //         [
+        //             'name' => 'Danh sách voucher',
+        //             'route' => 'get_admin.voucher.index'
+        //         ],
+        //     ]
+        // ],
         [
             'name' => 'Đơn hàng',
             'class-icon' => 'la la-cart-arrow-down',

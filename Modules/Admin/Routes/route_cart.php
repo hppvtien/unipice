@@ -17,5 +17,4 @@ Route::prefix('uni_spice_club')->namespace('Cart')->group(function (){
     Route::get('delete/{idOrder}', 'AdminOrderSpiceClubController@delete')->name('get_admin.uni_spice_club.delete')->middleware('permission:uni_spice_club_delete|full');
     Route::get('/{idOrder}/edit', 'AdminOrderSpiceClubController@edit')->name('get_admin.uni_spice_club.edit')->middleware('permission:uni_spice_club_edit|full');
     Route::post('/{idOrder}/edit', 'AdminOrderSpiceClubController@update')->middleware('permission:uni_spice_club_edit|full');
-    Route::post('/update1', 'AdminOrderSpiceClubController@update_status')->name('get_admin.uni_spice_club.update_status')->middleware('permission:uni_spice_club_edit|full');
 });

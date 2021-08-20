@@ -26,11 +26,11 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
                                         <th>SEO</th>
                                         <th>Số lượng</th>
                                         <th>Giá</th>
                                         <th>Sale off</th>
+                                        <th>Type buy</th>
                                         <th>Status</th>
                                         <th>Time</th>
                                         <th>Action</th>
@@ -41,9 +41,9 @@
                                 @forelse($uni_flashsale as $key => $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
-                                        <td>{{ $item->name }}</td>
                                         <td>
                                             <div class="existed-seo-meta">
+                                                <h5>{{ $item->name }}</h5>
                                                 <span class="page-title-seo title_seo">{{ $item->meta_title }}</span>
                                                 <div class="page-url-seo ws-nm">
                                                     <p><span class="slug">{{ $item->slug }}</span></p>
@@ -64,7 +64,7 @@
                                             <span class="badge badge-info">{{ $item->sale_off }}</span>
                                         </td>
                                         <td>
-                                            <span class="badge badge-info">{{ $item->status }}</span>
+                                            <span class="badge badge-info">{{ $item->type_buy }}</span>
                                         </td>
                                         <td>
                                             <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>

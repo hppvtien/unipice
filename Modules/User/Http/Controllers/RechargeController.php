@@ -31,7 +31,7 @@ class RechargeController extends Controller
             'address' => get_data_user('web','address'),
             'phone' => get_data_user('web','phone'),
             'type_pay' => $request->type_pay,
-            'status' => 1,
+            'status' => 0,
             'price_nap' => $request->price_nap,
             'created_at' => Carbon::now(),
 

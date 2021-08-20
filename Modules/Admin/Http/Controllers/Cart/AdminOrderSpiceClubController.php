@@ -62,7 +62,5 @@ class AdminOrderSpiceClubController extends AdminController
         return redirect()->back();
     }
 
-    public function update_status(Request $request){
-        
-    }
+   
 }

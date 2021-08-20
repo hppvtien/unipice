@@ -189,7 +189,7 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::post('update/{id}', 'AdminUniFlashSaleController@update');
         Route::get('delete/{id}', 'AdminUniFlashSaleController@delete')->name('get_admin.uni_flashsale.delete')->middleware('permission:uni_flashsale_delete|full');
     });
-
+    
     require_once 'route_acl.php';
     require_once 'route_blog.php';
     require_once 'route_cart.php';
