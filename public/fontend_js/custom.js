@@ -321,11 +321,11 @@ $("#momo-success").on("click", function() {
 $(function() {
     $(".loadmore1").slice(0, 8).show();
     $("#loadMore").on("click", function(e) {
-
         e.preventDefault();
         $(".loadmore1:hidden").slice(0, 8).slideDown();
         if ($(".loadmore1:hidden").length == 0) {
             $("#load").fadeOut("slow");
+            $('.class_xem_them').hide();
         }
         $("#show-product").animate({
             scrollTop: $(this).offset().top
@@ -629,7 +629,7 @@ function chanFunctionWard() {
         });
     } else if (method_ship == 4) {
         $("#toast-container").html(
-                ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn pương thức vận chuyển</div></div>'),
+                ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn phương thức vận chuyển</div></div>'),
             4000;
         setTimeout(function() {
             $(".toast-error").remove();
@@ -637,20 +637,22 @@ function chanFunctionWard() {
     };
 }
 $(window).on('load', function() {
+    let data_u = window.location.origin + '/update_level';
+    let data_v = window.location.origin + '/update_nap_status';
     $.ajax({
-        url: "http://127.0.0.1:8000/update_level/",
+        url: data_u,
         method: "post",
         dataType: 'json',
         data: {
             url: 'abc',
-
         },
-        success: function(response) {
-            console.log(response);
-
+    });
+    $.ajax({
+        url: data_v,
+        method: "post",
+        dataType: 'json',
+        data: {
+            url: data_v,
         },
-        error: function(response) {
-            console.log(response);
-        }
     });
 });
