@@ -30,7 +30,6 @@
                                         <th>Số lượng</th>
                                         <th>Giá</th>
                                         <th>Sale off</th>
-                                        <th>Type buy</th>
                                         <th>Status</th>
                                         <th>Time</th>
                                         <th>Action</th>
@@ -62,9 +61,6 @@
                                         </td>
                                         <td>
                                             <span class="badge badge-info">{{ $item->sale_off }}</span>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-info">{{ $item->type_buy }}</span>
                                         </td>
                                         <td>
                                             <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
