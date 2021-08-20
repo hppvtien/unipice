@@ -39,6 +39,13 @@
             @else
             <a class="col-md-12 row" href="{{ route('get.login') }}"><span class="icon-account font_icon_new"> <b> Tài Khoản</b> </span></a>
             @endif
+            <a class="col-md-12 row" href="@if (get_data_user('web')) {{ route('get_user.dashboard') }} @else {{ route('get.register.b2b') }} @endif">
+                <span class="icon-account font_icon_new" id="count-fff" aria-hidden="true"><b> @if (get_data_user('web')) Quản Lý B2B @else Đăng Nhập B2B @endif</b></span>
+            </a>
+            <a class="col-md-12 row" href="{{ route('get.spice_club') }}">
+                <span class="icon-account font_icon_new" id="count-fff" aria-hidden="true"><b> Spice Club</b></span>
+            </a>
+            
             <a class="col-md-12 row" href="{{ route('get_user.myfavorites') }}" >
                 
                 <?php if (count_fav(get_data_user('web')) == 0 || get_data_user('web') == null) { ?>
@@ -335,7 +342,10 @@
             $('.search-full-view').removeClass("search-normal-screen");
         });
     });
+    
 </script>
+
+
 </body>
 
 </html>

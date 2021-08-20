@@ -164,19 +164,19 @@
                                                                         <br>
                                                                         <span class="a-price price-single">
                                                                             <span class="a-product-name a-title-des text-dark">
-                                                                                Giá / sản phẩm:
+                                                                                Giá:
                                                                             </span> {{ formatVnd($product->view_price_sale) }}
                                                                         </span>
                                                                         @elseif (!$product->view_price_sale)
                                                                         <br>
                                                                         <span class="a-price price-single">
                                                                             <span class="a-product-name a-title-des text-dark">
-                                                                                Giá / sản phẩm:
+                                                                                Giá:
                                                                             </span> {{ formatVnd($product->view_price) }}
                                                                         </span>
-                                                                        @endif
-                                                                        
-                                                                        
+                                                                        @endif  
+                                                                   
+                                                     
                                                                         
                                                                         
                                                                         <!--<?php if ($product->qty) { ?>

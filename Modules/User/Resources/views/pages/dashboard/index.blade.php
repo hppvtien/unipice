@@ -4,6 +4,12 @@
 <main id="maincontent" class="">
 
     <div class="columns">
+        <div class="d-none d-md-block">
+            @include('user::pages.component._inc_menu_user')
+        </div>
+        <div class="col-lg-12 d-lg-none d-block" style="padding-left: 0;padding-right:0">
+            @include('user::pages.component._inc_menu_user')
+        </div>
         <div class="column main padding_css">
 
             <input name="form_key" type="hidden" value="ti05PgAwYARp0X1u">
@@ -157,7 +163,7 @@
                 </div>
             </div>
         </div>
-    @include('user::pages.component._inc_menu_user')
+    
 
     </div>
 </main>

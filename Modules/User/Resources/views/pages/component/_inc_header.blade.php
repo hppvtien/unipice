@@ -35,11 +35,8 @@
                 </div>
                 <ul class="site-header-cart-v2 menu">
                     <li class="cart-content ">
-                        <a href="javascript:;" id="wrap">
-                            <form action="{{ route('get.search') }}" autocomplete="off">
-                                <input id="search" name="search" type="text" placeholder="Tìm kiếm...">
-                                <span class="icon-search a-icon-text-btn__icon" aria-hidden="true"></span>
-                            </form>
+                        <a id="ser-input" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
+                            <span class="icon-search  a-icon-text-btn__icon" id="count-fff" aria-hidden="true"></span>
                         </a>
                         <a href="{{ route('get_user.myfavorites') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
                             <span class="icon-favorite  a-icon-text-btn__icon" id="count-fff" aria-hidden="true"></span>
@@ -103,3 +100,16 @@
         </nav>
     </div>
 </header>
+
+<!-- Navigation -->
+<div style="position: relative;z-index: 99999999;background:#0b2d25">
+    <div class="search-full-view"> 
+        <div class="input-group">
+            <form action="{{ route('get.search') }}" autocomplete="off">
+                <input id="search" name="search" type="text" placeholder="Tìm kiếm...">
+            </form>
+        </div>
+        <button class="btn btn-close" id="search-close"> <img src="http://d9hhrg4mnvzow.cloudfront.net/www2.iweb.com/windows-server-2016/ed5b870c-clear-close-cancel-white.png"></button>
+    </div>
+</div>
+<!-- Navigation -->
