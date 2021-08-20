@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Models\Page;
 use App\Models\Content_Page;
-
+use App\Models\Cart\Uni_Order_Nap;
 class HomeController extends Controller
 {
 
@@ -129,6 +129,19 @@ class HomeController extends Controller
             } elseif ($store->poin_store < 30000 &&  $as_time < 0) {
                 $data_store['type_store'] = 'Default';
                 $uni_store_tt->fill($data_store)->update();
+            }
+        }
+        $mes = 'load to page';
+        return $mes;
+    }
+    public function update_status(Request $request){
+        $uni_order = Uni_Order_Nap::get();
+        foreach ($uni_order as $key => $store) {
+            $uni_store_tt = Uni_Order_Nap::where('id', $store->id)->first();
+            $as_time = strtotime($uni_store_tt->end_year) - strtotime(Carbon::now());
+            if ($as_time < 0 ) {
+                $storle['status'] = 5;
+                $uni_store_tt->fill($storle)->update();
             }
         }
         $mes = 'load to page';

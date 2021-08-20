@@ -26,7 +26,6 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
                                         <th>SEO</th>
                                         <th>Type</th>
                                         <th>Time</th>
@@ -38,9 +37,9 @@
                                 @forelse($uni_tag as $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
-                                        <td>{{ $item->name }}</td>
                                         <td>
                                             <div class="existed-seo-meta">
+                                                <h5>{{ $item->name }}</h5>
                                                 <span class="page-title-seo title_seo">{{ $item->meta_title }}</span>
                                                 <div class="page-url-seo ws-nm">
                                                     <p><span class="slug">{{ $item->slug }}</span></p>

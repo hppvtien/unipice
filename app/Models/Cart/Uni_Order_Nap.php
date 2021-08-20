@@ -23,6 +23,7 @@ class Uni_Order_Nap extends Model
     const STATUS_SUCCESS = 2;
     const STATUS_TRASH  = 3;
     const STATUS_CANCEL = 4;
+    const STATUS_END_YEAR = 5;
     public $statusGlobal;
     protected $g_status = [
         self::STATUS_DEFAULT => [
@@ -43,6 +44,10 @@ class Uni_Order_Nap extends Model
         ],
         self::STATUS_TRASH => [
             'name' => 'Thùng rác',
+            'class' => 'badge-dange'
+        ],
+        self::STATUS_END_YEAR => [
+            'name' => 'Hết hạn',
             'class' => 'badge-dange'
         ]
     ];

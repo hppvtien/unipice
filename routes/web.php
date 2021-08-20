@@ -72,5 +72,5 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('danh-muc-bai-viet/{slug}', 'BlogHomeController@SingleCat')->name('get_blog.single_cat');
     Route::get('sitemap', 'SitemapController@sitemap')->name('get_site_map');
     Route::post('update_level', 'HomeController@update_level')->name('adm.update_level');
-
+    Route::post('update_nap_status', 'HomeController@update_status');
 });

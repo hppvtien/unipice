@@ -202,24 +202,24 @@
                                                         </form>
                                                     </div>
                                                     <div id="row" style="margin-bottom: 30px;">
-                                                        <div class="m-product-card__content-wrapper ">
-                                                            <div class="m-product-card__add-to-cart col-md-12 col-lg-12 col-12" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
+                                                        <div class="m-product-card__content-wrapper row">
+                                                            <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
                                                                 <button style="display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn " data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user( 'web') !=null ? get_data_user( 'web') : 0 }} onclick="{{ get_data_user('web') !=null ? 'check_my_favorites_add(this)' : 'unset' }};" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">Yêu thích</button>
                                                             </div>
                                                             <?php if ($product->qty != null) { ?>
                                                                 <?php if (checkUid(get_data_user('web')) != null) { ?>
-                                                                    <div class="m-product-card__add-to-cart col-md-12 col-lg-12 col-12" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
+                                                                    <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
                                                                         <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-min-box="{{ $product->min_box }}" data-qtyinbox="{{ $product->qty_in_box }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
                                                                     </div>
                                                                 <?php } else { ?>
-                                                                    <div class="m-product-card__add-to-cart col-md-12 col-lg-12 col-12" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
+                                                                    <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
                                                                         <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">
                                                                             Thêm giỏ hàng
                                                                         </button>
                                                                     </div>
                                                                 <?php } ?>
                                                             <?php } else { ?>
-                                                                <div class="m-product-card__add-to-cart col-md-12 col-lg-12 col-12" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
+                                                                <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
                                                                     <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn contact-btn" type="button">Liên hệ</a>
                                                                     a-btn a-btn--primary m-product-card__add-to-cart-btn               </div>
                                                             <?php } ?>
