@@ -35,11 +35,8 @@
                 </div>
                 <ul class="site-header-cart-v2 menu">
                     <li class="cart-content ">
-                        <a href="javascript:;" id="wrap">
-                            <form action="{{ route('get.search') }}" autocomplete="off">
-                                <input id="search" name="search" type="text" placeholder="Tìm kiếm...">
-                                <span class="icon-search a-icon-text-btn__icon" aria-hidden="true"></span>
-                            </form>
+                        <a id="ser-input" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
+                            <span class="icon-search  a-icon-text-btn__icon" id="count-fff" aria-hidden="true"></span>
                         </a>
                         <a href="{{ route('get_user.myfavorites') }}" class="a-icon-text-btn a-icon-text-btn--icon-only c-header__minicart-button js-minicart__trigger">
                             <span class="icon-favorite  a-icon-text-btn__icon" id="count-fff" aria-hidden="true"></span>
@@ -103,3 +100,86 @@
         </nav>
     </div>
 </header>
+
+<!-- Navigation -->
+<div style="position: relative;z-index: 99999999;background:#0b2d25">
+    <div class="search-full-view"> 
+        <div class="input-group">
+            <form action="{{ route('get.search') }}" autocomplete="off">
+                <input id="search" name="search" type="text" placeholder="Tìm kiếm...">
+            </form>
+        </div>
+        <button class="btn btn-close" id="search-close"> <img src="http://d9hhrg4mnvzow.cloudfront.net/www2.iweb.com/windows-server-2016/ed5b870c-clear-close-cancel-white.png"></button>
+    </div>
+</div>
+<!-- Navigation -->
+
+
+
+<style>
+ 
+.ser-input{
+    border-color: transparent;
+    border-bottom-color: #fff;
+    color: #fff;
+}
+.ser-input:focus {
+    border-color: transparent;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.search-full-view {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #0b2d25;
+    opacity: 0;
+    z-index: -1;
+    transition: .5s all;
+    transform: scale(0);
+}
+.search-full-view.search-normal-screen {
+    opacity: 1;
+    z-index: 1;
+    transform: scale(1);
+}
+
+.search-full-view .input-group {
+    width: 80%;
+margin: 0 auto;
+top: 50%;
+height: 200px;
+}
+.search-full-view .input-group .form-control {
+    background: transparent;
+    border-bottom: 2px solid #fff;
+    font-size: 6em;
+    padding: 10px;
+    vertical-align: unset;
+    color: #cdcdcd;
+}
+.search-full-view .input-group .form-control:focus{
+    border-color: #fff;
+    border:0 !important;
+    border-bottom: 2px solid #fff !important;
+}
+.search-full-view .input-group .input-group-addon {
+    background: transparent;
+    font-size: 4em;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+}
+.search-full-view .btn-close {
+    background: transparent;
+    border: 0;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.search-full-view .btn-close img { width: 60px; }
+</style>

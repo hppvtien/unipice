@@ -217,25 +217,36 @@ input#search:focus::placeholder {
 }
 
 input#search {
-    border: none;
-}
-
-input#search:focus {
-    width: 375px;
+    width: 100%;
     z-index: 1;
     border-bottom: 1px solid #BBB;
     cursor: text;
     background: transparent;
-    opacity: .6;
+    opacity: 1;
+    color: #fff !important;
+    border-bottom: 1px solid #fff;
+    border-radius: unset;
+    outline: none;
+    top: 50%;
+    box-shadow: none;
+    font-size: 50px;
+}
+
+
+/*input#search:focus {
+    width: 100%;
+    z-index: 1;
+    border-bottom: 1px solid #BBB;
+    cursor: text;
+    background: transparent;
+    opacity: 1;
     color: #fff;
     border-bottom: 1px solid #fff;
     border-radius: unset;
     outline: none;
-    height: 40px;
-    top: 60px;
-    right: -150px;
+    top: 50%;
     box-shadow: none;
-}
+}*/
 
 a.product-name-fio span {
     font-size: 1em!important;
