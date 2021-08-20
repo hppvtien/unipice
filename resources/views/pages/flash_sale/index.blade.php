@@ -41,11 +41,38 @@
                         </div>
                         <div class="layout layout--onecol">
                             <div class="layout__region layout__region--content">
-                                <div class="container">
-                                    <h2 title="products" class="page_heading text-center font-weight-bold">
-                                        Sản phẩm đang được khuyến mại
+                                <div class="container max-w-1200">
+                                    <h2 title="products" class="page_heading text-center font-weight-bold km-fav">
+                                        Flashsale Combo & Khuyến mãi đặc biệt
                                     </h2>
-                                    <div class="col-md-12">
+                                    <div class="row">
+                                        @forelse ($uni_flashsale_flash as $item)
+
+
+
+                                        <div class="col-md-4 col-lg-3 col-sm-6 col-12 card-item padding-set5px">
+                                            <div class="card">
+                                                <a href="{{ getSlugFlashSale($item->slug) }}" title="{{ $item->meta_title }}">
+                                                    <img class="card-img-top" src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->meta_title }}">
+                                                </a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,60) }}</a></h5>
+                                                    <p class="card-text">{{ desscription_cut($item->desscription,60) }}</p>
+                                                    <p class="text-primary">Giá : {{ formatVnd($item->price) }}</p>
+                                                    <a class="btn-km" href="{{ getSlugFlashSale($item->slug) }}" class="btn btn-primary">Xem Chi Tiết</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @empty
+
+                                        @endforelse
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <!-- <h2 title="products" class="page_heading text-center font-weight-bold">
+                                        Sản phẩm đang được khuyến mại
+                                    </h2> -->
+                                    <div class="col-md-12 padding-set0">
                                         <div class="t-plp__grid js-plp-grid show-product" id="show-product">
                                             @forelse ($product as $key => $item)
                                             <div class="loadmore1 t-plp__product" style="transform-origin: 0px 0px;">
@@ -102,7 +129,7 @@
                                                                     <?php } else { ?>
                                                                         <form>
                                                                             <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
-                                                                           
+
                                                                         </form>
                                                                     <?php } ?>
                                                                 </div>
@@ -152,7 +179,7 @@
                                                 }
                                             </script>
                                         </div>
-                                        
+
                                         <div class="class_xem_them">
                                             <a href="javascript:;" data-qty="{{ count($product) }}" id="loadMore">Xem Thêm</a>
                                         </div>
@@ -170,31 +197,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="container">
-                                    <h3 title="products" class="page_heading text-center font-weight-bold km-fav">
-                                        Các gói Flashsale
-                                    </h3>
-                                    <div class="row">
-                                        @forelse ($uni_flashsale_flash as $item)
-                                        <div class="col-md-4 col-lg-3 col-sm-6 col-12 card-item">
-                                            <div class="card">
-                                                <a href="{{ getSlugFlashSale($item->slug) }}" title="{{ $item->meta_title }}">
-                                                    <img class="card-img-top" src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->meta_title }}">
-                                                </a>
-                                                <div class="card-body">
-                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,36) }}</a></h5>
-                                                    <p class="card-text">{{ desscription_cut($item->desscription,50) }}</p>
-                                                    <p class="text-primary">Giá : {{ formatVnd($item->price) }}</p>
-                                                    <a class="btn-km" href="{{ getSlugFlashSale($item->slug) }}" class="btn btn-primary">Xem Chi Tiết</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @empty
+                                
 
-                                        @endforelse
-                                    </div>
-                                </div>
-                               
                                 <div class="container">
                                     <h3 title="products" class="page_heading text-center font-weight-bold km-fav">
                                         Các gói Combo
@@ -217,7 +221,7 @@
                                         @empty
 
                                         @endforelse
-                                        
+
                                     </div>
                                 </div>
                                 <div class="banner-flash">

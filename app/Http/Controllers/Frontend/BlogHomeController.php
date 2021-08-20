@@ -21,9 +21,9 @@ class BlogHomeController extends Controller
         \SEOMeta::setDescription('Bài viết Unispice');
         \SEOMeta::setCanonical(\Request::url());
         // Bài viết banner
-        $post_category = Uni_PostCategory::orderByDesc('id')->get();
+        $post_category = Uni_PostCategory::where('status',1)->orderByDesc('id')->get();
         $slide = Slide::where('s_type',6)->first();
-        $blog_post = Uni_Post::orderByDesc('id')->limit(8)->get();
+        $blog_post = Uni_Post::where('status',1)->orderByDesc('id')->limit(8)->get();
         $viewData = [
             'post_category' => $post_category,
             'blog_post' => $blog_post,
@@ -47,7 +47,7 @@ class BlogHomeController extends Controller
     public function SingleBlog($slug)
     {   
 
-        $post_category = Uni_PostCategory::orderByDesc('id')->get();
+        $post_category = Uni_PostCategory::where('status',1)->orderByDesc('id')->get();
         $slide = Slide::where('s_type',7)->first();
         $blog_post = Uni_Post::where('slug',$slug)->first();
         $user_ids = get_data_user('web');
