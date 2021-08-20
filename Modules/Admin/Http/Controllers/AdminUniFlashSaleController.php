@@ -4,6 +4,8 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Uni_FlashSale;
 use App\Models\Uni_Product;
+use App\Models\Level_store;
+use App\Models\RelLevelStore;
 use App\Service\Seo\RenderUrlSeoCourseService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -25,22 +27,25 @@ class AdminUniFlashSaleController extends AdminController
 
     public function create()
     {
-        $status = Uni_FlashSale::getStatusGlobal();
+        $type_buy = Level_store::get();
         $uni_product = Uni_Product::orderByDesc('id')->get();
         $edit_in = 'add';
         $uni_flashsale = [];
+        $type_buyOld =[];
         $viewData = [
             'uni_product' => $uni_product,
             'uni_flashsale' => $uni_flashsale,
-            'status' => $status,
-            'edit_in'       => $edit_in
+            'type_buy' => $type_buy,
+            'edit_in'       => $edit_in,
+            'type_buyOld'       => $type_buyOld,
 
         ];
         return view('admin::pages.uni_flashsale.create', $viewData);
     }
 
-    public function store(AdminFlashSaleRequest $request)
+    public function store(Request $request)
     {
+        // dd($request->all());
         $data                 = $request->except(['thumbnail', 'save', '_token']);
         $data['created_at']   = Carbon::now();
         $product_sale = [];
@@ -53,7 +58,6 @@ class AdminUniFlashSaleController extends AdminController
         $data['info_sale'] = json_encode($product_sale);
        
         $param = [
-            "type_buy" => $request->type_buy,
             "name" => $request->name,
             "slug" => $request->slug,
             "is_flash" => $request->is_flash,
@@ -72,6 +76,7 @@ class AdminUniFlashSaleController extends AdminController
         $storeID = Uni_FlashSale::insertGetId($param);
 
         if ($storeID) {
+            $this->syncLevelStore($storeID, $request->type_buy);
             $this->showMessagesSuccess();
             return redirect()->route('get_admin.uni_flashsale.index');
         }
@@ -80,9 +85,10 @@ class AdminUniFlashSaleController extends AdminController
     }
     public function edit($id)
     {
-        $status = Uni_FlashSale::getStatusGlobal();
+        $type_buy = Level_store::get();
         $uni_product      = Uni_Product::get();
         $uni_flashsale     = Uni_FlashSale::findOrFail($id);
+        $type_buyOld = RelLevelStore::where('flash_id', $id)->pluck('level_store_id')->toArray() ?? [];
         $edit_in = 'edit';
         foreach($uni_product as $key => $item){
             foreach(json_decode($uni_flashsale->info_sale) as $keys => $items){
@@ -94,21 +100,21 @@ class AdminUniFlashSaleController extends AdminController
         $viewData = [
             'uni_flashsale'       => $uni_flashsale,
             'uni_product'       => $uni_product,
-            'status'       => $status,
+            'type_buy'       => $type_buy,
             'edit_in'       => $edit_in, 
-            'categoryOld'       => $categoryOld, 
+            'type_buyOld'       => $type_buyOld
         ];
 
         return view('admin::pages.uni_flashsale.update', $viewData);
     }
     public function update(AdminFlashSaleRequest $request, $id)
     {
-    dd($request->all());
         if ($request) {
             $uni_flashsale             = Uni_FlashSale::findOrFail($id);
             $data               = $request->except(['thumbnail', 'save', '_token']);
             $data['updated_at'] = Carbon::now();
             $product_sale = [];
+            
             foreach ($request->product_sale as $item) {
                 if (count($item) == 4) {
                     $product_sale[] = $item;
@@ -140,6 +146,7 @@ class AdminUniFlashSaleController extends AdminController
                 "info_sale" => $data['info_sale']
             ];
             $uni_flashsale->fill($param)->save();
+            $this->syncLevelStore($id, $request->type_buy);
             $this->showMessagesSuccess();
             return redirect()->route('get_admin.uni_flashsale.index');
         }
@@ -159,6 +166,18 @@ class AdminUniFlashSaleController extends AdminController
         }
 
         return redirect()->to('/');
+    }
+    protected function syncLevelStore($flashID, $level)
+    {
+        if (!empty($level)) {
+            \DB::table('rel_level_store')->where('flash_id', $flashID)->delete();
+            foreach ($level as $item) {
+                RelLevelStore::insert([
+                    'flash_id' => $flashID,
+                    'level_store_id'    => $item
+                ]);
+            }
+        }
     }
  
 }
