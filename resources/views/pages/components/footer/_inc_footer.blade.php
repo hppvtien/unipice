@@ -122,12 +122,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;">
+                                    <a href="/bai-viet/chinh-sach-giao-hang" target="_blank" rel="nofollow">
                                         <img style="float: left;padding: 5px;" src="/images/icon_menu/shipping.png" alt="" width="30px"> Chính Sách Giao Hàng
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;">
+                                    <a href="/bai-viet/chinh-sach-doi-tra" target="_blank" rel="nofollow">
                                         <img style="float: left;padding: 5px;" src="/images/icon_menu/exchange.png" alt="" width="30px"> Chính Sách Đổi Trả
                                     </a>
                                 </li>
@@ -169,9 +169,9 @@
                 </div>
                 <div class="col-md-6 col-xs-12 pr-md-5">
                     <ul class="menu_foooter_1">
-                        <li><a href="javascript:;">Chính Sách</a></li>
-                        <li><a href="javascript:;">Bảo Mật</a></li>
-                        <li><a href="{{ route('get.faq') }}">FAQ</a></li>
+                        <li><a target="_blank" rel="nofollow" href="{{ route('get.thoa_thuan_su_dung') }}">Thỏa thuận sử dụng</a></li>
+                        <li><a target="_blank" rel="nofollow" href="{{ route('get.chinh_sach_bao_mat') }}">Chính sách bảo mật</a></li>
+                        <li><a target="_blank" rel="nofollow" href="{{ route('get.faq') }}">FAQ</a></li>
                     </ul>
                 </div>
                 <!-- End Col -->
