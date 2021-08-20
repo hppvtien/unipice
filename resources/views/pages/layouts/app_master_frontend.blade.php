@@ -55,8 +55,7 @@
                 <?php } ?>
             </a>
             <a class="col-md-12 row" href="{{ route('get_user.cart') }}" >
-            <span class="icon-cart font_icon_new"> 
-                <b>Giỏ Hàng 
+            <span class="icon-cart font_icon_new"><b>Giỏ Hàng 
                 @php
                 $dem = count(\Cart::content());
                 @endphp

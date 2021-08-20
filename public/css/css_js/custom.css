@@ -212,7 +212,7 @@ tr.order-list-li th {
 .search-full-view {
     position: fixed;
     width: 100%;
-    height: 100%;
+    height: 15%;
     left: 0;
     top: 0;
     background: #0b2d25;
@@ -268,7 +268,7 @@ tr.order-list-li th {
 }
 
 .search-full-view .btn-close img {
-    width: 60px;
+    width: 20px;
 }
 
 input#search:focus::placeholder {
@@ -291,7 +291,7 @@ input#search {
     outline: none;
     top: 40%;
     box-shadow: none;
-    font-size: 50px;
+    font-size: 20px;
     font-family: montserrat, sans-serif;
     ;
 }
