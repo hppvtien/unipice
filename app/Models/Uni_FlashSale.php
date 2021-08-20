@@ -43,6 +43,7 @@ class Uni_FlashSale extends Model
         $that = new self();
         return $that->g_status;
     }
+
     public function getStatus()
     {
         return Arr::get($this->g_status, $this->status, "[N\A]");

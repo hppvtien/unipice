@@ -42,9 +42,7 @@ $('.close-img').on('click', function() {
 });
 
 $('.form-check-input').on('change', function() {
-    let key_data = $(this).attr('data-key');
     let val_data = $(this).val();
-    console.log(key_data);
     if ($('#inlineCheckbox' + val_data).is(':checked') == true) {
         $("input#qty_sale_" + val_data).removeAttr('readonly');
         $("input#price_sale_" + val_data).removeAttr('readonly');
@@ -54,17 +52,17 @@ $('.form-check-input').on('change', function() {
     };
 
 
-    if ($('#inlineCheckbox' + key_data).is(':checked')) {
+    if ($('#inlineCheckbox' + val_data).is(':checked')) {
         $('.keypress-count').on('keyup', function() {
 
-            let qty_sale = $("#qty_sale_" + key_data).val();
-            let price_sale = $("#price_sale_" + key_data).val();
+            let qty_sale = $("#qty_sale_" + val_data).val();
+            let price_sale = $("#price_sale_" + val_data).val();
 
 
             if (qty_sale && price_sale) {
                 let price_subtotal = qty_sale * price_sale;
-                $("#price_subtotal_" + key_data).val(price_subtotal);
-                $('#inlineCheckbox' + key_data).attr("data-sub", price_subtotal);
+                $("#price_subtotal_" + val_data).val(price_subtotal);
+                $('#inlineCheckbox' + val_data).attr("data-sub", price_subtotal);
             }
             let totalPrice = 0;
             $('.form-check-input:checked').each(function() {
@@ -73,13 +71,13 @@ $('.form-check-input').on('change', function() {
             });
         });
     }
-    if (!$('#inlineCheckbox' + key_data).is(':checked')) {
-        let qty_sale = $("#qty_sale_" + key_data).val(0);
-        let price_sale = $("#price_sale_" + key_data).val(0);
+    if (!$('#inlineCheckbox' + val_data).is(':checked')) {
+        let qty_sale = $("#qty_sale_" + val_data).val(0);
+        let price_sale = $("#price_sale_" + val_data).val(0);
         if (qty_sale && price_sale) {
             let price_subtotal = qty_sale * price_sale;
-            $("#price_subtotal_" + key_data).val(price_subtotal);
-            $('#inlineCheckbox' + key_data).attr("data-sub", price_subtotal);
+            $("#price_subtotal_" + val_data).val(price_subtotal);
+            $('#inlineCheckbox' + val_data).attr("data-sub", price_subtotal);
         }
         let totalPrice = 0;
         $('.form-check-input:checked').each(function() {

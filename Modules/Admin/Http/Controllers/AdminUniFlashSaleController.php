@@ -27,11 +27,13 @@ class AdminUniFlashSaleController extends AdminController
     {
         $status = Uni_FlashSale::getStatusGlobal();
         $uni_product = Uni_Product::orderByDesc('id')->get();
+        $edit_in = 'add';
         $uni_flashsale = [];
         $viewData = [
             'uni_product' => $uni_product,
             'uni_flashsale' => $uni_flashsale,
             'status' => $status,
+            'edit_in'       => $edit_in
 
         ];
         return view('admin::pages.uni_flashsale.create', $viewData);
@@ -81,6 +83,7 @@ class AdminUniFlashSaleController extends AdminController
         $status = Uni_FlashSale::getStatusGlobal();
         $uni_product      = Uni_Product::get();
         $uni_flashsale     = Uni_FlashSale::findOrFail($id);
+        $edit_in = 'edit';
         foreach($uni_product as $key => $item){
             foreach(json_decode($uni_flashsale->info_sale) as $keys => $items){
                 if($items->id == $item['id']){
@@ -91,14 +94,16 @@ class AdminUniFlashSaleController extends AdminController
         $viewData = [
             'uni_flashsale'       => $uni_flashsale,
             'uni_product'       => $uni_product,
-            'status'       => $status
+            'status'       => $status,
+            'edit_in'       => $edit_in, 
+            'categoryOld'       => $categoryOld, 
         ];
 
         return view('admin::pages.uni_flashsale.update', $viewData);
     }
     public function update(AdminFlashSaleRequest $request, $id)
     {
-    
+    dd($request->all());
         if ($request) {
             $uni_flashsale             = Uni_FlashSale::findOrFail($id);
             $data               = $request->except(['thumbnail', 'save', '_token']);
@@ -155,4 +160,5 @@ class AdminUniFlashSaleController extends AdminController
 
         return redirect()->to('/');
     }
+ 
 }

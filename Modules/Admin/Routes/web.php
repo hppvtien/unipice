@@ -184,6 +184,7 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('/', 'AdminUniFlashSaleController@index')->name('get_admin.uni_flashsale.index')->middleware('permission:uni_flashsale_index|full');
         Route::get('/create', 'AdminUniFlashSaleController@create')->name('get_admin.uni_flashsale.create')->middleware('permission:uni_flashsale_create|full');
         Route::post('/create', 'AdminUniFlashSaleController@store');
+        Route::post('edit/{id}', 'AdminUniFlashSaleController@edit_flash')->name('uni_flashsale.edit');
         Route::get('update/{id}', 'AdminUniFlashSaleController@edit')->name('get_admin.uni_flashsale.edit')->middleware('permission:uni_flashsale_edit|full');
         Route::post('update/{id}', 'AdminUniFlashSaleController@update');
         Route::get('delete/{id}', 'AdminUniFlashSaleController@delete')->name('get_admin.uni_flashsale.delete')->middleware('permission:uni_flashsale_delete|full');
