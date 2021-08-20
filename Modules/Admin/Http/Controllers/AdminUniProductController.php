@@ -263,7 +263,10 @@ class AdminUniProductController extends AdminController
                 'qty' => $qty_product,
                 'price' => $request->price,
                 'price_sale' => $request->price_sale,
-                'price_sale_store' => $request->price_sale_store
+                'price_sale_store' => $request->price_sale_store,
+                'view_price' => $request->price,
+                'view_price_sale' => $request->price_sale,
+                'view_price_sale_store' => $request->price_sale_store
             ];
         } else {
             $this->showMessagesError();

@@ -233,33 +233,19 @@
                 </div>
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required"> Danh mục sản phẩm <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required"> Đại lý có quyền dùng gói Combo <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                            <select name="category[]" class="form-control  SumoUnder js-select2" tabindex="-1" multiple>
-                                @foreach($status as $key => $item)
-                                <option title="{{ $item['name'] }}" {{ in_array($key, $categoryOld) ? "selected" : "" }} value="{{ $key }}">{{ $item['name'] }}</option>
+                            <select name="type_buy[]" class="form-control  SumoUnder js-select2" tabindex="-1" multiple>
+                                @foreach($type_buy as $key => $item)
+                                <option title="{{ $item['name'] }}" {{ in_array($key, $type_buyOld) ? "selected" : "" }} value="{{ $key }}">{{ $item['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        @if($errors->first('category'))
-                        <span class="text-danger">{{ $errors->first('category') }}</span>
+                        @if($errors->first('type_buy'))
+                        <span class="text-danger">{{ $errors->first('type_buy') }}</span>
                         @endif
                     </div>
 
-
-
-
-                    <div class="form-group level-store">
-                        <label for="exampleInputEmail1"> Level đại lý <span>(*)</span></label>
-                        <div class="SumoSelect js-sumo-select sumo_somename">
-                            <select name="type_buy" class="form-control SlectBox">
-                                @foreach($status as $key => $item)
-                                
-                                    <option title="Public" value="{{ $key }}" {{ old('type_buy',$uni_flashsale->type_buy ?? '') == $key ? 'selected' : '' }}>{{ $item['name'] }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="card  box-shadow-0 ">

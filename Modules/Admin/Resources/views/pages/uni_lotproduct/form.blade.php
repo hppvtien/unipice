@@ -14,7 +14,7 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Tên lô sản phẩm <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" data-title-seo=".meta_title" value="{{ old('lot_name', $lotproduct->lot_name ?? '') }}" data-slug=".slug" name="lot_name">
+                        <input type="text" class="form-control" data-title-seo=".meta_title" value="{{ old('lot_name', $lotproduct->lot_name ?? '') }}" data-slug=".slug" name="lot_name">
                         @if($errors->first('lot_name'))
                         <span class="text-danger">{{ $errors->first('lot_name') }}</span>
                         @endif
@@ -22,42 +22,42 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Mã vạch <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" name="barcode" value="{{ old('barcode',$lotproduct->barcode ?? '') }}">
+                        <input type="text" class="form-control" name="barcode" value="{{ old('barcode',$lotproduct->barcode ?? '') }}">
                     </div>
                     @if($errors->first('barcode'))
                     <span class="text-danger">{{ $errors->first('barcode') }}</span>
                     @endif
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Mã lô <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" name="sku_lotproduct" value="{{ old('sku_lotproduct',$lotproduct->sku_lotproduct ?? '') }}">
+                        <input type="number" class="form-control" name="sku_lotproduct" value="{{ old('sku_lotproduct',$lotproduct->sku_lotproduct ?? '') }}">
                     </div>
                     @if($errors->first('sku_lotproduct'))
                     <span class="text-danger">{{ $errors->first('sku_lotproduct') }}</span>
                     @endif
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Số thùng <span>(*)</span></label>
-                        <input type="number" class="form-control keypress-count" name="qty_box" value="{{ old('qty_box',$lotproduct->qty_box ?? '') }}">
+                        <input type="number" class="form-control" name="qty_box" value="{{ old('qty_box',$lotproduct->qty_box ?? '') }}">
                     </div>
                     @if($errors->first('qty_box'))
                     <span class="text-danger">{{ $errors->first('qty_box') }}</span>
                     @endif
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Số lượng / thùng <span>(*)</span></label>
-                        <input type="number" class="form-control keypress-count" name="size_box" value="{{ old('size_box',$lotproduct->size_box ?? '') }}">
+                        <input type="number" class="form-control" name="size_box" value="{{ old('size_box',$lotproduct->size_box ?? '') }}">
                     </div>
                     @if($errors->first('size_box'))
                     <span class="text-danger">{{ $errors->first('size_box') }}</span>
                     @endif
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Giá nhập <span>(*)</span></label>
-                        <input type="number" class="form-control keypress-count" name="price_lotproduct" value="{{ old('price_lotproduct',$lotproduct->price_lotproduct ?? '') }}">
+                        <input type="number" class="form-control" name="price_lotproduct" value="{{ old('price_lotproduct',$lotproduct->price_lotproduct ?? '') }}">
                     </div>
                     @if($errors->first('price_lotproduct'))
                     <span class="text-danger">{{ $errors->first('price_lotproduct') }}</span>
                     @endif
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Hạn sử dụng <span>(*)</span></label>
-                        <input type="date" class="form-control keypress-count" name="expiry_date" value="{{ old('expiry_date',$lotproduct->expiry_date ?? '') }}">
+                        <input type="date" class="form-control" name="expiry_date" value="{{ old('expiry_date',$lotproduct->expiry_date ?? '') }}">
                     </div>
                     @if($errors->first('expiry_date'))
                     <span class="text-danger">{{ $errors->first('expiry_date') }}</span>
