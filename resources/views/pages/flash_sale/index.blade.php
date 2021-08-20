@@ -193,16 +193,13 @@
                                         </picture>
 
                                         <div class="c-page-header__content">
-                                            <h1 class="c-page-header__headline">Become an Associate Member</h1>
+                                            <h2 class="c-page-header__headline">Khuyến mãi đặc biệt cho đại lý</h2>
                                         </div>
                                     </div>
                                 </div>
                                 
 
-                                <div class="container">
-                                    <h3 title="products" class="page_heading text-center font-weight-bold km-fav">
-                                        Các gói Combo
-                                    </h3>
+                                <div class="container mg-top30">
                                     <div class="row">
                                         @forelse ($uni_flashsale_combo as $item)
                                         <div class="col-md-4 col-lg-3 col-sm-6 col-12 card-item">

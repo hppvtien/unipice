@@ -656,3 +656,7 @@ $(window).on('load', function() {
         },
     });
 });
+$('.redect-b2b').on('click', function() {
+    let rd_url = $(this).attr('data-url');
+    window.location.href = rd_url;
+});

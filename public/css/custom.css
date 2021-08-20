@@ -282,6 +282,10 @@ a.contact-btn {
     padding-right: 5px;
 }
 
+.mg-top30 {
+    margin-top: 30px!important;
+}
+
 .max-w-1200 {
     max-width: 1200px;
 }

@@ -62,11 +62,11 @@ class UserShoppingCartController extends UserController
                 $uni_product = $this->checkProduct($id);
                 $uni_store = $this->checkStore($request->data_uid);
                 if($uni_store != null){
-                    $price_cart = $request->data_qtyinbox * $uni_product->price_sale_store;
+                    $price_cart = $request->data_qtyinbox * $uni_product->view_price_sale_store;
                     $type_box = 'store';
                     $qty_cart = $uni_product->min_box;
                 } else {
-                    $price_cart = $uni_product->price;
+                    $price_cart = $uni_product->view_price;
                     $type_box = 'user';
                     $qty_cart = $request->qty_user;
                 }
