@@ -274,6 +274,18 @@ a.contact-btn {
     transform: scale(1.15)!important;
 }
 
+.padding-set0 {
+    padding: 0;
+}
+
+.padding-set5px {
+    padding-right: 5px;
+}
+
+.max-w-1200 {
+    max-width: 1200px;
+}
+
 
 /* .a-btn.a-btn--primary.m-product-card__add-to-cart-btn, .a-btn.a-btn--primary.m-product-card__add-to-cart-btn:focus {
     background: transparent;
@@ -922,7 +934,9 @@ a.btn-km:hover {
 }
 
 .km-fav {
-    margin: 20px auto;
+    margin: 30px auto 50px;
+    letter-spacing: 3px;
+    font-size: 30px;
 }
 
 #star6 {
