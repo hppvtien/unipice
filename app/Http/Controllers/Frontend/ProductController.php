@@ -40,6 +40,15 @@ class ProductController extends Controller
         $product_fav = Uni_Product::whereIn('id', $grp_id_cmt)->where('status', 1)->orderBy('id', 'asc')->limit(8)->get();
         $slides_home_four1 = Slide::where('s_type', Slide::STATUS_TYPE_COMBO)
             ->first();
+
+        $count_bl = Uni_Comment::where('product_id','=',$id_product->id)->where('type', '=', 'review')->get();
+        $count_bl1 = $count_bl->count();
+        
+        $count_ch = Uni_Comment::where('product_id','=',$id_product->id)->where('type', '=', 'question')->get();
+        $count_ch1 = $count_ch->count();
+
+        
+            
         $viewdata = [
             'product' => $product,
             'cat_data' => $cat_data,
@@ -52,6 +61,8 @@ class ProductController extends Controller
             'slug' => $slug,
             'product_fav' => $product_fav,
             'slides_home_four1' => $slides_home_four1,
+            'count_bl1' => $count_bl1,
+            'count_ch1' => $count_ch1,
         ];
 
         return view('pages.product.index', $viewdata);

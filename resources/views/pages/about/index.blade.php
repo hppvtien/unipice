@@ -38,10 +38,10 @@
                         </div>-->
 
                         <!-- LAYER NR. 6 -->
-                        <div class="tp-caption  " id="slide-7-layer-20" data-x="['left','left','middle','middle']" data-hoffset="['0','30','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','90','130']" data-width="auto" data-fontsize="['20','18','20','20']"
+                        <!--<div class="tp-caption  " id="slide-7-layer-20" data-x="['left','left','middle','middle']" data-hoffset="['0','30','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','90','130']" data-width="auto" data-fontsize="['20','18','20','20']"
                             data-height="auto" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-frames='[{"delay":2600,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
                             data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 14; white-space: nowrap; font-size: 20px; line-height: 22px; font-weight: 400; color: #ffffff; letter-spacing: 0px;"><span class="me-3"><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star2"></i></span> <strong>4.0 </strong><span style="font-weight: 300">(2,123 Reviews)</span>
-                        </div>
+                        </div>-->
 
 
 
@@ -109,8 +109,8 @@
                                     <img src="{{ pare_url_file($value1->thumbnail) }}" alt="{{ $value1->name }}">
                                 </div>
                                 <div class="item-info text-center">
-                                    <h4 class="item-title"><a href="#">{{ $value1->name }}</a></h4>
-                                    <h5 class="price text-primary">{{ desscription_cut($value1->desscription,50) }}</h5>
+                                    <!--<h4 class="item-title"><a id="mau_about_link" href="#"></a></h4>-->
+                                    <h5 class="price text-primary">{{ $value1->name }}</h5>
                                     <div class="cart-btn"><a href="{{ getSlugProduct($value1->slug) }}" class="btn btnhover radius-xl"><i class="ti-shopping-cart"></i> Xem Thêm</a></div>
                                 </div>
                             </div>

@@ -34,12 +34,34 @@
             <span class="gach_flag"><img src="{{ asset('images/icon_menu/31.png') }}" alt=""></span>
         </div>
         <div class="col-lg-12 kich_co">
-            <span class="icon-account font_icon_new"> <b>Tài Khoản</b> </span>
-            <span class="font_icon_new"> <b>|</b> </span>
-            <span class="icon-cart font_icon_new"> <b>Giỏ Hàng</b> </span>
-        </div>
-        <div class="col-lg-12 kich_co">
-            <a href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i>  {{ formatPhoneNumber($configuration->hotline) }}</span></a>
+            @if (get_data_user('web'))
+            <a class="col-md-12 row" href="{{ route('get_user.dashboard') }}"><span class="icon-account font_icon_new"><b> Quản Lý Tài Khoản</b> </span></a>
+            @else
+            <a class="col-md-12 row" href="{{ route('get.login') }}"><span class="icon-account font_icon_new"> <b> Tài Khoản</b> </span></a>
+            @endif
+            <a class="col-md-12 row" href="{{ route('get_user.myfavorites') }}" >
+                
+                <?php if (count_fav(get_data_user('web')) == 0 || get_data_user('web') == null) { ?>
+                    <span class="icon-favorite font_icon_new" id="count-fff" aria-hidden="true"><b> Yêu Thích</b></span>
+                <?php } else { ?>
+                    <span class="icon-favorite  font_icon_new" id="count-fff" aria-hidden="true"><b>  Yêu Thích {{ count_fav(get_data_user('web')) }} Sản Phẩm</b></span>
+                <?php } ?>
+            </a>
+            <a class="col-md-12 row" href="{{ route('get_user.cart') }}" >
+            <span class="icon-cart font_icon_new"> 
+                <b>Giỏ Hàng 
+                @php
+                $dem = count(\Cart::content());
+                @endphp
+                @if($dem == 0 || get_data_user('web') == null)           
+                @else
+                {{ $dem }} Sản Phẩm
+                @endif
+                </b> 
+            </span>
+            </a>
+            <a class="col-md-12 row" href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i>  {{ formatPhoneNumber($configuration->hotline) }}</span></a>
+        
         </div>
     </div>
 

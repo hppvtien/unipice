@@ -39,7 +39,8 @@ class FlashSaleController extends Controller
             \OpenGraph::setUrl(\Request::url());
             \OpenGraph::addProperty('type', 'articles');
         }
-        
+        $uid = get_data_user('web');
+        $product = Uni_Product::orderBy('id', 'asc')->get();
         $uni_flashsale = Uni_FlashSale::get();
         $uni_product = Uni_Product::where('is_hot',1)->limit(8)->get();
         $uni_post = Uni_Post::limit(4)->get();
@@ -47,6 +48,8 @@ class FlashSaleController extends Controller
             'uni_flashsale'=>$uni_flashsale,
             'uni_product'=>$uni_product,
             'uni_post'=>$uni_post,
+            'product' => $product,
+            'uid' => $uid,
         ];
         return view('pages.flash_sale.index',$view_data);
     }

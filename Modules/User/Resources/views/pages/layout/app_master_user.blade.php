@@ -29,28 +29,65 @@
 
 </head>
 <div class="zeynep">
-<div class="col-md-12 col-xs-12 border_menu_mobile">
+    <div class="col-md-12 col-xs-12 border_menu_mobile">
         <div class="row menu_can_giua">
-            <span class="gach_flag"><img src="https://www.countryflags.io/vn/flat/32.png" alt=""></span>
-            <span class="gach_flag"><img src="https://www.countryflags.io/us/flat/32.png" alt=""></span>
+            <span class="gach_flag"><img src="{{ asset('images/icon_menu/32.png') }}" alt=""></span>
+            <span class="gach_flag"><img src="{{ asset('images/icon_menu/31.png') }}" alt=""></span>
         </div>
         <div class="col-lg-12 kich_co">
-            <span class="icon-account font_icon_new"> <b>Tài Khoản</b> </span>
-            <span class="font_icon_new"> <b>|</b> </span>
-            <span class="icon-cart font_icon_new"> <b>Giỏ Hàng</b> </span>
-        </div>
-        <div class="col-lg-12 kich_co">
-            <a href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i>  {{ formatPhoneNumber($configuration->hotline) }}</span></a>
+            @if (get_data_user('web'))
+            <a class="col-md-12 row" href="{{ route('get_user.dashboard') }}"><span class="icon-account font_icon_new"><b> Quản Lý Tài Khoản</b> </span></a>
+            @else
+            <a class="col-md-12 row" href="{{ route('get.login') }}"><span class="icon-account font_icon_new"> <b> Tài Khoản</b> </span></a>
+            @endif
+            <a class="col-md-12 row" href="{{ route('get_user.myfavorites') }}" >
+                
+                <?php if (count_fav(get_data_user('web')) == 0 || get_data_user('web') == null) { ?>
+                    <span class="icon-favorite font_icon_new" id="count-fff" aria-hidden="true"><b> Yêu Thích</b></span>
+                <?php } else { ?>
+                    <span class="icon-favorite  font_icon_new" id="count-fff" aria-hidden="true"><b>  Yêu Thích {{ count_fav(get_data_user('web')) }} Sản Phẩm</b></span>
+                <?php } ?>
+            </a>
+            <a class="col-md-12 row" href="{{ route('get_user.cart') }}" >
+            <span class="icon-cart font_icon_new"> 
+                <b>Giỏ Hàng 
+                @php
+                $dem = count(\Cart::content());
+                @endphp
+                @if($dem == 0 || get_data_user('web') == null)           
+                @else
+                {{ $dem }} Sản Phẩm
+                @endif
+                </b> 
+            </span>
+            </a>
+            <a class="col-md-12 row" href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i>  {{ formatPhoneNumber($configuration->hotline) }}</span></a>
+        
         </div>
     </div>
+
     <ul>
         @forelse ($category_mn as $key => $item)
-        <li>
-            <a href="/{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="45px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+        <li class="has-submenu">
+            <a href="{{ getSlugCategory($item->slug) }}"><img style="float: left;padding: 5px;" width="30px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt=""><span> {{ $item->name }}</span></a>
+            <span data-submenu="menu_{{ $item->id }}" style="float: right;margin: -30px 20px 0 0;" class="fa fa-chevron-right"></span>
+            <div id="menu_{{ $item->id }}" class="submenu">
+                <div class="submenu-header" style="padding-left:26px" data-submenu-close="menu_{{ $item->id }}">
+                    <a href="#">{{ $item->name }} <img src="{{ asset('/images/icon_menu/back.png') }}" alt="" style="width:30px; float: right;"></a>
+                </div>
+                <ul>
+                    @foreach (getCatParent($item->id) as $vl)
+                    <li>
+                        <a href="{{ getSlugCategory($vl->slug) }}">{{ $vl->name }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
         </li>
         @empty @endforelse
     </ul>
 </div>
+
 
 
 
