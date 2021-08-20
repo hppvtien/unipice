@@ -147,4 +147,12 @@ class HomeController extends Controller
         $mes = 'load to page';
         return $mes;
     }
+    public function BaoMat(Request $request){
+        $page_chinh_sach = Page::where('p_style','chinh-sach-bao-mat')->first();
+        $viewData=[
+            'page_chinh_sach'=>$page_chinh_sach
+        ];
+
+        return view('pages.home.chinh_sach', $viewData);
+    }
 }

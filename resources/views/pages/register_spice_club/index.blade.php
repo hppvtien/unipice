@@ -62,29 +62,33 @@
                                     @else
                                  
                                         <div class="form-create-account-box">
+                                            
+                                            @if(get_data_user('web','type') == 2)
+                                            <h2 class="c-login__block-heading" id="block-customer-login-heading">Bạn đã trở thành thành viên Spice Club</h2>
+                                            @else
                                             <h2 class="c-login__block-heading" id="block-customer-login-heading">Đăng ký Spice Club</h2>
                                             <form class="form create account form-create-account" action="{{ route('post_edit_user.register.spiceclub',['id' => get_data_user('web')]) }}" method="POST" id="formRegister">
                                                 @csrf
                                                 <fieldset class="fieldsets create info">
                                                     <div class="field field-name-firstname required">
+                                                        <label class="a-form-label m-text-input__label label" for="firstname"><span>Họ và tên</span></label>
                                                         <div class="m-text-input m-text-input--placeholder-label control">
                                                             <input type="text" id="name" name="name" disabled='disabled' value="{{ get_data_user('web','name') }}" title="name" class="a-text-input m-text-input__input input-text required-entry">
-                                                            <label class="a-form-label m-text-input__label label" for="firstname"><span>Họ và tên</span></label>
                                                         </div>
                                                     </div>
                                                     <div class="field field-name-firstname required">
+                                                        <label class="a-form-label m-text-input__label label" for="firstname"><span>Số điện thoại</span></label>
                                                         <div class="m-text-input m-text-input--placeholder-label control">
                                                             <input type="text" id="phone" name="phone" disabled='disabled' value="{{ get_data_user('web','phone') }}" title="phone" class="a-text-input m-text-input__input input-text required-entry">
-                                                            <label class="a-form-label m-text-input__label label" for="firstname"><span>Số điện thoại</span></label>
                                                         </div>
                                                     </div>
     
                                                 </fieldset>
                                                 <fieldset class="fieldsets create account" data-hasrequired="* Required Fields">
                                                     <div class="field required">
+                                                        <label for="email_address" class="a-form-label m-text-input__label label"><span>Email</span></label>
                                                         <div class="m-text-input m-text-input--placeholder-label control">
                                                             <input type="email" name="email" id="email_address" disabled='disabled' value="{{ get_data_user('web','email') }}" title="Email" class="a-text-input m-text-input__input input-text">
-                                                            <label for="email_address" class="a-form-label m-text-input__label label"><span>Email</span></label>
                                                         </div>
                                                     </div>
                                                     <div class="m-checkbox field choice become_associate_member">
@@ -108,6 +112,7 @@
                                                 </div>
     
                                             </form>
+                                            @endif
                                         </div>
                                     
                                     @endif

@@ -4,7 +4,7 @@ if (!function_exists('pare_url_file')) {
     function pare_url_file($image, $folder = 'storage/uploads')
     {
         if (!$image) {
-            return '/images/default.png';
+            return '/images/default.jpg';
         }
         $explode = explode('__', $image);
 
@@ -18,7 +18,7 @@ if (!function_exists('pare_url_file_product')) {
     function pare_url_file_product($image, $folder = 'storage/uploads_Product')
     {
         if (!$image) {
-            return '/images/default.png';
+            return '/images/default.jpg';
         }
         $explode = explode('__', $image);
 
@@ -32,7 +32,7 @@ if (!function_exists('pare_url_file_video')) {
     function pare_url_file_video($image, $folder = 'storage/uploads_video')
     {
         if (!$image) {
-            return '/images/default.png';
+            return '/images/default.jpg';
         }
         $explode = explode('__', $image);
 

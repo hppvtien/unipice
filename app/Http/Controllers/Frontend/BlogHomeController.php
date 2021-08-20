@@ -99,4 +99,15 @@ class BlogHomeController extends Controller
         ];
         return view('pages.blog.single_cat', $viewData);
     }
+    public function ThoaThuan()
+    {
+        $cat_ids = Uni_PostCategory::where('id', 9)->first();
+        $blog_posts  = Uni_Post::where('status', 0)->get();
+        $viewData = [
+            'blog_posts' => $blog_posts,
+            'cat_ids' => $cat_ids,
+        ];
+        return view('pages.blog.thoa_thuan', $viewData);
+    }
+
 }

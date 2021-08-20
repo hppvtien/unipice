@@ -100,7 +100,7 @@
                             <h2 class="c-story-block__headline">{{ $item->name }}</h2>
                             <p class="c-story-block__description">{{ $item->desscription }}</p>
                             <div class="c-story-block__cta">
-                              <a class="a-btn a-btn--secondary" href="{{ getSlugPost($item->slug) }}" title="{{ $item->name }}">Read More</a>
+                              <a class="a-btn a-btn--secondary" href="{{ getSlugPost($item->slug) }}" title="{{ $item->name }}">Xem thêm</a>
                             </div>
                           </div>
                         </div>
