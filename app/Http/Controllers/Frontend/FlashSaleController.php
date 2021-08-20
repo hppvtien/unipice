@@ -40,16 +40,20 @@ class FlashSaleController extends Controller
             \OpenGraph::addProperty('type', 'articles');
         }
         $uid = get_data_user('web');
-        $product = Uni_Product::orderBy('id', 'asc')->get();
-        $uni_flashsale = Uni_FlashSale::get();
+        $product = Uni_Product::where('view_price_sale','!=',null)->orderBy('id', 'asc')->get();
+        $count_show = count($product);
+        $uni_flashsale_flash = Uni_FlashSale::where('is_flash',0)->get();
+        $uni_flashsale_combo = Uni_FlashSale::where('is_flash',1)->get();
         $uni_product = Uni_Product::where('is_hot',1)->limit(8)->get();
         $uni_post = Uni_Post::limit(4)->get();
         $view_data=[
-            'uni_flashsale'=>$uni_flashsale,
+            'uni_flashsale_flash'=>$uni_flashsale_flash,
+            'uni_flashsale_combo'=>$uni_flashsale_combo,
             'uni_product'=>$uni_product,
             'uni_post'=>$uni_post,
             'product' => $product,
             'uid' => $uid,
+            'count_show' => $count_show
         ];
         return view('pages.flash_sale.index',$view_data);
     }

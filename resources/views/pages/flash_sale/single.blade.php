@@ -54,7 +54,7 @@
                                     </p>
                                     <div class="row group-sale">
                                         <h3 class="title-product-sale">Sản phẩm trong gói sale</h3>
-                                        
+
                                         @forelse (json_decode($uni_flashsale->info_sale) as $key => $item)
                                         <div class="col-md-4 col-lg-3 col-sm-6 col-12 card-item">
                                             <div class="card">
@@ -65,7 +65,16 @@
                                                 <div class="card-body">
                                                     <h5 class="card-title-cd text-dark"><a class="card-title-cd font-weight-normal" href="{{ getSlugProduct(getSlugProductById($item->id)) }}">Sản phẩm: {{ getNameProduct($item->id) }}</a></h5>
                                                     <p class="text-primary">Số lượng sale : {{ $item->qty_sale }}</p>
-                                                    <p class="text-primary">Giá : {{ formatVnd($item->price_sale) }}</p>
+                                                    <?php if (checkUid(get_data_user('web')) != null) { ?>
+                                                        <p class="text-primary">{{ 'Giá : '.formatVnd($item->price_sale) }}</p>
+                                                    <?php } elseif (checkUid(get_data_user('web')) == null) { ?>
+                                                        <?php if ($uni_flashsale->is_flash == 0) { ?>
+                                                            <p class="text-primary">{{ 'Giá : '.formatVnd($item->price_sale) }}</p>
+                                                        <?php } else { ?>
+                                                            <p class="text-primary"></p>
+                                                        <?php } ?>
+                                                    <?php } ?>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -75,11 +84,11 @@
                                         <?php if (checkUid(get_data_user('web')) != null) { ?>
                                             <button class=" w-25 text-center mx-auto btn-add-cart-sale js-add-cart" data-target="{{ get_data_user('web') == null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $uni_flashsale->id }}" type="button" type="button">Mua ngay</button>
                                         <?php } else {  ?>
-                                            @if ($uni_flashsale->is_flash == 'flash' && get_data_user('web') != null)
-                                            <button class=" w-25 text-center mx-auto btn-add-cart-sale js-add-cart" data-target="{{ get_data_user('web') == null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $uni_flashsale->id }}" type="button" type="button">Mua ngay</button>
+                                            @if ($uni_flashsale->is_flash == 0 && get_data_user('web') != null)
+                                            <button class=" w-25 text-center mx-auto btn-add-cart-sale" class="a-btn a-btn--primary m-product-card__add-to-cart-btn" type="button">Liên hệ</button>
                                             @else
                                             <button class=" w-25 text-center mx-auto btn-add-cart-sale" data-target="{{ get_data_user('web') == null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $uni_flashsale->id }}" type="button" type="button">Mua ngay</button>
- 
+
                                             @endif
                                         <?php } ?>
 
