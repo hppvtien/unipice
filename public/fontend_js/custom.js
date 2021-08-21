@@ -237,9 +237,9 @@ $("#pay_success").on("click", function() {
     var address = $("input[name='address']").val();
     var type_pay = $("input[name='type_pay']:checked").val();
     var vouchers = $("input[name='vouchers']").val();
-    if (method_ship == 4 && check_store == 1) {
+    if (method_ship == 4 || district_id_to == undefined || ward_code_to == undefined || province_name_to == undefined || phone == '' || customer_name == '' || address == '') {
         $("#toast-container").html(
-                ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn phương thức vận chuyển</div></div>'),
+                ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Kiểm tra lại thông tin </div></div>'),
             4000;
         setTimeout(function() {
             $(".toast-error").remove();
