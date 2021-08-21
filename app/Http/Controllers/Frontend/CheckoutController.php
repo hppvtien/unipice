@@ -9,6 +9,7 @@ class CheckoutController extends Controller
 {
     public function index()
     {
+        \SEOMeta::setTitle('Thanh toán');
         return view('pages.checkout.index');
     }
 }
