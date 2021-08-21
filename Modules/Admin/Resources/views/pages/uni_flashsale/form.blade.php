@@ -141,15 +141,17 @@
                                 <?php } ?>
                                 <thead class="bg-black">
                                     <td colspan="3" class="text-info"><span> Tổng tiền hiện tại: <span class="price_no_sale">{{ old('price_nosale',$uni_flashsale->price_nosale ?? '') }}</span>
-                                        <input type="hidden" class="form-control price_all_total" id="price_all_total" name="price_all_total" value="{{ old('price',$uni_flashsale->price_nosale ?? '') }}" readonly="readonly">
+                                            <input type="hidden" class="form-control price_all_total" id="price_all_total" name="price_all_total" value="{{ old('price',$uni_flashsale->price_nosale ?? '') }}" readonly="readonly">
                                         </span>
                                     </td>
                                     <td colspan="3" class="text-info"><span>Tổng tiền combo: <span class="price_sale">{{ old('price',$uni_flashsale->price ?? '') }}</span>
-                                        <input type="hidden" class="form-control price_all_subtotal" id="price_all_subtotal" name="price_all_subtotal" value="{{ old('price',$uni_flashsale->price ?? '') }}" readonly="readonly">
+                                            <input type="hidden" class="form-control price_all_subtotal" id="price_all_subtotal" name="price_all_subtotal" value="{{ old('price',$uni_flashsale->price ?? '') }}" readonly="readonly">
                                         </span>
                                     </td>
-                                    <td colspan="2" class="text-info"><span>Giảm (%): <span class="price_sale_">{{ 100-round($uni_flashsale->price * 100/$uni_flashsale->price_nosale) }}%</span>
-                                        <input type="hidden" class="form-control price_all_subtotal" id="price_all_subtotal" name="price_all_subtotal" value="{{ old('price',$uni_flashsale->price ?? '') }}" readonly="readonly">
+                                    <td colspan="2" class="text-info"><span>Giảm (%):
+                                            <span class="price_sale">
+                                                {{ getptSale($uni_flashsale->price ?? 0, $uni_flashsale->price_nosale ?? 0) }}%</span>
+                                            <input type="hidden" class="form-control price_all_subtotal" id="price_all_subtotal" name="price_all_subtotal" value="{{ old('price',$uni_flashsale->price ?? '') }}" readonly="readonly">
                                         </span>
                                     </td>
                                 </thead>

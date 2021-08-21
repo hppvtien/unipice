@@ -195,9 +195,7 @@
                                                         </div>
 
                                                         @empty @endforelse
-                                                        <div id="toast-container" class="toast-top-right">
-
-                                                        </div>
+                                                        
                                                         <script>
                                                             function check_my_favorites_add(my_id) {
                                                                 var title = $(my_id).attr('my-id');
