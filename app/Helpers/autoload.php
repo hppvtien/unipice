@@ -153,6 +153,21 @@ function execPostRequest($url, $data)
         $price_view = App\Models\Uni_Product::where('id',$id)->pluck('view_price')->first();
         return $price_view;
     }
+        /**
+     * get price.
+     * @param int $id
+     * @return float $price 11.222
+     */
+    function getptSale($price,$pricesale)
+    {
+        if($price==null || $pricesale==null){
+            $price_view =  0;
+        } else {
+            $price_view =  100-round($pricesale*100/$price);
+        }
+        
+        return $price_view;
+    }
    
     function checkParent($id)
     {
