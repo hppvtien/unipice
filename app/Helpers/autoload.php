@@ -244,6 +244,10 @@ function execPostRequest($url, $data)
         $checkUid = App\Models\Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('id')->first();
         return $checkUid;
     }
+    function checkExitsUid($id){
+        $checkUid = App\Models\Uni_Store::where('user_id',$id)->pluck('id')->first();
+        return $checkUid;
+    }
  
     function getNameStore($id){
         $storeName = App\Models\Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('store_name')->first();

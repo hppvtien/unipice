@@ -104,12 +104,22 @@
                  
 
                     </div>
+                    @if (checkExitsUid( get_data_user('web','id')) == null)
+                    <div class="actions-toolbar">
+                        <div class="primary">
+                            <button type="submit" class="a-btn a-btn--primary" title="Cập nhật đại lý">
+                                <span>Hoàn thiện hồ sơ</span></button>
+                        </div>
+                    </div>
+                    @else
                     <div class="actions-toolbar">
                         <div class="primary">
                             <button type="submit" class="a-btn a-btn--primary" title="Cập nhật đại lý">
                                 <span>Cập nhật</span></button>
                         </div>
                     </div>
+                    @endif
+                    
                 </form>
             </div>
         </div>

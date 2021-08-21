@@ -53,14 +53,18 @@
                             </div>
                         <?php } else { ?>
                             <div class="box-content">
-                            <span class="text-strong gd-danger">Vui lòng cập nhật thông tin đại lý, Để hoàn tất thủ tục đăng ký tài khoản</span> <br>
-                            <span class="text-strong gd-danger">Tài khoản của bạn sẽ hoạt động được khi admin hoàn tất thủ tục kiểm duyệt thông tin của bạn.</span>
+                            <p class="newsletter-label text-dark"> <span class="text-primary"> Trạng thái tài khoản:</span> Chưa kích hoạt</p>
+                            <p class="text-strong ">Để tài khoản đại lý của bạn được kích hoạt, vui lòng hoàn tất việc<a  href="{{ route('get_user.store.edit',['id' => get_data_user('web')]) }}"><span class="text-strong gd-danger">HOÀN THIỆN HỒ SƠ ĐẠI LÝ</span></a></p>
+                            <p class="text-strong ">Tài khoản của bạn sẽ hoạt động được khi admin hoàn tất thủ tục kiểm duyệt thông tin của bạn.</p>
+                            <div><span class="text-primary"><i class="fa fa-phone-square"></i> Hotline:</span><a class="action edit a-anchor" href="tel:0356105899">0356.105.899</a></div>
+                            <div><span class="text-primary"><i class="fa fa-envelope"></i> Email:</span><a class="action edit a-anchor" href="mailto:hotro@unimall.vn">hotro@unimall.vn</a></div>
                         </div>
                         <?php } ?>
-                        
+                        <?php if(checkUid(get_data_user('web'))){ ?>
                         <div class="box-actions">
-                            <a class="a-btn a-btn--primary" href="{{ route('get_user.store.edit',['id' => get_data_user('web')]) }}"><span>Cập nhật thông tin đại lý</span></a>
+                            <a class="a-btn a-btn--primary" href="{{ route('get_user.store.edit',['id' => get_data_user('web')]) }}"><span>Hoàn tất thông tin đại lý</span></a>
                         </div>
+                        <?php } ?>
                     </div>
                     @endif
                     @if(get_data_user('web','type') == 2)

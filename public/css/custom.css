@@ -15,7 +15,15 @@
     padding-right: 20px;
     width: auto;
 }
-
+.uni-css-title {
+    max-width: 100% !important;
+}
+p.card-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
 #uni {
     padding: 0.66em 0.9em;
     color: #fff;
@@ -920,6 +928,10 @@ a.btn-km:hover {
     min-height: 28px;
     font-size: 20px;
     font-weight: bold!important;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .title-post-km {

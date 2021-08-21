@@ -111,7 +111,7 @@ class HomeController extends Controller
                 $data_store['type_store'] = 'Platinum';
                 $uni_store_tt->fill($data_store)->update();
             } elseif ($store->poin_store < 30000 &&  $as_time < 0) {
-                $data_store['type_store'] = 'Default';
+                $data_store['type_store'] = 'Silver';
                 $uni_store_tt->fill($data_store)->update();
             }
         }

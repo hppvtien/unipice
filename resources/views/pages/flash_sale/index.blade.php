@@ -53,7 +53,7 @@
                                                 </a>
                                                 <div class="card-body">
                                                     <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="{{ getSlugFlashSale($item->slug) }}" title="{{ $item->name }}">{{ desscription_cut($item->name,100) }}</a></h5>
-                                                    <p class="card-text">{{ desscription_cut($item->desscription,60) }}</p>
+                                                    <p class="card-text">{{ $item->desscription }}</p>
                                                     <p class="text-primary">
                                                         @if ($item->price_nosale != null)
                                                         <p class="text-primary" style="height: 28px"><span class="g-price">{{ formatVnd($item->price_nosale ) }}</span><span class="font_chu_mau_do"> ( Giảm:-{{ 100-round($item->price*100/$item->price_nosale??0) }}%)</span></p>
@@ -209,7 +209,7 @@
                                                 </a>
                                                 <div class="card-body">
                                                     <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,100) }}</a></h5>
-                                                    <p class="card-text">{{ desscription_cut($item->desscription,60) }}</p>
+                                                    <p class="card-text">{{ $item->desscription }}</p>
                                                     <?php if (checkUid(get_data_user('web')) != null) { ?> 
                                                         <p class="text-primary">
                                                             @if ($item->price_nosale != null)
@@ -261,7 +261,7 @@
                                                         <p class="card-text mb-auto">{{ desscription_cut($item->desscription,70) }}</p>
                                                         <a href="{{ getSlugPost($item->slug) }}">Xem chi tiết</a>
                                                     </div>
-                                                    <img class="card-img-right flex-auto d-none d-md-block" alt="{{ $item->name }}" src="/storage/uploads/icon-grocerysss-1627723174.jpg">
+                                                    <img class="card-img-right flex-auto d-none d-md-block uni-css-img" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                                                 </div>
                                             </div>
                                             @empty

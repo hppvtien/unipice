@@ -63,7 +63,7 @@
                                                                         </div>
                                                                         <div class="m-product-card__info">
                                                                             <div class="m-combined-product-name group-product">
-                                                                                <a class="m-combined-product-name__link product-name-fio" href="{{ $item->slug }}">
+                                                                                <a class="m-combined-product-name__link product-name-fio uni-css-title" href="{{ $item->slug }}">
                                                                                     <span class="a-folio">
                                                                                         {{ $item->name }}
                                                                                     </span>
