@@ -27,6 +27,7 @@
     @yield('css_js_spice_club')
 
 </head>
+<div id="toast-container" class="toast-top-right"></div>
 <div class="zeynep">
     <div class="col-md-12 col-xs-12 border_menu_mobile">
         <div class="row menu_can_giua">

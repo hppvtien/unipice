@@ -758,5 +758,5 @@
         </div>
     </div>
 </main>
-<div id="toast-container" class="toast-top-right"></div>
+
 @stop
