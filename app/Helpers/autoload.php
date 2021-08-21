@@ -143,6 +143,16 @@ function execPostRequest($url, $data)
         $poin_store = App\Models\Uni_Store::where('user_id',$id)->pluck('poin_store')->first();
         return $poin_store;
     }
+        /**
+     * get price.
+     * @param int $id
+     * @return float $price 11.222
+     */
+    function getPriceById($id)
+    {
+        $price_view = App\Models\Uni_Product::where('id',$id)->pluck('view_price')->first();
+        return $price_view;
+    }
    
     function checkParent($id)
     {

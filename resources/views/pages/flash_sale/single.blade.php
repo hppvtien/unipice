@@ -56,20 +56,23 @@
                                         <h3 class="title-product-sale">Sản phẩm trong gói sale</h3>
 
                                         @forelse (json_decode($uni_flashsale->info_sale) as $key => $item)
-                                        <div class="col-md-4 col-lg-3 col-sm-6 col-12 card-item">
+                                        <div class="col-md-4 col-lg-4 col-sm-6 col-12 card-item">
                                             <div class="card">
                                                 <span id="star6"><span class="number-prd">{{ $key+1 }}</span></span>
                                                 <a href="{{ getSlugProduct(getSlugProductById($item->id)) }}" title="{{ getNameProduct($item->id) }}">
                                                     <img class="card-img-top" src="{{ pare_url_file(getThumbProduct($item->id)) }}" alt="{{ getNameProduct($item->id) }}">
                                                 </a>
                                                 <div class="card-body">
-                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd font-weight-normal" href="{{ getSlugProduct(getSlugProductById($item->id)) }}">Sản phẩm: {{ getNameProduct($item->id) }}</a></h5>
-                                                    <p class="text-primary">Số lượng sale : {{ $item->qty_sale }}</p>
+                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd font-weight-normal" href="{{ getSlugProduct(getSlugProductById($item->id)) }}">{{ getNameProduct($item->id) }}</a></h5>
+                                                    <p class="text-primary">Số lượng sản phẩm : {{ $item->qty_sale }}</p>
                                                     <?php if (checkUid(get_data_user('web')) != null) { ?>
-                                                        <p class="text-primary">{{ 'Giá : '.formatVnd($item->price_sale) }}</p>
+                                                        <p class="text-primary"><span class="g-price">{{ 'Giá bán hiện tại : '.formatVnd(getPriceById($item->id)) }}</span></p>
+                                                        <p class="text-primary">{{ 'Giá được sale : '.formatVnd($item->price_sale) }} <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
                                                     <?php } elseif (checkUid(get_data_user('web')) == null) { ?>
                                                         <?php if ($uni_flashsale->is_flash == 0) { ?>
-                                                            <p class="text-primary">{{ 'Giá : '.formatVnd($item->price_sale) }}</p>
+                                                            <p class="text-primary"><span class="g-price">{{ 'Giá bán hiện tại : '.formatVnd(getPriceById($item->id)) }}</span></p>
+                                                            <p class="text-primary">{{ 'Giá đang sale: '.formatVnd($item->price_sale) }} <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
+                                                            <p class="text-primary font_chu_mau_do font-weight-bold">{{ 'Tổng tiền cho sản phẩm: '.formatVnd($item->price_subtotal) }}</p>
                                                         <?php } else { ?>
                                                             <p class="text-primary"></p>
                                                         <?php } ?>
@@ -109,7 +112,9 @@
                                                     <div class="card-body">
                                                         <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,36) }}</a></h5>
                                                         <p class="card-text">{{ desscription_cut($item->desscription,50) }}</p>
+                                                        <?php if (checkUid(get_data_user('web')) == null && $item->is_flash == 0) { ?>
                                                         <p class="text-primary">Giá : {{ formatVnd($item->price) }}</p>
+                                                        <?php } ?>
                                                         <a class="btn-km" href="{{ getSlugProduct($item->slug) }}" class="btn btn-primary">Xem Chi Tiết</a>
                                                     </div>
                                                 </div>
