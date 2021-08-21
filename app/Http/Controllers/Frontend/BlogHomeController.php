@@ -55,6 +55,7 @@ class BlogHomeController extends Controller
         $post_category = Uni_PostCategory::where('status',1)->orderByDesc('id')->get();
         $slide = Slide::where('s_type',7)->first();
         $blog_post = Uni_Post::where('slug',$slug)->first();
+        $blog_post1 = Uni_Post::where('status',1)->orderByDesc('id')->limit(8)->get();
         $user_ids = get_data_user('web');
 
         $current_cate = Uni_PostCategory::where('id',$blog_post->category_id)->first();
@@ -70,6 +71,7 @@ class BlogHomeController extends Controller
 
         $viewdata = [
             'blog_post'=>$blog_post,
+            'blog_post1' => $blog_post1,
             'post_category'=>$post_category,
             'slide' => $slide,
             'current_cate' => $current_cate,
