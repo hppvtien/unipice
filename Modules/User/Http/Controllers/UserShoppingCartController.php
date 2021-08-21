@@ -49,6 +49,8 @@ class UserShoppingCartController extends UserController
                         'options' => [
                             'images' => $uni_combo->thumbnail,
                             'sale' => $type_box
+
+                            
                         ]
                     ]);
                 }

@@ -21,7 +21,7 @@
                             <div class="m-category-card__image-wrapper">
                                 <picture>
                                     <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($item->thumbnail) }}">
-                                    <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ pare_url_file($item->thumbnail) }}">
+                                    <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}">
                                 </picture>
                                 <div class="m-category-card__caption">
                                     <span class="m-category-card__caption-text">{{ $item->name }}</span>

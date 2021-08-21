@@ -127,7 +127,7 @@ class AdminUniFlashSaleController extends AdminController
             } else {
                 $thumbnail = $uni_flashsale->thumbnail;           
             }
-
+            
             $param = [
                 "type_buy" => $request->type_buy,
                 "name" => $request->name,
@@ -135,6 +135,7 @@ class AdminUniFlashSaleController extends AdminController
                 "is_flash" => $request->is_flash,
                 "desscription" => $request->desscription,
                 "price" => $request->price_all_subtotal,
+                "price_nosale" => $request->price_all_total,
                 "qty" => $request->qty,
                 "content" => $request->content,
                 "meta_title" => $request->meta_title,

@@ -4,7 +4,7 @@
             <!-- BASE :: MINI-PRODUCT-CARD -->
             <a style="--color-brand:var(--color-simply-organic)" class="m-mini-product-card" href="{{ $item->slug }}">
                 <div class="m-mini-product-card__img-wrapper">
-                    <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}" alt=" ">
+                    <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}" >
                 </div>
                 <div class="m-mini-product-card__info">
                     <div class="m-combined-product-name">

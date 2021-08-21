@@ -13,11 +13,11 @@
                                 <div class="c-page-header c-page-header--light">
                                     <picture class="c-page-header__image">
                                         <source media="(min-width: 1024px)" data-srcset="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" srcset="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
-                                        <img class=" lazyloaded" data-src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" alt="blogs-1440x380-1626419645.jpg" src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
+                                        <img class=" lazyloaded" data-src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" alt="Danh sách các gói khuyến mãi của chúng tôi" src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
                                     </picture>
 
                                     <div class="c-page-header__content">
-                                        <h1 class="c-page-header__headline">Danh sách các gói khuyến mãi của chúng tôi</h1>
+                                        <h2 class="c-page-header__headline">Danh sách các gói khuyến mãi của chúng tôi</h2>
                                     </div>
                                 </div>
                             </div>
@@ -26,7 +26,6 @@
                             <div class="layout__region layout__region--content">
                                 <div data-block-plugin-id="system_breadcrumb_block">
                                     <nav class="m-breadcrumb" aria-label="Breadcrumb">
-                                        <h2 class="visually-hidden">Breadcrumb</h2>
                                         <ol class="m-breadcrumb__list">
                                             <li class="m-breadcrumb__item">
                                                 <a class="a-anchor" href="/">Home</a>
@@ -47,18 +46,16 @@
                                     </h2>
                                     <div class="row">
                                         @forelse ($uni_flashsale_flash as $item)
-
-
-
                                         <div class="col-md-4 col-lg-3 col-sm-6 col-12 card-item padding-set5px">
                                             <div class="card">
                                                 <a href="{{ getSlugFlashSale($item->slug) }}" title="{{ $item->meta_title }}">
                                                     <img class="card-img-top" src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->meta_title }}">
                                                 </a>
                                                 <div class="card-body">
-                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,60) }}</a></h5>
+                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,100) }}</a></h5>
                                                     <p class="card-text">{{ desscription_cut($item->desscription,60) }}</p>
-                                                    <p class="text-primary">Giá : {{ formatVnd($item->price) }}</p>
+                                                    <p class="text-primary"><span class="g-price">Giá bán : {{ formatVnd($item->price_nosale) }}</span><span class="font_chu_mau_do">( Giảm:-{{ 100-round($item->price*100/$item->price_nosale) }}%)</span></p>
+                                                    <p class="text-primary">Giá sale : {{ formatVnd($item->price) }}</p>
                                                     <a class="btn-km" href="{{ getSlugFlashSale($item->slug) }}" class="btn btn-primary">Xem Chi Tiết</a>
                                                 </div>
                                             </div>
@@ -96,7 +93,7 @@
                                                                 </div>
                                                                 <div class="m-product-card__sku">
                                                                     <span> SKU: {{ $item->id }}</span>
-                                                                    <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""> ({{ countReview($item->id) }})</span>
+                                                                    <span> <img src="{{ asset('img/brand/star_5.png') }}" alt="{{ $item->name }}"> ({{ countReview($item->id) }})</span>
                                                                 </div>
                                                                 <div class="m-price-lockup m-product-card__price">
                                                                     <span class="m-price-lockup__price">
@@ -189,7 +186,7 @@
                                     <div class="c-page-header c-page-header--centered c-page-header--light">
                                         <picture class="c-page-header__image">
                                             <source media="(min-width: 1024px)" data-srcset="https://www.coopmarket.com/sites/default/files/styles/1440x380/public/acquiadam/2020-12/membership-hero-desktop.png?itok=aZRBseW2" srcset="https://www.coopmarket.com/sites/default/files/styles/1440x380/public/acquiadam/2020-12/membership-hero-desktop.png?itok=aZRBseW2">
-                                            <img class=" lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc" alt="" src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc">
+                                            <img class=" lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc" alt="Khuyến mãi đặc biệt cho đại lý" src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc">
                                         </picture>
 
                                         <div class="c-page-header__content">
@@ -225,7 +222,7 @@
                                     <div class="c-page-header c-page-header--centered c-page-header--light">
                                         <picture class="c-page-header__image">
                                             <source media="(min-width: 1024px)" data-srcset="https://www.coopmarket.com/sites/default/files/styles/1440x380/public/acquiadam/2020-12/membership-hero-desktop.png?itok=aZRBseW2" srcset="https://www.coopmarket.com/sites/default/files/styles/1440x380/public/acquiadam/2020-12/membership-hero-desktop.png?itok=aZRBseW2">
-                                            <img class=" lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc" alt="" src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc">
+                                            <img class=" lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc" alt="Trở thành đại lý" src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc">
                                         </picture>
 
                                         <div class="c-page-header__content">
@@ -250,7 +247,7 @@
                                                         <p class="card-text mb-auto">{{ desscription_cut($item->desscription,70) }}</p>
                                                         <a href="{{ getSlugPost($item->slug) }}">Xem chi tiết</a>
                                                     </div>
-                                                    <img class="card-img-right flex-auto d-none d-md-block" alt="" src="/storage/uploads/icon-grocerysss-1627723174.jpg">
+                                                    <img class="card-img-right flex-auto d-none d-md-block" alt="{{ $item->name }}" src="/storage/uploads/icon-grocerysss-1627723174.jpg">
                                                 </div>
                                             </div>
                                             @empty

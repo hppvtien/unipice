@@ -29,7 +29,7 @@
 
                                     <picture class="c-page-header__image">
                                         <source media="(min-width: 1024px)" data-srcset="/" srcset="/">
-                                        <img class=" lazyloaded" data-src="/" alt=" " src="/">
+                                        <img class=" lazyloaded" data-src="/" alt="Co-op Market FAQs" src="/">
                                     </picture>
 
                                     <div class="c-page-header__content">

@@ -174,7 +174,7 @@
                                                 <div class="m-category-card__image-wrapper">
                                                     <picture>
                                                         <source media="(min-width: 768px)" data-srcset="{{ pare_url_file_product($item->thumbnail) }}">
-                                                        <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->thumbnail }}">
+                                                        <img class="lazyload" data-src="{{ pare_url_file_product($item->thumbnail) }}" alt="{{ $item->name }}">
                                                 
                                                     </picture>
                                                     <div class="m-category-card__caption">
@@ -271,7 +271,7 @@
                                             <div class="m-category-card__image-wrapper">
                                                 <picture>
                                                     <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($item->thumbnail) }}">
-                                                    <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ pare_url_file($item->thumbnail) }}">
+                                                    <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}">
                                                 </picture>
                                                 <div class="m-category-card__caption">
                                                     <span class="m-category-card__caption-text">{{ $item->name }}</span>
@@ -433,7 +433,7 @@
                                 <div class="c-media-block__image-wrapper">
                                     <picture>
                                         <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($content_page_4->thumbnail) }}">
-                                        <img class="lazyload" data-src="{{ pare_url_file($content_page_4->thumbnail) }}" alt=" ">
+                                        <img class="lazyload" data-src="{{ pare_url_file($content_page_4->thumbnail) }}" alt="{{ $content_page_4->name }}">
                                     </picture>
                                 </div>
 

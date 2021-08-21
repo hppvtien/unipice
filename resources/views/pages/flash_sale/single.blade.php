@@ -63,16 +63,15 @@
                                                     <img class="card-img-top" src="{{ pare_url_file(getThumbProduct($item->id)) }}" alt="{{ getNameProduct($item->id) }}">
                                                 </a>
                                                 <div class="card-body">
-                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd font-weight-normal" href="{{ getSlugProduct(getSlugProductById($item->id)) }}">{{ getNameProduct($item->id) }}</a></h5>
+                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd name-total-sale" href="{{ getSlugProduct(getSlugProductById($item->id)) }}">{{ getNameProduct($item->id) }}</a></h5>
                                                     <p class="text-primary">Số lượng sản phẩm : {{ $item->qty_sale }}</p>
                                                     <?php if (checkUid(get_data_user('web')) != null) { ?>
-                                                        <p class="text-primary"><span class="g-price">{{ 'Giá bán hiện tại : '.formatVnd(getPriceById($item->id)) }}</span></p>
-                                                        <p class="text-primary">{{ 'Giá được sale : '.formatVnd($item->price_sale) }} <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
-                                                    <?php } elseif (checkUid(get_data_user('web')) == null) { ?>
+                                                        <p class="text-primary">{{ 'Giá bán: '.formatVnd(getPriceById($item->id) * $item->qty_sale) }} <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
+                                                        <p class="text-primary font-weight-bold price-total-sale">{{ 'Chỉ còn: '.formatVnd($item->price_subtotal) }}</p>
+                                                        <?php } elseif (checkUid(get_data_user('web')) == null) { ?>
                                                         <?php if ($uni_flashsale->is_flash == 0) { ?>
-                                                            <p class="text-primary"><span class="g-price">{{ 'Giá bán hiện tại : '.formatVnd(getPriceById($item->id)) }}</span></p>
-                                                            <p class="text-primary">{{ 'Giá đang sale: '.formatVnd($item->price_sale) }} <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
-                                                            <p class="text-primary font_chu_mau_do font-weight-bold">{{ 'Tổng tiền cho sản phẩm: '.formatVnd($item->price_subtotal) }}</p>
+                                                            <p class="text-primary">{{ 'Giá bán: '.formatVnd(getPriceById($item->id) * $item->qty_sale) }} <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
+                                                            <p class="text-primary price-total-sale">{{ 'Chỉ còn: '.formatVnd($item->price_subtotal) }}</p>
                                                         <?php } else { ?>
                                                             <p class="text-primary"></p>
                                                         <?php } ?>
@@ -85,7 +84,7 @@
 
                                         @endforelse
                                         <?php if (checkUid(get_data_user('web')) != null) { ?>
-                                            <button class=" w-25 text-center mx-auto btn-add-cart-sale js-add-cart" data-target="{{ get_data_user('web') == null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $uni_flashsale->id }}" type="button" type="button">Mua ngay</button>
+                                            <button class=" w-25 text-center mx-auto btn-add-cart-sale a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-target="{{ get_data_user('web') == null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $uni_flashsale->id }}" type="button" type="button">Mua ngay</button>
                                         <?php } else {  ?>
                                             @if ($uni_flashsale->is_flash == 0 && get_data_user('web') != null)
                                             <button class=" w-25 text-center mx-auto btn-add-cart-sale" class="a-btn a-btn--primary m-product-card__add-to-cart-btn" type="button">Liên hệ</button>
@@ -113,9 +112,9 @@
                                                         <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,36) }}</a></h5>
                                                         <p class="card-text">{{ desscription_cut($item->desscription,50) }}</p>
                                                         <?php if (checkUid(get_data_user('web')) == null && $item->is_flash == 0) { ?>
-                                                        <p class="text-primary">Giá : {{ formatVnd($item->price) }}</p>
-                                                        <?php } ?>
-                                                        <a class="btn-km" href="{{ getSlugProduct($item->slug) }}" class="btn btn-primary">Xem Chi Tiết</a>
+                                                        <p class="text-primary price-total-sale">Giá : {{ formatVnd($item->price) }}</p>
+                                                        <?php } else { echo '<p class = "price-total-sale"></p>'; } ?>
+                                                        <a class="btn-km" href="{{ getSlugFlashSale($item->slug) }}" class="btn btn-primary">Xem Chi Tiết</a>
                                                     </div>
                                                 </div>
                                             </div>
