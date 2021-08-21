@@ -136,7 +136,7 @@
                             <div>
                                 @foreach ($noi_dung_comment as $item)
                                 <div class="media-block">
-                                    <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
+                                    <a class="media-left" href="#"><img class="img-circle img-sm" alt="{{ $item->name }}" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
                                     <div class="media-body">
                                         <div class="mar-btm">
                                             <a href="#" class="btn-link text-semibold media-heading box-inline" style="color:#08532f">
@@ -166,7 +166,7 @@
                     <!--===================================================-->
                     @foreach ($noi_dung_question as $item)
                     <div class="media-block">
-                        <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
+                        <a class="media-left" href="#"><img class="img-circle img-sm" alt="{{ $item->name }}" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
                         <div class="media-body">
                             <div class="mar-btm">
                                 <a href="javascript:;" class="btn-link text-semibold media-heading box-inline">{{ $item->name }}</a>

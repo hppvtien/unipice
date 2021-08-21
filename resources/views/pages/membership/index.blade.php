@@ -13,7 +13,7 @@
                                 <div class="c-page-header c-page-header--light">
                                     <picture class="c-page-header__image">
                                         <source media="(min-width: 1024px)" data-srcset="/storage/uploads/blogs-1440x380-1626419645.jpg" srcset="/storage/uploads/blogs-1440x380-1626419645.jpg">
-                                        <img class=" lazyloaded" data-src="/storage/uploads/blogs-1440x380-1626419645.jpg" alt="blogs-1440x380-1626419645.jpg" src="/storage/uploads/blogs-1440x380-1626419645.jpg">
+                                        <img class=" lazyloaded" data-src="/storage/uploads/blogs-1440x380-1626419645.jpg" alt="Tin tức cùng Unispice" src="/storage/uploads/blogs-1440x380-1626419645.jpg">
                                     </picture>
 
                                     <div class="c-page-header__content">

@@ -13,7 +13,7 @@
                 <div class="c-page-header c-page-header--light">
                   <picture class="c-page-header__image">
                     <source media="(min-width: 1024px)" data-srcset="{{ pare_url_file($slide->s_banner) }}" srcset="{{ pare_url_file($slide->s_banner) }}">
-                    <img class=" lazyloaded" data-src="{{ pare_url_file($slide->s_banner) }}" alt="{{ $slide->s_banner }}" src="{{ pare_url_file($slide->s_banner) }}">
+                    <img class=" lazyloaded" data-src="{{ pare_url_file($slide->s_banner) }}" alt="{{ $slide->s_name }}" src="{{ pare_url_file($slide->s_banner) }}">
                   </picture>
 
                   <div class="c-page-header__content">

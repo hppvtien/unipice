@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-12 col-lg-5 ">
                 <div class="dk-footer-box-info">
-                    <a href="index.html" class="footer-logo">
-                        <img src="{{ pare_url_file($configuration->logo) }}" alt="footer_logo" class="img-fluid" style="width:40%">
+                    <a href="/" class="footer-logo">
+                        <img src="{{ pare_url_file($configuration->logo) }}" alt="Logo UniMall" class="img-fluid" style="width:40%">
                     </a>
                     <p class="footer-info-text">
                         Công ty chúng tôi mang tầm cỡ quốc tế Baking soda baths are a great way to detox. Check out the benefits of baking soda baths and how to do one at home! Baking soda baths are a great way to detox
@@ -84,14 +84,14 @@
                                 @forelse ($category_mn as $key => $item) 
                                 <li>
                                     <a href="{{ getSlugCategory($item->slug) }}" >
-                                        <img style="float: left;padding: 5px;" width="30px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt="">{{ $item->name }}
+                                        <img style="float: left;padding: 5px;" width="30px" src="{{ pare_url_file_product($item->icon_thumb) }}" alt="{{ $item->name }}">{{ $item->name }}
                                     </a>
                                 </li>
                                 @empty
                                 @endforelse
                                 <li>
                                     <a href="{{ route('get.flashsale') }}" >
-                                        <img style="float: left;padding: 5px;" width="30px" src="/storage/uploads_Product/khuyen-mai-1627644111.png" alt="">Khuyến mại
+                                        <img style="float: left;padding: 5px;" width="30px" src="/storage/uploads_Product/khuyen-mai-1627644111.png" alt="Khuyến mại">Khuyến mại
                                     </a>
                                 </li>
                             </ul>
@@ -107,33 +107,33 @@
                             </div>
                             <ul>
                                 <li>
-                                    <a href="{{ route('get_blog.home') }}">
-                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/blogging.png" alt="" width="30px"> Blog
+                                    <a href="{{ route('get_blog.home') }}" rel="nofollow">
+                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/blogging.png" alt="Blog" width="30px"> Blog
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('get.spice_club') }}">
-                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/football-club.png" alt="" width="30px"> Spice Club
+                                    <a href="{{ route('get.spice_club') }}" rel="nofollow">
+                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/football-club.png" alt="Spice Club" width="30px"> Spice Club
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('get.find') }}">
-                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/location.png" alt="" width="30px"> Tìm Cửa Hàng
+                                    <a href="{{ route('get.find') }}" rel="nofollow">
+                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/location.png" alt="Tìm Cửa Hàng" width="30px"> Tìm Cửa Hàng
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/bai-viet/chinh-sach-giao-hang" target="_blank" rel="nofollow">
-                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/shipping.png" alt="" width="30px"> Chính Sách Giao Hàng
+                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/shipping.png" alt="Chính Sách Giao Hàng" width="30px"> Chính Sách Giao Hàng
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/bai-viet/chinh-sach-doi-tra" target="_blank" rel="nofollow">
-                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/exchange.png" alt="" width="30px"> Chính Sách Đổi Trả
+                                        <img style="float: left;padding: 5px;" src="/images/icon_menu/exchange.png" alt="Chính Sách Đổi Trả" width="30px"> Chính Sách Đổi Trả
                                     </a>
                                 </li>
                             </ul>
-                            <div class="col-md-12 row"><img src="/images/icon_menu/pay_methods.png" alt=""></div>
-                            <div class="col-md-12 row"><img src="/images/icon_menu/bo_cong_thuong.png" alt="" class="can_tren_duoi"></div>
+                            <div class="col-md-12 row"><img src="/images/icon_menu/pay_methods.png" alt="Phương Thức Thanh Toán - UniMall"></div>
+                            <div class="col-md-12 row"><img src="/images/icon_menu/bo_cong_thuong.png" alt="Đăng Ký Bộ Công Thương - UniMall" class="can_tren_duoi"></div>
                         </div>
 
                     </div>
@@ -164,7 +164,7 @@
             <div class="row">
                 <div class="col-md-6 col-xs-12  pl-md-5 padding_top_footer_1">
                     <ul class="menu_foooter_2">
-                        <li><a href="javascript:;">{{ $configuration->footer_bottom }}</a></li>
+                        <li><a href="javascript:;" rel="nofollow">{{ $configuration->footer_bottom }}</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 col-xs-12 pr-md-5">

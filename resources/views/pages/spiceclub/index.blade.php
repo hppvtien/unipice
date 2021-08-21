@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
                         <div class="about-img">
-                            <img src="{{ pare_url_file($content_page_1->thumbnail) }}" alt="">
+                            <img src="{{ pare_url_file($content_page_1->thumbnail) }}" alt="{{ $content_page_1->name }}">
                         </div>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
@@ -70,7 +70,7 @@
                                         {!! $content_page_3->content !!}
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="{{ pare_url_file($content_page_3->thumbnail) }}" alt=""
+                                        <img src="{{ pare_url_file($content_page_3->thumbnail) }}" alt="{!! $content_page_3->content !!}"
                                             class="img-fluid">
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
                                         {!! $content_page_4->content !!}
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="{{ pare_url_file($content_page_4->thumbnail) }}" alt=""
+                                        <img src="{{ pare_url_file($content_page_4->thumbnail) }}" alt="{!! $content_page_4->content !!}"
                                             class="img-fluid">
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
                                         {!! $content_page_5->content !!}
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="{{ pare_url_file($content_page_5->thumbnail) }}" alt=""
+                                        <img src="{{ pare_url_file($content_page_5->thumbnail) }}" alt="{!! $content_page_5->content !!}"
                                             class="img-fluid">
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@
                                         {!! $content_page_6->content !!}
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="{{ pare_url_file($content_page_6->thumbnail) }}" alt=""
+                                        <img src="{{ pare_url_file($content_page_6->thumbnail) }}" alt="{!! $content_page_6->content !!}"
                                             class="img-fluid">
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
                                         {!! $content_page_7->content !!}
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="{{ pare_url_file($content_page_7->thumbnail) }}" alt=""
+                                        <img src="{{ pare_url_file($content_page_7->thumbnail) }}" alt="{!! $content_page_7->content !!}"
                                             class="img-fluid">
                                     </div>
                                 </div>
@@ -230,7 +230,7 @@
                                             data-srcset="{{ pare_url_file($content_page_7->thumbnail) }}">
                                         <img class="lazyload"
                                             data-src="{{ pare_url_file($content_page_7->thumbnail) }}"
-                                            alt="">
+                                            alt="{!! $content_page_7->content !!}">
                                     </picture>
                                     <div class="c-page-header__content">
                                         <h1 class="c-page-header__headline">TRỞ THÀNH THÀNH VIÊN <br>SPICE CLUB</h1>
@@ -253,7 +253,7 @@
                                                             data-srcset="{{ pare_url_file($content_page_8->thumbnail) }}">
                                                         <img class="lazyload"
                                                             data-src="{{ pare_url_file($content_page_8->thumbnail) }}"
-                                                            alt=" ">
+                                                            alt="{{ $content_page_8->name}}">
                                                     </picture>
                                                 </div>
                                                 <div class="m-media-block-aligned__content">
@@ -277,7 +277,7 @@
                                                             data-srcset="{{ pare_url_file($content_page_9->thumbnail) }}">
                                                         <img class="lazyload"
                                                             data-src="{{ pare_url_file($content_page_9->thumbnail) }}"
-                                                            alt=" ">
+                                                            alt="{{ $content_page_9->name}}">
                                                     </picture>
                                                 </div>
                                                 <div class="m-media-block-aligned__content">
