@@ -2484,6 +2484,13 @@ a:hover {
     }
 }
 
+@media screen and (max-width:768px) {
+    .footer-left-widget {
+        padding-left: 0px !important;
+        margin-top: 20px;
+    }
+}
+
 .zeynep ul>li>a {
     font-size: 14px;
     color: #ffffff;
