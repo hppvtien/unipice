@@ -132,8 +132,15 @@
                                     </a>
                                 </li>
                             </ul>
-                            <div class="col-md-12 row"><img src="/images/icon_menu/pay_methods.png" alt="Phương Thức Thanh Toán - UniMall"></div>
-                            <div class="col-md-12 row"><img src="/images/icon_menu/bo_cong_thuong.png" alt="Đăng Ký Bộ Công Thương - UniMall" class="can_tren_duoi"></div>
+                            <div class="col-md-12 row"><img src="/images/icon_menu/pay_methods.png" alt=""></div>
+                            <div class="col-md-12 row">
+                                <div class="col-md-6 row">
+                                    <img src="/images/icon_menu/bo_cong_thuong.png" alt="" class="can_tren_duoi">
+                                </div>
+                                <div class="col-md-6 row">
+                                    <a  href="https://www.dmca.com/Protection/Status.aspx?ID=f09a95dc-40db-40a5-9296-92...ce.vn/" target="_blank" rel="nofollow "> <img src="https://unispice.vn/wp-content/uploads/2018/02/dmca_protected.png" alt="" class="can_tren_duoi" style="margin-top: 25%;margin-left: 20%;"></a>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
