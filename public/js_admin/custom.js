@@ -69,8 +69,13 @@ $('.form-check-input').on('change', function() {
             $('.form-check-input:checked').each(function() {
                 totalPrice += Number($(this).attr('data-sub'));
                 totalPriceNoSale += Number($(this).attr('data-nosub'));
+                totalpt = 100 - (totalPrice * 100 / totalPriceNoSale);
+                console.log(totalpt);
                 $('.price_all_subtotal').val(totalPrice);
                 $('.price_all_total').val(totalPriceNoSale);
+                $('.price_no_sale').text(totalPriceNoSale.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                $('.price_sale').text(totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                $('.price_sale_').text(totalpt.toFixed(2) + '%');
             });
         });
     }
@@ -90,8 +95,13 @@ $('.form-check-input').on('change', function() {
         $('.form-check-input:checked').each(function() {
             totalPrice += Number($(this).attr('data-sub'));
             totalPriceNoSale += Number($(this).attr('data-nosub'));
+            totalpt = 100 - (totalPrice * 100 / totalPriceNoSale);
+            console.log(totalpt);
             $('.price_all_subtotal').val(totalPrice);
             $('.price_all_total').val(totalPriceNoSale);
+            $('.price_no_sale').text(totalPriceNoSale.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+            $('.price_sale').text(totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+            $('.price_sale_').text(totalpt.toFixed(2) + '%');
         });
     }
 });
