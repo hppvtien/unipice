@@ -960,6 +960,7 @@ label.m-text-input__label {
 
 .m-combined-product-name.group-product {
     flex-direction: row;
+    min-height: 60px;
 }
 
 .m-combined-product-name__link {

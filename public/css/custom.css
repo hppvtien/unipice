@@ -880,7 +880,7 @@ button.btn_store_submit.js-add-cart:hover {
 h3.title-product-sale {
     position: absolute;
     background: #FFF;
-    top: -5%;
+    top: -3%;
     color: #ff7750;
 }
 
@@ -917,7 +917,7 @@ a.btn-km:hover {
 
 .card-title-cd {
     color: #08532f!important;
-    height: 28px;
+    min-height: 28px;
     font-size: 20px;
     font-weight: bold!important;
 }

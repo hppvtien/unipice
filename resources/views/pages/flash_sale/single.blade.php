@@ -49,10 +49,9 @@
                                         Chi tiết gói sale: {{ $uni_flashsale->name }}
                                     </p>
                                     <p title="products" class="page_heading font-weight-nomal">
-                                        Mô tả: <br>
-                                        {!! $uni_flashsale->content !!}
+                                        Mô tả: {!! $uni_flashsale->content !!}
                                     </p>
-                                    <div class="row group-sale">
+                                    <div class="row group-sale mt-5 mb-5 p-5">
                                         <h3 class="title-product-sale">Sản phẩm trong gói sale</h3>
 
                                         @forelse (json_decode($uni_flashsale->info_sale) as $key => $item)
@@ -98,7 +97,7 @@
                                 </div>
 
                                 <div class="container">
-                                    <h3 title="products" class="page_heading text-center font-weight-bold km-fav">
+                                    <h3 title="products" class="page_heading text-center font-weight-bold km-fav mt-5">
                                         Các gói Sale được yêu thích nhất
                                         </h2>
                                         <div class="row">
@@ -124,10 +123,10 @@
                                         </div>
                                 </div>
                                 <div class="container">
-                                    <h3 title="products" class="page_heading text-center font-weight-bold km-fav">
+                                    <h3 title="products" class="page_heading text-center font-weight-bold km-fav mt-5">
                                         Bài viết liên quan
                                         </h2>
-                                        <div class="row mb-2">
+                                        <div class="row mb-5">
                                             @forelse ($uni_post as $item)
                                             <div class="col-md-6 col-12">
                                                 <div class="card flex-md-row mb-4 box-shadow h-md-250">
