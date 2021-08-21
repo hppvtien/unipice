@@ -53,13 +53,13 @@
                             </div>
                         <?php } else { ?>
                             <div class="box-content">
-                            <span class="newsletter-label text-danger">Vui lòng cập nhật thông tin, Để hoàn tất thủ tục đăng ký</span> <br>
-                            <span class="newsletter-label text-danger">Nếu bạn nhập thông tin rồi vui lòng chở để quản trị kiểm tra.</span>
+                            <span class="text-strong gd-danger">Vui lòng cập nhật thông tin đại lý, Để hoàn tất thủ tục đăng ký tài khoản</span> <br>
+                            <span class="text-strong gd-danger">Tài khoản của bạn sẽ hoạt động được khi admin hoàn tất thủ tục kiểm duyệt thông tin của bạn.</span>
                         </div>
                         <?php } ?>
                         
                         <div class="box-actions">
-                            <a class="action edit a-anchor" href="{{ route('get_user.store.edit',['id' => get_data_user('web')]) }}"><span>Cập nhật đại lý</span></a>
+                            <a class="a-btn a-btn--primary" href="{{ route('get_user.store.edit',['id' => get_data_user('web')]) }}"><span>Cập nhật thông tin đại lý</span></a>
                         </div>
                     </div>
                     @endif
