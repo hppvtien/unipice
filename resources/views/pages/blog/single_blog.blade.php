@@ -111,7 +111,7 @@
                         </div>
 
                         <div class="layout layout--onecol">
-                          <div class="c-categories-slider layout layout--onecol not-padding-top">
+                          <div class="c-categories-slider layout layout--onecol not-padding-top" style="background-color: #fff">
 
                             <div class="layout__region layout__region--heading">
                                 <div class="c-categories-slider__heading-wrapper layout-builder__add-block">
@@ -124,45 +124,25 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="layout__region layout__region--content">
-                                <div class="c-categories-slider__container js-swiper-container">
-                                    <ul class="c-categories-slider__slider js-swiper-wrapper">
-                                      @foreach ($blog_post1 as $item)
-                                      <li class="c-categories-slider__item js-swiper-slide">
-                                        <a class="m-category-card m-category-card--bordered" href="san-pham-01">
-                                            <div class="m-category-card__image-wrapper">
-                                                <picture>
-                                                    <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($item->thumbnail) }}">
-                                                    <img class="lazyload" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}">
-                                                </picture>
-                                                <div class="m-category-card__caption">
-                                                    <span class="m-category-card__caption-text">{{ desscription_cut($item->name,20) }}</span>
-                                                </div>
-                                                <div class="m-category-card__caption">
-                                                    <p>{{ desscription_cut($item->desscription,40) }}</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    @endforeach
-                                        
-                                    </ul>
-                                    <div class="a-carousel-indicator a-carousel-indicator--no-bullets a-carousel-indicator--arrows c-categories-slider__arrows">
-                                        <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--left js-swiper-button-prev" type="button" aria-label="Prev">
-                                            <span class="icon-arrow-left"></span>
-                                        </button>
-                                        <button class="a-carousel-indicator__arrow a-carousel-indicator__arrow--right js-swiper-button-next" type="button" aria-label="Next">
-                                            <span class="icon-arrow-right"></span>
-                                        </button>
-                                    </div>
-                                    <div class="c-products-slider__scrollbar">
-                                        <div class="a-slider-scrollbar">
-                                            <div class="a-slider-scrollbar__inner js-swiper-scrollbar">
-                    
+                            <div class="layout__region layout__region--content" >
+                                <div class="container">
+                                  <div class="row">
+                                    @foreach ($blog_post1 as $item)
+                                    <div class="col-lg-3">
+                                      <a class="" href="san-pham-01">
+                                        <div class="mt-3 mb-3">
+                                            <picture>
+                                                <source data-srcset="{{ pare_url_file($item->thumbnail) }}">
+                                                <img class="lazyload" data-src="" width="100%">
+                                            </picture>
+                                            <div class="m-category-card__caption mt-2">
+                                                <span style="font-size: 15px">{{ desscription_cut($item->name,30) }}</span>
                                             </div>
                                         </div>
+                                    </a>
                                     </div>
-                    
+                                    @endforeach
+                                  </div>
                                 </div>
                             </div>
                         </div>
