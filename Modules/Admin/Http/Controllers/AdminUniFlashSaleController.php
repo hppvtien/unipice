@@ -87,7 +87,7 @@ class AdminUniFlashSaleController extends AdminController
     public function edit($id)
     {
         $type_buy = Level_store::get();
-        $uni_product      = Uni_Product::get();
+        $uni_product      = Uni_Product::orderByDesc('id')->get();
         $uni_flashsale     = Uni_FlashSale::findOrFail($id);
         $type_buyOld = RelLevelStore::where('flash_id', $id)->pluck('level_store_id')->toArray() ?? [];
         $edit_in = 'edit';

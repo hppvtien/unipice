@@ -54,7 +54,7 @@
                                                 <div class="card-body">
                                                     <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,100) }}</a></h5>
                                                     <p class="card-text">{{ desscription_cut($item->desscription,60) }}</p>
-                                                    <p class="text-primary"><span class="g-price">Giá bán : {{ formatVnd($item->price_nosale) }}</span><span class="font_chu_mau_do">( Giảm:-{{ 100-round($item->price*100/$item->price_nosale) }}%)</span></p>
+                                                    <p class="text-primary"><span class="g-price">Giá bán : {{ formatVnd($item->price_nosale??0) }}</span><span class="font_chu_mau_do">( Giảm:-{{ 100-round($item->price*100/$item->price_nosale??0) }}%)</span></p>
                                                     <p class="text-primary">Giá sale : {{ formatVnd($item->price) }}</p>
                                                     <a class="btn-km" href="{{ getSlugFlashSale($item->slug) }}" class="btn btn-primary">Xem Chi Tiết</a>
                                                 </div>

@@ -23,9 +23,11 @@
                             <span>Thông tin liên lạc</span>
                         </strong>
                         <div class="box-content">
-                            <p>
-                                <span class="text-info">Tên khách hàng: </span>{{ get_data_user('web','name') }}<br>
-                                <span class="text-info">Email: </span>{{ get_data_user('web','email') }}<br>
+                            <p class="newsletter-label text-dark">
+                                <span class="text-primary">Tên khách hàng: </span>{{ get_data_user('web','name') }}<br>
+                            </p>
+                            <p class="newsletter-label text-dark">
+                                <span class="text-primary">Email: </span>{{ get_data_user('web','email') }}<br>
                             </p>
                         </div>
                         <div class="box-actions">
@@ -44,10 +46,10 @@
                         </strong>
                         <?php if(checkUid(get_data_user('web'))){ ?>
                             <div class="box-content">
-                                <p class="newsletter-label text-success">Khách hàng: {{ getNameStore(get_data_user('web')) }}</p>                             
-                                <p class="newsletter-label text-success">Trạng thái tài khoản: {{ getDataStore(get_data_user('web'))->store_status == 1 ? 'Đã kích hoạt':'Chưa kích hoạt'; }}</p>
-                                <p class="newsletter-label text-success">Loại tài khoản: {{ getDataStore(get_data_user('web'))->type_store }}</p>
-                                <p class="newsletter-label text-success">Số điểm: {{ getDataStore(get_data_user('web'))->poin_store }}</p>
+                                <p class="newsletter-label text-dark"> <span class="text-primary"> Khách hàng:</span> {{ getNameStore(get_data_user('web')) }}</p>                             
+                                <p class="newsletter-label text-dark"> <span class="text-primary"> Trạng thái tài khoản:</span> {{ getDataStore(get_data_user('web'))->store_status == 1 ? 'Đã kích hoạt':'Chưa kích hoạt'; }}</p>
+                                <p class="newsletter-label text-dark"> <span class="text-primary"> Loại tài khoản:</span> {{ getDataStore(get_data_user('web'))->type_store }}</p>
+                                <p class="newsletter-label text-dark"> <span class="text-primary"> Số điểm:</span> {{ getDataStore(get_data_user('web'))->poin_store }}</p>
                             </div>
                         <?php } else { ?>
                             <div class="box-content">
