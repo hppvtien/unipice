@@ -14,7 +14,13 @@ class ContactController extends Controller
 
     public function index()
     {
-        \SEOMeta::setTitle('Liên hệ với chúng tôi');
+        \SEOMeta::setTitle('Liên hệ');
+        \SEOMeta::setDescription('Liên hệ');
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription('Liên hệ');
+        \OpenGraph::setTitle('Liên hệ');
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
         $config = Configuration::get();
         return view('pages.contact.index', compact('config'));
     }

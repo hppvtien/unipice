@@ -13,9 +13,7 @@ use App\Models\Uni_Comment;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\System\Slide;
-
-
-
+use Illuminate\Support\Facades\URL;
 
 class ProductController extends Controller
 {
@@ -33,8 +31,17 @@ class ProductController extends Controller
         $grp_id = Product_Category::where('category_id', $cat_id)->pluck('product_id');
         $trade_name = Uni_Trade::where('id', $trade_id)->pluck('name')->first();
         $uid = get_data_user('web');
+
         \SEOMeta::setTitle($product->meta_title);
         \SEOMeta::setDescription($product->meta_desscription);
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription($product->meta_desscription);
+        \OpenGraph::setTitle($product->meta_title);
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
+        \OpenGraph::addImage(URL::to('').pare_url_file($product->thumbnail));
+     
+
         $product_related = Uni_Product::whereIn('id', $grp_id)->where('status', 1)->orderBy('id', 'asc')->get();
         $grp_id_cmt = Uni_Comment::where('star', '>', 4)->where('status', 1)->pluck('product_id');
         $product_fav = Uni_Product::whereIn('id', $grp_id_cmt)->where('status', 1)->orderBy('id', 'asc')->limit(8)->get();

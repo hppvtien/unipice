@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css_js/font-awesome.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/ducanh.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/css_js/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/ducanh2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/unimall.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/css_js/unimall_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/unimall2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
     <link href="{{ asset('css/css_js/custom.css') }}" rel="stylesheet">
     @yield('css_js_spice_club')
