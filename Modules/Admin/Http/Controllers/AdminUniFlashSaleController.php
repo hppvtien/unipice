@@ -58,6 +58,7 @@ class AdminUniFlashSaleController extends AdminController
         $data['info_sale'] = json_encode($product_sale);
        
         $param = [
+            "price_nosale" => $request->price_all_total,
             "name" => $request->name,
             "slug" => $request->slug,
             "is_flash" => $request->is_flash,

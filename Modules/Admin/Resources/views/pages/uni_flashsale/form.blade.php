@@ -149,7 +149,7 @@
                                         </span>
                                     </td>
                                     <td colspan="2" class="text-info"><span>Giảm (%):
-                                            <span class="price_sale">
+                                            <span class="price_sale_">
                                                 {{ getptSale($uni_flashsale->price ?? 0, $uni_flashsale->price_nosale ?? 0) }}%</span>
                                             <input type="hidden" class="form-control price_all_subtotal" id="price_all_subtotal" name="price_all_subtotal" value="{{ old('price',$uni_flashsale->price ?? '') }}" readonly="readonly">
                                         </span>
