@@ -12,14 +12,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\URL;
 
 class BlogHomeController extends Controller
 {
     public function index()
     {
-        \SEOMeta::setTitle('Bài viết Unispice');
-        \SEOMeta::setDescription('Bài viết Unispice');
+        \SEOMeta::setTitle('Tin tức');
+        \SEOMeta::setDescription('Tin tức');
         \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription('Tin tức');
+        \OpenGraph::setTitle('Tin tức');
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
         // Bài viết banner
         $post_category = Uni_PostCategory::where('status',1)->orderByDesc('id')->get();
         $slide = Slide::where('s_type',6)->first();
@@ -53,8 +58,16 @@ class BlogHomeController extends Controller
         $user_ids = get_data_user('web');
 
         $current_cate = Uni_PostCategory::where('id',$blog_post->category_id)->first();
+
         \SEOMeta::setTitle($blog_post->meta_title);
         \SEOMeta::setDescription($blog_post->meta_desscription);
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription($blog_post->meta_desscription);
+        \OpenGraph::setTitle($blog_post->meta_title);
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
+        \OpenGraph::addImage(URL::to('').pare_url_file($blog_post->thumbnail));
+
         $viewdata = [
             'blog_post'=>$blog_post,
             'post_category'=>$post_category,
@@ -89,8 +102,16 @@ class BlogHomeController extends Controller
         $current_cate = Uni_PostCategory::where('slug',$slug)->first();
         $blog_post  = Uni_Post::where('category_id', $cat_id)->orderBy('id', 'asc')->limit(8)->get();
         $slide = Slide::where('s_type',6)->first();
+
         \SEOMeta::setTitle($current_cate->meta_title);
         \SEOMeta::setDescription($current_cate->meta_desscription);
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription($current_cate->meta_desscription);
+        \OpenGraph::setTitle($current_cate->meta_title);
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
+        \OpenGraph::addImage(URL::to('').pare_url_file($current_cate->thumbnail));
+
         $viewData = [
             'post_category' => $post_category,
             'blog_post' => $blog_post,
