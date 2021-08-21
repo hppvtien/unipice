@@ -43,10 +43,10 @@
             <div class="layout layout--onecol">
               <div class="container">
                   <!-- EXPOSED -->
-                  <div class="col-md-12 row" id="show-product" style="background-color: #fff">
+                  <div class="col-md-12" id="show-product" style="background-color: #fff">
                     @forelse ($blog_post as $key => $item)
                     
-                    <div class="c-story-block row {{ $key % 2 != 0 ? 'c-story-block--flipped':'' }}">
+                    <div class="c-story-block {{ $key % 2 != 0 ? 'c-story-block--flipped':'' }}">
                       <div class="col-md-6">
                         <div class="c-story-block__content">
                           <h2 class="c-story-block__headline">{{ $item->name }}</h2>
