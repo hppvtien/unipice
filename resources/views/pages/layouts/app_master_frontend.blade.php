@@ -1,31 +1,29 @@
 <!doctype html>
 <html lang="vi">
-
 <head>
+    {!! SEO::generate() !!}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"> {!! SEO::generate() !!}
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
     <link rel="icon" href="{{ asset('img/brand/favicon.png') }}" type="image/x-icon" />
-    <meta name="csrf-token" content="{{ csrf_token() }}" /> @if(session('toastr'))
+    <meta name="csrf-token" content="{{ csrf_token() }}" /> 
+    <link href="{{ asset('css/css_js/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/css_js/font-awesome.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/ducanh.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/css_js/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ducanh2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
+    <link href="{{ asset('css/css_js/custom.css') }}" rel="stylesheet">
+    @yield('css_js_spice_club')
+    @if(session('toastr'))
     <script>
         var TYPE_MESSAGES = "{{ session('toastr.type') }}"
         var MESSAGE = "{{ session('toastr.message') }}"
     </script>
     @endif
-    <link href="{{ asset('css/css_js/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/css_js/font-awesome.css') }}" />
-
-    <link rel="stylesheet" href="{{ asset('css/ducanh.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/css_js/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/ducanh2.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
-    <link href="{{ asset('css/css_js/custom.css') }}" rel="stylesheet">
-    @yield('css_js_spice_club')
-
 </head>
 <div class="zeynep">
     <div class="col-md-12 col-xs-12 border_menu_mobile">

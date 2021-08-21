@@ -136,7 +136,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Banner </label>
+                        <label for="exampleInputEmail1"> Thumbnail </label>
                         <input type="hidden" name="delete_thumbnail"
                             value="{{ old('delete_thumbnail', $postcategory->thumbnail ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">

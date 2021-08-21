@@ -12,32 +12,16 @@ class FindStoreController extends Controller
 {
     public function index()
     {
-        $slug_page = URL::current();
-        $doamin_page = URL::to('/');
-        $str = str_replace( URL::to('/'), '', URL::current() );
-        $str = str_replace('/','',$str);
-        $info_page = PAGE::where('p_slug', 'like', '%'.$str.'%')->get();
-        if($str != ''){
-            foreach($info_page as $item){
-                \SEOMeta::setTitle($item->p_name);
-                \SEOMeta::setDescription($item->p_desscription);
-                \SEOMeta::setCanonical(URL::current());
-                \OpenGraph::setDescription($item->p_desscription);
-                \OpenGraph::setTitle($item->p_name);
-                \OpenGraph::setUrl(URL::current());
-                \OpenGraph::addProperty('type', 'articles');
-            }
-        }
-        else{
-            \SEOMeta::setTitle('Đây là trang chủ');
-            \SEOMeta::setDescription('Đây là mô tả');
-            \SEOMeta::setCanonical(\Request::url());
-            \OpenGraph::setDescription('Đây là mô tả');
-            \OpenGraph::setTitle('Đây là trang chủ');
-            \OpenGraph::setUrl(\Request::url());
-            \OpenGraph::addProperty('type', 'articles');
-        }
         $uni_store = Uni_Store::get();
+
+        \SEOMeta::setTitle('Tìm kiếm cửa hàng của chúng tôi');
+        \SEOMeta::setDescription('Tìm kiếm cửa hàng của chúng tôi');
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription('Tìm kiếm cửa hàng của chúng tôi');
+        \OpenGraph::setTitle('Tìm kiếm cửa hàng của chúng tôi');
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
+        
         $uni_province = Uni_Store::groupByRaw('store_province')->pluck('store_province');
         $view_data=[
             'uni_store'=>$uni_store,
