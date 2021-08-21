@@ -26,7 +26,6 @@
                             <div class="layout__region layout__region--content">
                                 <div data-block-plugin-id="system_breadcrumb_block">
                                     <nav class="m-breadcrumb" aria-label="Breadcrumb">
-                                        <h2 class="visually-hidden">Breadcrumb</h2>
                                         <ol class="m-breadcrumb__list">
                                             <li class="m-breadcrumb__item">
                                                 <a class="a-anchor" href="/">Home</a>
@@ -47,18 +46,16 @@
                                     </h2>
                                     <div class="row">
                                         @forelse ($uni_flashsale_flash as $item)
-
-
-
                                         <div class="col-md-4 col-lg-3 col-sm-6 col-12 card-item padding-set5px">
                                             <div class="card">
                                                 <a href="{{ getSlugFlashSale($item->slug) }}" title="{{ $item->meta_title }}">
                                                     <img class="card-img-top" src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->meta_title }}">
                                                 </a>
                                                 <div class="card-body">
-                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,60) }}</a></h5>
+                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,100) }}</a></h5>
                                                     <p class="card-text">{{ desscription_cut($item->desscription,60) }}</p>
-                                                    <p class="text-primary">Giá : {{ formatVnd($item->price) }}</p>
+                                                    <p class="text-primary"><span class="g-price">Giá bán : {{ formatVnd($item->price_nosale) }}</span><span class="font_chu_mau_do">( Giảm:-{{ 100-round($item->price*100/$item->price_nosale) }}%)</span></p>
+                                                    <p class="text-primary">Giá sale : {{ formatVnd($item->price) }}</p>
                                                     <a class="btn-km" href="{{ getSlugFlashSale($item->slug) }}" class="btn btn-primary">Xem Chi Tiết</a>
                                                 </div>
                                             </div>

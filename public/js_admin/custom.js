@@ -50,49 +50,59 @@ $('.form-check-input').on('change', function() {
         $("input#qty_sale_" + val_data).attr('readonly', 'readonly');
         $("input#price_sale_" + val_data).attr('readonly', 'readonly');
     };
-
-
     if ($('#inlineCheckbox' + val_data).is(':checked')) {
         $('.keypress-count').on('keyup', function() {
 
             let qty_sale = $("#qty_sale_" + val_data).val();
             let price_sale = $("#price_sale_" + val_data).val();
-
+            let price_nosale = Number($("#price_nosale_" + val_data).text());
 
             if (qty_sale && price_sale) {
                 let price_subtotal = qty_sale * price_sale;
+                let price_subtotal_nosale = qty_sale * price_nosale;
                 $("#price_subtotal_" + val_data).val(price_subtotal);
                 $('#inlineCheckbox' + val_data).attr("data-sub", price_subtotal);
+                $('#inlineCheckbox' + val_data).attr("data-nosub", price_subtotal_nosale);
             }
             let totalPrice = 0;
+            let totalPriceNoSale = 0;
             $('.form-check-input:checked').each(function() {
                 totalPrice += Number($(this).attr('data-sub'));
+                totalPriceNoSale += Number($(this).attr('data-nosub'));
                 $('.price_all_subtotal').val(totalPrice);
+                $('.price_all_total').val(totalPriceNoSale);
             });
         });
     }
     if (!$('#inlineCheckbox' + val_data).is(':checked')) {
         let qty_sale = $("#qty_sale_" + val_data).val(0);
         let price_sale = $("#price_sale_" + val_data).val(0);
+        let price_nosale = Number($("#price_nosale_" + val_data).text());
         if (qty_sale && price_sale) {
             let price_subtotal = qty_sale * price_sale;
+            let price_subtotal_nosale = qty_sale * price_nosale;
             $("#price_subtotal_" + val_data).val(price_subtotal);
             $('#inlineCheckbox' + val_data).attr("data-sub", price_subtotal);
+            $('#inlineCheckbox' + val_data).attr("data-nosub", price_subtotal_nosale);
         }
         let totalPrice = 0;
+        let totalPriceNoSale = 0;
         $('.form-check-input:checked').each(function() {
             totalPrice += Number($(this).attr('data-sub'));
+            totalPriceNoSale += Number($(this).attr('data-nosub'));
             $('.price_all_subtotal').val(totalPrice);
+            $('.price_all_total').val(totalPriceNoSale);
         });
     }
 });
 
 $('#is_flash_sale').on('click', function() {
-    let html_level_store = '';
-
-    if (store_level == 1) {
-        $('.level-store').html(html_level_store).slideToggle('slow');
+    // let html_level_store = '';
+    let type_check = $('#is_flash_sale').find(":selected").val();
+    if (type_check == 0) {
+        $('#type-combo-store').hide('fast');
     } else {
-        $('.level-store').html('').slideToggle('slow');
+        $('#type-combo-store').show('fast');
     }
+
 });

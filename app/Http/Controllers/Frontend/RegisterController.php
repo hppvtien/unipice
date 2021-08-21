@@ -21,12 +21,24 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        \SEOMeta::setTitle('Đăng ký');
+        \SEOMeta::setTitle('Đăng ký thành viên');
+        \SEOMeta::setDescription('Đăng ký thành viên.');
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription('Đăng ký thành viên.');
+        \OpenGraph::setTitle('Đăng ký thành viên.');
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
         return view('pages.register.index');
     }
     public function indexb2b()
     {
-         \SEOMeta::setTitle('Đăng ký');
+        \SEOMeta::setTitle('Đăng ký thành viên B2B');
+        \SEOMeta::setDescription('Đăng ký làm đại lý để nhận được nhiều ưu đãi hơn.');
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription('Đăng ký làm đại lý để nhận được nhiều ưu đãi hơn.');
+        \OpenGraph::setTitle('Đăng ký thành viên B2B');
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
         return view('pages.registerb2b.index');
     }
     public function register(RegisterRequest $request)

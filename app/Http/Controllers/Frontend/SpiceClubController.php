@@ -18,33 +18,17 @@ use Illuminate\Support\Facades\URL;
 class SpiceClubController extends Controller
 {
     function index(){
-        $slug_page = URL::current();
-        $doamin_page = URL::to('/');
-        $str = str_replace( URL::to('/'), '', URL::current() );
-        $str = str_replace('/','',$str);
-        $info_page = PAGE::where('p_slug', 'like', '%'.$str.'%')->get();
-        if($str != ''){
-            foreach($info_page as $item){
-                \SEOMeta::setTitle($item->p_name);
-                \SEOMeta::setDescription($item->p_desscription);
-                \SEOMeta::setCanonical(URL::current());
-                \OpenGraph::setDescription($item->p_desscription);
-                \OpenGraph::setTitle($item->p_name);
-                \OpenGraph::setUrl(URL::current());
-                \OpenGraph::addProperty('type', 'articles');
-            }
-        }
-        else{
-            \SEOMeta::setTitle('Đây là trang chủ');
-            \SEOMeta::setDescription('Đây là mô tả');
-            \SEOMeta::setCanonical(\Request::url());
-            \OpenGraph::setDescription('Đây là mô tả');
-            \OpenGraph::setTitle('Đây là trang chủ');
-            \OpenGraph::setUrl(\Request::url());
-            \OpenGraph::addProperty('type', 'articles');
-        }
-
         $page = Page::where('p_style','spice-club')->first();
+        
+        \SEOMeta::setTitle($page->p_title_seo);
+        \SEOMeta::setDescription($page->p_desscription_seo);
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription($page->p_desscription_seo);
+        \OpenGraph::setTitle($page->p_title_seo);
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
+        \OpenGraph::addImage(URL::to('').pare_url_file($page->p_banner));
+
         $content_page_1 = Content_Page::where('page_id',$page->id)->where('order',0)->first();
         $content_page_2 = Content_Page::where('page_id',$page->id)->where('order',1)->first();
         $content_page_3 = Content_Page::where('page_id',$page->id)->where('order',2)->first();

@@ -38,7 +38,7 @@ function execPostRequest($url, $data)
     function desscription_cut($tring,$sub)
     {
         $string_cut = substr($tring,0,$sub);
-        $description_string = $string_cut.'...';
+        $description_string = $string_cut;
         return $description_string;
     }
        /**
