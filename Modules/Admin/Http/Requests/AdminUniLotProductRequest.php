@@ -10,8 +10,8 @@ class AdminUniLotProductRequest extends FormRequest
     {
         return [
             'lot_name' => 'required',
-            'barcode'=>'required|min:13|max:13|numeric',
-            'sku_lotproduct'=> 'required|min:10|max:13|numeric',
+            'barcode'=>'required|min:10|max:13|',
+            'sku_lotproduct'=> 'required|min:10|max:13|',
             'qty_box' => 'required',
             'size_box' => 'required',
             'price_lotproduct' => 'required',
@@ -24,11 +24,9 @@ class AdminUniLotProductRequest extends FormRequest
         return [
             'lot_name.required' => 'Tên lô sản phẩm không được để trống',
             'barcode.required'=> 'Mã vạch không được để trống',
-            'barcode.numeric'=> 'Mã vạch phải nhập bằng số',
-            'barcode.min'=> 'Mã vạch phải có ít nhất 13 ký tự',
+            'barcode.min'=> 'Mã vạch phải có ít nhất 10 ký tự',
             'barcode.max'=> 'Mã vạch chỉ được tối đa 13 ký tự',
             'sku_lotproduct.required'=> 'Mã lô không được để trống',
-            'sku_lotproduct.numeric'=> 'Mã lô phải nhập bằng số',
             'sku_lotproduct.min'=> 'Mã lô phải có ít nhất 10 ký tự',
             'sku_lotproduct.max'=> 'Mã lô chỉ được tối đa 13 ký tự',
             'qty_box.required' => 'Số thùng không được để trống',

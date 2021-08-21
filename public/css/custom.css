@@ -998,6 +998,10 @@ span.number-prd {
         background: #08532f;
         font-size: 20px;
     }
+    .fix-btn-cart {
+        width: 100%;
+        margin: auto;
+    }
 }
 
 @media screen and (max-width: 1200px) {
