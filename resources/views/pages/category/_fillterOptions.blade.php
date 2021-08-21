@@ -21,7 +21,7 @@
             </button>
             <div class="c-filter-bar__sorting">
                 <div class="m-sort-by">
-                    <label class="m-sort-by__label" for="sort_by">Sort By</label>
+                    <label class="m-sort-by__label" for="sort_by">Sắp xếp theo</label>
                     <select class="m-sort-by__select frontier-custom-sort" id="sort_by" name="sort_by" aria-label="Sort By">
                         <option value="price" selected>Theo giá</option>
                         <option value="name">Theo tên</option>
