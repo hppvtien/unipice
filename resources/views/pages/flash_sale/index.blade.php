@@ -48,15 +48,20 @@
                                         @forelse ($uni_flashsale_flash as $item)
                                         <div class="col-md-4 col-lg-3 col-sm-6 col-12 card-item padding-set5px">
                                             <div class="card">
-                                                <a href="{{ getSlugFlashSale($item->slug) }}" title="{{ $item->meta_title }}">
+                                                <a href="{{ getSlugFlashSale($item->slug) }}" title="{{ $item->name }}">
                                                     <img class="card-img-top" src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->meta_title }}">
                                                 </a>
                                                 <div class="card-body">
-                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,100) }}</a></h5>
+                                                    <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="{{ getSlugFlashSale($item->slug) }}" title="{{ $item->name }}">{{ desscription_cut($item->name,100) }}</a></h5>
                                                     <p class="card-text">{{ desscription_cut($item->desscription,60) }}</p>
-                                                    <p class="text-primary"><span class="g-price">Giá bán : {{ formatVnd($item->price_nosale??0) }}</span><span class="font_chu_mau_do">( Giảm:-{{ 100-round($item->price*100/$item->price_nosale??0) }}%)</span></p>
+                                                    <p class="text-primary">
+                                                        @if ($item->price_nosale != null)
+                                                        <p class="text-primary" style="height: 28px"><span class="g-price">{{ formatVnd($item->price_nosale ) }}</span><span class="font_chu_mau_do"> ( Giảm:-{{ 100-round($item->price*100/$item->price_nosale??0) }}%)</span></p>
+                                                        @else
+                                                        <p class="text-primary" style="height: 28px"></p>
+                                                        @endif
                                                     <p class="text-primary">Giá sale : {{ formatVnd($item->price) }}</p>
-                                                    <a class="btn-km" href="{{ getSlugFlashSale($item->slug) }}" class="btn btn-primary">Xem Chi Tiết</a>
+                                                    <a class="btn-km" href="{{ getSlugFlashSale($item->slug) }}" title="{{ $item->name }}" class="btn btn-primary">Xem Chi Tiết</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,7 +90,7 @@
                                                             </div>
                                                             <div class="m-product-card__info">
                                                                 <div class="m-combined-product-name group-product">
-                                                                    <a class="m-combined-product-name__link product-name-fio" href="{{ $item->slug }}">
+                                                                    <a class="m-combined-product-name__link product-name-fio" href="{{ $item->slug }}" title="{{ $item->name }}">
                                                                         <span class="a-folio">
                                                                             {{ $item->name }}
                                                                         </span>
@@ -207,7 +212,7 @@
                                                 <div class="card-body">
                                                     <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,36) }}</a></h5>
                                                     <p class="card-text">{{ desscription_cut($item->desscription,50) }}</p>
-                                                    <p class="text-primary"> {{ checkUid(get_data_user('web')) != null ? 'Giá : '.formatVnd($item->price) : '' }}</p>
+                                                    <p class="text-primary"> {{ checkUid(get_data_user('web')) != null ? 'Giá sale : '.formatVnd($item->price) : '' }}</p>
                                                     <a class="btn-km" href="{{ getSlugFlashSale($item->slug) }}" class="btn btn-primary">Xem Chi Tiết</a>
                                                 </div>
                                             </div>

@@ -65,12 +65,12 @@
                                                     <h5 class="card-title-cd text-dark"><a class="card-title-cd name-total-sale" href="{{ getSlugProduct(getSlugProductById($item->id)) }}">{{ getNameProduct($item->id) }}</a></h5>
                                                     <p class="text-primary">Số lượng sản phẩm : {{ $item->qty_sale }}</p>
                                                     <?php if (checkUid(get_data_user('web')) != null) { ?>
-                                                        <p class="text-primary">{{ 'Giá bán: '.formatVnd(getPriceById($item->id) * $item->qty_sale) }} <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
-                                                        <p class="text-primary font-weight-bold price-total-sale">{{ 'Chỉ còn: '.formatVnd($item->price_subtotal) }}</p>
+                                                        <p class="text-primary"><del>{{ formatVnd(getPriceById($item->id) * $item->qty_sale) }}</del> <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
+                                                        <p class="text-primary font-weight-bold price-total-sale">{{ 'Giá sale: '.formatVnd($item->price_subtotal) }}</p>
                                                         <?php } elseif (checkUid(get_data_user('web')) == null) { ?>
                                                         <?php if ($uni_flashsale->is_flash == 0) { ?>
-                                                            <p class="text-primary">{{ 'Giá bán: '.formatVnd(getPriceById($item->id) * $item->qty_sale) }} <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
-                                                            <p class="text-primary price-total-sale">{{ 'Chỉ còn: '.formatVnd($item->price_subtotal) }}</p>
+                                                            <p class="text-primary"><del>{{ formatVnd(getPriceById($item->id) * $item->qty_sale) }}</del> <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
+                                                            <p class="text-primary price-total-sale">{{ 'Giá sale: '.formatVnd($item->price_subtotal) }}</p>
                                                         <?php } else { ?>
                                                             <p class="text-primary"></p>
                                                         <?php } ?>
@@ -102,17 +102,21 @@
                                         </h2>
                                         <div class="row">
                                             @forelse ($uni_product as $item)
-                                            <div class="col-md-4 col-lg-3 col-sm-6 col-12 card-item">
+                                            <div class="col-md-4 col-lg-3 col-sm-6 col-12 card-item padding-set5px">
                                                 <div class="card">
-                                                    <a href="">
-                                                        <img class="card-img-top" src="{{ pare_url_file($item->thumbnail) }}" alt="Card image cap">
+                                                    <a href="{{ getSlugFlashSale($item->slug) }}" title="{{ $item->meta_title }}">
+                                                        <img class="card-img-top" src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->meta_title }}">
                                                     </a>
                                                     <div class="card-body">
-                                                        <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,36) }}</a></h5>
-                                                        <p class="card-text">{{ desscription_cut($item->desscription,50) }}</p>
-                                                        <?php if (checkUid(get_data_user('web')) == null && $item->is_flash == 0) { ?>
-                                                        <p class="text-primary price-total-sale">Giá : {{ formatVnd($item->price) }}</p>
-                                                        <?php } else { echo '<p class = "price-total-sale"></p>'; } ?>
+                                                        <h5 class="card-title-cd text-dark"><a class="card-title-cd" href="">{{ desscription_cut($item->name,100) }}</a></h5>
+                                                        <p class="card-text">{{ desscription_cut($item->desscription,60) }}</p>
+                                                        <p class="text-primary">
+                                                            @if ($item->price_nosale != null)
+                                                            <p class="text-primary" style="height: 28px"><span class="g-price">{{ formatVnd($item->price_nosale ) }}</span><span class="font_chu_mau_do"> ( Giảm:-{{ 100-round($item->price*100/$item->price_nosale??0) }}%)</span></p>
+                                                            @else
+                                                            <p class="text-primary" style="height: 28px"></p>
+                                                            @endif
+                                                        <p class="text-primary">Giá sale : {{ formatVnd($item->price) }}</p>
                                                         <a class="btn-km" href="{{ getSlugFlashSale($item->slug) }}" class="btn btn-primary">Xem Chi Tiết</a>
                                                     </div>
                                                 </div>
