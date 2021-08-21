@@ -552,7 +552,7 @@ a.text-muted:focus {
 
 .link_share_contact i {
     position: relative;
-    top: 50%;
+    top: 35%;
     transform: translateY(-50%);
     left: 15px;
 }

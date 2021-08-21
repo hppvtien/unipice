@@ -29,74 +29,75 @@
 
             </div>
 
-            <div class="c-contact-information container">
-                <div class="">
-                    <div class="page-title-wrapper c-contact-information__heading">
-                        <h1 class="page-title">
-                            <span class="base" data-ui-id="page-title-wrapper">{{ $info['name'] }}</span> </h1>
-                    </div>
-                    <div data-content-type="row" data-appearance="full-bleed" data-enable-parallax="0" data-parallax-speed="0.5" data-background-images="{}" data-background-type="image" data-video-loop="true" data-video-play-only-visible="true" data-video-lazy-load="true"
-                        data-video-fallback-src="" data-element="main" style="justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;">
-                        <div data-content-type="html" data-appearance="default" data-element="main" style="border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;" data-decoded="true">
-                            <div class="c-contact-information__block">
-                                <h2 class="c-contact-information__block-heading">
-                                    Liên Hệ Chúng Tôi Ngay
-                                </h2>
-                                <p>
-                                {{ $info['footer_bottom'] }}
-                                </p>
+            <div class="container">
+                <div class="col-md-12 mt-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="page-title-wrapper c-contact-information__heading">
+                                <h1 class="page-title">
+                                    <span class="base" data-ui-id="page-title-wrapper">{{ $info['name'] }}</span> </h1>
                             </div>
-
-                            <div class="c-contact-information__block">
-                                <h2 class="c-contact-information__block-heading">
-                                    Địa Chỉ
-                                </h2>
-                                <p>
-                                {{ $info['hotline'] }}
-                                </p>
-                                <p>
-                                {{ $info['email'] }}
-                                </p>
-                                <p>
-                                {{ $info['address'] }}
-                                </p>
-                                
-                            </div>
-
-                            <div class="c-contact-information__block" id="menu1abcd">
-                                <h2 class="c-contact-information__block-heading">
-                                    Mạng Xã Hội
-                                </h2>
-                                <div class="link_share_contact">
-
-                                    <!-- facebook -->
-                                    <a class="facebook" href="{{ $info['facebook'] }}" target="blank"><i class="fa fa-facebook"></i></a>
-
-                                    <!-- twitter -->
-                                    <a class="twitter" href="{{ $info['twitter'] }}" target="blank"><i class="fa fa-twitter"></i></a>
-
-                                    <!-- google plus -->
-                                    <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank"><i class="fa fa-google-plus"></i></a>
-
-                                    <!-- linkedin -->
-                                    <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank"><i class="fa fa-linkedin"></i></a>
-
-                                    <!-- pinterest -->
-                                    <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank"><i class="fa fa-pinterest-p"></i></a>
-
+                            <div data-content-type="row" data-appearance="full-bleed" data-enable-parallax="0" data-parallax-speed="0.5" data-background-images="{}" data-background-type="image" data-video-loop="true" data-video-play-only-visible="true" data-video-lazy-load="true"
+                                data-video-fallback-src="" data-element="main" style="justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;">
+                                <div data-content-type="html" data-appearance="default" data-element="main" style="border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;" data-decoded="true">
+                                    <div class="c-contact-information__block">
+                                        <h2 class="c-contact-information__block-heading">
+                                            Liên Hệ Chúng Tôi Ngay
+                                        </h2>
+                                        <p>
+                                        {{ $info['footer_bottom'] }}
+                                        </p>
+                                    </div>
+        
+                                    <div class="c-contact-information__block">
+                                        <h2 class="c-contact-information__block-heading">
+                                            Địa Chỉ
+                                        </h2>
+                                        <p>
+                                        {{ $info['hotline'] }}
+                                        </p>
+                                        <p>
+                                        {{ $info['email'] }}
+                                        </p>
+                                        <p>
+                                        {{ $info['address'] }}
+                                        </p>
+                                        
+                                    </div>
+        
+                                    <div class="c-contact-information__block" id="menu1abcd">
+                                        <h2 class="c-contact-information__block-heading">
+                                            Mạng Xã Hội
+                                        </h2>
+                                        <div class="link_share_contact">
+        
+                                            <!-- facebook -->
+                                            <a class="facebook" href="{{ $info['facebook'] }}" target="blank"><i class="fa fa-facebook"></i></a>
+        
+                                            <!-- twitter -->
+                                            <a class="twitter" href="{{ $info['twitter'] }}" target="blank"><i class="fa fa-twitter"></i></a>
+        
+                                            <!-- google plus -->
+                                            <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank"><i class="fa fa-google-plus"></i></a>
+        
+                                            <!-- linkedin -->
+                                            <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank"><i class="fa fa-linkedin"></i></a>
+        
+                                            <!-- pinterest -->
+                                            <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank"><i class="fa fa-pinterest-p"></i></a>
+        
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="c-contact-information__image">
-                    <div data-content-type="row" data-appearance="full-bleed" data-enable-parallax="0" data-parallax-speed="0.5" data-background-images="{}" data-background-type="image" data-video-loop="true" data-video-play-only-visible="true" data-video-lazy-load="true"
-                        data-video-fallback-src="" data-element="main" style="justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;">
-                        <div data-content-type="text" data-appearance="default" data-element="main" style="border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;">
-                            <p><img id="VISFXT1" style="width: 776px; height: 775px;" src="{{ pare_url_file($info['logo']) }}" alt="{{ $info['name'] }}" width="751" height="751"></p>
+                        <div class="col-md-6" style="background: #0b2d25;">
+                            <img id="VISFXT1" style="width: 100%; height: auto;margin-top: 20%;" src="{{ pare_url_file($info['logo']) }}" alt="{{ $info['name'] }}">
                         </div>
                     </div>
                 </div>
+                
+                
             </div>
             <div class="t-contact-us__form">
                 <div class="c-contact-form">
@@ -153,7 +154,7 @@
                     </form>
                 </div>
             </div>
-            <div class="t-contact-us__links">
+            <!--<div class="t-contact-us__links">
                 <div data-content-type="row" data-appearance="full-bleed" data-enable-parallax="0" data-parallax-speed="0.5" data-background-images="{}" data-background-type="image" data-video-loop="true" data-video-play-only-visible="true" data-video-lazy-load="true"
                     data-video-fallback-src="" data-element="main" style="justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;">
                     <div data-content-type="html" data-appearance="default" data-element="main" style="border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;" data-decoded="true">
@@ -173,7 +174,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </main>
