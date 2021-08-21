@@ -49,7 +49,6 @@ class AdminUniLotProductController extends AdminController
         $data['expiry_date'] = $request->expiry_date;
         $data['qty'] = $request->qty_box * $request->size_box;
         $data['total_qty'] = $request->qty_box * $request->size_box;
-        // dd($data);
         $lotproductID = Uni_LotProduct::insertGetId($data);
         if($lotproductID)
         {

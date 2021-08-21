@@ -22,7 +22,7 @@
 
                     <div class="c-filter-bar__sorting">
                         <div class="m-sort-by">
-                            <select onchange="get_data1();" class="m-sort-by__select frontier-custom-sort" id="sort_by" name="sort_by" aria-label="Sort By">
+                            <select onchange="get_data1();" class="m-sort-by__select frontier-custom-sort" id="sort_by" name="sort_by" aria-label="Sắp xếp theo">
                                 <option value="0" selected="">Chọn Danh Mục Sản Phẩm</option>
                                 @foreach ($category_menu as $l)
                                 <option value="{{ $l->id }}">{{ $l->name }}</option>

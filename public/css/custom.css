@@ -989,6 +989,14 @@ span.number-prd {
     .c-sidebar-filters {
         padding-top: 0;
     }
+    .text-f20 {
+        font-size: 20px !important;
+        margin-bottom: 19px !important;
+        padding-bottom: 5px !important;
+        font-weight: 600 !important;
+        letter-spacing: -1px;
+        text-transform: none !important;
+    }
     #becometostore {
         width: 30%;
         padding: 15px;
@@ -997,6 +1005,10 @@ span.number-prd {
         margin-top: 20px;
         background: #08532f;
         font-size: 20px;
+    }
+    .fix-btn-cart {
+        width: 100%;
+        margin: auto;
     }
 }
 

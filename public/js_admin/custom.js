@@ -96,7 +96,6 @@ $('.form-check-input').on('change', function() {
             totalPrice += Number($(this).attr('data-sub'));
             totalPriceNoSale += Number($(this).attr('data-nosub'));
             totalpt = 100 - (totalPrice * 100 / totalPriceNoSale);
-            console.log(totalpt);
             $('.price_all_subtotal').val(totalPrice);
             $('.price_all_total').val(totalPriceNoSale);
             $('.price_no_sale').text(totalPriceNoSale.toLocaleString('vi', { style: 'currency', currency: 'VND' }));

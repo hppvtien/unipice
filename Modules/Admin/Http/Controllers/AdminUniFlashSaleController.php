@@ -58,6 +58,7 @@ class AdminUniFlashSaleController extends AdminController
         $data['info_sale'] = json_encode($product_sale);
        
         $param = [
+            "price_nosale" => $request->price_all_total,
             "name" => $request->name,
             "slug" => $request->slug,
             "is_flash" => $request->is_flash,
@@ -86,7 +87,7 @@ class AdminUniFlashSaleController extends AdminController
     public function edit($id)
     {
         $type_buy = Level_store::get();
-        $uni_product      = Uni_Product::get();
+        $uni_product      = Uni_Product::orderByDesc('id')->get();
         $uni_flashsale     = Uni_FlashSale::findOrFail($id);
         $type_buyOld = RelLevelStore::where('flash_id', $id)->pluck('level_store_id')->toArray() ?? [];
         $edit_in = 'edit';
