@@ -178,47 +178,32 @@
     <script src="{{ asset('js/frontends.js') }}"></script>
     <script src="{{ asset('fontend_js/unijs.js') }}"></script>
 
-    <!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
-    <script src="{{ asset('/css/revolution/jquery.themepunch.tools.min.js') }}"></script>
-    <script src="{{ asset('/css/revolution/jquery.themepunch.revolution.min.js') }}"></script>
+    @yield('js_about')
 
-    <!-- SLIDER REVOLUTION EXTENSIONS  -->
-    <script src="{{ asset('/css/revolution/revolution.extension.actions.min.js') }}"></script>
-    <script src="{{ asset('/css/revolution/revolution.extension.carousel.min.js') }}"></script>
-    <script src="{{ asset('/css/revolution/revolution.extension.kenburn.min.js') }}"></script>
-    <script src="{{ asset('/css/revolution/revolution.extension.layeranimation.min.js') }}"></script>
-    <script src="{{ asset('/css/revolution/revolution.extension.migration.min.js') }}"></script>
-    <script src="{{ asset('/css/revolution/revolution.extension.navigation.min.js') }}"></script>
-    <script src="{{ asset('/css/revolution/revolution.extension.parallax.min.js') }}"></script>
-    <script src="{{ asset('/css/revolution/revolution.extension.slideanims.min.js') }}"></script>
-    <script src="{{ asset('/css/revolution/revolution.extension.video.min.js') }}"></script>
+    
 
     <!-- CUSTOM FUCTIONS  -->
-
     <script>
         jQuery(document).ready(function() {
 
-            var btn = $('.back-to-top');
+        var btn = $('.back-to-top');
 
-            $(window).scroll(function() {
-                if ($(window).scrollTop() > 500) {
-                    btn.addClass('show');
-                } else {
-                    btn.removeClass('show');
-                }
-            });
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 500) {
+                btn.addClass('show');
+            } else {
+                btn.removeClass('show');
+            }
+        });
 
-            btn.on('click', function(e) {
-                e.preventDefault();
-                $('html, body').animate({
-                    scrollTop: 0
-                }, '1500');
-            });
+        btn.on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: 0
+            }, '1500');
+        });
 
         });
-    </script>
-
-    <script>
         $(function() {
             // init zeynepjs
             var zeynep = $('.zeynep').zeynep({
@@ -250,100 +235,18 @@
                 }
             });
         });
-    </script>
-    <script>
-        jQuery("#rev_slider_2_1").show().revolution({
-            sliderType: "standard",
-            sliderLayout: "fullscreen",
-            dottedOverlay: "none",
-            delay: 9000,
-            navigation: {
-                keyboardNavigation: "off",
-                keyboard_direction: "horizontal",
-                mouseScrollNavigation: "off",
-                mouseScrollReverse: "default",
-                onHoverStop: "off",
-                arrows: {
-                    style: "uranus",
-                    enable: true,
-                    hide_onmobile: false,
-                    hide_onleave: false,
-                    tmp: '',
-                    left: {
-                        h_align: "right",
-                        v_align: "bottom",
-                        h_offset: 80,
-                        v_offset: 30
-                    },
-                    right: {
-                        h_align: "right",
-                        v_align: "bottom",
-                        h_offset: 20,
-                        v_offset: 30
-                    }
-                }
-            },
-            responsiveLevels: [1200, 992, 768, 576],
-            visibilityLevels: [1200, 992, 768, 576],
-            gridwidth: [1200, 992, 768, 576],
-            gridheight: [868, 768, 960, 720],
-            lazyType: "all",
-            shadow: 0,
-            spinner: "off",
-            stopLoop: "off",
-            stopAfterLoops: -1,
-            stopAtSlide: -1,
-            shuffle: "off",
-            autoHeight: "on",
-            fullScreenAutoWidth: "off",
-            fullScreenAlignForce: "off",
-            fullScreenOffsetContainer: "0",
-            fullScreenOffset: "",
-            disableProgressBar: "off",
-            hideThumbsOnMobile: "off",
-            hideSliderAtLimit: 0,
-            hideCaptionAtLimit: 0,
-            hideAllCaptionAtLilmit: 0,
-            debugMode: false,
-            fallbacks: {
-                simplifyAll: "off",
-                nextSlideOnWindowFocus: "off",
-                disableFocusListener: false,
-            }
+        $(document).ready(function() {
+            $("#ser-input").click(function() {
+                $('.search-full-view').addClass("search-normal-screen");
+            });
+            $("#search-close").click(function() {
+                $('.search-full-view').removeClass("search-normal-screen");
+            });
         });
     </script>
+   
 
-    <script>
-        $('#show_viet_danh_gia').click(function(){
-            $( "#News" ).slideToggle( "slow" );
-            $( "#question" ).hide( "slow" );
-        });
-        $('#show_dat_cau_hoi').click(function(){
-            $( "#question" ).slideToggle( "slow" );
-            $( "#News" ).hide( "slow" );
-        });
-        $('#view_danh_gia').click(function(){
-            $( "#view_review" ).slideToggle( "slow" );
-            $( "#view_question" ).hide( "slow" );
-        });
-        $('#view_cau_hoi').click(function(){
-            $( "#view_question" ).slideToggle( "slow" );
-            $( "#view_review" ).hide( "slow" );
-        });
-    </script>
-    
-<script>
-    $(document).ready(function() {
-        $("#ser-input").click(function() {
-            $('.search-full-view').addClass("search-normal-screen");
-        });
-        $("#search-close").click(function() {
-            $('.search-full-view').removeClass("search-normal-screen");
-        });
-    });
-    
-</script>
-
+    @yield('js_product_comment_review')
 
 </body>
 

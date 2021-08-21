@@ -314,3 +314,24 @@
 
 
 @stop
+
+@section('js_product_comment_review')
+    <script>
+        $('#show_viet_danh_gia').click(function(){
+            $( "#News" ).slideToggle( "slow" );
+            $( "#question" ).hide( "slow" );
+        });
+        $('#show_dat_cau_hoi').click(function(){
+            $( "#question" ).slideToggle( "slow" );
+            $( "#News" ).hide( "slow" );
+        });
+        $('#view_danh_gia').click(function(){
+            $( "#view_review" ).slideToggle( "slow" );
+            $( "#view_question" ).hide( "slow" );
+        });
+        $('#view_cau_hoi').click(function(){
+            $( "#view_question" ).slideToggle( "slow" );
+            $( "#view_review" ).hide( "slow" );
+        });
+    </script>
+@endsection
