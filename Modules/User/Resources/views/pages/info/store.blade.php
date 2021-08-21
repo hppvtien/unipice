@@ -19,7 +19,7 @@
                                     @if($errors->first('store_name'))
                                     <span class="text-danger">{{ $errors->first('store_name') }}</span>
                                     @endif
-                                    <label class="a-form-label m-text-input__label" for="store_name">
+                                    <label class="a-form-label m-text-input__label text-f20" for="store_name">
                                         <span>Tên cửa hàng hoặc tên doanh nghiệp *</span>
                                     </label>
                                 </div>
@@ -32,7 +32,7 @@
                                     @if($errors->first('store_area'))
                                     <span class="text-danger">{{ $errors->first('store_area') }}</span>
                                     @endif
-                                    <label class="a-form-label m-text-input__label" for="store_area">
+                                    <label class="a-form-label m-text-input__label text-f20" for="store_area">
                                         <span>Diện tích *</span>
                                     </label>
                                 </div>
@@ -45,7 +45,7 @@
                                     @if($errors->first('store_address'))
                                     <span class="text-danger">{{ $errors->first('store_address') }}</span>
                                     @endif
-                                    <label class="a-form-label m-text-input__label" for="store_address">
+                                    <label class="a-form-label m-text-input__label text-f20" for="store_address">
                                         <span>Địa chỉ *</span>
                                     </label>
                                 </div>
@@ -58,7 +58,7 @@
                                     @if($errors->first('store_province'))
                                     <span class="text-danger">{{ $errors->first('store_province') }}</span>
                                     @endif
-                                    <label class="a-form-label m-text-input__label" for="store_province">
+                                    <label class="a-form-label m-text-input__label text-f20" for="store_province">
                                         <span>Thành phố *</span>
                                     </label>
                                 </div>
@@ -71,7 +71,7 @@
                                     @if($errors->first('store_phone'))
                                     <span class="text-danger">{{ $errors->first('store_phone') }}</span>
                                     @endif
-                                    <label class="a-form-label m-text-input__label" for="store_phone">
+                                    <label class="a-form-label m-text-input__label text-f20" for="store_phone">
                                         <span>Số điện thoại *</span>
                                     </label>
                                 </div>
@@ -84,7 +84,7 @@
                                     @if($errors->first('store_taxcode'))
                                     <span class="text-danger">{{ $errors->first('store_taxcode') }}</span>
                                     @endif
-                                    <label class="a-form-label m-text-input__label" for="store_taxcode">
+                                    <label class="a-form-label m-text-input__label text-f20" for="store_taxcode">
                                         <span>Mã số thuế</span>
                                     </label>
                                 </div>

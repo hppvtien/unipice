@@ -44,7 +44,10 @@
                         </strong>
                         <?php if(checkUid(get_data_user('web'))){ ?>
                             <div class="box-content">
-                                <span class="newsletter-label text-success">Khách hàng: {{ getNameStore(get_data_user('web')) }}</span> <br>
+                                <p class="newsletter-label text-success">Khách hàng: {{ getNameStore(get_data_user('web')) }}</p>                             
+                                <p class="newsletter-label text-success">Trạng thái tài khoản: {{ getDataStore(get_data_user('web'))->store_status == 1 ? 'Đã kích hoạt':'Chưa kích hoạt'; }}</p>
+                                <p class="newsletter-label text-success">Loại tài khoản: {{ getDataStore(get_data_user('web'))->type_store }}</p>
+                                <p class="newsletter-label text-success">Số điểm: {{ getDataStore(get_data_user('web'))->poin_store }}</p>
                             </div>
                         <?php } else { ?>
                             <div class="box-content">
@@ -134,34 +137,7 @@
                 </div>
                
             </div>
-            <div class="block block-dashboard-addresses">
-                <div class="block-title">
-                    <strong>Địa chỉ giao hàng</strong>
-                </div>
-                <div class="block-content">
-                    <div class="box box-billing-address">
-                        <strong class="box-title">
-                            <span class="text-primary">Địa chỉ giao hàng mặc định</span>
-                        </strong>
-                        <div class="box-content">
-                            <address>
-                                Bạn chưa có địa chỉ giao hàng mặc định. </address>
-                        </div>
-                    </div>
-                    <div class="box box-shipping-address">
-                        <strong class="box-title">
-                            <span class="text-primary">Địa chỉ giao hàng mặc định</span>
-                        </strong>
-                        <div class="box-content">
-                            <address>
-                                Bạn chưa đặt địa chỉ giao hàng mặc định. </address>
-                        </div>
-                        <div class="box-actions">
-                            <a class="action edit a-anchor" href="#" data-ui-id="default-shipping-edit-link"><span>Danh sách địa chỉ</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     
 

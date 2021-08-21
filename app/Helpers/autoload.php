@@ -155,8 +155,8 @@ function execPostRequest($url, $data)
     }
         /**
      * get price.
-     * @param int $id
-     * @return float $price 11.222
+     * @param int $pricesale,$price
+     * @return float $price_view 11.222
      */
     function getptSale($price,$pricesale)
     {
@@ -167,6 +167,16 @@ function execPostRequest($url, $data)
         }
         
         return $price_view;
+    }
+        /**
+     * get price.
+     * @param int $id
+     * @return float $string[]
+     */
+    function getDataStore($id)
+    {
+        $data_store = App\Models\Uni_Store::where('user_id',$id)->first();
+        return $data_store;
     }
    
     function checkParent($id)
