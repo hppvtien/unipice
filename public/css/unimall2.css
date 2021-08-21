@@ -451,6 +451,37 @@ a.text-muted:focus {
     transform: translateY(-50%);
 }
 
+#share2 {
+    width: 100%;
+    text-align: center;
+}
+
+
+/* buttons */
+
+#share2 a {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    opacity: 0.75;
+    transition: opacity 0.15s linear;
+}
+
+#share2 a:hover {
+    opacity: 1;
+}
+
+
+/* icons */
+
+#share2 i {
+    position: relative;
+    top: 35%;
+    transform: translateY(-50%);
+}
+
 
 /* colors */
 
