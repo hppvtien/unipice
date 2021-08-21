@@ -41,9 +41,17 @@
               </div>
             </div>
             <div class="layout layout--onecol">
-              <div class="container">
+              <div class="container row">
                   <!-- EXPOSED -->
-                  <div class="col-md-12" id="show-product" style="background-color: #fff">
+                  <div class="col-md-2 d-none d-lg-block">
+                    @foreach ($post_category as $item)
+                    <div class="mt-3 mb-3">
+                      <a href="{{ route('get_blog.single_cat', ['slug' => $item->slug]) }}" style="color: #000"> <i class="fa fa-fan"></i>{{ $item->name }}</a>
+                    </div>
+                    @endforeach
+                    
+                  </div>
+                  <div class="col-md-10" id="show-product" style="background-color: #fff">
                     @forelse ($blog_post as $key => $item)
                     
                     <div class="c-story-block {{ $key % 2 != 0 ? 'c-story-block--flipped':'' }}">
@@ -64,6 +72,14 @@
                     @empty
                         
                     @endforelse
+                  </div>
+                  <div class="col-md-2 d-lg-none d-md-block">
+                    @foreach ($post_category as $item)
+                    <div class="mt-3 mb-3">
+                      <a href="{{ route('get_blog.single_cat', ['slug' => $item->slug]) }}" style="color: #000"> <i class="fa fa-fan"></i>{{ $item->name }}</a>
+                    </div>
+                    @endforeach
+                    
                   </div>
               </div>
             </div>

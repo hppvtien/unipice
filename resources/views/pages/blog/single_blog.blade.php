@@ -25,7 +25,7 @@
                             <div class="col-md-12 row">
                               <div class="col-md-12 col-lg-6">
                                 <nav aria-label="Breadcrumb"  class="mt-lg-5 mb-lg-5 pt-lg-3">
-                                  <h2 class="visually-hidden">Breadcrumb</h2>
+                                 
                                   <ol class="m-breadcrumb__list">
                                       <li class="m-breadcrumb__item">
                                           <a class="a-anchor" href="/">Home</a>
