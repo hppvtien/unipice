@@ -65,6 +65,7 @@ class UserInfoController extends Controller
 
                 $param = [
 
+                    'user_id' => get_data_user('web'),
                     'store_name' => $request->store_name,
                     'created_at' => Carbon::now(),
                     'store_area' => $request->store_area,
@@ -75,9 +76,15 @@ class UserInfoController extends Controller
                     'store_album' => json_encode($store_ab),
                     'store_status' => 0
                 ];
-                $uni_store->fill($param)->save();
-                $this->showMessagesSuccess();
-            return redirect()->route('get_user.store.edit',$id);
+                $storeID = Uni_Store::insertGetId($param);
+                if($storeID){
+                    $this->showMessagesSuccess('Vui lòng chờ quản trị kiểm tra thông tin!!!');
+                    return redirect()->route('get_user.store.edit',$id);
+                } else  {
+                    $this->showMessagesError('Kiểm tra lại thông tin!!');
+                    return redirect()->route('get_user.store.edit',$id);
+                }
+                
           
         }
     }
