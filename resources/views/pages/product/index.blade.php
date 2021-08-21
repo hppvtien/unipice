@@ -70,17 +70,17 @@
                                                         <div class="m-product-overview__name-wrapper">
 
                                                             <div class="m-combined-product-name">
-                                                                <h1 class="m-combined-product-name__h1">
+                                                                <h2 class="m-combined-product-name__h1">
                                                                     <span class="a-product-name">
                                                                         {{ $product->name }}
                                                                     </span>
-                                                                </h1>
+                                                                </h2>
                                                             </div>
                                                             <!-- FC-2249:: Remove markup that should only be available to authenticated users -->
                                                         </div>
                                                         <div class="m-product-card__sku margin-single-10">
                                                             <span> SKU: {{ $product->id }}</span>
-                                                            <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""> ({{ countReview($product->id) }} đánh giá)</span>
+                                                            <span> <img src="{{ asset('img/brand/star_5.png') }}" alt="{{ $product->name }}"> ({{ countReview($product->id) }} đánh giá)</span>
                                                         </div>
                                                         <div role="article" class="m-product-overview__price-wrapper d-block">
                                                             <div class="m-price-lockup margin-single-10 ">
@@ -286,7 +286,7 @@
                                 <div class="c-media-block__image-wrapper">
                                     <picture>
                                         <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($slides_home_four1->s_banner) }}" srcset="{{ pare_url_file($slides_home_four1->s_banner) }}">
-                                        <img class=" lazyloaded" data-src="{{ pare_url_file($slides_home_four1->s_banner) }}" alt=" " src="{{ pare_url_file($slides_home_four1->s_banner) }}">
+                                        <img class=" lazyloaded" data-src="{{ pare_url_file($slides_home_four1->s_banner) }}" alt="{{ $slides_home_four1->s_name }}" src="{{ pare_url_file($slides_home_four1->s_banner) }}">
                                     </picture>
                                 </div>
 

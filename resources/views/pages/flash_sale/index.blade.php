@@ -13,11 +13,11 @@
                                 <div class="c-page-header c-page-header--light">
                                     <picture class="c-page-header__image">
                                         <source media="(min-width: 1024px)" data-srcset="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" srcset="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
-                                        <img class=" lazyloaded" data-src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" alt="blogs-1440x380-1626419645.jpg" src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
+                                        <img class=" lazyloaded" data-src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" alt="Danh sách các gói khuyến mãi của chúng tôi" src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
                                     </picture>
 
                                     <div class="c-page-header__content">
-                                        <h1 class="c-page-header__headline">Danh sách các gói khuyến mãi của chúng tôi</h1>
+                                        <h2 class="c-page-header__headline">Danh sách các gói khuyến mãi của chúng tôi</h2>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                                                 </div>
                                                                 <div class="m-product-card__sku">
                                                                     <span> SKU: {{ $item->id }}</span>
-                                                                    <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""> ({{ countReview($item->id) }})</span>
+                                                                    <span> <img src="{{ asset('img/brand/star_5.png') }}" alt="{{ $item->name }}"> ({{ countReview($item->id) }})</span>
                                                                 </div>
                                                                 <div class="m-price-lockup m-product-card__price">
                                                                     <span class="m-price-lockup__price">
@@ -189,7 +189,7 @@
                                     <div class="c-page-header c-page-header--centered c-page-header--light">
                                         <picture class="c-page-header__image">
                                             <source media="(min-width: 1024px)" data-srcset="https://www.coopmarket.com/sites/default/files/styles/1440x380/public/acquiadam/2020-12/membership-hero-desktop.png?itok=aZRBseW2" srcset="https://www.coopmarket.com/sites/default/files/styles/1440x380/public/acquiadam/2020-12/membership-hero-desktop.png?itok=aZRBseW2">
-                                            <img class=" lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc" alt="" src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc">
+                                            <img class=" lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc" alt="Khuyến mãi đặc biệt cho đại lý" src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc">
                                         </picture>
 
                                         <div class="c-page-header__content">
@@ -225,7 +225,7 @@
                                     <div class="c-page-header c-page-header--centered c-page-header--light">
                                         <picture class="c-page-header__image">
                                             <source media="(min-width: 1024px)" data-srcset="https://www.coopmarket.com/sites/default/files/styles/1440x380/public/acquiadam/2020-12/membership-hero-desktop.png?itok=aZRBseW2" srcset="https://www.coopmarket.com/sites/default/files/styles/1440x380/public/acquiadam/2020-12/membership-hero-desktop.png?itok=aZRBseW2">
-                                            <img class=" lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc" alt="" src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc">
+                                            <img class=" lazyloaded" data-src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc" alt="Trở thành đại lý" src="https://www.coopmarket.com/sites/default/files/styles/375x200/public/acquiadam/2020-12/membership-hero-mobile.png?itok=cl8ei1Nc">
                                         </picture>
 
                                         <div class="c-page-header__content">
@@ -250,7 +250,7 @@
                                                         <p class="card-text mb-auto">{{ desscription_cut($item->desscription,70) }}</p>
                                                         <a href="{{ getSlugPost($item->slug) }}">Xem chi tiết</a>
                                                     </div>
-                                                    <img class="card-img-right flex-auto d-none d-md-block" alt="" src="/storage/uploads/icon-grocerysss-1627723174.jpg">
+                                                    <img class="card-img-right flex-auto d-none d-md-block" alt="{{ $item->name }}" src="/storage/uploads/icon-grocerysss-1627723174.jpg">
                                                 </div>
                                             </div>
                                             @empty

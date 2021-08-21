@@ -151,7 +151,7 @@
                 </div>
             </div>
             <div class="col-lg-6 p-lg-5 pading_about">
-                <img src="{{ pare_url_file($content_page_2->thumbnail) }}" alt="" class="img-cover" width="100%" />
+                <img src="{{ pare_url_file($content_page_2->thumbnail) }}" alt="{{ $content_page_2->name}}" class="img-cover" width="100%" />
             </div>
         </div>
     </div>

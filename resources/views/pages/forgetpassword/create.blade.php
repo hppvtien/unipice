@@ -78,7 +78,7 @@
                     style="justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;">
                     <div data-content-type="text" data-appearance="default" data-element="main"
                         style="border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;">
-                        <p><img src="https://shop.coopmarket.com/media/wysiwyg/hero/contact-us-hero.png" alt=""></p>
+                        <p><img src="https://shop.coopmarket.com/media/wysiwyg/hero/contact-us-hero.png" alt="Trang Đăng Ký - UniMall"></p>
                     </div>
                 </div>
             </div>

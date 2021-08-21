@@ -71,7 +71,7 @@
                                                                             </div>
                                                                             <div class="m-product-card__sku">
                                                                                 <span> SKU: {{ $item->id }}</span>
-                                                                                <span> <img src="{{ asset('img/brand/star_5.png') }}" alt=""> ({{ countReview($item->id) }})</span>
+                                                                                <span> <img src="{{ asset('img/brand/star_5.png') }}" alt="{{ $item->name }}"> ({{ countReview($item->id) }})</span>
                                                                             </div>
                                                                             <div class="m-price-lockup m-product-card__price">
                                                                                 <span class="m-price-lockup__price">
@@ -256,7 +256,7 @@
                                             <div class="c-media-block__image-wrapper">
                                                 <picture>
                                                     <source media="(min-width: 768px)" data-srcset="/storage/uploads/cm-hero-1627696924.png" srcset="/storage/uploads/cm-hero-1627696924.png">
-                                                    <img class=" ls-is-cached lazyloaded" data-src="/storage/uploads/cm-hero-1627696924.png" alt=" " src="/storage/uploads/cm-hero-1627696924.png">
+                                                    <img class=" ls-is-cached lazyloaded" data-src="/storage/uploads/cm-hero-1627696924.png" alt="Baking soda baths are a great way to detox. Check out the benefits of baking soda baths and how to do one at home!" src="/storage/uploads/cm-hero-1627696924.png">
                                                 </picture>
                                             </div>
 
