@@ -12,9 +12,4 @@ class Favourite extends Model
 
     protected $table = 'favourites';
     protected $guarded = [''];
-
-    public function course()
-    {
-        return $this->belongsTo(Course::class,'f_id');
-    }
 }
