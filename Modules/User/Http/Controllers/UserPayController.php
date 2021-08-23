@@ -394,6 +394,8 @@ class UserPayController extends UserController
                     'type_pay' =>  $type_pay
                 ];
                 $order->fill($data)->save();
+                $data_bill = Uni_Order::find($id);
+                Mail::to($data_bill['email'])->send(new SendMail($data_bill));
                 \Cart::destroy();
                 return $vnp_Url;
             }
@@ -449,6 +451,8 @@ class UserPayController extends UserController
                     'pay_node' =>  $orderInfo
                 ];
                 $order->fill($data_mm)->save();
+                $data_bill = Uni_Order::find($id);
+                Mail::to($data_bill['email'])->send(new SendMail($data_bill));
                 \Cart::destroy();
                 return $momo_Url;
             }
