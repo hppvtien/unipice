@@ -10,7 +10,6 @@
         content: '';
         display: none;
     }
-
     .optionTitle.m-radio-button__text-label {
         float: left;
         margin-right: 10px;
@@ -525,7 +524,7 @@
                                                 <label class="a-form-label m-text-input__label" for="G11F99D">
                                                     <span>Họ tên khách hàng</span>
                                                 </label>
-                                                <span class="store_name text-danger text-center"></span>
+                                                <span class="store_name font_chu_mau_do text-center error-input"></span>
                                                 <input class="a-text-input m-text-input__input" require value="{{ checkUid(get_data_user('web')) != null ? $store->store_name : $uni_user->name }}" type="text" name="customer_name" aria-required="true" aria-invalid="false" id="customer_name">
                                             </div>
                                         </div>
@@ -539,7 +538,7 @@
                                                 <label class="a-form-label m-text-input__label" for="emailck">
                                                     <span>Email</span>
                                                 </label>
-                                                <span class="store_email text-danger text-center"></span>
+                                                <span class="store_email font_chu_mau_do text-center error-input"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -551,7 +550,7 @@
                                                 <label class="a-form-label m-text-input__label" for="addressck">
                                                     <span>Địa chỉ</span>
                                                 </label>
-                                                <span class="store_address text-danger text-center"></span>
+                                                <span class="store_address font_chu_mau_do text-center error-input"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -576,6 +575,7 @@
                                                 <label class="a-form-label m-text-input__label" for="phoneck">
                                                     <span>Số điện thoại</span>
                                                 </label>
+                                                <span class="store_phone font_chu_mau_do text-center error-input"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -588,6 +588,9 @@
                                                 <option value="1" data-url="{{ route('get_user.feeshipghn') }}">Giao hàng nhanh</option>
                                                 <option value="2" data-url="{{ route('get_user.feeship') }}">Giao hàng tiết kiệm</option>
                                             </select>
+                                            <p>
+                                                <span class="store_method_ship font_chu_mau_do text-center error-input"></span>
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="field _required row no-gutters">
@@ -595,16 +598,26 @@
                                             <select class="w-70" id="province" name="province" required="" onchange="chanFunction()">
                                                 <option value="" selected>Tỉnh / thành</option>
                                             </select>
+                                            <p>
+                                                <span class="store_province font_chu_mau_do text-center error-input"></span>
+                                            </p>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-12">
                                             <select class="w-70" id="district" name="district" required="" onchange="chanFunctionDistrict()">
                                                 <option value="" selected>Quận / huyện</option>
                                             </select>
+                                            <p>
+                                                <span class="store_district font_chu_mau_do text-center error-input"></span>
+                                            </p>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-12">
+                                            
                                             <select class="w-70" id="ward" name="ward" required="" onchange="chanFunctionWard()">
                                                 <option value="" selected>Phường / xã</option>
                                             </select>
+                                           <p>
+                                            <span class="store_ward font_chu_mau_do text-center error-input"></span>
+                                           </p>
                                         </div>
                                     </div>
                                     <div class="field _required">
@@ -758,5 +771,145 @@
         </div>
     </div>
 </main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var province = document.getElementById("province");
+    window.onload = function() {
+        $.ajax({
+            url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/province',
+            headers: {
+                'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+                'Content-Type': 'application/json'
+            },
+            method: "GET",
+            dataType: 'json',
+            success: function(response) {
+                var str = "<option selected>Tỉnh / thành</option>";
+                for (var i = 0; i < response.data.length; i++) {
+                    str = str + "<option class='provinceId' data-province='" + response.data[i].ProvinceID + "'>" + response.data[i].ProvinceName + "</option>"
+                }
+                province.innerHTML = str;
+            }
+        });
+    };
+}, false);
+
+function chanFunction() {
+    var selectBox = document.getElementById("province");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].getAttribute('data-province');
+    var district = document.getElementById("district");
+    $.ajax({
+        url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/district',
+        headers: {
+            'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+            'Content-Type': 'application/json'
+        },
+        method: "GET",
+        dataType: 'json',
+        success: function(response) {
+            var str = "<option selected>Quận / huyện</option>";
+            for (var i = 0; i < response.data.length; i++) {
+                if (response.data[i].ProvinceID == selectedValue)
+                    str = str + "<option class='districtId' data-district='" + response.data[i].DistrictID + "'>" + response.data[i].DistrictName + "</option>"
+            }
+            district.innerHTML = str;
+        }
+    });
+};
+
+function chanFunctionDistrict() {
+    var selectBox = document.getElementById("district");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].getAttribute('data-district');
+    var ward = document.getElementById("ward");
+    $.ajax({
+        url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id=' + selectedValue,
+        headers: {
+            'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
+            'Content-Type': 'application/json'
+        },
+        method: "GET",
+        dataType: 'json',
+        success: function(response) {
+            var str = "<option selected>Phường / xã</option>";
+            for (var i = 0; i < response.data.length; i++) {
+                str = str + "<option class='wardId' data-ward='" + response.data[i].WardCode + "'>" + response.data[i].WardName + "</option>"
+            }
+            ward.innerHTML = str;
+
+        }
+    });
+}
+
+function chanFunctionWard() {
+    let to_district_id = $("#district").find(":selected").attr('data-district');
+    let to_ward_code = $("#ward").find(":selected").attr('data-ward');
+    let method_ship = $('#method_shpping').find(":selected").val();
+    let url_ship = $('#method_shpping').find(":selected").attr('data-url');
+    let total_cart_string = $('#total-cart').text();
+    let total_cart_noship = parseInt(total_cart_string.replace(" đ", "").replace(".", ""));
+    let total_cart = '';
+    if (method_ship == 1) {
+        $.ajax({
+            url: url_ship,
+            method: "POST",
+            dataType: 'json',
+            data: {
+                to_district_id: to_district_id,
+                to_ward_code: to_ward_code,
+            },
+            success: function(response) {
+                if (response.code === 200) {
+                    total_cart = (total_cart_noship + response.data.total).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' });
+                    $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span><span id="fee-ship">  ' + (response.data.total).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' }) + '</span></span>');
+                    $('#total-ship').html('<span class="label">Phí ship: </span><span class="value">' + (response.data.total).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' }) + '</span>');
+                    $('#total-all').html('<span class="label">Tổng đơn hàng + vận chuyển: </span><span class="value">' + total_cart + '</span>');
+                } else {
+                    $('#fee_ship').html('<span class="red-text">GHN chưa hỗ trợ hoặc do lý do Covid-19 nên đã dừng vận chuyển đến khu vực này</span>');
+                }
+            },
+
+        });
+    } else if (method_ship == 2) {
+        let province_name_to = $('#province').find(":selected").text();
+        let ward_name_to = $('#ward').find(":selected").text();
+        let district_name_to = $('#district').find(":selected").text();
+        $.ajax({
+            url: url_ship,
+            method: "get",
+            dataType: 'json',
+            data: {
+                method_ship: method_ship,
+                ward_code_to: ward_name_to,
+                province_code_to: province_name_to,
+                district_id_to: district_name_to
+
+            },
+            success: function(response) {
+                console.log(response.fee);
+                if (response.success == false) {
+                    $('#fee_ship').html('<span class="red-text"> GHTK chưa hỗ trợ hoặc do lý do Covid-19 nên đã dừng vận chuyển đến khu vực này</span>');
+                } else {
+                    total_cart = (total_cart_noship + response.fee.fee).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' });
+                    $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span><span id="fee-ship">  ' + (response.fee.fee).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' }) + '</span></span>');
+                    $('#total-ship').html('<span class="label">Phí ship: </span><span class="value">' + (response.fee.fee).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' }) + '</span>');
+                    $('#total-all').html('<span class="label">Tổng đơn hàng + vận chuyển: </span><span class="value">' + total_cart + ' đ</span>');
+                }
+            },
+            error: function(response) {
+                console.log(response.success);
+            }
+        });
+    } else if (method_ship == 4) {
+        $("#toast-container").html(
+                ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn phương thức vận chuyển</div></div>'),
+            4000;
+        setTimeout(function() {
+            $(".toast-error").remove();
+        }, 2000);
+    };
+}
+
+</script>
 
 @stop

@@ -103,19 +103,18 @@ $(".js-add-cart").on("click", function() {
             data_minbox: data_minbox
         },
         success: function(data) {
-            console.log(data);
             $(".count-cart-s")
                 .addClass("c-header__minicart-count")
                 .html(
                     '<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">' +
                     data.count +
-                    "</span>"
+                    '</span>'
                 );
             if (data.status === 200) {
                 $("#toast-container").html(
-                        ' <div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' +
+                        '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' +
                         data.message +
-                        "</div></div>"
+                        '</div></div>'
                     ),
                     4000;
                 setTimeout(function() {
@@ -237,44 +236,92 @@ $("#pay_success").on("click", function() {
     var address = $("input[name='address']").val();
     var type_pay = $("input[name='type_pay']:checked").val();
     var vouchers = $("input[name='vouchers']").val();
-    if (method_ship == 4 || district_id_to == undefined || ward_code_to == undefined || province_name_to == undefined || phone == '' || customer_name == '' || address == '') {
-        $("#toast-container").html(
-                ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Kiểm tra lại thông tin </div></div>'),
-            4000;
-        setTimeout(function() {
-            $(".toast-error").remove();
-        }, 2000);
+    $('.error-input').html('');
+    if (address == '') {
+        $('.store_address').html('Kiểm tra lại thông tin địa chỉ');
+
+        if (customer_name == '') {
+            $('.store_name').html('Kiểm tra lại thông tin tên khách hàng');
+        }
+        if (phone == '') {
+            $('.store_phone').html('Kiểm tra lại số điện thoại');
+        }
+        if (method_ship == 4) {
+            $('.store_method_ship').html('Bạn chưa chọn phương thức vận chuyển');
+        }
+        if (district_id_to == undefined || district_id_to == 'Quận / huyện') {
+            $('.store_district').html('Vui lòng chọn quận/huyện');
+        }
+        if (ward_code_to == undefined || ward_code_to == 'Phường / xã') {
+            $('.store_ward').html('Vui lòng chọn phường/xã');
+        }
+        if (province_name_to == 'Tỉnh / thành') {
+            $('.store_province').html('Vui lòng chọn tỉnh/thành');
+        }
         return false;
-    } else {
-        $.ajax({
-            url: data_url,
-            method: "post",
-            data: {
-                province_name_to: province_name_to,
-                code_invoice: code_invoice,
-                vouchers: vouchers,
-                phone: phone,
-                taxcode: taxcode,
-                type_pay: type_pay,
-                address: address,
-                email: email,
-                customer_name: customer_name,
-                method_ship: method_ship,
-                district_id_to: district_id_to,
-                ward_code_to: ward_code_to,
-                email: email,
-                fee_ship: fee_ship
-            },
-            success: function success(results) {
-                window.location.href = results;
-            },
-            error: function error(results) {
-                console.log("Loizzzzzzzzz");
-            }
-        });
     }
 
+    $.ajax({
+        url: data_url,
+        method: "post",
+        data: {
+            province_name_to: province_name_to,
+            code_invoice: code_invoice,
+            vouchers: vouchers,
+            phone: phone,
+            taxcode: taxcode,
+            type_pay: type_pay,
+            address: address,
+            email: email,
+            customer_name: customer_name,
+            method_ship: method_ship,
+            district_id_to: district_id_to,
+            ward_code_to: ward_code_to,
+            email: email,
+            fee_ship: fee_ship
+        },
+        success: function success(results) {
+            window.location.href = results;
+        },
+        error: function error(results) {
+            console.log("Loizzzzzzzzz");
+        }
+    });
+
+
 });
+
+$("#default-success").on("click", function() {
+    var data_url = $(this).attr("data-url");
+    $.ajax({
+        url: data_url,
+        type: "post",
+        dataType: "text",
+        data: {
+            data_url: data_url
+        },
+        success: function(result) {
+            $("#toast-container").html(
+                    ' <div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' +
+                    result +
+                    '</div></div>'
+                ),
+                4000;
+            setTimeout(function() {
+                $(".toast-success").remove();
+            }, 2000);
+            $(".count-cart-s")
+                .addClass("c-header__minicart-count")
+                .remove();
+            return false;
+        },
+        error: function(result) {
+            console.log("loixxxxxxxxxxxxxxxxxxxx");
+        }
+    });
+});
+
+
 $("#bank_code").on("change", function() {
     let bank_code = $(this).val();
     $("#btn-vnpay").on("click", function() {
@@ -499,144 +546,10 @@ function chanFunctionMethodTran() {
     $('#fee_ship').html('');
     $('#total-ship').html('')
     $('#total-all').html('')
-}
-document.addEventListener("DOMContentLoaded", function() {
-    var province = document.getElementById("province");
-    window.onload = function() {
-        $.ajax({
-            url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/province',
-            headers: {
-                'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
-                'Content-Type': 'application/json'
-            },
-            method: "GET",
-            dataType: 'json',
-            success: function(response) {
-                var str = "<option selected>Tỉnh / thành</option>";
-                for (var i = 0; i < response.data.length; i++) {
-                    str = str + "<option class='provinceId' data-province='" + response.data[i].ProvinceID + "'>'" + response.data[i].ProvinceName + "'</option>"
-                }
-                province.innerHTML = str;
-            }
-        });
-    };
-}, false);
-
-function chanFunction() {
-    var selectBox = document.getElementById("province");
-    var selectedValue = selectBox.options[selectBox.selectedIndex].getAttribute('data-province');
-    var district = document.getElementById("district");
-    $.ajax({
-        url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/district',
-        headers: {
-            'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
-            'Content-Type': 'application/json'
-        },
-        method: "GET",
-        dataType: 'json',
-        success: function(response) {
-            var str = "<option selected>Quận / huyện</option>";
-            for (var i = 0; i < response.data.length; i++) {
-                if (response.data[i].ProvinceID == selectedValue)
-                    str = str + "<option class='districtId' data-district='" + response.data[i].DistrictID + "'>'" + response.data[i].DistrictName + "'</option>"
-            }
-            district.innerHTML = str;
-        }
-    });
-};
-
-function chanFunctionDistrict() {
-    var selectBox = document.getElementById("district");
-    var selectedValue = selectBox.options[selectBox.selectedIndex].getAttribute('data-district');
-    var ward = document.getElementById("ward");
-    $.ajax({
-        url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id=' + selectedValue,
-        headers: {
-            'token': '29c6bd6c-fb14-11eb-bbbe-5ae8dbedafcf',
-            'Content-Type': 'application/json'
-        },
-        method: "GET",
-        dataType: 'json',
-        success: function(response) {
-            var str = "<option selected>Phường / xã</option>";
-            for (var i = 0; i < response.data.length; i++) {
-                str = str + "<option class='wardId' data-ward='" + response.data[i].WardCode + "'>'" + response.data[i].WardName + "'</option>"
-            }
-            ward.innerHTML = str;
-
-        }
-    });
+    $('.error-input').html('');
 }
 
-function chanFunctionWard() {
-    let to_district_id = $("#district").find(":selected").attr('data-district');
-    let to_ward_code = $("#ward").find(":selected").attr('data-ward');
-    let method_ship = $('#method_shpping').find(":selected").val();
-    let url_ship = $('#method_shpping').find(":selected").attr('data-url');
-    let total_cart_string = $('#total-cart').text();
-    let total_cart_noship = parseInt(total_cart_string.replace(" đ", "").replace(".", ""));
-    let total_cart = '';
-    if (method_ship == 1) {
-        $.ajax({
-            url: url_ship,
-            method: "POST",
-            dataType: 'json',
-            data: {
-                to_district_id: to_district_id,
-                to_ward_code: to_ward_code,
-            },
-            success: function(response) {
-                if (response.code === 200) {
-                    total_cart = (total_cart_noship + response.data.total).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' });
-                    $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span><span id="fee-ship">  ' + (response.data.total).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' }) + '</span></span>');
-                    $('#total-ship').html('<span class="label">Phí ship: </span><span class="value">' + (response.data.total).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' }) + '</span>');
-                    $('#total-all').html('<span class="label">Tổng đơn hàng + vận chuyển: </span><span class="value">' + total_cart + '</span>');
-                } else {
-                    $('#fee_ship').html('<span class="red-text">GHN chưa hỗ trợ hoặc do lý do Covid-19 nên đã dừng vận chuyển đến khu vực này</span>');
-                }
-            },
-
-        });
-    } else if (method_ship == 2) {
-        let province_name_to = $('#province').find(":selected").text();
-        let ward_name_to = $('#ward').find(":selected").text();
-        let district_name_to = $('#district').find(":selected").text();
-        $.ajax({
-            url: url_ship,
-            method: "get",
-            dataType: 'json',
-            data: {
-                method_ship: method_ship,
-                ward_code_to: ward_name_to,
-                province_code_to: province_name_to,
-                district_id_to: district_name_to
-
-            },
-            success: function(response) {
-                console.log(response.fee);
-                if (response.success == false) {
-                    $('#fee_ship').html('<span class="red-text"> GHTK chưa hỗ trợ hoặc do lý do Covid-19 nên đã dừng vận chuyển đến khu vực này</span>');
-                } else {
-                    total_cart = (total_cart_noship + response.fee.fee).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' });
-                    $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span><span id="fee-ship">  ' + (response.fee.fee).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' }) + '</span></span>');
-                    $('#total-ship').html('<span class="label">Phí ship: </span><span class="value">' + (response.fee.fee).toLocaleString('it-IT', { style: 'currency', currency: 'vnd' }) + '</span>');
-                    $('#total-all').html('<span class="label">Tổng đơn hàng + vận chuyển: </span><span class="value">' + total_cart + ' đ</span>');
-                }
-            },
-            error: function(response) {
-                console.log(response.success);
-            }
-        });
-    } else if (method_ship == 4) {
-        $("#toast-container").html(
-                ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Bạn chưa chọn phương thức vận chuyển</div></div>'),
-            4000;
-        setTimeout(function() {
-            $(".toast-error").remove();
-        }, 2000);
-    };
-}
-$(window).on('load', function() {
+$('.custom-logo-link').on('click', function() {
     let data_u = window.location.origin + '/update_level';
     let data_v = window.location.origin + '/update_nap_status';
     $.ajax({
@@ -660,3 +573,4 @@ $('.redect-b2b').on('click', function() {
     let rd_url = $(this).attr('data-url');
     window.location.href = rd_url;
 });
+$(document).ready(function() { $("#province").select2(); });

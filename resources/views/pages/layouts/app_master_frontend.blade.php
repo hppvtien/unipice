@@ -173,6 +173,8 @@
     <script src="{{ asset('css/css_js/popper.min.js') }}"></script>
     <script src="{{ asset('css/css_js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('css/css_js/jquery.zeynep.min.js') }}"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script src="{{ asset('fontend_js/custom.js') }}"></script>
     <script src="{{ asset('js/frontends.js') }}"></script>
     <script src="{{ asset('fontend_js/unijs.js') }}"></script>

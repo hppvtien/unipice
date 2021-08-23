@@ -421,7 +421,7 @@
                                         <a href="{{ $item->slug }}" title="{{ $item->name }}" tabindex="-1" class="product-item-photo">
                                             <span class="product-image-container" style="width:110px;">
                                                 <span class="product-image-wrapper" style="padding-bottom: 90%;">
-                                                    <img class="product-image-photo" src="{{ pare_url_file_product($item->options->images) }}" max-width="100%" max-height="100%" alt="{{ $item->name }}">
+                                                    <img class="product-image-photo" src="{{ $item->options->images }}" max-width="100%" max-height="100%" alt="{{ $item->name }}">
                                                 </span><br>
                                                 <span class="product-image-wrapper" style="padding-bottom: 20%;">
                                                     <span class="value" itemprop="sku">{{ $item->name }}</span> 

@@ -286,8 +286,14 @@ class UserPayController extends UserController
     public function getSuccsess(Request $request, $id)
     {
         $order = Uni_Order::find($id);
-        \Cart::destroy();
+        // \Cart::destroy();
         return view('user::pages.pay.succsess', compact('order'));
+    }
+    public function processSuccsess(Request $request, $id)
+    {
+        \Cart::destroy();
+        $message = 'Đơn hàng đã được gửi lên hệ thống';
+        return $message;
     }
     public function check_vouchers(Request $request)
     {
@@ -386,7 +392,7 @@ class UserPayController extends UserController
                 'pay_note' =>  $vnp_OrderInfo,
             ];
             $order->fill($data)->save();
-            \Cart::destroy();
+            // \Cart::destroy();
             return $vnp_Url;
         }
 
@@ -480,7 +486,7 @@ class UserPayController extends UserController
                 't_note' =>  $orderInfo
             ];
             $order->fill($data_mm)->save();
-            \Cart::destroy();
+            // \Cart::destroy();
             return $momo_Url;
         }
 

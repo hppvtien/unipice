@@ -15,15 +15,18 @@
     padding-right: 20px;
     width: auto;
 }
+
 .uni-css-title {
     max-width: 100% !important;
 }
+
 p.card-text {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+
 #uni {
     padding: 0.66em 0.9em;
     color: #fff;
@@ -972,6 +975,18 @@ a.btn-km:hover {
 
 .w-70 {
     width: 70%;
+}
+
+#province,
+#district,
+#ward {
+    padding: 0 5px;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid #aaa;
+    padding: 3px!important;
+    border-radius: 0;
 }
 
 #method_shpping {

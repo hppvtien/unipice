@@ -570,9 +570,16 @@
                     </table>
                 </div>
             </div>
-            <div class="block block-dashboard-info col-md-12 col-xs-12 noi_left cach_top_bottom">
+            <div class="block block-dashboard-info col-md-12 col-xs-12 noi_left cach_top_bottom text-center">
                 <h2 class="text-success text-center" style="margin:0 auto">Vui Lòng thanh toán đơn hàng <span class="text-danger">{{ $order->code_invoice }}</span> của bạn. <br>
                     Đơn hàng <span class="text-danger">{{ $order->code_invoice }}</span> của bạn chỉ có giá trị khi bạn đã thanh toán</h2>
+                <a class="a-btn a-btn--primary text-center action apply primary w-25" id="default-back-success" href="{{ url()->previous() }}" type="button" value="Pay Continue">
+                    <span><i class="fa fa-undo"></i> Quay lại</span>
+                </a>
+                <button class="a-btn a-btn--primary text-center action apply primary w-25" id="default-success" data-url="{{ route('post_user.paysuccsess',$order->id) }}" type="button" value="Pay Continue">
+                    <span>Thanh toán đơn hàng</span>
+                </button>
+
             </div>
         </div>
         @include('user::pages.component._inc_menu_user')
