@@ -234,7 +234,6 @@ $("#pay_success").on("click", function() {
     var email = $("input[name='email']").val();
     var customer_name = $("input[name='customer_name']").val();
     var address = $("input[name='address']").val();
-    var type_pay = $("input[name='type_pay']:checked").val();
     var vouchers = $("input[name='vouchers']").val();
     $('.error-input').html('');
     if (address == '') {
@@ -270,7 +269,6 @@ $("#pay_success").on("click", function() {
             vouchers: vouchers,
             phone: phone,
             taxcode: taxcode,
-            type_pay: type_pay,
             address: address,
             email: email,
             customer_name: customer_name,
@@ -292,28 +290,23 @@ $("#pay_success").on("click", function() {
 });
 
 $("#default-success").on("click", function() {
+
+    var type_pay = $("input[name='type_pay']:checked").val();
+    var bank_code = '';
+    $("#bank_code").on("change", function() {
+        bank_code = $(this).val();
+    });
     var data_url = $(this).attr("data-url");
     $.ajax({
         url: data_url,
         type: "post",
         dataType: "text",
         data: {
-            data_url: data_url
+            type_pay: type_pay,
+            bank_code: bank_code
         },
         success: function(result) {
-            $("#toast-container").html(
-                    ' <div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' +
-                    result +
-                    '</div></div>'
-                ),
-                4000;
-            setTimeout(function() {
-                $(".toast-success").remove();
-            }, 2000);
-            $(".count-cart-s")
-                .addClass("c-header__minicart-count")
-                .remove();
-            return false;
+            window.location.href = result;
         },
         error: function(result) {
             console.log("loixxxxxxxxxxxxxxxxxxxx");
@@ -322,29 +315,27 @@ $("#default-success").on("click", function() {
 });
 
 
-$("#bank_code").on("change", function() {
-    let bank_code = $(this).val();
-    $("#btn-vnpay").on("click", function() {
-        var data_url = $(this).attr("data-url");
-        $.ajax({
-            url: data_url,
-            type: "post",
-            dataType: "text",
-            data: {
-                bank_code: bank_code
-            },
-            success: function(result) {
-                console.log(result);
-                // let urlvnpay = result;
-                // console.log(urlvnpay);
-                window.location.href = result;
-            },
-            error: function(result) {
-                console.log("loixxxxxxxxxxxxxxxxxxxx");
-            }
-        });
-    });
-});
+// $("#bank_code").on("change", function() {
+//     let bank_code = $(this).val();
+//     $("#btn-vnpay").on("click", function() {
+//         var data_url = $(this).attr("data-url");
+//         $.ajax({
+//             url: data_url,
+//             type: "post",
+//             dataType: "text",
+//             data: {
+//                 bank_code: bank_code
+//             },
+//             success: function(result) {
+//                 console.log(result);
+//                 window.location.href = result;
+//             },
+//             error: function(result) {
+//                 console.log("loixxxxxxxxxxxxxxxxxxxx");
+//             }
+//         });
+//     });
+// });
 $("#momo-success").on("click", function() {
     let data_url = $(this).attr("data-url");
 

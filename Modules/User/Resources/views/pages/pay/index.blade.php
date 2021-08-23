@@ -28,7 +28,7 @@
     .m-radio-button {
         position: relative;
         margin-bottom: 10px;
-        flex: 0 0 25%;
+        flex: 0 0 33%;
         max-width: 100%;
     }
 
@@ -634,18 +634,7 @@
                                     
                                     @endif
                                     
-                                    <div class="field _required pay_type">
-                                        @foreach (config('cart.pay_type') as $key => $item)
-                                        <div class="validContainer addressOption selected m-radio-button">
-                                            <input type="radio" class="validAddress m-radio-button__input" name="type_pay" {{ $key == 1 ? 'checked' : ''; }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
-                                            <label class="addressLabel" for="valid-{{ $item['type'] }}">
-                                                <span class="m-radio-button__circle"></span>
-                                                <div class="optionTitle m-radio-button__text-label">{{ $item['name'] }}</div>
-                                                <div class="optionAddress validAddressText"></div>
-                                            </label>
-                                        </div>
-                                        @endforeach
-                                    </div>
+                                    
                                 </div>
                             </form>
                             <div class="actions-toolbar pay_continue">

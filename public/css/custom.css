@@ -977,6 +977,10 @@ a.btn-km:hover {
     width: 70%;
 }
 
+.hide-bank {
+    display: table-row;
+}
+
 #province,
 #district,
 #ward {
