@@ -131,7 +131,7 @@ a.ahr-text {
 }
 
 .column.main .block {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .block-title .action {
@@ -228,6 +228,10 @@ a.ahr-text {
 .can_tren_duoi2 {
     margin-top: 25%;
     margin-left: 20%;
+}
+
+.text-spice {
+    color: #155724!important;
 }
 
 @media screen and (max-width:768px) {
@@ -977,8 +981,16 @@ a.btn-km:hover {
     width: 70%;
 }
 
-.hide-bank {
-    display: table-row;
+.vnpay-pay,
+.banking-pay {
+    display: none;
+}
+
+.form-vnpay {
+    background: #f2f2f2;
+    width: 50%;
+    margin: auto;
+    padding: 10px 0;
 }
 
 #province,

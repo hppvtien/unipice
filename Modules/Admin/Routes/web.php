@@ -80,6 +80,14 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('movetrash/{id}', 'AdminUserController@movetrash')->name('get_admin.user.movetrash');
         Route::get('delete/{id}', 'AdminUserController@delete')->name('get_admin.user.delete')->middleware('permission:user_delete|full');
     });
+    Route::prefix('bank_info')->group(function (){
+        Route::get('/', 'AdminBankInfoController@index')->name('get_admin.bank_info.index')->middleware('permission:bank_info_index|full');
+        Route::get('/create', 'AdminBankInfoController@store')->name('get_admin.bank_info.create')->middleware('permission:bank_info_index|full');
+        Route::post('/create', 'AdminBankInfoController@create');
+        Route::get('update/{id}', 'AdminBankInfoController@edit')->name('get_admin.bank_info.edit')->middleware('permission:bank_info_edit|full');
+        Route::post('update/{id}', 'AdminBankInfoController@update');
+        Route::get('delete/{id}', 'AdminBankInfoController@delete')->name('get_admin.bank_info.delete')->middleware('permission:bank_info_delete|full');
+    });
     
     // ----------------------------------------------------------------------------------------------------------------
     Route::prefix('apmenu')->group(function (){

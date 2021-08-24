@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use App\Models\Configuration;
 use App\Models\Voucher;
 use App\Models\Uni_Product;
+use App\Models\BankInfo;
 use App\Models\Uni_Store;
 use App\Models\User;
 use App\Models\User_voucher;
@@ -285,8 +286,13 @@ class UserPayController extends UserController
     public function getSuccsess(Request $request, $id)
     {
         $order = Uni_Order::find($id);
+        $bank_info = BankInfo::where('status',1)->first();
+        $viewData=[
+            'bank_info'=>$bank_info,
+            'order'=>$order
+        ];
         // \Cart::destroy();
-        return view('user::pages.pay.succsess', compact('order'));
+        return view('user::pages.pay.succsess', $viewData);
     }
     public function processSuccsess(Request $request, $id)
     {
@@ -385,7 +391,6 @@ class UserPayController extends UserController
             $vnp_Url = $vnp_Url . "?" . $query;
 
             if (isset($vnp_HashSecret)) {
-                // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
                 $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
                 $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
                 $data = [
@@ -399,7 +404,7 @@ class UserPayController extends UserController
                 \Cart::destroy();
                 return $vnp_Url;
             }
-        } elseif ($type_pay == 2) {
+        } elseif ($type_pay == 3) {
             $endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
             $partnerCode = 'MOMOFGH020210603';
             $accessKey = '9QGcOW38zWHhnWEF';

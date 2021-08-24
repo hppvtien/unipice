@@ -126,33 +126,5 @@
         @include('user::pages.component._inc_menu_user')
     </div>
 </main>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
 
-    $('.js-store-user').on('click', function() {
-        let method_invoice = $("input[name='album[]']").val();
-        console.log(method_invoice);
-        $.ajax({
-            url: "{{ route('get_user.store.edit',get_data_user('web')) }}",
-            type: "post",
-            dataType: "text",
-            data: {
-                method_invoice: method_invoice
-            },
-            success: function(result) {
-                let tiencss = $('#myModal').html(result);
-            },
-            error: function(result) {
-                console.log(result, +'ssssss');
-                // $('#result').html(result);
-            }
-        });
-    });
-    //  -->
-<!-- </script> -->
 @stop

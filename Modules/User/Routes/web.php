@@ -23,6 +23,7 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     Route::get('/danh-sach-san-pham/myfavorites/filter', 'UserDashboardController@myfavorites_filter')->name('get_user.myfavorites_filter');
     Route::get('/danh-sach-san-pham/filter', 'UserDashboardController@productlist_filter')->name('get_user.productlist_filter');
     Route::get('/don-hang', 'UserDashboardController@listOrder')->name('get_user.list_order');
+    Route::get('/user-spice-club', 'UserDashboardController@spice_club')->name('get_user.spice_club');
     Route::get('favourite', 'UserFavouriteController@index')->name('get_user.favourite');
     Route::get('info/edit/{id}', 'UserInfoController@edit')->name('get_user.info.edit');
     Route::post('info/edit/{id}', 'UserInfoController@update');

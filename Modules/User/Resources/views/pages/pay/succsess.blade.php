@@ -22,22 +22,19 @@
     .checkout-container {
         position: relative;
     }
-
-    .m-radio-button {
-        position: relative;
-        margin-bottom: 10px;
-        flex: 0 0 25%;
-        max-width: 100%;
-    }
-
-    .pay_type {
-        display: block;
-        margin-top: 20px !important;
-    }
-    .m-radio-button__input:checked+label .m-radio-button__text-label {
-    font-weight: 400;
-    color: #137f62;
+.m-radio-button__circle{
+    float: left;
 }
+.m-radio-button {
+    margin-top: 10px;
+}
+
+
+    .m-radio-button__input:checked+label .m-radio-button__text-label {
+        font-weight: 400;
+        color: #137f62;
+    }
+
     .a-select-menu {
         position: relative;
         padding-right: 40px;
@@ -513,30 +510,15 @@
                                 <th scope="row">Mã số thuế:</th>
                                 <th>{{ $order->taxcode }}</td>
                             </tr>
-                            <tr class="hide-bank" >
-                                <th scope="row">Chọn ngân hàng:</th>
-                                <th>
-                                    <div class="m-sort-by">
-                                        <select class="m-sort-by__select frontier-custom-sort" name="bank_code" id="bank_code">
-                                            <option value="" selected> Chọn ngân hàng thanh toán</option>
-                                            <option value="NCB"> Ngan hang NCB</option>
-                                            <option value="AGRIBANK"> Ngan hang Agribank</option>
-                                            <option value="SCB"> Ngan hang SCB</option>
-                                            <option value="SACOMBANK">Ngan hang SacomBank</option>
-                                            <option value="EXIMBANK"> Ngan hang EximBank</option>
-                                            <option value="MSBANK"> Ngan hang MSBANK</option>
-                                        </select>
-                                        <span class="m-sort-by__arrow"></span>
-                                    </div>
-                                </th>
+                            <tr>
+                                <th colspan="2" scope="row">Phương thức thanh toán:</th>
                             </tr>
                             <tr>
-                                <th scope="row">Thanh toán:</th>
-                                <th>
-                                    <div class="field _required pay_type">
+                                <th colspan="2">
+                                    <div class="field _required pay_type row">
                                         @foreach (config('cart.pay_type') as $key => $item)
-                                        <div class="validContainer addressOption selected m-radio-button">
-                                            <input type="radio" class="validAddress m-radio-button__input input-type-cart" name="type_pay" {{ $key == 1 ? 'checked' : ''; }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
+                                        <div class="col-6 validContainer addressOption selected m-radio-button">
+                                            <input type="radio" class="validAddress m-radio-button__input input-type-cart" name="type_pay" value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
                                             <label class="addressLabel" for="valid-{{ $item['type'] }}">
                                                 <span class="m-radio-button__circle"></span>
                                                 <div class="optionTitle m-radio-button__text-label">{{ $item['name'] }}</div>
@@ -547,7 +529,6 @@
                                     </div>
                                 </th>
                             </tr>
-                            
                         </tbody>
                     </table>
                 </div>
@@ -600,9 +581,19 @@
                     </table>
                 </div>
             </div>
-            <div class="block block-dashboard-info col-md-12 col-xs-12 noi_left cach_top_bottom text-center">
-                <h2 class="text-success text-center" style="margin:0 auto">Vui Lòng thanh toán đơn hàng <span class="text-danger">{{ $order->code_invoice }}</span> của bạn. <br>
-                    Đơn hàng <span class="text-danger">{{ $order->code_invoice }}</span> của bạn chỉ có giá trị khi bạn đã thanh toán</h2>
+            <div class="col-md-12 col-xs-12 noi_left text-center">
+                <div class="banking-p4ay hide-ip1" id="banking-pay" name-bank="{{ json_encode($bank_info) }}">
+                    
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12 noi_left text-center">
+                <div class="vnpay-p4ay hide-ip4" id="vnpay-pay">
+                    
+                </div>
+            </div>
+            <div class="block block-dashboard-info col-md-12 col-xs-12 noi_left text-center">
+                <p class="text-success text-center" style="margin:0 auto 10px auto">Vui Lòng thanh toán đơn hàng <span class="text-danger" id="invoice-id">{{ $order->code_invoice }}</span> của bạn. <br>
+                    Đơn hàng <span class="text-danger">{{ $order->code_invoice }}</span> của bạn chỉ có giá trị khi bạn đã thanh toán</p>
                 <button class="a-btn a-btn--primary text-center action apply primary w-25" id="default-success" data-url="{{ route('post_user.paysuccsess',$order->id) }}" type="button" value="Pay Continue">
                     <span>Thanh toán đơn hàng</span>
                 </button>

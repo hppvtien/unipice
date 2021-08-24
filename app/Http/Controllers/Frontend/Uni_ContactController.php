@@ -5,6 +5,7 @@ use App\Models\Uni_Category;
 use App\Http\Controllers\Controller;
 use App\Models\Uni_Contact;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use DB;
 
 class Uni_ContactController extends Controller
@@ -68,14 +69,13 @@ class Uni_ContactController extends Controller
                 $data['subject'] = $request->subject;
             }
             
-            $id = DB::table('uni_contacts')->insertGetId(
+            $id = DB::table('uni_contact')->insertGetId(
                 [
                     'name' => $data['name'], 
                     'email' => $data['email'], 
                     'phone' => $data['telephone'], 
-                    'subject' => $data['subject'], 
                     'message' => $data['mess'],
-                    "created_at" =>  date('Y-m-d H:i:s'),
+                    "created_at" =>  Carbon::now(),
                     "updated_at" => null,
                 ]
             );
@@ -88,17 +88,16 @@ class Uni_ContactController extends Controller
 
         if($request->user_email){
             $data['email'] = $request->user_email;
-            $data['name'] = ' ';
-            $data['telephone'] = ' ';
+            $data['name'] = $request->name ?? 'N/A';
+            $data['telephone'] = $request->phone ?? 0;
             $data['mess'] = 'Theo dõi bản tin của chúng tôi';
             $data['subject'] = 0;
 
-            $id = DB::table('uni_contacts')->insertGetId(
+            $id = DB::table('uni_contact')->insertGetId(
                 [
                     'name' => $data['name'], 
                     'email' => $data['email'], 
                     'phone' => $data['telephone'], 
-                    'subject' => $data['subject'], 
                     'message' => $data['mess'],
                     "created_at" =>  date('Y-m-d H:i:s'),
                     "updated_at" => null,
