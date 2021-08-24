@@ -2,14 +2,17 @@
 @section('contents')
 @include('pages.components.headers.css_js')
 <script>
-    function get_product_sale(get_id){
-            var get_id = $( get_id ).attr( "data-id-sale" );
-            var get_total_price = $('#hihihihi').attr('gia');
-            $.get( "{{ route('get_user.get_product_flash_sale') }}", { get_id: get_id, get_total_price: get_total_price } )
-            .done(function( data ) {
-                $( "#exampleModalLong .modal-body" ).html( data );
+    function get_product_sale(get_id) {
+        var get_id = $(get_id).attr("data-id-sale");
+        var get_total_price = $('#hihihihi').attr('gia');
+        $.get("{{ route('get_user.get_product_flash_sale') }}", {
+                get_id: get_id,
+                get_total_price: get_total_price
+            })
+            .done(function(data) {
+                $("#exampleModalLong .modal-body").html(data);
             });
-        }
+    }
 </script>
 <style>
     .columns .column.main {
@@ -220,7 +223,7 @@
         top: 0;
     }
 
-    a.a-btn.a-btn--primary.action.primary.checkout{
+    a.a-btn.a-btn--primary.action.primary.checkout {
         color: #fff;
         width: 100%;
     }
@@ -249,9 +252,10 @@
         margin: 20px 0;
         text-align: center;
     }
+
     tbody.cart.item tr td {
-    vertical-align: inherit;
-}
+        vertical-align: inherit;
+    }
 
     @media screen and (min-width: 1024px) {
 
@@ -349,8 +353,7 @@
     <div class="columns">
         <div class="column main"><input name="form_key" type="hidden" value="GXhjnhZzwPqQ9aXV">
             <div class="cart-container">
-                <div class="text-center text-danger" id="text-qtyerr">
-                </div>
+
                 <div class="cart-summary"><strong class="summary title">Thông tin chi phí</strong>
                     <div id="block-shipping" class="block shipping active" data-collapsible="true" role="tablist">
                         <div class="title" data-role="title" aria-controls="block-summary" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
@@ -391,7 +394,7 @@
                         <!-- /ko -->
 
                     </div>
-                    
+
                     <ul class="checkout methods items checkout-methods-items">
                         <li class="item">
                             <a href="{{ route('get_user.pay') }}" type="button" data-role="proceed-to-checkout" title="Proceed to Checkout on Co-Op Market" class="a-btn a-btn--primary action primary checkout">
@@ -400,7 +403,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <form action="" method="get" id="form-validate" class="form form-cart">
                     <div class="table-responsive">
                         <table id="shopping-cart-table" class="cart items data table cart-table">
@@ -424,7 +427,7 @@
                                                     <img class="product-image-photo" src="{{ $item->options->images }}" max-width="100%" max-height="100%" alt="{{ $item->name }}">
                                                 </span><br>
                                                 <span class="product-image-wrapper" style="padding-bottom: 20%;">
-                                                    <span class="value" itemprop="sku">{{ $item->name }}</span> 
+                                                    <span class="value" itemprop="sku">{{ $item->name }}</span>
                                                 </span>
                                             </span>
                                         </a>
@@ -432,15 +435,15 @@
                                     <td data-th="Price">
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ formatVnd($item->price) }} 
-                                                        <?php if($item->options->sale == 'combo' ){
-                                                            echo '/ combo';
-                                                        } elseif($item->options->sale == 'user'){
-                                                            echo '/ hộp';
-                                                        } else {
-                                                            echo '/ thùng';
-                                                        } ?>
-                                                </span> 
+                                                <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ formatVnd($item->price) }}
+                                                    <?php if ($item->options->sale == 'combo') {
+                                                        echo '/ combo';
+                                                    } elseif ($item->options->sale == 'user') {
+                                                        echo '/ hộp';
+                                                    } else {
+                                                        echo '/ thùng';
+                                                    } ?>
+                                                </span>
                                             </span>
                                         </span>
                                     </td>
@@ -448,40 +451,36 @@
                                         <div class="field qty">
                                             <div class="control qty" style="padding: 0!important">
                                                 <label for="cart-{{ $item->id }}-qty" style="display:flex">
-                                                    <input id="cart-{{ $item->id }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}" 
-                                                    class="input-text qty update-qty"  data-url="{{ route('get_user.updatecart',$item->id) }}" 
-                                                    name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" 
-                                                    size="4"  min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" data-price="{{ $item->price }}" max="100" step="any" title="Qty">
+                                                    <input id="cart-{{ $item->id }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}" class="input-text qty update-qty" data-url="{{ route('get_user.updatecart',$item->id) }}" name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" size="4" min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" data-price="{{ $item->price }}" max="100" step="any" title="Qty">
                                                     <span style="order:2;margin-top: 5px;margin-left: 5px">
-                                                         <?php if($item->options->sale == 'combo' ){
+                                                        <?php if ($item->options->sale == 'combo') {
                                                             echo 'combo';
-                                                        } elseif($item->options->sale == 'user'){
+                                                        } elseif ($item->options->sale == 'user') {
                                                             echo 'hộp';
                                                         } else {
                                                             echo 'thùng';
                                                         } ?>
-                                                        </span>
-                                                    </label>
+                                                    </span>
+                                                </label>
+                                                <div class="text-danger" id="text-qtyerr{{ $item->id }}"></div>
                                             </div>
                                         </div>
                                     </td>
                                     <td data-th="Tổng tiền">
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
-                                                <span class="price" id="price{{ $item->id }}">{{ formatVnd($item->price * $item->qty)}}</span> 
+                                                <span class="price" id="price{{ $item->id }}">{{ formatVnd($item->price * $item->qty)}}</span>
                                             </span>
                                         </span>
                                     </td>
                                     <td data-th="Xóa sản phẩm">
-                                        <button style="width: 20px;height: 20px;padding: 0;background: red;" data-row="{{ $item->rowId }}" 
-                                        type="button" data-url="{{ route('get_user.deletecart') }}" name="remove_cart_action" 
-                                        title="Remove Shopping Cart" class="a-btn a-btn--primary action remove remove_cart_action">
+                                        <button style="width: 20px;height: 20px;padding: 0;background: red;" data-row="{{ $item->rowId }}" type="button" data-url="{{ route('get_user.deletecart') }}" name="remove_cart_action" title="Remove Shopping Cart" class="a-btn a-btn--primary action remove remove_cart_action">
                                             <span>x</span>
                                         </button>
                                     </td>
                                 </tr>
                                 @empty
-                                    
+
                                 @endforelse
                             </tbody>
                         </table>
@@ -502,19 +501,19 @@
 </main>
 <div style="z-index:999999" class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-            Chi Tiết Gói Sale
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-content">
+            <div class="modal-header">
+                Chi Tiết Gói Sale
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+
         </div>
-        <div class="modal-body">
-          
-        </div>
-        
-      </div>
     </div>
-  </div>
+</div>
 
 @stop

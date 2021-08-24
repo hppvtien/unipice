@@ -127,17 +127,18 @@ $(".js-add-cart").on("click", function() {
 $(".update-qty").on("keyup", function() {
     let URL = $(this).attr("data-url");
     let item_id = $(this).attr("item-id");
+    let item_name = $(this).attr("data-name");
     let item_qty = $("#cart-" + item_id + "-qty").val();
     let item_row = $(this).attr("data-row");
     let item_min = $(this).attr("min");
     let data_price = $(this).attr("data-price");
     let total_price = item_qty * data_price;
     if (item_qty < item_min) {
-        $("#text-qtyerr").text("Số lượng nhỏ nhất là: " + item_min);
+        $("#text-qtyerr" + item_id).text("Tối thiểu: " + item_min + " thùng").slideDown(this);
     } else if (item_qty == 0) {
-        $("#text-qtyerr").text("Số lượng nhỏ nhất là: " + item_min);
+        $("#text-qtyerr" + item_id).text("Tối thiểu: " + item_min + " thùng").slideDown(this);
     } else {
-        $("#text-qtyerr").text("");
+        $("#text-qtyerr" + item_id).text("").slideUp();
         $.ajax({
             url: URL,
             method: "get",
@@ -313,29 +314,52 @@ $("#default-success").on("click", function() {
         }
     });
 });
+$(".input-type-cart").on('change', function() {
+    let html_vnpay = '<div class="form-vnpay"><h3>Chọn ngân hàng:</h3> <div class = "m-sort-by" ><select class name = "bank_code"id = "bank_code">' +
+        '<option value = "" selected > Chọn ngân hàng thanh toán </option> ' +
+        '<option value = "NCB" > Ngan hang NCB </option> ' +
+        '<option value = "AGRIBANK" > Ngan hang Agribank </option> ' +
+        '<option value = "SCB" > Ngan hang SCB </option> ' +
+        '<option value = "SACOMBANK" > Ngan hang SacomBank </option>' +
+        '<option value = "EXIMBANK" > Ngan hang EximBank </option>' +
+        '<option value = "MSBANK" > Ngan hang MSBANK </option>' +
+        '</select> <span class = "m-sort-by__arrow"> </span>' +
+        '</div></div>';
+    let bank_info = JSON.parse($('#banking-pay').attr('name-bank'));
+    let invoice_id = $('#invoice-id').text();
+    let html_banking = '<div class="form-vnpay text-dark"><h3>Thông tin ngân hàng:</h3>' +
+        '<div>' +
+        '<p class="font-weight-bold"><span class="text-info">Ngân hàng: ' + bank_info.name + '</span></p>' +
+        '<p class="font-weight-bold"><span class="text-info">Số tài khoản: ' + bank_info.account + '</span></p>' +
+        '<p class="font-weight-bold"><span class="text-info">Chi nhánh: ' + bank_info.address + '</span></p>' +
+        '<p class="font-weight-bold"><span class="text-info">Điện thoại hỗ trợ: ' + bank_info.hotline + '</span></p>' +
+        '<p class="font-weight-bold"><span class="text-info">Email hỗ trợ: ' + bank_info.email + '</span></p>' +
+        '<p class="font-weight-bold"><span class="text-info">Nội dung CK: Nội dung: Thanh toan don hang ' + invoice_id + '</span></p>' +
+        '</div></div>';
+    let type_pay = $(this).val();
+    if (type_pay == 1) {
 
+        $('#banking-pay').html(html_banking).slideDown();
+        $('#vnpay-pay').html('').slideUp();
 
-// $("#bank_code").on("change", function() {
-//     let bank_code = $(this).val();
-//     $("#btn-vnpay").on("click", function() {
-//         var data_url = $(this).attr("data-url");
-//         $.ajax({
-//             url: data_url,
-//             type: "post",
-//             dataType: "text",
-//             data: {
-//                 bank_code: bank_code
-//             },
-//             success: function(result) {
-//                 console.log(result);
-//                 window.location.href = result;
-//             },
-//             error: function(result) {
-//                 console.log("loixxxxxxxxxxxxxxxxxxxx");
-//             }
-//         });
-//     });
-// });
+    } else if (type_pay == 4) {
+        $('#banking-pay').html('').slideUp();
+        $('#vnpay-pay').html(html_vnpay).slideDown();
+    } else {
+        $('#banking-pay').html('').slideUp();
+        $('#vnpay-pay').html('').slideUp();
+    }
+});
+
+function get_email() {
+    var email = $('#email1').val();
+    var data_url = $('#email1').attr('data-url');
+    $.post(data_url, { user_email: email })
+        .done(function(data) {
+            console.log(data);
+        });
+}
+
 $("#momo-success").on("click", function() {
     let data_url = $(this).attr("data-url");
 

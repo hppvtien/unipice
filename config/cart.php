@@ -77,8 +77,18 @@ return [
     ],
     'pay_type' => [
         1=>[
-            'name' => 'Thanh toán khi nhận hàng',
+            'name' => 'Chuyển khoản',
             'type' => '1',
+            'class' => '',
+            'bank' => 'Vib - Ngân Hàng Quốc Tế',
+            'account' => '111444555522',
+            'address' => 'Hai Phong',
+            'hotline' => '096999888',
+            'email' => 'thacmac@gmail.com'
+        ],
+        2=>[
+            'name' => 'COD',
+            'type' => '2',
             'class' => '',
             'bank' => 'Thanh toán khi nhận hàng',
             'account' => '111444555522',
@@ -86,9 +96,9 @@ return [
             'hotline' => '096999888',
             'email' => 'thacmac@gmail.com'
         ],
-        2=>[
+        3=>[
             'name' => 'MOMO',
-            'type' => '2',
+            'type' => '3',
             'class' => '',
             'bank' => 'Bạn phải có tài khoản Momo',
             'account' => '111444555522',
@@ -96,16 +106,6 @@ return [
             'hotline' => '096999888',
             'email' => 'thacmac@gmail.com'
         ],
-        // [
-        //     'name' => 'Thẻ Visa/  Mastercard',
-        //     'type' => '3',
-        //     'class' => '',
-        //     'bank' => 'Visa - Quốc tế',
-        //     'account' => '111444555522',
-        //     'address' => 'Hai Phong',
-        //     'hotline' => '096999888',
-        //     'email' => 'thacmac@gmail.com'
-        // ],
         4=>[
             'name' => 'VNPAY',
             'type' => '4',

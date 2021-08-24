@@ -47,7 +47,7 @@ class UserShoppingCartController extends UserController
                         'price' => $uni_combo->price,
                         'weight' => 1,
                         'options' => [
-                            'images' => $uni_combo->thumbnail,
+                            'images' => pare_url_file($uni_combo->thumbnail),
                             'sale' => $type_box
 
                             

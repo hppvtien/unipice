@@ -33,6 +33,16 @@ class UserDashboardController extends Controller
         return view('user::pages.dashboard.index', $viewData);
     }
 
+    public function spice_club()
+    {
+        \SEOMeta::setTitle('Thông tin khách hàng');
+        $uni_order_nap = Uni_Order_Nap::where('user_id', get_data_user('web'))->where('status', '!=', 5)->first();
+        $viewData = [
+            'uni_order_nap' => $uni_order_nap,
+        ];
+        return view('user::pages.dashboard.index_spice_club', $viewData);
+    }
+
     public function listOrder()
     {
         \SEOMeta::setTitle('Danh sách đơn hàng');
