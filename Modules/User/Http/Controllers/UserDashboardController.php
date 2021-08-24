@@ -131,7 +131,6 @@ class UserDashboardController extends Controller
 
     public function myfavorites_delete(Request $request)
     {
-        dd($request->all());
         if ($request->id) {
             $id_del = $request->id;
             $del_id_product = Favourite::where('f_id', $request->id)->where('f_user_id', get_data_user('web'))->delete();

@@ -461,6 +461,17 @@ class UserPayController extends UserController
                 \Cart::destroy();
                 return $momo_Url;
             }
+        } else {
+            $data_mm = [
+                'user_id' => get_data_user('web'),
+                'phone' => $request->method_phone,
+                'type_pay' => $type_pay,
+            ];
+            $order->fill($data_mm)->save();
+            $data_bill = Uni_Order::find($id);
+            Mail::to($data_bill['email'])->send(new SendMail($data_bill));
+            \Cart::destroy();
+            return redirect()->route('get_user.list_order');
         }
 
 
