@@ -7303,32 +7303,10 @@ shopTheRecipeCarousel.forEach((el) => { new ShopTheRecipeCarousel(el); });
     let storageTimeLimit = 30 * 60 * 1000;
     let user = { isLoggedIn: false, initials: localStorage.getItem("initials"), firstName: localStorage.getItem("fname"), favorites: [], carts: [], cartTotal: 0, shelves: [], priceLookup: { skus: {} }, wishlist: { id: -1, items: {} } };
     const messaging = { dashboard: "Welcome Back, $name", account: { login: { url: "/customer/account/login/referer/" + btoa(location.href), text: " Sign In/Create Account" }, links: [{ url: "/customer/account/", text: "My Account" }, { url: "/sales/order/history/", text: "My Orders" }, { url: "/company/users/", text: "My Organization", b2b: true }, { url: "/wishlist/", text: "My Wishlist" }, { url: "/customer/account/logout/referer/" + btoa(location.href), text: "Sign Out" }] }, pdp: { review: "Write a Review", signin: { message: "Please $link to view price", link: { url: "/customer/account/login/referer/" + btoa(location.href), text: "sign in" } }, shelves: { product: "", shelf: "", addSuccess: "$product has been added to your $shelf.", addError: "There was an error adding $product to your $shelf.", addErrorSelectShelf: "Please select a shelf." }, actions: { shelves: { cta: "Add to Shelf", modal: { ariaLabel: "Add to Shelf", headline: "Add to Shelf", confirmBtn: "Confirm", closeBtn: "Close" } }, wishlist: { add: "Add to Wishlist", remove: "Remove from Wishlist" }, cart: { cta: "Change Cart", modal: { ariaLabel: "Change Cart", headline: "Choose a cart", createPlaceholder: "Cart Name", createLabel: "Create", createTrigger: "Create a new cart", createBtn: "Create", confirmBtn: "Confirm", closeBtn: "Close" } } } }, plp: { actions: { qtyLabel: "Quantity", add: "Add to Cart" } }, cart: { addSuccess: { message: "You've added $productName to your cart", product: "", btn: {}, analytics: [] }, addError: "There was an error adding the item to your cart", changeSuccess: "You've changed your default cart", changeError: "There was an error changing your default cart", qtyMissingError: "Please specify the quantity of product(s)", qtyInvalidError: "Please specify a valid quantity of product(s)", cartNameMissingError: "Please specify a name for the cart", cartSelectMissingError: "Please select a cart or create a new one" }, minicart: { fallbackImg: `https://cdn2.webdamdb.com/md_YYMY3r48rXV0.jpg?` + Date.now(), signin: { message: "You must $link to see your carts.", link: { url: "/customer/account/login/referer/" + btoa(location.href), text: "sign in" } }, empty: { b2c: "Your Shopping Cart is Empty.", b2b: "You do not have any saved carts" }, total: { b2c: "Your Cart Total:", b2b: "Group Total", b2b_my_total: "My Approved Total", b2b_my_draft_total: "My Draft Total" }, viewBtn: { url: { b2b: "/requisition_list/requisition/index/", b2c: "/checkout/cart/" }, text: { b2c: "View Cart", b2b: "View Saved Carts" } }, checkoutBtn: { url: "/checkout/", message: window.location.origin.indexOf("coopmarket.com") !== -1 ? "Proceed to Checkout" : "Checkout on Co-Op Market" }, accessibility: { message: "My Cart", count: "($count items)" }, trackRemove: {} }, wishlist: { product: "", addSuccess: "$product has been added to your Wish List.", addError: "There was an error adding $product to your Wish List.", removeSuccess: "$product has been removed from your Wish List.", removeError: "There was an error removing $product from your Wish List.", trackAdd: {} }, favorites: { link: "", add: "Add to Favorites", remove: "Remove from Favorites", title: "", addSuccess: "$title has been added to your Favorites.", addError: "There was an error adding $title to your Favorites.", removeSuccess: "$title has been removed from your Favorites.", removeError: "There was an error removing $title from your Favorites.", signin: "/customer/account/login/referer/" + btoa(location.href) }, newsletter: { button: "", email: "", success: "$email has been signed up for the Newsletter.", error: "There was an error subscribing $email to the Newsletter.", errorEmptyEmail: "This is a required field." } };
-    (function setStoreEndpoint() { if (FrontierConfigs.type === "B2B") { storeHeader = "default"; return (storeEndpoint = FrontierConfigs.paths.b2b); } else { storeHeader = "frontiercoopmarket"; if (FrontierConfigs.paths[FrontierConfigs.domain]) { return (storeEndpoint = FrontierConfigs.paths[FrontierConfigs.domain]); } else { return (storeEndpoint = FrontierConfigs.paths.b2c); } } })();
     disableAddToCartAction();
     disableFavoritesAction();
     addSigninLink();
-    loggedOutAccountNav();
-    if ((!storedCartId && storeEndpoint !== FrontierConfigs.paths.b2b) || !storageTimestamp || (storageTimestamp && Date.now() > storageTimestamp) || !user.initials) {
-        hideDashboardBlock();
-        initSession();
-    } else {
-        user.isLoggedIn = true;
-        if (storeEndpoint === FrontierConfigs.paths.b2b) {
-            getSavedCartsB2B();
-            getShelves();
-            showPDPActions();
-            showPLPProductAction();
-            addPDPActionListeners();
-            showDashboardBlock();
-        } else { getCartData(); }
-        displayAccountNav();
-        showWishlistAction();
-        addWishlistListeners();
-        getWishlist();
-        getFavorites();
-        getSkuPrices();
-        addAddToCartListeners();
-    }
+
 
     function initSession(doneCallback) {
         apiRequest(`${storeEndpoint}/acquia/action/init`, "GET", {}, false, true, function({ quoteType, quoteId, maskedQuoteId, email, name, lastname, accountType, defaultSavedCart, hash }) {
@@ -7455,26 +7433,6 @@ shopTheRecipeCarousel.forEach((el) => { new ShopTheRecipeCarousel(el); });
         $(".m-account-menu a[href*=login]").parent().hide();
         $(".m-account-menu a[href*=membership]").parent().hide();
         $(".m-account-menu a[href*=wishlist]").parent().show();
-    }
-
-    function loggedOutAccountNav() {
-        const isPb = (FrontierConfigs.domain == 'plantboss');
-        if (isPb) { return; }
-        $(".m-account-menu a[href*=login]").parent().show();
-        $(".m-account-menu a[href*=membership]").parent().show();
-        $(".m-account-menu a[href*=wishlist]").parent().show();
-        let accountNav = $("<ul class='m-account-dropdown__list'></ul>");
-        accountNav.append(`<li class="m-account-dropdown__item">
-      <a href="${ storeEndpoint+messaging.account.login.url }" class="m-account-dropdown__link">
-        ${ messaging.account.login.text }
-      </a>
-    </li>`);
-        $(".c-header__main-panel-bottom").remove();
-        $(".c-header__main-panel-top").after(accountNav);
-        accountNav.wrap("<div class='c-header__main-panel-bottom'><div class='c-header__account-menu-mobile' id='c-header__account-menu-mobile'></div></div>");
-        const socialLinks = $(".c-footer__social-links .m-social-links").clone();
-        $(".c-header__account-menu-mobile").after(socialLinks);
-        socialLinks.wrap("<div class='c-header__social' id='c-header__social'></div>");
     }
 
     function getSkuPrices() {

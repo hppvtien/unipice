@@ -52,7 +52,6 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('gio-hang', 'CartController@index')->name('get.cart');
     Route::get('san-pham/{slug}.html', 'CategoryController@index')->name('get.category');
     Route::post('san-pham/{slug}.html', 'CategoryController@fillter_product')->name('get.fillter');
-    //Route::get('thanh-toan','CheckoutController@index')->name('get.chekout');
     Route::get('faq', 'FaqsController@index')->name('get.faq');
 
     Route::get('cua-hang', 'FindStoreController@index')->name('get.find');
@@ -75,3 +74,5 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('chinh-sach-bao-mat', 'HomeController@BaoMat')->name('get.chinh_sach_bao_mat');
     Route::get('sitemap', 'SitemapController@sitemap')->name('get_site_map');
 });
+
+Route::get('guiemail', 'Email_test1Controller@send_email_test1')->name('gui_email_1');

@@ -1,34 +1,7 @@
 @extends('pages.layouts.app_master_frontend') @section('contents')
 <main id="maincontent" class="can_le">
-    <div class="page messages">
-        <div data-placeholder="messages"></div>
-        <div data-bind="scope: 'messages'">
-            <!-- ko if: cookieMessages && cookieMessages.length > 0 -->
-            <!-- /ko -->
-
-            <!-- ko if: messages().messages && messages().messages.length > 0 -->
-            <!-- /ko -->
-        </div>
-
-    </div>
     <div class="columns">
         <div class="column"><input name="form_key" type="hidden" value="km16CTJGtrby3Kv1">
-            <div id="authenticationPopup" data-bind="scope:'authenticationPopup'" style="display: none;">
-                <script>
-                    window.authenticationPopup = {
-                        "autocomplete": "off",
-                        "customerRegisterUrl": "https:\/\/shop.coopmarket.com\/customer\/account\/create\/",
-                        "customerForgotPasswordUrl": "https:\/\/shop.coopmarket.com\/customer\/account\/forgotpassword\/",
-                        "baseUrl": "https:\/\/shop.coopmarket.com\/"
-                    };
-                </script>
-                <!-- ko template: getTemplate() -->
-
-
-                <!-- /ko -->
-
-            </div>
-
             <div class="container">
                 <div class="col-md-12 mt-5">
                     <div class="row">
@@ -145,7 +118,7 @@
                         <div class="actions-toolbar">
                             <div class="c-contact-form__submit primary">
                                 <input type="hidden" name="hideit" id="hideit" value="">
-                                <input type="hidden" name="source" id="source" value="coopMarket">
+                                <input type="hidden" name="source" id="source" value="UniMall">
                                 <button type="submit" title="Submit" class="a-btn a-btn--primary action submit primary">
                             <span>Gửi phản hồi</span>
                         </button>

@@ -71,7 +71,6 @@ html:not(.no-transition) body,
 }
 
 .zeynep ul>li.has-submenu {
-    background-image: url("../images/submenu-arrow.svg");
     background-repeat: no-repeat;
     background-position: right 26px center;
 }
@@ -128,7 +127,6 @@ html:not(.no-transition) body,
     width: 20px;
     height: 100%;
     transform: rotate(-180deg);
-    background-image: url("../images/submenu-arrow.svg");
     background-repeat: no-repeat;
     background-position: center right;
 }

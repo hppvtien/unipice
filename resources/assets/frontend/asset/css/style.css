@@ -6366,7 +6366,7 @@
         right: 0;
         top: -23px;
         height: 38px;
-        background: url(/torn-edge.png) repeat-x center
+        
     }
     
     @media screen and (min-width:768px) {
@@ -8533,7 +8533,7 @@
         bottom: 0;
         height: 50%;
         z-index: -10;
-        background: url(https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop_market/images/bgtexture2.jpg)
+         
     }
     
     .c-media-block-aligned--torn-edge {
@@ -8548,7 +8548,7 @@
         right: 0;
         bottom: -12px;
         height: 38px;
-        background: url(/torn-edge.png) repeat-x center
+        
     }
     
     .c-media-block-aligned--reverse-bg {
@@ -8771,11 +8771,11 @@
         right: 0;
         bottom: -12px;
         height: 38px;
-        background: url(/torn-edge.png) repeat-x center
+        
     }
     
     .c-cta-banner--bgImg {
-        background: url(https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop_market/images/bgtexture2.jpg)
+         
     }
     
     .c-cta-banner--isLight {
@@ -9243,7 +9243,7 @@
         right: 0;
         bottom: -12px;
         height: 38px;
-        background: url(/torn-edge.png) repeat-x center
+        
     }
     
     @media screen and (min-width:768px) {
@@ -9688,7 +9688,7 @@
         bottom: 0;
         height: 50%;
         z-index: 0;
-        background: url(https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop_market/images/bgtexture2.jpg)
+         
     }
     
     .c-products-slider--split-bg>* {
@@ -9697,7 +9697,7 @@
     }
     
     .c-products-slider--reverse-split-bg {
-        background: url(https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop_market/images/bgtexture2.jpg)
+         
     }
     
     .c-products-slider--reverse-split-bg::before {
@@ -9964,7 +9964,7 @@
         bottom: 0;
         height: 40%;
         z-index: 0;
-        background: url(https://www.coopmarket.com/themes/custom/frontierbase/dist/frontiercoop_market/images/bgtexture2.jpg)
+         
     }
     
     .c-categories-slider__heading-wrapper {
@@ -10097,7 +10097,7 @@
         right: 0;
         bottom: -12px;
         height: 38px;
-        background: url(/torn-edge.png) repeat-x center
+        
     }
     
     .c-categories-slider--light .m-heading__headline {
