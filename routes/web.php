@@ -52,7 +52,6 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('gio-hang', 'CartController@index')->name('get.cart');
     Route::get('san-pham/{slug}.html', 'CategoryController@index')->name('get.category');
     Route::post('san-pham/{slug}.html', 'CategoryController@fillter_product')->name('get.fillter');
-    //Route::get('thanh-toan','CheckoutController@index')->name('get.chekout');
     Route::get('faq', 'FaqsController@index')->name('get.faq');
 
     Route::get('cua-hang', 'FindStoreController@index')->name('get.find');

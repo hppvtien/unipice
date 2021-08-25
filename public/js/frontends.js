@@ -20146,7 +20146,6 @@
 
             var AutoloadJs = {
                 init: function init() {
-                    console.log("init Autoload Js");
                     _inc_auth__WEBPACK_IMPORTED_MODULE_1__["default"].init();
                     _inc_run_message__WEBPACK_IMPORTED_MODULE_2__["default"].init();
                     _inc_search__WEBPACK_IMPORTED_MODULE_3__["default"].init();

@@ -6605,7 +6605,7 @@ body._has-modal {
     right: 0;
     top: -23px;
     height: 38px;
-    background: url("../images/torn-edge.png") repeat-x center
+    
 }
 
 @media screen and (min-width:768px) {
@@ -8731,7 +8731,7 @@ body._has-modal {
     bottom: 0;
     height: 50%;
     z-index: -10;
-    background: url("../images/bgtexture2.jpg")
+   
 }
 
 .c-media-block-aligned--torn-edge {
@@ -8746,7 +8746,7 @@ body._has-modal {
     right: 0;
     bottom: -12px;
     height: 38px;
-    background: url("../images/torn-edge.png") repeat-x center
+    
 }
 
 .c-media-block-aligned--reverse-bg {
@@ -8969,12 +8969,9 @@ body._has-modal {
     right: 0;
     bottom: -12px;
     height: 38px;
-    background: url("../images/torn-edge.png") repeat-x center
+    
 }
 
-.c-cta-banner--bgImg {
-    background: url(../images/bgtexture2.jpg)
-}
 
 .c-cta-banner--isLight {
     color: #fff
@@ -9843,7 +9840,7 @@ body._has-modal {
     bottom: 0;
     height: 50%;
     z-index: 0;
-    background: url("../images/bgtexture2.jpg")
+   
 }
 
 .c-products-slider--split-bg>* {
@@ -9852,7 +9849,7 @@ body._has-modal {
 }
 
 .c-products-slider--reverse-split-bg {
-    background: url("../images/bgtexture2.jpg")
+   
 }
 
 .c-products-slider--reverse-split-bg:before {
@@ -10119,7 +10116,7 @@ body._has-modal {
     bottom: 0;
     height: 40%;
     z-index: 0;
-    background: url("../images/bgtexture2.jpg")
+   
 }
 
 .c-categories-slider__heading-wrapper {
@@ -10252,7 +10249,7 @@ body._has-modal {
     right: 0;
     bottom: -12px;
     height: 38px;
-    background: url("../images/torn-edge.png") repeat-x center
+    
 }
 
 .c-categories-slider--light .m-heading__headline {
