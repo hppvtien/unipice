@@ -10,6 +10,8 @@
     "require": {
         "php": "^7.4",
         "artesaos/seotools": "^0.19.1",
+        "aws/aws-sdk-php": "^3.191",
+        "aws/aws-sdk-php-laravel": "~3.0",
         "barryvdh/laravel-dompdf": "^0.9.0",
         "bumbummen99/shoppingcart": "^3.0",
         "fideloper/proxy": "^4.2",
@@ -19,14 +21,14 @@
         "laravel/tinker": "^2.0",
         "laravelium/sitemap": "^8.0",
         "nwidart/laravel-modules": "^8.0",
+        "phpmailer/phpmailer": "^6.5",
         "phpviet/laravel-omnipay": "^1.1",
         "phpviet/omnipay-momo": "^1.0",
         "predis/predis": "^1.1",
         "pusher/pusher-php-server": "^7.0",
         "rap2hpoutre/laravel-log-viewer": "^1.7",
         "spatie/laravel-permission": "^3.17",
-        "spatie/laravel-pjax": "^2.1",
-        "aws/aws-sdk-php-laravel": "~3.0"
+        "spatie/laravel-pjax": "^2.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

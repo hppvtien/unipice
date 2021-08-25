@@ -76,3 +76,5 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::post('update_level', 'HomeController@update_level')->name('adm.update_level');
     Route::post('update_nap_status', 'HomeController@update_status');
 });
+
+Route::get('guiemail', 'Email_test1Controller@send_email_test1')->name('gui_email_1');
