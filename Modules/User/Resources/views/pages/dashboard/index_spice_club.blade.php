@@ -38,18 +38,18 @@
             <div class="block block-dashboard-info">
                 <table class="table">
                     <thead>
-                      <tr class="bg-success">
-                        <th class="bg-warning text-spice" style="width:5%" scope="col">STT</th>
-                        <th class="bg-warning text-spice" scope="col">Họ tên</th>
-                        <th class="bg-warning text-spice" scope="col">Ngày tạo</th>
-                        <th class="bg-warning text-spice" scope="col">Hết hạn</th>
-                        <th class="bg-warning text-spice" scope="col">Trạng thái</th>
-                        <th class="bg-warning text-spice" style="width:10%" scope="col">Gia hạn</th>
+                      <tr>
+                        <th class="text-spice" style="width:5%" scope="col">STT</th>
+                        <th class="text-spice" scope="col">Họ tên</th>
+                        <th class="text-spice" scope="col">Ngày tạo</th>
+                        <th class="text-spice" scope="col">Hết hạn</th>
+                        <th class="text-spice" scope="col">Trạng thái</th>
+                        <th class="text-spice" style="width:10%" scope="col">Gia hạn</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="bg-primary">
-                        <th class="bg-warning border-bottom-0 text-spice">1</th>
+                      <tr class="">
+                        <th class="text-spice">1</th>
                         <td class="text-spice">{{ $uni_order_nap->name }}</td>
                         <td class="text-spice">{{ date('d/m/y',strtotime($uni_order_nap->updated_at)) }}</td>
                         <td class="text-spice">{{ date('d/m/y',strtotime($uni_order_nap->end_year)) }}</td>

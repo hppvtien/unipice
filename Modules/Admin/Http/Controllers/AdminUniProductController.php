@@ -22,28 +22,23 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Modules\Admin\Http\Requests\AdminLotRequest;
-use Modules\Admin\Http\Requests\AdminUniProductRequest; 
+use Modules\Admin\Http\Requests\AdminUniProductRequest;
 
 class AdminUniProductController extends AdminController
 {
     public function index()
     {
+        // dd($request->all());
         $uni_product = Uni_Product::orderByDesc('id')->get();
-        $uni_color = Uni_Color::orderByDesc('id')->get();
-        $uni_lotproduct = Uni_LotProduct::orderByDesc('id')->get();
-        $uni_size = Uni_Size::orderByDesc('id')->get();
-        $uni_tag = Uni_Tag::orderByDesc('id')->get();
-        $uni_trade = Uni_Trade::orderByDesc('id')->get();
-        $uni_category = Uni_Category::orderByDesc('id')->get();
+        // $uni_color = Uni_Color::orderByDesc('id')->get();
+        // $uni_lotproduct = Uni_LotProduct::orderByDesc('id')->get();
+        // $uni_size = Uni_Size::orderByDesc('id')->get();
+        // $uni_tag = Uni_Tag::orderByDesc('id')->get();
+        // $uni_trade = Uni_Trade::orderByDesc('id')->get();
+        // $uni_category = Uni_Category::orderByDesc('id')->get();
 
         $viewData = [
-            'uni_product' => $uni_product,
-            'uni_color' => $uni_color,
-            'uni_lotproduct'   => $uni_lotproduct,
-            'uni_size'       => $uni_size,
-            'uni_tag'      => $uni_tag,
-            'uni_trade'     => $uni_trade,
-            'uni_category'     => $uni_category
+            'uni_product' => $uni_product
         ];
         return view('admin::pages.uni_product.index', $viewData);
     }
@@ -72,16 +67,16 @@ class AdminUniProductController extends AdminController
             'colorOld'     => $colorOld,
             'sizeOld'     => $sizeOld,
             'categoryOld'     => $categoryOld,
-            'uni_category'     => $uni_category, 
+            'uni_category'     => $uni_category,
             'uni_product'     => $uni_product
         ];
-    // dd($viewData);
+        // dd($viewData);
         return view('admin::pages.uni_product.create', $viewData);
     }
 
     public function store(AdminUniProductRequest $request)
     {
-        $data                 = $request->except(['thumbnail', 'save', '_token', 'tags', 'album','avatar']);
+        $data                 = $request->except(['thumbnail', 'save', '_token', 'tags', 'album', 'avatar']);
         if ($request->album) {
             $album = [];
             foreach ($request->album as $item) {
@@ -109,7 +104,7 @@ class AdminUniProductController extends AdminController
             'view_price_sale' => $request->view_price_sale,
             'view_price_sale_store' => $request->view_price_sale_store,
         ];
-        
+
         $productID = Uni_Product::insertGetId($param);
 
         if ($productID) {
@@ -160,7 +155,7 @@ class AdminUniProductController extends AdminController
         $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
         $data['updated_at'] = Carbon::now();
         $data['updated_by'] = get_data_user('web');
-        
+
         if ($request->album) {
             $album = [];
             foreach ($request->album as $item) {
@@ -169,14 +164,13 @@ class AdminUniProductController extends AdminController
         } else {
             $album = [];
         }
-        if ($request->thumbnail) {           
+        if ($request->thumbnail) {
             $thumbnail = $request->thumbnail;
-             Storage::delete('public/uploads/'.$request->delete_thumbnail);
+            Storage::delete('public/uploads/' . $request->delete_thumbnail);
         } else {
             $thumbnail = $uni_product->thumbnail;
-
         }
-       
+
         $store_ab = array_merge($product_albumOld, $album);
         $param = [
             'name' => $request->name,
@@ -215,30 +209,28 @@ class AdminUniProductController extends AdminController
     }
     public function importview($id)
     {
-        $uni_lotproduct     = Uni_LotProduct::where('product_id',$id)->orderby('created_at','asc')->get();
-        foreach($uni_lotproduct as $key => $item){
-            if($item->export_qty !=null){
-                $item['total_export'] = array_sum(json_decode($item->export_qty));  
-                if($item->total_qty == $item['total_export']){
+        $uni_lotproduct     = Uni_LotProduct::where('product_id', $id)->orderby('created_at', 'asc')->get();
+        foreach ($uni_lotproduct as $key => $item) {
+            if ($item->export_qty != null) {
+                $item['total_export'] = array_sum(json_decode($item->export_qty));
+                if ($item->total_qty == $item['total_export']) {
                     $item['status'] = 0;
-                }
-                else {
+                } else {
                     $item['status'] = 1;
                 }
             } else {
                 $item['total_export'] = 0;
             }
 
-            if($item->qty == 0) {
+            if ($item->qty == 0) {
                 $item['status'] = 0;
                 $item['key_lot'] = 0;
             } else {
                 $item['status'] = 1;
-                $item['key_lot'] = $key+1;
+                $item['key_lot'] = $key + 1;
             }
-            
         }
-        $import_history     = ProductLotProduct::where('product_id',$id)->get();
+        $import_history     = ProductLotProduct::where('product_id', $id)->get();
         $viewData = [
             'uni_lotproduct'       => $uni_lotproduct,
             'import_history'       => $import_history
@@ -250,15 +242,15 @@ class AdminUniProductController extends AdminController
         $uni_product             = Uni_Product::findOrFail($id);
         $data               = $request->except(['save', '_token']);
         $qty_import = (int)$request->qty;
-       
+
         $qty_product = 0;
-        if($uni_product->qty == 0){
+        if ($uni_product->qty == 0) {
             $qty_product += $qty_import;
         } else {
             $qty_product = $uni_product->qty + $qty_import;
         };
-        
-        if($request->lotproduct_id){
+
+        if ($request->lotproduct_id) {
             $param = [
                 'qty' => $qty_product,
                 'price' => $request->price,
@@ -273,39 +265,38 @@ class AdminUniProductController extends AdminController
         }
         $uni_product->fill($param)->save();
         $uni_lotproduct     = Uni_LotProduct::findOrFail($request->lotproduct_id);
-        
-        if($uni_lotproduct->export_qty){
+
+        if ($uni_lotproduct->export_qty) {
             $export_qty = json_decode($uni_lotproduct->export_qty);
-            array_push($export_qty,$request->qty);
+            array_push($export_qty, $request->qty);
         } else {
-            $export_qty= [];
-            array_push($export_qty,$request->qty);
+            $export_qty = [];
+            array_push($export_qty, $request->qty);
         }
-    
+
         $param_lotproduct = [
             'qty' => $uni_lotproduct->qty - $qty_import,
             'export_qty' => $export_qty
         ];
-        
+
         $uni_lotproduct->fill($param_lotproduct)->save();
         $this->syncLotProduct($id, $request->lotproduct_id, $request->qty, $request->price, $request->price_sale, $request->price_sale_store);
 
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.uni_product.index');
     }
-    protected function syncLotProduct($productID, $lot_product, $product_qty, $price_lotproduct,$price_lotproduct_sale,$price_lotproduct_store)
+    protected function syncLotProduct($productID, $lot_product, $product_qty, $price_lotproduct, $price_lotproduct_sale, $price_lotproduct_store)
     {
         if (!empty($lot_product)) {
-                ProductLotProduct::insert([
-                    'product_id' => $productID,
-                    'lotproduct_id'    => $lot_product,
-                    'inventory'    => $product_qty,
-                    'price'    => $price_lotproduct,
-                    'price_sale'    => $price_lotproduct_sale,
-                    'price_sale_store'    => $price_lotproduct_store,
-                    'created_at'    => Carbon::now()
-                ]);
-        
+            ProductLotProduct::insert([
+                'product_id' => $productID,
+                'lotproduct_id'    => $lot_product,
+                'inventory'    => $product_qty,
+                'price'    => $price_lotproduct,
+                'price_sale'    => $price_lotproduct_sale,
+                'price_sale_store'    => $price_lotproduct_store,
+                'created_at'    => Carbon::now()
+            ]);
         }
     }
     protected function syncTagProduct($productID, $tags)
@@ -375,7 +366,7 @@ class AdminUniProductController extends AdminController
         $album_product = json_decode($uni_product);
         if (in_array($request->name_img, $album_product)) {
             $album_product = \array_diff($album_product, [$request->name_img]);
-            
+
             Storage::delete('public/uploads_Product/' . $request->name_img);
             array_multisort($album_product);
             $param['album'] = json_encode($album_product);
@@ -391,14 +382,14 @@ class AdminUniProductController extends AdminController
         if ($request->ajax()) {
             $product = Uni_Product::findOrFail($id);
             $uni_product = Uni_Product::where('id', $id)->pluck('album')->first();
-         
+
             if ($product) {
-                if($uni_product){
-                    foreach(json_decode($uni_product) as $item){
-                        Storage::delete('public/uploads_Product/'.$item);
+                if ($uni_product) {
+                    foreach (json_decode($uni_product) as $item) {
+                        Storage::delete('public/uploads_Product/' . $item);
                     }
-                }              
-                Storage::delete('public/uploads/'.$product->thumbnail);
+                }
+                Storage::delete('public/uploads/' . $product->thumbnail);
                 $product->delete();
                 ProductTag::where('product_id', $id)->delete();
                 ProductCategory::where('product_id', $id)->delete();
@@ -439,5 +430,14 @@ class AdminUniProductController extends AdminController
         }
 
         return  null;
+    }
+    public function search_ajax(Request $request)
+    {
+        $keyword = $request->keyword;
+        $uni_product = Uni_Product::where('name', 'LIKE', '%' . $keyword . "%")->get();
+        if($uni_product){
+            $html = view('admin::pages.uni_product.index_ajax', compact('uni_product'))->render();
+        }
+        return $html;
     }
 }

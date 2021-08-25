@@ -82,34 +82,6 @@ class AdminUserController extends AdminController
             if ($users) {
                 
                 Uni_Order::where('user_id', $id)->delete();
-                
-                // if ($tran) {
-                //     $bin = Bill::whereIn('id_transaction', $tran)->get();
-                //     dd($bin);
-                //     if($bin){
-                //         $bin->delete();
-                //     }
-                //     $order = Order::whereIn('o_transaction_id', $tran)->get();
-                //     if($order){
-                //         $order->delete();
-                //     }
-                //     $data_tran = Transaction::where('t_user_id', $id)->get();
-                //     if($data_tran){
-                //         $data_tran->delete();
-                //     }
-                // }
-                
-                // $job = Jobs::where('user_id', $id)->pluck('id');
-                // if($vote){
-                //     $vote->delete(); 
-                // }
-           
-                // if($user_voucher){
-                //     $user_voucher->delete();
-                // }
-            
-                
-                
                 $users->delete();
             }
             return response()->json([
@@ -119,4 +91,5 @@ class AdminUserController extends AdminController
         }
         return redirect()->to('/');
     }
+   
 }

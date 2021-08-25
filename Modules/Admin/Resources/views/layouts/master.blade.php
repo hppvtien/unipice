@@ -27,7 +27,7 @@
     @endif
     <script>
         var URL_UPLOAD = "{{ route('post_ajax_admin.uploads') }}"
-    </script>
+    </script> 
 </head>
 <body class="main-body app sidebar-mini">
 <!-- Start Switcher -->
@@ -55,8 +55,10 @@
 @include('admin::components._inc_footer')
 <!-- JQuery min js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="{{ asset('js_admin/jquery.min.js') }}"></script>
 <script src="{{ asset('js_admin/admin_dashboard.js') }}"></script>
 <script src="{{ asset('js_admin/select2.min.js') }}"></script>
+<script src="{{ asset('js_admin/index.js') }}"></script>
 <script src="{{ asset('js_admin/custom.js') }}"></script>
 <script src="{{ asset('plugin/ckeditor/ckeditor.js') }}"></script>
 <script src="{{ asset('plugin/ckfinder/ckfinder.js') }}"></script>

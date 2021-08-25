@@ -150,4 +150,13 @@ class AdminUniPostController extends AdminController
 
         return redirect()->to('/');
     }
+    public function search_ajax(Request $request)
+    {
+        $keyword = $request->keyword;
+        $uni_post = Uni_Post::where('name', 'LIKE', '%' . $keyword . "%")->get();
+        if($uni_post){
+            $html = view('admin::pages.blog_post.uni_post.index_ajax', compact('uni_post'))->render();
+        }
+        return $html;
+    }
 }

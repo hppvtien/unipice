@@ -7,6 +7,7 @@ Route::prefix('uni_order')->namespace('Cart')->group(function (){
     Route::get('trash/{idOrder}', 'AdminUniOrderController@movetrash')->name('get_admin.uni_order.movetrash')->middleware('permission:uni_order_delete|full');
     Route::get('delete/{idOrder}', 'AdminUniOrderController@delete')->name('get_admin.uni_order.delete')->middleware('permission:uni_order_delete|full');
     Route::get('/{idOrder}/edit', 'AdminUniOrderController@edit')->name('get_admin.uni_order.edit')->middleware('permission:uni_order_edit|full');
+    Route::post('/search_ajax', 'AdminUniOrderController@search_ajax')->name('get_admin.uni_order.search_ajax');
     Route::post('/{idOrder}/edit', 'AdminUniOrderController@update')->middleware('permission:uni_order_edit|full');
 });
 
