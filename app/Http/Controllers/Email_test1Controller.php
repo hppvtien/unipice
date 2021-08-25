@@ -11,7 +11,7 @@ class Email_test1Controller extends Controller
 {
     public function send_email_test1(){
         $order = 1;
-        Mail::to('ducanh30091995hpv@gmail.com')->send(new Email_test1($order));
+        Mail::to('nguyenxuandai217@gmail.com')->send(new Email_test1($order));
 
     }
 }

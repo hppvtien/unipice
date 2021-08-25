@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
 use App\Mail\SendMail;
+use App\Mail\SendMailCK;
 use Illuminate\Support\Str;
 use App\Models\Configuration;
 use App\Models\Voucher;
@@ -469,7 +470,7 @@ class UserPayController extends UserController
             ];
             $order->fill($data_mm)->save();
             $data_bill = Uni_Order::find($id);
-            Mail::to($data_bill['email'])->send(new SendMail($data_bill));
+            Mail::to($data_bill['email'])->send(new SendMailCK($data_bill));
             \Cart::destroy();
             return redirect()->route('get_user.list_order');
         }
@@ -560,7 +561,7 @@ class UserPayController extends UserController
                 $product['qty'] = $uni_product->qty - $items->qty;
                 $uni_product->fill($product)->save();
             };
-            $data['status'] = 1;
+            $data['status'] = 2;
             $order->fill($data)->save();
             $message = 'Cám ơn quý khách đã tin tưởng và ủng hộ chúng tôi !!!';
             return view('user::pages.pay.finish_pay', compact('message'));
@@ -664,7 +665,8 @@ class UserPayController extends UserController
             // dd($order);
             $data['pay_node'] = $errorCode . '-' . $localMessage . '[' . $responseTime . ']';
             if ($errorCode == '0') {
-                $data['status'] = 1;
+                $data['status'] = 2;
+                
             } else {
                 $data['status'] = 0;
             }
