@@ -18,6 +18,7 @@ Route::prefix('blog-post')->namespace('Blog')->group(function (){
         Route::get('update/{id}', 'AdminUniPostController@edit')->name('get_admin.post.edit')->middleware('permission:post_edit|full');
         Route::post('update/{id}', 'AdminUniPostController@update');
         Route::get('delete/{id}', 'AdminUniPostController@delete')->name('get_admin.post.delete')->middleware('permission:post_delete|full');
+        Route::post('/search_ajax', 'AdminUniPostController@search_ajax')->name('get_admin.post.search_ajax');
     });
     
 });

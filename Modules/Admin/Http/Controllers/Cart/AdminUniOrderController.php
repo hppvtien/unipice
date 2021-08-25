@@ -151,5 +151,31 @@ class AdminUniOrderController extends AdminController
         $this->showMessagesSuccess('Cập nhật thành công');
         return redirect()->back();
     }
+    public function search_ajax(Request $request)
+    {
+        $from_date = $request->from_date;
+        $to_date = $request->to_date;
+        $keyword = $request->keyword;
+        $range_date = $request->range_date;
+        $type_pay = $request->type_pay;
+        if($keyword){
+            $uni_order = Uni_Order::where('customer_name', 'LIKE', '%' . $keyword . "%")->get();
+        } elseif($range_date) {
+            $uni_order = Uni_Order::whereBetween('updated_at', [Carbon::now()->subDays($range_date),Carbon::now()])->get();
+        } elseif($to_date != '' && $from_date != ''){
+            $uni_order = Uni_Order::whereBetween('updated_at', [$from_date,$to_date])->get();
+        } elseif($type_pay) {
+            $uni_order = Uni_Order::where('type_pay', $type_pay)->get();
+        } else {
+            $uni_order = Uni_Order::get();
+        }
+        
+        if($uni_order){
+            $html = view('admin::pages.uni_order.index_ajax', compact('uni_order'))->render();
+        } else {
+            $html = 'Không tìm thấy kết quả nào';
+        }
+        return $html;
+    }
    
 }

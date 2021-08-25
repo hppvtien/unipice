@@ -352,12 +352,34 @@ $(".input-type-cart").on('change', function() {
 });
 
 function get_email() {
+
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     var email = $('#email1').val();
+    var email_check = re.test(email);
     var data_url = $('#email1').attr('data-url');
-    $.post(data_url, { user_email: email })
-        .done(function(data) {
-            console.log(data);
-        });
+    if (email_check == false) {
+        $("#toast-container").html(
+                '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Kiểm tra lại email vừa nhập.</div></div>'
+            ),
+            4000;
+        setTimeout(function() {
+            $(".toast-error").remove();
+        }, 2000);
+    } else {
+        $.post(data_url, { user_email: email })
+            .done(function(data) {
+                console.log(data);
+                $("#toast-container").html(
+                        '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Kiểm tra.</div></div>'
+                    ),
+                    4000;
+                setTimeout(function() {
+                    $(".toast-success").remove();
+                }, 2000);
+            });
+    }
+
+
 }
 
 $("#momo-success").on("click", function() {
@@ -563,27 +585,6 @@ function chanFunctionMethodTran() {
     $('#total-all').html('')
     $('.error-input').html('');
 }
-
-$('.custom-logo-link').on('click', function() {
-    let data_u = window.location.origin + '/update_level';
-    let data_v = window.location.origin + '/update_nap_status';
-    $.ajax({
-        url: data_u,
-        method: "post",
-        dataType: 'json',
-        data: {
-            url: 'abc',
-        },
-    });
-    $.ajax({
-        url: data_v,
-        method: "post",
-        dataType: 'json',
-        data: {
-            url: data_v,
-        },
-    });
-});
 $('.redect-b2b').on('click', function() {
     let rd_url = $(this).attr('data-url');
     window.location.href = rd_url;

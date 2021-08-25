@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="vi">
+
 <head>
     {!! SEO::generate() !!}
     <meta charset="UTF-8">
@@ -7,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
     <link rel="icon" href="{{ asset('img/brand/favicon.png') }}" type="image/x-icon" />
-    <meta name="csrf-token" content="{{ csrf_token() }}" /> 
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link href="{{ asset('css/css_js/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/css_js/unimall_style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/unimall2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
     <link href="{{ asset('css/css_js/custom.css') }}" rel="stylesheet">
     @yield('css_js_spice_club')
     @if(session('toastr'))
@@ -44,29 +46,29 @@
             <a class="col-md-12 row" href="{{ route('get.spice_club') }}">
                 <span class="icon-account font_icon_new" id="count-fff" aria-hidden="true"><b> Spice Club</b></span>
             </a>
-            
-            <a class="col-md-12 row" href="{{ route('get_user.myfavorites') }}" >
-                
+
+            <a class="col-md-12 row" href="{{ route('get_user.myfavorites') }}">
+
                 <?php if (count_fav(get_data_user('web')) == 0 || get_data_user('web') == null) { ?>
                     <span class="icon-favorite font_icon_new" id="count-fff" aria-hidden="true"><b> Yêu Thích</b></span>
                 <?php } else { ?>
-                    <span class="icon-favorite  font_icon_new" id="count-fff" aria-hidden="true"><b>  Yêu Thích {{ count_fav(get_data_user('web')) }} Sản Phẩm</b></span>
+                    <span class="icon-favorite  font_icon_new" id="count-fff" aria-hidden="true"><b> Yêu Thích {{ count_fav(get_data_user('web')) }} Sản Phẩm</b></span>
                 <?php } ?>
             </a>
-            <a class="col-md-12 row" href="{{ route('get_user.cart') }}" >
-            <span class="icon-cart font_icon_new"><b>Giỏ Hàng 
-                @php
-                $dem = count(\Cart::content());
-                @endphp
-                @if($dem == 0 || get_data_user('web') == null)           
-                @else
-                {{ $dem }} Sản Phẩm
-                @endif
-                </b> 
-            </span>
+            <a class="col-md-12 row" href="{{ route('get_user.cart') }}">
+                <span class="icon-cart font_icon_new"><b>Giỏ Hàng
+                        @php
+                        $dem = count(\Cart::content());
+                        @endphp
+                        @if($dem == 0 || get_data_user('web') == null)
+                        @else
+                        {{ $dem }} Sản Phẩm
+                        @endif
+                    </b>
+                </span>
             </a>
-            <a class="col-md-12 row" href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i>  {{ formatPhoneNumber($configuration->hotline) }}</span></a>
-        
+            <a class="col-md-12 row" href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i> {{ formatPhoneNumber($configuration->hotline) }}</span></a>
+
         </div>
     </div>
 
@@ -173,36 +175,35 @@
     <script src="{{ asset('css/css_js/popper.min.js') }}"></script>
     <script src="{{ asset('css/css_js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('css/css_js/jquery.zeynep.min.js') }}"></script>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="{{ asset('fontend_js/select2.min.js') }}"></script>
     <script src="{{ asset('fontend_js/custom.js') }}"></script>
     <script src="{{ asset('js/frontends.js') }}"></script>
     <script src="{{ asset('fontend_js/unijs.js') }}"></script>
 
     @yield('js_about')
 
-    
+
 
     <!-- CUSTOM FUCTIONS  -->
     <script>
         jQuery(document).ready(function() {
 
-        var btn = $('.back-to-top');
+            var btn = $('.back-to-top');
 
-        $(window).scroll(function() {
-            if ($(window).scrollTop() > 500) {
-                btn.addClass('show');
-            } else {
-                btn.removeClass('show');
-            }
-        });
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > 500) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
 
-        btn.on('click', function(e) {
-            e.preventDefault();
-            $('html, body').animate({
-                scrollTop: 0
-            }, '1500');
-        });
+            btn.on('click', function(e) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: 0
+                }, '1500');
+            });
 
         });
         $(function() {
@@ -245,7 +246,7 @@
             });
         });
     </script>
-   
+
 
     @yield('js_product_comment_review')
 

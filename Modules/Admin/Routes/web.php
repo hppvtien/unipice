@@ -20,7 +20,8 @@ Route::group(['namespace' => 'Auth','prefix' => 'auth'], function (){
 });
 Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
     Route::get('/', 'AdminDashboardController@index')->name('get_admin.dashboard')->middleware('permission:dashboard|full');
-
+    Route::post('/update_level', 'AdminDashboardController@update_level')->name('adm.update_level');
+    Route::post('/update_nap_status', 'AdminDashboardController@update_status')->name('adm.update_level');;
     Route::prefix('slide')->group(function (){
         Route::get('/', 'AdminSlideController@index')->name('get_admin.slide.index')->middleware('permission:slide_index|full');
         Route::get('/create', 'AdminSlideController@create')->name('get_admin.slide.create')->middleware('permission:slide_create|full');
@@ -121,6 +122,7 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('update/{id?}', 'AdminUniProductController@delete_album')->name('get_admin.uni_product.delete_album');
         Route::get('import/{id}', 'AdminUniProductController@importview')->name('get_admin.uni_product.import');
         Route::post('import/{id}', 'AdminUniProductController@import');
+        Route::post('/search_ajax', 'AdminUniProductController@search_ajax')->name('get_admin.uni_product.search_ajax');
     });
     Route::prefix('uni_category')->group(function (){
         Route::get('/', 'AdminUniCategoryController@index')->name('get_admin.uni_category.index')->middleware('permission:uni_category_index|full');

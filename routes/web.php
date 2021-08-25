@@ -74,6 +74,4 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('thoa-thuan-su-dung', 'BlogHomeController@ThoaThuan')->name('get.thoa_thuan_su_dung');
     Route::get('chinh-sach-bao-mat', 'HomeController@BaoMat')->name('get.chinh_sach_bao_mat');
     Route::get('sitemap', 'SitemapController@sitemap')->name('get_site_map');
-    Route::post('update_level', 'HomeController@update_level')->name('adm.update_level');
-    Route::post('update_nap_status', 'HomeController@update_status');
 });

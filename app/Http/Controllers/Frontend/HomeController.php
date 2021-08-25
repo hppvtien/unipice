@@ -95,42 +95,7 @@ class HomeController extends Controller
         $html = view('pages.home.product_trade', compact('product'))->render();
         return $html;
     }
-    public function update_level(Request $request)
-    {
-        $uni_store = Uni_Store::get();
-        foreach ($uni_store as $key => $store) {
-            $uni_store_tt = Uni_Store::where('id', $store->id)->first();
-            $as_time = strtotime($uni_store_tt->end_date) - strtotime(Carbon::now());
-            if ($store->poin_store >= 30000 && $as_time < 0 && $store->poin_store < 75000) {
-                $data_store['type_store'] = 'Gold';
-                $uni_store_tt->fill($data_store)->update();
-            } elseif ($store->poin_store >= 75000 &&  $as_time < 0 && $store->poin_store < 135000) {
-                $data_store['type_store'] = 'Diamond';
-                $uni_store_tt->fill($data_store)->update();
-            } elseif ($store->poin_store >= 135000 &&  $as_time < 0) {
-                $data_store['type_store'] = 'Platinum';
-                $uni_store_tt->fill($data_store)->update();
-            } elseif ($store->poin_store < 30000 &&  $as_time < 0) {
-                $data_store['type_store'] = 'Silver';
-                $uni_store_tt->fill($data_store)->update();
-            }
-        }
-        $mes = 'load to page';
-        return $mes;
-    }
-    public function update_status(Request $request){
-        $uni_order = Uni_Order_Nap::get();
-        foreach ($uni_order as $key => $store) {
-            $uni_store_tt = Uni_Order_Nap::where('id', $store->id)->first();
-            $as_time = strtotime($uni_store_tt->end_year) - strtotime(Carbon::now());
-            if ($as_time < 0 ) {
-                $storle['status'] = 5;
-                $uni_store_tt->fill($storle)->update();
-            }
-        }
-        $mes = 'load to page';
-        return $mes;
-    }
+    
     public function BaoMat(Request $request){
         $page_chinh_sach = Page::where('p_style','chinh-sach-bao-mat')->first();
         $viewData=[

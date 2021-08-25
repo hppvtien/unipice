@@ -115,3 +115,115 @@ $('#is_flash_sale').on('click', function() {
     }
 
 });
+$('#update-status').on('click', function() {
+    let data_u = window.location.origin + '/admin/update_level';
+    let data_v = window.location.origin + '/admin/update_nap_status';
+    $.ajax({
+        url: data_u,
+        method: "post",
+        dataType: 'json',
+        data: {
+            url: 'abc',
+        },
+    });
+    $.ajax({
+        url: data_v,
+        method: "post",
+        dataType: 'json',
+        data: {
+            url: data_v,
+        },
+    });
+});
+$('.input-group-append').on('click', function() {
+    let keyword = $('#search_k').val();
+    let data_url = $('#search_k').attr('data-url');
+    if (keyword != '') {
+        $.ajax({
+            url: data_url,
+            method: "post",
+            data: {
+                keyword: keyword
+            },
+            success: function(result) {
+                $('#show-search').html(result);
+
+            },
+            error: function(result) {
+                console.log(result);
+            }
+        });
+    } else {
+        confirm('Vui lòng nhập từ khóa!!');
+    }
+});
+$('.input-group-append').on('click', function() {
+    let keyword = $('#search_k').val();
+    let data_url = $('#search_k').attr('data-url');
+    if (keyword != '') {
+        $.ajax({
+            url: data_url,
+            method: "post",
+            data: {
+                keyword: keyword
+            },
+            success: function(result) {
+                $('#show-search').html(result);
+
+            },
+        });
+    } else {
+        confirm('Vui lòng nhập từ khóa!!');
+    }
+});
+$('#range_date').on('change', function() {
+    let range_date = $('#range_date').find(":selected").val();
+    let data_url = $('#search_k').attr('data-url');
+    $.ajax({
+        url: data_url,
+        method: "post",
+        data: {
+            range_date: range_date
+        },
+        success: function(result) {
+            $('#show-search').html(result);
+
+        },
+    });
+
+});
+$('#type_pay').on('change', function() {
+    let type_pay = $('#type_pay').find(":selected").val();
+    let data_url = $('#search_k').attr('data-url');
+    $.ajax({
+        url: data_url,
+        method: "post",
+        data: {
+            type_pay: type_pay
+        },
+        success: function(result) {
+            $('#show-search').html(result);
+
+        },
+    });
+
+});
+$('.keypress-count').on('change', function() {
+    var from_date = $("input[name='from_date']").val();
+    var to_date = $("input[name='to_date']").val();
+    let data_url = $('#search_k').attr('data-url');
+    if (from_date != '' && to_date != '') {
+        $.ajax({
+            url: data_url,
+            method: "post",
+            data: {
+                from_date: from_date,
+                to_date: to_date
+            },
+            success: function(result) {
+                $('#show-search').html(result);
+
+            },
+        });
+    }
+});
