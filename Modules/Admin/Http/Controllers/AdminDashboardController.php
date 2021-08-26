@@ -21,14 +21,14 @@ class AdminDashboardController extends Controller
         $contact = Uni_Contact::where('created_at', '=', date_format(Carbon::now(), 'Y-m-d'))->get();
         $contact_show = Uni_Contact::where('created_at', '=', date_format(Carbon::now(), 'Y-m-d'))->limit(6)->get();
         $user = User::get();
-        $order = Uni_Order::where('created_at', '=', date_format(Carbon::now(), 'Y-m-d'))->get();
-        $order_show = Uni_Order::whereBetween('created_at', [date_format(Carbon::now(), 'Y-m-d'), date_format(Carbon::now(), 'Y-m-d')])->orwhere('status', '=', 1)->limit(5)->get();
+        $order = Uni_Order::get();
+        // $order_today = Uni_Order::whereDay('created_at',date('d'))->get();
+        $order_today = Uni_Order::whereDay('created_at',date('d-1'))->get();
         $viewData = [
             'contact' => $contact,
             'contact_show' => $contact_show,
             'user' => $user,
             'order' => $order,
-            'order_show' => $order_show
         ];
         return view('admin::index', $viewData);
     }

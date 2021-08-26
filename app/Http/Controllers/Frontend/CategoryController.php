@@ -49,6 +49,41 @@ class CategoryController extends Controller
         ];
         return view('pages.category.index', $viewdata);
     }
+    // public function all_product()
+    // {
+    //     $cat_id = Uni_Category::where('slug', $slug)->pluck('id')->first();
+    //     $category = Uni_Category::where('id', $cat_id)->first();
+    //     $trade = Uni_Trade::get();
+    //     $categories = Uni_Category::get();
+    //     $group_id_product = Product_Category::where('category_id', $cat_id)->pluck('product_id');
+    //     $product = Uni_Product::whereIn('id', $group_id_product)->orderBy('id', 'asc')->get();
+    //     $product_rel = Uni_Product::whereIn('id', $group_id_product)->where('is_hot',1)->orderBy('id', 'asc')->limit(12)->get();
+    //     $grp_id_cmt = Uni_Comment::where('star', '>', 4)->where('status', 1)->pluck('product_id');
+    //     $product_hotreview = Uni_Product::whereIn('id', $grp_id_cmt)->orderBy('id', 'asc')->limit(12)->get();
+    //     $count_product = count($group_id_product);
+       
+    //     \SEOMeta::setTitle($category->meta_title);
+    //     \SEOMeta::setDescription($category->meta_desscription);
+    //     \SEOMeta::setCanonical(\Request::url());
+    //     \OpenGraph::setDescription($category->meta_desscription);
+    //     \OpenGraph::setTitle($category->meta_title);
+    //     \OpenGraph::setUrl(\Request::url());
+    //     \OpenGraph::addProperty('type', 'articles');
+    //     \OpenGraph::addImage(URL::to('').pare_url_file($category->thumbnail));
+        
+    //     $uid = get_data_user('web');
+    //     $viewdata = [
+    //         'category' => $category,
+    //         'product_hotreview' => $product_hotreview,
+    //         'product' => $product,
+    //         'product_rel' => $product_rel,
+    //         'count_product' => $count_product,
+    //         'trade' => $trade,
+    //         'categories' => $categories,
+    //         'uid' => $uid
+    //     ];
+    //     return view('pages.category.index', $viewdata);
+    // }
     public function fillter_product(Request $request)
     {
         

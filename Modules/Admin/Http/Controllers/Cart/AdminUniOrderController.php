@@ -82,9 +82,7 @@ class AdminUniOrderController extends AdminController
                 $data['order_code'] = $result_cr->data->order_code;
                 curl_close($curl_creat_);
             } else if ($uni_order->method_ship == 2) {
-
                 $curl_ghtk = curl_init();
-
                 curl_setopt_array($curl_ghtk, array(
                     CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/order",
                     CURLOPT_RETURNTRANSFER => true,

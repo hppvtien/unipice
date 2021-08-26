@@ -35461,7 +35461,7 @@
 
                         return !0;
                     }());
-                }(e, e.location, d) ? d.src = i + "ionicons.z18qlu2u.js" : (d.src = i + "ionicons.suuqn5vt.js", d.setAttribute("type", "module"), d.setAttribute("crossorigin", !0)), d.setAttribute("data-resources-url", i), d.setAttribute("data-namespace", "ionicons"), n.head.appendChild(d);
+                }(e, e.location, d) ? d.src = i + "ionicons.z18qlu2u.js" : (d.src = i + "ionicons.js", d.setAttribute("type", "module"), d.setAttribute("crossorigin", !0)), d.setAttribute("data-resources-url", i), d.setAttribute("data-namespace", "ionicons"), n.head.appendChild(d);
         }(window, document, 0, 0, 0, 0, 0, 0, [
             ["ion-icon", "5nonw4yz", 1, [
                 ["ariaLabel", 2, 1, "aria-label", 2],
@@ -44170,8 +44170,7 @@
 
         /***/
     })
-    
+
 
     /******/
 });
-
