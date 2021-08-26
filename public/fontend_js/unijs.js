@@ -1800,8 +1800,7 @@ document.documentElement.className += ' js';
         }
     };
     domReady(function() { Drupal.attachBehaviors(document, drupalSettings); });
-})(Drupal, window.drupalSettings);;
-console.log("Frontier Base Theme");
+})(Drupal, window.drupalSettings);
 (function($) { let headerMainPanelBottom = $(".c-header__main-panel-bottom"); if (headerMainPanelBottom) { let menuMobile = headerMainPanelBottom.find(".c-header__account-menu-desktop"); if (menuMobile) { menuMobile.addClass('c-header__account-menu-mobile').removeClass('c-header__account-menu-desktop'); } } })(jQuery);;
 var u = "undefined" != typeof window && window === this ? this : "undefined" != typeof global && null != global ? global : this;
 
@@ -6439,7 +6438,7 @@ var Accordions = function(params) {
         for (var i = 0; i < accordions.length; i++) {
             (function(i) { new Accordion(accordions[i], params.options); })(i);
         }
-    } else { console.log('Did not find any accordion with selector ' + params.selector); }
+    } else {}
 }
 var collapsibleElemDefaultOptions = { triggerClass: 'js-collapsible-elem__trigger', openClass: 'js-collapsible-elem--open', transitionClass: 'js-collapsible-elem--transition', closeOnEsc: false, keyboardTrap: "none", contentClass: '', beforeOpen: function() { return; }, beforeClose: function() { return; } }
 

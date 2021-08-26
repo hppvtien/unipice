@@ -2975,7 +2975,6 @@
                 return Promise;
 
             })));
-            //# sourceMappingURL=es6-promise.map
             /* WEBPACK VAR INJECTION */
         }.call(this, __webpack_require__( /*! ./../../process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__( /*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
