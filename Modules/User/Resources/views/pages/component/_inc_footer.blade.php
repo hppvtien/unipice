@@ -18,7 +18,7 @@
                             </div>
                             <!-- End contact Icon -->
                             <div class="contact-info">
-                                <a href="https://goo.gl/maps/QrCzDdS4gKivind79" rel="nofollow" target="blank">
+                                <a href="#" rel="nofollow" target="blank">
                                     <p>{{ $configuration->address }}</p>
                                 </a>
                             </div>
@@ -138,7 +138,7 @@
                                     <img src="/images/icon_menu/bo_cong_thuong.png" alt="" class="can_tren_duoi">
                                 </div>
                                 <div class="col-md-6 row">
-                                    <a  href="https://www.dmca.com/Protection/Status.aspx?ID=f09a95dc-40db-40a5-9296-92...ce.vn/" target="_blank" rel="nofollow "> <img src="https://unispice.vn/wp-content/uploads/2018/02/dmca_protected.png" alt="" class="can_tren_duoi" style="margin-top: 25%;margin-left: 20%;"></a>
+                                    <a  href="#" target="_blank" rel="nofollow "> <img src="https://unispice.vn/wp-content/uploads/2018/02/dmca_protected.png" alt="" class="can_tren_duoi" style="margin-top: 25%;margin-left: 20%;"></a>
                                 </div>
                             </div>
                         </div>

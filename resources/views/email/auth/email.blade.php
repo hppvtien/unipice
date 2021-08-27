@@ -509,7 +509,7 @@ table{
                                                                                                 <tr>
                                                                                                     <td style="font-family:Arial,Helvetica,sans-serif; color:#3c4858; text-align:left;">
                                                                                                         <span style="color:#3c4858;">
-                                                                                                            <span style="font-size:22px;"><b>Kính gửi:Quý khách</b></span>
+                                                                                                            <span style="font-size:22px;"><b>Kính gửi: Quý khách {{ $data['name'] }}</b></span>
                                                                                                         </span>
                                                                                                     </td>
                                                                                                 </tr>
@@ -697,12 +697,7 @@ table{
                                                                                             <tbody>
                                                                                                 <tr>
                                                                                                     <td style="font-size:14px; font-family:Arial,Helvetica,sans-serif, sans-serif; color:#3c4858;">
-                                                                                                        <div><span style="font-size:18px;">Tên
-                                                                                                                đăng
-                                                                                                                nhập:
-                                                                                                                NGUYÊN
-                                                                                                                VAN
-                                                                                                                A</span>
+                                                                                                        <div><span style="font-size:18px;">Email đăng nhập: {{ $data['email'] }}</span>
                                                                                                         </div>
                                                                                                     </td>
                                                                                                 </tr>
@@ -752,29 +747,15 @@ table{
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <th class="rnb-force-col" valign="top">
-
+                                                                                        <table cellpadding="0" border="0" align="center" cellspacing="0" class="rnb-btn-col-content" style="margin:auto; border-collapse: separate;">
+                                                                                            <tbody><tr>
+                                                                                                <td width="auto" valign="middle" bgcolor="#ea7236" align="center" height="40" style="font-size:18px; font-family:Arial,Helvetica,sans-serif; color:#ffffff; font-weight:normal; padding-left:20px; padding-right:20px; vertical-align: middle; background-color:#ea7236;border-radius:4px;border-top:0px None #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000;">
+                                                                                                    <span style="color:#ffffff; font-weight:normal;">
+                                                                                                            <a style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank" href="{{ route('verify.email', $data['code_verication']) }}">Xác nhận đăng ký</a>
+                                                                                                        </span>
+                                                                                                </td>
+                                                                                            </tr></tbody></table>
                                                                                         <table border="0" valign="top" cellspacing="0" cellpadding="0" width="550" align="center" class="rnb-col-1">
-
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td valign="top">
-                                                                                                        <table cellpadding="0" border="0" align="center" cellspacing="0" class="rnb-btn-col-content" style="margin:auto; border-collapse: separate;">
-                                                                                                            <tbody>
-                                                                                                                <tr>
-                                                                                                                    <td width="auto" valign="middle" bgcolor="#ea7236" align="center" height="40" style="font-size:18px; font-family:Arial,Helvetica,sans-serif; color:#ffffff; font-weight:normal; padding-left:20px; padding-right:20px; vertical-align: middle; background-color:#ea7236;border-radius:4px;border-top:0px None #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000;">
-                                                                                                                        <span style="color:#ffffff; font-weight:normal;">
-                                                                                                                            <a style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank" href="#">Xác
-                                                                                                                                nhận
-                                                                                                                                đăng
-                                                                                                                                ký</a>
-                                                                                                                        </span>
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                            </tbody>
-                                                                                                        </table>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
                                                                                         </table>
                                                                                     </th>
                                                                                 </tr>

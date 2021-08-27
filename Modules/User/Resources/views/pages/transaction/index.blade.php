@@ -1,6 +1,5 @@
 @extends('pages.layouts.app_master_frontend')
 @section('contents')
-@include('pages.components.headers.css_js')
     <main id="maincontent" class="">
         <div class="page messages">
             <div data-placeholder="messages"></div>

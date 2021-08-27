@@ -109,7 +109,7 @@
                 <input id="search" name="search" type="text" placeholder="Tìm kiếm...">
             </form>
         </div>
-        <button class="btn btn-close" id="search-close"> <img src="http://d9hhrg4mnvzow.cloudfront.net/www2.iweb.com/windows-server-2016/ed5b870c-clear-close-cancel-white.png"></button>
+        <button class="btn btn-close" id="search-close"><i class="fa fa-window-close"></i></button>
     </div>
 </div>
 <!-- Navigation -->

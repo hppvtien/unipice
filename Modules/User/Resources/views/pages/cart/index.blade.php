@@ -1,6 +1,6 @@
 @extends('pages.layouts.app_master_frontend')
 @section('contents')
-@include('pages.components.headers.css_js')
+
 <script>
     function get_product_sale(get_id) {
         var get_id = $(get_id).attr("data-id-sale");
