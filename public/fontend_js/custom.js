@@ -37,6 +37,7 @@ $(".name-filler").on("click", function() {
             data_order: data_order
         },
         success: function(data) {
+            console.log(data);
             $("#show-product").html(data);
         },
         error: function(data) {

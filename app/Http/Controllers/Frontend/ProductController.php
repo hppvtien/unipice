@@ -9,7 +9,9 @@ use App\Models\Product_Category;
 use App\Models\Uni_Category;
 use App\Models\Product_Trade;
 use App\Models\Uni_Trade;
+use App\Models\Uni_Size;
 use App\Models\Uni_Comment;
+use App\Models\Product_Size;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\System\Slide;
@@ -25,11 +27,13 @@ class ProductController extends Controller
         $user_ids = get_data_user('web');
         $product = Uni_Product::where('slug', $slug)->first();
         $trade_id = Product_Trade::where('product_id', $product->id)->pluck('trade_id')->first();
+        $size_id = Product_Size::where('product_id', $product->id)->pluck('size_id')->first();
         $cat_grid = Product_Category::where('product_id', $product->id)->pluck('category_id');
         $cat_id = Uni_Category::whereIn('id', $cat_grid)->where('parent_id',0)->pluck('id')->first();
         $cat_data = Uni_Category::where('id', $cat_id)->first();
         $grp_id = Product_Category::where('category_id', $cat_id)->pluck('product_id');
-        $trade_name = Uni_Trade::where('id', $trade_id)->pluck('name')->first();
+        $trade_name = Uni_Trade::where('id', $trade_id)->first();
+        $size_name = Uni_Size::where('id', $size_id)->first();
         $uid = get_data_user('web');
 
         \SEOMeta::setTitle($product->meta_title);
@@ -70,8 +74,8 @@ class ProductController extends Controller
             'slides_home_four1' => $slides_home_four1,
             'count_bl1' => $count_bl1,
             'count_ch1' => $count_ch1,
+            'size_name' => $size_name
         ];
-
         return view('pages.product.index', $viewdata);
     }
 

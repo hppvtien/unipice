@@ -9,12 +9,27 @@
                     <header>
                         <div data-frontier-type="products_categories" id="taxonomy-term-521" class="taxonomy-term vocabulary-products-categories">
                             <div class="content">
-                                @include('pages.category._banner')
                                 <div class="layout layout--onecol">
                                     <div class="layout__region layout__region--content">
                                         <div class="views-element-container">
                                             <div class="t-plp js-plp" id="js-plp">
+                                                <div class="t-plp__nav">
+    
+                                                    <nav class="m-breadcrumb" aria-label="Breadcrumb">
+                                                        <h2 class="visually-hidden">Breadcrumb</h2>
+                                                        <ol class="m-breadcrumb__list">
+                                                            <li class="m-breadcrumb__item">
+                                                                <a class="a-anchor" href="/">Home</a>
+                                                            </li>
+                                                            <li class="m-breadcrumb__item m-breadcrumb__item--active">
+                                                                <a class="a-anchor" aria-current="page">Tất cả sản phẩm</a>
+                                                            </li>
+                                                        </ol>
+                                                    </nav>
                                                 @include('pages.category._fillterOptions')
+                                                <div class="t-plp__quick-filters js-mobile-quick-filters">
+                                                </div>
+                                            </div>
 
                                                 <div class="t-plp__container js-plp-container">
                                                     @include('pages.category._fillterBy')
@@ -22,23 +37,23 @@
                                                         <div class="row cat-desscription">
                                                             <div class="col-md-10">
                                                                 <p class="font-weight-bold" style="color: #000; background-color:transparent;font-size:20px;opacity: 1;">
-                                                                    {{ $category->desscription }}
+                                                                    {{ $page->p_desscription }}
                                                                 </p>
                                                                 <p style="color: #000; background-color:transparent; text-align:justify;opacity: 1;">
-                                                                    {!! $category->content !!}
+                                                                    {!! $page->p_content !!}                                                                
                                                                 </p>
 
                                                             </div>
-                                                            <div class="col-md-2" style="background-image: url({{ asset('/images/icon_menu/Spice-Header-2.png') }}); background-size: contain;
+                                                            <div class="col-md-2" style="background-image: url({{ asset('/images/icon_menu/Spice-Header-2.png') }}); 
+                                                            background-size: contain;
                                                             background-repeat: no-repeat;
-                                                            background-position: center;
-                                                            ">
+                                                            background-position: center; ">
 
                                                             </div>
                                                         </div>
                                                         <div class="cat-parent" style="padding: 30px 0">
                                                             <div class="row">
-                                                                @foreach(getCatParent($category->id) as $parentItem)
+                                                                @foreach($categories as $parentItem)
                                                                 <div class="col-md-3 col-lg-3 col-sm-4 col-12 parent-item">
                                                                     <a class="btn btn-parent" href="{{ getSlugCategory($parentItem->slug) }}">
                                                                         {{ $parentItem->name }}
@@ -54,7 +69,7 @@
                                                             <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
                                                                     <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" class="m-product-card">
                                                                         <div class="m-product-card__content-wrapper">
-                                                                            <a class="m-product-card__img-wrapper" href="{{ $item->slug }}" title="{{ $item->name }}">
+                                                                            <a class="m-product-card__img-wrapper" href="{{ getSlugProduct($item->slug) }}" title="{{ $item->name }}">
                                                                                 <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                                                                             </a>
                                                                             <a class="fav-product">
@@ -63,7 +78,7 @@
                                                                         </div>
                                                                         <div class="m-product-card__info">
                                                                             <div class="m-combined-product-name group-product">
-                                                                                <a class="m-combined-product-name__link product-name-fio uni-css-title" href="{{ $item->slug }}">
+                                                                                <a class="m-combined-product-name__link product-name-fio uni-css-title" href="{{ getSlugProduct($item->slug) }}">
                                                                                     <span class="a-folio">
                                                                                         {{ $item->name }}
                                                                                     </span>
@@ -231,26 +246,18 @@
                                                             }
                                                         </script>
                                                     </div>
-                                                    
+                                                    <div class="class_xem_them">
+                                                        <a href="javascript:;" id="loadMore">Xem Thêm</a>
+                                                    </div>
 
                                                 </div>
 
                                             </div>
 
                                         </div>
-                                    
+
                                     </div>
-                                    <?php if (count($product) > 8) { ?>
-                                        <div class="class_xem_them">
-                                            <a href="javascript:;" id="loadMore">Xem Thêm</a>
-                                        </div>
-                                    <?php } elseif (count($product) == 8) { ?>
-                                        <div class="class_xem_them">
-                                            <a href="javascript:;">Dữ liệu đang đang cập nhật!!</a>
-                                        </div>
-                                    <?php } else{} ?>
-                                  
-                                    
+
                                 </div>
                                 <div class="layout layout--onecol">
                                     @include('pages.category._item_product_rel')
@@ -258,7 +265,7 @@
 
                                 <div class="layout layout--onecol">
                                     <div class="layout__region layout__region--content">
-                                        <div class="c-media-block c-media-block--template-">
+                                        <div data-block-plugin-id="inline_block:media_block" data-inline-block-uuid="ee168006-3fe9-4f1c-bbc5-ba42ddc90f9a" class="c-media-block c-media-block--template-">
                                             <div class="c-media-block__image-wrapper">
                                                 <picture>
                                                     <source media="(min-width: 768px)" data-srcset="/storage/uploads/cm-hero-1627696924.png" srcset="/storage/uploads/cm-hero-1627696924.png">

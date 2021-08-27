@@ -50,7 +50,7 @@
                                 <h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">Đơn hàng</h6>
                                 <span class="badge badge-pill badge-warning ml-auto my-auto float-right">Đơn hàng chưa check</span>
                             </div>
-                            <p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">Hiện tại có {{ count_order() }} đơn hàng</p>
+                            <p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">Hiện tại có  đơn hàng</p>
                         </div>
                         <div class="menu-header-content bg-primary text-left">
                             <div class="d-flex">

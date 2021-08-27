@@ -505,7 +505,7 @@
                     <div class="opc-estimated-wrapper">
                         <div class="estimated-block">
                             <span class="estimated-label" style="font-size: 22px;text-transform: uppercase;font-weight: 500;">Tổng tiền phải thanh toán: </span>
-                            <span class="estimated-price" style="font-size: 22px;text-transform: uppercase;font-weight: 500;color:red">{{ \Cart::total(0,0,'.') }} đ</span>
+                            <span class="estimated-price" style="font-size: 22px;text-transform: uppercase;font-weight: 500;color:red">{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span>
                         </div>
 
                     </div>
@@ -728,9 +728,17 @@
                                                     </li>
                                                     <li class="product-item">
                                                         <div class="product-item-name-block">
+                                                            <div class="details-qty" id="total_discount">
+                                                                <span class="label">Ưu đãi SpiceClub: </span>
+                                                                <span class="value">-{{ formatVnd((int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="product-item">
+                                                        <div class="product-item-name-block">
                                                             <div class="details-qty">
                                                                 <span class="label">Tổng đơn hàng: </span>
-                                                                <span class="value" id="total-cart"><span>{{ \Cart::total(0,0,'.') }} đ</span></span>
+                                                                <span class="value" id="total-cart"><span>{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span></span>
                                                             </div>
                                                         </div>
                                                     </li>

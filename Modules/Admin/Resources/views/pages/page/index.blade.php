@@ -27,6 +27,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
+                                    <th>Discount</th>
                                     <th>Banner</th>
                                     <th>Style</th>
                                     <th>Action</th>
@@ -38,6 +39,9 @@
                                     <th scope="row">{{ $item->id }}</th>
                                     <td>
                                         <a href="javascript:;" title="{{ $item->p_name }}">{{ $item->p_name }}</a>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:;" title="{{ $item->discount }}">{{ $item->discount }}</a>
                                     </td>
                                     <td>
                                         <a href="{{ $item->p_banner }}" target="_blank" style="width: 200px;height: 100px;display: inline-block">

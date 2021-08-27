@@ -20,7 +20,7 @@
                     <div class="m-accordion__content-inner js-accordion-content-inner js-frontier-facet">
                         @forelse ($category_mn as $key => $item)
                         <div class="facet-item m-checkbox c-sidebar-filters__filter">
-                            <a href="javascript:;" class="name-filler parent-name" rel="nofollow" data-url="{{ route('get.fillter',$category->slug) }}" data-slug-cat="{{ $item->slug }}">
+                            <a href="javascript:;" class="name-filler parent-name" rel="nofollow" data-url="{{ route('get.fillter',$item->slug) }}" data-slug-cat="{{ $item->slug }}">
                                 <span class="m-checkbox__text-label facet-item__value" id="facet-item{{ $item->id }}">
                                     {{ $item->name }}
                                 </span>
@@ -36,7 +36,7 @@
                         <div class="m-catParent" id="m-catParent{{ $item->id }}">
                             @foreach(getCatParent($item->id) as $parentItem)
                             <div class="facet-item m-checkbox c-sidebar-filters__filter">
-                                <a href="/{{ getSlugCategory($parentItem->slug) }}" class="name-filler name-parent"  rel="nofollow" data-url="{{ route('get.fillter',$parentItem->slug) }}" data-slug-cat="{{ $parentItem->slug }}">
+                                <a href="{{ getSlugCategory($parentItem->slug) }}" class="name-filler name-parent"   data-url="{{ route('get.fillter',$parentItem->slug) }}" data-slug-cat="{{ $parentItem->slug }}">
                                     <h2 class="px-4 m-checkbox__text-label facet-item__value">
                                         {{ $parentItem->name }}
                                     </h2>
@@ -56,7 +56,7 @@
                     <div class="m-accordion__content-inner js-accordion-content-inner js-frontier-facet">
                         @forelse ($trade as $key => $item)
                         <div class="facet-item m-checkbox c-sidebar-filters__filter">
-                            <a href="javascript:;" class="name-filler" rel="nofollow" data-url="{{ route('get.fillter',$category->slug) }}" data-slug-trade="{{ $item->slug }}" data-drupal-facet-item-id="product-brand-plp-1171">
+                            <a href="javascript:;" class="name-filler" data-url="{{ route('get.fillter',$item->slug) }}" data-slug-trade="{{ $item->slug }}" data-drupal-facet-item-id="product-brand-plp-1171">
                                 <span class="m-checkbox__text-label facet-item__value">
                                     {{ $item->name }}
                                 </span>

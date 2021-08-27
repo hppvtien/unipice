@@ -7595,19 +7595,7 @@ shopTheRecipeCarousel.forEach((el) => { new ShopTheRecipeCarousel(el); });
         }
     }
 
-    function disableAddToCartAction() {
-        $(".m-product-overview__add-to-cart-btn").prop("disabled", true);
-        $(".m-product-card__add-to-cart-btn").prop("disabled", true);
-        $(".m-product-card__add-to-cart-icon").prop("disabled", true);
-        $(".c-products-slider__add-all-btn").prop("disabled", true);
-    }
 
-    function enableAddToCartAction() {
-        $(".m-product-overview__add-to-cart-btn").prop("disabled", false);
-        $(".m-product-card__add-to-cart-btn").prop("disabled", false);
-        $(".m-product-card__add-to-cart-icon").prop("disabled", false);
-        $(".c-products-slider__add-all-btn").prop("disabled", false);
-    }
 
     function disableFavoritesAction() { $(".js-favorite, .js-favorite-item").prop("disabled", true); }
 
@@ -8540,16 +8528,7 @@ shopTheRecipeCarousel.forEach((el) => { new ShopTheRecipeCarousel(el); });
         return cartActions;
     }
 
-    function updateMinicartCount(cart) {
-        if (storeEndpoint !== FrontierConfigs.paths.b2b) {
-            let count = 0;
-            if (cart && cart.items) { count = cart.items.reduce(function(acc, val) { return acc + val.quantity; }, 0) }
-            if (count > 0) { $('.c-header__minicart .a-icon-text-btn__label').text(messaging.minicart.accessibility.message + " " + messaging.minicart.accessibility.message.replace("$count", count)); if ($(".c-header__minicart-count span").length > 0) { $(".c-header__minicart-count span").text(count); } else { $('.c-header__minicart-button').append(`<div class="c-header__minicart-count"><span>${ count }</span></div>`) } } else {
-                $(".c-header__minicart-count").remove();
-                $('.c-header__minicart .a-icon-text-btn__label').text(messaging.minicart.accessibility.message);
-            }
-        }
-    }
+
 
     function addToCartHandler(qty, sku) {
         if (!user.isLoggedIn && storeEndpoint === FrontierConfigs.paths.b2b) { return; }

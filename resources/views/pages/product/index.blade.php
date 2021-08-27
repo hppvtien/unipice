@@ -86,9 +86,6 @@
                                                             <div class="m-price-lockup margin-single-10 ">
 
                                                                 <span class="m-price-lockup__price">
-                                                                    <span class="a-product-name a-title-des text-dark">
-                                                                        Mô tả về sản phẩm:
-                                                                    </span> <br>
                                                                     <span class="a-folio text-dark text-lowercase font-weight-normal">
                                                                         {{ $product->desscription }}
                                                                     </span> <br>
@@ -98,8 +95,22 @@
                                                                             Thương hiệu:
                                                                         </span>
                                                                         <span class="text-danger paid-save">
-                                                                            {{ $trade_name }}
+                                                                            <a class="text-dark d-inline" href="{{ getSlugTrade($trade_name->slug) }}">
+                                                                                {{ $trade_name->name }}
+                                                                            </a>
                                                                         </span>
+                                                                        
+                                                                    </span>
+                                                                    <span class="m-product-overview__price-wrapper d-block">
+                                                                        <span class="a-product-name a-title-des text-dark">
+                                                                            Khối lượng tĩnh:
+                                                                        </span>
+                                                                        <span class="text-danger paid-save">
+                                                                            
+                                                                                {{ $size_name->name }}
+                                                                            
+                                                                        </span>
+                                                                        
                                                                     </span>
                                                                 </span>
                                                             </div>
@@ -257,7 +268,7 @@
                         <div class="layout layout--onecol">
                             <div class="container">
                                 <div>
-                                    <h2>Mô tả về sản phẩm</h2>
+                                    <p class="font-weight-bold text-dark">Mô tả về sản phẩm</p>
                                 </div>
                                 <div>
                                     {!! $product->content !!}

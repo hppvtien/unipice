@@ -566,6 +566,10 @@
                                 <td><span>{{ formatVnd($order->total_vat) }} </span></td>
                             </tr>
                             <tr>
+                                <td colspan="3">Ưu đãi SpiceClub</td>
+                                <td><span>-{{ formatVnd((int)Cart::total(0,0,'')*(getDiscount()[0])/100) }} </span></td>
+                            </tr>
+                            <tr>
                                 <td colspan="3">Phí ship</td>
                                 <td><span>{{ formatVnd($order->total_ship) }}</span></td>
                             </tr>
