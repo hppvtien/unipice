@@ -17,7 +17,6 @@
     </div>
     <!-- /breadcrumb -->
     <!-- row -->
-
     <div class="row row-sm">
         <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
             <div class="card overflow-hidden sales-card bg-primary-gradient">
@@ -28,17 +27,17 @@
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white">500</h4>
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white">{{ countOrder(0) }}</h4>
                                 <p class="mb-0 tx-12 text-white op-7">So với hôm qua</p>
                             </div>
                             <span class="float-right my-auto ml-auto">
-                                <i class="fas fa-arrow-circle-up text-white"></i>
-                                <span class="text-white op-7"> +100</span>
+                                <i class="fas fa-arrow-circle-{{ (countOrder(0) - countOrder(1))>0 ? 'up':'down'; }} text-white"></i>
+                                <span class="text-white op-7"> {{ countOrder(0) - countOrder(1)>0 ? '-':'+'; }}{{ (countOrder(0) - countOrder(1)) }}</span>
                             </span>
                         </div>
                     </div>
                 </div>
-                <span id="compositeline" class="pt-1">30,32,22,55,12,60,70,80,80,55,66,77</span>
+                <span id="compositeline" class="pt-1">{{ countOrder(7).','.countOrder(6).','.countOrder(5).','.countOrder(4).','.countOrder(3).','.countOrder(2).','.countOrder(1).','.countOrder(0)}}</span>
             </div>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
@@ -76,13 +75,13 @@
                                 <p class="mb-0 tx-12 text-white op-7">So với hôm qua</p>
                             </div>
                             <span class="float-right my-auto ml-auto">
-                                <i class="fas fa-arrow-circle-up text-white"></i>
-                                <span class="text-white op-7"> +10</span>
+                                <i class="fas fa-arrow-circle-{{ (countContact(0) - countContact(1))>0 ? 'up':'down'; }} text-white"></i>
+                                <span class="text-white op-7"> {{ countContact(0) - countContact(1)>0 ? '-':'+'; }}{{ (countContact(0) - countContact(1)) }}</span>
                             </span>
                         </div>
                     </div>
                 </div>
-                <span id="compositeline3" class="pt-1">5,10,5,20,22,12,15,18,20,15,8,12,22,5,10,12,22,15,16,10</span>
+                <span id="compositeline3" class="pt-1">{{ countContact(7).','.countContact(6).','.countContact(5).','.countContact(4).','.countContact(3).','.countContact(2).','.countContact(1).','.countContact(0)}}</span>
             </div>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">

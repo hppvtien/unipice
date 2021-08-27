@@ -151,7 +151,7 @@ html:not(.no-transition) body,
 }
 
 .m-sort-by__arrow {
-    top: calc(50% - 14px);
+    top: calc(50% - 20px);
 }
 
 

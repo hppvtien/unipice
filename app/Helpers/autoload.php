@@ -56,6 +56,16 @@ function execPostRequest($url, $data)
      * @param string $tring
      * @return string $slug
      */
+    function getSlugTrade($tring)
+    {
+        $getSlug = '/thuong-hieu/'.$tring.'.html';
+        return $getSlug;
+    }
+       /**
+     * get slug product.
+     * @param string $tring
+     * @return string $slug
+     */
     function getSlugProduct($tring)
     {
         $getSlug = '/san-pham/'.$tring;
@@ -178,6 +188,54 @@ function execPostRequest($url, $data)
         $data_store = App\Models\Uni_Store::where('user_id',$id)->first();
         return $data_store;
     }
+            /**
+     * get price.
+     * @param int $day
+     * @return float $string[]
+     */
+    function countOrder($day)
+    {
+        
+        $order_Isday = App\Models\Cart\Uni_Order::whereBetween('created_at',[date_format(Carbon\Carbon::now()->subDays($day),'Y-m-d'. ' 00:00:00'), date_format(Carbon\Carbon::now()->subDays($day),'Y-m-d'.' 23:59:59')])->get();
+        $numb_order = count($order_Isday);
+        return $numb_order;
+    }
+            /**
+     * get price.
+     * @param int $day
+     * @return int $numb_order
+     */
+    function countContact($day)
+    {
+        
+        $order_Isday = App\Models\Uni_Contact::whereBetween('created_at',[date_format(Carbon\Carbon::now()->subDays($day),'Y-m-d'. ' 00:00:00'), date_format(Carbon\Carbon::now()->subDays($day),'Y-m-d'.' 23:59:59')])->get();
+        $numb_contact = count($order_Isday);
+        return $numb_contact;
+    }
+   
+            /**
+     * get price.
+     * @param int $day
+     * @return int $numb_order
+     */
+    function countProduct($day)
+    {
+        
+        $order_Isday = App\Models\Uni_Contact::whereBetween('created_at',[date_format(Carbon\Carbon::now()->subDays($day),'Y-m-d'. ' 00:00:00'), date_format(Carbon\Carbon::now()->subDays($day),'Y-m-d'.' 23:59:59')])->get();
+        $numb_contact = count($order_Isday);
+        return $numb_contact;
+    }
+            /**
+     * get price.
+     * @param int $day
+     * @return int $numb_order
+     */
+    function getDiscount()
+    {
+        
+        $discount_spiceclub = App\Models\Page::where('p_style','spice-club')->pluck('discount');
+        return $discount_spiceclub;
+    }
    
     function checkParent($id)
     {
@@ -186,12 +244,7 @@ function execPostRequest($url, $data)
         return $count_cid;
     }
 
-    function count_order()
-    {
-        $order = App\Models\Cart\Uni_Order::where('created_at','<',date_format(Carbon\Carbon::now(), 'Y-m-d'))->get();
-        $count_order = count($order);
-        return $count_order;
-    }
+
     function count_contact()
     {
         $contact = App\Models\Uni_Contact::where('created_at','<',date_format(Carbon\Carbon::now(), 'Y-m-d'))->get();

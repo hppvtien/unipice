@@ -160,6 +160,8 @@ class UserPayController extends UserController
                 $combo_id = 0;
             };
         };
+        // dd((int)str_replace(".", "", str_replace(" đs", "", $request->fee_ship));)
+        // dd(((int)\Cart::total(0,0,'')*10/100));
         $order_data = [
             'user_id' => get_data_user('web'),
             'code_invoice' => $request->code_invoice,
@@ -173,9 +175,10 @@ class UserPayController extends UserController
             'cart_info' => $listCarts,
             'combo_id' => $combo_id,
             'status' => 0,
-            'total_money' => (int)str_replace(".", "", \Cart::total(0, 0, '.')),
+            'total_money' => (int)str_replace(".", "", \Cart::total(0, 0, '.')) - (int)\Cart::total(0,0,'')*10/100,
             'total_vat' => (int)str_replace(".", "", \Cart::tax(0, 0, '.')),
             'total_no_vat' => (int)str_replace(".", "", \Cart::subtotal(0, 0, '.')),
+            'total_discount' => ((int)\Cart::total(0,0,'')*(getDiscount()[0])/100),
             'total_ship' => $total_ship,
             'created_at' => Carbon::now(),
 

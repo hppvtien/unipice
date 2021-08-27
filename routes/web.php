@@ -47,13 +47,16 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/forget-password{reset_code}', 'RegisterController@get_reset_code')->name('get.resetcodepassword');
     Route::post('/forget-password{reset_code}', 'RegisterController@postresetcodepassword')->name('post.resetcodepassword');
 
-    // Route::get('tat-ca-san-pham.html', 'CategoryController@all_product')->name('get.all_product');
+    Route::get('tat-ca-san-pham.html', 'CategoryController@all_product')->name('get.all_product');
+    Route::get('thuong-hieu/{slug}.html', 'CategoryController@trade_mark')->name('get.trade_product');
 
     Route::get('gioi-thieu', 'AboutController@index')->name('get.about');
     Route::get('gio-hang', 'CartController@index')->name('get.cart');
     Route::get('san-pham/{slug}.html', 'CategoryController@index')->name('get.category');
     Route::post('san-pham/{slug}.html', 'CategoryController@fillter_product')->name('get.fillter');
     Route::get('faq', 'FaqsController@index')->name('get.faq');
+
+
 
     Route::get('cua-hang', 'FindStoreController@index')->name('get.find');
     Route::post('cua-hang', 'FindStoreController@searchName');

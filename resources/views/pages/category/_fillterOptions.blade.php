@@ -1,15 +1,4 @@
-<div class="t-plp__nav">
-    <nav class="m-breadcrumb" aria-label="Breadcrumb">
-        <h2 class="visually-hidden">Breadcrumb</h2>
-        <ol class="m-breadcrumb__list">
-            <li class="m-breadcrumb__item">
-                <a class="a-anchor" href="/">Home</a>
-            </li>
-            <li class="m-breadcrumb__item m-breadcrumb__item--active">
-                <a class="a-anchor" aria-current="page">{{ $category->name }}</a>
-            </li>
-        </ol>
-    </nav>
+
     <div class="t-plp__filter-bar js-filter-bar">
         <div class="c-filter-bar">
             <button class="c-filter-bar__filter-btn a-icon-text-btn a-icon-text-btn--icon-right js-toggle-filters" type="button">
@@ -39,6 +28,4 @@
             </div>
         </div>
     </div>
-    <div class="t-plp__quick-filters js-mobile-quick-filters">
-    </div>
-</div>
+  

@@ -32,6 +32,13 @@
                         <span class="text-danger">{{ $errors->first('p_style') }}</span>
                         @endif
                     </div>
+                    <div class="form-group {{ ($pages->p_style == 'spice-club' ? '':'d-none') }}" >
+                        <label for="exampleInputEmail1" class="">Discount <span>(*)</span> </label>
+                        <input type="text" class="form-control keypress-count" name="discount" value="{{ old('discount', $pages->discount ?? '') }}">
+                        @if ($errors->first('discount'))
+                        <span class="text-danger">{{ $errors->first('discount') }}</span>
+                        @endif
+                    </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="">Content </label>
                         <textarea name="p_content" id="article-ckeditor" cols="30" rows="5">{!! old('p_content',$pages->p_content ?? '') !!}</textarea>

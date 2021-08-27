@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Uni_Product;
 use App\Models\Uni_FlashSale;
 use App\Models\Uni_Store;
+use App\Models\Cart\Uni_Order_Nap;
 
 class UserShoppingCartController extends UserController
 {
@@ -63,6 +64,7 @@ class UserShoppingCartController extends UserController
             } else { 
                 $uni_product = $this->checkProduct($id);
                 $uni_store = $this->checkStore($request->data_uid);
+                $uni_spiceclub = $this->checkSpiceClub($request->data_uid);
                 if($uni_store != null){
                     $price_cart = $request->data_qtyinbox * $uni_product->view_price_sale_store;
                     $type_box = 'store';
@@ -122,6 +124,10 @@ class UserShoppingCartController extends UserController
     protected function checkStore($id)
     {
         return Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('id')->first();
+    }
+    protected function checkSpiceClub($id)
+    {
+        return Uni_Order_Nap::where('user_id',$id)->where('status',2)->pluck('id')->first();
     }
 }
 
