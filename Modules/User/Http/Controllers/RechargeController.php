@@ -15,6 +15,41 @@ class RechargeController extends Controller
     {
         return view('user::pages.recharge.index');
     }
+    public function index_up()
+    {
+    return view('user::pages.recharge.indexup');
+    }
+    public function index_up_pos(Request $request, $id)
+    {
+        $uni_order = Uni_Order_Nap::where('user_id', $id)->where('status', 4)->first();
+        $order_data_naps = [
+            'status' => 5,
+        ];
+        $uni_order->fill($order_data_naps)->save();
+       
+        $order_data_nap = [
+            'user_id' => get_data_user('web'),
+            'name' => get_data_user('web','name'),
+            'email' => get_data_user('web','email'),
+            'address' => get_data_user('web','address'),
+            'phone' => get_data_user('web','phone'),
+            'type_pay' => $request->type_pay,
+            'status' => 0,
+            'price_nap' => $request->price_nap,
+            'created_at' => Carbon::now(),
+
+        ];
+
+        $idOrderNap = Uni_Order_Nap::insertGetId($order_data_nap);
+            $order_data_nap = Uni_Order_Nap::where('id', $idOrderNap)->where('user_id', get_data_user('web'))->first();
+            if ($order_data_nap->type_pay == 4) {
+                return redirect()->route('get_user.vnpaysuccsess.nap', $idOrderNap);
+            } elseif ($order_data_nap->type_pay == 2) {
+                return redirect()->route('get_user.momosuccsess.nap', $idOrderNap);
+            } else {
+                return redirect()->route('get_user.paysuccsess.nap', $idOrderNap);
+            }
+    }
     public function getSuccsess(Request $request, $id)
     {
         $order = Uni_Order_Nap::find($id);

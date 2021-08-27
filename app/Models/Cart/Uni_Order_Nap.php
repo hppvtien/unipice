@@ -39,11 +39,11 @@ class Uni_Order_Nap extends Model
             'class' => 'badge-success'
         ],
         self::STATUS_CANCEL => [
-            'name' => 'Huỷ bỏ',
+            'name' => 'Hủy bỏ',
             'class' => 'badge-dange'
         ],
         self::STATUS_TRASH => [
-            'name' => 'Thùng rác',
+            'name' => 'Gia hạn',
             'class' => 'badge-dange'
         ],
         self::STATUS_END_YEAR => [

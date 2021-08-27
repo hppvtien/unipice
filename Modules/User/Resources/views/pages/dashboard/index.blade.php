@@ -75,10 +75,11 @@
                                 <span class="text-primary">Tài khoản Spice Club</span>
                             </strong>
                             <div class="box-content">
-                                <span class="text-strong gd-danger">Vui lòng nạp tiền, Để hoàn tất thủ tục đăng ký.</span> <br>
+                                <span class="text-strong gd-danger">Hệ thống đã tiếp nhận yêu cầu đăng ký tài khoản từ Quý khách.</span> <br>
+                                <span class="text-strong ">Quý khách vui lòng nạp tiền để hệ thống kích hoạt tài khoản thành viên “Spice Club” cho quý khách.</span><br>
                             </div>
                             <div class="box-actions">
-                                <a class="action edit a-anchor" href="{{ route('get.recharge') }}"><span>Nạp tiền</span></a>
+                                <a class="a-btn a-btn--primary" href="{{ route('get.recharge') }}"><span>Nạp tiền</span></a>
                             </div>
                         </div>
                         @else
@@ -88,11 +89,14 @@
                                     <span class="text-primary">Tài khoản Spice Club</span>
                                 </strong>
                                 <div class="box-content">
-                                    <span class="text-strong gd-danger">Admin đã tiếp nhận, xin vui lòng đợi Admin duyệt</span><br>
+                                    <span class="text-strong ">Hệ thống đã tiếp nhận yêu cầu đăng ký tài khoản từ Quý khách.</span><br>
+                                    <span class="text-strong ">Quý khách vui lòng nạp tiền để hệ thống kích hoạt tài khoản thành viên “Spice Club” cho quý khách.</span><br>
                                     @if($uni_order_nap->type_pay == 1 )
-                                    <span class="text-strong gd-danger">Hình thức thanh toán:
-                                        Chuyển khoản<br>Tên tài khoản: NGUYEN VAN A<br>Số Tài khoản: 123456789
-                                        </span>
+                                    <span class="text-strong ">Hình thức thanh toán:
+                                        Chuyển khoản<br>Ngân Hàng Thương Mại Á Châu (ACB)<br>Chi Nhánh Thủy Nguyên – Hải Phòng<br>Số tài Khoản: 888 666 888 68<br>Chủ tài khoản: Vũ Mạnh Điều
+                                        </span><br>
+                                        <span class="text-strong gd-danger">Chú ý: Nội dung thanh toán quý khách vui lòng điền tên tài khoản {{get_data_user('web','name')}}<br> kèm mã đơn #SC{{$uni_order_nap->id}}.</span><br>
+                                        <span class="text-strong gd-danger">Trân trọng cảm ơn Quý khách!</span>
                                      @endif
                                 </div>
                             </div>
@@ -102,7 +106,9 @@
                                     <span class="text-primary">Tài khoản Spice Club</span>
                                 </strong>
                                 <div class="box-content">
-                                    <span class="text-strong gd-danger">Admin đang xử lý</span>
+                                    <span class="text-strong ">Hệ thống đã nhận được thông tin thanh toán của Quý khách.</span><br>
+                                    <span class="text-strong ">Quý khách vui lòng đợi hệ thống kích hoạt tài khoản thành viên “Spice Club” cho quý khách.</span><br>
+                                    <span class="text-strong gd-danger">Trân trọng cảm ơn Quý khách!</span>
                                 </div>
                             </div>
                             @elseif($uni_order_nap->status == 2)
@@ -111,29 +117,41 @@
                                     <span class="text-primary">Tài khoản Spice Club</span>
                                 </strong>
                                 <div class="box-content">
-                                    <span class="text-strong alert-success">Tài khoản đã được: active</span><br>
-                                    <span class="text-strong gd-danger">Ngày hết hạn: {{date_format(date_create($uni_order_nap->end_year),"d/m/Y") }}</span>
+                                    <span class="text-strong">Kính chào Quý khách: {{get_data_user('web','name')}}</span><br>
+                                    <span class="text-strong">Quý khách đã thanh toán thành công phí thành viên của Spice Club !</span><br>
+                                    <span class="text-strong">Lệ phí thành viên đã nạp: {{ formatVnd($uni_order_nap->price_nap) }} </span><br>
+                                    <span class="text-strong">Giá trị tài khoản thành viên “Spice Club”: từ {{date_format(date_create($uni_order_nap->created_at),"d/m/Y") }} đến {{date_format(date_create($uni_order_nap->end_year),"d/m/Y") }}</span>
                                 </div>
                             </div>
-                            @elseif($uni_order_nap->status == 3 || $uni_order_nap->status == 4)
+                            @elseif($uni_order_nap->status == 3)
                             <div class="box box-newsletter">
                                 <strong class="box-title">
                                     <span class="text-primary">Tài khoản Spice Club</span>
                                 </strong>
                                 <div class="box-content">
-                                    <span class="text-strong gd-danger">Bạn đã quá hạn thanh toán xin vui lòng liên hệ để biết thêm chi tiết</span>
+                                    <span class="text-strong ">Kính chào Quý khách: {{get_data_user('web','name')}}</span><br>
+                                    <span class="text-strong gd-danger">Chúng tôi rất tiếc phải huỷ mã đơn số: #SC{{$uni_order_nap->id}} của quý khách, vì lý do không nhận được thanh toán lệ phí nạp tiền.</span>
+                                    <span class="text-strong">Để biết thêm chi tiết xin vui lòng liên hệ</span>
+                                    <div><span class="text-primary"><i class="fa fa-phone-square"></i> Hotline:</span><a class="action edit a-anchor" href="tel:0356105899">0356.105.899</a></div>
+                                    <div><span class="text-primary"><i class="fa fa-envelope"></i> Email:</span><a class="action edit a-anchor" href="mailto:hotro@unimall.vn">hotro@unimall.vn</a></div>
+                                    <span class="text-strong">Hoặc thực hiện nạp một mã đơn mới.</span>
+                                    <div class="box-actions">
+                                        <a class="a-btn a-btn--primary" href="{{ route('get.recharge') }}"><span>Nạp tiền</span></a>
+                                    </div>
                                 </div>
                             </div>
-                            @elseif($uni_order_nap->status == 5)
+                            @elseif($uni_order_nap->status == 4)
                             <div class="box box-newsletter">
                                 <strong class="box-title">
                                     <span class="text-primary">Tài khoản Spice Club</span>
                                 </strong>
                                 <div class="box-content">
-                                    <span class="text-strong gd-danger">Tài khoản Spice Clup đã hết hạn xin vui lòng nạp tiền để nhận các ưu đã.</span> <br>
+                                    <span class="text-strong ">Kính chào Quý khách: {{get_data_user('web','name')}}</span><br>
+                                    <span class="text-strong gd-danger"> Hệ thống xin thông báo tài khoản quý khách đã hết hạn nhận được các ưu đãi của Spice Club xin vui lòng gia hạn thêm.</span> <br>
+                                    <span class="text-strong gd-danger">Trân trọng cảm ơn Quý khách!</span>
                                 </div>
                                 <div class="box-actions">
-                                    <a class="action edit a-anchor" href="{{ route('get.recharge') }}"><span>Nạp tiền</span></a>
+                                    <a class="a-btn a-btn--primary" href="{{ route('get.recharge.up') }}"><span>Gia hạn</span></a>
                                 </div>
                             </div>
                             @endif

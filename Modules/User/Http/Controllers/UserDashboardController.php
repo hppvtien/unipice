@@ -36,7 +36,7 @@ class UserDashboardController extends Controller
     public function spice_club()
     {
         \SEOMeta::setTitle('Thông tin khách hàng');
-        $uni_order_nap = Uni_Order_Nap::where('user_id', get_data_user('web'))->where('status', '!=', 5)->first();
+       $uni_order_nap = Uni_Order_Nap::where('user_id', get_data_user('web'))->get();
         $viewData = [
             'uni_order_nap' => $uni_order_nap,
         ];
