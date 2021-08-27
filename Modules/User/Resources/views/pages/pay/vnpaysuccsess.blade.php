@@ -1,5 +1,4 @@
 @extends('pages.layouts.app_master_frontend')
-@include('pages.components.headers.css_js')
 @section('contents')
 
 <style>

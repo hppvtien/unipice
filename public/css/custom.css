@@ -16,6 +16,10 @@
     width: auto;
 }
 
+#search-close i {
+    color: #fff;
+    font-size: 25px;
+}
 .uni-css-title {
     max-width: 100% !important;
 }

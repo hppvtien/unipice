@@ -11,6 +11,7 @@ use App\Models\User;
 use Mail;
 use Carbon\Carbon;
 use App\Mail\EmailVerificationMail;
+use App\Mail\EmailDangKySpiceClub;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\URL;
@@ -90,8 +91,10 @@ class SpiceClubController extends Controller
     }
     function update_spiceclub(Request $request, $id){
         $data = $request->except('_token');
-        $users = User::find($id)->update($data);
-        if ($users) {
+        $userss = User::where('id', $id)->first();
+        $usersp = User::find($id)->update($data);
+        if ($usersp) {
+        Mail::to($userss['email'])->send(new EmailDangKySpiceClub($userss));    
         $this->showMessagesSuccess('Hãy nạp tiền để hoàn tất đăng ký');
         return redirect()->route('get_user.dashboard');
         }
