@@ -94,7 +94,11 @@
                                                                                 <strong>{{ $data_bill['pay_node'] }}</strong>
                                                                             </li>
                                                                             <li>Phương thức vận chuyển:
-                                                                                <strong>{{ $data_bill['method_ship'] }}</strong>
+                                                                                @if ($data_bill['method_ship'] == 1)
+                                                                                <strong>Giao hàng nhanh</strong>
+                                                                                @else
+                                                                                <strong>Giao hàng tiết kiệm</strong>
+                                                                                @endif
                                                                             </li>
                                                                         </ul>
                                                                     </section>
