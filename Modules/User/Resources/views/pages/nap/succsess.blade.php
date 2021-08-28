@@ -528,10 +528,19 @@
                 </div>
             </div>
             <div class="block block-dashboard-info col-md-12 col-xs-12 noi_left cach_top_bottom">
-                <h2 class="text-success text-center" style="margin:0 auto">Vui lòng chuyển khoản<br>
-                    <span class="text-danger">Tên tài khoản:</span> NGUYEN VAN A<br>
-                    <span class="text-danger">Số tài khoản:</span> 0123456789<br>
-                    <span class="text-danger">Quản trị viên sẽ mở tài khoản của bạn khi bạn đã thanh toán.</span></h2>
+                <div> 
+                    <center>
+                    <div class="form-vnpay text-dark"><h3>Thông tin ngân hàng:</h3>
+                        <p class="font-weight-bold"><span class="text-info">Ngân hàng: {{ $bank_info->name }}</span></p> 
+                        <p class="font-weight-bold"><span class="text-info">Chi nhánh: {{ $bank_info->address }}</span></p>
+                        <p class="font-weight-bold"><span class="text-info">Số tài khoản: {{ $bank_info->account }}</span></p>
+                        <p class="font-weight-bold"><span class="text-info">Chủ tài khoản:: {{ $bank_info->master }}</span></p>
+                        <p class="font-weight-bold"><span class="text-info">Điện thoại hỗ trợ: {{ $bank_info->hotline }}</span></p>
+                        <p class="font-weight-bold"><span class="text-info">Email hỗ trợ: {{ $bank_info->email }}</span></p>
+                        <p class="font-weight-bold"><span class="text-info">Nội dung chuyển khoản: Thanh toan don hang #SC{{ $order->id }} email {{get_data_user('web','email')}}</span></p>
+                    </div>
+                </center>
+                </div>
             </div>
         </div>
         @include('user::pages.component._inc_menu_user')

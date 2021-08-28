@@ -4,6 +4,7 @@ namespace Modules\User\Http\Controllers;
 use App\Models\Cart\Uni_Order_Nap;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\BankInfo;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
@@ -53,7 +54,12 @@ class RechargeController extends Controller
     public function getSuccsess(Request $request, $id)
     {
         $order = Uni_Order_Nap::find($id);
-        return view('user::pages.nap.succsess', compact('order'));
+        $bank_info = BankInfo::where('status',1)->first();
+        $viewData=[
+            'bank_info'=>$bank_info,
+            'order'=>$order
+        ];
+        return view('user::pages.nap.succsess', $viewData);
     }
     public function getPayNap(Request $request)
     {

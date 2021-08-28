@@ -79,4 +79,3 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('sitemap', 'SitemapController@sitemap')->name('get_site_map');
 });
 
-Route::get('guiemail', 'Email_test1Controller@send_email_test1')->name('gui_email_1');

@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendMailCK extends Mailable
+class EmailOrderSuccess extends Mailable
 {
     use Queueable, SerializesModels;
     public $data_bill;
@@ -28,6 +28,6 @@ class SendMailCK extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.auth.email_chuyen_khoan')->with(['data_bill' =>$this->data_bill]);
+        return $this->markdown('email.auth.email_order_success')->with(['data_bill' =>$this->data_bill]);
     }
 }

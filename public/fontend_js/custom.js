@@ -335,7 +335,7 @@ $(".input-type-cart").on('change', function() {
         '<p class="font-weight-bold"><span class="text-info">Chi nhánh: ' + bank_info.address + '</span></p>' +
         '<p class="font-weight-bold"><span class="text-info">Điện thoại hỗ trợ: ' + bank_info.hotline + '</span></p>' +
         '<p class="font-weight-bold"><span class="text-info">Email hỗ trợ: ' + bank_info.email + '</span></p>' +
-        '<p class="font-weight-bold"><span class="text-info">Nội dung CK: Nội dung: Thanh toan don hang ' + invoice_id + '</span></p>' +
+        '<p class="font-weight-bold"><span class="text-info">Nội dung chuyển khoản: Thanh toan don hang ' + invoice_id + '</span></p>' +
         '</div></div>';
     let type_pay = $(this).val();
     if (type_pay == 1) {

@@ -332,9 +332,9 @@
                                                                         <td style="font-size:14px; font-family:Arial,Helvetica,sans-serif, sans-serif; color:#3c4858;"><div>
     <div style="text-align: justify;"><span style="font-size:16px;">Xin chào khách hàng {{ $data_bill['customer_name'] }}</span></div>
     
-    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách đang có hóa đơn số {{ $data_bill['code_invoice'] }} theo số hóa đơn được tạo vào ngày (ngày tạo hóa đơn) đang ở trạng thái chưa thanh toán.</span></div>
+    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách đang có hóa đơn số {{ $data_bill['code_invoice'] }} theo số hóa đơn được tạo vào ngày {{ date_format($data_bill['created_at'], 'd-m-Y') }} đang ở trạng thái chưa thanh toán.</span></div>
     
-    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách có thể thanh toán từ bây giờ. Nếu quý khách đã đặt mua hàng và đây là hóa đơn gia hạn thì việc thanh toán trước ngày đến hạn thanh toán là (+ 3 ngày so với ngày đặt) sẽ giúp quý khách tránh bị lỡ hạn thanh toán.</span></div>
+    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách có thể thanh toán từ bây giờ. Nếu quý khách đã đặt mua hàng và đây là hóa đơn gia hạn thì việc thanh toán trước ngày đến hạn thanh toán là {{ date_format($data_bill['created_at'], 'd-m-Y')->subday(3) }} sẽ giúp quý khách tránh bị lỡ hạn thanh toán.</span></div>
     
     <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
     
@@ -346,9 +346,9 @@
     
     <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
     
-    <div style="text-align: justify;"><span style="font-size:16px;">Ngày đến hạn thanh toán: (+ 3 ngày so với ngày đặt)</span></div>
+    <div style="text-align: justify;"><span style="font-size:16px;">Ngày đến hạn thanh toán: {{ date_format($data_bill['created_at'], 'd-m-Y')->subday(3) }}</span></div>
     
-    <div style="text-align: justify;"><span style="font-size:16px;">Xem hoá đơn được đính kèm theo email này: <a href="/in-pdf.html?data_id={{ $data_bill['id'] }}" download>Xem chi tiết</a></span></div>
+    <div style="text-align: justify;"><span style="font-size:16px;">Xem hoá đơn được đính kèm theo email này: <a href="{{ rount('get_user.generatePDF')}}?data_id={{ $data_bill['id'] }}" download>Xem chi tiết</a></span></div>
     </div>
     </td>
                                                                     </tr>

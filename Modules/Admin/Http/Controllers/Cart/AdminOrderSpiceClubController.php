@@ -40,10 +40,10 @@ class AdminOrderSpiceClubController extends AdminController
     public function edit($id, Request $request)
     {
         $uni_order = Uni_Order_Nap::findOrFail($id);
-        $status = Uni_Order_Nap::getStatusGlobal();
+        $statuss = Uni_Order_Nap::getStatusGlobal();
         $viewData = [
             'uni_order' => $uni_order,
-            'status' => $status
+            'statuss' => $statuss
         ];
         return view('admin::pages.uni_nap_spice_club.update', $viewData);
     }

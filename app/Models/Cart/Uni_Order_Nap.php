@@ -21,8 +21,8 @@ class Uni_Order_Nap extends Model
     const STATUS_DEFAULT = 0;
     const STATUS_PROCESS = 1;
     const STATUS_SUCCESS = 2;
-    const STATUS_TRASH  = 3;
-    const STATUS_CANCEL = 4;
+    const STATUS_CANCEL  = 3;
+    const STATUS_TRASH = 4;
     const STATUS_END_YEAR = 5;
     public $statusGlobal;
     protected $g_status = [

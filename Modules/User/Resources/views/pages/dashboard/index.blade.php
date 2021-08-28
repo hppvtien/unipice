@@ -95,7 +95,7 @@
                                     <span class="text-strong ">Hình thức thanh toán:
                                         Chuyển khoản<br>Ngân Hàng Thương Mại Á Châu (ACB)<br>Chi Nhánh Thủy Nguyên – Hải Phòng<br>Số tài Khoản: 888 666 888 68<br>Chủ tài khoản: Vũ Mạnh Điều
                                         </span><br>
-                                        <span class="text-strong gd-danger">Chú ý: Nội dung thanh toán quý khách vui lòng điền tên tài khoản {{get_data_user('web','name')}}<br> kèm mã đơn #SC{{$uni_order_nap->id}}.</span><br>
+                                        <span class="text-strong gd-danger">Nội dung chuyển khoản: Thanh toan don hang #SC{{$uni_order_nap->id}} email {{get_data_user('web','email')}}</span><br>
                                         <span class="text-strong gd-danger">Trân trọng cảm ơn Quý khách!</span>
                                      @endif
                                 </div>

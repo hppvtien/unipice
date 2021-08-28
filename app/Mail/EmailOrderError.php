@@ -7,21 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Email_test1 extends Mailable
+class EmailOrderError extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $data_bill;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-
-    public $order;
-
-    public function __construct($order)
+    public function __construct($data_bill)
     {
-        $this->order = $order;
+        $this->data_bill = $data_bill; 
     }
 
     /**
@@ -31,7 +28,6 @@ class Email_test1 extends Mailable
      */
     public function build()
     {
-        return $this->view('email_test1.order')
-        ->with(['orderName' => 'aaaaaaaaaaaaaaaaaaaaaaa', 'orderPrice' => 'bbbbbbbbbbbbbbbbbbbbbb']);
+        return $this->markdown('email.auth.email_order_error')->with(['data_bill' =>$this->data_bill]);
     }
 }
