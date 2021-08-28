@@ -277,26 +277,25 @@ class UserPayController extends UserController
             // if ($order_data_sucsses->type_pay == 4) {
             $url = '/thanh-toan/' . $idOrder;
             return $url;
-            // }
-            // elseif ($order_data_sucsses->type_pay == 2) {
-            //     $url = '/thanh-toan-momo/' . $idOrder;
-            //     return $url;
-            // } else {
-            //     $url = '/thanh-toan/' . $idOrder;
-            //     return $url;
-            // }
+        
         }
     }
     public function getSuccsess(Request $request, $id)
     {
-        $order = Uni_Order::find($id);
-        $bank_info = BankInfo::where('status',1)->first();
-        $viewData=[
-            'bank_info'=>$bank_info,
-            'order'=>$order
-        ];
-        // \Cart::destroy();
-        return view('user::pages.pay.succsess', $viewData);
+        $listCarts = \Cart::content();
+        if($listCarts){
+            $order = Uni_Order::find($id);
+            $bank_info = BankInfo::where('status',1)->first();
+            $viewData=[
+                'bank_info'=>$bank_info,
+                'listCarts'=>$listCarts,
+                'order'=>$order
+            ];
+            return view('user::pages.pay.succsess', $viewData);
+        } else {
+            return redirect('/');
+        }
+        
     }
     public function processSuccsess(Request $request, $id)
     {
@@ -475,7 +474,7 @@ class UserPayController extends UserController
             $data_bill = Uni_Order::find($id);
             Mail::to($data_bill['email'])->send(new SendMailCK($data_bill));
             \Cart::destroy();
-            return redirect()->route('get_user.list_order');
+            return redirect('/user/don-hang');
         }
 
 

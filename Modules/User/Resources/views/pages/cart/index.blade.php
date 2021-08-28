@@ -388,15 +388,20 @@
                                         </td>
                                     </tr>
                                     @else
-                                        
+
                                     @endif
-                                    
+
                                     <tr class="grand totals">
                                         <th class="mark" scope="row">
                                             <strong>Tổng đơn hàng</strong>
                                         </th>
                                         <td class="amount" data-th="Order Total">
+                                            @if (checkUidSpiceClub(get_data_user('web')))
                                             <strong><span class="price">{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span></strong>
+                                            @else
+                                            <strong><span class="price">{{ formatVnd((int)Cart::total(0,0,'')) }}</span></strong>
+                                            @endif
+
                                         </td>
                                     </tr>
                                 </tbody>
