@@ -59,13 +59,14 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Info</th>
+                                    <th>Khách hàng</th>
+                                    <th>Mã đơn</th>
                                     <th>CODE</th>
-                                    <th>TYPE PAY</th>
-                                    <th>Money</th>
-                                    <th>Status</th>
-                                    <th>Time</th>
-                                    <th>Action</th>
+                                    <th>Thanh toán</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,10 +75,12 @@
                                 <tr>
                                     <th scope="row">{{ $item->id }}</th>
                                     <td>
-                                        <p><span>Name: </span> <span class="text-success">{{ $item->user->name ?? "[N\A]" }}</span></p>
+                                        <p><span>Họ tên: </span> <span class="text-success">{{ $item->user->name ?? "[N\A]" }}</span></p>
                                         <p><span>Email: </span> <span class="text-success">{{ $item->user->email ?? "[N\A]" }}</span></p>
                                     </td>
-
+                                    <td>
+                                        <p>{{ $item->code_invoice ?? "[N\A]" }}</p>
+                                    </td>
                                     <td>
                                         {{ $item->t_code ?? "[N\A]" }}
                                     </td>
@@ -107,7 +110,9 @@
                         </table>
 
                     </div>
-
+                    <div>
+                        {!! $uni_order->links() !!}
+                    </div>
                 </div>
             </div>
         </div>

@@ -570,27 +570,14 @@
                      sans-serif;
                      color: #3c4858;
                      ">
-                  <div>
-                  <p style="font-size: 16px;margin-bottom: 10px!important;">Cám ơn Quý khách đã thanh toán  hóa đơn số {{ $uni_order['code_invoice'] }} theo số hóa đơn được tạo vào ngày {{ date_format($uni_order['created_at'], 'd-m-Y') }}.
-</p>
-                  </div>
                   <div style="text-align: justify;">
-                  <p style="font-size: 16px;margin-bottom: 10px!important;">
-                  Hình thức thanh toán của quý khách :  
-                  @if ($uni_order['type_pay'] == 3)
-                  Thanh toán qua MOMO
-                  @elseif ($uni_order['type_pay'] == 4) 
-                  Thanh toán qua VNPAY
-                  @elseif ($uni_order['type_pay'] == 1)
-                  Chuyển khoản
-                  @endif</p>
+                  <p style="font-size: 16px;margin-bottom: 10px!important; text-align: justify;">Chúng tôi rất tiếc phải huỷ đơn hàng số: {{ $uni_order['code_invoice'] }} của quý khách, vì lý do không nhận được thanh toán cho đơn hàng.  Bất cứ lúc nào quý khách hàng cũng có thể đặt mua những sản phẩm của chúng tôi tại UniMall, và chúng tôi luôn sẵn sàng phục vụ tới quý khách.</p>
                   </div>
+                
                   <div style="text-align: justify;">
-                  <p style="font-size: 16px;margin-bottom: 10px!important;">Xem chi tiết hóa đơn: <a  style="color: #0b2d25;" href="{{ route('get_user.generatePDF', 'data_id='.$uni_order['id']) }}">Tại đây</a></p>
-                  </div>
-                   <div style="text-align: justify;">
-                  <p style="text-align: center;font-size: 16px;margin-bottom: 10px!important;">Để nhận được nhiều đặc quyền với những ưu đãi hấp dẫn, bạn hãy tham gia trở thành thành viên của câu lạc bộ Spice Club của UniMall </p>
-                  </div>
+                  <p style="font-size: 16px;margin-bottom: 10px!important; text-align: justify;">Chúng tôi luôn nỗ lực hoàn thiện chất lượng phục vụ và mong muốn quý khách hàng có trải nghiệm tuyệt vời khi mua sắm trên UniMall. Nếu trong quá trình mua sắm trên UniMall của chúng tôi, có điểm gì làm quý khách hàng chưa có trải nghiệm tốt hãy cho chúng tôi được biết ngay để có thể khắc phục chất lượng dịch vụ ngày càng tốt hơn.
+                </div>
+                   
                   </td>
                   </tr>
                   </tbody>
@@ -616,109 +603,7 @@
                   </table>
                   </div>
                   </td>
-                  </tr>
-                  <tr>
-                  <td align="center" valign="top">
-                  <div style="
-                     background-color: rgb(255, 255, 255);
-                     border-radius: 0px;
-                     ">
-                  <table width="100%" cellpadding="0" border="0" cellspacing="0" name="Layout_16" id="Layout_16">
-                  <tbody>
-                  <tr>
-                  <td align="center" valign="top">
-                  <a href="#" name="Layout_16"></a>
-                  <table border="0" width="100%" cellpadding="0" cellspacing="0" class="rnb-container" bgcolor="#ffffff" style="
-                     height: 0px;
-                     background-color: rgb(255, 255, 255);
-                     border-radius: 0px;
-                     border-collapse: separate;
-                     padding-left: 20px;
-                     padding-right: 20px;
-                     ">
-                  <tbody>
-                  <tr>
-                  <td class="rnb-container-padding" style="
-                     font-size: px;
-                     font-family: ;
-                     color: ;
-                     ">
-                  <table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" align="left" style="margin: auto">
-                  <tbody>
-                  <tr>
-                  <th class="rnb-force-col" align="left" style="text-align: center;font-weight: normal;">
-                  <table border="0" cellspacing="0" cellpadding="0" align="center" class="rnb-col-1">
-                  <tbody>
-                  <tr>
-                  <td align="center" valign="top">
 
-                                    <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
-
-                                        <table class="rnb-del-min-width" width="100%" cellpadding="0" border="0" cellspacing="0" style="min-width:590px;" name="Layout_15" id="Layout_15">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="rnb-del-min-width" align="center" valign="top" style="min-width:590px;">
-                                                        <a href="#" name="Layout_15"></a>
-                                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="mso-button-block rnb-container" style="background-color: rgb(255, 255, 255); border-radius: 0px; padding-left: 20px; padding-right: 20px; border-collapse: separate;">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td height="20" style="font-size:1px; line-height:20px; mso-hide: all;">
-                                                                        &nbsp;</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td valign="top" class="rnb-container-padding" align="left">
-
-                                                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <th class="rnb-force-col" valign="top">
-                                                                                        <table cellpadding="0" border="0" align="center" cellspacing="0" class="rnb-btn-col-content" style="margin:auto; border-collapse: separate;">
-                                                                                            <tbody><tr>
-                                                                                                <td width="auto" valign="middle" bgcolor="#ea7236" align="center" height="40" style="font-size:18px; font-family:Arial,Helvetica,sans-serif; color:#ffffff; font-weight:normal; padding-left:20px; padding-right:20px; vertical-align: middle; background-color:#ea7236;border-radius:4px;border-top:0px None #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000;">
-                                                                                                    <span style="color:#ffffff; font-weight:normal;">
-                                                                                                            <a style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank" href="{{ route('get.register.spiceclub') }}">Đăng ký Spice Club</a>
-                                                                                                        </span>
-                                                                                                </td>
-                                                                                            </tr></tbody></table>
-                                                                                        <table border="0" valign="top" cellspacing="0" cellpadding="0" width="550" align="center" class="rnb-col-1">
-                                                                                        </table>
-                                                                                    </th>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td height="20" style="font-size:1px; line-height:20px; mso-hide: all;">
-                                                                        &nbsp;</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </th>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </div>
-                  </td>
-                  </tr>
                   <tr>
                   <td align="center" valign="top">
                   <div style="

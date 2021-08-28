@@ -22,7 +22,6 @@ class Uni_Order extends Model
     const STATUS_PROCESS = 1;
     const STATUS_SUCCESS = 2;
     const STATUS_TRASH  = 3;
-    const STATUS_CANCEL = 4;
     public $statusGlobal;
     protected $g_status = [
         self::STATUS_DEFAULT => [
@@ -37,14 +36,11 @@ class Uni_Order extends Model
             'name' => 'Hoàn thành',
             'class' => 'badge-success'
         ],
-        self::STATUS_CANCEL => [
-            'name' => 'Huỷ bỏ',
-            'class' => 'badge-dange'
-        ],
         self::STATUS_TRASH => [
             'name' => 'Thùng rác',
             'class' => 'badge-dange'
-        ]
+        ],
+        
     ];
 
 

@@ -8,13 +8,16 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Mail;
+use App\Mail\EmailOrderSuccess;
+use App\Mail\EmailOrderError;
 use Modules\Admin\Http\Controllers\AdminController;
 
 class AdminUniOrderController extends AdminController
 {
     public function index()
     {
-        $uni_order = Uni_Order::with('user:id,name,email')->where('status', '!=', 4)->orderByDesc('id')
+        $uni_order = Uni_Order::with('user:id,name,email')->where('status', '!=', 3)->orderByDesc('id')
             ->paginate(20);
         $viewData = [
             'uni_order' => $uni_order
@@ -23,7 +26,7 @@ class AdminUniOrderController extends AdminController
     }
     public function trash()
     {
-        $uni_order = Uni_Order::with('user:id,name,email')->where('status', 4)->orderByDesc('id')
+        $uni_order = Uni_Order::with('user:id,name,email')->where('status', 3)->orderByDesc('id')
             ->paginate(20);
 
         $viewData = [
@@ -34,7 +37,7 @@ class AdminUniOrderController extends AdminController
     public function movetrash($id)
     {
         $uni_order = Uni_Order::findOrFail($id);
-        $data['status'] = 4;
+        $data['status'] = 3;
         $uni_order->fill($data)->update();
         $this->showMessagesSuccess('Cập nhật thành công');
         return redirect()->back();
@@ -146,6 +149,12 @@ class AdminUniOrderController extends AdminController
             }
         }
         $uni_order->fill($data)->update();
+        if( $uni_order->status == 2){
+            Mail::to($uni_order['email'])->send(new EmailOrderSuccess($uni_order));
+        }elseif ($uni_order->status == 3){
+            Mail::to($uni_order['email'])->send(new EmailOrderError($uni_order));
+        }
+
         $this->showMessagesSuccess('Cập nhật thành công');
         return redirect()->back();
     }

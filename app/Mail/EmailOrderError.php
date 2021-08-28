@@ -10,24 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class EmailOrderError extends Mailable
 {
     use Queueable, SerializesModels;
-    public $data_bill;
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct($data_bill)
+    public $uni_order;
+  
+    public function __construct($uni_order)
     {
-        $this->data_bill = $data_bill; 
+        $this->uni_order = $uni_order; 
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
-        return $this->markdown('email.auth.email_order_error')->with(['data_bill' =>$this->data_bill]);
+        return $this->markdown('email.auth.email_order_error')->with(['uni_order' =>$this->uni_order]);
     }
 }
