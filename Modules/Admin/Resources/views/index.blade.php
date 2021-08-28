@@ -152,16 +152,16 @@
                         <thead>
                             <tr>
                                 <th class="wd-lg-25p">Tên đại lý</th>
-                                <th class="wd-lg-25p tx-right">Số lượng</th>
-                                <th class="wd-lg-25p tx-right">Tổng tiền</th>
+                                <th class="wd-lg-25p tx-right">Trạng thái</th>
+                                <th class="wd-lg-25p tx-right">Tổng điểm</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($order_new as $key => $item)
+                            @foreach($uni_store as $key => $item)
                             <tr>
-                                <td class="tx-right tx-medium tx-inverse">{{ $item->code_invoice }}</td>
-                                <td class="tx-right tx-medium tx-inverse"> {{ config('cart.pay_type')[$item->type_pay]['name'] }}</td>
-                                <td class="tx-right tx-medium tx-danger">{{ $item->total_money }}</td>
+                                <td class="tx-right tx-medium tx-inverse">{{ $item->store_name }}</td>
+                                <td class="tx-right tx-medium tx-inverse"> {{ $item->type_store }}</td>
+                                <td class="tx-right tx-medium tx-danger">{{ $item->poin_store }}</td>
                             </tr>
                             @endforeach
                         </tbody>

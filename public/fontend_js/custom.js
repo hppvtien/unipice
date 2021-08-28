@@ -315,7 +315,7 @@ $("#default-success").on("click", function() {
             setTimeout(function() {
                 $(".toast-success").remove();
             }, 2000);
-            window.location.href = '/user/don-hang';
+            window.location.href = result;
         },
         error: function(result) {
             console.log("loixxxxxxxxxxxxxxxxxxxx");

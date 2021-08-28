@@ -21,42 +21,41 @@
                         <table class="table mg-b-0 text-md-nowrap">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Mã Hóa đơn</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Phương thức thanh toán</th>
-                                    <th>Tổng tiền( gồm VAT 10% )</th>
-                                    <th>Khách hàng</th>
-                                    <th>Ngày xuất</th>
-                                    <th></th>
+                                    <th rowspan="1"></th>
+                                    <th rowspan="1"></th>
+                                    <th colspan="3" class="text-center border-bottom border-left">Đầu kỳ</th>
+                                    <th colspan="3" class="text-center border-bottom border-left">Trong kỳ</th>
+                                    <th colspan="3" class="text-center border-bottom border-left  border-right">Cuối kỳ kỳ</th>
+                            
+                                </tr>
+                                <tr>
+                                    <th class="border">ID</th>
+                                    <th class="border">Tên sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th class="border-right">Tổng tiền</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th class="border-right">Tổng tiền</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th class="border-right">Tổng tiền</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($bill as $item)
+                                @foreach ($bill as $key => $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
-                                    <td>
-                                        {{ $item->method_invoice }}
-                                    </td>
-                                    <td>
-                                        {{ $item->method_course }}
-                                    </td>
-                                    <td>
-                                        {{ $item->method_pay }}
-                                    </td>
-                                    <td>
-                                        {{ $item->paid_total }}
-                                    </td>
-                                    <td>
-                                        {{ $item->method_customer }}
-                                    </td>
-                                    <td>
-                                        {{ $item->created_at }}
-                                    </td>
-                                    <td>
-                                        <button type="button" data-id="{{ $item->id }}" class="bill_id btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Chi tiết</button>
-                                    </td>
-
+                                    <td scope="row">{{ $item->id }}</td>
+                                    <td scope="row">{{ $item->product_id }}</td>
+                                    <td scope="row">{{ $item->total_qty }}</td>
+                                    <td scope="row">{{ $item->price_lotproduct }}</td>
+                                    <td scope="row">{{ $item->total_qty*$item->price_lotproduct }}</td>
+                                    <td scope="row">{{ $item->total_qty-$item->qty }}</td>
+                                    <td scope="row">{{ $item->price_lotproduct }}</td>
+                                    <td scope="row">{{ ($item->total_qty-$item->qty)*$item->price_lotproduct }}</td>
+                                    <td scope="row">{{ $item->qty }}</td>
+                                    <td scope="row">{{ $item->price_lotproduct }}</td>
+                                    <td scope="row">{{ $item->total_qty*$item->price_lotproduct }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

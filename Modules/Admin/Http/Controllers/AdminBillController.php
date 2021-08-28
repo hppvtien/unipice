@@ -3,6 +3,8 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Bill;
+use App\Models\Cart\Uni_Order;
+use App\Models\Uni_LotProduct;
 use App\Models\Configuration;
 use App\Models\Education\SeoEdutcation;
 use App\Service\Seo\RenderUrlSeoCourseService;
@@ -13,10 +15,13 @@ class AdminBillController extends AdminController
 {
     public function index()
     {
-        $bill = Bill::orderBy('created_at','desc')
-            ->paginate(20);
-
+        $bill = Uni_LotProduct::orderBy('created_at','desc')->get();
         return view('admin::pages.bill.index', compact('bill'));
+    }
+    public function index_order()
+    {
+        $order = Uni_Order::orderBy('created_at','desc')->get();
+        return view('admin::pages.bill.index_order', compact('order'));
     }
 
     public function delete(Request $request, $id)

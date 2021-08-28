@@ -204,13 +204,13 @@ return [
             'class-icon' => 'la la-database',
             'sub' => [
                 [
-                    'name' => 'Danh sách hóa đơn',
+                    'name' => 'Tồn kho',
                     'route' => 'get_admin.bill.index'
                 ],
-                // [
-                //     'name' => 'Danh sách câu hỏi của học viên',
-                //     'route' => 'get_admin.answer_and_questions.index'
-                // ],
+                [
+                    'name' => 'Doanh thu',
+                    'route' => 'get_admin.bill.index_order'
+                ],
             ]
         ],
         [

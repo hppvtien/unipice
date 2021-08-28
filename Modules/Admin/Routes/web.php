@@ -103,6 +103,7 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
     });
     Route::prefix('bill')->group(function (){
         Route::get('/', 'AdminBillController@index')->name('get_admin.bill.index')->middleware('permission:slide_index|full');
+        Route::get('/index_order', 'AdminBillController@index_order')->name('get_admin.bill.index_order');
         Route::post('/', 'AdminBillController@viewBill')->name('get_admin.bill.view')->middleware('permission:slide_index|full');
     });
     // --------------------------------------------------------------------------------------------------------------------

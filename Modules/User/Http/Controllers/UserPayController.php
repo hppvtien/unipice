@@ -338,7 +338,7 @@ class UserPayController extends UserController
         return view('user::pages.pay.vnpaysuccsess', compact('order'));
     }
 
-    public function processCart(Request $request, $id)
+    public function processPayCart(Request $request, $id)
     {
         $type_pay = $request->type_pay;
         $order = Uni_Order::find($id);
