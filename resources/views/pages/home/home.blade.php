@@ -155,10 +155,7 @@
                                     <h2 class="m-heading__headline">
                                         Danh mục sản phẩm của chúng tôi.
                                     </h2>
-                                    {{-- <div class="m-heading__cta">
-                                        <a href="javascript:;"><span class="m-heading__cta--text">Shop All Categories</span>
-                                            <span class="icon-arrow"></span></a>
-                                    </div> --}}
+                                
                                 </div>
 
 
@@ -265,7 +262,7 @@
                         <div class="layout__region layout__region--content">
                             <div class="c-categories-slider__container js-swiper-container">
                                 <ul class="c-categories-slider__slider js-swiper-wrapper">
-                                    @forelse ($product_feauture as $key => $item)
+                                    @forelse ($product_new as $key => $item)
                                     <li class="c-categories-slider__item js-swiper-slide">
                                         <a class="m-category-card m-category-card--bordered" href="{{ getSlugProduct($item->slug) }}">
                                             <div class="m-category-card__image-wrapper">

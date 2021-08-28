@@ -96,15 +96,12 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::post('/', 'AdminApMenuController@ajax_load')->name('get_admin.apmenu.ajax_load');
         Route::any('/', 'AdminApMenuController@ajax_load_menu')->name('get_admin.apmenu.ajax_load_menu');
         // Route::post('/', 'AdminApMenuController@ajax_save_menu')->name('get_admin.apmenu.ajax_save_menu');
-
-
-
-        
     });
     Route::prefix('bill')->group(function (){
         Route::get('/', 'AdminBillController@index')->name('get_admin.bill.index')->middleware('permission:slide_index|full');
         Route::get('/index_order', 'AdminBillController@index_order')->name('get_admin.bill.index_order');
         Route::post('/', 'AdminBillController@viewBill')->name('get_admin.bill.view')->middleware('permission:slide_index|full');
+        Route::post('/search_ajax', 'AdminBillController@search_ajax')->name('get_admin.bill.search_ajax');
     });
     // --------------------------------------------------------------------------------------------------------------------
     Route::prefix('contact')->group(function (){

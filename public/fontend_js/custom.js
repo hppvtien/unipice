@@ -378,7 +378,7 @@ function get_email() {
             .done(function(data) {
                 console.log(data);
                 $("#toast-container").html(
-                        '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Kiểm tra.</div></div>'
+                        '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Cám ơn bạn đã đăng ký theo dõi !!!</div></div>'
                     ),
                     4000;
                 setTimeout(function() {
