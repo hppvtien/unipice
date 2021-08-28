@@ -15,7 +15,9 @@
     padding-right: 20px;
     width: auto;
 }
-
+.uni-css-img {
+    width: 50%;
+}
 #search-close i {
     color: #fff;
     font-size: 25px;

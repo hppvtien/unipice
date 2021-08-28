@@ -103,11 +103,11 @@
                                                                     </span>
                                                                     <span class="m-product-overview__price-wrapper d-block">
                                                                         <span class="a-product-name a-title-des text-dark">
-                                                                            Khối lượng tĩnh:
+                                                                            Khối lượng tịnh:
                                                                         </span>
                                                                         <span class="text-danger paid-save">
                                                                             
-                                                                                {{ $size_name->name }}
+                                                                                {{ $size_name->name }}g
                                                                             
                                                                         </span>
                                                                         
