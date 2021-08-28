@@ -5,7 +5,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">Danh sách Đánh giá</h4>
+                <h4 class="content-title mb-0 my-auto">Đánh giá</h4>
                 <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ Danh sách</span>
             </div>
         </div>
@@ -83,9 +83,9 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nội dung đánh giá</th>
-                                    <th>Status</th>
-                                    <th>Time</th>
-                                    <th>Action</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ngày đánh giá</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
 

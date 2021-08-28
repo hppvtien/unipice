@@ -74,6 +74,7 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
 
     Route::prefix('user')->group(function (){
         Route::get('/', 'AdminUserController@index')->name('get_admin.user.index')->middleware('permission:user_index|full');
+        Route::get('/spice-club', 'AdminUserController@indexSC')->name('get_admin.user.index_spice_club')->middleware('permission:user_index|full');
         Route::get('/store', 'AdminUserController@store_index')->name('get_admin.user.store_index')->middleware('permission:user_index|full');
         Route::get('movetrash', 'AdminUserController@indexmovetrash')->name('get.indexmovetrash');
         Route::get('update/{id}', 'AdminUserController@edit')->name('get_admin.user.edit')->middleware('permission:user_edit|full');

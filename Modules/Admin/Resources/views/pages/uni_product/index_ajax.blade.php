@@ -5,9 +5,8 @@
             <th>#</th>
             <th>SEO</th>
             <th>Số lượng</th>
-            <th>Status</th>
-            <th>Time</th>
-            <th>Action</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
         </tr>
     </thead>
 
@@ -34,7 +33,6 @@
             <td>
                 <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
             </td>
-            <td>{{ $item->created_at }}</td>
             <td>
                 <a href="{{ route('get_admin.uni_product.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                 <a href="{{ route('get_admin.uni_product.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>

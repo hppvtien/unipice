@@ -5,7 +5,7 @@
             <div class="card  box-shadow-0">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Danh mục bài viết <span>(*)</span></label>
                         <input type="text" class="form-control keypress-count" data-title-seo=".meta_title"
                             value="{{ old('name', $postcategory->name ?? '') }}" data-slug=".slug" name="name">
                         @if ($errors->first('name'))
@@ -21,7 +21,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Description <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Mô tả <span>(*)</span></label>
                         <input type="text" class="form-control keypress-count"
                             data-desscription-seo=".meta_desscription" name="desscription"
                             value="{{ old('desscription', $postcategory->desscription ?? '') }}">
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Content <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Nội dung <span>(*)</span></label>
                         <input type="text" class="form-control content" name="content"
                             value="{{ old('content', $postcategory->content ?? '') }}">
                         @if ($errors->first('content'))
@@ -39,7 +39,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Parent <span>(*)</span></label>
+                        <label for="exampleInputEmail1"> Kế thừa <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button"
                             aria-expanded="true">
                             <select name="parent_id" class="form-control SlectBox SumoUnder" tabindex="-1">
@@ -59,7 +59,7 @@
                         <span class="d-block text-warning">Thứ thự được sắp xếp từ bé đến lớn</span>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Banner </label>
+                        <label for="exampleInputEmail1">Ảnh Banner </label>
                         <input type="file" class="form-control" name="banner" value="">
                     </div>
                     <input type="hidden" class="form-control" name="bannerold"
@@ -122,7 +122,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Status <span>(*)</span></label>
+                        <label for="exampleInputEmail1"> Trạng thái <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button"
                             aria-expanded="true">
                             <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
@@ -136,7 +136,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Thumbnail </label>
+                        <label for="exampleInputEmail1"> Ảnh </label>
                         <input type="hidden" name="delete_thumbnail"
                             value="{{ old('delete_thumbnail', $postcategory->thumbnail ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">

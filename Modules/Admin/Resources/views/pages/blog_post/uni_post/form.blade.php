@@ -31,7 +31,7 @@
 
                             <div class="tab-content">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
+                                    <label for="exampleInputEmail1" class="required">Tiêu đề <span>(*)</span></label>
                                     <input type="text" class="form-control keypress-count"
                                         value="{{ old('name', $uni_post->name ?? '') }}" data-title-seo=".meta_title"
                                         data-slug=".slug" name="name">
@@ -49,7 +49,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1" class="required">Description
+                                    <label for="exampleInputEmail1" class="required">Mô tả
                                         <span>(*)</span></label>
                                     <input type="text" class="form-control keypress-count"
                                         data-desscription-seo=".meta_desscription" name="desscription"
@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1" class="required">Category
+                                            <label for="exampleInputEmail1" class="required">Danh mục bài viết
                                                 <span>(*)</span></label>
                                             <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0"
                                                 role="button" aria-expanded="true">
@@ -111,7 +111,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1" class="required">Order <span>(*)</span></label>
+                                    <label for="exampleInputEmail1" class="required">Thứ tự <span>(*)</span></label>
                                     <input type="number" class="form-control order" name="order"
                                         value="{{ old('order', $uni_post->order ?? '') }}">
                                     @if ($errors->first('order'))
@@ -120,42 +120,42 @@
                                 </div>
                                 <div class="card  box-shadow-0">
                                     <div class="card-header">
-                                        <h4 class="card-title mb-1">SEO <a href="" class="js-action-seo"
-                                                style="float: right"><i class="la la-edit"></i> Edit</a></h4>
+                                        <h4 class="card-title mb-1">SEO <a href="" class="js-action-seo" style="float: right"><i
+                                                    class="la la-edit"></i> Edit</a></h4>
                                         <div class="view-seo">
-                                            <a href="" class="view-seo-title meta_title">It is Very Easy to Customize
-                                                and it uses in your website apllication.</a>
-                                            <p class="view-seo-slug">It is Very Easy to Customize and it uses in your
-                                                website apllication. <span class="slug">121212121</span></p>
-                                            <p class="mb-2 view-seo-description meta_desscription">It is Very Easy to
-                                                Customize and it uses in your website apllication.</p>
+                                            <a href="" class="view-seo-title meta_title">
+                                                {{ old('meta_title', $uni_post->meta_title ?? 'It is Very Easy to Customize and it uses in your website apllication.') }}
+                                            </a>
+                                            <p class="view-seo-slug slug">
+                                                {{ old('slug', $uni_post->slug ?? 'It is Very Easy to Customize and it uses in your website apllication.') }}
+                                            </p>
+                                            <p class="mb-2 view-seo-description meta_desscription">
+                                                {{ old('meta_desscription', $uni_post->meta_desscription ?? 'It is Very Easy to Customize and it uses in your website apllication.') }}
+                    
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="card-body pt-3 box-seo hide">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1" class="required">Tiêu đề
-                                                SEO<span>(*)</span></label>
-                                            <input type="text" class="form-control meta_title" name="meta_title"
-                                                id="meta_title"
+                                            <label for="exampleInputEmail1" class="required">Tiêu đề SEO <span>(*)</span></label>
+                                            <input type="text" class="form-control meta_title" name="meta_title" id="meta_title"
                                                 value="{{ old('meta_title', $uni_post->meta_title ?? '') }}">
                                             @if ($errors->first('meta_title'))
-                                                <span
-                                                    class="text-danger">{{ $errors->first('meta_title') }}</span><br>
+                                                <span class="text-danger">{{ $errors->first('meta_title') }}</span>
                                             @endif
                                             <span class="text-danger" id="count_title"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1" class="required">Mô tả SEO
-                                                <span>(*)</span></label>
-                                            <input type="text" class="form-control meta_desscription"
-                                                name="meta_desscription" id="meta_desscription"
+                                            <label for="exampleInputEmail1" class="required">Mô tả SEO <span>(*)</span></label>
+                                            <input type="text" class="form-control meta_desscription" name="meta_desscription"
+                                                id="meta_desscription"
                                                 value="{{ old('meta_desscription', $uni_post->meta_desscription ?? '') }}">
                                             @if ($errors->first('meta_desscription'))
-                                                <span
-                                                    class="text-danger">{{ $errors->first('meta_desscription') }}</span><br>
+                                                <span class="text-danger">{{ $errors->first('meta_desscription') }}</span>
                                             @endif
                                             <span class="text-danger" id="count_des"></span>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +179,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Status <span>(*)</span></label>
+                        <label for="exampleInputEmail1"> Trạng thái <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button"
                             aria-expanded="true">
                             <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
@@ -193,7 +193,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Banner </label>
+                        <label for="exampleInputEmail1"> Ảnh </label>
                         <input type="hidden" name="delete_thumbnail" value="{{ old('delete_thumbnail', $uni_post->thumbnail ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="thumbnail" id="avatar_uploads">

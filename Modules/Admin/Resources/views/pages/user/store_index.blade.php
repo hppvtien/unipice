@@ -5,7 +5,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">User</h4>
+                <h4 class="content-title mb-0 my-auto">Thành viên đại lý</h4>
                 <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ index</span>
             </div>
         </div>
@@ -42,7 +42,6 @@
                                     @endif
                                     <td>{{ getTypeStore($item->id) }}</td>
                                     <td>{{ getPoinStore($item->id) }}</td>
-                                    <td>{{ $item->store_name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>
@@ -54,6 +53,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div>
+                        {!! $users->links() !!}
                     </div>
                 </div>
             </div>

@@ -21,6 +21,15 @@ class AdminUserController extends AdminController
         ];
         return view('admin::pages.user.index', $viewData);
     }
+    public function indexSC()
+    {
+        $users = User::orderByDesc('id')->where('type', 2)->paginate(20);
+       
+        $viewData = [
+            'users' => $users
+        ];
+        return view('admin::pages.user.index_spice_club', $viewData);
+    }
     public function store_index()
     {
         $users = User::orderByDesc('id')->where('type', 1)->where('status',1)->paginate(20);

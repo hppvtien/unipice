@@ -42,8 +42,6 @@ class AdminUniPostController extends AdminController
     public function store(AdminUniPostRequest $request)
     {
         $data = $request->except(['avatar', 'save', '_token','thumbnail','delete_thumbnail']);
-        $data['created_at'] = Carbon::now();
-        $data['created_by'] = get_data_user('web');
         $param = [
             'name' => $request->name,
             'slug' => $request->slug,

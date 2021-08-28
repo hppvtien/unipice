@@ -15,7 +15,7 @@ class AdminUniSizeController extends AdminController
 {
     public function index()
     {
-        $uni_size = Uni_Size::orderByDesc('order')
+        $uni_size = Uni_Size::orderByDesc('id')
             ->paginate(20);
 
         $viewData = [
@@ -26,19 +26,15 @@ class AdminUniSizeController extends AdminController
 
     public function create()
     {
-        $uni_size = Uni_Size::orderByDesc('order')->get();
+        $uni_size = Uni_Size::orderByDesc('id')->get();
 
         return view('admin::pages.uni_size.create',compact('uni_size'));
     }
 
     public function store(AdminUniSizeRequest  $request)
     {
-        $data = $request->except(['avatar','save','_token','banner','delete_thumbnail']);
+        $data = $request->except(['save','_token']);
         $data['created_at'] = Carbon::now();
-
-        if(!$request->meta_title)             $data['meta_title'] = $request->meta_title;
-        if(!$request->meta_description) $data['meta_desscription'] = $request->meta_desscription;
-
         $menuID = Uni_Size::insertGetId($data);
         if($menuID)
         {
@@ -53,29 +49,15 @@ class AdminUniSizeController extends AdminController
     public function edit($id)
     {
         $size = Uni_Size::findOrFail($id);
-        $uni_size = Uni_Size::orderByDesc('order')->get();
-        return view('admin::pages.uni_size.update',compact('size','uni_size'));
+        return view('admin::pages.uni_size.update',compact('size'));
     }
 
     public function update(AdminUniSizeRequest $request, $id)
     {
         $uni_size = Uni_Size::findOrFail($id);
-        $data = $request->except(['avatar','save','_token','banner','delete_thumbnail']);
+        $data = $request->except(['save','_token',]);
         $data['updated_at'] = Carbon::now();
-        if ($request->banner){
-            Storage::delete('public/uploads/'.$request->delete_thumbnail);    
-            $data['banner'] = $request->banner;
-        } elseif (!$request->banner) {
-            $data['banner'] = $request->delete_thumbnail;         
-        
-        } elseif ($request->banner && !$uni_size->banner) {
-            $data['banner'] = $request->banner;         
-        }
-        if(!$request->meta_title)             $data['meta_title'] = $request->meta_title;
-        if(!$request->meta_description) $data['meta_desscription'] = $request->meta_desscription;
-
         $uni_size->fill($data)->save();
-        RenderUrlSeoBLogService::update($request->slug,SeoBlog::TYPE_MENU, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.uni_size.index');
     }
@@ -87,7 +69,6 @@ class AdminUniSizeController extends AdminController
             $menu = Uni_Size::findOrFail($id);
             if ($menu)
             {
-                Storage::delete('public/uploads/'.$menu->banner);
                 $menu->delete();
             }
             return response()->json([

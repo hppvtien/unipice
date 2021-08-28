@@ -10,7 +10,7 @@
             <div class="card box-shadow-0">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Gói SALE OFF  <span>(*)</span></label>
                         <input type="text" class="form-control keypress-count" data-title-seo=".meta_title" value="{{ old('name', $uni_flashsale->name ?? '') }}" data-slug=".slug" name="name">
                         @if($errors->first('name'))
                         <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -24,7 +24,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Description <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Mô tả <span>(*)</span></label>
                         <input type="text" class="form-control keypress-count" data-desscription-seo=".meta_desscription" name="desscription" value="{{ old('desscription', $uni_flashsale->desscription ?? '') }}">
                         @if($errors->first('desscription'))
                         <span class="text-danger">{{ $errors->first('desscription') }}</span>
@@ -38,14 +38,14 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Content <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Nội dung <span>(*)</span></label>
                         <textarea name="content" class="form-control" id="article-ckeditor" cols="30" rows="10">{{ old('content',$uni_flashsale->content ?? '') }}</textarea>
                         @if($errors->first('content'))
                         <span class="text-danger">{{ $errors->first('content') }}</span>
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Hạn Combo <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Hạn SALE OFF <span>(*)</span></label>
                         <input type="date" class="form-control keypress-count" data-title-seo=".title_seo" value="{{ old('sale_off',$uni_flashsale->sale_off ?? '') }}" name="sale_off">
                         @if($errors->first('sale_off'))
                         <span class="text-danger">{{ $errors->first('sale_off') }}</span>
@@ -55,7 +55,7 @@
             </div>
             <div class="card  box-shadow-0">
                 <div class="card-header">
-                    <h4 class="card-title mb-1 text-danger">Danh sách sản phẩm trong COMBO</h4>
+                    <h4 class="card-title mb-1 text-danger">Danh sách sản phẩm trong SALE OFF</h4>
                 </div>
                 <div class="card-body pt-3">
                     <div class="form-group">
@@ -209,7 +209,6 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Action <span>(*)</span></label>
                         <div>
                             <button class="btn btn-info"><i class="la la-save"></i> Save</button>
                             <button class="btn btn-success"><i class="la la-check-circle"></i> Save & Edit</button>
@@ -220,7 +219,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Status <span>(*)</span></label>
+                        <label for="exampleInputEmail1"> Trạng thái <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
                                 <option title="hide" {{ ($uni_flashsale->status ?? 0) == 0 ? 'selected' : '' }} value="0">No Active</option>
@@ -242,7 +241,7 @@
                 </div>
                 <div class="card-body pt-3" id="type-combo-store">
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required"> Đại lý có quyền dùng gói Combo <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required"> Đại lý có quyền dùng gói SALE OFF <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="type_buy[]" class="form-control  SumoUnder js-select2" tabindex="-1" multiple>
                                 @foreach($type_buy as $key => $item)
@@ -260,7 +259,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Thumbnail </label>
+                        <label for="exampleInputEmail1">Ảnh </label>
                         <input type="hidden" name="delete_thumbnail" value="{{ old('meta_keyword', $uni_flashsale->thumbnail ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="thumbnail" id="avatar_uploads">

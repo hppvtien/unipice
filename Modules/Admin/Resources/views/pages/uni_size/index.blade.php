@@ -5,7 +5,7 @@
         <div class="breadcrumb-header justify-content-between">
             <div class="my-auto">
                 <div class="d-flex">
-                    <h4 class="content-title mb-0 my-auto">Danh mục màu sắc sản phẩm</h4>
+                    <h4 class="content-title mb-0 my-auto">Trọng lượng</h4>
                     <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ Danh sách</span>
                 </div>
             </div>
@@ -26,12 +26,10 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>SEO</th>
-                                        <th>Sort</th>
-                                        <th>Status</th>
-                                        <th>Time</th>
-                                        <th>Action</th>
+                                        <th>Trọng lượng</th>
+                                        <th>Slug</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Hành động</th>
                                     </tr>
                                 </thead>
 
@@ -40,24 +38,7 @@
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>{{ $item->name }}</td>
-                                        <td>
-                                            <div class="existed-seo-meta">
-                                                <span class="page-title-seo title_seo">{{ $item->meta_title }}</span>
-                                                <div class="page-url-seo ws-nm">
-                                                    <p><span class="slug">{{ $item->slug }}</span></p>
-                                                </div>
-                                                <div class="ws-nm">
-                                                    <span style="color: #70757a;">{{ $item->created_at }} - </span>
-                                                    <span class="page-description-seo meta-desscription">{{ $item->meta_desscription }}</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-info">{{ $item->order }}</span>
-                                        </td>
-                                        <td>
-                                            <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
-                                        </td>
+                                        <td><p><span class="slug">{{ $item->slug }}</span></p></td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
                                             <a href="{{ route('get_admin.uni_size.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>

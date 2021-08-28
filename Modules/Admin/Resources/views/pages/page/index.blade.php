@@ -26,11 +26,10 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Discount</th>
-                                    <th>Banner</th>
-                                    <th>Style</th>
-                                    <th>Action</th>
+                                    <th>Tiêu đề trang</th>
+                                    <th>Banner trang</th>
+                                    <th>Kiểu trang</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,9 +39,7 @@
                                     <td>
                                         <a href="javascript:;" title="{{ $item->p_name }}">{{ $item->p_name }}</a>
                                     </td>
-                                    <td>
-                                        <a href="javascript:;" title="{{ $item->discount }}">{{ $item->discount }}</a>
-                                    </td>
+                                    
                                     <td>
                                         <a href="{{ $item->p_banner }}" target="_blank" style="width: 200px;height: 100px;display: inline-block">
                                             <img style="height: 100%;border-radius: 10px;border: 1px solid #dedede;width: 100%" src="/storage/uploads/{{ $item->p_banner }}" alt="">

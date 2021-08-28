@@ -5,7 +5,7 @@
             <div class="card box-shadow-0">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Tên sản phẩm <span>(*)</span></label>
                         <input type="text" class="form-control keypress-count" data-title-seo=".meta_title" value="{{ old('name', $uni_product->name ?? '') }}" data-slug=".slug" name="name">
                         @if($errors->first('name'))
                         <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -19,7 +19,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Description <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Mô tả <span>(*)</span></label>
                         <input type="text" class="form-control keypress-count" data-desscription-seo=".meta_desscription" name="desscription" value="{{ old('desscription', $uni_product->desscription ?? '') }}">
                         @if($errors->first('desscription'))
                         <span class="text-danger">{{ $errors->first('desscription') }}</span>
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Content <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Nội dung<span>(*)</span></label>
                         <textarea name="content" class="form-control" id="article-ckeditor" cols="30" rows="10">{{ old('content',$uni_product->content ?? '') }}</textarea>
                         @if($errors->first('content'))
                         <span class="text-danger">{{ $errors->first('content') }}</span>
@@ -74,7 +74,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required"> Kích thước <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required"> Trọng lượng <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="size[]" class="form-control SlectBox SumoUnder " tabindex="-1">
                                 @foreach($uni_size as $item)
@@ -148,7 +148,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Album </label>
+                        <label for="exampleInputEmail1">Album ảnh</label>
                         <input type="file" class="form-control" name="album[]" value="" multiple>
                     </div>
                     <input type="hidden" class="form-control" name="albumold" value="{{ old('album', $uni_product->album ?? '') }}">
@@ -227,7 +227,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Status <span>(*)</span></label>
+                        <label for="exampleInputEmail1"> Trạng thái <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
                                 <option title="hide" {{ ($uni_product->status ?? 0) == 0 ? 'selected' : '' }} value="0">No Active</option>
@@ -266,7 +266,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Thumbnail </label>
+                        <label for="exampleInputEmail1">Ảnh</label>
                         <input type="hidden" name="delete_thumbnail" value="{{ old('meta_keyword', $uni_product->thumbnail ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="thumbnail" id="avatar_uploads">

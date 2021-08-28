@@ -11,11 +11,15 @@ return [
             'class-icon' => 'la la-user',
             'sub' => [
                 [
-                    'name' => 'Thành viên thường',
+                    'name' => 'Thành viên mua lẻ',
                     'route' => 'get_admin.user.index'
                 ],
                 [
-                    'name' => 'Đại lý',
+                    'name' => 'Thành viên Spice Club',
+                    'route' => 'get_admin.user.index_spice_club'
+                ],
+                [
+                    'name' => 'Thành viên đại lý',
                     'route' => 'get_admin.user.store_index'
                 ],
                 [
@@ -51,7 +55,7 @@ return [
                     'route' => 'get_admin.uni_trade.index'
                 ],
                 [
-                    'name' => 'Đóng gói (Size)',
+                    'name' => 'Trọng lượng',
                     'route' => 'get_admin.uni_size.index'
                 ],
                 [

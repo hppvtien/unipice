@@ -5,7 +5,7 @@
         <div class="breadcrumb-header justify-content-between">
             <div class="my-auto">
                 <div class="d-flex">
-                    <h4 class="content-title mb-0 my-auto">Danh mục màu sắc sản phẩm</h4>
+                    <h4 class="content-title mb-0 my-auto">Thương hiệu</h4>
                     <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ Danh sách</span>
                 </div>
             </div>
@@ -26,12 +26,11 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
+                                        <th>Thương hiệu</th>
                                         <th>SEO</th>
-                                        <th>Sort</th>
-                                        <th>Status</th>
-                                        <th>Time</th>
-                                        <th>Action</th>
+                                        <th>Sắp Xếp</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
                                     </tr>
                                 </thead>
 
@@ -58,7 +57,6 @@
                                         <td>
                                             <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
                                         </td>
-                                        <td>{{ $item->created_at }}</td>
                                         <td>
                                             <a href="{{ route('get_admin.uni_trade.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                             <a href="{{ route('get_admin.uni_trade.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>

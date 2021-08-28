@@ -27,11 +27,11 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Sort</th>
+                                        <th>Sắp xếp</th>
                                         <th>Vị trí</th>
-                                        <th>Status</th>
-                                        <th>Banner</th>
-                                        <th>Action</th>
+                                        <th>Trạng thái</th>
+                                        <th>Banner Slider</th>
+                                        <th>Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -51,7 +51,7 @@
                     <h4 class="card-title mb-1">SEO <a href="" class="js-action-seo" style="float: right"><i class="la la-edit"></i> Edit</a></h4>
                     <div class="view-seo">
                         <a href="" class="view-seo-title title_seo">It is Very Easy to Customize and it uses in your website apllication.</a>
-                        <p class="view-seo-slug">It is Very Easy to Customize and it uses in your website apllication. <span class="slug">121212121</span></p>
+                        <p class="view-seo-slug">It is Very Easy to Customize and it uses in your website apllication. <span class="slug"></span></p>
                         <p class="mb-2 view-seo-description">It is Very Easy to Customize and it uses in your website apllication.</p>
                     </div>
                 </div>

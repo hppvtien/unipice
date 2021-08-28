@@ -5,8 +5,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">Jobs</h4>
-                <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ index</span>
+                <h4 class="content-title mb-0 my-auto">Liên hệ</h4>
+                <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ Danh sách</span>
             </div>
         </div>
     
@@ -83,13 +83,13 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Họ tên</th>
                                     <th>Phone</th>
                                     <th>Email</th>
                                     <th>Tin Nhắn</th>
                                     <th>Trạng thái</th>
                                     <th>Ngày tạo</th>
-                                    <th>Action</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>

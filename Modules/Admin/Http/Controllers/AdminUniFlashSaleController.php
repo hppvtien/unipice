@@ -18,7 +18,7 @@ class AdminUniFlashSaleController extends AdminController
 {
     public function index()
     {
-        $uni_flashsale = Uni_FlashSale::orderByDesc('id')->get();
+        $uni_flashsale = Uni_FlashSale::orderByDesc('id')->paginate(20);
         $viewData = [
             'uni_flashsale' => $uni_flashsale
         ];

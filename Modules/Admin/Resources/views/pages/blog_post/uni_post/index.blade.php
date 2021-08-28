@@ -5,7 +5,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">Article</h4>
+                <h4 class="content-title mb-0 my-auto">Bài viết</h4>
                 <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ index</span>
             </div>
         </div>
@@ -33,9 +33,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>SEO</th>
-                                    <th>Time</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,7 +54,6 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{ $item->created_at }}</td>
                                     <td><span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger'; }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span></td>
                                     <td>
                                         <a href="{{ route('get_admin.post.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>

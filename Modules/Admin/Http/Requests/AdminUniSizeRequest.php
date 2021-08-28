@@ -10,10 +10,7 @@ class AdminUniSizeRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'desscription'=>'required|min:100|max:150',
             'slug' => 'required|unique:uni_size,slug,'.$this->id,
-            'meta_title'=>'required|min:50|max:70',
-            'meta_desscription'=>'required|min:100|max:150',
         ];
     }
 
@@ -21,17 +18,8 @@ class AdminUniSizeRequest extends FormRequest
     {
         return [
             'name.required' => 'Dữ liệu không được để trống',
-            'desscription.required' => 'Dữ liệu không được để trống',
-            'desscription.min'=> 'Mô tả phải có ít nhất 100 lý tự',
-            'desscription.max'=> 'Mô tả chỉ được tối đa 150 ký tự',
             'slug.required' => 'Dữ liệu không được để trống',
             'slug.unique'   => 'Slug đã tồn tại',
-            'meta_title.required' => 'Tiêu đề SEO không được để trống',
-            'meta_title.min'   => 'Tiêu đề SEO không được nhỏ hơn 50 ký tự',
-            'meta_title.max'   => 'Tiêu đề SEO không được lớn hơn 70 ký tự',
-            'meta_desscription.required' => 'Mô tả SEO không được để trống',
-            'meta_desscription.min'   => 'Tiêu đề SEO không được nhỏ hơn 100 ký tự',
-            'meta_desscription.max'   => 'Tiêu đề SEO không được lớn hơn 150 ký tự',
         ];
     }
 
