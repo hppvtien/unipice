@@ -228,3 +228,39 @@ $('.keypress-count').on('change', function() {
         });
     }
 });
+$('.v_status').on('change', function() {
+    let v_id = $(this).attr('data-ckb');
+    let data_url = $(this).attr('data-url');
+    $.ajax({
+        url: data_url,
+        type: "post",
+        dataType: "text",
+        data: {
+            v_id: v_id
+        },
+        success: function(result) {
+            console.log(result, +'aaaaaa');
+            // $('#result').html(result);
+        },
+        error: function(result) {
+            console.log(result, +'ssssss');
+            // $('#result').html(result);
+        }
+    });
+});
+$('#generate-code').on('click', function() {
+    var data_url = $(this).attr('data-url');
+    $.ajax({
+        url: "{{ route('get_admin.voucher.generate_code') }}",
+        type: "post",
+        dataType: "text",
+        success: function(result) {
+            let code_vc = result;
+            console.log(code_vc);
+            $('#code-generate').html('<input type="text" class="form-control" value="' + result + '" name="code" >');
+        },
+        error: function(result) {
+            console.log(result, +'ssssss');
+        }
+    });
+});

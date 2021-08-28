@@ -151,37 +151,5 @@
       </div>
     </div>
   </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    
-    $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-       
-    $('.modal_message').on('click',function(){
-        let c_id = $(this).attr('data-id'); 
-        let data_mess = $(this).attr('data-mess'); 
-        $('.modal-body').html(data_mess);
-    });
-    $('.v_status').on('change',function(){
-        let v_id = $(this).attr('data-ckb'); 
-        $.ajax({
-                url: "{{ route('get_admin.uni_contact.edit') }}",
-                type : "post",
-                dataType:"text",
-                data : {
-                    v_id : v_id
-                },
-                success : function (result){
-                    console.log(result);
-                },
-                error : function (result){
-                    console.log(result);
-                }
-            });
-    });
-    // 
-</script>
+
 @stop
