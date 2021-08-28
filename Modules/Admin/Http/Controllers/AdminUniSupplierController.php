@@ -26,7 +26,7 @@ class AdminUniSupplierController extends AdminController
 
     public function create()
     {
-        $uni_supplier = Uni_supplier::orderByDesc('id')->get();
+        $uni_supplier = [];
         return view('admin::pages.uni_supplier.create',compact('uni_supplier'));
     }
 
@@ -47,9 +47,9 @@ class AdminUniSupplierController extends AdminController
 
     public function edit($id)
     {
-        $supplier = Uni_supplier::findOrFail($id);
-        $uni_supplier = Uni_supplier::orderByDesc('id')->get();
-        return view('admin::pages.uni_supplier.update',compact('supplier','uni_supplier'));
+        $uni_supplier = Uni_supplier::findOrFail($id);
+        // $uni_supplier = Uni_supplier::orderByDesc('id')->get();
+        return view('admin::pages.uni_supplier.update',compact('uni_supplier'));
     }
 
     public function update(AdminUniSupplierRequest $request, $id)

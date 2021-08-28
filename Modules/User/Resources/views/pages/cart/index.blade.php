@@ -380,12 +380,17 @@
                                             <span class="price" data-th="Subtotal">{{ \Cart::tax(0,0,'.') }} đ</span>
                                         </td>
                                     </tr>
+                                    @if (checkUidSpiceClub(get_data_user('web')))
                                     <tr class="totals sub">
                                         <th class="mark" scope="row">Ưu đãi SpiceClub</th>
                                         <td class="amount">
                                             <span class="price" data-th="discounttotal">-{{ formatVnd((int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span>
                                         </td>
                                     </tr>
+                                    @else
+                                        
+                                    @endif
+                                    
                                     <tr class="grand totals">
                                         <th class="mark" scope="row">
                                             <strong>Tổng đơn hàng</strong>

@@ -564,10 +564,15 @@
                                 <td colspan="3">VAT</td>
                                 <td><span>{{ formatVnd($order->total_vat) }} </span></td>
                             </tr>
+                            @if (checkUidSpiceClub(get_data_user('web')))
                             <tr>
                                 <td colspan="3">Ưu đãi SpiceClub</td>
                                 <td><span>-{{ formatVnd((int)Cart::total(0,0,'')*(getDiscount()[0])/100) }} </span></td>
                             </tr>
+                            @else
+                                
+                            @endif
+                            
                             <tr>
                                 <td colspan="3">Phí ship</td>
                                 <td><span>{{ formatVnd($order->total_ship) }}</span></td>

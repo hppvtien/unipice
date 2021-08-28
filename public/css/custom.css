@@ -348,7 +348,9 @@ a.contact-btn {
     font-size: 16px;
     font-weight: bold;
 }
-
+span.select2-container.select2-container--default.select2-container--open {
+    z-index: 9999999;
+}
 @media screen and (min-width: 1024px) {
     .c-header__logo img {
         margin: 4px auto;

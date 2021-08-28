@@ -726,6 +726,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
+                                                    @if (checkUidSpiceClub(get_data_user('web')))
                                                     <li class="product-item">
                                                         <div class="product-item-name-block">
                                                             <div class="details-qty" id="total_discount">
@@ -734,6 +735,10 @@
                                                             </div>
                                                         </div>
                                                     </li>
+                                                    @else
+                                                        
+                                                    @endif
+                                                    
                                                     <li class="product-item">
                                                         <div class="product-item-name-block">
                                                             <div class="details-qty">

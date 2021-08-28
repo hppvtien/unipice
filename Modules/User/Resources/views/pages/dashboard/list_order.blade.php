@@ -1,8 +1,6 @@
 @extends('user::pages.layout.app_master_user')
 @section('content')
 
-
-
 <main id="maincontent" class="">
 
     <div class="page messages">

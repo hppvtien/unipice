@@ -18,16 +18,7 @@ class AdminBillController extends AdminController
 
         return view('admin::pages.bill.index', compact('bill'));
     }
-    public function viewBill(Request $request)
-    {
-        $bill_view = Bill::where('id',$request->b_id)->first();
-        $configuration = Configuration::first();
-        $view_data = [
-            'bill_view' => $bill_view,
-            'configuration' => $configuration
-        ];
-        return view('admin::pages.bill.view', $view_data);
-    }
+
     public function delete(Request $request, $id)
     {
         if($request->ajax())

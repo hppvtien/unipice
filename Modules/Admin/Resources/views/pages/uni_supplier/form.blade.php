@@ -6,35 +6,35 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" data-title-seo=".meta_title" value="{{ old('name', $supplier->name ?? '') }}" data-slug=".slug" name="name">
+                        <input type="text" class="form-control keypress-count" data-title-seo=".meta_title" value="{{ old('name', $uni_supplier->name ?? '') }}" data-slug=".slug" name="name">
                         @if($errors->first('name'))
                         <span class="text-danger">{{ $errors->first('name') }}</span>
                         @endif
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Tax Code <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" name="tax_code" value="{{ old('tax_code',$supplier->tax_code ?? '') }}">
+                        <input type="text" class="form-control keypress-count" name="tax_code" value="{{ old('tax_code',$uni_supplier->tax_code ?? '') }}">
                     </div>
                     @if($errors->first('phone'))
                         <span class="text-danger">{{ $errors->first('phone') }}</span>
                     @endif
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Phone <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" name="phone" value="{{ old('phone',$supplier->phone ?? '') }}">
+                        <input type="text" class="form-control keypress-count" name="phone" value="{{ old('phone',$uni_supplier->phone ?? '') }}">
                     </div>
                     @if($errors->first('phone'))
                         <span class="text-danger">{{ $errors->first('phone') }}</span>
                     @endif
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Email <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" name="email" value="{{ old('email',$supplier->email ?? '') }}">
+                        <input type="text" class="form-control keypress-count" name="email" value="{{ old('email',$uni_supplier->email ?? '') }}">
                     </div>
                     @if($errors->first('email'))
                         <span class="text-danger">{{ $errors->first('email') }}</span>
                     @endif
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Address <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" name="address" value="{{ old('address',$supplier->address ?? '') }}">
+                        <input type="text" class="form-control keypress-count" name="address" value="{{ old('address',$uni_supplier->address ?? '') }}">
                     </div>
                     @if($errors->first('address'))
                         <span class="text-danger">{{ $errors->first('address') }}</span>
@@ -72,13 +72,13 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Thumbnail </label>
-                        <input type="hidden" name="delete_thumbnail" value="{{ old('meta_keyword', $uni_product->thumbnail ?? '') }}">
+                        <input type="hidden" name="delete_thumbnail" value="{{ old('meta_keyword', $uni_supplier->banner ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
-                        <input type="hidden" name="thumbnail" id="avatar_uploads">
+                        <input type="hidden" name="banner" id="avatar_uploads">
                     </div>
-                    @if(isset($uni_product->thumbnail))
+                    @if(isset($uni_supplier->banner))
                     <p>
-                        <img src="{{ pare_url_file($uni_product->thumbnail) }}" alt="" style="width: 100%;height: auto">
+                        <img src="{{ pare_url_file($uni_supplier->banner) }}" alt="" style="width: 100%;height: auto">
                     </p>
                     @endif
                 </div>

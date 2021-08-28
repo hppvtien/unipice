@@ -297,6 +297,11 @@ function execPostRequest($url, $data)
         $checkUid = App\Models\Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('id')->first();
         return $checkUid;
     }
+    function checkUidSpiceClub($id){
+        $checkType = App\Models\User::where('id',$id)->where('type',2)->pluck('id')->first();
+        $checkUid = App\Models\Cart\Uni_order_nap::where('user_id',$checkType)->where('status',0)->pluck('id')->first();
+        return $checkUid;
+    }
     function checkExitsUid($id){
         $checkUid = App\Models\Uni_Store::where('user_id',$id)->pluck('id')->first();
         return $checkUid;
