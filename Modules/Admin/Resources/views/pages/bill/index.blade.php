@@ -26,27 +26,38 @@
                                     <th colspan="3" class="text-center border-bottom border-left">Đầu kỳ</th>
                                     <th colspan="3" class="text-center border-bottom border-left">Trong kỳ</th>
                                     <th colspan="3" class="text-center border-bottom border-left  border-right">Cuối kỳ kỳ</th>
-                            
+
                                 </tr>
-                                <tr>
-                                    <th class="border">ID</th>
-                                    <th class="border">Tên sản phẩm</th>
-                                    <th>Số lượng</th>
-                                    <th>Giá</th>
-                                    <th class="border-right">Tổng tiền</th>
-                                    <th>Số lượng</th>
-                                    <th>Giá</th>
-                                    <th class="border-right">Tổng tiền</th>
-                                    <th>Số lượng</th>
-                                    <th>Giá</th>
-                                    <th class="border-right">Tổng tiền</th>
-                                </tr>
+
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="font-weight-bold">Tổng tiền đầu kỳ:</td>
+                                    <td colspan="2" class="border-right text-danger">10000000000</td>
+                                    <td class="font-weight-bold">Tổng tiền trong kỳ:</td>
+                                    <td colspan="2" class="border-right text-danger">10000000000</td> 
+                                    <td class="font-weight-bold">Tổng tiền cuối kỳ:</td>
+                                    <td colspan="2" class="border-right text-danger">10000000000</td>
+                                </tr>
+                                <tr>
+                                    <td class="border">ID</td>
+                                    <td class="border">Tên sản phẩm</td>
+                                    <td>Số lượng</td>
+                                    <td>Giá</td>
+                                    <td class="border-right">Tổng tiền</td>
+                                    <td>Số lượng</td>
+                                    <td>Giá</td>
+                                    <td class="border-right">Tổng tiền</td>
+                                    <td>Số lượng</td>
+                                    <td>Giá</td>
+                                    <td class="border-right">Tổng tiền</td>
+                                </tr>
                                 @foreach ($bill as $key => $item)
                                 <tr>
                                     <td scope="row">{{ $item->id }}</td>
-                                    <td scope="row">{{ $item->product_id }}</td>
+                                    <td scope="row">{{ getNameProduct($item->product_id) }}</td>
                                     <td scope="row">{{ $item->total_qty }}</td>
                                     <td scope="row">{{ $item->price_lotproduct }}</td>
                                     <td scope="row">{{ $item->total_qty*$item->price_lotproduct }}</td>
@@ -70,7 +81,7 @@
 </div>
 <div class="" id="myModal">
 
-    
+
 </div>
 </div>
 

@@ -479,8 +479,6 @@ class UserPayController extends UserController
             \Cart::destroy();
             return redirect('/user/don-hang');
         }
-
-
         // return redirect($vnp_Url);
     }
     // public function processVnPayCart(Request $request, $id)

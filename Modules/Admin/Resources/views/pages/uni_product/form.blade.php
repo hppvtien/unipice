@@ -281,3 +281,15 @@
         </div>
     </div>
 </form>
+@section('scriptck')
+<script>
+    CKEDITOR.replace('article-ckeditor', {
+    filebrowserBrowseUrl: "{{ asset('ckfinder/ckfinder.html') }}",
+    filebrowserImageBrowseUrl: "{{ asset('/plugin/ckfinder/ckfinder.html?type=Images') }}",
+    filebrowserFlashBrowseUrl: "{{ asset('/plugin/ckfinder/ckfinder.html?type=Flash') }}",
+    filebrowserUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}",
+    filebrowserImageUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}",
+    filebrowserFlashUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}",
+});
+</script>
+@stop

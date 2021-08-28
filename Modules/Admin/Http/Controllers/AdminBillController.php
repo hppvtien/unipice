@@ -15,15 +15,58 @@ class AdminBillController extends AdminController
 {
     public function index()
     {
-        $bill = Uni_LotProduct::orderBy('created_at','desc')->get();
+        $bill = Uni_LotProduct::orderBy('created_at','asc')->get();
         return view('admin::pages.bill.index', compact('bill'));
     }
     public function index_order()
     {
-        $order = Uni_Order::orderBy('created_at','desc')->get();
-        return view('admin::pages.bill.index_order', compact('order'));
+        $order = Uni_Order::where('status',2)->pluck('total_money');
+        
+        $order_total = 0;
+     foreach($order as $item){
+        $order_total += (int)str_replace('.','',$item); 
+     }
+        return view('admin::pages.bill.index_order', compact('order_total'));
     }
 
+    public function search_ajax(Request $request)
+    {
+        $from_date = $request->from_date;
+        $to_date = $request->to_date;
+        $range_date = $request->range_date;
+        $type_pay = $request->type_pay;
+        $order_total = 0;
+        if($range_date) {
+            $type_range = 'Trong '.$range_date.' ngày tới hiện tại';
+            $uni_order = Uni_Order::whereBetween('updated_at', [Carbon::now()->subDays($range_date),Carbon::now()])->where('status',2)->pluck('total_money');
+            foreach($uni_order as $item){
+                $order_total += (int)str_replace('.','',$item); 
+             }
+        } elseif($to_date != '' && $from_date != ''){
+            $type_range = 'trong khoảng thời gian '.$to_date.'-'.$from_date;
+            $uni_order = Uni_Order::whereBetween('updated_at', [$from_date,$to_date])->where('status',2)->pluck('total_money');
+            foreach($uni_order as $item){
+                $order_total += (int)str_replace('.','',$item); 
+             }
+        } elseif($type_pay) {
+            $type_range = 'của hình thức thanh toán-'.$type_pay;
+            $uni_order = Uni_Order::where('type_pay', $type_pay)->where('status',2)->pluck('total_money');
+            foreach($uni_order as $item){
+                $order_total += (int)str_replace('.','',$item); 
+             }
+        } else {
+            $uni_order = Uni_Order::where('status',2)->pluck('total_money');
+            foreach($uni_order as $item){
+                $order_total += (int)str_replace('.','',$item); 
+             }
+        }
+        if($uni_order){
+            $html = 'Doanh thu: <span class="text-danger">'.formatVnd($order_total).'</span>';
+        } else {
+            $html = 'Không tìm thấy kết quả nào';
+        }
+        return $html;
+    }
     public function delete(Request $request, $id)
     {
         if($request->ajax())

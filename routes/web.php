@@ -47,7 +47,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/forget-password{reset_code}', 'RegisterController@get_reset_code')->name('get.resetcodepassword');
     Route::post('/forget-password{reset_code}', 'RegisterController@postresetcodepassword')->name('post.resetcodepassword');
 
-    Route::get('tat-ca-san-pham.html', 'CategoryController@all_product')->name('get.all_product');
+    Route::get('san-pham.html', 'CategoryController@all_product')->name('get.all_product');
     Route::get('thuong-hieu/{slug}.html', 'CategoryController@trade_mark')->name('get.trade_product');
 
     Route::get('gioi-thieu', 'AboutController@index')->name('get.about');
