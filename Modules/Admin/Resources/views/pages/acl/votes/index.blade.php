@@ -97,7 +97,7 @@
                                     <td>{{ $item->v_number }}</td>
                                     <td>
                                         <label class="switch">
-                                            <input type="checkbox" class="v_status" data-ckb="{{ $item->id }}" {{ $item->v_status == 1 ?'checked':'' }}>
+                                            <input type="checkbox" class="v_status" data-ckb="{{ $item->id }}" data-url="{{ route('get_admin.votes.edit') }}" {{ $item->v_status == 1 ?'checked':'' }}>
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
@@ -116,34 +116,5 @@
     </div>
     <!-- row closed -->
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    
-    $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-       
-    $('.v_status').on('change',function(){
-        let v_id = $(this).attr('data-ckb'); 
-        $.ajax({
-                url: "{{ route('get_admin.votes.edit') }}",
-                type : "post",
-                dataType:"text",
-                data : {
-                    v_id : v_id
-                },
-                success : function (result){
-                    console.log(result,+'aaaaaa');
-                    // $('#result').html(result);
-                },
-                error : function (result){
-                    console.log(result,+'ssssss');
-                    // $('#result').html(result);
-                }
-            });
-    });
-    // 
-</script>
+
 @stop

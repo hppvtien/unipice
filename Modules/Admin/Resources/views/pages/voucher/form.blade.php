@@ -11,7 +11,7 @@
                                 <input type="text" class="form-control" value="{{ old('code',$voucher->code ?? '') }}" placeholder="Ấn Generate Code để render code " name="code" >
                             </div>
                             <div class="col-3">
-                                <button type="button" class="btn btn-info" id="generate-code"><i class="la text-success"></i> Generate Code</button>
+                                <button data-url="{{ route('get_admin.voucher.generate_code') }}" type="button" class="btn btn-info" id="generate-code"><i class="la text-success"></i> Generate Code</button>
                             </div>
                         </div>
                         @if($errors->first('code'))
@@ -66,28 +66,4 @@
     </div>
 </form>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
 
-    $('#generate-code').on('click', function() {
-        $.ajax({
-            url: "{{ route('get_admin.voucher.generate_code') }}",
-            type: "post",
-            dataType: "text",
-            success: function(result) {
-                let code_vc = result;
-                console.log(code_vc);
-                $('#code-generate').html('<input type="text" class="form-control" value="'+result+'" name="code" >');
-            },
-            error: function(result) {
-                console.log(result, +'ssssss');
-            }
-        });
-    });
-    // 
-</script>

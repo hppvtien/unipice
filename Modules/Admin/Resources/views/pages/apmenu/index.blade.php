@@ -53,16 +53,8 @@
     <!-- /.col -->
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-       
-</script>
-<script>
-      $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+
     $(document).ready(function() {
         var updateOutput = function(e) {
             var list = e.length ? e : $(e.target),

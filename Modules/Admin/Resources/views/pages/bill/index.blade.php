@@ -106,33 +106,5 @@
 </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $('.bill_id').on('click', function() {
-        let b_id = $(this).attr('data-id');
-        $.ajax({
-            url: "{{ route('get_admin.bill.view') }}",
-            type: "post",
-            dataType: "text",
-            data: {
-                b_id: b_id
-            },
-            success: function(result) {
-                let tiencss = $('#myModal').html(result);
-            },
-            error: function(result) {
-                console.log(result, +'ssssss');
-                // $('#result').html(result);
-            }
-        });
-    });
-    // 
-</script>
 
 @stop
