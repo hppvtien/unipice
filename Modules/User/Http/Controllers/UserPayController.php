@@ -8,8 +8,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
-use App\Mail\SendMail;
-use App\Mail\SendMailCK;
+use App\Mail\EmailOrder;
+use App\Mail\EmailOrderCK;
 use Illuminate\Support\Str;
 use App\Models\Configuration;
 use App\Models\Voucher;
@@ -399,11 +399,12 @@ class UserPayController extends UserController
                 $data = [
                     'pay_code' => $vnp_TxnRef,
                     'pay_note' =>  $vnp_OrderInfo,
-                    'type_pay' =>  $type_pay
+                    'type_pay' =>  $type_pay,
+                    'end_date' => Carbon::now()->subDay(-3),
                 ];
                 $order->fill($data)->save();
                 $data_bill = Uni_Order::find($id);
-                Mail::to($data_bill['email'])->send(new SendMail($data_bill));
+                Mail::to($data_bill['email'])->send(new EmailOrder($data_bill));
                 \Cart::destroy();
                 return $vnp_Url;
             }
@@ -456,11 +457,12 @@ class UserPayController extends UserController
                     'phone' => $request->method_phone,
                     'type_pay' => $type_pay,
                     'pay_code' => $orderId,
-                    'pay_node' =>  $orderInfo
+                    'pay_node' =>  $orderInfo,
+                    'end_date' => Carbon::now()->subDay(-3),
                 ];
                 $order->fill($data_mm)->save();
                 $data_bill = Uni_Order::find($id);
-                Mail::to($data_bill['email'])->send(new SendMail($data_bill));
+                Mail::to($data_bill['email'])->send(new EmailOrder($data_bill));
                 \Cart::destroy();
                 return $momo_Url;
             }
@@ -469,10 +471,11 @@ class UserPayController extends UserController
                 'user_id' => get_data_user('web'),
                 'phone' => $request->method_phone,
                 'type_pay' => $type_pay,
+                'end_date' => Carbon::now()->subDay(-3),
             ];
             $order->fill($data_mm)->save();
             $data_bill = Uni_Order::find($id);
-            Mail::to($data_bill['email'])->send(new SendMailCK($data_bill));
+            Mail::to($data_bill['email'])->send(new EmailOrderCK($data_bill));
             \Cart::destroy();
             return redirect('/user/don-hang');
         }
