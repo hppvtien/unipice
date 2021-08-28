@@ -308,7 +308,14 @@ $("#default-success").on("click", function() {
             bank_code: bank_code
         },
         success: function(result) {
-            window.location.href = result;
+            $("#toast-container").html(
+                    '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Đơn hàng đã được gửi đi</div></div>'
+                ),
+                4000;
+            setTimeout(function() {
+                $(".toast-success").remove();
+            }, 2000);
+            window.location.href = '/user/don-hang';
         },
         error: function(result) {
             console.log("loixxxxxxxxxxxxxxxxxxxx");

@@ -21,12 +21,14 @@
     .checkout-container {
         position: relative;
     }
-.m-radio-button__circle{
-    float: left;
-}
-.m-radio-button {
-    margin-top: 10px;
-}
+
+    .m-radio-button__circle {
+        float: left;
+    }
+
+    .m-radio-button {
+        margin-top: 10px;
+    }
 
 
     .m-radio-button__input:checked+label .m-radio-button__text-label {
@@ -517,7 +519,7 @@
                                     <div class="field _required pay_type row">
                                         @foreach (config('cart.pay_type') as $key => $item)
                                         <div class="col-6 validContainer addressOption selected m-radio-button">
-                                            <input type="radio" class="validAddress m-radio-button__input input-type-cart" name="type_pay" value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
+                                            <input type="radio" class="validAddress m-radio-button__input input-type-cart" name="type_pay" {{ $item['type'] == 1 ? 'checked':'' }} value="{{ $item['type'] }}" id="valid-{{ $item['type'] }}">
                                             <label class="addressLabel" for="valid-{{ $item['type'] }}">
                                                 <span class="m-radio-button__circle"></span>
                                                 <div class="optionTitle m-radio-button__text-label">{{ $item['name'] }}</div>
@@ -570,9 +572,9 @@
                                 <td><span>-{{ formatVnd((int)Cart::total(0,0,'')*(getDiscount()[0])/100) }} </span></td>
                             </tr>
                             @else
-                                
+
                             @endif
-                            
+
                             <tr>
                                 <td colspan="3">Phí ship</td>
                                 <td><span>{{ formatVnd($order->total_ship) }}</span></td>
@@ -591,22 +593,35 @@
             </div>
             <div class="col-md-12 col-xs-12 noi_left text-center">
                 <div class="banking-p4ay hide-ip1" id="banking-pay" name-bank="{{ json_encode($bank_info) }}">
-                    
+                    <div class="form-vnpay text-dark">
+                        <h3>Thông tin ngân hàng:</h3>
+                        <div>
+                            <p class="font-weight-bold"><span class="text-info">Ngân hàng: {{ $bank_info->name }}</span></p>
+                            <p class="font-weight-bold"><span class="text-info">Số tài khoản: {{ $bank_info->account }}</span></p>
+                            <p class="font-weight-bold"><span class="text-info">Chi nhánh: {{ $bank_info->address }}</span></p>
+                            <p class="font-weight-bold"><span class="text-info">Điện thoại hỗ trợ: {{ $bank_info->hotline }}</span></p>
+                            <p class="font-weight-bold"><span class="text-info">Email hỗ trợ: {{ $bank_info->email }}</span></p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-12 col-xs-12 noi_left text-center">
                 <div class="vnpay-p4ay hide-ip4" id="vnpay-pay">
-                    
+
                 </div>
             </div>
-            <div class="block block-dashboard-info col-md-12 col-xs-12 noi_left text-center">
-                <p class="text-success text-center" style="margin:0 auto 10px auto">Vui Lòng thanh toán đơn hàng <span class="text-danger" id="invoice-id">{{ $order->code_invoice }}</span> của bạn. <br>
-                    Đơn hàng <span class="text-danger">{{ $order->code_invoice }}</span> của bạn chỉ có giá trị khi bạn đã thanh toán</p>
-                <button class="a-btn a-btn--primary text-center action apply primary w-25" id="default-success" data-url="{{ route('post_user.paysuccsess',$order->id) }}" type="button" value="Pay Continue">
-                    <span>Thanh toán đơn hàng</span>
-                </button>
+            <?php if (count($listCarts) != 0) { ?>
+                <div class="block block-dashboard-info col-md-12 col-xs-12 noi_left text-center">
+                    <p class="text-success text-center" style="margin:0 auto 10px auto">Vui Lòng thanh toán đơn hàng <span class="text-danger" id="invoice-id">{{ $order->code_invoice }}</span> của bạn. <br>
+                        Đơn hàng <span class="text-danger">{{ $order->code_invoice }}</span> của bạn chỉ có giá trị khi bạn đã thanh toán</p>
+                    <button class="a-btn a-btn--primary text-center action apply primary w-25" id="default-success" data-url="{{ route('post_user.paysuccsess',$order->id) }}" type="button" value="Pay Continue">
+                        <span>Thanh toán đơn hàng</span>
+                    </button>
 
-            </div>
+                </div>
+            <?php } else {
+            } ?>
+
         </div>
         @include('user::pages.component._inc_menu_user')
     </div>
