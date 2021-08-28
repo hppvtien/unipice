@@ -500,7 +500,7 @@
                                 <th>{{ $order->address }}</td>
                             </tr>
                             <tr>
-                                <th scope="row">Số điênh thoại:</th>
+                                <th scope="row">Số điện thoại:</th>
                                 <th>{{ $order->phone }}</td>
                             </tr>
                             <tr>
