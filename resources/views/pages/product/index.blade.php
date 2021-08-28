@@ -118,7 +118,7 @@
                                                         <!-- /TODO :: ADD RATING -->
                                                         <div role="article" class="m-product-overview__price-wrapper d-block">
                                                             <div class="m-price-lockup d-block">
-                                                                @if ($uid)
+                                                                @if (checkUid($uid))
                                                                 <div role="article" class="m-product-overview__price-wrapper">
                                                                     <div class="m-price-lockup">
                                                                         <span class="m-price-lockup__price">

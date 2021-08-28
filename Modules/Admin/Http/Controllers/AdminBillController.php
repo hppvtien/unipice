@@ -37,7 +37,7 @@ class AdminBillController extends AdminController
         $type_pay = $request->type_pay;
         $order_total = 0;
         if($range_date) {
-            $type_range = 'Trong '.$range_date.' ngày tới hiện tại';
+            $type_range = 'trong '.$range_date.' ngày trước tới hiện tại';
             $uni_order = Uni_Order::whereBetween('updated_at', [Carbon::now()->subDays($range_date),Carbon::now()])->where('status',2)->pluck('total_money');
             foreach($uni_order as $item){
                 $order_total += (int)str_replace('.','',$item); 
@@ -49,7 +49,7 @@ class AdminBillController extends AdminController
                 $order_total += (int)str_replace('.','',$item); 
              }
         } elseif($type_pay) {
-            $type_range = 'của hình thức thanh toán-'.$type_pay;
+            $type_range = 'của hình thức thanh toán -'.$type_pay;
             $uni_order = Uni_Order::where('type_pay', $type_pay)->where('status',2)->pluck('total_money');
             foreach($uni_order as $item){
                 $order_total += (int)str_replace('.','',$item); 
@@ -60,10 +60,10 @@ class AdminBillController extends AdminController
                 $order_total += (int)str_replace('.','',$item); 
              }
         }
-        if($uni_order){
-            $html = 'Doanh thu: <span class="text-danger">'.formatVnd($order_total).'</span>';
+        if($order_total != 0){
+            $html = 'Tổng doanh thu '.$type_range.': <span class="text-danger">'.formatVnd($order_total).'</span>';
         } else {
-            $html = 'Không tìm thấy kết quả nào';
+            $html = 'Doanh thu chưa có vui lòng bán hàng';
         }
         return $html;
     }
