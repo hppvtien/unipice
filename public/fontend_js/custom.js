@@ -322,6 +322,12 @@ $("#default-success").on("click", function() {
         }
     });
 });
+$("#submit-form-contact").on("click", function() {
+
+    alert('ádasdsad');
+});
+
+
 $(".input-type-cart").on('change', function() {
     let html_vnpay = '<div class="form-vnpay"><h3>Chọn ngân hàng:</h3> <div class = "m-sort-by" ><select class name = "bank_code"id = "bank_code">' +
         '<option value = "" selected > Chọn ngân hàng thanh toán </option> ' +
@@ -376,14 +382,25 @@ function get_email() {
     } else {
         $.post(data_url, { user_email: email })
             .done(function(data) {
-                console.log(data);
-                $("#toast-container").html(
-                        '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Cám ơn bạn đã đăng ký theo dõi !!!</div></div>'
-                    ),
-                    4000;
-                setTimeout(function() {
-                    $(".toast-success").remove();
-                }, 2000);
+                if (data.status === 200) {
+                    $("#toast-container").html(
+                            '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' + data.message + '</div></div>'
+                        ),
+                        4000;
+                    setTimeout(function() {
+                        $(".toast-success").remove();
+                    }, 2000);
+                    return false;
+                } else {
+                    $("#toast-container").html(
+                            '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-error">' + data.message + '</div></div>'
+                        ),
+                        4000;
+                    setTimeout(function() {
+                        $(".toast-error").remove();
+                    }, 2000);
+                }
+
             });
     }
 

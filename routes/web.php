@@ -65,8 +65,9 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('member', 'MembershipController@index')->name('get.membership');
     Route::get('san-pham/{slug}', 'ProductController@index')->name('get.product');
     Route::post('san-pham/{slug}/thembinhluan', 'ProductController@thembinhluan')->name('get.product_comment');
-    Route::get('lien-he/', 'Uni_ContactController@index')->name('get.uni_contact');
-    Route::post('lien-he/', 'Uni_ContactController@getformsubmit')->name('post.uni_contact');
+    Route::get('lien-he', 'Uni_ContactController@index')->name('get.uni_contact');
+    Route::post('lien-he', 'Uni_ContactController@submitContact')->name('post.uni_contact');
+    Route::post('newsletters', 'Uni_ContactController@getNewsLetters')->name('post.uni_contact.newsletters');
     Route::get('tim-kiem', 'SearchController@search')->name('get.search');
     Route::get('spice-club', 'SpiceClubController@index')->name('get.spice_club');
     Route::get('bai-viet', 'BlogHomeController@index')->name('get_blog.home');
