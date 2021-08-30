@@ -58,10 +58,10 @@ return [
                     'name' => 'Trọng lượng',
                     'route' => 'get_admin.uni_size.index'
                 ],
-                [
-                    'name' => 'Màu sắc',
-                    'route' => 'get_admin.uni_color.index'
-                ],
+                // [
+                //     'name' => 'Màu sắc',
+                //     'route' => 'get_admin.uni_color.index'
+                // ],
                 [
                     'name' => 'Nhà cung cấp',
                     'route' => 'get_admin.uni_supplier.index'
