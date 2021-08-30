@@ -571,11 +571,17 @@ span.g-price {
         width: 100%;
     }
     .site-header {
-        z-index: 99999999999;
+        z-index: 9999999999;
         padding: 10px 0;
         /* position: fixed; */
         width: 100%;
         top: 0px;
+    }
+    #toast-container {
+        position: fixed;
+        z-index: 999999;
+        top: 100px;
+        height: 100px;
     }
     .fixed-menu {
         position: fixed;
