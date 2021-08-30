@@ -86,6 +86,7 @@
                         <span class="text-danger">{{ $errors->first('size') }}</span>
                         @endif
                     </div>
+
                     {{-- <div class="form-group">
                         <label for="exampleInputEmail1" class="required"> Màu sắc <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">

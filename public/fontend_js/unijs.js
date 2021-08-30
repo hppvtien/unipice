@@ -7102,7 +7102,7 @@ shopTheRecipeCarousel.forEach((el) => { new ShopTheRecipeCarousel(el); });
             });
         }
         const footer = document.querySelector('.js-footer');
-        var footerTop = footer.offsetTop;
+        var footerTop = '';
         const filterBar = document.querySelector('.js-filter-bar');
         var filterBarTop = filterBar.offsetTop;
         const filters = document.querySelector('.js-filters');
@@ -7111,7 +7111,7 @@ shopTheRecipeCarousel.forEach((el) => { new ShopTheRecipeCarousel(el); });
 
         function stickyFilters() {
             var filterBarHeight = filterBar.offsetHeight;
-            footerTop = footer.offsetTop;
+            footerTop = '';
             if (window.scrollY >= filterBarTop) {
                 filterBar.classList.add('t-plp__filter-bar--is-fixed');
                 template.style.paddingTop = filterBarHeight + 'px';
@@ -7302,9 +7302,6 @@ shopTheRecipeCarousel.forEach((el) => { new ShopTheRecipeCarousel(el); });
     let storageTimeLimit = 30 * 60 * 1000;
     let user = { isLoggedIn: false, initials: localStorage.getItem("initials"), firstName: localStorage.getItem("fname"), favorites: [], carts: [], cartTotal: 0, shelves: [], priceLookup: { skus: {} }, wishlist: { id: -1, items: {} } };
     const messaging = { dashboard: "Welcome Back, $name", account: { login: { url: "/customer/account/login/referer/" + btoa(location.href), text: " Sign In/Create Account" }, links: [{ url: "/customer/account/", text: "My Account" }, { url: "/sales/order/history/", text: "My Orders" }, { url: "/company/users/", text: "My Organization", b2b: true }, { url: "/wishlist/", text: "My Wishlist" }, { url: "/customer/account/logout/referer/" + btoa(location.href), text: "Sign Out" }] }, pdp: { review: "Write a Review", signin: { message: "Please $link to view price", link: { url: "/customer/account/login/referer/" + btoa(location.href), text: "sign in" } }, shelves: { product: "", shelf: "", addSuccess: "$product has been added to your $shelf.", addError: "There was an error adding $product to your $shelf.", addErrorSelectShelf: "Please select a shelf." }, actions: { shelves: { cta: "Add to Shelf", modal: { ariaLabel: "Add to Shelf", headline: "Add to Shelf", confirmBtn: "Confirm", closeBtn: "Close" } }, wishlist: { add: "Add to Wishlist", remove: "Remove from Wishlist" }, cart: { cta: "Change Cart", modal: { ariaLabel: "Change Cart", headline: "Choose a cart", createPlaceholder: "Cart Name", createLabel: "Create", createTrigger: "Create a new cart", createBtn: "Create", confirmBtn: "Confirm", closeBtn: "Close" } } } }, plp: { actions: { qtyLabel: "Quantity", add: "Add to Cart" } }, cart: { addSuccess: { message: "You've added $productName to your cart", product: "", btn: {}, analytics: [] }, addError: "There was an error adding the item to your cart", changeSuccess: "You've changed your default cart", changeError: "There was an error changing your default cart", qtyMissingError: "Please specify the quantity of product(s)", qtyInvalidError: "Please specify a valid quantity of product(s)", cartNameMissingError: "Please specify a name for the cart", cartSelectMissingError: "Please select a cart or create a new one" }, minicart: { fallbackImg: `https://cdn2.webdamdb.com/md_YYMY3r48rXV0.jpg?` + Date.now(), signin: { message: "You must $link to see your carts.", link: { url: "/customer/account/login/referer/" + btoa(location.href), text: "sign in" } }, empty: { b2c: "Your Shopping Cart is Empty.", b2b: "You do not have any saved carts" }, total: { b2c: "Your Cart Total:", b2b: "Group Total", b2b_my_total: "My Approved Total", b2b_my_draft_total: "My Draft Total" }, viewBtn: { url: { b2b: "/requisition_list/requisition/index/", b2c: "/checkout/cart/" }, text: { b2c: "View Cart", b2b: "View Saved Carts" } }, checkoutBtn: { url: "/checkout/", message: window.location.origin.indexOf("coopmarket.com") !== -1 ? "Proceed to Checkout" : "Checkout on Co-Op Market" }, accessibility: { message: "My Cart", count: "($count items)" }, trackRemove: {} }, wishlist: { product: "", addSuccess: "$product has been added to your Wish List.", addError: "There was an error adding $product to your Wish List.", removeSuccess: "$product has been removed from your Wish List.", removeError: "There was an error removing $product from your Wish List.", trackAdd: {} }, favorites: { link: "", add: "Add to Favorites", remove: "Remove from Favorites", title: "", addSuccess: "$title has been added to your Favorites.", addError: "There was an error adding $title to your Favorites.", removeSuccess: "$title has been removed from your Favorites.", removeError: "There was an error removing $title from your Favorites.", signin: "/customer/account/login/referer/" + btoa(location.href) }, newsletter: { button: "", email: "", success: "$email has been signed up for the Newsletter.", error: "There was an error subscribing $email to the Newsletter.", errorEmptyEmail: "This is a required field." } };
-
-    addSigninLink();
-
 
     function initSession(doneCallback) {
         apiRequest(`${storeEndpoint}/acquia/action/init`, "GET", {}, false, true, function({ quoteType, quoteId, maskedQuoteId, email, name, lastname, accountType, defaultSavedCart, hash }) {

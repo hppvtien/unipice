@@ -45,7 +45,7 @@ class AdminUniProductController extends AdminController
 
     public function create()
     {
-        $uni_color = Uni_Color::orderByDesc('id')->get();
+        // $uni_color = Uni_Color::orderByDesc('id')->get();
         $uni_size = Uni_Size::orderByDesc('id')->get();
         $uni_tag = Uni_Tag::where('type', 0)->get();
         $uni_trade = Uni_Trade::orderByDesc('id')->get();
@@ -58,7 +58,7 @@ class AdminUniProductController extends AdminController
         $uni_product = [];
 
         $viewData = [
-            'uni_color' => $uni_color,
+            // 'uni_color' => $uni_color,
             'uni_size'       => $uni_size,
             'uni_tag'      => $uni_tag,
             'uni_trade'     => $uni_trade,
@@ -112,7 +112,7 @@ class AdminUniProductController extends AdminController
             $this->syncTagProduct($productID, $request->tags);
             $this->syncCatProduct($productID, $request->category);
             $this->syncSizeProduct($productID, $request->size);
-            $this->syncColorProduct($productID, $request->color);
+            // $this->syncColorProduct($productID, $request->color);
             $this->syncTradeProduct($productID, $request->trade);
             return redirect()->route('get_admin.uni_product.index');
         }
@@ -123,7 +123,7 @@ class AdminUniProductController extends AdminController
     {
         $uni_product     = Uni_Product::findOrFail($id);
         $uni_tag       = Uni_Tag::where('type', 0)->get();
-        $uni_color       = Uni_Color::all();
+        // $uni_color       = Uni_Color::all();
         $uni_size       = Uni_Size::all();
         $uni_trade       = Uni_Trade::all();
         $uni_category       = Uni_Category::all();
@@ -131,19 +131,19 @@ class AdminUniProductController extends AdminController
         $tagOld = ProductTag::where('product_id', $id)->pluck('tag_id')->toArray() ?? [];
         $categoryOld = ProductCategory::where('product_id', $id)->pluck('category_id')->toArray() ?? [];
         $tradeOld = ProductTrade::where('product_id', $id)->pluck('trade_id')->toArray() ?? [];
-        $colorOld = ProductColor::where('product_id', $id)->pluck('color_id')->toArray() ?? [];
+        // $colorOld = ProductColor::where('product_id', $id)->pluck('color_id')->toArray() ?? [];
         $sizeOld = ProductSize::where('product_id', $id)->pluck('size_id')->toArray() ?? [];
         $viewData = [
             'uni_product'       => $uni_product,
             'uni_tag'           => $uni_tag,
-            'uni_color'         => $uni_color,
+            // 'uni_color'         => $uni_color,
             'uni_size'          => $uni_size,
             'uni_trade'         => $uni_trade,
             'uni_category'      => $uni_category,
             'tagOld'            => $tagOld,
             'categoryOld'       => $categoryOld,
             'tradeOld'          => $tradeOld,
-            'colorOld'          => $colorOld,
+            // 'colorOld'          => $colorOld,
             'sizeOld'           => $sizeOld
         ];
         return view('admin::pages.uni_product.update', $viewData);
@@ -200,7 +200,7 @@ class AdminUniProductController extends AdminController
         $this->syncTagProduct($id, $request->tags);
         $this->syncCatProduct($id, $request->category);
         $this->syncSizeProduct($id, $request->size);
-        $this->syncColorProduct($id, $request->color);
+        // $this->syncColorProduct($id, $request->color);
         $this->syncTradeProduct($id, $request->trade);
 
         // RenderUrlSeoCourseService::update($request->c_slug, SeoEdutcation::TYPE_COURSE, $id);
@@ -335,18 +335,18 @@ class AdminUniProductController extends AdminController
             }
         }
     }
-    protected function syncColorProduct($productID, $color)
-    {
-        if (!empty($color)) {
-            \DB::table('product_color')->where('product_id', $productID)->delete();
-            foreach ($color as $item) {
-                ProductColor::insert([
-                    'product_id' => $productID,
-                    'color_id'    => $item
-                ]);
-            }
-        }
-    }
+    // protected function syncColorProduct($productID, $color)
+    // {
+    //     if (!empty($color)) {
+    //         \DB::table('product_color')->where('product_id', $productID)->delete();
+    //         foreach ($color as $item) {
+    //             ProductColor::insert([
+    //                 'product_id' => $productID,
+    //                 'color_id'    => $item
+    //             ]);
+    //         }
+    //     }
+    // }
     protected function syncTradeProduct($productID, $trade)
     {
         if (!empty($trade)) {
@@ -394,7 +394,7 @@ class AdminUniProductController extends AdminController
                 ProductTag::where('product_id', $id)->delete();
                 ProductCategory::where('product_id', $id)->delete();
                 ProductTrade::where('product_id', $id)->delete();
-                ProductColor::where('product_id', $id)->delete();
+                // ProductColor::where('product_id', $id)->delete();
                 ProductSize::where('product_id', $id)->delete();
             }
             return response()->json([

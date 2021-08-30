@@ -84,9 +84,7 @@
                                     <input name="name" id="name" title="Họ và tên(*)" value="" class="a-text-input m-text-input__input input-text" type="text" data-validate="{required:true}" aria-required="true">
                                     <label class="a-form-label m-text-input__label label" for="name"><span>Họ và tên(*)</span></label>
                                 </div>
-                                @if($errors->first('name'))
-                                <span class="font_chu_mau_do">{{ $errors->first('name') }}</span>
-                                @endif
+                                <span class="font_chu_mau_do error-input" id="name_contact"></span>
                             </div>
                             <div class="c-contact-form__field c-contact-form__field--email field email required">
                                 <div class="m-text-input m-text-input--placeholder-label control">
@@ -94,25 +92,21 @@
                                     <label class="a-form-label m-text-input__label label" for="email"><span>E-mail(*)</span></label>
 
                                 </div>
-                                @if($errors->first('email'))
-                                <span class="font_chu_mau_do">{{ $errors->first('email') }}</span>
-                                @endif
+                                <span class="font_chu_mau_do error-input" id="email_contact"></span>
                             </div>
                             <div class="c-contact-form__field c-contact-form__field--phone field telephone">
                                 <div class="m-text-input m-text-input--placeholder-label control">
                                     <input name="phone" id="telephone" title="Phone Number(*)" value="" class="a-text-input m-text-input__input input-text" type="tel">
                                     <label class="a-form-label m-text-input__label label" for="telephone"><span>Số điện thoại(*)</span></label>
                                 </div>
-                                @if($errors->first('phone'))
-                                <span class="font_chu_mau_do">{{ $errors->first('phone') }}</span>
-                                @endif
+                                <span class="font_chu_mau_do error-input" id="phone_contact"></span>
                             </div>
                             <div class="c-contact-form__field c-contact-form__field--subject field subject required">
                                 <div class="m-select-menu m-select-menu--hidden-label control">
                                     <select name="subject" id="subject" title="Subject" class="a-select-menu m-select-menu__select validate-select" aria-required="true">
-                                        @foreach ($subject as $l => $vl)
-                                        <option value="@php echo $l @endphp">@php echo $vl @endphp</option>
-                                        @endforeach
+                                        @foreach($subject as $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                    @endforeach
                                     </select>
                                     <label class="a-form-label m-select-menu__label label" for="subject"><span>Subject</span></label>
                                     <span class="m-select-menu__arrow"></span>
@@ -123,9 +117,7 @@
                                     <textarea name="message" id="comment" title="Message" class="a-textarea m-textarea__input input-text" cols="5" rows="3" data-validate="{required:true}" aria-required="true"></textarea>
                                     <label class="a-form-label m-textarea__label label" for="comment"><span>Nội dung(*)</span></label>
                                 </div>
-                                @if($errors->first('message'))
-                                <span class="font_chu_mau_do">{{ $errors->first('message') }}</span>
-                                @endif
+                                <span class="font_chu_mau_do error-input" id="message_contact"></span>
                             </div>
                         </div>
                         <div class="actions-toolbar">
