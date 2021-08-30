@@ -38,7 +38,7 @@
                                                 </fieldset>
                                                 <div class="actions-toolbar">
                                                     <div class="primary">
-                                                        <button type="button" class="a-btn a-btn--primary login primary js-login">
+                                                        <button type="submit" class="a-btn a-btn--primary login primary js-login">
                                                                 <span>Đăng nhập</span></button>
                                                     </div>
                                                     <div class="secondary"><a class="a-btn a-btn--text action remind" href="{{ route('get.forgetpassword') }}"><span>Quên mật khẩu?</span></a>

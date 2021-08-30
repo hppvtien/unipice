@@ -7,15 +7,18 @@ use App\Models\Uni_Contact;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use DB;
+use Modules\Admin\Http\Requests\AdminContactRequest;
 
 class Uni_ContactController extends Controller
 {
     public function index(){
         \SEOMeta::setTitle('Liên hệ');
         $array_subject = [
-            '1' => 'Chăm Sóc Khách Hàng',
-            '2' => 'Tư Vấn Cá Nhân',
-            '3' => 'Dữ Liệu Người Dùng',
+            '1' => 'Yêu Cầu Sản Phẩm',
+            '2' => 'Liên Quan đơn hàng',
+            '3' => 'Tài Khoản Người Dùng',
+            '4' => 'Hợp Tác Phát Triển',
+            '5' => 'Chủ đề khác',
         ];
 
         $menu = Uni_Category::select('name', 'slug')->get();
@@ -49,7 +52,7 @@ class Uni_ContactController extends Controller
         return view('pages.contact.index', $viewdata);
     }
 
-    public function getformsubmit(Request $request){
+    public function getformsubmit(AdminContactRequest $request){
         
         if($request->_token){
 

@@ -1007,11 +1007,7 @@ table{
                                                                                                                 Hải
                                                                                                                 Phòng</span>
                                                                                                         </div>
-                                                                                                        <div><span style="font-size:18px;">Tel:
-                                                                                                                (024)
-                                                                                                                7108
-                                                                                                                999</span>
-                                                                                                        </div>
+                                                                                                        
                                                                                                     </td>
                                                                                                 </tr>
                                                                                             </tbody>

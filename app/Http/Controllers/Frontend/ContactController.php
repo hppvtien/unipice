@@ -26,7 +26,7 @@ class ContactController extends Controller
     }
  
     public function submitContact(AdminContactRequest $request)
-    {
+    { 
         $data = $request->except(['save', '_token']);
         $data['created_at'] = Carbon::now();
         $contactID = Contact::insertGetId($data);
