@@ -323,8 +323,69 @@ $("#default-success").on("click", function() {
     });
 });
 $("#submit-form-contact").on("click", function() {
+    var data_url = $(this).attr('data-url');
+    var name = $("input[name='name']").val();
+    var email = $("input[name='email']").val();
+    var phone = $("input[name='phone']").val();
+    var subject = $("#subject").find(":selected").text();
+    var message = $("textarea[name='message']").val();
+    $('.error-input').html('');
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var email = $("input[name='email']").val();
+    var email_check = re.test(email);
+    if (email_check == false) {
+        $("#toast-container").html(
+                '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Kiểm tra lại email vừa nhập.</div></div>'
+            ),
+            4000;
+        setTimeout(function() {
+            $(".toast-error").remove();
+        }, 2000);
+    } else {
+        if (name == '') {
+            $('#name_contact').html('Bạn chưa nhập thông tin Họ tên');
 
-    alert('ádasdsad');
+            if (email == '') {
+                $('#email_contact').html('Bạn chưa nhập thông tin email');
+            }
+            if (phone == '') {
+                $('#phone_contact').html('Bạn chưa nhập số điện thoại');
+            }
+            if (message == '') {
+                $('#message_contact').html('Bạn chưa nhập nội dung liên hệ!!!');
+            }
+            return false;
+        }
+        $.ajax({
+            url: data_url,
+            method: "post",
+            data: {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message,
+                subject: subject,
+
+            },
+            success: function success(results) {
+                $("#toast-container").html(
+                        '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' + results + '</div></div>'
+                    ),
+                    4000;
+                setTimeout(function() {
+                    $(".toast-success").remove();
+                }, 2000);
+            },
+            error: function error(results) {
+                console.log("Loizzzzzzzzz");
+            }
+        });
+    }
+
+
+
+
+
 });
 
 

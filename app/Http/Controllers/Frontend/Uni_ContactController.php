@@ -50,11 +50,10 @@ class Uni_ContactController extends Controller
             'info' => $infomation1,
             'menu1' => $menu1,
         ];
-
         return view('pages.contact.index', $viewdata);
     }
 
-    public function submitContact(AdminContactRequest $request)
+    public function submitContact(Request $request)
     {
         $data = [
             'name' => $request->name,
@@ -67,10 +66,7 @@ class Uni_ContactController extends Controller
         $id = Uni_Contact::insertGetId($data);
 
         if ($id) {
-            return \Session::flash('toastr', [
-                'type' => 'success',
-                'message' => 'Bạn đã gửi thành công!!!!',
-            ]);
+            return 'Bạn đã gửi thành công!!!!';
         }
     }
     public function getNewsLetters(Request $request)
