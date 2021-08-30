@@ -506,7 +506,7 @@
                     <div class="opc-estimated-wrapper">
                         <div class="estimated-block">
                             <span class="estimated-label" style="font-size: 22px;text-transform: uppercase;font-weight: 500;">Tổng tiền phải thanh toán: </span>
-                            @if (checkUidSpiceClub(get_data_user('web')))
+                            @if (get_data_user('web','type') == 2)
                             <span class="estimated-price" style="font-size: 22px;text-transform: uppercase;font-weight: 500;color:red">{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span>
 
                             @else
@@ -733,7 +733,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    @if (checkUidSpiceClub(get_data_user('web')))
+                                                    @if (get_data_user('web','type') == 2)
                                                     <li class="product-item">
                                                         <div class="product-item-name-block">
                                                             <div class="details-qty" id="total_discount">
@@ -749,7 +749,7 @@
                                                         <div class="product-item-name-block">
                                                             <div class="details-qty">
                                                                 <span class="label">Tổng đơn hàng: </span>
-                                                                @if (checkUidSpiceClub(get_data_user('web')))
+                                                                @if (get_data_user('web','type') == 2)
                                                                 <span class="value" id="total-cart"><span>{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span></span>
                                                                 @else
                                                                 <span class="value" id="total-cart"><span>{{ formatVnd((int)Cart::total(0,0,'')) }}</span></span>
