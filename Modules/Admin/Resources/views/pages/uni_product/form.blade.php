@@ -86,7 +86,7 @@
                         <span class="text-danger">{{ $errors->first('size') }}</span>
                         @endif
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="exampleInputEmail1" class="required"> Màu sắc <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="color[]" class="form-control SlectBox SumoUnder " tabindex="-1">
@@ -98,7 +98,7 @@
                         @if($errors->first('color'))
                         <span class="text-danger">{{ $errors->first('color') }}</span>
                         @endif
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Sắp xếp <span>(*)</span></label>
                         <input type="number" class="form-control" name="order" value="{{ old('order', $uni_product->order ?? '0') }}">
