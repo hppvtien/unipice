@@ -44,7 +44,6 @@ class AdminCategoryController extends AdminController
         if($categoryID)
         {
             $this->showMessagesSuccess();
-            RenderUrlSeoCourseService::init($request->c_slug,SeoEdutcation::TYPE_CATEGORY, $categoryID);
             return redirect()->route('get_admin.category.index');
         }
         $this->showMessagesError();
@@ -78,7 +77,6 @@ class AdminCategoryController extends AdminController
         }
 
         $category->fill($data)->save();
-        RenderUrlSeoCourseService::update($request->c_slug,SeoEdutcation::TYPE_CATEGORY, $id);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.category.index');
     }
@@ -93,7 +91,6 @@ class AdminCategoryController extends AdminController
             {
                 Storage::delete('public/uploads/'.$category->c_avatar);
                 $category->delete();
-                RenderUrlSeoCourseService::deleteUrlSeo(SeoEdutcation::TYPE_CATEGORY, $id);
             }
             return response()->json([
                 'status' => 200,

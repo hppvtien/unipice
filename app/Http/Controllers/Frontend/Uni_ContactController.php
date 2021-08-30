@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
+
 use App\Models\Uni_Category;
 use App\Http\Controllers\Controller;
 use App\Models\Uni_Contact;
@@ -11,7 +12,8 @@ use Modules\Admin\Http\Requests\AdminContactRequest;
 
 class Uni_ContactController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         \SEOMeta::setTitle('Liên hệ');
         $array_subject = [
             '1' => 'Yêu Cầu Sản Phẩm',
@@ -23,14 +25,14 @@ class Uni_ContactController extends Controller
 
         $menu = Uni_Category::select('name', 'slug')->get();
         $menu1 = array();
-        foreach($menu as $l){
-            
+        foreach ($menu as $l) {
+
             $menu1[] = $l;
         }
 
-        $infomation = DB::table('configurations')->select('logo','name','address','email','hotline','facebook','youtube','twitter','instagram','footer_bottom')->get();
+        $infomation = DB::table('configurations')->select('logo', 'name', 'address', 'email', 'hotline', 'facebook', 'youtube', 'twitter', 'instagram', 'footer_bottom')->get();
         $infomation1 = [];
-        foreach($infomation as $l){
+        foreach ($infomation as $l) {
             $infomation1['name'] = $l->name;
             $infomation1['logo'] = $l->logo;
             $infomation1['address'] = $l->address;
@@ -52,64 +54,53 @@ class Uni_ContactController extends Controller
         return view('pages.contact.index', $viewdata);
     }
 
-    public function getformsubmit(AdminContactRequest $request){
-        
-        if($request->_token){
+    public function submitContact(AdminContactRequest $request)
+    {
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'message' => $request->message,
+            "created_at" =>  Carbon::now(),
+            "updated_at" => null,
+        ];
+        $id = Uni_Contact::insertGetId($data);
 
-            if($request->name){
-                $data['name'] = $request->name;
-            }
-            if($request->email){
-                $data['email'] = $request->email;
-            }
-            if($request->telephone){
-                $data['telephone'] = $request->telephone;
-            }
-            if($request->comment){
-                $data['mess'] = $request->comment;
-            }
-            if($request->subject){
-                $data['subject'] = $request->subject;
-            }
-            
-            $id = DB::table('uni_contact')->insertGetId(
-                [
-                    'name' => $data['name'], 
-                    'email' => $data['email'], 
-                    'phone' => $data['telephone'], 
-                    'message' => $data['mess'],
-                    "created_at" =>  Carbon::now(),
-                    "updated_at" => null,
-                ]
-            );
+        if ($id) {
+            return \Session::flash('toastr', [
+                'type' => 'success',
+                'message' => 'Bạn đã gửi thành công!!!!',
+            ]);
+        }
+    }
+    public function getNewsLetters(Request $request)
+    {
 
-            if($id)
-            {
-                return redirect('/lien-he');
+        if ($request->user_email) {
+            $data_contact = Uni_Contact::where('email', $request->user_email)->where('is_newsletter', 1)->first();
+            if ($data_contact != null) {
+                return response()->json([
+                    'status' => 202,
+                    'message' => 'Email đã tồn tại trong hệ thống'
+                ]);
+            } else {
+                $data = [
+                    'name' => 'Yêu cầu Newsletters',
+                    'email' => $request->user_email,
+                    'phone' => 0000000000,
+                    'message' => 'Yêu cầu Newsletters',
+                    "created_at" =>  Carbon::Now(),
+                    "is_newsletter" => 1,
+                ];
             }
-        }  
-
-        if($request->user_email){
-            $data['email'] = $request->user_email;
-            $data['name'] = $request->name ?? 'N/A';
-            $data['telephone'] = $request->phone ?? 0;
-            $data['mess'] = 'Theo dõi bản tin của chúng tôi';
-            $data['subject'] = 0;
-
-            $id = DB::table('uni_contact')->insertGetId(
-                [
-                    'name' => $data['name'], 
-                    'email' => $data['email'], 
-                    'phone' => $data['telephone'], 
-                    'message' => $data['mess'],
-                    "created_at" =>  date('Y-m-d H:i:s'),
-                    "updated_at" => null,
-                ]
-            );
-            if($id){
-                return 'Chúng tôi đã nhận được email và sẽ phản hồi ngay!';
+            // dd($data);
+            $id = Uni_Contact::insertGetId($data);
+            if ($id) {
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Chúng tôi đã nhận được email và sẽ phản hồi ngay!'
+                ]);
             }
-        
-        }  
+        }
     }
 }

@@ -16,15 +16,17 @@ class AdminContactRequest extends FormRequest
         return [
             'name' => 'required',
             'phone' => 'required|min:10|max:12',
-            'content' => 'required'
+            'content' => 'required',
+            'email' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Dữ liệu không được để trống',
-            'phone.required' => 'Dữ liệu không được để trống',
+            'name.required' => 'Họ tên không được để trống',
+            'email.required' => 'Email không được để trống',
+            'phone.required' => 'Số điện thoại không được để trống',
             'phone.min' => 'Số điện thoại tối thiểu 10 số',
             'phone.max' => 'Số điện thoại tối đa 12 số',
             'content.required' => 'Dữ liệu không được để trống'

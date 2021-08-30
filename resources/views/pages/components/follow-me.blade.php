@@ -9,9 +9,8 @@
                 Đăng ký để là người đầu tiên biết về những tin tức và ưu đãi mới nhất:
             </p>
             <form class="m-newsletter-signup__form" method="post" action="">
-                {{ csrf_field() }}
                 <div class="fieldset">
-                    <input id="email1" type="email" data-url="{{ route('post.uni_contact') }}" class="m-newsletter-signup__input" aria-label="Enter your email address" placeholder="Nhập địa chỉ Email của bạn">
+                    <input id="email1" type="email" data-url="{{ route('post.uni_contact.newsletters') }}" data-type="news" class="m-newsletter-signup__input" aria-label="Enter your email address" placeholder="Nhập địa chỉ Email của bạn">
                 </div>
                 <button type="button" class="m-newsletter-signup__submit" aria-label="Submit" onclick="get_email();"><span class="icon-arrow-right"></span></button>
             </form>
