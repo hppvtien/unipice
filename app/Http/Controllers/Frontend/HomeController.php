@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Models\Page;
 use App\Models\Content_Page;
+use App\Models\Blog\Uni_Post;
 use App\Models\Cart\Uni_Order_Nap;
 class HomeController extends Controller
 {
@@ -68,6 +69,10 @@ class HomeController extends Controller
         $product_trade = Uni_Product::whereIn('id', $product_groupId)
         ->orderBy('id', 'asc')
         ->get();
+
+        $blog_post = Uni_Post::where('status', 1)
+        ->orderBy('id', 'asc')
+        ->limit(4)->get();
         $viewData=[
             'slides'=>$slides,
             'product_hot'=>$product_hot,
@@ -79,7 +84,8 @@ class HomeController extends Controller
             'content_page_3' => $content_page_3,
             'content_page_4' => $content_page_4,
             'trade'=>$trade,
-            'product_trade'=>$product_trade
+            'product_trade'=>$product_trade,
+            'blog_post'=>$blog_post
 
         ];
         return view('pages.home.home', $viewData);
