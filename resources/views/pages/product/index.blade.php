@@ -242,19 +242,19 @@
                                                     <div id="share">
 
                                                         <!-- facebook -->
-                                                        <a class="facebook" href="https://www.facebook.com/share.php?u=url&title=title" target="blank"><i class="fa fa-facebook"></i></a>
+                                                        <a class="facebook" href="https://www.facebook.com/share.php?u=url&title=title" target="blank" rel="nofollow"><i class="fa fa-facebook"></i></a>
 
                                                         <!-- twitter -->
-                                                        <a class="twitter" href="https://twitter.com/intent/tweet?status=title+url" target="blank"><i class="fa fa-twitter"></i></a>
+                                                        <a class="twitter" href="https://twitter.com/intent/tweet?status=title+url" target="blank" rel="nofollow"><i class="fa fa-twitter"></i></a>
 
                                                         <!-- google plus -->
-                                                        <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank"><i class="fa fa-google-plus"></i></a>
+                                                        <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank" rel="nofollow"><i class="fa fa-google-plus"></i></a>
 
                                                         <!-- linkedin -->
-                                                        <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank"><i class="fa fa-linkedin"></i></a>
+                                                        <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank" rel="nofollow"><i class="fa fa-linkedin"></i></a>
 
                                                         <!-- pinterest -->
-                                                        <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank"><i class="fa fa-pinterest-p"></i></a>
+                                                        <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank" rel="nofollow"><i class="fa fa-pinterest-p"></i></a>
 
                                                     </div>
                                                 </div>

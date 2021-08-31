@@ -45,19 +45,19 @@
                                         <div class="link_share_contact">
 
                                             <!-- facebook -->
-                                            <a class="facebook" href="{{ $info['facebook'] }}" target="blank"><i class="fa fa-facebook"></i></a>
+                                            <a class="facebook" href="{{ $info['facebook'] }}" target="blank" rel="nofollow"><i class="fa fa-facebook"></i></a>
 
                                             <!-- twitter -->
-                                            <a class="twitter" href="{{ $info['twitter'] }}" target="blank"><i class="fa fa-twitter"></i></a>
+                                            <a class="twitter" href="{{ $info['twitter'] }}" target="blank" rel="nofollow"><i class="fa fa-twitter"></i></a>
 
                                             <!-- google plus -->
-                                            <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank"><i class="fa fa-google-plus"></i></a>
+                                            <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank" rel="nofollow"><i class="fa fa-google-plus"></i></a>
 
                                             <!-- linkedin -->
-                                            <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank"><i class="fa fa-linkedin"></i></a>
+                                            <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank" rel="nofollow"><i class="fa fa-linkedin"></i></a>
 
                                             <!-- pinterest -->
-                                            <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank"><i class="fa fa-pinterest-p"></i></a>
+                                            <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank" rel="nofollow"><i class="fa fa-pinterest-p"></i></a>
 
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@
                             </div>
                             <div class="c-contact-form__field c-contact-form__field--email field email required">
                                 <div class="m-text-input m-text-input--placeholder-label control">
-                                    <input name="email" id="email" title="E-Mail(*)" value="" class="a-text-input m-text-input__input input-text" type="email" data-validate="{required:true, 'validate-email':true}" aria-required="true">
+                                    <input name="email" id="emailuni" title="E-Mail(*)" value="" class="a-text-input m-text-input__input input-text" type="email" data-validate="{required:true, 'validate-email':true}" aria-required="true">
                                     <label class="a-form-label m-text-input__label label" for="email"><span>E-mail(*)</span></label>
 
                                 </div>

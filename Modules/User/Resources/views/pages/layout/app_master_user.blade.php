@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -18,15 +17,11 @@
     <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css_js/font-awesome.css') }}" /> 
-
     <link rel="stylesheet" href="{{ asset('css/unimall.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css_js/unimall_style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/unimall2.css') }}">
-
     <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
     <link href="{{ asset('css/css_js/custom.css') }}" rel="stylesheet">
-
-
 </head>
 <div class="zeynep">
     <div class="col-md-12 col-xs-12 border_menu_mobile">
@@ -39,10 +34,9 @@
             <a class="col-md-12 row" href="{{ route('get_user.dashboard') }}"><span class="icon-account font_icon_new"><b>Quản Lý Tài Khoản</b> </span></a>
             @else
             <a class="col-md-12 row" href="{{ route('get.login') }}"><span class="icon-account font_icon_new"> <b>Tài Khoản</b> </span></a>
+            <a class="col-md-12 row" href="{{ route('get.register.b2b') }}"><span class="icon-account font_icon_new"> <b> B2B</b> </span></a>
             @endif
-            <a class="col-md-12 row" href="@if (get_data_user('web')) {{ route('get_user.dashboard') }} @else {{ route('get.register.b2b') }} @endif">
-                <span class="icon-account font_icon_new" id="count-fff" aria-hidden="true"><b>@if (get_data_user('web')) Quản Lý B2B @else Đăng Nhập B2B @endif</b></span>
-            </a>
+   
             <a class="col-md-12 row" href="{{ route('get.spice_club') }}">
                 <span class="icon-account font_icon_new" id="count-fff" aria-hidden="true"><b> Spice Club</b></span>
             </a>
@@ -93,14 +87,8 @@
         @empty @endforelse
     </ul>
 </div>
-
-
-
-
 <div class="zeynep-overlay"></div>
-
 <body>
-
     <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
         <div class="layout-container">
             @include('user::pages.component._inc_header') 
@@ -108,8 +96,6 @@
             @include('user::pages.component._inc_footer')
         </div>
     </div>
-
-
     <script src="{{ asset('fontend_js/jquery.min.js') }}"></script>
     <script src="{{ asset('css/css_js/popper.min.js') }}"></script>
     <script src="{{ asset('css/css_js/bootstrap.min.js') }}"></script>
@@ -141,28 +127,19 @@
     </script>
     <script>
         $(function() {
-            // init zeynepjs
             var zeynep = $('.zeynep').zeynep({
                 onClosed: function() {
-                    // enable main wrapper element clicks on any its children element
                     $("body main").attr("style", "");
-
                     console.log('the side menu is closed.');
                 },
                 onOpened: function() {
-                    // disable main wrapper element clicks on any its children element
                     $("body main").attr("style", "pointer-events: none;");
-
                     console.log('the side menu is opened.');
                 }
             });
-
-            // handle zeynep overlay click
             $(".zeynep-overlay").click(function() {
                 zeynep.close();
             });
-
-            // open side menu if hamburger menu is clicked
             $("nav .navbar-toggler").click(function() {
                 if ($("html").hasClass("zeynep-opened")) {
                     zeynep.close();
@@ -181,9 +158,6 @@
                 $('.search-full-view').removeClass("search-normal-screen");
             });
         });
-        
     </script>
-
 </body>
-
 </html>
