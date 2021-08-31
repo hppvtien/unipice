@@ -217,14 +217,18 @@ $("#check_vouchers").on("click", function() {
 $("#pay_success").on("click", function() {
     var data_url = $(this).attr("data-url");
     let method_ship = $('#method_shpping').find(":selected").val();
+
     let ward_code_to = '';
     let district_id_to = '';
     if (method_ship == 2) {
         ward_code_to = $('#ward').find(":selected").text();
         district_id_to = $('#district').find(":selected").text();
-    } else {
+    } else if (method_ship == 1) {
         ward_code_to = $('#ward').find(":selected").attr('data-ward');
         district_id_to = $('#district').find(":selected").attr('data-district');
+    } else {
+        $('.store_method_ship').html('Bạn chưa chọn phương thức vận chuyển');
+        return false;
     }
     let province_name_to = $('#province').find(":selected").text();
     let fee_ship = $('#fee-ship').text();
@@ -237,6 +241,7 @@ $("#pay_success").on("click", function() {
     var customer_name = $("input[name='customer_name']").val();
     var address = $("input[name='address']").val();
     var vouchers = $("input[name='vouchers']").val();
+
     $('.error-input').html('');
     if (address == '') {
         $('.store_address').html('Kiểm tra lại thông tin địa chỉ');
@@ -246,9 +251,6 @@ $("#pay_success").on("click", function() {
         }
         if (phone == '') {
             $('.store_phone').html('Kiểm tra lại số điện thoại');
-        }
-        if (method_ship == 4) {
-            $('.store_method_ship').html('Bạn chưa chọn phương thức vận chuyển');
         }
         if (district_id_to == undefined || district_id_to == 'Quận / huyện') {
             $('.store_district').html('Vui lòng chọn quận/huyện');
@@ -261,6 +263,7 @@ $("#pay_success").on("click", function() {
         }
         return false;
     }
+
 
     $.ajax({
         url: data_url,
