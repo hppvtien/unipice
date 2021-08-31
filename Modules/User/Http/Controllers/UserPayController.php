@@ -340,6 +340,7 @@ class UserPayController extends UserController
 
     public function processPayCart(Request $request, $id)
     {
+        
         $type_pay = $request->type_pay;
         $order = Uni_Order::find($id);
         if ($type_pay == 4) {
@@ -477,7 +478,7 @@ class UserPayController extends UserController
             $data_bill = Uni_Order::find($id);
             Mail::to($data_bill['email'])->send(new EmailOrderCK($data_bill));
             \Cart::destroy();
-            return redirect('/user/don-hang');
+            return '/user/don-hang';
         }
         // return redirect($vnp_Url);
     }

@@ -235,66 +235,37 @@
                             </tr>
                             @endforeach
                             <tr>
-                                <td colspan="2">Tổng tiền khóa học( Total amount )</td>
-                                <td>{{ $data_pdf->total_no_vat }} đ</td>
+                                <td colspan="2">Tổng tiền( Total amount )</td>
+                                <td>{{ formatVnd($data_pdf->total_no_vat) }} </td>
                             </tr>
                             <tr>
                                 <td colspan="1">Thuế GTGT (VAT Rate): 10%</td>
                                 <td colspan="1">Tiền Thuế GTGT (VAT amount)</td>
-                                <td>{{ $data_pdf->total_vat }} đ</td>
+                                <td>{{ formatVnd($data_pdf->total_vat) }} </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Phí ship</td>
+                                <td>{{ formatVnd($data_pdf->total_ship) }} </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Ưu đãi</td>
+                                <td>{{ formatVnd($data_pdf->total_discount) }} </td>
                             </tr>
                             <tr>
                                 <td colspan="2">Tổng tiền thanh toán</td>
-                                <td>{{ $data_pdf->total_money }} đ</td>
+                                <td>{{ formatVnd($data_pdf->total_money) }} </td>
                             </tr>
 
                             <tr>
                                 <td colspan="2">Tổng cộng tiền thanh toán (Grand total)</td>
-                                <td>{{ $data_pdf->total_money }} đ</td>
+                                <td>{{ formatVnd($data_pdf->total_money) }} </td>
                             </tr>
                             <tr>
                                 <td colspan="3">Mã hóa đơn: {{ $data_pdf->code_invoice }}</td>
                             </tr>
                             <tr>
-                                <td colspan="3" style="border:none">
-                                    <table class="table-in">
-                                        <tr>
-                                            <td class="td-sign" style="text-align: center">
-                                                <p>Người mua hàng (Buyer)</p>
-                                                <p><i>(Ký, ghi rõ họ tên)</i></p>
-                                                <p><i>(Sign, Fullname)</i></p>
-                                            </td>
-                                            <td class="td-sign" style="text-align: center">
-                                                <p>Người bán hàng (Seller)</p>
-                                                <p><i>(Ký, ghi rõ họ tên)</i></p>
-                                                <p><i>(Sign, Fullname)</i></p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </table>
+                                <td colspan="3"><i> Đây là đơn hàng tự động từ hệ thống của <b>UniMall.</b> Nếu có thắc mắc hãy liên hệ Hotline: <b>{{ $configuration->hotline }}</b> . <br>
+                                Hoặc email: <b>{{ $configuration->email }}</b></i>
                                 </td>
                             </tr>
                         </tbody>
