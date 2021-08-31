@@ -162,6 +162,13 @@ class UserPayController extends UserController
         };
         // dd((int)str_replace(".", "", str_replace(" đs", "", $request->fee_ship));)
         // dd(((int)\Cart::total(0,0,'')*10/100));
+        if(get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')) != null){
+            $total_discount = (int)\Cart::total(0,0,'')*(getDiscount()[0])/100;
+            $total_money = (int)str_replace(".", "", \Cart::total(0, 0, '.')) - (int)\Cart::total(0,0,'')*(getDiscount()[0])/100;
+        } else {
+            $total_discount = 0;
+            $total_money = (int)str_replace(".", "", \Cart::total(0, 0, '.'));
+        }
         $order_data = [
             'user_id' => get_data_user('web'),
             'code_invoice' => $request->code_invoice,
@@ -175,15 +182,16 @@ class UserPayController extends UserController
             'cart_info' => $listCarts,
             'combo_id' => $combo_id,
             'status' => 0,
-            'total_money' => (int)str_replace(".", "", \Cart::total(0, 0, '.')) - (int)\Cart::total(0,0,'')*10/100,
+            'total_money' => $total_money,
             'total_vat' => (int)str_replace(".", "", \Cart::tax(0, 0, '.')),
             'total_no_vat' => (int)str_replace(".", "", \Cart::subtotal(0, 0, '.')),
-            'total_discount' => ((int)\Cart::total(0,0,'')*(getDiscount()[0])/100),
+            'total_discount' => $total_discount,
             'total_ship' => $total_ship,
             'created_at' => Carbon::now(),
 
         ];
         $idOrder = Uni_Order::insertGetId($order_data);
+        \Cart::destroy();
         $order_data_sucsses = Uni_Order::where('id', $idOrder)->where('user_id', get_data_user('web'))->first();
         if ($idOrder) {
             if ($method_ship == 1) {
@@ -272,9 +280,10 @@ class UserPayController extends UserController
 
                 $order_new->fill($order_ghtk)->save();
             }
-
+            \Cart::destroy();
             $order_data_sucsses = Uni_Order::where('id', $idOrder)->where('user_id', get_data_user('web'))->first();
             // if ($order_data_sucsses->type_pay == 4) {
+                
             $url = '/thanh-toan/' . $idOrder;
             return $url;
         
@@ -299,7 +308,7 @@ class UserPayController extends UserController
     }
     public function processSuccsess(Request $request, $id)
     {
-        \Cart::destroy();
+        
         $message = 'Đơn hàng đã được gửi lên hệ thống';
         return $message;
     }
@@ -406,7 +415,7 @@ class UserPayController extends UserController
                 $order->fill($data)->save();
                 $data_bill = Uni_Order::find($id);
                 Mail::to($data_bill['email'])->send(new EmailOrder($data_bill));
-                \Cart::destroy();
+                // \Cart::destroy();
                 return $vnp_Url;
             }
         } elseif ($type_pay == 3) {
