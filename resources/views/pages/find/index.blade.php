@@ -12,8 +12,8 @@
                             <div class="layout__region layout__region--content">
                                 <div class="c-page-header c-page-header--light">
                                     <picture class="c-page-header__image">
-                                        <source media="(min-width: 1024px)" data-srcset="/storage/uploads/blogs-1440x380-1626419645.jpg" srcset="/storage/uploads/blogs-1440x380-1626419645.jpg">
-                                        <img class=" lazyloaded" data-src="/storage/uploads/blogs-1440x380-1626419645.jpg" alt="Tìm cửa hàng cùng Unispice" src="/storage/uploads/blogs-1440x380-1626419645.jpg">
+                                        <source media="(min-width: 1024px)" data-srcset="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" srcset="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
+                                        <img class=" lazyloaded" data-src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" alt="Tìm cửa hàng cùng Unispice" src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
                                     </picture>
 
                                     <div class="c-page-header__content">

@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="vi">
-
 <head>
     {!! SEO::generate() !!}
     <meta charset="UTF-8">
@@ -9,7 +8,7 @@
     <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
     <link rel="icon" href="{{ asset('img/brand/favicon.png') }}" type="image/x-icon" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link href="{{ asset('css/css_js/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/css_js/bootstrap.min.css') }}" >
     <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css_js/font-awesome.css') }}" />
@@ -17,9 +16,8 @@
     <link rel="stylesheet" href="{{ asset('css/css_js/unimall_style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/unimall2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
-    <link href="{{ asset('css/css_js/custom.css') }}" rel="stylesheet">
     @yield('css_js_spice_club')
+    <link rel="stylesheet" href="{{ asset('css/css_js/custom.css') }}" >
     @if(session('toastr'))
     <script>
         var TYPE_MESSAGES = "{{ session('toastr.type') }}"
@@ -39,10 +37,9 @@
             <a class="col-md-12 row" href="{{ route('get_user.dashboard') }}"><span class="icon-account font_icon_new"><b> Quản Lý Tài Khoản</b> </span></a>
             @else
             <a class="col-md-12 row" href="{{ route('get.login') }}"><span class="icon-account font_icon_new"> <b> Tài Khoản</b> </span></a>
+            <a class="col-md-12 row" href="{{ route('get.register.b2b') }}"><span class="icon-account font_icon_new"> <b> B2B</b> </span></a>
             @endif
-            <a class="col-md-12 row" href="@if (get_data_user('web')) {{ route('get_user.dashboard') }} @else {{ route('get.register.b2b') }} @endif">
-                <span class="icon-account font_icon_new" id="count-fff" aria-hidden="true"><b> @if (get_data_user('web')) Quản Lý B2B @else Đăng Nhập B2B @endif</b></span>
-            </a>
+
             <a class="col-md-12 row" href="{{ route('get.spice_club') }}">
                 <span class="icon-account font_icon_new" id="count-fff" aria-hidden="true"><b> Spice Club</b></span>
             </a>
@@ -168,28 +165,20 @@
             </div>
         </div>
     </div>
-
     <!-- CONTACT JS  -->
     <!-- revolution JS FILES -->
     <script src="{{ asset('fontend_js/jquery.min.js') }}"></script>
     <script src="{{ asset('css/css_js/popper.min.js') }}"></script>
     <script src="{{ asset('css/css_js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('css/css_js/jquery.zeynep.min.js') }}"></script>
-    <script src="{{ asset('fontend_js/select2.min.js') }}"></script>
+    @yield('js_about')
     <script src="{{ asset('fontend_js/custom.js') }}"></script>
     <script src="{{ asset('js/frontends.js') }}"></script>
     <script src="{{ asset('fontend_js/unijs.js') }}"></script>
-
-    @yield('js_about')
-
-
-
     <!-- CUSTOM FUCTIONS  -->
     <script>
         jQuery(document).ready(function() {
-
             var btn = $('.back-to-top');
-
             $(window).scroll(function() {
                 if ($(window).scrollTop() > 500) {
                     btn.addClass('show');
@@ -197,7 +186,6 @@
                     btn.removeClass('show');
                 }
             });
-
             btn.on('click', function(e) {
                 e.preventDefault();
                 $('html, body').animate({
@@ -207,28 +195,19 @@
 
         });
         $(function() {
-            // init zeynepjs
             var zeynep = $('.zeynep').zeynep({
                 onClosed: function() {
-                    // enable main wrapper element clicks on any its children element
                     $("body main").attr("style", "");
-
                     console.log('the side menu is closed.');
                 },
                 onOpened: function() {
-                    // disable main wrapper element clicks on any its children element
                     $("body main").attr("style", "pointer-events: none;");
-
                     console.log('the side menu is opened.');
                 }
             });
-
-            // handle zeynep overlay click
             $(".zeynep-overlay").click(function() {
                 zeynep.close();
             });
-
-            // open side menu if hamburger menu is clicked
             $("nav .navbar-toggler").click(function() {
                 if ($("html").hasClass("zeynep-opened")) {
                     zeynep.close();
@@ -246,10 +225,6 @@
             });
         });
     </script>
-
-
     @yield('js_product_comment_review')
-
 </body>
-
 </html>

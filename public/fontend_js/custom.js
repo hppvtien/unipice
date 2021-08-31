@@ -223,9 +223,12 @@ $("#pay_success").on("click", function() {
     if (method_ship == 2) {
         ward_code_to = $('#ward').find(":selected").text();
         district_id_to = $('#district').find(":selected").text();
-    } else {
+    } else if (method_ship == 1) {
         ward_code_to = $('#ward').find(":selected").attr('data-ward');
         district_id_to = $('#district').find(":selected").attr('data-district');
+    } else {
+        $('.store_method_ship').html('Bạn chưa chọn phương thức vận chuyển');
+        return false;
     }
     let province_name_to = $('#province').find(":selected").text();
     let fee_ship = $('#fee-ship').text();
@@ -238,7 +241,9 @@ $("#pay_success").on("click", function() {
     var customer_name = $("input[name='customer_name']").val();
     var address = $("input[name='address']").val();
     var vouchers = $("input[name='vouchers']").val();
+
     $('.error-input').html('');
+
     if (check_store != 1) {
         if (ward_code_to == '' || ward_code_to == undefined) {
             $('.store_ward').html('Vui lòng chọn phường/xã');
@@ -317,6 +322,31 @@ $("#pay_success").on("click", function() {
         });
     }
 
+    $.ajax({
+        url: data_url,
+        method: "post",
+        data: {
+            province_name_to: province_name_to,
+            code_invoice: code_invoice,
+            vouchers: vouchers,
+            phone: phone,
+            taxcode: taxcode,
+            address: address,
+            email: email,
+            customer_name: customer_name,
+            method_ship: method_ship,
+            district_id_to: district_id_to,
+            ward_code_to: ward_code_to,
+            email: email,
+            fee_ship: fee_ship
+        },
+        success: function success(results) {
+            window.location.href = results;
+        },
+        error: function error(results) {
+            console.log("Loizzzzzzzzz");
+        }
+    });
 
 
 

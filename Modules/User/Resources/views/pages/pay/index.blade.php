@@ -1,3 +1,6 @@
+@section('css_js_spice_club')
+<link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
+ @stop
 @extends('pages.layouts.app_master_frontend')
 @section('contents')
 <style>
@@ -948,3 +951,6 @@
 </script>
 
 @stop
+@section('js_about')
+<script src="{{ asset('fontend_js/select2.min.js') }}"></script>
+@endsection

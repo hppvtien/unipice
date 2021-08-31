@@ -1,15 +1,6 @@
 @section('css_js_spice_club')
-<link href="{{ asset('css/ducanh3.css') }}" rel="stylesheet">
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('css/css_js/aos.js') }}"></script>
-  <script src="{{ asset('css/css_js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('css/css_js/glightbox.min.js') }}"></script>
-  <script src="{{ asset('css/css_js/isotope.pkgd.min.js') }}"></script>
-  <script src="{{ asset('css/css_js/validate.js') }}"></script>
-  <script src="{{ asset('css/css_js/swiper-bundle.min.js') }}"></script> 
-
-    <!-- Template Main JS File -->
-    <script src="{{ asset('css/css_js/main.js') }}"></script>
+<link href="{{ asset('css/unimall1.css') }}" rel="stylesheet">
+<script src="{{ asset('css/css_js/bootstrap.bundle.min.js') }}"></script>
 @stop
 
 @extends('pages.layouts.app_master_frontend') @section('contents')

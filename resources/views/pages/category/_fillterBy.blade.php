@@ -1,4 +1,4 @@
-<div class="t-plp__filters js-filters">
+<div class="t-plp__filters js-filters fil-uni">
     <div class="c-sidebar-filters">
         <div class="c-sidebar-filters__close-filters">
             <!-- BASE -->
