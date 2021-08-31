@@ -217,6 +217,7 @@ $("#check_vouchers").on("click", function() {
 $("#pay_success").on("click", function() {
     var data_url = $(this).attr("data-url");
     let method_ship = $('#method_shpping').find(":selected").val();
+
     let ward_code_to = '';
     let district_id_to = '';
     if (method_ship == 2) {
@@ -238,55 +239,85 @@ $("#pay_success").on("click", function() {
     var address = $("input[name='address']").val();
     var vouchers = $("input[name='vouchers']").val();
     $('.error-input').html('');
-    if (address == '') {
-        $('.store_address').html('Kiểm tra lại thông tin địa chỉ');
-
-        if (customer_name == '') {
-            $('.store_name').html('Kiểm tra lại thông tin tên khách hàng');
-        }
-        if (phone == '') {
-            $('.store_phone').html('Kiểm tra lại số điện thoại');
-        }
-        if (method_ship == 4) {
-            $('.store_method_ship').html('Bạn chưa chọn phương thức vận chuyển');
-        }
-        if (district_id_to == undefined || district_id_to == 'Quận / huyện') {
-            $('.store_district').html('Vui lòng chọn quận/huyện');
-        }
-        if (ward_code_to == undefined || ward_code_to == 'Phường / xã') {
+    if (check_store != 1) {
+        if (ward_code_to == '' || ward_code_to == undefined) {
             $('.store_ward').html('Vui lòng chọn phường/xã');
+            if (address == '')
+                $('.store_address').html('Kiểm tra lại thông tin địa chỉ');
+
+            if (customer_name == '') {
+                $('.store_name').html('Kiểm tra lại thông tin tên khách hàng');
+            }
+            if (phone == '') {
+                $('.store_phone').html('Kiểm tra lại số điện thoại');
+            }
+            if (district_id_to == '' || district_id_to == undefined) {
+                $('.store_district').html('Vui lòng chọn quận/huyện');
+            }
+            if (province_name_to == 'Tỉnh / thành') {
+                $('.store_province').html('Vui lòng chọn tỉnh/thành');
+            }
+            if (method_ship == 4) {
+                $('.store_method_ship').html('Bạn chưa chọn phương thức vận chuyển');
+            }
+            return false;
         }
-        if (province_name_to == 'Tỉnh / thành') {
-            $('.store_province').html('Vui lòng chọn tỉnh/thành');
-        }
-        return false;
+        $.ajax({
+            url: data_url,
+            method: "post",
+            data: {
+                province_name_to: province_name_to,
+                code_invoice: code_invoice,
+                vouchers: vouchers,
+                phone: phone,
+                taxcode: taxcode,
+                address: address,
+                email: email,
+                customer_name: customer_name,
+                method_ship: method_ship,
+                district_id_to: district_id_to,
+                ward_code_to: ward_code_to,
+                email: email,
+                fee_ship: fee_ship
+            },
+            success: function success(results) {
+                console.log(results);
+                window.location.href = results;
+            },
+            error: function error(results) {
+                console.log("Loizzzzzzzzz");
+            }
+        });
+    } else {
+        $.ajax({
+            url: data_url,
+            method: "post",
+            data: {
+                province_name_to: province_name_to,
+                code_invoice: code_invoice,
+                vouchers: vouchers,
+                phone: phone,
+                taxcode: taxcode,
+                address: address,
+                email: email,
+                customer_name: customer_name,
+                method_ship: method_ship,
+                district_id_to: district_id_to,
+                ward_code_to: ward_code_to,
+                email: email,
+                fee_ship: fee_ship
+            },
+            success: function success(results) {
+                console.log(results);
+                window.location.href = results;
+            },
+            error: function error(results) {
+                console.log("Loizzzzzzzzz");
+            }
+        });
     }
 
-    $.ajax({
-        url: data_url,
-        method: "post",
-        data: {
-            province_name_to: province_name_to,
-            code_invoice: code_invoice,
-            vouchers: vouchers,
-            phone: phone,
-            taxcode: taxcode,
-            address: address,
-            email: email,
-            customer_name: customer_name,
-            method_ship: method_ship,
-            district_id_to: district_id_to,
-            ward_code_to: ward_code_to,
-            email: email,
-            fee_ship: fee_ship
-        },
-        success: function success(results) {
-            window.location.href = results;
-        },
-        error: function error(results) {
-            console.log("Loizzzzzzzzz");
-        }
-    });
+
 
 
 });
@@ -335,7 +366,7 @@ $("#submit-form-contact").on("click", function() {
     var email_check = re.test(email);
     if (email_check == false) {
         $("#toast-container").html(
-                '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Kiểm tra lại email vừa nhập.</div></div>'
+                '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Vui lòng kiểm tra lại thông tin!!</div></div>'
             ),
             4000;
         setTimeout(function() {
@@ -355,6 +386,20 @@ $("#submit-form-contact").on("click", function() {
                 $('#message_contact').html('Bạn chưa nhập nội dung liên hệ!!!');
             }
             return false;
+        } else {
+            if (email == '') {
+                $('#email_contact').html('Bạn chưa nhập thông tin email');
+                return false;
+            }
+            if (phone == '') {
+                $('#phone_contact').html('Bạn chưa nhập số điện thoại');
+                return false;
+            }
+            if (message == '') {
+                $('#message_contact').html('Bạn chưa nhập nội dung liên hệ!!!');
+                return false;
+            }
+
         }
         $.ajax({
             url: data_url,

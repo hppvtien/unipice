@@ -859,7 +859,7 @@
         let method_ship = $('#method_shpping').find(":selected").val();
         let url_ship = $('#method_shpping').find(":selected").attr('data-url');
         let total_cart_string = $('#total-cart').text();
-        let total_cart_noship = parseInt(total_cart_string.replace(" đ", "").replace(".", ""));
+        let total_cart_noship = parseInt(total_cart_string.replaceAll(",", "").replaceAll(" đ", ""));
         let total_cart = '';
         if (method_ship == 1) {
             $.ajax({
@@ -885,6 +885,7 @@
                             currency: 'vnd'
                         }) + '</span>');
                         $('#total-all').html('<span class="label">Tổng đơn hàng + vận chuyển: </span><span class="value">' + total_cart + '</span>');
+                        $('.estimated-price').html(total_cart);
                     } else {
                         $('#fee_ship').html('<span class="red-text">GHN chưa hỗ trợ hoặc do lý do Covid-19 nên đã dừng vận chuyển đến khu vực này</span>');
                     }
@@ -907,7 +908,6 @@
 
                 },
                 success: function(response) {
-                    console.log(response.fee);
                     if (response.success == false) {
                         $('#fee_ship').html('<span class="red-text"> GHTK chưa hỗ trợ hoặc do lý do Covid-19 nên đã dừng vận chuyển đến khu vực này</span>');
                     } else {
@@ -927,7 +927,12 @@
                     }
                 },
                 error: function(response) {
-                    console.log(response.success);
+                    $("#toast-container").html(
+                    ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">'+response.success+'</div></div>'),
+                4000;
+            setTimeout(function() {
+                $(".toast-error").remove();
+            }, 2000);
                 }
             });
         } else if (method_ship == 4) {

@@ -503,7 +503,7 @@
                     </div>
                     <div class="cart main actions">
                         <div class="cart-actions">
-                            <a href="{{ route('get.home') }}" type="button" name="update_cart_action" title="Update Shopping Cart" class="a-btn a-btn--primary action update update_cart_action">
+                            <a href="{{ route('get.all_product') }}" type="button" name="update_cart_action" title="Update Shopping Cart" class="a-btn a-btn--primary action update update_cart_action">
                                 <span>Tiếp tục mua hàng</span>
                             </a>
                         </div>

@@ -38,7 +38,7 @@
                                 </thead>
                                 <tbody>
                                     <?php if (count($uni_order) > 0) { ?>
-                                        @foreach ($uni_order as $key => $item)
+                                        @forelse ($uni_order as $key => $item)                                       
                                         <tr>
                                             <th scope="row">{{ $key+1 }}</th>
                                             <td class="text-left" data-id="{{ $item->id }}">
@@ -75,7 +75,6 @@
                                                                 <h6 class="modal-title text-white ">Thông tin liên lạc</h6>
                                                             </div>
                                                             <div class="row">
-                                                                
                                                                 <div class="col-12"><p></p></div>
                                                                 <div class="col-12"><p><span class="text-success">Đại chỉ</span> :{{ $item->address }}</p></div>
                                                                 <div class="col-12"><p><span class="text-success">Số điện thoại</span> :{{ $item->phone }}</p></div>
@@ -88,7 +87,11 @@
                                                 </div>
                                             </div>
                                             <td class="text-center">{{ $item->created_at }}</td>
-                                            <td class="text-center">{{ config('cart.pay_type')[$item->type_pay]['name'] }}</td>
+                                            @if ($item->type_pay != null)
+                                            <td class="text-center">{{ config('cart.pay_type')[$item->type_pay]['name']; }}</td>
+                                            @else
+                                            <td class="text-center">NULL</td>
+                                            @endif
                                             <td class="text-center">{{ $item->total_money }} đ</td>
                                             <td class="text-center"><span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span></td>
                                             <td class="text-center">
@@ -97,7 +100,9 @@
                                             </a>
                                         </td>
                                         </tr>
-                                        @endforeach
+                                        @empty
+                                            
+                                        @endforelse
                                     <?php } else { ?>
                                         <tr>
                                             <td colspan=7 scope="row">Dữ liệu đang cập nhật</th>

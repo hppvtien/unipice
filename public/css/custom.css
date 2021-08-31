@@ -15,15 +15,19 @@
     padding-right: 20px;
     width: auto;
 }
+
 .uni-css-img {
     width: 50%;
 }
+
 .container-uni {
     max-width: 1500px !important;
 }
+
 .uni-magin-top-but {
     margin: 150px 0px 60px;
 }
+
 .uni-blog-home-img img:hover {
     opacity: 1.0;
     -webkit-transform: scale(1.0) rotate( -5deg);
@@ -32,6 +36,7 @@
     -o-transform: scale(1.2) rotate(-5deg);
     transform: scale(0.9) rotate( -1deg);
 }
+
 .uni-blog-home-img img {
     -webkit-transition: all 300ms ease;
     -moz-transition: all 300ms ease;
@@ -39,6 +44,7 @@
     -o-transition: all 300ms ease;
     transition: all 300ms ease;
 }
+
 .uni-blog-home p {
     color: black;
     font-size: 18px;
@@ -48,10 +54,12 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+
 #search-close i {
     color: #fff;
     font-size: 25px;
 }
+
 .uni-css-title {
     max-width: 100% !important;
 }
@@ -380,9 +388,11 @@ a.contact-btn {
     font-size: 16px;
     font-weight: bold;
 }
+
 span.select2-container.select2-container--default.select2-container--open {
     z-index: 9999999;
 }
+
 @media screen and (min-width: 1024px) {
     .c-header__logo img {
         margin: 4px auto;
@@ -780,7 +790,8 @@ span.a-qty {
     color: #08532f;
 }
 
-.c-product-overview__content #share a {
+.c-product-overview__content #share a,
+#share2 a {
     width: 30px;
     height: 30px;
     margin: 0px;
