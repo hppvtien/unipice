@@ -19,6 +19,6 @@ class EmailOrderCK extends Mailable
 
     public function build()
     {
-        return $this->markdown('email.auth.email_chuyen_khoan')->with(['data_bill' =>$this->data_bill]);
+        return $this->markdown('email.auth.email_chuyen_khoan')->subject('UniMall gửi thông tin đơn hàng')->with(['data_bill' =>$this->data_bill]);
     }
 }

@@ -19,6 +19,6 @@ class EmailOrderError extends Mailable
 
     public function build()
     {
-        return $this->markdown('email.auth.email_order_error')->with(['uni_order' =>$this->uni_order]);
+        return $this->markdown('email.auth.email_order_error')->subject('UniMall gửi thông tin hủy đơn hàng')->with(['uni_order' =>$this->uni_order]);
     }
 }
