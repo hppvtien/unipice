@@ -502,6 +502,7 @@
             <span class="base" data-ui-id="page-title-wrapper">Thanh toán</span>
         </h1>
     </div>
+    
     <div class="columns">
         <div class="column main"><input name="form_key" type="hidden" value="GXhjnhZzwPqQ9aXV">
             <div id="checkout" data-bind="scope:'checkout'" class="checkout-container">
@@ -509,7 +510,7 @@
                     <div class="opc-estimated-wrapper">
                         <div class="estimated-block">
                             <span class="estimated-label" style="font-size: 22px;text-transform: uppercase;font-weight: 500;">Tổng tiền phải thanh toán: </span>
-                            @if (get_data_user('web','type') == 2)
+                            @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')) != null)
                             <span class="estimated-price" style="font-size: 22px;text-transform: uppercase;font-weight: 500;color:red">{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span>
 
                             @else
@@ -736,7 +737,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    @if (get_data_user('web','type') == 2)
+                                                    @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')) != null)
                                                     <li class="product-item">
                                                         <div class="product-item-name-block">
                                                             <div class="details-qty" id="total_discount">
@@ -752,7 +753,7 @@
                                                         <div class="product-item-name-block">
                                                             <div class="details-qty">
                                                                 <span class="label">Tổng đơn hàng: </span>
-                                                                @if (get_data_user('web','type') == 2)
+                                                                @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')) != null)
                                                                 <span class="value" id="total-cart"><span>{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span></span>
                                                                 @else
                                                                 <span class="value" id="total-cart"><span>{{ formatVnd((int)Cart::total(0,0,'')) }}</span></span>

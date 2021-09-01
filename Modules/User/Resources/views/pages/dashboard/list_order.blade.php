@@ -68,7 +68,7 @@
                                                                 <div class="col-1 text-info">{{ $stt_p ++}}</div>
                                                                 <div class="col-4">{{ $items->name }}</div>
                                                                 <div class="col-3">{{ $items->qty }}</div>
-                                                                <div class="col-4">{{ number_format($items->price) }} đ</div>
+                                                                <div class="col-4">{{ formatVnd($items->price) }}</div>
                                                             </div>
                                                             @endforeach
                                                             <div class="row btn-success text-center" style="padding: 10px;">
@@ -88,11 +88,11 @@
                                             </div>
                                             <td class="text-center">{{ $item->created_at }}</td>
                                             @if ($item->type_pay != null)
-                                            <td class="text-center">{{ config('cart.pay_type')[$item->type_pay]['name']; }}</td>
+                                            <td class="text-center"><a class="btn btn-success w-75" href="javascript:;">{{ config('cart.pay_type')[$item->type_pay]['name']; }}</a></td>
                                             @else
-                                            <td class="text-center">NULL</td>
+                                            <td class="text-center"><a class="btn btn-info w-75" href="{{ route('get_user.paysuccsess',$item->id) }}">Đơn hàng chưa thanh toán</a></td>
                                             @endif
-                                            <td class="text-center">{{ $item->total_money }} đ</td>
+                                            <td class="text-center">{{ formatVnd($item->total_money) }} </td>
                                             <td class="text-center"><span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span></td>
                                             <td class="text-center">
                                                 <a href="javascript:;" class="btn btn-info print_pdf" id="print_pdf" data-id="{{ $item->id }}" data-url="{{ route('get_user.generatePDF') }}">

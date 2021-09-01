@@ -750,4 +750,4 @@ $('.redect-b2b').on('click', function() {
     let rd_url = $(this).attr('data-url');
     window.location.href = rd_url;
 });
-$(document).ready(function() { $("#province").select2(); });
+$("#province").select2();

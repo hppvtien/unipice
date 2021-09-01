@@ -478,7 +478,6 @@
         border-bottom: 2px solid #97ccc0;
     }
 </style>
-
 <main id="maincontent" class="">
     <div class="columns">
         <div class="column main padding_css row no-gutters">
@@ -534,7 +533,6 @@
                     </table>
                 </div>
             </div>
-
             <div class="block block-dashboard-info col-md-6 col-lg-7 col-xs-12 noi_left cach_top_bottom">
                 <div class="block-title"><strong>Thông tin giỏ hàng</strong></div>
                 <div class="column main" style="width:100%">
@@ -566,10 +564,10 @@
                                 <td colspan="3">VAT</td>
                                 <td><span>{{ formatVnd($order->total_vat) }} </span></td>
                             </tr>
-                            @if (get_data_user('web','type') == 2)
+                            @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')) != null)
                             <tr>
                                 <td colspan="3">Ưu đãi SpiceClub</td>
-                                <td><span>-{{ formatVnd((int)Cart::total(0,0,'')*(getDiscount()[0])/100) }} </span></td>
+                                <td><span>-{{ formatVnd($order->total_discount) }} </span></td>
                             </tr>
                             @else
 
@@ -610,7 +608,7 @@
 
                 </div>
             </div>
-            <?php if (count($listCarts) != 0) { ?>
+            <?php if ($order->type_pay == null) { ?>
                 <div class="block block-dashboard-info col-md-12 col-xs-12 noi_left text-center">
                     <p class="text-success text-center" style="margin:0 auto 10px auto">Vui Lòng thanh toán đơn hàng <span class="text-danger" id="invoice-id">{{ $order->code_invoice }}</span> của bạn. <br>
                         Đơn hàng <span class="text-danger">{{ $order->code_invoice }}</span> của bạn chỉ có giá trị khi bạn đã thanh toán</p>
