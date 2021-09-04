@@ -6,8 +6,11 @@ use App\Models\Uni_Category;
 use App\Http\Controllers\Controller;
 use App\Models\Uni_Contact;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use DB;
+use Mail;
+use Carbon\Carbon;
+use App\Mail\EmailNew;
+use Illuminate\Support\Str;
 use Modules\Admin\Http\Requests\AdminContactRequest;
 
 class Uni_ContactController extends Controller
@@ -87,16 +90,51 @@ class Uni_ContactController extends Controller
                     'message' => 'Yêu cầu Newsletters',
                     "created_at" =>  Carbon::Now(),
                     "is_newsletter" => 1,
+                    'code_verication' => Str::random(40)
                 ];
             }
-            // dd($data);
             $id = Uni_Contact::insertGetId($data);
             if ($id) {
+            Mail::to($request->user_email)->send(new EmailNew($data));
                 return response()->json([
                     'status' => 200,
-                    'message' => 'Chúng tôi đã nhận được email và sẽ phản hồi ngay!'
+                    'message' => 'Hệ thống đã nhận được email của bạn, hãy xác nhận email để hoàn tất đăng ký nhận bản tin.'
                 ]);
             }
         }
+    }
+
+    public function verify_email_new($code_verication)
+    {
+        $user = Uni_Contact::where('code_verication', $code_verication)->first();
+        if (!$user) {
+            $this->showEmailError();
+            return redirect()->route('get.home');
+        } else {
+            if ($user->email_verified_at) {
+                $this->showEmailSuccess();
+                return redirect()->route('get.home');
+            } else {
+                $user->update([
+                    'email_verified_at' => \Carbon\Carbon::now()
+                ]);
+                $this->showEmailSuccess();
+                return redirect()->route('get.home');
+            }
+        }
+    }
+    public function showEmailError($message = 'Email chưa được xác nhận')
+    {
+        return \Session::flash('toastr', [
+            'type' => 'error',
+            'message' => $message
+        ]);
+    }
+    public function showEmailSuccess($message = 'Xác nhận Email yêu cầu đăng ký nhận bản tin của UniMall thành công')
+    {
+        return \Session::flash('toastr', [
+            'type' => 'success',
+            'message' => $message
+        ]);
     }
 }

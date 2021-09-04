@@ -498,7 +498,7 @@
                                                                               <span style="
                                                                                  font-size: 22px;
                                                                                  ">
-                                                                              <b>Xin chào khách hàng: {{ $uni_order_sc['name'] }} đã thanh toán thành công phí thành viên của Spice Club !</b>
+                                                                              <b>Chào quý khách hàng!</b>
                                                                               </span>
                                                                               </span>
                                                                            </td>
@@ -570,13 +570,8 @@
                      sans-serif;
                      color: #3c4858;
                      ">
-                  <div>
-                  <p style="text-align: justify;font-size: 16px;margin-bottom: 10px!important;">Chúc quý khách có những trải nghiệm thú vị khi mua sản phẩm trên UniMall.vn với những ưu đãi riêng biệt cho thành viên của Spice Club. 
-</p>
-                  </div>
-                  <div>
-                  <p style="text-align: justify;font-size: 16px;margin-bottom: 10px!important;">Dưới đây là thông tin xác nhận về tài khoản thành viên của quý khách. 
-</p>
+                  <div style="text-align: justify;">
+                  <p style="font-size: 16px;margin-bottom: 10px!important; text-align: justify;">Hệ thống <b>UniMall</b> đã tiếp nhận yêu cầu đăng ký nhận bản tin của UniMall với email: {{ $data['email'] }} <br>Quý khách vui lòng xác nhận bằng cách click vào nút Xác nhận đăng ký ở phía dưới để hoàn thành việc đăng ký.</p>
                   </div>
                   </td>
                   </tr>
@@ -599,85 +594,65 @@
                   </table>
                   </td>
                   </tr>
+                  <tr>
+
+                     <td align="center" valign="top">
+
+                         <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
+
+                             <table class="rnb-del-min-width" width="100%" cellpadding="0" border="0" cellspacing="0" style="min-width:590px;" name="Layout_15" id="Layout_15">
+                                 <tbody>
+                                     <tr>
+                                         <td class="rnb-del-min-width" align="center" valign="top" style="min-width:590px;">
+                                             <a href="#" name="Layout_15"></a>
+                                             <table width="100%" border="0" cellpadding="0" cellspacing="0" class="mso-button-block rnb-container" style="background-color: rgb(255, 255, 255); border-radius: 0px; padding-left: 20px; padding-right: 20px; border-collapse: separate;">
+                                                 <tbody>
+                                                     <tr>
+                                                         <td height="20" style="font-size:1px; line-height:20px; mso-hide: all;">
+                                                             &nbsp;</td>
+                                                     </tr>
+                                                     <tr>
+                                                         <td valign="top" class="rnb-container-padding" align="left">
+
+                                                             <table width="100%" border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container">
+                                                                 <tbody>
+                                                                     <tr>
+                                                                         <th class="rnb-force-col" valign="top">
+                                                                             <table cellpadding="0" border="0" align="center" cellspacing="0" class="rnb-btn-col-content" style="margin:auto; border-collapse: separate;">
+                                                                                 <tbody><tr>
+                                                                                     <td width="auto" valign="middle" bgcolor="#ea7236" align="center" height="40" style="font-size:18px; font-family:Arial,Helvetica,sans-serif; color:#ffffff; font-weight:normal; padding-left:20px; padding-right:20px; vertical-align: middle; background-color:#ea7236;border-radius:4px;border-top:0px None #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000;">
+                                                                                         <span style="color:#ffffff; font-weight:normal;">
+                                                                                                 <a style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank" href="{{ route('verify.email.new', $data['code_verication']) }}">Xác nhận đăng ký</a>
+                                                                                             </span>
+                                                                                     </td>
+                                                                                 </tr></tbody></table>
+                                                                             <table border="0" valign="top" cellspacing="0" cellpadding="0" width="550" align="center" class="rnb-col-1">
+                                                                             </table>
+                                                                         </th>
+                                                                     </tr>
+                                                                 </tbody>
+                                                             </table>
+                                                         </td>
+                                                     </tr>
+                                                     <tr>
+                                                         <td height="20" style="font-size:1px; line-height:20px; mso-hide: all;">
+                                                             &nbsp;</td>
+                                                     </tr>
+                                                 </tbody>
+                                             </table>
+
+                                         </td>
+                                     </tr>
+                                 </tbody>
+                             </table>
+                         </div>
+                     </td>
+                 </tr>
                   </tbody>
                   </table>
                   </div>
                   </td>
-                  </tr>
-<tr>
-                  <td align="center" valign="top">
-                  <div style="
-                     background-color: rgb(255, 255, 255);
-                     border-radius: 0px;
-                     ">
-                  <table width="100%" cellpadding="0" border="0" cellspacing="0" name="Layout_16" id="Layout_16">
-                  <tbody>
-                  <tr>
-                  <td align="center" valign="top">
-                  <a href="#" name="Layout_16"></a>
-                  <table border="0" width="100%" cellpadding="0" cellspacing="0" class="rnb-container" bgcolor="#ffffff" style="
-                     height: 0px;
-                     background-color: rgb(255, 255, 255);
-                     border-radius: 0px;
-                     border-collapse: separate;
-                     padding-left: 20px;
-                     padding-right: 20px;
-                     ">
-                  <tbody>
-                  <tr>
-                  <td class="rnb-container-padding" style="
-                     font-size: px;
-                     font-family: ;
-                     color: ;
-                     ">
-                  <table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" align="left" style="margin: auto">
-                  <tbody>
-                  <tr>
-                  <th class="rnb-force-col" align="left" style="text-align: center;font-weight: normal;">
-                  <table border="0" cellspacing="0" cellpadding="0" align="center" class="rnb-col-1">
-                  <tbody>
-                  <tr>
-                  <td height="10">
-                  <table style="border: 1px solid #111;">
-                  <tbody><tr style="font-weight: 600;">
-                  <td colspan="2">THÔNG TIN THÀNH VIÊN SPICE CLUB</td>
-                  </tr>
-                  <tr style="border: 1px solid #111;margin-left: 5px;">
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Tên tài khoản</td>
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">{{ $uni_order_sc['name'] }}</td>
-                  </tr>
-                  <tr style="border: 1px solid #111;">
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Mã đơn</td>
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">#SC{{ $uni_order_sc['id'] }}</td>
-                  </tr>
-                  <tr style="border: 1px solid #111;">
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Lệ phí thành viên đã nạp</td>
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">{{ formatVnd($uni_order_sc['price_nap']) }}</td>
-                  </tr>
-                  <tr style="border: 1px solid #111;">
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Giá trị tài khoản thành viên Spice Club</td>
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Từ {{ date_format($uni_order_sc['created_at'], 'd-m-Y')  }} đến {{date_format(date_create($uni_order_sc['end_year']),"d/m/Y") }}</td>
-                  </tr>
-                  </tbody></table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </th>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </div>
-                  </td>
-                  </tr>
+
                   <tr>
                   <td align="center" valign="top">
                   <div style="
@@ -721,83 +696,7 @@
                   </div>
                   </td>
                   </tr>
-                  <tr>
-                  <td align="center" valign="top">
-                  <div style="
-                     background-color: rgb(255, 255, 255);
-                     border-radius: 0px;
-                     ">
-                  <table width="100%" cellpadding="0" border="0" cellspacing="0" name="Layout_18" id="Layout_18">
-                  <tbody>
-                  <tr>
-                  <td align="center" valign="top">
-                  <a href="#" name="Layout_18"></a>
-                  <table border="0" width="100%" cellpadding="0" cellspacing="0" class="rnb-container" bgcolor="#ffffff" style="
-                     height: 0px;
-                     background-color: rgb(255, 255, 255);
-                     border-radius: 0px;
-                     border-collapse: separate;
-                     padding-left: 20px;
-                     padding-right: 20px;
-                     ">
-                  <tbody>
-                  <tr>
-                  <td class="rnb-container-padding" style="
-                     font-size: px;
-                     font-family: ;
-                     color: ;
-                     ">
-                  <table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" align="left" style="margin: auto">
-                  <tbody>
-                  <tr>
-                  <th class="rnb-force-col" align="left" style="
-                     text-align: center;
-                     font-weight: normal;
-                     ">
-                  <table border="0" cellspacing="0" cellpadding="0" align="center" class="rnb-col-1">
-                  <tbody>
-                  <tr>
-                  <td height="10"></td>
-                  </tr>
-                  <tr>
-                  <td style="
-                     font-family: Arial,
-                     Helvetica, sans-serif;
-                     color: #3c4858;
-                     text-align: left;
-                     ">
-                  <span style="color: #3c4858">
-                  <u>
-                  <span style="
-                     font-size: 20px;
-                     ">
-                  <b>Chú ý:</b>
-                  </span>
-                  </u>
-                  </span>
-                  </td>
-                  </tr>
-                  <tr>
-                  <td height="10"></td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </th>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </div>
-                  </td>
-                  </tr>
-                  <tr>
+
                   <td align="center" valign="top">
                   <div style="
                      background-color: rgb(255, 255, 255);
@@ -836,7 +735,7 @@
                      " valign="top">
                   <table border="0" valign="top" cellspacing="0" cellpadding="0" width="100%" align="left" class="rnb-col-1">
                   <tbody>
-                  <tr>
+                    <tr>
                   <td style="
                      font-size: 14px;
                      font-family: Arial,
@@ -845,34 +744,10 @@
                      color: #3c4858;
                      ">
                   <div>
-                  <em>
-                  <span style="
-                     font-size: 16px;
-                     ">Các thông tin </span>
-                  </em>
-                  <span style="
-                     font-size: 16px;
-                     ">Unimall</span>
-                  <em>
-                  <span style="
-                     font-size: 16px;
-                     "> cung cấp rất quan trọng, Quý khách vui lòng bảo mật nghiêm ngặt các thông tin này. </span>
-                  </em>
+                  <p style="font-size: 16px;margin-bottom: 10px!important;"><b>Chú ý:</b> Nếu bạn nhận được thư này do nhầm lẫn hoặc không muốn đăng ký, chỉ cần bỏ qua email này và không nhấp vào nút.
+                    </p>
                   </div>
-                  <div>
-                  <em>
-                  <span style="
-                     font-size: 16px;
-                     ">Chúc quý khách tật hưởng những ưu đãi hấp dẫn khi trở thành thành viên của “Spice Club”. </span>
-                  </em>
-                  </div>
-                  <div>
-                  <em>
-                  <span style="
-                     font-size: 16px;
-                     ">Trân trọng cám ơn quý khách! </span>
-                  </em>
-                  </div>
+                 
                   </td>
                   </tr>
                   </tbody>
@@ -1029,7 +904,7 @@
                   <div>
                   <span style="
                      font-size: 16px;
-                     ">Tel: (024) 7108 999</span>
+                     ">Tel: 0356.105.899</span>
                   </div>
                   </td>
                   </tr>

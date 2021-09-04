@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
     <link href="{{ asset('css/css_js/custom.css') }}" rel="stylesheet">
 </head>
+<div id="toast-container" class="toast-top-right"></div>
 <div class="zeynep">
     <div class="col-md-12 col-xs-12 border_menu_mobile">
         <div class="row menu_can_giua">

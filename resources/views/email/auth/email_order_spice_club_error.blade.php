@@ -498,7 +498,7 @@
                                                                               <span style="
                                                                                  font-size: 22px;
                                                                                  ">
-                                                                              <b>Xin chào khách hàng: {{ $uni_order_sc['name'] }} đã thanh toán thành công phí thành viên của Spice Club !</b>
+                                                                              <b>Xin chào khách hàng {{ $uni_order_sc['name'] }}</b>
                                                                               </span>
                                                                               </span>
                                                                            </td>
@@ -570,13 +570,8 @@
                      sans-serif;
                      color: #3c4858;
                      ">
-                  <div>
-                  <p style="text-align: justify;font-size: 16px;margin-bottom: 10px!important;">Chúc quý khách có những trải nghiệm thú vị khi mua sản phẩm trên UniMall.vn với những ưu đãi riêng biệt cho thành viên của Spice Club. 
-</p>
-                  </div>
-                  <div>
-                  <p style="text-align: justify;font-size: 16px;margin-bottom: 10px!important;">Dưới đây là thông tin xác nhận về tài khoản thành viên của quý khách. 
-</p>
+                  <div style="text-align: justify;">
+                  <p style="font-size: 16px;margin-bottom: 10px!important; text-align: justify;">Chúng tôi rất tiếc phải huỷ mã đơn số: #SC{{ $uni_order_sc['id'] }} của quý khách, vì lý do không nhận được thanh toán nạp tiền cho tài khoản Spice Clup. Quý khách sẽ không nhận được bất cứ ưu đãi nào của tài khoản Spice Clup khi chưa thanh toán. Xin vui lòng <a href="{{ route('get.recharge.up') }}">nạp tiền</a> cho tài khoản</p>
                   </div>
                   </td>
                   </tr>
@@ -603,81 +598,7 @@
                   </table>
                   </div>
                   </td>
-                  </tr>
-<tr>
-                  <td align="center" valign="top">
-                  <div style="
-                     background-color: rgb(255, 255, 255);
-                     border-radius: 0px;
-                     ">
-                  <table width="100%" cellpadding="0" border="0" cellspacing="0" name="Layout_16" id="Layout_16">
-                  <tbody>
-                  <tr>
-                  <td align="center" valign="top">
-                  <a href="#" name="Layout_16"></a>
-                  <table border="0" width="100%" cellpadding="0" cellspacing="0" class="rnb-container" bgcolor="#ffffff" style="
-                     height: 0px;
-                     background-color: rgb(255, 255, 255);
-                     border-radius: 0px;
-                     border-collapse: separate;
-                     padding-left: 20px;
-                     padding-right: 20px;
-                     ">
-                  <tbody>
-                  <tr>
-                  <td class="rnb-container-padding" style="
-                     font-size: px;
-                     font-family: ;
-                     color: ;
-                     ">
-                  <table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" align="left" style="margin: auto">
-                  <tbody>
-                  <tr>
-                  <th class="rnb-force-col" align="left" style="text-align: center;font-weight: normal;">
-                  <table border="0" cellspacing="0" cellpadding="0" align="center" class="rnb-col-1">
-                  <tbody>
-                  <tr>
-                  <td height="10">
-                  <table style="border: 1px solid #111;">
-                  <tbody><tr style="font-weight: 600;">
-                  <td colspan="2">THÔNG TIN THÀNH VIÊN SPICE CLUB</td>
-                  </tr>
-                  <tr style="border: 1px solid #111;margin-left: 5px;">
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Tên tài khoản</td>
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">{{ $uni_order_sc['name'] }}</td>
-                  </tr>
-                  <tr style="border: 1px solid #111;">
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Mã đơn</td>
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">#SC{{ $uni_order_sc['id'] }}</td>
-                  </tr>
-                  <tr style="border: 1px solid #111;">
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Lệ phí thành viên đã nạp</td>
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">{{ formatVnd($uni_order_sc['price_nap']) }}</td>
-                  </tr>
-                  <tr style="border: 1px solid #111;">
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Giá trị tài khoản thành viên Spice Club</td>
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Từ {{ date_format($uni_order_sc['created_at'], 'd-m-Y')  }} đến {{date_format(date_create($uni_order_sc['end_year']),"d/m/Y") }}</td>
-                  </tr>
-                  </tbody></table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </th>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </div>
-                  </td>
-                  </tr>
+
                   <tr>
                   <td align="center" valign="top">
                   <div style="
@@ -721,83 +642,7 @@
                   </div>
                   </td>
                   </tr>
-                  <tr>
-                  <td align="center" valign="top">
-                  <div style="
-                     background-color: rgb(255, 255, 255);
-                     border-radius: 0px;
-                     ">
-                  <table width="100%" cellpadding="0" border="0" cellspacing="0" name="Layout_18" id="Layout_18">
-                  <tbody>
-                  <tr>
-                  <td align="center" valign="top">
-                  <a href="#" name="Layout_18"></a>
-                  <table border="0" width="100%" cellpadding="0" cellspacing="0" class="rnb-container" bgcolor="#ffffff" style="
-                     height: 0px;
-                     background-color: rgb(255, 255, 255);
-                     border-radius: 0px;
-                     border-collapse: separate;
-                     padding-left: 20px;
-                     padding-right: 20px;
-                     ">
-                  <tbody>
-                  <tr>
-                  <td class="rnb-container-padding" style="
-                     font-size: px;
-                     font-family: ;
-                     color: ;
-                     ">
-                  <table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" align="left" style="margin: auto">
-                  <tbody>
-                  <tr>
-                  <th class="rnb-force-col" align="left" style="
-                     text-align: center;
-                     font-weight: normal;
-                     ">
-                  <table border="0" cellspacing="0" cellpadding="0" align="center" class="rnb-col-1">
-                  <tbody>
-                  <tr>
-                  <td height="10"></td>
-                  </tr>
-                  <tr>
-                  <td style="
-                     font-family: Arial,
-                     Helvetica, sans-serif;
-                     color: #3c4858;
-                     text-align: left;
-                     ">
-                  <span style="color: #3c4858">
-                  <u>
-                  <span style="
-                     font-size: 20px;
-                     ">
-                  <b>Chú ý:</b>
-                  </span>
-                  </u>
-                  </span>
-                  </td>
-                  </tr>
-                  <tr>
-                  <td height="10"></td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </th>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </td>
-                  </tr>
-                  </tbody>
-                  </table>
-                  </div>
-                  </td>
-                  </tr>
-                  <tr>
+
                   <td align="center" valign="top">
                   <div style="
                      background-color: rgb(255, 255, 255);
@@ -836,7 +681,7 @@
                      " valign="top">
                   <table border="0" valign="top" cellspacing="0" cellpadding="0" width="100%" align="left" class="rnb-col-1">
                   <tbody>
-                  <tr>
+                    <tr>
                   <td style="
                      font-size: 14px;
                      font-family: Arial,
@@ -845,34 +690,10 @@
                      color: #3c4858;
                      ">
                   <div>
-                  <em>
-                  <span style="
-                     font-size: 16px;
-                     ">Các thông tin </span>
-                  </em>
-                  <span style="
-                     font-size: 16px;
-                     ">Unimall</span>
-                  <em>
-                  <span style="
-                     font-size: 16px;
-                     "> cung cấp rất quan trọng, Quý khách vui lòng bảo mật nghiêm ngặt các thông tin này. </span>
-                  </em>
+                  <p style="font-size: 16px;margin-bottom: 10px!important;">Nếu quý khách gặp bất kỳ thắc mắc hay câu hỏi nào , vui lòng liên hệ với UniMall qua Hotline: 0356 105 899 oặc gửi email về hotro@unimall.vn để được hỗ trợ tốt nhất.
+                    </p>
                   </div>
-                  <div>
-                  <em>
-                  <span style="
-                     font-size: 16px;
-                     ">Chúc quý khách tật hưởng những ưu đãi hấp dẫn khi trở thành thành viên của “Spice Club”. </span>
-                  </em>
-                  </div>
-                  <div>
-                  <em>
-                  <span style="
-                     font-size: 16px;
-                     ">Trân trọng cám ơn quý khách! </span>
-                  </em>
-                  </div>
+                 
                   </td>
                   </tr>
                   </tbody>
