@@ -211,4 +211,18 @@ class UserDashboardController extends Controller
         $view = view("user::pages.dashboard.my_flash_sale_product", compact('get_result_arr', 'get_total_price'))->render();
         return $view;
     }
+    // Xóa đơn abc jav
+    public function delete_order(Request $request)
+    {
+        $uni_delete_order = Uni_Order::where('id', $request->data_id)->first();
+            $storle['status'] = 3;
+            $uni_delete_order->fill($storle)->save();
+            if ($uni_delete_order) {
+                // Mail::to($request->user_email)->send(new EmailNew($data));
+                    return response()->json([
+                        'status' => 200,
+                        'message' => 'Bạn đã hủy đơn thành công'
+                    ]);
+                }
+    }
 }

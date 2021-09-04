@@ -3,7 +3,7 @@ $.ajaxSetup({
         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
     }
 });
-$("#trade-product").on("change", function() {
+$("#trade-product").on("change", function () {
     let URL = $(this).attr("data-url");
     let id_trade = this.value;
     $.ajax({
@@ -12,12 +12,12 @@ $("#trade-product").on("change", function() {
         data: {
             id_trade: id_trade
         },
-        success: function(data) {
+        success: function (data) {
             $("#group-product").html(data);
         }
     });
 });
-$(".name-filler").on("click", function() {
+$(".name-filler").on("click", function () {
     let data_slug_trade = $(this).attr("data-slug-trade");
     let data_slug_cat = $(this).attr("data-slug-cat");
     let data_url = $(this).attr("data-url");
@@ -36,24 +36,24 @@ $(".name-filler").on("click", function() {
             data_sort: data_sort,
             data_order: data_order
         },
-        success: function(data) {
+        success: function (data) {
             console.log(data);
             $("#show-product").html(data);
         },
-        error: function(data) {
+        error: function (data) {
             console.log(data);
         }
     });
 });
-$(".get-map-google").on("click", function() {
-    $(this).each(function(index, el) {
+$(".get-map-google").on("click", function () {
+    $(this).each(function (index, el) {
         var data_lat = $(this).attr("data-lat");
         var data_lng = $(this).attr("data-lng");
         $("#ren_map").html(data_lat);
     });
 });
 
-$("#search_name").on("keyup", function() {
+$("#search_name").on("keyup", function () {
     let store_name = $("input[name=search_name]").val();
     let data_url = $(this).attr("data-url");
     $.ajax({
@@ -62,14 +62,14 @@ $("#search_name").on("keyup", function() {
         data: {
             store_name: store_name
         },
-        success: function(data) {
+        success: function (data) {
             console.log(data);
             $("#show-store").html(data);
         }
     });
 });
 
-$(".search_province").on("change", function() {
+$(".search_province").on("change", function () {
     let data_url = $(this).attr("data-url");
     let store_province = $(".search_province option:selected").val();
     $.ajax({
@@ -78,14 +78,14 @@ $(".search_province").on("change", function() {
         data: {
             store_province: store_province
         },
-        success: function(data) {
+        success: function (data) {
             console.log(data);
             $("#show-store").html(data);
         }
     });
 });
 
-$(".js-add-cart").on("click", function() {
+$(".js-add-cart").on("click", function () {
     let URL = $(this).attr("data-url");
     let data_id = $(this).attr("data-id");
     let data_uid = $(this).attr("data-uid");
@@ -103,7 +103,7 @@ $(".js-add-cart").on("click", function() {
             data_qtyinbox: data_qtyinbox,
             data_minbox: data_minbox
         },
-        success: function(data) {
+        success: function (data) {
             $(".count-cart-s")
                 .addClass("c-header__minicart-count")
                 .html(
@@ -113,19 +113,19 @@ $(".js-add-cart").on("click", function() {
                 );
             if (data.status === 200) {
                 $("#toast-container").html(
-                        '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' +
-                        data.message +
-                        '</div></div>'
-                    ),
+                    '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' +
+                    data.message +
+                    '</div></div>'
+                ),
                     4000;
-                setTimeout(function() {
+                setTimeout(function () {
                     $(".toast-success").remove();
                 }, 2000);
             }
         }
     });
 });
-$(".update-qty").on("keyup", function() {
+$(".update-qty").on("keyup", function () {
     let URL = $(this).attr("data-url");
     let item_id = $(this).attr("item-id");
     let item_name = $(this).attr("data-name");
@@ -148,7 +148,7 @@ $(".update-qty").on("keyup", function() {
                 item_qty: item_qty,
                 item_row: item_row
             },
-            success: function(data) {
+            success: function (data) {
                 function formatNumber(num) {
                     return num
                         .toString()
@@ -161,7 +161,7 @@ $(".update-qty").on("keyup", function() {
         });
     }
 });
-$("input.input-qty").each(function() {
+$("input.input-qty").each(function () {
     var $this = $(this),
         qty = $this.parent().find(".is-form"),
         min = Number($this.attr("min")),
@@ -169,7 +169,7 @@ $("input.input-qty").each(function() {
     if (min == 0) {
         var d = 0;
     } else d = min;
-    $(qty).on("click", function() {
+    $(qty).on("click", function () {
         if ($(this).hasClass("minus")) {
             if (d > min) d += -1;
         } else if ($(this).hasClass("plus")) {
@@ -180,7 +180,7 @@ $("input.input-qty").each(function() {
     });
 });
 
-$(".remove_cart_action").on("click", function() {
+$(".remove_cart_action").on("click", function () {
     let URL = $(this).attr("data-url");
     let item_row = $(this).attr("data-row");
     $.ajax({
@@ -189,7 +189,7 @@ $(".remove_cart_action").on("click", function() {
         data: {
             item_row: item_row
         },
-        success: function(data) {
+        success: function (data) {
             console.log(data);
             location.reload();
             $("#show-store").html(data);
@@ -197,7 +197,7 @@ $(".remove_cart_action").on("click", function() {
     });
 });
 
-$("#check_vouchers").on("click", function() {
+$("#check_vouchers").on("click", function () {
     let URL = $(this).attr("data-url");
     $.ajax({
         url: URL,
@@ -206,15 +206,15 @@ $("#check_vouchers").on("click", function() {
         data: {
             check_vouchers: $("input[name='vouchers']").val()
         },
-        success: function(result) {
+        success: function (result) {
             $(".messager_check").html(result);
         },
-        error: function(result) {
+        error: function (result) {
             $(".messager_check").html(result);
         }
     });
 });
-$("#pay_success").on("click", function() {
+$("#pay_success").on("click", function () {
     var data_url = $(this).attr("data-url");
     let method_ship = $('#method_shpping').find(":selected").val();
 
@@ -352,11 +352,11 @@ $("#pay_success").on("click", function() {
 
 });
 
-$("#default-success").on("click", function() {
+$("#default-success").on("click", function () {
 
     var type_pay = $("input[name='type_pay']:checked").val();
     var bank_code = '';
-    $("#bank_code").on("change", function() {
+    $("#bank_code").on("change", function () {
         bank_code = $(this).val();
     });
     var data_url = $(this).attr("data-url");
@@ -368,22 +368,22 @@ $("#default-success").on("click", function() {
             type_pay: type_pay,
             bank_code: bank_code
         },
-        success: function(result) {
+        success: function (result) {
             $("#toast-container").html(
-                    '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Đơn hàng đã được gửi đi</div></div>'
-                ),
+                '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Đơn hàng đã được gửi đi</div></div>'
+            ),
                 4000;
-            setTimeout(function() {
+            setTimeout(function () {
                 $(".toast-success").remove();
             }, 2000);
             window.location.href = result;
         },
-        error: function(result) {
+        error: function (result) {
             console.log("loixxxxxxxxxxxxxxxxxxxx");
         }
     });
 });
-$("#submit-form-contact").on("click", function() {
+$("#submit-form-contact").on("click", function () {
     var data_url = $(this).attr('data-url');
     var name = $("input[name='name']").val();
     var email = $("input[name='email']").val();
@@ -396,10 +396,10 @@ $("#submit-form-contact").on("click", function() {
     var email_check = re.test(email);
     if (email_check == false) {
         $("#toast-container").html(
-                '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Vui lòng kiểm tra lại thông tin!!</div></div>'
-            ),
+            '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Vui lòng kiểm tra lại thông tin!!</div></div>'
+        ),
             4000;
-        setTimeout(function() {
+        setTimeout(function () {
             $(".toast-error").remove();
         }, 2000);
     } else {
@@ -444,10 +444,10 @@ $("#submit-form-contact").on("click", function() {
             },
             success: function success(results) {
                 $("#toast-container").html(
-                        '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' + results + '</div></div>'
-                    ),
+                    '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' + results + '</div></div>'
+                ),
                     4000;
-                setTimeout(function() {
+                setTimeout(function () {
                     $(".toast-success").remove();
                 }, 2000);
             },
@@ -464,7 +464,7 @@ $("#submit-form-contact").on("click", function() {
 });
 
 
-$(".input-type-cart").on('change', function() {
+$(".input-type-cart").on('change', function () {
     let html_vnpay = '<div class="form-vnpay"><h3>Chọn ngân hàng:</h3> <div class = "m-sort-by" ><select class name = "bank_code"id = "bank_code">' +
         '<option value = "" selected > Chọn ngân hàng thanh toán </option> ' +
         '<option value = "NCB" > Ngan hang NCB </option> ' +
@@ -509,30 +509,30 @@ function get_email() {
     var data_url = $('#email1').attr('data-url');
     if (email_check == false) {
         $("#toast-container").html(
-                '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Kiểm tra lại email vừa nhập.</div></div>'
-            ),
+            '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Kiểm tra lại email vừa nhập.</div></div>'
+        ),
             4000;
-        setTimeout(function() {
+        setTimeout(function () {
             $(".toast-error").remove();
         }, 2000);
     } else {
         $.post(data_url, { user_email: email })
-            .done(function(data) {
+            .done(function (data) {
                 if (data.status === 200) {
                     $("#toast-container").html(
-                            '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' + data.message + '</div></div>'
-                        ),
+                        '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' + data.message + '</div></div>'
+                    ),
                         4000;
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $(".toast-success").remove();
                     }, 2000);
                     return false;
                 } else {
                     $("#toast-container").html(
-                            '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-error">' + data.message + '</div></div>'
-                        ),
+                        '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-error">' + data.message + '</div></div>'
+                    ),
                         4000;
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $(".toast-error").remove();
                     }, 2000);
                 }
@@ -543,7 +543,7 @@ function get_email() {
 
 }
 
-$("#momo-success").on("click", function() {
+$("#momo-success").on("click", function () {
     let data_url = $(this).attr("data-url");
 
     $.ajax({
@@ -553,19 +553,19 @@ $("#momo-success").on("click", function() {
         data: {
             t_note: $("input[name='t_note']").val()
         },
-        success: function(results) {
+        success: function (results) {
             console.log(results);
             // let urlmomo = result;
             window.location.href = results;
         },
-        error: function(results) {
+        error: function (results) {
             console.log(results);
         }
     });
 });
-$(function() {
+$(function () {
     $(".loadmore1").slice(0, 8).show();
-    $("#loadMore").on("click", function(e) {
+    $("#loadMore").on("click", function (e) {
         e.preventDefault();
         $(".loadmore1:hidden").slice(0, 8).slideDown();
         if ($(".loadmore1:hidden").length == 0) {
@@ -577,7 +577,7 @@ $(function() {
         }, 1500);
     });
 });
-$(".print_pdf").on("click", function() {
+$(".print_pdf").on("click", function () {
     let data_id = $(this).attr("data-id");
     let data_url = $(this).attr("data-url");
     $.ajax({
@@ -587,17 +587,42 @@ $(".print_pdf").on("click", function() {
         data: {
             data_id: data_id
         },
-        success: function(result) {
+        success: function (result) {
             console.log(result);
             window.open("/in-pdf.html?data_id=" + data_id + "");
             // $('#myModal').html(result);
         },
-        error: function(result) {
+        error: function (result) {
             // console.log(result);
         }
     });
 });
-$(window).on("scroll", function() {
+$(".delete_order").on("click", function () {
+    let data_id = $(this).attr("data-id");
+    let data_url = $(this).attr("data-url");
+    $.ajax({
+        url: data_url,
+        type: "post",
+        dataType: "text",
+        data: {
+            data_id: data_id
+        },
+        success: function (result) {
+            $("#toast-container").html(
+                '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' + result.message + '</div></div>'
+            ),
+                4000;
+            setTimeout(function () {
+                $(".toast-success").remove();
+            }, 2000);
+            window.location.reload();
+        },
+        error: function (result) {
+            // console.log(result);
+        }
+    });
+});
+$(window).on("scroll", function () {
     let height_d = $(window).scrollTop();
     if (height_d > 120) {
         $(".site-header").addClass("fixed-menu");
@@ -605,7 +630,7 @@ $(window).on("scroll", function() {
         $(".site-header").removeClass("fixed-menu");
     }
 });
-$(".show-catp").on('click', function() {
+$(".show-catp").on('click', function () {
     let data_pid = $(this).attr("data-id");
     $('#facet-item' + data_pid).toggleClass('text-success font-weight-bold text-uppercase text-justify')
     $("#m-catParent" + data_pid).toggle(500);
@@ -639,11 +664,11 @@ function openPageTwo(pageName, elmnt, color) {
 }
 // document.getElementById("defaultOpen").click();
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    $('#stars li').on('mouseover', function() {
+    $('#stars li').on('mouseover', function () {
         var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
-        $(this).parent().children('li.star').each(function(e) {
+        $(this).parent().children('li.star').each(function (e) {
             if (e < onStar) {
                 $(this).addClass('hover');
             } else {
@@ -651,12 +676,12 @@ $(document).ready(function() {
             }
         });
 
-    }).on('mouseout', function() {
-        $(this).parent().children('li.star').each(function(e) {
+    }).on('mouseout', function () {
+        $(this).parent().children('li.star').each(function (e) {
             $(this).removeClass('hover');
         });
     });
-    $('#stars li').on('click', function() {
+    $('#stars li').on('click', function () {
         var onStar = parseInt($(this).data('value'), 10);
         var stars = $(this).parent().children('li.star');
 
@@ -676,7 +701,7 @@ function responseMessage(msg) {
     $('.success-box').fadeIn(200);
     $('.success-box div.text-message').html("<span>" + msg + "</span>");
 }
-$('.btn-comment-rv').on('click', function() {
+$('.btn-comment-rv').on('click', function () {
     var user_id = $(this).attr('user_id');
     var data_url = $(this).attr('data-url');
     let ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
@@ -702,13 +727,13 @@ $('.btn-comment-rv').on('click', function() {
             email_question: email_question,
             ratingValue: ratingValue
         },
-        success: function(result) {
+        success: function (result) {
             location.reload();
         },
-        error: function(result) {}
+        error: function (result) { }
     });
 });
-$('.btn-comment-qs').on('click', function() {
+$('.btn-comment-qs').on('click', function () {
     var user_id = $(this).attr('user_id');
     var data_url = $(this).attr('data-url');
     var type_question = $(this).attr('data-type');
@@ -730,10 +755,10 @@ $('.btn-comment-qs').on('click', function() {
             phone_question: phone_question,
             email_question: email_question,
         },
-        success: function(result) {
+        success: function (result) {
             location.reload();
         },
-        error: function(result) {},
+        error: function (result) { },
     });
 });
 
@@ -746,7 +771,7 @@ function chanFunctionMethodTran() {
     $('#total-all').html('')
     $('.error-input').html('');
 }
-$('.redect-b2b').on('click', function() {
+$('.redect-b2b').on('click', function () {
     let rd_url = $(this).attr('data-url');
     window.location.href = rd_url;
 });
