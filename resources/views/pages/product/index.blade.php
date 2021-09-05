@@ -2,7 +2,6 @@
 <main role="main">
 
 
-
     <div class="layout-content">
         <div class="region region-content">
             <div data-drupal-messages-fallback class="hidden"></div>
@@ -104,14 +103,16 @@
                                                                     <span class="m-product-overview__price-wrapper d-block">
                                                                         <span class="a-product-name a-title-des text-dark">
                                                                             Khối lượng tịnh:
-                                                                        </span>
+                                                                        </span><br>
                                                                         <span class="text-danger paid-save">
-                                                                            
-                                                                                {{ $size_name->name }}g
-                                                                            
+                                                                            @forelse ($product->size_product as $size)
+                                                                            <b class="border check-price" data-uid="{{ checkUid(get_data_user('web')) }}" data-size={{ $size['size_id'] }} size-price={{ $size['price'] }} size-price-sale={{ $size['price_sale'] }} 
+                                                                                size-price-sale-store={{ $size['price_sale_store'] }} 
+                                                                                style="padding: 5px;cursor: pointer;">{{ getSizeName($size['size_id']) }}</b>
+                                                                            @empty
+                                                                                
+                                                                            @endforelse
                                                                         </span>
-                                                                        
-                                                                    </span>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -149,13 +150,13 @@
                                                                         <span class="g-price">
                                                                             {{ formatVnd($product->view_price) }}
                                                                         </span>
-                                                                        <span class="text-danger paid-save font_chu_mau_do">
+                                                                        <span class="text-danger paid-save font_chu_mau_do price-save">
                                                                             (Tiết kiệm: -{{ 100-round($product->view_price_sale_store*100/$product->view_price) }}% )
                                                                         </span>
                                                                         <br>
                                                                         
                                                                         
-                                                                        <span class="a-price price-single" style="font-size: 1rem !important;">
+                                                                        <span class="a-price price-single price-preview" style="font-size: 1rem !important;">
                                                                             Giá / Sản phẩm: {{ $product->view_price_sale_store == null ? 'liên hệ': formatVnd($product->view_price_sale_store) }}
                                                                         </span>
                                                                         <?php if ($product->qty) { ?>
@@ -166,30 +167,26 @@
 
                                                                     <?php } else { ?>
                                                                         @if ($product->view_price_sale)
-                                                                        <span class="g-price">
+                                                                        <span class="g-price price-gg-gg">
                                                                             {{ formatVnd($product->view_price) }}
                                                                         </span>
-                                                                        <span class="text-danger paid-save font_chu_mau_do" >
+                                                                        <span class="text-danger paid-save font_chu_mau_do price-save" >
                                                                             (Tiết kiệm: -{{ 100-round($product->view_price_sale*100/$product->view_price) }}% )
                                                                         </span>
                                                                         <br>
                                                                         <span class="a-price price-single">
-                                                                            <span class="a-product-name a-title-des text-dark">
-                                                                                Giá:
-                                                                            </span> {{ formatVnd($product->view_price_sale) }}
+                                                                            <span class="a-product-name a-title-des text-dark price-preview-sale price-sale-preview{{ $product->id }}">
+                                                                                Giá: {{ formatVnd($product->view_price_sale) }}
+                                                                            </span> 
                                                                         </span>
                                                                         @elseif (!$product->view_price_sale)
                                                                         <br>
                                                                         <span class="a-price price-single">
-                                                                            <span class="a-product-name a-title-des text-dark">
-                                                                                Giá:
-                                                                            </span> {{ formatVnd($product->view_price) }}
+                                                                            <span class="a-product-name a-title-des text-dark price-preview-sale price-sale-preview{{ $product->id }}">
+                                                                                Giá: {{ formatVnd($product->view_price) }}
+                                                                            </span> 
                                                                         </span>
                                                                         @endif  
-                                                                   
-                                                     
-                                                                        
-                                                                        
                                                                         <!--<?php if ($product->qty) { ?>
                                                                 <span class="a-price text-success sigle line-height-single4"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
                                                                 <?php } else { ?>
@@ -220,7 +217,7 @@
                                                             <?php if ($product->qty != null) { ?>
                                                                 <?php if (checkUid(get_data_user('web')) != null) { ?>
                                                                     <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
-                                                                        <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-min-box="{{ $product->min_box }}" data-qtyinbox="{{ $product->qty_in_box }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
+                                                                        <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-id="{{ $product->id }}" data-min-box="{{ $product->min_box }}" data-qtyinbox="{{ $product->qty_in_box }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
                                                                     </div>
                                                                 <?php } else { ?>
                                                                     <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">

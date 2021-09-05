@@ -78,10 +78,16 @@
                                     @foreach ($uni_product as $key => $item)
                                     <tr>
                                         <th scope="row">{{ $key+1 }}</th>
-                                        <td class="text-center">
+                                        <td>
                                             <div class="form-group">
-                                                <input class="form-check-input" <?= isset($item->flash_sale) ? 'checked' : '' ?> data-sub="" data-nosub="" data-key={{ $key }} require type="checkbox" name="product_sale[{{ $item->id }}][id]" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
-                                                <label class="form-check-label" for="inlineCheckbox{{ $item->id }}">{{ $item->name }}</label>
+                                                <div class="js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                                                    <select name="product_size" class="form-control SlectBox">
+                                                        <option title="hide" value="0">Chọn trọng lượng</option>
+                                                        @foreach($uniSize as $keys => $items)
+                                                        <option title="hide" value="{{ $items->id }}">{{ $items->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
                                         </td>
                                         <td>{{ $item->qty }}</td>
@@ -117,6 +123,18 @@
                                             <div class="form-group">
                                                 <input class="form-check-input" data-sub="" data-nosub="" data-key={{ $key }} require type="checkbox" name="product_sale[{{ $item->id }}][id]" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
                                                 <label class="form-check-label" for="inlineCheckbox{{ $item->id }}">{{ old('name', $item->name ?? '') }}</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                                                <select name="product_sale[{{ $item->id }}][product_size]" class="form-control SlectBox">
+                                                        <option title="hide" value="0">Chọn trọng lượng</option>
+                                                        @foreach ($uniSize as $keys => $items)
+                                                        <option title="hide" value="{{ $items->id }}">{{ $items->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
                                         </td>
                                         <td>{{ $item->qty }}</td>

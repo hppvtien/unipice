@@ -1,6 +1,6 @@
 @section('css_js_spice_club')
 <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
- @stop
+@stop
 @extends('pages.layouts.app_master_frontend')
 @section('contents')
 <style>
@@ -502,7 +502,7 @@
             <span class="base" data-ui-id="page-title-wrapper">Thanh toán</span>
         </h1>
     </div>
-    
+
     <div class="columns">
         <div class="column main"><input name="form_key" type="hidden" value="GXhjnhZzwPqQ9aXV">
             <div id="checkout" data-bind="scope:'checkout'" class="checkout-container">
@@ -540,8 +540,29 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?php if (get_data_user('web', 'type') != 1) { ?>
+                                        <div class="field _required" name="shippingAddress.company">
+                                            <div class="control">
+                                                <div class="m-text-input">
+                                                    <label class="a-form-label m-text-input__label" for="vouchers">
+                                                        <span>Mã giảm giá</span>
+                                                    </label>
+                                                    <div class="row w-100">
+                                                        <div class="col-8">
+                                                            <input class="a-text-input m-text-input__input w-100" require value="" type="text" name="vouchers" aria-invalid="false" id="vouchers" placeholder="Nhập mã giảm giá !!!">
+                                                            <span class="messager_check font_chu_mau_do text-center error-input">
+                                                                <span data-percent=0></span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <button type="button" id="check_vouchers" class="w-25 btn bg-success w-75 text-white" name="check_vouchers" style="height: 50px;" data-url="{{ route('get_user.check_vouchers') }}">Áp dụng</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                     <input class="a-text-input m-text-input__input" value="{{ checkUid(get_data_user('web')) }}" type="hidden" name="check_store" id="check_store">
-
                                     <div class="field _required" name="shippingAddress.lastname">
                                         <div class="control">
                                             <div class="m-text-input  ">
@@ -716,9 +737,16 @@
                                                 <ul class="minicart-items list-priceCart" style="margin-left: 20px;">
                                                     <li class="product-item">
                                                         <div class="product-item-name-block">
+                                                            <div class="details-qty" id="total-vouchers">
+
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="product-item">
+                                                        <div class="product-item-name-block">
                                                             <div class="details-qty">
                                                                 <span class="label">Tổng tiền: </span>
-                                                                <span class="value">{{ \Cart::subtotal(0,0,'.') }} đ</span>
+                                                                <span class="value" id="total-all-cart">{{ \Cart::subtotal(0,0,'.') }} ₫</span>
                                                             </div>
                                                         </div>
                                                     </li>
@@ -726,10 +754,11 @@
                                                         <div class="product-item-name-block">
                                                             <div class="details-qty">
                                                                 <span class="label">Vat: </span>
-                                                                <span class="value">{{ \Cart::tax(0,0,'.') }} đ</span>
+                                                                <span class="value" id="total-vat-cart">{{ \Cart::tax(0,0,'.') }} ₫</span>
                                                             </div>
                                                         </div>
                                                     </li>
+
                                                     <li class="product-item">
                                                         <div class="product-item-name-block">
                                                             <div class="details-qty" id="total-ship">
@@ -737,12 +766,13 @@
                                                             </div>
                                                         </div>
                                                     </li>
+
                                                     @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')) != null)
                                                     <li class="product-item">
                                                         <div class="product-item-name-block">
                                                             <div class="details-qty" id="total_discount">
-                                                                <span class="label">Ưu đãi SpiceClub: </span>
-                                                                <span class="value">-{{ formatVnd((int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span>
+                                                                <span class="label">Ưu đãi SpiceClub: -</span>
+                                                                <span class="value" id="spice_discount">{{ formatVnd((int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span>
                                                             </div>
                                                         </div>
                                                     </li>
@@ -787,8 +817,14 @@
         </div>
     </div>
 </main>
-
+@if (checkUid(get_data_user('web')) == null)
 <script>
+    function numberVnd(price_not_bumb) {
+        return price_not_bumb.toLocaleString('vi', {
+            style: 'currency',
+            currency: 'VND'
+        })
+    }
     document.addEventListener("DOMContentLoaded", function() {
         var province = document.getElementById("province");
         window.onload = function() {
@@ -862,9 +898,7 @@
         let to_ward_code = $("#ward").find(":selected").attr('data-ward');
         let method_ship = $('#method_shpping').find(":selected").val();
         let url_ship = $('#method_shpping').find(":selected").attr('data-url');
-        let total_cart_string = $('#total-cart').text();
-        let total_cart_noship = parseInt(total_cart_string.replaceAll(",", "").replaceAll(" đ", ""));
-        let total_cart = '';
+
         if (method_ship == 1) {
             $.ajax({
                 url: url_ship,
@@ -876,20 +910,17 @@
                 },
                 success: function(response) {
                     if (response.code === 200) {
-                        total_cart = (total_cart_noship + response.data.total).toLocaleString('it-IT', {
-                            style: 'currency',
-                            currency: 'vnd'
-                        });
-                        $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span><span id="fee-ship">  ' + (response.data.total).toLocaleString('it-IT', {
-                            style: 'currency',
-                            currency: 'vnd'
-                        }) + '</span></span>');
-                        $('#total-ship').html('<span class="label">Phí ship: </span><span class="value">' + (response.data.total).toLocaleString('it-IT', {
-                            style: 'currency',
-                            currency: 'vnd'
-                        }) + '</span>');
-                        $('#total-all').html('<span class="label">Tổng đơn hàng + vận chuyển: </span><span class="value">' + total_cart + '</span>');
-                        $('.estimated-price').html(total_cart);
+                        let total_cart_string = $('#total-cart').text();
+                        let total_cart_noship = parseInt(total_cart_string.replaceAll(".", "").replaceAll(" ₫", ""));
+                        if (total_cart_noship) {
+                            let total_cart = '';
+                            total_cart = numberVnd(total_cart_noship + response.data.total);
+                            $('#fee_ship').html('<span class="text-success"><span>Phí vận chuyển:</span><span id="fee-ship">  ' + numberVnd(response.data.total) + '</span></span>');
+                            $('#total-ship').html('<span class="label">Phí ship: </span><span class="value">' + numberVnd(response.data.total) + '</span>');
+                            $('#total-all').html('<span class="label">Tổng đơn hàng + vận chuyển: </span><span class="value" id="total-all-pr">' + total_cart + '</span>');
+                            $('.estimated-price').html(total_cart);
+                        }
+
                     } else {
                         $('#fee_ship').html('<span class="red-text">GHN chưa hỗ trợ hoặc do lý do Covid-19 nên đã dừng vận chuyển đến khu vực này</span>');
                     }
@@ -927,16 +958,16 @@
                             style: 'currency',
                             currency: 'vnd'
                         }) + '</span>');
-                        $('#total-all').html('<span class="label">Tổng đơn hàng + vận chuyển: </span><span class="value">' + total_cart + ' đ</span>');
+                        $('#total-all').html('<span class="label">Tổng đơn hàng + vận chuyển: </span><span class="value">' + total_cart + ' ₫</span>');
                     }
                 },
                 error: function(response) {
                     $("#toast-container").html(
-                    ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">'+response.success+'</div></div>'),
-                4000;
-            setTimeout(function() {
-                $(".toast-error").remove();
-            }, 2000);
+                            ' <div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">' + response.success + '</div></div>'),
+                        4000;
+                    setTimeout(function() {
+                        $(".toast-error").remove();
+                    }, 2000);
                 }
             });
         } else if (method_ship == 4) {
@@ -949,6 +980,8 @@
         };
     }
 </script>
+@endif
+
 
 @stop
 @section('js_about')

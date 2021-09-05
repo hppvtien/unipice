@@ -3,6 +3,14 @@ $.ajaxSetup({
         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
     }
 });
+
+function numberVnd(price_not_bumb) {
+    return price_not_bumb.toLocaleString('vi', { style: 'currency', currency: 'VND' })
+}
+
+function numberTrim(price_not_bumb) {
+    return Number((price_not_bumb.replaceAll('₫', '')).replaceAll('.', ''));
+}
 $("#trade-product").on("change", function () {
     let URL = $(this).attr("data-url");
     let id_trade = this.value;
@@ -87,10 +95,12 @@ $(".search_province").on("change", function () {
 
 $(".js-add-cart").on("click", function () {
     let URL = $(this).attr("data-url");
-    let data_id = $(this).attr("data-id");
     let data_uid = $(this).attr("data-uid");
     let data_qtyinbox = $(this).attr("data-qtyinbox");
     let data_minbox = $(this).attr("data-minbox");
+    let data_id = $(this).attr("data-id");
+    let data_price_temp = $('.price-sale-preview' + data_id).text();
+    let data_price = Number((data_price_temp.replaceAll('Giá:', '')).replaceAll('₫', '').replaceAll('.', ''));
     let data_count = $(this).attr("data-count");
     let qty_user = $("#js-qty" + data_id).val();
     $.ajax({
@@ -98,6 +108,7 @@ $(".js-add-cart").on("click", function () {
         method: "get",
         data: {
             qty_user: qty_user,
+            data_price: data_price,
             data_id: data_id,
             data_uid: data_uid,
             data_qtyinbox: data_qtyinbox,
@@ -208,18 +219,83 @@ $("#check_vouchers").on("click", function () {
         },
         success: function (result) {
             $(".messager_check").html(result);
+            let v_percent = Number($(".voucher-percent").attr('data-percent'));
+            let data_price_temp = $('#total-all-cart').text();
+            let data_price_numb = Number((data_price_temp.replaceAll('₫', '')).replaceAll('.', ''));
+            let data_price = v_percent * data_price_numb / 100;
+            let data_all_price_cart = data_price_numb - data_price;
+            let data_vat_price_cart = data_all_price_cart * 10 / 100;
+            if (data_price) {
+                let total_all_pr = numberTrim($("#total-all-pr").text());
+                let fee_ship = numberTrim($("#fee-ship").text());
+                $('#total-vouchers').html('<span class="font-weight-bold">Giảm giá:</span><span class="total-vouchers-d">' + numberVnd(data_price) + '</span>');
+                $('#total-all-cart').html(numberVnd(data_all_price_cart));
+                $('#total-vat-cart').html(numberVnd(data_vat_price_cart));
+                $('#total-cart').html(numberVnd(data_all_price_cart + data_vat_price_cart));
+                if (total_all_pr != 0) {
+                    $("#total-all-pr").html(numberVnd(fee_ship + data_all_price_cart + data_vat_price_cart));
+                }
+            }
+
         },
         error: function (result) {
             $(".messager_check").html(result);
         }
     });
 });
+
 $("#pay_success").on("click", function () {
     var data_url = $(this).attr("data-url");
-    let method_ship = $('#method_shpping').find(":selected").val();
+    var total_vouchers = numberTrim($(".total-vouchers-d").text());
+    var total_all_cart = numberTrim($("#total-all-cart").text());
+    var total_vat_cart = numberTrim($("#total-vat-cart").text());
+    var total_cart = numberTrim($("#total-cart").text());
+    var total_all_pr = numberTrim($("#total-all-pr").text());
+    var spice_discount = numberTrim($("#spice_discount").text());
+    var fee_ship = numberTrim($('#fee-ship').text());
+    var address = $("input[name='address']").val();
+    var vouchers = $("input[name='vouchers']").val();
+    var province_name_to = $('#province').find(":selected").text();
+    var taxcode = $("input[name='taxcode']").val();
+    var check_store = $("input[name='check_store']").val();
+    var code_invoice = $("input[name='code_invoice']").val();
+    var vouchers = $("input[name='vouchers']").val();
+    var phone = $("input[name='phone']").val();
+    var email = $("input[name='email']").val();
+    var customer_name = $("input[name='customer_name']").val();
+    
+    $('.error-input').html('');
 
-    let ward_code_to = '';
-    let district_id_to = '';
+    if (check_store == 1) {
+        $.ajax({
+            url: data_url,
+            method: "post",
+            data: {
+                total_all_cart: total_all_cart,
+                total_vat_cart: total_vat_cart,
+                total_cart: total_cart,
+                total_all_pr: total_all_pr,
+                code_invoice: code_invoice,
+                vouchers: vouchers,
+                phone: phone,
+                taxcode: taxcode,
+                address: address,
+                email: email,
+                customer_name: customer_name,
+                email: email
+            },
+            success: function success(results) {
+                window.location.href = results;
+            },
+            error: function error(results) {
+                console.log("Loizzzzzzzzz");
+            }
+        });
+
+    } else {
+        var method_ship = $('#method_shpping').find(":selected").val();
+    var ward_code_to = '';
+    var district_id_to = '';
     if (method_ship == 2) {
         ward_code_to = $('#ward').find(":selected").text();
         district_id_to = $('#district').find(":selected").text();
@@ -228,28 +304,28 @@ $("#pay_success").on("click", function () {
         district_id_to = $('#district').find(":selected").attr('data-district');
     } else {
         $('.store_method_ship').html('Bạn chưa chọn phương thức vận chuyển');
+        if (address == '') {
+            $('.store_address').html('Kiểm tra lại thông tin địa chỉ');
+        }
+        if (customer_name == '') {
+            $('.store_name').html('Kiểm tra lại thông tin tên khách hàng');
+        }
+        if (phone == '') {
+            $('.store_phone').html('Kiểm tra lại số điện thoại');
+        }
+        if (district_id_to == '' || district_id_to == undefined) {
+            $('.store_district').html('Vui lòng chọn quận/huyện');
+        }
+        if (province_name_to == 'Tỉnh / thành') {
+            $('.store_province').html('Vui lòng chọn tỉnh/thành');
+        }
         return false;
     }
-    let province_name_to = $('#province').find(":selected").text();
-    let fee_ship = $('#fee-ship').text();
-    var taxcode = $("input[name='taxcode']").val();
-    var check_store = $("input[name='check_store']").val();
-    var code_invoice = $("input[name='code_invoice']").val();
-    var vouchers = $("input[name='vouchers']").val();
-    var phone = $("input[name='phone']").val();
-    var email = $("input[name='email']").val();
-    var customer_name = $("input[name='customer_name']").val();
-    var address = $("input[name='address']").val();
-    var vouchers = $("input[name='vouchers']").val();
-
-    $('.error-input').html('');
-
-    if (check_store != 1) {
         if (ward_code_to == '' || ward_code_to == undefined) {
             $('.store_ward').html('Vui lòng chọn phường/xã');
-            if (address == '')
+            if (address == '') {
                 $('.store_address').html('Kiểm tra lại thông tin địa chỉ');
-
+            }
             if (customer_name == '') {
                 $('.store_name').html('Kiểm tra lại thông tin tên khách hàng');
             }
@@ -267,10 +343,18 @@ $("#pay_success").on("click", function () {
             }
             return false;
         }
+
         $.ajax({
             url: data_url,
             method: "post",
             data: {
+                total_vouchers: total_vouchers,
+                total_all_cart: total_all_cart,
+                total_vat_cart: total_vat_cart,
+                total_cart: total_cart,
+                total_all_pr: total_all_pr,
+                spice_discount: spice_discount,
+                fee_ship: fee_ship,
                 province_name_to: province_name_to,
                 code_invoice: code_invoice,
                 vouchers: vouchers,
@@ -282,35 +366,8 @@ $("#pay_success").on("click", function () {
                 method_ship: method_ship,
                 district_id_to: district_id_to,
                 ward_code_to: ward_code_to,
-                email: email,
-                fee_ship: fee_ship
-            },
-            success: function success(results) {
-                console.log(results);
-                window.location.href = results;
-            },
-            error: function error(results) {
-                console.log("Loizzzzzzzzz");
-            }
-        });
-    } else {
-        $.ajax({
-            url: data_url,
-            method: "post",
-            data: {
-                province_name_to: province_name_to,
-                code_invoice: code_invoice,
-                vouchers: vouchers,
-                phone: phone,
-                taxcode: taxcode,
-                address: address,
-                email: email,
-                customer_name: customer_name,
-                method_ship: method_ship,
-                district_id_to: district_id_to,
-                ward_code_to: ward_code_to,
-                email: email,
-                fee_ship: fee_ship
+                email: email
+
             },
             success: function success(results) {
                 console.log(results);
@@ -321,35 +378,6 @@ $("#pay_success").on("click", function () {
             }
         });
     }
-
-    $.ajax({
-        url: data_url,
-        method: "post",
-        data: {
-            province_name_to: province_name_to,
-            code_invoice: code_invoice,
-            vouchers: vouchers,
-            phone: phone,
-            taxcode: taxcode,
-            address: address,
-            email: email,
-            customer_name: customer_name,
-            method_ship: method_ship,
-            district_id_to: district_id_to,
-            ward_code_to: ward_code_to,
-            email: email,
-            fee_ship: fee_ship
-        },
-        success: function success(results) {
-            window.location.href = results;
-        },
-        error: function error(results) {
-            console.log("Loizzzzzzzzz");
-        }
-    });
-
-
-
 });
 
 $("#default-success").on("click", function () {
@@ -456,11 +484,6 @@ $("#submit-form-contact").on("click", function () {
             }
         });
     }
-
-
-
-
-
 });
 
 
@@ -591,31 +614,6 @@ $(".print_pdf").on("click", function () {
             console.log(result);
             window.open("/in-pdf.html?data_id=" + data_id + "");
             // $('#myModal').html(result);
-        },
-        error: function (result) {
-            // console.log(result);
-        }
-    });
-});
-$(".delete_order").on("click", function () {
-    let data_id = $(this).attr("data-id");
-    let data_url = $(this).attr("data-url");
-    $.ajax({
-        url: data_url,
-        type: "post",
-        dataType: "text",
-        data: {
-            data_id: data_id
-        },
-        success: function (result) {
-            $("#toast-container").html(
-                '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' + result.message + '</div></div>'
-            ),
-                4000;
-            setTimeout(function () {
-                $(".toast-success").remove();
-            }, 2000);
-            window.location.reload();
         },
         error: function (result) {
             // console.log(result);
@@ -775,4 +773,57 @@ $('.redect-b2b').on('click', function () {
     let rd_url = $(this).attr('data-url');
     window.location.href = rd_url;
 });
-$("#province").select2();
+// $("#province").select2();
+
+$('.check-price').on('click', function () {
+    let size_id = $(this).attr('data-size');
+    let size_price = Number($(this).attr('size-price'));
+    let size_price_sale = Number($(this).attr('size-price-sale'));
+    let size_price_sale_store = Number($(this).attr('size-price-sale-store'));
+    let price_save_not_store = Number(100 - size_price_sale * 100 / size_price).toFixed(0);
+    let price_save_store = Number(100 - size_price_sale_store * 100 / size_price).toFixed(0);
+    let data_uid = $(this).attr('data-uid');
+    if (data_uid == 1) {
+        if (size_price_sale_store == 0) {
+            return false;
+        } else {
+            $('.price-preview').html('Giá / Sản phẩm: ' + numberVnd(size_price_sale_store));
+            $('.price-save').html('(Tiết kiệm: -' + price_save_store + '%)');
+        }
+
+    } else {
+        if (size_price_sale == 0) {
+            return false;
+        } else {
+            $('.price-preview-sale').html('Giá: ' + numberVnd(size_price_sale));
+            $('.price-gg-gg').html(numberVnd(size_price));
+            $('.price-save').html('(Tiết kiệm: -' + price_save_not_store + '%)');
+        }
+    }
+    // alert(data_uid+'-'+size_id + '-' + size_price + '-' + size_price_sale + '-' + size_price_sale_store);
+});
+$(".delete_order").on("click", function () {
+    let data_id = $(this).attr("data-id");
+    let data_url = $(this).attr("data-url");
+    $.ajax({
+        url: data_url,
+        type: "post",
+        dataType: "text",
+        data: {
+            data_id: data_id
+        },
+        success: function (result) {
+            $("#toast-container").html(
+                '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' + result.message + '</div></div>'
+            ),
+                4000;
+            setTimeout(function () {
+                $(".toast-success").remove();
+            }, 2000);
+            window.location.reload();
+        },
+        error: function (result) {
+            // console.log(result);
+        }
+    });
+});

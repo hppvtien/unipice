@@ -99,18 +99,18 @@
                                                 <a href="javascript:;" class="btn btn-info print_pdf" id="print_pdf" data-id="{{ $item->id }}" data-url="{{ route('get_user.generatePDF') }}">
                                             <i class="fa fa-download text-white"></i>
                                             </a>
-                                            </td>
-                                            <td class="text-center">
-                                                @if ($item->status == 0 && Carbon\Carbon::now() < $item->created_at->subHours(-24))
-                                                <a href="javascript:;" class="btn btn-info delete_order" id="delete_order" data-id="{{ $item->id }}"  data-url="{{ route('get_user.delete_order') }}">
-                                                    <i class="fa fa-trash text-white"></i>
-                                                </a>
-                                                @else
-                                                <a href="javascript:;" class="btn btn-info" >
-                                                    <i class="fa fa-clock-o text-white"></i>
-                                                </a>
-                                                @endif
-                                            </td>
+                                        </td>
+                                        <td class="text-center">
+                                            @if ($item->status == 0 && Carbon\Carbon::now() < $item->created_at->subHours(-24))
+                                            <a href="javascript:;" class="btn btn-info delete_order" id="delete_order" data-id="{{ $item->id }}"  data-url="{{ route('get_user.delete_order') }}">
+                                                <i class="fa fa-trash text-white"></i>
+                                            </a>
+                                            @else
+                                            <a href="javascript:;" class="btn btn-info" >
+                                                <i class="fa fa-clock-o text-white"></i>
+                                            </a>
+                                            @endif
+                                        </td>
                                         </tr>
                                         @empty
                                             

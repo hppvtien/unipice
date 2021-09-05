@@ -19,28 +19,26 @@ class UserShoppingCartController extends UserController
     public function processCart(Request $request, $id, $type)
     {
         // dd($request->all());
-        if ($request->ajax())
-        {
-            if($type == self::COMBO)
-            {
+        if ($request->ajax()) {
+            if ($type == self::COMBO) {
                 // xử lý dữ liệu với san pham
                 $uni_combo = $this->checkCombo($id);
                 $type_box = 'combo';
-                if (!$uni_combo){
+                if (!$uni_combo) {
                     return response([
-                       'status' => 404
+                        'status' => 404
                     ]);
                 }
 
                 $listCarts = \Cart::content();
                 // Kierm tra xem đã lưu san pham chưa
                 $checkExist = $listCarts->search(function ($cartItem) use ($id) {
-                    if($cartItem->id == $id) return $id;
+                    if ($cartItem->id == $id) return $id;
                 });
 
                 // Nếu chưa có giỏ hàng thì mặc định thêm
-                if($listCarts->isEmpty() || !$checkExist) {
-                    Log::info("[Cart]: Empty" );
+                if ($listCarts->isEmpty() || !$checkExist) {
+                    Log::info("[Cart]: Empty");
                     \Cart::add([
                         'id' => $id,
                         'name' => $uni_combo->name,
@@ -51,7 +49,7 @@ class UserShoppingCartController extends UserController
                             'images' => pare_url_file($uni_combo->thumbnail),
                             'sale' => $type_box
 
-                            
+
                         ]
                     ]);
                 }
@@ -60,23 +58,22 @@ class UserShoppingCartController extends UserController
                     'message' => !$checkExist ? "Thêm sản phẩm thành công" : "Sản phẩm đã có trong giỏ",
                     'count' => count($listCarts)
                 ]);
-                
-            } else { 
+            } else {
                 $uni_product = $this->checkProduct($id);
                 $uni_store = $this->checkStore($request->data_uid);
                 $uni_spiceclub = $this->checkSpiceClub($request->data_uid);
-                if($uni_store != null){
-                    $price_cart = $request->data_qtyinbox * $uni_product->view_price_sale_store;
+                if ($uni_store != null) {
+                    $price_cart = $request->data_qtyinbox * $request->data_price;
                     $type_box = 'store';
                     $qty_cart = $uni_product->min_box;
                 } else {
-                    $price_cart = $uni_product->view_price_sale == null ? $uni_product->view_price:$uni_product->view_price_sale;
+                    $price_cart = $request->data_price;
                     $type_box = 'user';
                     $qty_cart = $request->qty_user;
                 }
-                if (!$uni_product){
+                if (!$uni_product) {
                     return response([
-                       'status' => 404
+                        'status' => 404
                     ]);
                 }
 
@@ -84,12 +81,12 @@ class UserShoppingCartController extends UserController
 
                 // Kierm tra xem đã lưu khoá học chưa
                 $checkExist = $listCarts->search(function ($cartItem) use ($id) {
-                    if($cartItem->id == $id) return $id;
+                    if ($cartItem->id == $id) return $id;
                 });
 
                 // Nếu chưa có giỏ hàng thì mặc định thêm
-                if($listCarts->isEmpty() || !$checkExist) {
-                    Log::info("[Cart]: Empty" );
+                if ($listCarts->isEmpty() || !$checkExist) {
+                    Log::info("[Cart]: Empty");
                     \Cart::add([
                         'id' => $id,
                         'name' => $uni_product->name,
@@ -102,11 +99,11 @@ class UserShoppingCartController extends UserController
                         ]
                     ]);
                 }
-
+                $count_cart = count($listCarts);
                 return response([
                     'status' => 200,
                     'message' => !$checkExist ? "Thêm sản phẩm thành công" : "Sản phẩm đã có trong giỏ",
-                    'count' => count($listCarts)
+                    'count' => $count_cart
                 ]);
             }
         }
@@ -123,12 +120,10 @@ class UserShoppingCartController extends UserController
     }
     protected function checkStore($id)
     {
-        return Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('id')->first();
+        return Uni_Store::where('user_id', $id)->where('store_status', 1)->pluck('id')->first();
     }
     protected function checkSpiceClub($id)
     {
-        return Uni_Order_Nap::where('user_id',$id)->where('status',2)->pluck('id')->first();
+        return Uni_Order_Nap::where('user_id', $id)->where('status', 2)->pluck('id')->first();
     }
 }
-
-   

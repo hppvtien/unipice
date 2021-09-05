@@ -89,7 +89,7 @@
                                                                                                 @endif
                                                                                             </span>
                                                                                             <br>
-                                                                                            <span class="a-price font-weight-bold">
+                                                                                            <span class="a-price font-weight-bold price-sale-preview{{ $item->id }}">
                                                                                                 {{ formatVnd($item->view_price_sale_store) }}
                                                                                             </span>
                                                                                             <?php if ($item->qty) { ?>
@@ -111,13 +111,11 @@
 
                                                                                             </span>
                                                                                             <br>
-                                                                                            <span class="a-price font-weight-bold">
+                                                                                            <span class="a-price font-weight-bold price-sale-preview{{ $item->id }}">
                                                                                                 {{ formatVnd($item->view_price_sale) }}
                                                                                             </span>
                                                                                             <?php if ($item->qty) { ?>
-
                                                                                                 <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
-
                                                                                             <?php } else { ?>
                                                                                                 <span class="a-price text-info product-notnull"><i class="fa fa-phone"></i>Liên hệ</span>
                                                                                             <?php } ?>
@@ -171,7 +169,7 @@
                                                                                     <?php if ($item->qty == null) { ?>
                                                                                         <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn contact-btn" type="button" rel="nofollow">Liên hệ</a>
                                                                                     <?php } else { ?>
-                                                                                        <button class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-min-box="{{ $item->min_box }}" data-qtyinbox="{{ $item->qty_in_box }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
+                                                                                        <button class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-id="{{ $item->id }}" data-min-box="{{ $item->min_box }}" data-qtyinbox="{{ $item->qty_in_box }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
                                                                                     <?php } ?>
 
                                                                                 <?php } else { ?>
@@ -179,7 +177,7 @@
                                                                                         <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn contact-btn" type="button" rel="nofollow">Liên hệ</a>
                                                                                     <?php } else { ?>
                                                                                         <form>
-                                                                                            <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
+                                                                                            <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}"  data-id="{{ $item->id }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
                                                                                             <!--<button class="a-btn a-btn--primary m-product-card__add-to-cart-icon" data-target=".login-js" data-toggle="modal" type="&quot;submit&quot;">
                                                                                                 <span class="icon-add-to-cart"></span>
                                                                                             </button>-->

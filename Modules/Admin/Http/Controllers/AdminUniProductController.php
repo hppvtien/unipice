@@ -2,6 +2,7 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+use App\Models\Product_Size;
 use App\Models\Uni_Product;
 use App\Models\Uni_Color;
 use App\Models\Uni_LotProduct;
@@ -56,9 +57,9 @@ class AdminUniProductController extends AdminController
         $colorOld = [];
         $sizeOld = [];
         $uni_product = [];
-
+        $data_size  = [];
         $viewData = [
-            // 'uni_color' => $uni_color,
+            'data_size' => $data_size,
             'uni_size'       => $uni_size,
             'uni_tag'      => $uni_tag,
             'uni_trade'     => $uni_trade,
@@ -74,7 +75,8 @@ class AdminUniProductController extends AdminController
         return view('admin::pages.uni_product.create', $viewData);
     }
 
-    public function store(AdminUniProductRequest $request)
+    // public function store(AdminUniProductRequest $request)
+    public function store(Request $request)
     {
         $data                 = $request->except(['thumbnail', 'save', '_token', 'tags', 'album', 'avatar']);
         if ($request->album) {
@@ -85,6 +87,7 @@ class AdminUniProductController extends AdminController
         } else {
             $album = [];
         }
+
         $param = [
             'name' => $request->name,
             'slug' => $request->slug,
@@ -111,7 +114,7 @@ class AdminUniProductController extends AdminController
             $this->showMessagesSuccess();
             $this->syncTagProduct($productID, $request->tags);
             $this->syncCatProduct($productID, $request->category);
-            $this->syncSizeProduct($productID, $request->size);
+            $this->syncSizeProduct($productID, $request->size, $request->size_price, $request->size_price_sale, $request->size_price_sale_store);
             // $this->syncColorProduct($productID, $request->color);
             $this->syncTradeProduct($productID, $request->trade);
             return redirect()->route('get_admin.uni_product.index');
@@ -123,7 +126,6 @@ class AdminUniProductController extends AdminController
     {
         $uni_product     = Uni_Product::findOrFail($id);
         $uni_tag       = Uni_Tag::where('type', 0)->get();
-        // $uni_color       = Uni_Color::all();
         $uni_size       = Uni_Size::all();
         $uni_trade       = Uni_Trade::all();
         $uni_category       = Uni_Category::all();
@@ -131,12 +133,12 @@ class AdminUniProductController extends AdminController
         $tagOld = ProductTag::where('product_id', $id)->pluck('tag_id')->toArray() ?? [];
         $categoryOld = ProductCategory::where('product_id', $id)->pluck('category_id')->toArray() ?? [];
         $tradeOld = ProductTrade::where('product_id', $id)->pluck('trade_id')->toArray() ?? [];
-        // $colorOld = ProductColor::where('product_id', $id)->pluck('color_id')->toArray() ?? [];
         $sizeOld = ProductSize::where('product_id', $id)->pluck('size_id')->toArray() ?? [];
+        $data_size =  ProductSize::where('product_id', $id)->get();
         $viewData = [
             'uni_product'       => $uni_product,
             'uni_tag'           => $uni_tag,
-            // 'uni_color'         => $uni_color,
+            'data_size'         => $data_size,
             'uni_size'          => $uni_size,
             'uni_trade'         => $uni_trade,
             'uni_category'      => $uni_category,
@@ -148,11 +150,13 @@ class AdminUniProductController extends AdminController
         ];
         return view('admin::pages.uni_product.update', $viewData);
     }
-    public function update(AdminUniProductRequest $request, $id)
+    // public function update(AdminUniProductRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $uni_product             = Uni_Product::findOrFail($id);
         $product_albumOld = json_decode(Uni_Product::where('id', $id)->pluck('album')->first());
         $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
+        // dd($data);
         $data['updated_at'] = Carbon::now();
         $data['updated_by'] = get_data_user('web');
 
@@ -199,7 +203,44 @@ class AdminUniProductController extends AdminController
         $uni_product->fill($param)->save();
         $this->syncTagProduct($id, $request->tags);
         $this->syncCatProduct($id, $request->category);
-        $this->syncSizeProduct($id, $request->size);
+        $check_exits = Product_Size::where('product_id', $id)->pluck('size_id')->toArray();
+
+        if ($request->size == null) {
+            foreach ($check_exits as $del_size_id) {
+                ProductSize::where('product_id', $id)->delete();
+            }
+        } else {
+            $size_del = array_diff($check_exits, $request->size);
+            foreach ($size_del as $del_size_id) {
+                ProductSize::where('product_id', $id)->where('size_id', $del_size_id)->delete();
+            }
+            foreach ($request->size as $key => $size) {
+
+                $product_size = Product_Size::where('product_id', $id)->where('size_id', $size)->first();
+                if ($product_size != null) {
+                    $param_size = [
+                        'product_id' => $id,
+                        'size_id'    => $size,
+                        'price'    => $request->size_price[$size],
+                        'price_sale'    => $request->size_price_sale[$size],
+                        'price_sale_store'    => $request->size_price_sale_store[$size]
+                    ];
+                    $product_size->fill($param_size)->save();
+                } else {
+                    $param_size = [
+                        'product_id' => $id,
+                        'size_id'    => $size,
+                        'price'    => 0,
+                        'price_sale'    => 0,
+                        'price_sale_store'    => 0
+                    ];
+                    Product_Size::insert($param_size);
+                }
+            }
+        }
+
+
+        // $this->syncSizeProduct($id, $request->size, $request->size_price, $request->size_price_sale, $request->size_price_sale_store);
         // $this->syncColorProduct($id, $request->color);
         $this->syncTradeProduct($id, $request->trade);
 
@@ -210,6 +251,7 @@ class AdminUniProductController extends AdminController
     public function importview($id)
     {
         $uni_lotproduct     = Uni_LotProduct::where('product_id', $id)->orderby('created_at', 'asc')->get();
+        $uni_product = '';
         foreach ($uni_lotproduct as $key => $item) {
             if ($item->export_qty != null) {
                 $item['total_export'] = array_sum(json_decode($item->export_qty));
@@ -232,6 +274,7 @@ class AdminUniProductController extends AdminController
         }
         $import_history     = ProductLotProduct::where('product_id', $id)->get();
         $viewData = [
+            'uni_product'       => $uni_product,
             'uni_lotproduct'       => $uni_lotproduct,
             'import_history'       => $import_history
         ];
@@ -239,7 +282,9 @@ class AdminUniProductController extends AdminController
     }
     public function import(AdminLotRequest $request, $id)
     {
+        // dd($request->all());
         $uni_product             = Uni_Product::findOrFail($id);
+
         $data               = $request->except(['save', '_token']);
         $qty_import = (int)$request->qty;
 
@@ -256,16 +301,21 @@ class AdminUniProductController extends AdminController
                 'price' => $request->price,
                 'price_sale' => $request->price_sale,
                 'price_sale_store' => $request->price_sale_store,
-                'view_price' => $request->price,
-                'view_price_sale' => $request->price_sale,
-                'view_price_sale_store' => $request->price_sale_store
+                // 'view_price' => $request->price,
+                // 'view_price_sale' => $request->price_sale,
+                // 'view_price_sale_store' => $request->price_sale_store
+            ];
+            $param_size = [
+                'qty' => $request->qty,
+                'price' => $request->price,
+                'price_sale' => $request->price_sale,
+                'price_sale_store' => $request->price_sale_store,
             ];
         } else {
             $this->showMessagesError();
         }
         $uni_product->fill($param)->save();
         $uni_lotproduct     = Uni_LotProduct::findOrFail($request->lotproduct_id);
-
         if ($uni_lotproduct->export_qty) {
             $export_qty = json_decode($uni_lotproduct->export_qty);
             array_push($export_qty, $request->qty);
@@ -273,23 +323,25 @@ class AdminUniProductController extends AdminController
             $export_qty = [];
             array_push($export_qty, $request->qty);
         }
-
         $param_lotproduct = [
             'qty' => $uni_lotproduct->qty - $qty_import,
             'export_qty' => $export_qty
         ];
 
         $uni_lotproduct->fill($param_lotproduct)->save();
-        $this->syncLotProduct($id, $request->lotproduct_id, $request->qty, $request->price, $request->price_sale, $request->price_sale_store);
+        $product_size = Product_Size::where('product_id', $id)->where('size_id', $request->product_size)->first();
 
+        $product_size->fill($param_size)->save();
+        $this->syncLotProduct($id, $request->lotproduct_id, $request->qty, $request->price, $request->price_sale, $request->price_sale_store, $request->product_size);
         $this->showMessagesSuccess();
         return redirect()->route('get_admin.uni_product.index');
     }
-    protected function syncLotProduct($productID, $lot_product, $product_qty, $price_lotproduct, $price_lotproduct_sale, $price_lotproduct_store)
+    protected function syncLotProduct($productID, $lot_product, $product_qty, $price_lotproduct, $price_lotproduct_sale, $price_lotproduct_store, $product_size)
     {
         if (!empty($lot_product)) {
             ProductLotProduct::insert([
                 'product_id' => $productID,
+                'product_size' => $product_size,
                 'lotproduct_id'    => $lot_product,
                 'inventory'    => $product_qty,
                 'price'    => $price_lotproduct,
@@ -323,14 +375,18 @@ class AdminUniProductController extends AdminController
             }
         }
     }
-    protected function syncSizeProduct($productID, $size)
+    protected function syncSizeProduct($productID, $size, $size_price, $size_price_sale, $size_price_sale_store)
     {
+
         if (!empty($size)) {
             \DB::table('product_size')->where('product_id', $productID)->delete();
             foreach ($size as $item) {
                 ProductSize::insert([
                     'product_id' => $productID,
-                    'size_id'    => $item
+                    'size_id'    => $item,
+                    'price'    => $size_price == null ? 0 : $size_price[$item],
+                    'price_sale'    => $size_price_sale == null ? 0 : $size_price_sale[$item],
+                    'price_sale_store'    => $size_price_sale_store == null ? 0 : $size_price_sale_store[$item]
                 ]);
             }
         }
@@ -435,7 +491,7 @@ class AdminUniProductController extends AdminController
     {
         $keyword = $request->keyword;
         $uni_product = Uni_Product::where('name', 'LIKE', '%' . $keyword . "%")->get();
-        if($uni_product){
+        if ($uni_product) {
             $html = view('admin::pages.uni_product.index_ajax', compact('uni_product'))->render();
         }
         return $html;

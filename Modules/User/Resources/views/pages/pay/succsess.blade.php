@@ -557,33 +557,37 @@
                             @empty
                             @endforelse
                             <tr>
-                                <td colspan="3">TỔNG TIỀN</td>
+                                <td colspan="1" class="font-weight-bold">Phiếu giảm giá</td>
+                                <td colspan="1" class="font-weight-bold">{{ $order->vouchers }}</td>
+                                <td colspan="1" class="font-weight-bold">{{ getPercentVouchers($order->vouchers) }}%</td>
+                                <td><span>{{ formatVnd($order->total_vouchers) }} </span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="font-weight-bold">Tổng tiền</td>
                                 <td><span>{{ formatVnd($order->total_no_vat) }} </span></td>
                             </tr>
                             <tr>
-                                <td colspan="3">VAT</td>
+                                <td colspan="3" class="font-weight-bold">VAT</td>
                                 <td><span>{{ formatVnd($order->total_vat) }} </span></td>
                             </tr>
                             @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')) != null)
                             <tr>
-                                <td colspan="3">Ưu đãi SpiceClub</td>
+                                <td colspan="3" class="font-weight-bold">Ưu đãi SpiceClub</td>
                                 <td><span>-{{ formatVnd($order->total_discount) }} </span></td>
                             </tr>
                             @else
-
                             @endif
-
                             <tr>
-                                <td colspan="3">Phí ship</td>
+                                <td colspan="3" class="font-weight-bold">Tổng Đơn Hàng</td>
+                                <td><span>{{ formatVnd($order->total_no_vat + $order->total_vat) }}</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="font-weight-bold">Phí ship</td>
                                 <td><span>{{ formatVnd($order->total_ship) }}</span></td>
                             </tr>
                             <tr>
-                                <td colspan="3">Tổng Đơn Hàng</td>
+                                <td colspan="3" class="font-weight-bold">Tổng Đơn Hàng + ship</td>
                                 <td><span>{{ formatVnd($order->total_money) }}</span></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">Tổng Đơn Hàng + ship</td>
-                                <td><span>{{ formatVnd($order->total_money + $order->total_ship) }}</span></td>
                             </tr>
                         </tbody>
                     </table>
