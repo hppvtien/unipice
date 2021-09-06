@@ -15,7 +15,9 @@
     padding-right: 20px;
     width: auto;
 }
-
+.uni-m-accordion::before, .uni-m-accordion::after {
+    background-color: #0b2d25 !important;
+}
 .fil-uni {
     margin-top: 76px;
 }

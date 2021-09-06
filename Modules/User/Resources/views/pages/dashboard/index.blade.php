@@ -120,7 +120,7 @@
                                     <span class="text-strong">Kính chào Quý khách: {{get_data_user('web','name')}}</span><br>
                                     <span class="text-strong">Quý khách đã thanh toán thành công phí thành viên của Spice Club !</span><br>
                                     <span class="text-strong">Lệ phí thành viên đã nạp: {{ formatVnd($uni_order_nap->price_nap) }} </span><br>
-                                    <span class="text-strong">Giá trị tài khoản thành viên “Spice Club”: từ {{date_format(date_create($uni_order_nap->created_at),"d/m/Y") }} đến {{date_format(date_create($uni_order_nap->end_year),"d/m/Y") }}</span>
+                                    <span class="text-strong">Giá trị tài khoản thành viên “Spice Club”: Trọn đời</span>
                                 </div>
                             </div>
                             @elseif($uni_order_nap->status == 3)
@@ -130,17 +130,16 @@
                                 </strong>
                                 <div class="box-content">
                                     <span class="text-strong ">Kính chào Quý khách: {{get_data_user('web','name')}}</span><br>
-                                    <span class="text-strong gd-danger">Chúng tôi rất tiếc phải huỷ mã đơn số: #SC{{$uni_order_nap->id}} của quý khách, vì lý do không nhận được thanh toán lệ phí nạp tiền.</span>
+                                    <span class="text-strong gd-danger">Chúng tôi rất tiếc phải huỷ mã đơn số: #SC{{$uni_order_nap->id}} của quý khách, vì lý do không nhận được thanh toán lệ phí tài khoản.</span>
                                     <span class="text-strong">Để biết thêm chi tiết xin vui lòng liên hệ</span>
                                     <div><span class="text-primary"><i class="fa fa-phone-square"></i> Hotline:</span><a class="action edit a-anchor" href="tel:0356105899">0356.105.899</a></div>
                                     <div><span class="text-primary"><i class="fa fa-envelope"></i> Email:</span><a class="action edit a-anchor" href="mailto:hotro@unimall.vn">hotro@unimall.vn</a></div>
-                                    <span class="text-strong">Hoặc thực hiện nạp một mã đơn mới.</span>
+                                    <span class="text-strong">Hoặc thực hiện thanh toán một mã đơn mới.</span>
                                     <div class="box-actions">
                                         <a class="a-btn a-btn--primary" href="{{ route('get.recharge') }}"><span>Nạp tiền</span></a>
                                     </div>
                                 </div>
-                            </div>
-                            @elseif($uni_order_nap->status == 4)
+                            {{-- @elseif($uni_order_nap->status == 4)
                             <div class="box box-newsletter">
                                 <strong class="box-title">
                                     <span class="text-primary">Tài khoản Spice Club</span>
@@ -153,7 +152,7 @@
                                 <div class="box-actions">
                                     <a class="a-btn a-btn--primary" href="{{ route('get.recharge.up') }}"><span>Gia hạn</span></a>
                                 </div>
-                            </div>
+                            </div> --}}
                             @endif
                         @endif
 

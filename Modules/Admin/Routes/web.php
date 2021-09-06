@@ -21,7 +21,7 @@ Route::group(['namespace' => 'Auth','prefix' => 'auth'], function (){
 Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
     Route::get('/', 'AdminDashboardController@index')->name('get_admin.dashboard')->middleware('permission:dashboard|full');
     Route::post('/update_level', 'AdminDashboardController@update_level')->name('adm.update_level');
-    Route::post('/update_nap_status', 'AdminDashboardController@update_status')->name('adm.update_level');;
+    // Route::post('/update_nap_status', 'AdminDashboardController@update_status')->name('adm.update_level');;
     Route::prefix('slide')->group(function (){
         Route::get('/', 'AdminSlideController@index')->name('get_admin.slide.index')->middleware('permission:slide_index|full');
         Route::get('/create', 'AdminSlideController@create')->name('get_admin.slide.create')->middleware('permission:slide_create|full');

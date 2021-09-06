@@ -51,8 +51,8 @@
                             <th class="text-spice">{{$key+1}}</th>
                             <td class="text-spice"> #SC{{ $item->id }}</td>
                             <td class="text-spice">{{ $item->name }}</td>
-                            <td class="text-spice">{{ $item->updated_at != null ? date('d/m/y',strtotime($item->updated_at)) : 'Cập nhật' }}</td>
-                            <td class="text-spice">{{ $item->end_year != null ? date('d/m/y',strtotime($item->end_year)) : 'Cập nhật' }}</td>
+                            <td class="text-spice">{{date_format(date_create($item->created_at),"d/m/Y") }}</td>
+                            <td class="text-spice">Trọn đời</td>
                             <td class="text-spice">{{ $item->status == 2 ? 'Active':'No Active' }}</td>
                           </tr>
                         @endforeach

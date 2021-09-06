@@ -217,12 +217,6 @@ class UserDashboardController extends Controller
         $uni_delete_order = Uni_Order::where('id', $request->data_id)->first();
             $storle['status'] = 3;
             $uni_delete_order->fill($storle)->save();
-            if ($uni_delete_order) {
-                // Mail::to($request->user_email)->send(new EmailNew($data));
-                    return response()->json([
-                        'status' => 200,
-                        'message' => 'Bạn đã hủy đơn thành công'
-                    ]);
-                }
+
     }
 }

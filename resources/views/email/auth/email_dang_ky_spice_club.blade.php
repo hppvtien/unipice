@@ -646,8 +646,8 @@
                         <td align="left" style="padding-left: 5px;border-right: 1px solid;">{{ $userss['email'] }}</td>
                         </tr>
                         <tr style="border: 1px solid #111;">
-                        <td align="left" style="padding-left: 5px;border-right: 1px solid;">Lệ Phí thành viên / Năm</td>
-                        <td align="left" style="padding-left: 5px;border-right: 1px solid;">500.000 VND</td>
+                        <td align="left" style="padding-left: 5px;border-right: 1px solid;">Lệ Phí thành viên</td>
+                        <td align="left" style="padding-left: 5px;border-right: 1px solid;">50.000đ</td>
                         </tr>
                         <tr style="border: 1px solid #111;">
                         <td align="left" style="padding-left: 5px;border-right: 1px solid;">Đăng nhập nạp tiền</td>

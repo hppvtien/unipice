@@ -77,15 +77,15 @@ class AdminDashboardController extends Controller
         $mes = 'load to page';
         return $mes;
     }
-    public function update_status(Request $request)
-    {
-        $uni_order = Uni_Order_Nap::where('end_year', '<=', Carbon::now())->get();
-        foreach ($uni_order as $key => $store) {
-            $uni_store_tt = Uni_Order_Nap::where('id', $store->id)->first();
-            $storle['status'] = 4;
-            $uni_store_tt->fill($storle)->update();
-        }
-        $mes = 'load to page';
-        return $mes;
-    }
+    // public function update_status(Request $request)
+    // {
+    //     $uni_order = Uni_Order_Nap::where('end_year', '<=', Carbon::now())->get();
+    //     foreach ($uni_order as $key => $store) {
+    //         $uni_store_tt = Uni_Order_Nap::where('id', $store->id)->first();
+    //         $storle['status'] = 4;
+    //         $uni_store_tt->fill($storle)->update();
+    //     }
+    //     $mes = 'load to page';
+    //     return $mes;
+    // }
 }

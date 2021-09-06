@@ -66,15 +66,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($content_pages as $item)
+                                @forelse($content_pages as $key => $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
+                                    <th scope="row">{{ $key+1 }}</th>
                                     <td>
                                         <a title="{{ $item->name }}">{{ $item->name }}</a>
                                     </td>
                                     <td>
                                         <a href="{{ $item->thumbnail }}" target="_blank" style="width: 200px;height: 100px;display: inline-block">
-                                            <img style="height: 100%;border-radius: 10px;border: 1px solid #dedede;width: 100%" src="/storage/uploads/{{ $item->thumbnail }}" alt="">
+                                            <img style="height: 100%;border-radius: 10px;border: 1px solid #dedede;width: 100%" src="{{ pare_url_file($item->thumbnail) }}" alt="">
                                         </a>
                                     </td>
                                     <td>

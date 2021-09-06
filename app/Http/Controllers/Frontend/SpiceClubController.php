@@ -39,6 +39,8 @@ class SpiceClubController extends Controller
         $content_page_7 = Content_Page::where('page_id',$page->id)->where('order',6)->first();
         $content_page_8 = Content_Page::where('page_id',$page->id)->where('order',7)->first();
         $content_page_9 = Content_Page::where('page_id',$page->id)->where('order',8)->first();
+        $content_page_10 = Content_Page::where('page_id',$page->id)->where('order',9)->first();
+        $content_page_11 = Content_Page::where('page_id',$page->id)->where('order',10)->first();
         $viewdata = [
             'page'=>$page,
             'content_page_1' => $content_page_1,
@@ -50,6 +52,8 @@ class SpiceClubController extends Controller
             'content_page_7' => $content_page_7,
             'content_page_8' => $content_page_8,
             'content_page_9' => $content_page_9,
+            'content_page_10' => $content_page_10,
+            'content_page_11' => $content_page_11,
         ];
         return view('pages.spiceclub.index', $viewdata);
     }
