@@ -32,7 +32,7 @@
                                         <th>Mã vạch</th>
                                         <th>Nhà sản xuất</th>
                                         <th>Số lượng</th>
-                                        <th>Kích thước</th>
+                                        <th>Trọng lượng</th>
                                         <th>Hạn sử dụng</th>
                                         <th>Action</th>
                                     </tr>

@@ -128,7 +128,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Kích thước <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Trọng lượng <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="size" class="form-control SlectBox SumoUnder" tabindex="-1">
                                 @foreach ($uni_size as $size)
