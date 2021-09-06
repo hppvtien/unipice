@@ -28,6 +28,6 @@ class EmailOrder extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.auth.email_order')->with(['data_bill' =>$this->data_bill]);
+        return $this->markdown('email.auth.email_order')->subject('UniMall gửi thông tin đơn hàng')->with(['data_bill' =>$this->data_bill]);
     }
 }

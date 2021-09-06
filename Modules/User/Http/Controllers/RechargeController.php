@@ -63,8 +63,6 @@ class RechargeController extends Controller
     }
     public function getPayNap(Request $request)
     {
-        // dd($request->all());
-
         $order_data_nap = [
             'user_id' => get_data_user('web'),
             'name' => get_data_user('web','name'),

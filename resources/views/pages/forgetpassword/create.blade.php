@@ -25,23 +25,10 @@
         
                             </div>
                         </div>
-                        <div>
-                            <div class="uk-form-group">
-                                <label class="uk-form-label"> Tên đăng ký</label>
-        
-                                <div class="uk-position-relative w-100">
-                                    <span class="uk-form-icon">
-                                        <i class="icon-feather-user"></i>
-                                    </span>
-                                    <input disabled name="re_name" id="re_name" class="uk-input" type="text" value="{{ old('user_re', $user_re->name ?? '') }}">
-                                </div>
-        
-                            </div>
-                        </div>
+                       
                         <div class="uk-child-width-1-1">
                             <div class="uk-form-group">
                                 <label class="uk-form-label"> Nhập mật khẩu mới</label>
-        
                                 <div class="uk-position-relative w-100">
                                     <span class="uk-form-icon">
                                         <i class="icon-feather-lock"></i>

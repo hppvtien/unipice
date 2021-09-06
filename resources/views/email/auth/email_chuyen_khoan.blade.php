@@ -342,7 +342,7 @@
     
     <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
     
-    <div style="text-align: justify;"><span style="font-size:16px;">Tổng tiền phải thanh toán: {{ formatVnd($data_bill['total_money']) }}</span></div>
+    <div style="text-align: justify;"><span style="font-size:16px;">Tổng tiền phải thanh toán: <b>{{ formatVnd($data_bill['total_money']) }}</b></span></div>
     
     <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
     
@@ -466,7 +466,7 @@
                                                                 <table border="0" valign="top" cellspacing="0" cellpadding="0" width="100%" align="left" class="rnb-col-1">
     
                                                                     <tbody><tr>
-                                                                        <td style="font-size:14px; font-family:Arial,Helvetica,sans-serif, sans-serif; color:#3c4858;"><div><span style="font-size:16px;">Quý khách chuyển khoản số tiền {{ formatVnd($data_bill['total_money']) }} vào một trong các tài khoản ngân hàng của UniMall:</span></div>
+                                                                        <td style="font-size:14px; font-family:Arial,Helvetica,sans-serif, sans-serif; color:#3c4858;"><div><span style="font-size:16px;">Quý khách chuyển khoản số tiền <b>{{ formatVnd($data_bill['total_money']) }}</b> vào một trong các tài khoản ngân hàng của UniMall:</span></div>
     </td>
                                                                     </tr>
                                                                     </tbody></table>

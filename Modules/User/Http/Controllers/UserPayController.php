@@ -44,12 +44,9 @@ class UserPayController extends UserController
     }
     public function getFeeShipGHN(Request $request)
     {
-        // dd($request->all());
-        // $method_ship = $request->method_ship;
         $listCarts = \Cart::content();
         $ward_code_to = $request->to_ward_code;
         $district_id_to = (int)$request->to_district_id;
-        // $province_id_to = (int)$request->province_code_to;
 
         $data_string = array(
             "from_district_id" => 1726,
@@ -124,6 +121,7 @@ class UserPayController extends UserController
     }
     public function getPaySuccsess(Request $request)
     {
+        // dd($request->all());
         \SEOMeta::setTitle('Thanh toán');
         $listCarts = \Cart::content();
         foreach (json_decode($listCarts) as $key => $item) {
@@ -152,7 +150,6 @@ class UserPayController extends UserController
         $ward_code_to = $request->ward_code_to;
         $district_id_to = (int)$request->district_id_to;
         // dd($data_item);
-        $total_ship = (int)str_replace(".", "", str_replace(" VND", "", $request->fee_ship));
         foreach (json_decode($listCarts) as $item) {
             if ($item->options->sale == 'combo') {
                 $combo_id = $item->id;
@@ -160,15 +157,7 @@ class UserPayController extends UserController
                 $combo_id = 0;
             };
         };
-        // dd((int)str_replace(".", "", str_replace(" đs", "", $request->fee_ship));)
-        // dd(((int)\Cart::total(0,0,'')*10/100));
-        if(get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')) != null){
-            $total_discount = (int)\Cart::total(0,0,'')*(getDiscount()[0])/100;
-            $total_money = (int)str_replace(".", "", \Cart::total(0, 0, '.')) - (int)\Cart::total(0,0,'')*(getDiscount()[0])/100;
-        } else {
-            $total_discount = 0;
-            $total_money = (int)str_replace(".", "", \Cart::total(0, 0, '.'));
-        }
+        
         $order_data = [
             'user_id' => get_data_user('web'),
             'code_invoice' => $request->code_invoice,
@@ -182,11 +171,12 @@ class UserPayController extends UserController
             'cart_info' => $listCarts,
             'combo_id' => $combo_id,
             'status' => 0,
-            'total_money' => $total_money,
-            'total_vat' => (int)str_replace(".", "", \Cart::tax(0, 0, '.')),
-            'total_no_vat' => (int)str_replace(".", "", \Cart::subtotal(0, 0, '.')),
-            'total_discount' => $total_discount,
-            'total_ship' => $total_ship,
+            'total_vouchers' => $request->total_vouchers,
+            'total_money' => $request->total_all_pr,
+            'total_vat' => $request->total_vat_cart,
+            'total_no_vat' => $request->total_all_cart,
+            'total_discount' => $request->total_discount,
+            'total_ship' => $request->fee_ship,
             'created_at' => Carbon::now(),
 
         ];
@@ -321,22 +311,22 @@ class UserPayController extends UserController
                 if ($data_voucher->model_qty > 0) {
                     $check_user_voucher = User_voucher::where('user_id', get_data_user('web'))->where('voucher_id', $data_voucher->id)->first();
                     if ($check_user_voucher) {
-                        $message = 'Bạn đã sử dụng mã giảm giá này';
+                        $message = '<span data-percent=0>Bạn đã sử dụng mã giảm giá này</span>';
                         return $message;
                     } else {
-                        $message = 'Nhập mã giảm giá thành công';
+                        $message = '<span class="text-success voucher-percent" data-percent='.$data_voucher->model_percent.'>Nhập mã giảm giá thành công</span>';
                         return $message;
                     }
                 } else {
-                    $message = 'Mã giảm giá này tạm thời đã hết';
+                    $message = '<span data-percent=0>Mã giảm giá này tạm thời đã hết</span>';
                     return $message;
                 }
             } else {
-                $message = 'Mã giảm giá hết hạn';
+                $message = '<span data-percent=0>Mã giảm giá hết hạn</span>';
                 return $message;
             }
         } else {
-            $message = 'Vui lòng kiểm tra lại mã giảm giá';
+            $message = '<span data-percent=0>Vui lòng kiểm tra lại mã giảm giá</span>';
             return $message;
         }
     }
@@ -415,7 +405,6 @@ class UserPayController extends UserController
                 $order->fill($data)->save();
                 $data_bill = Uni_Order::find($id);
                 Mail::to($data_bill['email'])->send(new EmailOrder($data_bill));
-                // \Cart::destroy();
                 return $vnp_Url;
             }
         } elseif ($type_pay == 3) {
@@ -491,74 +480,6 @@ class UserPayController extends UserController
         }
         // return redirect($vnp_Url);
     }
-    // public function processVnPayCart(Request $request, $id)
-    // {
-    //     $order = Uni_Order::find($id);
-    //     session(['cost_id' => $id]);
-    //     session(['url_prev' => url()->previous()]);
-    //     $vnp_TmnCode = "I007EUZ2"; //Mã website tại VNPAY 
-    //     $vnp_HashSecret = "VOTYNULEGABAXIXGKRZDIUPLAFLOEQUG"; //Chuỗi bí mật
-    //     $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-
-    //     $vnp_Returnurl = route('get_user.result_vnpay');
-
-    //     $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-    //     $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
-    //     $vnp_OrderType = 'billpayment';
-    //     $vnp_Amount = $order->total_money;
-    //     $vnp_Amount = (int)(str_replace('đ', '', str_replace('.', '', $order->total_money)));
-    //     $vnp_Locale = 'vn';
-    //     $vnp_BankCode = $request->bank_code;
-    //     $vnp_IpAddr = request()->ip();
-    //     $inputData = array(
-    //         "vnp_Version" => "2.0.0",
-    //         "vnp_TmnCode" => $vnp_TmnCode,
-    //         "vnp_Amount" => $vnp_Amount,
-    //         "vnp_Command" => "pay",
-    //         "vnp_CreateDate" => date('YmdHis'),
-    //         "vnp_CurrCode" => "VND",
-    //         "vnp_IpAddr" => $vnp_IpAddr,
-    //         "vnp_Locale" => $vnp_Locale,
-    //         "vnp_OrderInfo" => $vnp_OrderInfo,
-    //         "vnp_OrderType" => $vnp_OrderType,
-    //         "vnp_ReturnUrl" => $vnp_Returnurl,
-    //         "vnp_TxnRef" => $vnp_TxnRef
-    //     );
-
-    //     if (isset($vnp_BankCode) && $vnp_BankCode != "") {
-    //         $inputData['vnp_BankCode'] = $vnp_BankCode;
-    //     }
-    //     ksort($inputData);
-    //     $query = "";
-    //     $i = 0;
-    //     $hashdata = "";
-    //     foreach ($inputData as $key => $value) {
-    //         if ($i == 1) {
-    //             $hashdata .= '&' . $key . "=" . $value;
-    //         } else {
-    //             $hashdata .= $key . "=" . $value;
-    //             $i = 1;
-    //         }
-    //         $query .= urlencode($key) . "=" . urlencode($value) . '&';
-    //     }
-
-    //     $vnp_Url = $vnp_Url . "?" . $query;
-
-    //     if (isset($vnp_HashSecret)) {
-    //         // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
-    //         $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
-    //         $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
-    //         $data = [
-    //             'pay_code' => $vnp_TxnRef,
-    //             'pay_note' =>  $vnp_OrderInfo,
-    //         ];
-    //         $order->fill($data)->save();
-    //         // \Cart::destroy();
-    //         return $vnp_Url;
-    //     }
-
-    //     // return redirect($vnp_Url);
-    // }
 
     public function returnvnpay(Request $request)
     {

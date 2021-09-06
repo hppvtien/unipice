@@ -78,5 +78,6 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('thoa-thuan-su-dung', 'BlogHomeController@ThoaThuan')->name('get.thoa_thuan_su_dung');
     Route::get('chinh-sach-bao-mat', 'HomeController@BaoMat')->name('get.chinh_sach_bao_mat');
     Route::get('sitemap', 'SitemapController@sitemap')->name('get_site_map');
+    Route::get('/verify-email-new/{code_verication}', 'Uni_ContactController@verify_email_new')->name('verify.email.new');
 });
 

@@ -4,6 +4,7 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Uni_FlashSale;
 use App\Models\Uni_Product;
+use App\Models\Uni_Size;
 use App\Models\Level_store;
 use App\Models\RelLevelStore;
 use App\Service\Seo\RenderUrlSeoCourseService;
@@ -28,6 +29,7 @@ class AdminUniFlashSaleController extends AdminController
     public function create()
     {
         $type_buy = Level_store::get();
+        $uniSize = Uni_Size::get();
         $uni_product = Uni_Product::orderByDesc('id')->get();
         $edit_in = 'add';
         $uni_flashsale = [];
@@ -36,6 +38,7 @@ class AdminUniFlashSaleController extends AdminController
             'uni_product' => $uni_product,
             'uni_flashsale' => $uni_flashsale,
             'type_buy' => $type_buy,
+            'uniSize' => $uniSize,
             'edit_in'       => $edit_in,
             'type_buyOld'       => $type_buyOld,
 
@@ -50,7 +53,7 @@ class AdminUniFlashSaleController extends AdminController
         $data['created_at']   = Carbon::now();
         $product_sale = [];
         foreach ($request->product_sale as $item) {
-            if (count($item) == 4) {
+            if (count($item) == 5) {
                 $product_sale[] = $item;
             }
         }
@@ -89,6 +92,7 @@ class AdminUniFlashSaleController extends AdminController
         $type_buy = Level_store::get();
         $uni_product      = Uni_Product::orderByDesc('id')->get();
         $uni_flashsale     = Uni_FlashSale::findOrFail($id);
+        $uniSize = Uni_Size::get();
         $type_buyOld = RelLevelStore::where('flash_id', $id)->pluck('level_store_id')->toArray() ?? [];
         $edit_in = 'edit';
         foreach($uni_product as $key => $item){
@@ -102,6 +106,7 @@ class AdminUniFlashSaleController extends AdminController
             'uni_flashsale'       => $uni_flashsale,
             'uni_product'       => $uni_product,
             'type_buy'       => $type_buy,
+            'uniSize' => $uniSize,
             'edit_in'       => $edit_in, 
             'type_buyOld'       => $type_buyOld
         ];
@@ -112,6 +117,7 @@ class AdminUniFlashSaleController extends AdminController
     {
         if ($request) {
             $uni_flashsale             = Uni_FlashSale::findOrFail($id);
+            $uniSize = Uni_Size::get();
             $data               = $request->except(['thumbnail', 'save', '_token']);
             $data['updated_at'] = Carbon::now();
             $product_sale = [];

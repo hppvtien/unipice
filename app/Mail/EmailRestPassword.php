@@ -10,16 +10,16 @@ use Illuminate\Queue\SerializesModels;
 class EmailRestPassword extends Mailable
 {
     use Queueable, SerializesModels;
-    public $user_name;
+    public $users;
     public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user_name, $data)
+    public function __construct($users, $data)
     {
-        $this->user_name = $user_name;
+        $this->users = $users;
         $this->data = $data;
     }
 
@@ -30,6 +30,6 @@ class EmailRestPassword extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.auth.emailRestPass')->with(['user_name' =>$this->user_name, 'data' =>$this->data]);
+        return $this->markdown('email.auth.emailRestPass')->subject('Unimail gửi thông tin thay đổi mật khẩu')->with(['users' =>$this->users, 'data' =>$this->data]);
     }
 }

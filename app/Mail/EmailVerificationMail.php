@@ -28,6 +28,6 @@ class EmailVerificationMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.auth.email')->with(['data' =>$this->data]);
+        return $this->markdown('email.auth.email')->subject('Unimail gửi thông tin xác nhận tài khoản')->with(['data' =>$this->data]);
     }
 }

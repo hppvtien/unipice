@@ -177,13 +177,13 @@ class RegisterController extends Controller
             $data['reset_code'] = Str::random(40);
             $PasswordReset = PasswordResett::insertGetId($data);
             if ($PasswordReset) {
-                Mail::to($users->email)->send(new EmailRestPassword($users->name, $data));
+                Mail::to($users->email)->send(new EmailRestPassword($users, $data));
                 $this->forgetpasswordSuccess();
                 return redirect()->route('get.forgetpassword');
             }
         }
     }
-    public function showtimeforget($message = 'Xác nhận đã hết thời gian chờ xin vui lòng điền lại Email')
+    public function showtimeforget($message = 'Thời gian chờ thay đổi mật khẩu đã hết xin vui lòng điền lại Email')
     {
         return \Session::flash('toastr', [
             'type' => 'error',

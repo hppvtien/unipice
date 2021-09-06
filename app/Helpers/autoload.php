@@ -236,7 +236,7 @@ function execPostRequest($url, $data)
         $discount_spiceclub = App\Models\Page::where('p_style','spice-club')->pluck('discount');
         return $discount_spiceclub;
     }
-              /**
+               /**
      * get size name.
      * @param int $id
      * @return string name
@@ -266,7 +266,10 @@ function execPostRequest($url, $data)
         $sizeName = App\Models\Product_Size::where('product_id',$id)->pluck('size_id');
         return $sizeName;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> bed80276e955d3b5e61b0f98d953beaf4090662e
     function checkParent($id)
     {
         $group_pid = App\Models\Uni_Category::where('parent_id',$id)->pluck('id');
@@ -289,7 +292,7 @@ function execPostRequest($url, $data)
     }
     function formatVnd($price)
     {
-        $vndfm = number_format($price, 0, '', ','). ' đ';
+        $vndfm = number_format($price, 0, '', '.'). ' ₫';
         return $vndfm;
     }
     function get_category_id($product_id){

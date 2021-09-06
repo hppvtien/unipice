@@ -70,7 +70,7 @@ Route::middleware('checkLoginUser')->group(function() {
     Route::post('thanh-toan-momo/{id}', 'UserPayController@processmomoCart')->name('post_user.momosuccsess'); 
     Route::get('thong-bao-thanh-toan-momo.html', 'UserPayController@resultmomo')->name('get_user.result_momo');
     Route::get('return-vnpay.html', 'UserPayController@returnvnpay')->name('get_user.result_vnpay');
-    
+    Route::post('delete-order.html', 'UserDashboardController@delete_order')->name('get_user.delete_order');
 });
 
 Route::get('in-pdf.html', 'UserCartController@generatePDF')->name('get_user.generatePDF');

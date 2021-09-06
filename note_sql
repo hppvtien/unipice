@@ -1,0 +1,5 @@
+ALTER TABLE `uni_order` ADD `total_vouchers` VARCHAR(20) NULL DEFAULT NULL AFTER `total_discount`;
+ALTER TABLE `product_size` ADD `qty` INT(11) NOT NULL AFTER `product_id`;
+ALTER TABLE `product_size` ADD `price` INT(20) NOT NULL AFTER `product_id`;
+ALTER TABLE `product_size` ADD `price_sale_store` INT(20) NOT NULL AFTER `product_id`;
+ALTER TABLE `product_size` ADD `price_sale` INT(20) NOT NULL AFTER `product_id`;

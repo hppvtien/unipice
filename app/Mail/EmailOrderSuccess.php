@@ -18,6 +18,6 @@ class EmailOrderSuccess extends Mailable
     }
     public function build()
     {
-        return $this->markdown('email.auth.email_order_success')->with(['uni_order' =>$this->uni_order]);
+        return $this->markdown('email.auth.email_order_success')->subject('UniMaill gửi thông tin cập nhật đơn hàng')->with(['uni_order' =>$this->uni_order]);
     }
 }

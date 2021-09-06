@@ -29,6 +29,6 @@ class EmailDangKySpiceClub extends Mailable
     public function build()
     {
         // return view('email.auth.email_order')->with(['data_bill' =>$this->data_bill]);
-        return $this->markdown('email.auth.email_dang_ky_spice_club')->with(['userss' =>$this->userss]);
+        return $this->markdown('email.auth.email_dang_ky_spice_club')->subject('UniMall gửi thông tin đăng ký Spice Club')->with(['userss' =>$this->userss]);
     }
 }

@@ -380,7 +380,7 @@
                                             <span class="price" data-th="Subtotal">{{ \Cart::tax(0,0,'.') }} đ</span>
                                         </td>
                                     </tr>
-                                    @if (get_data_user('web','type') == 2)
+                                    @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')))
                                     <tr class="totals sub">
                                         <th class="mark" scope="row">Ưu đãi SpiceClub</th>
                                         <td class="amount">
@@ -396,7 +396,7 @@
                                             <strong>Tổng đơn hàng</strong>
                                         </th>
                                         <td class="amount" data-th="Order Total">
-                                            @if (get_data_user('web','type') == 2)
+                                            @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')))
                                             <strong><span class="price">{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span></strong>
                                             @else
                                             <strong><span class="price">{{ formatVnd((int)Cart::total(0,0,'')) }}</span></strong>
