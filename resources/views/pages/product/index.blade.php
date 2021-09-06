@@ -38,10 +38,10 @@
                                             <div class="m-product-gallery glide">
                                                 
                                                 <div class="m-product-gallery__track glide__track">
-                                                    <ul class="m-product-gallery__slides glide__slides" data-glide-el="track">
+                                                    <ul class="m-product-gallery__slides glide__slides">
                                                         @if ($product->album != '[]' )
                                                             @foreach (json_decode($product->album) as $key => $item)
-                                                                <li class="m-product-gallery__slide glide__slide">
+                                                                <li class="m-product-gallery__slide glide__slide glide__slide--active">
                                                                     <div class="m-product-gallery__img-wrapper">
                                                                         <img class="lazyload m-product-gallery__img" data-src="{{ pare_url_file_product($item) }}" src="{{ pare_url_file_product($item) }}" alt="{{ $product->name }}" data-zoom="{{ pare_url_file_product($item) }}">
                                                                     </div>
