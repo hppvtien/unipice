@@ -37,13 +37,17 @@
                                             <div class="m-product-gallery glide">
                                                 <div class="m-product-gallery__track glide__track" data-glide-el="track">
                                                     <ul class="m-product-gallery__slides glide__slides">
-                                                        @forelse (json_decode($product->album) as $key => $item)
-                                                        <li class="m-product-gallery__slide glide__slide">
-                                                            <div class="m-product-gallery__img-wrapper">
-                                                                <img class="lazyload m-product-gallery__img" data-src="{{ pare_url_file_product($item) }}" alt="{{ $product->name }}" data-zoom="{{ pare_url_file_product($item) }}">
-                                                            </div>
-                                                        </li>
-                                                        @empty @endforelse
+                                                        @if ($product->album != null && $product->album != '[]' )
+                                                            @foreach (json_decode($product->album) as $key => $item)
+                                                                <li class="m-product-gallery__slide glide__slide">
+                                                                    <div class="m-product-gallery__img-wrapper">
+                                                                        <img class="lazyload m-product-gallery__img" data-src="{{ pare_url_file_product($item) }}" src="{{ pare_url_file_product($item) }}" alt="{{ $product->name }}" data-zoom="{{ pare_url_file_product($item) }}">
+                                                                    </div>
+                                                                </li>
+                                                            @endforeach
+                                                        @else
+                                                   
+                                                        @endif
 
                                                     </ul>
                                                 </div>
@@ -119,7 +123,7 @@
                                                         <!-- /TODO :: ADD RATING -->
                                                         <div role="article" class="m-product-overview__price-wrapper d-block">
                                                             <div class="m-price-lockup d-block">
-                                                                @if (checkUid($uid))
+                                                                @if (checkUid(get_data_user('web')))
                                                                 <div role="article" class="m-product-overview__price-wrapper">
                                                                     <div class="m-price-lockup">
                                                                         <span class="m-price-lockup__price">

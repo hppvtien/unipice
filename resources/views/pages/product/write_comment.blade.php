@@ -68,7 +68,7 @@
                                 <div class="col-md-6 col-lg-4 col-12 group-name">
                                     <div class="field email required">
                                         <div class="m-text-input m-text-input--placeholder-label control group-cmt">
-                                            <button data-url="{{ route('get.product_comment',['slug'=>$slug]) }}" data-type="review" product_id="{{ $product->id }}" user_id="@php echo $user_id; @endphp" class="btn-comment-rv btn btn-sm btn-primary pull-right" type="button">
+                                            <button data-url="{{ route('get.product_comment',['slug'=>$slug]) }}" data-type="review" product_id="{{ $product->id }}" user_id="{{ get_data_user('web') }}" class="btn-comment-rv btn btn-sm btn-primary pull-right" type="button">
                                                 <i class="fa fa-pencil fa-fw"></i> Gửi đánh giá</button>
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                                 <div class="col-md-6 col-lg-4 col-12 group-name">
                                     <div class="field email required">
                                         <div class="m-text-input m-text-input--placeholder-label control group-cmt">
-                                            <button data-url="{{ route('get.product_comment',['slug'=>$slug]) }}" data-type="question" product_id="{{ $product->id }}" user_id="@php echo $user_id; @endphp" class="btn-comment-qs btn btn-sm btn-primary pull-right" type="button">
+                                            <button data-url="{{ route('get.product_comment',['slug'=>$slug]) }}" data-type="question" product_id="{{ $product->id }}" user_id="{{ get_data_user('web') }}" class="btn-comment-qs btn btn-sm btn-primary pull-right" type="button">
                                                 <i class="fa fa-pencil fa-fw"></i> Gửi câu hỏi</button>
                                         </div>
                                     </div>
@@ -134,7 +134,7 @@
                     <div class="">
                         <div>
                             <div>
-                                @foreach ($noi_dung_comment as $item)
+                                @forelse ($noi_dung_comment as $item)
                                 <div class="media-block">
                                     <a class="media-left" href="#"><img class="img-circle img-sm" alt="{{ $item->name }}" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
                                     <div class="media-body">
@@ -153,7 +153,10 @@
                                         <p class="margin-left1">{{ $item->noi_dung_comment }}</p>
                                     </div>
                                 </div>
-                                @endforeach
+                                @empty
+                                    
+                                @endforelse
+                          
                                 <!--===================================================-->
                                 <!-- End Newsfeed Content -->
                             </div>
@@ -164,7 +167,30 @@
 
                     <!-- Newsfeed Content -->
                     <!--===================================================-->
-                    @foreach ($noi_dung_question as $item)
+                    @forelse ($noi_dung_comment as $item)
+                    <div class="media-block">
+                        <a class="media-left" href="#"><img class="img-circle img-sm" alt="{{ $item->name }}" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
+                        <div class="media-body">
+                            <div class="mar-btm">
+                                <a href="#" class="btn-link text-semibold media-heading box-inline" style="color:#08532f">
+                                    {{ ($item->name != '') ? $item->name : 'Khách Hàng '.$item->id }} -- {{ ($item->title != '') ? '( '.$item->title.' )' : '( Bình Luận Sản Phẩm )' }}
+                                    <br>
+                                    Đánh Giá: {{ $item->star }} @for ($i = 0; $i < $item->star; $i++)
+                                    <span class="fa fa-star checked-star"></span>
+                                    @endfor
+                                    <hr>
+                                </a>
+                                
+                            </div>
+                            <p class="margin-left1 font-weight-bold">{{ $item->title_rv }}</p>
+                            <p class="margin-left1">{{ $item->noi_dung_comment }}</p>
+                        </div>
+                    </div>
+                    @empty
+                        
+                    @endforelse
+              
+                    @forelse ($noi_dung_question as $item)
                     <div class="media-block">
                         <a class="media-left" href="#"><img class="img-circle img-sm" alt="{{ $item->name }}" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
                         <div class="media-body">
@@ -182,7 +208,10 @@
                             <hr>
                         </div>
                     </div>
-                    @endforeach
+                    @empty
+                        
+                    @endforelse
+                   
                     <!--===================================================-->
                     <!-- End Newsfeed Content -->
                 </div>
