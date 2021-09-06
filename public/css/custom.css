@@ -15,9 +15,11 @@
     padding-right: 20px;
     width: auto;
 }
+
 .fil-uni {
     margin-top: 76px;
 }
+
 .uni-css-img {
     width: 50%;
 }
@@ -554,6 +556,9 @@ span.select2-container.select2-container--default.select2-container--open {
     .heading_namestore {
         font-size: 22px;
     }
+    .box-shadow-in {
+        box-shadow: inset 0 0 5px #000000;
+    }
     .c-media-block-aligned__content-wrapper {
         padding-left: calc((100vw - 1280px) / 2);
         padding-right: calc((100vw - 1280px) / 2);
@@ -792,8 +797,8 @@ span.a-qty {
     color: #08532f;
 }
 
-
-.c-product-overview__content #share a, #share2 a {
+.c-product-overview__content #share a,
+#share2 a {
     width: 30px;
     height: 30px;
     margin: 0px;

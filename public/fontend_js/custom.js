@@ -818,6 +818,7 @@ $('.redect-b2b').on('click', function() {
 // $("#province").select2();
 
 $('.check-price').on('click', function() {
+    $('.paid-save').find('.box-shadow-in').removeClass('box-shadow-in');
     let size_id = $(this).attr('data-size');
     let size_price = Number($(this).attr('size-price'));
     let size_price_sale = Number($(this).attr('size-price-sale'));
@@ -829,6 +830,7 @@ $('.check-price').on('click', function() {
         if (size_price_sale_store == 0) {
             return false;
         } else {
+            $('.check' + size_id).addClass('box-shadow-in');
             $('.price-preview').html('Giá / Sản phẩm: ' + numberVnd(size_price_sale_store));
             $('.price-save').html('(Tiết kiệm: -' + price_save_store + '%)');
         }
@@ -837,6 +839,7 @@ $('.check-price').on('click', function() {
         if (size_price_sale == 0) {
             return false;
         } else {
+            $('.check' + size_id).addClass('box-shadow-in');
             $('.price-preview-sale').html('Giá: ' + numberVnd(size_price_sale));
             $('.price-gg-gg').html(numberVnd(size_price));
             $('.price-save').html('(Tiết kiệm: -' + price_save_not_store + '%)');

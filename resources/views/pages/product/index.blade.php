@@ -111,8 +111,8 @@
                                                                             Khối lượng tịnh:
                                                                         </span><br>
                                                                         <span class="text-danger paid-save" style="line-height: 3.5">
-                                                                            @forelse ($product->size_product as $size)
-                                                                            <b class="border check-price" data-uid="{{ checkUid(get_data_user('web')) }}" data-size={{ $size['size_id'] }} size-price={{ $size['price'] }} size-price-sale={{ $size['price_sale'] }} size-price-sale-store={{ $size['price_sale_store'] }} style="padding: 5px;cursor: pointer;">{{ getSizeName($size['size_id']) }}</b>
+                                                                            @forelse ($product->size_product as $key => $size)
+                                                                            <b class="border check-price check{{ $size['size_id'] }} {{ $key == 0 ? 'box-shadow-in' : '' }}" data-uid="{{ checkUid(get_data_user('web')) }}" data-size={{ $size['size_id'] }} size-price={{ $size['price'] }} size-price-sale={{ $size['price_sale'] }} size-price-sale-store={{ $size['price_sale_store'] }} style="padding: 15px 10px;cursor: pointer;">{{ getSizeName($size['size_id']) }}</b>
                                                                             @empty
 
                                                                             @endforelse
