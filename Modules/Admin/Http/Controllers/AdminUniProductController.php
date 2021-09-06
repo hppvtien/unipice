@@ -98,6 +98,8 @@ class AdminUniProductController extends AdminController
             'is_hot' => $request->is_hot,
             'is_feauture' => $request->is_feauture,
             'order' => $request->order,
+            'qty_in_box' => $request->qty_in_box,
+            'min_box' => $request->min_box,
             'thumbnail' => $request->thumbnail,
             'album' => json_encode($album),
             'status' => $request->status,

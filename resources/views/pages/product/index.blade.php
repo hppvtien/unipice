@@ -36,18 +36,20 @@
                                         <div class="c-product-overview__content-wrapper">
 
                                             <div class="m-product-gallery glide">
-                                                @if ($product->album != '[]' )
+                                                
                                                 <div class="m-product-gallery__track glide__track">
                                                     <ul class="m-product-gallery__slides glide__slides" data-glide-el="track">
+                                                        @if ($product->album != '[]' )
+                                                            @foreach (json_decode($product->album) as $key => $item)
+                                                                <li class="m-product-gallery__slide glide__slide">
+                                                                    <div class="m-product-gallery__img-wrapper">
+                                                                        <img class="lazyload m-product-gallery__img" data-src="{{ pare_url_file_product($item) }}" src="{{ pare_url_file_product($item) }}" alt="{{ $product->name }}" data-zoom="{{ pare_url_file_product($item) }}">
+                                                                    </div>
+                                                                </li>
+                                                            @endforeach
+                                                        @else
 
-                                                        @foreach (json_decode($product->album) as $key => $item)
-                                                        <li class="m-product-gallery__slide glide__slide">
-                                                            <div class="m-product-gallery__img-wrapper">
-                                                                <img class="lazyload m-product-gallery__img" data-src="{{ pare_url_file_product($item) }}" src="{{ pare_url_file_product($item) }}" alt="{{ $product->name }}" data-zoom="{{ pare_url_file_product($item) }}">
-                                                            </div>
-                                                        </li>
-                                                        @endforeach
-
+                                                        @endif
                                                     </ul>
                                                 </div>
                                                 <div class="a-carousel-indicator glide__arrows m-product-gallery__controls" data-glide-el="controls">
@@ -64,9 +66,7 @@
                                                         <span class="icon-arrow-right"></span>
                                                     </button>
                                                 </div>
-                                                @else
-
-                                                @endif
+                                               
                                             </div>
 
                                             <div class="c-product-overview__info">
@@ -95,7 +95,6 @@
                                                                     <span class="a-folio text-dark text-lowercase font-weight-normal">
                                                                         {{ $product->desscription }}
                                                                     </span> <br>
-
                                                                     <span class="m-product-overview__price-wrapper d-block">
                                                                         <span class="a-product-name a-title-des text-dark">
                                                                             Thương hiệu:
