@@ -10,7 +10,7 @@
 <form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
     @csrf
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-10">
             <div class="card box-shadow-0">
                 <div class="card-body pt-3">
                     <div class="bg-info">
@@ -49,7 +49,11 @@
                                     <td>{{ $item->total_export }}</td>
                                     <td>{{ $item->qty }}</td>
                                     <td>{{ formatVnd($item->price_lotproduct) }}</td>
-                                    <td>{{ $item->created_at }}</td>
+                                    <td>@if($item->created_at)
+                                                    <p>{{ $item->created_at->format('Y/m/d') ?? "[N\A]" }}</p>
+                                                 @else
+                                                     <p>"[N\A]"</p>
+                                                 @endif</td>
                                     <td>{{ $item->expiry_date }}</td>
                                 </tr>
                                 @endforeach
@@ -96,17 +100,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-6">
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1"> Action <span>(*)</span></label>
-                        <div>
-                            <button class="btn btn-info"><i class="la la-save"></i> Save</button>
-                            <button class="btn btn-success"><i class="la la-check-circle"></i> Save & Edit</button>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <h2>
                             Lịch sử nhập sản phẩm để bán
@@ -139,12 +134,28 @@
                                         <span>Giá Đại lý: <span class="text-success">{{ formatVnd($item->price_sale_store) }}</span></span><br>
                                         <span>Trọng lượng: <span class="text-success">{{ getSizeName($item->product_size) }}</span></span>
                                     </td>
-                                    <td>{{ $item->created_at }}</td>
+                                    <td>@if($item->created_at)
+                                        <p>{{ $item->created_at->format('Y/m/d') ?? "[N\A]" }}</p>
+                                     @else
+                                         <p>"[N\A]"</p>
+                                     @endif</td>
                                 </tr>
                                 @endforeach
                             </tbody>
                           
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="card  box-shadow-0 ">
+                <div class="card-body pt-3">
+                    <div class="form-group">
+                        <div>
+                            <button class="btn btn-info"><i class="la la-save"></i> Save</button>
+                            <button class="btn btn-success"><i class="la la-check-circle"></i>Edit</button>
+                        </div>
                     </div>
                 </div>
             </div>

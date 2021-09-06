@@ -49,7 +49,7 @@
                     <span class="text-danger">{{ $errors->first('size_box') }}</span>
                     @endif
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Giá nhập <span>(*)</span></label>
+                        <label for="exampleInputEmail1" class="required">Giá nhập / sản phẩm <span>(*)</span></label>
                         <input type="number" class="form-control" name="price_lotproduct" value="{{ old('price_lotproduct',$lotproduct->price_lotproduct ?? '') }}">
                     </div>
                     @if($errors->first('price_lotproduct'))
