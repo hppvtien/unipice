@@ -12,6 +12,13 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail1" class="required"> Kiểu đóng gói <span>(*)</span></label>
+                        <input type="text" class="form-control" name="type_size" value="{{ old('type_size', $size->type_size ?? '') }}">
+                        @if($errors->first('type_size'))
+                        <span class="text-danger">{{ $errors->first('type_size') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Slug <span>(*)</span></label>
                         <input type="text" class="form-control slug" name="slug" value="{{ old('slug', $size->slug ?? '') }}">
                         @if($errors->first('slug'))

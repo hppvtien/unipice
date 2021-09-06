@@ -73,7 +73,7 @@
                         <span class="text-danger">{{ $errors->first('trade') }}</span>
                         @endif
                     </div>
-                   
+
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required"> Trọng lượng <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
@@ -106,49 +106,8 @@
                 <input type="number" class="form-control" name="order" value="{{ old('order', $uni_product->order ?? '0') }}">
                 <span class="d-block text-warning">Thứ thự được sắp xếp từ bé đến lớn</span>
             </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Số lượng trong thùng<span>(*)</span></label>
-                            <input type="number" class="form-control" name="qty_in_box" value="{{ old('qty_in_box', $uni_product->qty_in_box ?? '0') }}">
-                            <span class="d-block text-warning">Số lượng trên một thùng</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Số lượng thùng tối thiểu để được giá đại lý <span>(*)</span></label>
-                            <input type="number" class="form-control" name="min_box" value="{{ old('min_box', $uni_product->min_box ?? '0') }}">
-                            <span class="d-block text-warning">Số lượng thùng tối thiểu để được giá đại lý</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Giá bán lẻ<span>(*)</span></label>
-                            <input type="number" class="form-control" name="view_price" value="{{ old('qty_in_box', $uni_product->view_price ?? '0') }}">
-                            <span class="d-block text-warning">Giá bán cho khách hàng mua lẻ</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Giá bán sale <span>(*)</span></label>
-                            <input type="number" class="form-control" name="view_price_sale" value="{{ old('min_box', $uni_product->view_price_sale ?? '0') }}">
-                            <span class="d-block text-warning">Giá sale cho khách hàng mua lẻ</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1" class="required">Giá bán đại lý<span>(*)</span></label>
-                            <input type="number" class="form-control" name="view_price_sale_store" value="{{ old('min_box', $uni_product->view_price_sale_store ?? '0') }}">
-                            <span class="d-block text-warning">Giá bán cho khách hàng đại lý</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
             <div class="form-group border">
                 @foreach($data_size as $key => $v_size)
                 <div class="row">
@@ -182,6 +141,26 @@
                                     <div class="input-group-text">Giá bán đại lý</div>
                                 </div>
                                 <input type="text" name="size_price_sale_store[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán đại lý" value="{{ $v_size->price_sale_store }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1" class="required">Số lượng sản phẩm / thùng<span>(*)</span></label>
+                                        <input type="number" class="form-control" name="qty_in_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ $v_size->qty_in_box }}">
+                                        <span class="d-block text-warning">Số lượng trên một thùng</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1" class="required">Số lượng thùng tối thiểu để được giá đại lý <span>(*)</span></label>
+                                        <input type="number" class="form-control" name="min_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ $v_size->min_box }}">
+                                        <span class="d-block text-warning">Số lượng thùng tối thiểu để được giá đại lý</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

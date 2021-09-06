@@ -822,6 +822,8 @@ $('.check-price').on('click', function() {
     let size_price = Number($(this).attr('size-price'));
     let size_price_sale = Number($(this).attr('size-price-sale'));
     let size_price_sale_store = Number($(this).attr('size-price-sale-store'));
+    let size_qty_inbox = Number($(this).attr('size-qty-inbox'));
+    let size_min_box = Number($(this).attr('size-min-box'));
     let price_save_not_store = Number(100 - size_price_sale * 100 / size_price).toFixed(0);
     let price_save_store = Number(100 - size_price_sale_store * 100 / size_price).toFixed(0);
     let data_uid = $(this).attr('data-uid');
@@ -832,6 +834,9 @@ $('.check-price').on('click', function() {
             $('.check' + size_id).addClass('box-shadow-in');
             $('.price-preview').html('Giá / Sản phẩm: ' + numberVnd(size_price_sale_store));
             $('.price-save').html('(Tiết kiệm: -' + price_save_store + '%)');
+            $('.price-gg-gg').html(numberVnd(size_price));
+            $('#qty-in-box-store').html(size_qty_inbox + ' sản phẩm');
+            $('#min-box-store').html(size_min_box + ' thùng');
         }
 
     } else {

@@ -33,13 +33,12 @@
                                 </tr>
                             </thead>
                             <tbody class="gr_sele">
-                                @foreach($uni_lotproduct as $key => $item)   
+                                @foreach($uni_lotproduct as $key => $item)
                                 <tr>
                                     <th scope="row">{{ $key+1 }}</th>
                                     <td>
                                         <div class="form-check form-check-inline">
-                                            <input require data-lotid="{{ $item->key_lot }}" data-size={{ $item->size }} class="form-check-input {{ $item->key_lot != 0 ? 'lot_product':''  }}" {{ $item->status == 0 ? 'disabled':'' }} type="radio" name="lotproduct_id" lot-key="{{ $key }}"
-                                            product-id="{{ $item->product_id }}" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
+                                            <input require data-lotid="{{ $item->key_lot }}" data-size={{ $item->size }} class="form-check-input {{ $item->key_lot != 0 ? 'lot_product':''  }}" {{ $item->status == 0 ? 'disabled':'' }} type="radio" name="lotproduct_id" lot-key="{{ $key }}" product-id="{{ $item->product_id }}" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
                                             <label class="form-check-label" for="inlineCheckbox{{ $item->id }}">{{ $item->lot_name }}</label>
                                         </div>
                                     </td>
@@ -50,10 +49,11 @@
                                     <td>{{ $item->qty }}</td>
                                     <td>{{ formatVnd($item->price_lotproduct) }}</td>
                                     <td>@if($item->created_at)
-                                                    <p>{{ $item->created_at->format('Y/m/d') ?? "[N\A]" }}</p>
-                                                 @else
-                                                     <p>"[N\A]"</p>
-                                                 @endif</td>
+                                        <p>{{ $item->created_at->format('Y/m/d') ?? "[N\A]" }}</p>
+                                        @else
+                                        <p>"[N\A]"</p>
+                                        @endif
+                                    </td>
                                     <td>{{ $item->expiry_date }}</td>
                                 </tr>
                                 @endforeach
@@ -67,36 +67,14 @@
                         <h3 class="text-light h3-title">Thông tin nhập sản phẩm</h3>
                     </div>
                     <input type="hidden" name="product_size" id="product_size_lot" value="">
-                 
-                   <input type="hidden" name="product_id" value="{{ old('product_id', $uni_lotproduct[0]->product_id ?? '') }}">
-                   
+                    <input type="hidden" name="product_id" value="{{ old('product_id', $uni_lotproduct[0]->product_id ?? '') }}">
+
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Số lượng <span>(*)</span></label>
                         <input type="text" class="form-control keypress-count" name="qty" value="{{ old('qty', $uni_product->qty ?? '') }}">
-                        @if($errors->first('qty'))
-                        <span class="text-danger">{{ $errors->first('qty') }}</span>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Giá bán lẻ <span>(*)</span></label>
-                        <input type="text" class="form-control price_a" name="price" value="{{ old('price', $uni_product->price ?? '') }}">
-                        @if($errors->first('price'))
-                        <span class="text-danger">{{ $errors->first('price') }}</span>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Giá sale <span>(*)</span></label>
-                        <input type="text" class="form-control price_sale" name="price_sale" value="{{ old('price_sale', $uni_product->price_sale ?? '') }}">
-                        @if($errors->first('price_sale'))
-                        <span class="text-danger">{{ $errors->first('price_sale') }}</span>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Giá bán đại lý <span>(*)</span></label>
-                        <input type="text" class="form-control price_sale_store" name="price_sale_store" value="{{ old('price_sale_store', $uni_product->price_sale_store ?? '') }}">
-                        @if($errors->first('price_sale_store'))
-                        <span class="text-danger">{{ $errors->first('price_sale_store') }}</span>
-                        @endif
+                            @if($errors->first('qty'))
+                                <span class="text-danger">{{ $errors->first('qty') }}</span>
+                            @endif
                     </div>
                 </div>
             </div>
@@ -115,7 +93,7 @@
                                     <th scope="col">Tên Lô</th>
                                     <th scope="col">Sản Phẩm</th>
                                     <th scope="col">Số lượng nhập</th>
-                                    <th scope="col">Giá Sản phẩm</th>
+                                    <th scope="col">Trọng lượng tĩnh</th>
                                     <th scope="col">Ngày nhập</th>
                                 </tr>
                             </thead>
@@ -129,20 +107,18 @@
                                     <td>{{ get_data_table_name('uni_product',$item->product_id)->name }}</td>
                                     <td>{{ $item->inventory }}</td>
                                     <td>
-                                        <span>Giá bán lẻ: <span class="text-success">{{ formatVnd($item->price) }} </span></span> <br>
-                                        <span>Giá bán sale: <span class="text-success">{{ formatVnd($item->price_sale) }}</span></span> <br>
-                                        <span>Giá Đại lý: <span class="text-success">{{ formatVnd($item->price_sale_store) }}</span></span><br>
-                                        <span>Trọng lượng: <span class="text-success">{{ getSizeName($item->product_size) }}</span></span>
+                                        <span class="text-success">{{ getSizeName($item->product_size) }}</span>
                                     </td>
                                     <td>@if($item->created_at)
                                         <p>{{ $item->created_at->format('Y/m/d') ?? "[N\A]" }}</p>
-                                     @else
-                                         <p>"[N\A]"</p>
-                                     @endif</td>
+                                        @else
+                                        <p>"[N\A]"</p>
+                                        @endif
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
-                          
+
                         </table>
                     </div>
                 </div>
@@ -163,5 +139,5 @@
     </div>
 </form>
 @else
-    <h3>Trong kho hiện tại không có lô sản phẩm nào</h3>
+<h3>Trong kho hiện tại không có lô sản phẩm nào</h3>
 @endif

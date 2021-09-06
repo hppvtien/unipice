@@ -39,7 +39,6 @@ class AdminUniSizeController extends AdminController
         if($menuID)
         {
             $this->showMessagesSuccess();
-            RenderUrlSeoBLogService::init($request->slug,SeoBlog::TYPE_MENU, $menuID);
             return redirect()->route('get_admin.uni_size.index');
         }
         $this->showMessagesError();
