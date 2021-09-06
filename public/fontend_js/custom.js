@@ -742,8 +742,8 @@ function chanFunctionMethodTran() {
     $('#district').prop('selectedIndex', 0);
     $('#ward').prop('selectedIndex', 0);
     $('#fee_ship').html('');
-    $('#total-ship').html('')
-    $('#total-all').html('')
+    $('#total-ship').html('');
+    $('#total-all').html('');
     $('.error-input').html('');
 }
 $('.redect-b2b').on('click', function() {

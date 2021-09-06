@@ -264,3 +264,9 @@ $('#generate-code').on('click', function() {
         }
     });
 });
+$('.lot_product').on('change', function() {
+    $('.lot_product:checked').each(function() {
+        var product_size = $(this).attr('data-size');
+        $('#product_size_lot').val(product_size);
+    });
+});

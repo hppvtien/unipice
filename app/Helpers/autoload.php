@@ -236,7 +236,37 @@ function execPostRequest($url, $data)
         $discount_spiceclub = App\Models\Page::where('p_style','spice-club')->pluck('discount');
         return $discount_spiceclub;
     }
-   
+              /**
+     * get size name.
+     * @param int $id
+     * @return string name
+     */
+    function getSizeName($id)
+    {
+        $sizeName = App\Models\Uni_Size::where('id',$id)->pluck('name')->first();
+        return $sizeName;
+    }
+               /**
+     * get percent.
+     * @param string $code
+     * @return int percent
+     */
+    function getPercentVouchers($code)
+    {
+        $percent = App\Models\Voucher::where('code',$code)->pluck('model_percent')->first();
+        return $percent;
+    }
+               /**
+     * get size name.
+     * @param int $id
+     * @return string array
+     */
+    function getAllSizeName($id)
+    {
+        $sizeName = App\Models\Product_Size::where('product_id',$id)->pluck('size_id');
+        return $sizeName;
+    }
+
     function checkParent($id)
     {
         $group_pid = App\Models\Uni_Category::where('parent_id',$id)->pluck('id');
