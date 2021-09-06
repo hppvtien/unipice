@@ -34,10 +34,20 @@
                                 <div>
                                     <div class="c-product-overview">
                                         <div class="c-product-overview__content-wrapper">
+
                                             <div class="m-product-gallery glide">
-                                                <div class="m-product-gallery__track glide__track" >
-                                                    <ul class="m-product-gallery__slides glide__slides">
-                                                        
+                                                @if ($product->album != '[]' )
+                                                <div class="m-product-gallery__track glide__track">
+                                                    <ul class="m-product-gallery__slides glide__slides" data-glide-el="track">
+
+                                                        @foreach (json_decode($product->album) as $key => $item)
+                                                        <li class="m-product-gallery__slide glide__slide">
+                                                            <div class="m-product-gallery__img-wrapper">
+                                                                <img class="lazyload m-product-gallery__img" data-src="{{ pare_url_file_product($item) }}" src="{{ pare_url_file_product($item) }}" alt="{{ $product->name }}" data-zoom="{{ pare_url_file_product($item) }}">
+                                                            </div>
+                                                        </li>
+                                                        @endforeach
+
                                                     </ul>
                                                 </div>
                                                 <div class="a-carousel-indicator glide__arrows m-product-gallery__controls" data-glide-el="controls">
@@ -54,7 +64,11 @@
                                                         <span class="icon-arrow-right"></span>
                                                     </button>
                                                 </div>
+                                                @else
+
+                                                @endif
                                             </div>
+
                                             <div class="c-product-overview__info">
                                                 <div class="c-product-overview__content">
 
@@ -91,7 +105,7 @@
                                                                                 {{ $trade_name->name }}
                                                                             </a>
                                                                         </span>
-                                                                        
+
                                                                     </span>
                                                                     <span class="m-product-overview__price-wrapper d-block">
                                                                         <span class="a-product-name a-title-des text-dark">
@@ -99,14 +113,12 @@
                                                                         </span><br>
                                                                         <span class="text-danger paid-save" style="line-height: 3.5">
                                                                             @forelse ($product->size_product as $size)
-                                                                            <b class="border check-price" data-uid="{{ checkUid(get_data_user('web')) }}" data-size={{ $size['size_id'] }} size-price={{ $size['price'] }} size-price-sale={{ $size['price_sale'] }} 
-                                                                                size-price-sale-store={{ $size['price_sale_store'] }} 
-                                                                                style="padding: 5px;cursor: pointer;">{{ getSizeName($size['size_id']) }}</b>
+                                                                            <b class="border check-price" data-uid="{{ checkUid(get_data_user('web')) }}" data-size={{ $size['size_id'] }} size-price={{ $size['price'] }} size-price-sale={{ $size['price_sale'] }} size-price-sale-store={{ $size['price_sale_store'] }} style="padding: 5px;cursor: pointer;">{{ getSizeName($size['size_id']) }}</b>
                                                                             @empty
-                                                                                
+
                                                                             @endforelse
                                                                         </span>
-                                                                </span>
+                                                                    </span>
                                                             </div>
                                                         </div>
                                                         <!-- /TODO :: ADD RATING -->
@@ -136,10 +148,10 @@
                                                                     </div>
                                                                 </div>
                                                                 @endif
-                                                                
+
                                                                 <span class="line-height-single2 m-price-lockup__price d-block">
                                                                     <?php if (checkUid(get_data_user('web')) != null) { ?>
-                                                                        
+
                                                                         <span class="g-price">
                                                                             {{ formatVnd($product->view_price) }}
                                                                         </span>
@@ -147,8 +159,8 @@
                                                                             (Tiết kiệm: -{{ 100-round($product->view_price_sale_store*100/$product->view_price) }}% )
                                                                         </span>
                                                                         <br>
-                                                                        
-                                                                        
+
+
                                                                         <span class="a-price price-single price-preview" style="font-size: 1rem !important;">
                                                                             Giá / Sản phẩm: {{ $product->view_price_sale_store == null ? 'liên hệ': formatVnd($product->view_price_sale_store) }}
                                                                         </span>
@@ -163,23 +175,23 @@
                                                                         <span class="g-price price-gg-gg">
                                                                             {{ formatVnd($product->view_price) }}
                                                                         </span>
-                                                                        <span class="text-danger paid-save font_chu_mau_do price-save" >
+                                                                        <span class="text-danger paid-save font_chu_mau_do price-save">
                                                                             (Tiết kiệm: -{{ 100-round($product->view_price_sale*100/$product->view_price) }}% )
                                                                         </span>
                                                                         <br>
                                                                         <span class="a-price price-single">
                                                                             <span class="a-product-name a-title-des text-dark price-preview-sale price-sale-preview{{ $product->id }}">
                                                                                 Giá: {{ formatVnd($product->view_price_sale) }}
-                                                                            </span> 
+                                                                            </span>
                                                                         </span>
                                                                         @elseif (!$product->view_price_sale)
                                                                         <br>
                                                                         <span class="a-price price-single">
                                                                             <span class="a-product-name a-title-des text-dark price-preview-sale price-sale-preview{{ $product->id }}">
                                                                                 Giá: {{ formatVnd($product->view_price) }}
-                                                                            </span> 
+                                                                            </span>
                                                                         </span>
-                                                                        @endif  
+                                                                        @endif
                                                                         <!--<?php if ($product->qty) { ?>
                                                                 <span class="a-price text-success sigle line-height-single4"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
                                                                 <?php } else { ?>
@@ -222,7 +234,7 @@
                                                             <?php } else { ?>
                                                                 <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
                                                                     <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn contact-btn" type="button" rel="nofollow">Liên hệ</a>
-                                                                    </div>
+                                                                </div>
                                                             <?php } ?>
 
 
@@ -317,22 +329,22 @@
 @stop
 
 @section('js_product_comment_review')
-    <script>
-        $('#show_viet_danh_gia').click(function(){
-            $( "#News" ).slideToggle( "slow" );
-            $( "#question" ).hide( "slow" );
-        });
-        $('#show_dat_cau_hoi').click(function(){
-            $( "#question" ).slideToggle( "slow" );
-            $( "#News" ).hide( "slow" );
-        });
-        $('#view_danh_gia').click(function(){
-            $( "#view_review" ).slideToggle( "slow" );
-            $( "#view_question" ).hide( "slow" );
-        });
-        $('#view_cau_hoi').click(function(){
-            $( "#view_question" ).slideToggle( "slow" );
-            $( "#view_review" ).hide( "slow" );
-        });
-    </script>
+<script>
+    $('#show_viet_danh_gia').click(function() {
+        $("#News").slideToggle("slow");
+        $("#question").hide("slow");
+    });
+    $('#show_dat_cau_hoi').click(function() {
+        $("#question").slideToggle("slow");
+        $("#News").hide("slow");
+    });
+    $('#view_danh_gia').click(function() {
+        $("#view_review").slideToggle("slow");
+        $("#view_question").hide("slow");
+    });
+    $('#view_cau_hoi').click(function() {
+        $("#view_question").slideToggle("slow");
+        $("#view_review").hide("slow");
+    });
+</script>
 @endsection

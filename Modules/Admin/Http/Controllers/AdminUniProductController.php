@@ -85,7 +85,7 @@ class AdminUniProductController extends AdminController
                 $album[] = $this->processUploadFile($item);
             }
         } else {
-            $album = '';
+            $album = [];
         }
 
         $param = [
