@@ -35,20 +35,9 @@
                                     <div class="c-product-overview">
                                         <div class="c-product-overview__content-wrapper">
                                             <div class="m-product-gallery glide">
-                                                <div class="m-product-gallery__track glide__track" data-glide-el="track">
+                                                <div class="m-product-gallery__track glide__track" >
                                                     <ul class="m-product-gallery__slides glide__slides">
-                                                        @if ($product->album != null && $product->album != '[]' )
-                                                            @foreach (json_decode($product->album) as $key => $item)
-                                                                <li class="m-product-gallery__slide glide__slide">
-                                                                    <div class="m-product-gallery__img-wrapper">
-                                                                        <img class="lazyload m-product-gallery__img" data-src="{{ pare_url_file_product($item) }}" src="{{ pare_url_file_product($item) }}" alt="{{ $product->name }}" data-zoom="{{ pare_url_file_product($item) }}">
-                                                                    </div>
-                                                                </li>
-                                                            @endforeach
-                                                        @else
-                                                   
-                                                        @endif
-
+                                                        
                                                     </ul>
                                                 </div>
                                                 <div class="a-carousel-indicator glide__arrows m-product-gallery__controls" data-glide-el="controls">
@@ -108,7 +97,7 @@
                                                                         <span class="a-product-name a-title-des text-dark">
                                                                             Khối lượng tịnh:
                                                                         </span><br>
-                                                                        <span class="text-danger paid-save">
+                                                                        <span class="text-danger paid-save" style="line-height: 3.5">
                                                                             @forelse ($product->size_product as $size)
                                                                             <b class="border check-price" data-uid="{{ checkUid(get_data_user('web')) }}" data-size={{ $size['size_id'] }} size-price={{ $size['price'] }} size-price-sale={{ $size['price_sale'] }} 
                                                                                 size-price-sale-store={{ $size['price_sale_store'] }} 
