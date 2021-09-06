@@ -571,7 +571,7 @@
                      color: #3c4858;
                      ">
                   <div style="text-align: justify;">
-                  <p style="font-size: 16px;margin-bottom: 10px!important; text-align: justify;">Chúng tôi rất tiếc phải huỷ mã đơn số: #SC{{ $uni_order_sc['id'] }} của quý khách, vì lý do không nhận được thanh toán nạp tiền cho tài khoản Spice Clup. Quý khách sẽ không nhận được bất cứ ưu đãi nào của tài khoản Spice Clup khi chưa thanh toán. Xin vui lòng <a href="{{ route('get.recharge.up') }}">nạp tiền</a> cho tài khoản</p>
+                  <p style="font-size: 16px;margin-bottom: 10px!important; text-align: justify;">Chúng tôi rất tiếc phải huỷ mã đơn số: <b>#SC{{ $uni_order_sc['id'] }}</b> của quý khách, vì lý do không nhận được thanh toán nạp tiền cho tài khoản Spice Clup. Quý khách sẽ không nhận được bất cứ ưu đãi nào của tài khoản Spice Clup khi chưa thanh toán. Xin vui lòng <a href="{{ route('get.recharge') }}">nạp tiền</a> cho tài khoản</p>
                   </div>
                   </td>
                   </tr>

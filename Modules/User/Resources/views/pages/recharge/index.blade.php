@@ -7,15 +7,11 @@
         <div class="column main padding_css">
             <form class="form form-shipping-address" id="co-store-form" action="{{ route('get_user.pay.nap') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                <div class="block-title"><strong>Chi phí đăng ký 500,000đ /năm</strong></div>
+                <div class="block-title"><strong>Chi phí đăng ký 50,000đ </strong></div>
                 <div class="field _required">
                     <div class="control">
-                        <select class="custom-select" id="method" name="price_nap" onchange="chanFunctionMethodTran()" >
-                            <option value="500000">1 năm</option>
-                            <option value="1000000">2 năm</option>
-                            <option value="1500000">3 năm</option>
-                            <option value="2000000">4 năm</option>
-                        </select>
+                        <input disabled class="a-text-input m-text-input__input w-100"  type="text" aria-invalid="false" id="vouchers" placeholder="50,000đ">
+                        <input  value="50000" type="hidden" name="price_nap" aria-invalid="false" id="price_nap" >
                     </div>
                 </div>
                 <div class="field _required">

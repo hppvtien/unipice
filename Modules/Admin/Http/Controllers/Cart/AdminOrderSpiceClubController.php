@@ -53,21 +53,21 @@ class AdminOrderSpiceClubController extends AdminController
     {
         $uni_order_sc = Uni_Order_Nap::findOrFail($id);
         $data['status'] = $request->status;
-        if( $uni_order_sc->end_year == NULL){
-            if( $request->status == 2){
-                if( $uni_order_sc->price_nap == 500000){
-                $data['end_year'] = Carbon::now()->subYear(-1);
-                }else if($uni_order_sc->price_nap == 1000000){
-                $data['end_year'] = Carbon::now()->subYear(-2);
-                }else if($uni_order_sc->price_nap == 1500000){
-                $data['end_year'] = Carbon::now()->subYear(-3);
-                }else if($uni_order_sc->price_nap == 2000000){
-                $data['end_year'] = Carbon::now()->subYear(-4);
-                }
-            }else{
-            $data['end_year'] = NULL;
-            }
-        }
+        // if( $uni_order_sc->end_year == NULL){
+        //     if( $request->status == 2){
+        //         if( $uni_order_sc->price_nap == 500000){
+        //         $data['end_year'] = Carbon::now()->subYear(-1);
+        //         }else if($uni_order_sc->price_nap == 1000000){
+        //         $data['end_year'] = Carbon::now()->subYear(-2);
+        //         }else if($uni_order_sc->price_nap == 1500000){
+        //         $data['end_year'] = Carbon::now()->subYear(-3);
+        //         }else if($uni_order_sc->price_nap == 2000000){
+        //         $data['end_year'] = Carbon::now()->subYear(-4);
+        //         }
+        //     }else{
+        //     $data['end_year'] = NULL;
+        //     }
+        // }
         $uni_order_sc->fill($data)->update();
         if( $uni_order_sc->status == 2){
         Mail::to($uni_order_sc['email'])->send(new EmailOrderSpiceClub($uni_order_sc));

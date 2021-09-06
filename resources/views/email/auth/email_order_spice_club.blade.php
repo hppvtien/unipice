@@ -656,7 +656,7 @@
                   </tr>
                   <tr style="border: 1px solid #111;">
                   <td align="left" style="padding-left: 5px;border-right: 1px solid;">Giá trị tài khoản thành viên Spice Club</td>
-                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Từ {{ date_format($uni_order_sc['created_at'], 'd-m-Y')  }} đến {{date_format(date_create($uni_order_sc['end_year']),"d/m/Y") }}</td>
+                  <td align="left" style="padding-left: 5px;border-right: 1px solid;">Trọn đời</td>
                   </tr>
                   </tbody></table>
                   </td>

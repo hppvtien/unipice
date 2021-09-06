@@ -1,17 +1,19 @@
 @section('css_js_spice_club')
-<link href="{{ asset('css/unimall1.css') }}" rel="stylesheet">
-<script src="{{ asset('css/css_js/bootstrap.bundle.min.js') }}"></script>
+    <link href="{{ asset('css/unimall1.css') }}" rel="stylesheet">
+    <script src="{{ asset('css/css_js/bootstrap.bundle.min.js') }}"></script>
 @stop
 
 @extends('pages.layouts.app_master_frontend') @section('contents')
-    
+
     <main id="main">
-        <section id="about" class="about" style="background: url({{ pare_url_file($page->p_banner) }}) center center;">
+        <section id="about" class="about"
+            style="background: url({{ pare_url_file($page->p_banner) }}) center center;">
             <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
                         <div class="about-img">
-                            <img src="{{ pare_url_file($content_page_1->thumbnail) }}" alt="{{ $content_page_1->name }}">
+                            <img src="{{ pare_url_file($content_page_1->thumbnail) }}"
+                                alt="{{ $content_page_1->name }}">
                         </div>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
@@ -40,16 +42,20 @@
                                     href="#tab-1">{{ $content_page_3->name }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">{{ $content_page_4->name }}</a>
+                                <a class="nav-link" data-bs-toggle="tab"
+                                    href="#tab-2">{{ $content_page_4->name }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">{{ $content_page_5->name }}</a>
+                                <a class="nav-link" data-bs-toggle="tab"
+                                    href="#tab-3">{{ $content_page_5->name }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tab-4">{{ $content_page_6->name }}</a>
+                                <a class="nav-link" data-bs-toggle="tab"
+                                    href="#tab-4">{{ $content_page_6->name }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">{{ $content_page_7->name }}</a>
+                                <a class="nav-link" data-bs-toggle="tab"
+                                    href="#tab-5">{{ $content_page_7->name }}</a>
                             </li>
                         </ul>
                     </div>
@@ -61,8 +67,8 @@
                                         {!! $content_page_3->content !!}
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="{{ pare_url_file($content_page_3->thumbnail) }}" alt="{!! $content_page_3->content !!}"
-                                            class="img-fluid">
+                                        <img src="{{ pare_url_file($content_page_3->thumbnail) }}"
+                                            alt="{!! $content_page_3->content !!}" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
@@ -72,8 +78,8 @@
                                         {!! $content_page_4->content !!}
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="{{ pare_url_file($content_page_4->thumbnail) }}" alt="{!! $content_page_4->content !!}"
-                                            class="img-fluid">
+                                        <img src="{{ pare_url_file($content_page_4->thumbnail) }}"
+                                            alt="{!! $content_page_4->content !!}" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
@@ -83,8 +89,8 @@
                                         {!! $content_page_5->content !!}
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="{{ pare_url_file($content_page_5->thumbnail) }}" alt="{!! $content_page_5->content !!}"
-                                            class="img-fluid">
+                                        <img src="{{ pare_url_file($content_page_5->thumbnail) }}"
+                                            alt="{!! $content_page_5->content !!}" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
@@ -94,8 +100,8 @@
                                         {!! $content_page_6->content !!}
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="{{ pare_url_file($content_page_6->thumbnail) }}" alt="{!! $content_page_6->content !!}"
-                                            class="img-fluid">
+                                        <img src="{{ pare_url_file($content_page_6->thumbnail) }}"
+                                            alt="{!! $content_page_6->content !!}" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
@@ -105,8 +111,8 @@
                                         {!! $content_page_7->content !!}
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="{{ pare_url_file($content_page_7->thumbnail) }}" alt="{!! $content_page_7->content !!}"
-                                            class="img-fluid">
+                                        <img src="{{ pare_url_file($content_page_7->thumbnail) }}"
+                                            alt="{!! $content_page_7->content !!}" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
@@ -217,7 +223,6 @@
                                     class="c-page-header c-page-header--centered c-page-header--light">
                                     <picture class="c-page-header__image">
                                         <source media="(min-width: 1024px)"
-
                                             data-srcset="{{ pare_url_file($content_page_7->thumbnail) }}">
                                         <img class="lazyload"
                                             data-src="{{ pare_url_file($content_page_7->thumbnail) }}"
@@ -244,15 +249,15 @@
                                                             data-srcset="{{ pare_url_file($content_page_8->thumbnail) }}">
                                                         <img class="lazyload"
                                                             data-src="{{ pare_url_file($content_page_8->thumbnail) }}"
-                                                            alt="{{ $content_page_8->name}}">
+                                                            alt="{{ $content_page_8->name }}">
                                                     </picture>
                                                 </div>
                                                 <div class="m-media-block-aligned__content">
                                                     <div class="m-heading ">
-                                                        <h2 class="m-heading__headline">{{ $content_page_8->name}} </h2>
+                                                        <h2 class="m-heading__headline">{{ $content_page_8->name }} </h2>
                                                         <div class="m-heading__cta">
-                                                            <a href="{{ $content_page_8->url_but}}"><span
-                                                                    class="m-heading__cta--text">{{ $content_page_8->name_but}}</span>
+                                                            <a href="{{ $content_page_8->url_but }}"><span
+                                                                    class="m-heading__cta--text">{{ $content_page_8->name_but }}</span>
                                                                 <span class="icon-arrow"></span></a>
                                                         </div>
                                                     </div>
@@ -268,19 +273,81 @@
                                                             data-srcset="{{ pare_url_file($content_page_9->thumbnail) }}">
                                                         <img class="lazyload"
                                                             data-src="{{ pare_url_file($content_page_9->thumbnail) }}"
-                                                            alt="{{ $content_page_9->name}}">
+                                                            alt="{{ $content_page_9->name }}">
                                                     </picture>
                                                 </div>
                                                 <div class="m-media-block-aligned__content">
                                                     <div class="m-heading ">
-                                                        <h2 class="m-heading__headline">{{ $content_page_9->name}}</h2>
+                                                        <h2 class="m-heading__headline">{{ $content_page_9->name }}</h2>
                                                         <div class="m-heading__cta">
-                                                            <a href="{{ $content_page_9->url_but}}"><span
-                                                                    class="m-heading__cta--text">{{ $content_page_9->name_but}}</span>
+                                                            <a href="{{ $content_page_9->url_but }}"><span
+                                                                    class="m-heading__cta--text">{{ $content_page_9->name_but }}</span>
                                                                 <span class="icon-arrow"></span></a>
                                                         </div>
                                                     </div>
                                                     {!! $content_page_9->content !!}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layout layout--onecol">
+                            <div class="layout__region layout__region--content">
+                                <div class="t-membership-b2c__faq">
+                                    <div class="layout layout--onecol c-faq-accordion">
+                                        <div class="c-faq-accordion__heading">
+                                            <h2 class="c-faq-accordion__title">Câu hỏi thường gặp</h2>
+                                        </div>
+                                        <div class="c-faq-accordion__list">
+                                            <div data-block-plugin-id="inline_block:faq_question_block"
+                                                data-inline-block-uuid="6f002023-75db-4344-aeeb-1d81a70a9db3"
+                                                class="m-accordion m-accordion--expanded js-faq-accordion">
+                                                <div class="m-accordion__title js-accordion-trigger m-accordion__title--open uni-m-accordion"
+                                                    id="accordion-trigger-0" aria-expanded="true"
+                                                    aria-controls="accordion-content-0">
+                                                    <span class="m-accordion__title-label">{{ $content_page_10->name }}</span>
+                                                </div>
+                                                <div class="m-accordion__content m-accordion__content--open js-accordion-content"
+                                                    id="accordion-content-0" aria-labelledby="accordion-trigger-0"
+                                                    style="height: auto;">
+                                                    <div class="m-accordion__content-inner js-accordion-content-inner">
+                                                        <div
+                                                            class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-visually_hidden">
+                                                            <div class="field__label visually-hidden">Body</div>
+                                                            <div class="field__item">
+                                                                {!! $content_page_10->content !!}
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-block-plugin-id="inline_block:faq_question_block"
+                                                data-inline-block-uuid="016c8120-8a79-42c8-8849-03156748c670"
+                                                class="m-accordion m-accordion--expanded js-faq-accordion">
+
+
+                                                <div class="m-accordion__title uni-m-accordion js-accordion-trigger"
+                                                    id="accordion-trigger-0" aria-expanded="false"
+                                                    aria-controls="accordion-content-0">
+                                                    <span class="m-accordion__title-label">{{ $content_page_11->name }}</span>
+                                                </div>
+                                                <div class="m-accordion__content m-accordion__content--open js-accordion-content"
+                                                    id="accordion-content-0" aria-labelledby="accordion-trigger-0">
+                                                    <div class="m-accordion__content-inner js-accordion-content-inner">
+
+                                                        <div
+                                                            class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-visually_hidden">
+                                                            <div class="field__label visually-hidden">Body</div>
+                                                            <div class="field__item">
+                                                                {!! $content_page_11->content !!}
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -298,8 +365,7 @@
                                     <div class="c-cta-banner__content">
                                         <span class="c-cta-banner__heading">Tham Gia Club Để Nhận Ưu Đãi!</span>
                                         <p class="c-cta-banner__subheading"></p>
-                                        <a class="a-btn a-btn--primary"
-                                            href="/dang-ky-spice-club">Đăng Ký</a>
+                                        <a class="a-btn a-btn--primary" href="/dang-ky-spice-club">Đăng Ký</a>
                                     </div>
                                 </div>
                             </div>

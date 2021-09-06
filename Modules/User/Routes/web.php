@@ -40,7 +40,7 @@ Route::prefix('user')->middleware('checkLoginUser')->group(function() {
     });
 
     Route::get('/recharge', 'RechargeController@index')->name('get.recharge');
-    Route::get('/rechargeup', 'RechargeController@index_up')->name('get.recharge.up');
+    // Route::get('/rechargeup', 'RechargeController@index_up')->name('get.recharge.up');
     Route::post('/recharge/{id}', 'RechargeController@index_up_pos')->name('post.recharge.up');
     Route::post('thanh-toan-nap.html', 'RechargeController@getPayNap')->name('get_user.pay.nap');
     Route::get('thanh-toan-nap/{id}', 'RechargeController@getSuccsess')->name('get_user.paysuccsess.nap'); 

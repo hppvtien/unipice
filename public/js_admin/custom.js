@@ -117,7 +117,7 @@ $('#is_flash_sale').on('click', function() {
 });
 $('#update-status').on('click', function() {
     let data_u = window.location.origin + '/admin/update_level';
-    let data_v = window.location.origin + '/admin/update_nap_status';
+    // let data_v = window.location.origin + '/admin/update_nap_status';
     $.ajax({
         url: data_u,
         method: "post",

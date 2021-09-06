@@ -620,6 +620,31 @@ $(".print_pdf").on("click", function() {
         }
     });
 });
+$(".delete_order").on("click", function() {
+    let data_id = $(this).attr("data-id");
+    let data_url = $(this).attr("data-url");
+    $.ajax({
+        url: data_url,
+        type: "post",
+        dataType: "text",
+        data: {
+            data_id: data_id
+        },
+        success: function(result) {
+            $("#toast-container").html(
+                    '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Bạn đã hủy đơn thành công</div></div>'
+                ),
+                6000;
+            setTimeout(function() {
+                $(".toast-success").remove();
+            }, 2000);
+            window.location.reload();
+        },
+        error: function(result) {
+            // console.log(result);
+        }
+    });
+});
 $(window).on("scroll", function() {
     let height_d = $(window).scrollTop();
     if (height_d > 120) {
@@ -773,34 +798,8 @@ $('.redect-b2b').on('click', function() {
     let rd_url = $(this).attr('data-url');
     window.location.href = rd_url;
 });
-// $("#province").select2();
+ $("#province").select2();
 
-
-$(".delete_order").on("click", function() {
-    let data_id = $(this).attr("data-id");
-    let data_url = $(this).attr("data-url");
-    $.ajax({
-        url: data_url,
-        type: "post",
-        dataType: "text",
-        data: {
-            data_id: data_id
-        },
-        success: function(result) {
-            $("#toast-container").html(
-                    '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' + result.message + '</div></div>'
-                ),
-                4000;
-            setTimeout(function() {
-                $(".toast-success").remove();
-            }, 2000);
-            window.location.reload();
-        },
-        error: function(result) {
-            // console.log(result);
-        }
-    });
-});
 
 function chanFunctionMethodTran() {
     $('#province').prop('selectedIndex', 0);
@@ -815,7 +814,7 @@ $('.redect-b2b').on('click', function() {
     let rd_url = $(this).attr('data-url');
     window.location.href = rd_url;
 });
-// $("#province").select2();
+ $("#province").select2();
 
 $('.check-price').on('click', function() {
     $('.paid-save').find('.box-shadow-in').removeClass('box-shadow-in');

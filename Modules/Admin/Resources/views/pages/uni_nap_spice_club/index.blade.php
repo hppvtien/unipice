@@ -24,7 +24,6 @@
                                         <th>Info</th>
                                         <th>PRICE</th>
                                         <th>TYPE PAY</th>
-                                        <th>END YEAR</th>
                                         <th>STATUS</th>
                                         <th>Action</th>
                                     </tr>
@@ -45,9 +44,6 @@
                                             {{ config('cart.pay_type')[$item->type_pay]['name'] }}
                                         </td>
                                         
-                                        <td >
-                                            <p>{{ $item->end_year }}</p>
-                                        </td>
                                         <td>
                                             <span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span>
                                         </td>

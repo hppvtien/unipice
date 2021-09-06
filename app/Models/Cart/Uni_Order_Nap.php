@@ -22,8 +22,8 @@ class Uni_Order_Nap extends Model
     const STATUS_PROCESS = 1;
     const STATUS_SUCCESS = 2;
     const STATUS_CANCEL  = 3;
-    const STATUS_TRASH = 4;
-    const STATUS_END_YEAR = 5;
+    // const STATUS_TRASH = 4;
+    // const STATUS_END_YEAR = 5;
     public $statusGlobal;
     protected $g_status = [
         self::STATUS_DEFAULT => [
@@ -42,14 +42,14 @@ class Uni_Order_Nap extends Model
             'name' => 'Hủy bỏ',
             'class' => 'badge-dange'
         ],
-        self::STATUS_TRASH => [
-            'name' => 'Gia hạn',
-            'class' => 'badge-dange'
-        ],
-        self::STATUS_END_YEAR => [
-            'name' => 'Hết hạn',
-            'class' => 'badge-dange'
-        ]
+        // self::STATUS_TRASH => [
+        //     'name' => 'Gia hạn',
+        //     'class' => 'badge-dange'
+        // ],
+        // self::STATUS_END_YEAR => [
+        //     'name' => 'Hết hạn',
+        //     'class' => 'badge-dange'
+        // ]
     ];
 
 

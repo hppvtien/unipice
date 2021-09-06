@@ -16,17 +16,17 @@ class RechargeController extends Controller
     {
         return view('user::pages.recharge.index');
     }
-    public function index_up()
-    {
-    return view('user::pages.recharge.indexup');
-    }
+    // public function index_up()
+    // {
+    // return view('user::pages.recharge.indexup');
+    // }
     public function index_up_pos(Request $request, $id)
     {
-        $uni_order = Uni_Order_Nap::where('user_id', $id)->where('status', 4)->first();
-        $order_data_naps = [
-            'status' => 5,
-        ];
-        $uni_order->fill($order_data_naps)->save();
+        // $uni_order = Uni_Order_Nap::where('user_id', $id)->where('status', 4)->first();
+        // $order_data_naps = [
+        //     'status' => 5,
+        // ];
+        // $uni_order->fill($order_data_naps)->save();
        
         $order_data_nap = [
             'user_id' => get_data_user('web'),
