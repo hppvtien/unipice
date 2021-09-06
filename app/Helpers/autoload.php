@@ -244,7 +244,9 @@ function execPostRequest($url, $data)
     function getSizeName($id)
     {
         $sizeName = App\Models\Uni_Size::where('id',$id)->pluck('name')->first();
-        return $sizeName;
+        $typeName = App\Models\Uni_Size::where('id',$id)->pluck('type_size')->first();
+        $nameType = $sizeName.'/'.$typeName;
+        return $nameType;
     }
                /**
      * get percent.
@@ -254,6 +256,70 @@ function execPostRequest($url, $data)
     function getPercentVouchers($code)
     {
         $percent = App\Models\Voucher::where('code',$code)->pluck('model_percent')->first();
+        return $percent;
+    }
+               /**
+     * get size name.
+     * @param int $price
+     * @return int price
+     */
+    function getPrice($id)
+    {
+        $sizePrice = App\Models\Product_Size::where('product_id',$id)->pluck('price')->first();
+        return $sizePrice;
+    }
+               /**
+     * get size name.
+      * @param int $price
+     * @return int price
+     */
+    function getPriceSale($id)
+    {
+        $sizePrice = App\Models\Product_Size::where('product_id',$id)->pluck('price_sale')->first();
+        return $sizePrice;
+    }
+               /**
+     * get size name.
+      * @param int $price
+     * @return int price
+     */
+    function getPriceSaleStore($id)
+    {
+        $sizePrice = App\Models\Product_Size::where('product_id',$id)->pluck('price_sale_store')->first();
+        return $sizePrice;
+    }
+               /**
+     * get size Price.
+     * @param int $uid,$price,$price_sale,$price_sale_store
+     * @return int array
+     */
+    function getQtyInBox($id)
+    {
+        $sizePrice = App\Models\Product_Size::where('product_id',$id)->pluck('qty_in_box')->first();
+        return $sizePrice;
+    }
+               /**
+     * get size Price.
+     * @param int $uid,$price,$price_sale,$price_sale_store
+     * @return int array
+     */
+    function getMinBox($id)
+    {
+        $sizePrice = App\Models\Product_Size::where('product_id',$id)->pluck('min_box')->first();
+        return $sizePrice;
+    }
+               /**
+     * get size Price.
+     * @param int $uid,$price,$price_sale,$price_sale_store
+     * @return int array
+     */
+    function getPricePercent($uid,$price,$price_sale,$price_sale_store)
+    {
+        if ($uid == 1){
+            $percent = 100-round($price_sale*100/$price);
+        } else {
+            $percent = 100-round($price_sale_store*100/$price);
+        }
         return $percent;
     }
                /**

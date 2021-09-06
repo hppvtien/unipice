@@ -90,22 +90,22 @@
                                                                             </div>
                                                                             <div class="m-price-lockup m-product-card__price">
                                                                                 <span class="m-price-lockup__price">
-                                                                                    <?php if (checkUid($uid)) { ?>
-                                                                                        <?php if ($item->view_price_sale_store != null) { ?>
+                                                                                    <?php if (checkUid(get_data_user('web'))) { ?>
+                                                                                        <?php if (getPriceSaleStore($item->id) != null) { ?>
                                                                                             <span class="g-price">
-                                                                                                {{ formatVnd($item->view_price) }}
+                                                                                                {{ formatVnd(getPrice($item->id)) }}
                                                                                             </span>
                                                                                             <span class="text-danger paid-save font_chu_mau_do">
 
-                                                                                                @if ($item->view_price_sale_store == null || $item->view_price == null)
+                                                                                                @if (getPriceSaleStore($item->id) == null || $item->view_price == null)
 
                                                                                                 @else
-                                                                                                (Tiết kiệm: {{ 100-round($item->view_price_sale_store*100/$item->view_price) }}% )
+                                                                                                (Tiết kiệm: {{ 100-round(getPriceSaleStore($item->id)*100/getPrice($item->id)) }}% )
                                                                                                 @endif
                                                                                             </span>
                                                                                             <br>
-                                                                                            <span class="a-price font-weight-bold">
-                                                                                                {{ formatVnd($item->view_price_sale_store) }}
+                                                                                            <span class="a-price font-weight-bold price-sale-preview{{ $item->id }}">
+                                                                                                {{ formatVnd(getPriceSaleStore($item->id)) }}
                                                                                             </span>
                                                                                             <?php if ($item->qty) { ?>
                                                                                                 <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
@@ -113,26 +113,24 @@
                                                                                                 <span class="a-price text-dark product-notnull"><i class="fa fa-phone" aria-hidden="true"></i>Liên hệ</span>
                                                                                             <?php } ?>
                                                                                         <?php } else { ?>
-                                                                                            <a href="{{ route('get.uni_contact') }}"><span class="a-price">{{ formatVnd($item->view_price) }}</span></a>
+                                                                                            <a href="{{ route('get.uni_contact') }}"><span class="a-price">{{ formatVnd(getPrice($item->id)) }}</span></a>
                                                                                         <?php } ?>
                                                                                     <?php } else { ?>
-                                                                                        <?php if ($item->view_price_sale != null) { ?>
+                                                                                        <?php if (getPriceSale($item->id) != null) { ?>
                                                                                             <span class="g-price">
-                                                                                                {{ formatVnd($item->view_price) }}
+                                                                                                {{ formatVnd(getPrice($item->id)) }}
                                                                                             </span>
                                                                                             <span class="text-danger paid-save font_chu_mau_do">
 
-                                                                                                (Tiết kiệm: {{ 100-round($item->view_price_sale*100/$item->view_price) }}% )
+                                                                                                (Tiết kiệm: {{ 100-round(getPriceSale($item->id)*100/getPrice($item->id)) }}% )
 
                                                                                             </span>
                                                                                             <br>
-                                                                                            <span class="a-price font-weight-bold">
-                                                                                                {{ formatVnd($item->view_price_sale) }}
+                                                                                            <span class="a-price font-weight-bold price-sale-preview{{ $item->id }}">
+                                                                                                {{ formatVnd(getPriceSale($item->id)) }}
                                                                                             </span>
                                                                                             <?php if ($item->qty) { ?>
-
                                                                                                 <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
-
                                                                                             <?php } else { ?>
                                                                                                 <span class="a-price text-info product-notnull"><i class="fa fa-phone"></i>Liên hệ</span>
                                                                                             <?php } ?>
@@ -151,8 +149,8 @@
                                                                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                                                                                             </span>
                                                                                             <br>
-                                                                                            <span class="a-price font-weight-bold">
-                                                                                                {{ formatVnd($item->view_price) }}
+                                                                                            <span class="a-price font-weight-bold price-sale-preview{{ $item->id }}">
+                                                                                                {{ formatVnd(getPrice($item->id)) }}
                                                                                             </span>
                                                                                             <?php if ($item->qty) { ?>
 
