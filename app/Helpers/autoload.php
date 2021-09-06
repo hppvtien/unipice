@@ -266,10 +266,6 @@ function execPostRequest($url, $data)
         $sizeName = App\Models\Product_Size::where('product_id',$id)->pluck('size_id');
         return $sizeName;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> bed80276e955d3b5e61b0f98d953beaf4090662e
     function checkParent($id)
     {
         $group_pid = App\Models\Uni_Category::where('parent_id',$id)->pluck('id');
