@@ -93,7 +93,7 @@
                                     <th scope="col">Tên Lô</th>
                                     <th scope="col">Sản Phẩm</th>
                                     <th scope="col">Số lượng nhập</th>
-                                    <th scope="col">Trọng lượng tĩnh</th>
+                                    <th scope="col">Trọng lượng tịnh</th>
                                     <th scope="col">Ngày nhập</th>
                                 </tr>
                             </thead>

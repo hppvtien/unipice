@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Modules\Admin\Http\Requests\AdminLotRequest;
 use Modules\Admin\Http\Requests\AdminUniProductRequest;
+use phpDocumentor\Reflection\Types\Null_;
 
 class AdminUniProductController extends AdminController
 {
@@ -112,7 +113,7 @@ class AdminUniProductController extends AdminController
             $this->showMessagesSuccess();
             $this->syncTagProduct($productID, $request->tags);
             $this->syncCatProduct($productID, $request->category);
-            $this->syncSizeProduct($productID, $request->size, $request->size_price, $request->size_price_sale, $request->size_price_sale_store,$request->min_box,$request->qty_in_box);
+            $this->syncSizeProduct($productID, $request->size, $request->size_price, $request->size_price_sale, $request->size_price_sale_store,$request->min_box,$request->qty_in_box,$request->image);
             // $this->syncColorProduct($productID, $request->color);
             $this->syncTradeProduct($productID, $request->trade);
             return redirect()->route('get_admin.uni_product.index');
@@ -150,12 +151,10 @@ class AdminUniProductController extends AdminController
     // public function update(AdminUniProductRequest $request, $id)
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $uni_product             = Uni_Product::findOrFail($id);
         $product_albumOld = json_decode(Uni_Product::where('id', $id)->pluck('album')->first());
-        $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
-        // dd($data);
-        $data['updated_at'] = Carbon::now();
-        $data['updated_by'] = get_data_user('web');
+        $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album','image']);
 
         if ($request->album) {
             $album = [];
@@ -206,10 +205,16 @@ class AdminUniProductController extends AdminController
             foreach ($size_del as $del_size_id) {
                 ProductSize::where('product_id', $id)->where('size_id', $del_size_id)->delete();
             }
+            
             foreach ($request->size as $key => $size) {
-
                 $product_size = Product_Size::where('product_id', $id)->where('size_id', $size)->first();
-                if ($product_size != null) {
+                 if ($product_size != null) {
+                    if ($request->image[$size]) {
+                        Storage::delete('public/uploads_Product/' . $product_size->image);
+                        $image = $this->processUploadFile($request->image[$size]);
+                    } else {
+                        $image = $product_size->image;
+                    }
                     $param_size = [
                         'product_id' => $id,
                         'size_id'    => $size,
@@ -217,8 +222,10 @@ class AdminUniProductController extends AdminController
                         'price_sale'    => $request->size_price_sale[$size],
                         'price_sale_store'    => $request->size_price_sale_store[$size],
                         'qty_in_box'    => $request->qty_in_box[$size],
-                        'min_box'    => $request->min_box[$size]
+                        'min_box'    => $request->min_box[$size],
+                        'image'    => $image,
                     ];
+                    // dd($param_size);
                     $product_size->fill($param_size)->save();
                 } else {
                     $param_size = [
@@ -228,7 +235,8 @@ class AdminUniProductController extends AdminController
                         'price_sale'    => 0,
                         'price_sale_store'    => 0,
                         'qty_in_box'    => 0,
-                        'min_box'    => 0
+                        'min_box'    => 0,
+                        'image'    => NULL,
                     ];
                     Product_Size::insert($param_size);
                 }
@@ -356,7 +364,7 @@ class AdminUniProductController extends AdminController
             }
         }
     }
-    protected function syncSizeProduct($productID, $size, $size_price, $size_price_sale, $size_price_sale_store,$min_box,$qty_in_box)
+    protected function syncSizeProduct($productID, $size, $size_price, $size_price_sale, $size_price_sale_store,$min_box,$qty_in_box,$image)
     {
 
         if (!empty($size)) {
@@ -369,7 +377,8 @@ class AdminUniProductController extends AdminController
                     'price_sale'    => $size_price_sale == null ? 0 : $size_price_sale[$item],
                     'price_sale_store'    => $size_price_sale_store == null ? 0 : $size_price_sale_store[$item],
                     'min_box'    => $min_box == null ? 0 : $min_box[$item],
-                    'qty_in_box'    => $qty_in_box == null ? 0 : $qty_in_box[$item]
+                    'qty_in_box'    => $qty_in_box == null ? 0 : $qty_in_box[$item],
+                    'image'    => $image == null ? 0 : $image[$item],
                 ]);
             }
         }

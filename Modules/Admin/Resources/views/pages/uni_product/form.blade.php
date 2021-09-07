@@ -1,7 +1,8 @@
+
 <form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
     @csrf
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-9">
             <div class="card box-shadow-0">
                 <div class="card-body pt-3">
                     <div class="form-group">
@@ -87,19 +88,7 @@
                     </div>
 
 
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" class="required"> Trọng lượng <span>(*)</span></label>
-                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                            <select name="size[]" class="form-control SlectBox SumoUnder js-select2" tabindex="-1" multiple>
-                                @foreach($uni_size as $size)
-                                <option title="{{ $size->name }}" {{ in_array($size->id, $sizeOld) ? "selected" : "" }} value="{{ $size->id }}">{{ $size->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        @if($errors->first('size'))
-                        <span class="text-danger">{{ $errors->first('size') }}</span>
-                        @endif
-                    </div>
+                    
 
                     {{-- <div class="form-group">
                         <label for="exampleInputEmail1" class="required"> Màu sắc <span>(*)</span></label>
@@ -121,74 +110,16 @@
             </div>
 
 
-            <div class="form-group border">
-                @foreach($data_size as $key => $v_size)
-                <div class="row">
-                    <div class="col-12">
-                        <h5 class="btn-info text-center w-25 mx-auto" style="padding: 5px;margin-top:10px">Trọng lượng: {{ getSizeName($v_size->size_id) }}</h5>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">Giá bán lẻ</div>
-                                </div>
-                                <input type="text" name="size_price[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán lẻ" value="{{ $v_size->price }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">Giá bán sale</div>
-                                </div>
-                                <input type="text" name="size_price_sale[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán sale" value="{{ $v_size->price_sale }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">Giá bán đại lý</div>
-                                </div>
-                                <input type="text" name="size_price_sale_store[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán đại lý" value="{{ $v_size->price_sale_store }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1" class="required">Số lượng sản phẩm / thùng<span>(*)</span></label>
-                                        <input type="number" class="form-control" name="qty_in_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ $v_size->qty_in_box }}">
-                                        <span class="d-block text-warning">Số lượng trên một thùng</span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1" class="required">Số lượng thùng tối thiểu để được giá đại lý <span>(*)</span></label>
-                                        <input type="number" class="form-control" name="min_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ $v_size->min_box }}">
-                                        <span class="d-block text-warning">Số lượng thùng tối thiểu để được giá đại lý</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
+            
             <div class="form-group">
                 <label for="exampleInputEmail1">Album ảnh</label>
                 <input type="file" class="form-control" name="album[]" value="" multiple>
             </div>
             <input type="hidden" class="form-control" name="albumold" value="{{ old('album', $uni_product->album ?? '') }}">
             @if ($uni_product)
-            <div class="row" style="border: 1px solid;padding-top:10px">
+            <div class="row" style="padding-top:10px; margin-bottom: 10px;">
                 @forelse (json_decode($uni_product->album) as $item)
-                <div class="col-3" data-rm="{{ $item }}" style="margin-bottom: 10px;position: relative; ">
+                <div class="col-2" data-rm="{{ $item }}" style="margin-bottom: 10px;position: relative; ">
                     <span class="close-img js-delete" data-url="{{ route('get_admin.uni_product.delete_album') }}" data-id="{{ $uni_product->id }}" album-data="{{ $item }}" style="position:absolute"><i class="la la-trash"></i></span>
                     <img src="/storage/uploads_Product/{{ $item }}" class="card-img-top" alt="...">
                 </div>
@@ -198,7 +129,86 @@
             </div>
             @else
             @endif
-
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="required"> Trọng lượng <span>(*)</span></label>
+                <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                    <select name="size[]" class="form-control SlectBox SumoUnder js-select2" tabindex="-1" multiple>
+                        @foreach($uni_size as $size)
+                        <option title="{{ $size->name }}" {{ in_array($size->id, $sizeOld) ? "selected" : "" }} value="{{ $size->id }}">{{ $size->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @if($errors->first('size'))
+                <span class="text-danger">{{ $errors->first('size') }}</span>
+                @endif
+            </div>
+            <div class="form-group ">
+                @foreach($data_size as $key => $v_size)
+                <div class="row" style="padding: 20px 0px 20px;
+                border-bottom: 1px solid #e8e7e7;">
+                    <div class="col-10">
+                        <h5 class="btn-info text-center w-25 mx-auto" style="padding: 5px;margin-top:10px">Trọng lượng: {{ getSizeName($v_size->size_id) }}</h5>
+                        <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">Giá bán lẻ</div>
+                                                </div>
+                                                <input type="text" name="size_price[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán lẻ" value="{{ $v_size->price }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">Giá bán sale</div>
+                                                </div>
+                                                <input type="text" name="size_price_sale[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán sale" value="{{ $v_size->price_sale }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">Giá bán đại lý</div>
+                                                </div>
+                                                <input type="text" name="size_price_sale_store[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán đại lý" value="{{ $v_size->price_sale_store }}">
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" class="required">Số lượng sản phẩm / thùng<span>(*)</span></label>
+                                            <input type="number" class="form-control" name="qty_in_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ $v_size->qty_in_box }}">
+                                            <span class="d-block text-warning">Số lượng trên một thùng</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" class="required">Số lượng thùng tối thiểu để được giá đại lý <span>(*)</span></label>
+                                            <input type="number" class="form-control" name="min_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ $v_size->min_box }}">
+                                            <span class="d-block text-warning">Số lượng thùng tối thiểu để được giá đại lý</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" >Ảnh</label>
+                                            <input type="file" class="form-control" name="image[{{ $v_size->size_id }}]" value="" >
+                                            <input type="hidden" name="image[{{ $v_size->size_id }}]" value="">
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="col-2" style="margin-bottom: 10px;position: relative; ">
+                        <img src="{{ pare_url_file_product($v_size->image) }}" class="card-img-top" alt="...">
+                    </div>
+                </div>
+                @endforeach
+            </div>
         </div>
     </div>
     <div class="card  box-shadow-0">
@@ -246,7 +256,7 @@
     </div>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <div class="card  box-shadow-0 ">
             <div class="card-body pt-3">
                 <div class="form-group">
