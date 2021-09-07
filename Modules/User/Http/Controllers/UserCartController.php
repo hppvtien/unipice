@@ -26,15 +26,17 @@ class UserCartController extends Controller
         return redirect()->route('get_user.cart');
     }
     public function updateCart(Request $request){
+        // dd($request->all());
         \SEOMeta::setTitle('Giỏ hàng');
         \Cart::update($request->item_row,$request->item_qty);
-        \Cart::update(
-            $request->item_row, [
-            'options' => [
-                'product_vat' => $request->item_qty*getVatProduct($request->item_id)*$request->data_gia/100
-                ]
-        ]);
-        
+        if($request->item_qty){
+            \Cart::update(
+                $request->item_row, [
+                'options' => [
+                    'product_vat' => $request->item_qty*getVatProduct($request->item_id)*$request->data_price/100
+                    ]
+            ]);
+        }
         // \Cart::update($request->item_row,$request->item_qty*);
         $listCarts = \Cart::content();
         $view = view("user::pages.cart.include.cart_info",compact('listCarts'))->render();
