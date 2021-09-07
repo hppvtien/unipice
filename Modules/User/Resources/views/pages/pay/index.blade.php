@@ -819,6 +819,7 @@
 </main>
 @if (checkUid(get_data_user('web')) == null)
 <script>
+    $("#province").select2();
     function numberVnd(price_not_bumb) {
         return price_not_bumb.toLocaleString('vi', {
             style: 'currency',

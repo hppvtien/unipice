@@ -93,7 +93,7 @@ class UserShoppingCartController extends UserController
                         'qty' => $qty_cart,
                         'price' => $price_cart,
                         'weight' => 1,
-                        'taxp' => $uni_product->product_vat,
+                        'taxRate' => \Cart::setTax($rowId, $uni_product->product_vat),
                         'options' => [
                             'images' => pare_url_file($uni_product->thumbnail),
                             'sale' => $type_box,

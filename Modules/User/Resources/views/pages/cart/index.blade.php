@@ -341,6 +341,7 @@
         }
     }
 </style>
+<?php dd(\Cart::content()); ?>
 <main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
     <div class="page-title-wrapper">
         <h1 class="page-title">
