@@ -59,20 +59,33 @@
                         <span class="text-danger">{{ $errors->first('tags') }}</span>
                         @endif
                     </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" class="required"> Thương hiệu <span>(*)</span></label>
-                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                            <select name="trade[]" class="form-control SlectBox SumoUnder " tabindex="-1">
-                                @foreach($uni_trade as $item)
-                                <option value="{{ $item->id }}" {{ ($tradeOld[0] ?? 0) == $item->id ? "selected" : "" }}>{{ $item->name }}</option>
-                                @endforeach
-                            </select>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="required"> Thương hiệu <span>(*)</span></label>
+                                <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                                    <select name="trade[]" class="form-control SlectBox SumoUnder " tabindex="-1">
+                                        @foreach($uni_trade as $item)
+                                        <option value="{{ $item->id }}" {{ ($tradeOld[0] ?? 0) == $item->id ? "selected" : "" }}>{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @if($errors->first('trade'))
+                                <span class="text-danger">{{ $errors->first('trade') }}</span>
+                                @endif
+                            </div>
                         </div>
-                        @if($errors->first('trade'))
-                        <span class="text-danger">{{ $errors->first('trade') }}</span>
-                        @endif
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="required">VAT <span>(*)</span></label>
+                                <input type="number" class="form-control keypress-count" value="{{ old('product_vat', $uni_product->product_vat ?? '') }}" name="product_vat">
+                                @if($errors->first('product_vat'))
+                                <span class="text-danger">{{ $errors->first('product_vat') }}</span>
+                                @endif
+                            </div>
+                        </div>
                     </div>
+
 
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required"> Trọng lượng <span>(*)</span></label>

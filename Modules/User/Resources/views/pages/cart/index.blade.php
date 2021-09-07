@@ -377,7 +377,7 @@
                                     <tr class="totals sub">
                                         <th class="mark" scope="row">VAT</th>
                                         <td class="amount">
-                                            <span class="price" data-th="Subtotal">{{ \Cart::tax(0,0,'.') }} đ</span>
+                                            <span class="price" data-th="Subtotal" id="total_vat_product">{{ \Cart::tax(0,0,'.') }} đ</span>
                                         </td>
                                     </tr>
                                     @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')))
@@ -463,6 +463,8 @@
                                             </span>
                                         </span>
                                     </td>
+                                    <input  class="input-text product_vat" type="hidden" value="{{ $item->options->product_vat * $item->price/100 }}">
+
                                     <td data-th="Qty">
                                         <div class="field qty">
                                             <div class="control qty" style="padding: 0!important">

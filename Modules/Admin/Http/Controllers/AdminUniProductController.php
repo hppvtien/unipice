@@ -91,6 +91,7 @@ class AdminUniProductController extends AdminController
         $param = [
             'name' => $request->name,
             'slug' => $request->slug,
+            'product_vat' => $request->product_vat,
             'desscription' => $request->desscription,
             'content' => $request->content,
             'created_at' => Carbon::now(),
@@ -142,7 +143,6 @@ class AdminUniProductController extends AdminController
             'tagOld'            => $tagOld,
             'categoryOld'       => $categoryOld,
             'tradeOld'          => $tradeOld,
-            // 'colorOld'          => $colorOld,
             'sizeOld'           => $sizeOld
         ];
         return view('admin::pages.uni_product.update', $viewData);
@@ -176,6 +176,7 @@ class AdminUniProductController extends AdminController
         $param = [
             'name' => $request->name,
             'slug' => $request->slug,
+            'product_vat' => $request->product_vat,
             'desscription' => $request->desscription,
             'content' => $request->content,
             'updated_at' => Carbon::now(),
