@@ -11,7 +11,7 @@ use App\Models\Uni_Product;
 use App\Models\Uni_FlashSale;
 use App\Models\Uni_Store;
 use App\Models\Cart\Uni_Order_Nap;
-
+use Gloudemans\Shoppingcart\Cart;
 class UserShoppingCartController extends UserController
 {
     const COMBO = 'combo';
@@ -93,10 +93,11 @@ class UserShoppingCartController extends UserController
                         'qty' => $qty_cart,
                         'price' => $price_cart,
                         'weight' => 1,
-                        'taxRate' => \Cart::setTax($rowId, $uni_product->product_vat),
                         'options' => [
                             'images' => pare_url_file($uni_product->thumbnail),
                             'sale' => $type_box,
+                            'product_vat' => ($uni_product->product_vat * $price_cart * $qty_cart)/100 ,
+
                         ]
                     ]);
                 }

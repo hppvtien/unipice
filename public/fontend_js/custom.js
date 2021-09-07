@@ -216,6 +216,7 @@ $(".remove_cart_action").on("click", function() {
 });
 
 $("#check_vouchers").on("click", function() {
+
     let URL = $(this).attr("data-url");
     $.ajax({
         url: URL,
@@ -226,12 +227,14 @@ $("#check_vouchers").on("click", function() {
         },
         success: function(result) {
             $(".messager_check").html(result);
+
             let v_percent = Number($(".voucher-percent").attr('data-percent'));
             let data_price_temp = $('#total-all-cart').text();
             let data_price_numb = Number((data_price_temp.replaceAll('₫', '')).replaceAll('.', ''));
+            let data_price_vat_temp = $('#total-vat-cart').text();
+            let data_vat_price_cart = Number((data_price_vat_temp.replaceAll('₫', '')).replaceAll('.', ''));
             let data_price = v_percent * data_price_numb / 100;
             let data_all_price_cart = data_price_numb - data_price;
-            let data_vat_price_cart = data_all_price_cart * 10 / 100;
             if (data_price) {
                 let total_all_pr = numberTrim($("#total-all-pr").text());
                 let fee_ship = numberTrim($("#fee-ship").text());
@@ -242,7 +245,9 @@ $("#check_vouchers").on("click", function() {
                 if (total_all_pr != 0) {
                     $("#total-all-pr").html(numberVnd(fee_ship + data_all_price_cart + data_vat_price_cart));
                 }
+
             }
+            return false;
 
         },
         error: function(result) {
@@ -388,7 +393,11 @@ $("#pay_success").on("click", function() {
 });
 
 $("#default-success").on("click", function() {
-
+    $('#wait').ajaxStart(function() {
+        $(this).show();
+    }).ajaxComplete(function() {
+        $(this).hide();
+    });
     var type_pay = $("input[name='type_pay']:checked").val();
     var bank_code = '';
     $("#bank_code").on("change", function() {

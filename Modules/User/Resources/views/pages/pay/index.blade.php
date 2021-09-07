@@ -818,8 +818,8 @@
     </div>
 </main>
 @if (checkUid(get_data_user('web')) == null)
+
 <script>
-    $("#province").select2();
     function numberVnd(price_not_bumb) {
         return price_not_bumb.toLocaleString('vi', {
             style: 'currency',
@@ -987,4 +987,5 @@
 @stop
 @section('js_about')
 <script src="{{ asset('fontend_js/select2.min.js') }}"></script>
+<script>$("#province").select2();</script>
 @endsection

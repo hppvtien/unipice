@@ -332,6 +332,21 @@ function execPostRequest($url, $data)
         $sizeName = App\Models\Product_Size::where('product_id',$id)->pluck('size_id');
         return $sizeName;
     }
+               /**
+     * get size name.
+     * @param array $cart
+     * @return string array
+     */
+    function subtotalTax($cart)
+    {
+        $cart = \Cart::content();
+        $subtotalTax = 0;
+        foreach($cart as $key => $item){
+            $subtotalTax += $item->options->product_vat;
+        }
+        return $subtotalTax;
+      
+    }
     function checkParent($id)
     {
         $group_pid = App\Models\Uni_Category::where('parent_id',$id)->pluck('id');
