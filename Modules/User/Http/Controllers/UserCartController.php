@@ -28,6 +28,14 @@ class UserCartController extends Controller
     public function updateCart(Request $request){
         \SEOMeta::setTitle('Giỏ hàng');
         \Cart::update($request->item_row,$request->item_qty);
+        \Cart::update(
+            $request->item_row, [
+            'options' => [
+                'product_vat' => $request->item_qty*getVatProduct($request->item_id)*$request->data_gia/100
+                ]
+        ]);
+        
+        // \Cart::update($request->item_row,$request->item_qty*);
         $listCarts = \Cart::content();
         $view = view("user::pages.cart.include.cart_info",compact('listCarts'))->render();
         return $view;

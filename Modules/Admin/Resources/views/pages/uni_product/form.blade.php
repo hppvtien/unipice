@@ -197,7 +197,7 @@
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1" >Ảnh</label>
-                                            <input type="file" class="form-control" name="image[{{ $v_size->size_id }}]" value="" >
+                                            <input type="file" class="form-control" name="image[{{ $v_size->size_id }}]" value="{{ old('image', $v_size->image ?? '') }}" >
                                             <input type="hidden" name="image[{{ $v_size->size_id }}]" value="">
                                         </div>
                                     </div>

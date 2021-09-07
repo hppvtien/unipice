@@ -151,11 +151,9 @@ class AdminUniProductController extends AdminController
     // public function update(AdminUniProductRequest $request, $id)
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $uni_product             = Uni_Product::findOrFail($id);
         $product_albumOld = json_decode(Uni_Product::where('id', $id)->pluck('album')->first());
-        $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album','image']);
-
+        $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
         if ($request->album) {
             $album = [];
             foreach ($request->album as $item) {
@@ -236,7 +234,7 @@ class AdminUniProductController extends AdminController
                         'price_sale_store'    => 0,
                         'qty_in_box'    => 0,
                         'min_box'    => 0,
-                        'image'    => NULL,
+                        'image'    => 'NULL',
                     ];
                     Product_Size::insert($param_size);
                 }

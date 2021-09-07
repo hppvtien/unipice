@@ -143,13 +143,14 @@ $(document).on('ready', function() {
     });
     $('#total_vat_product').html(sum);
 });
-$(".update-qty").on("keyup", function() {
+$(".update-qty").on("change", function() {
     let URL = $(this).attr("data-url");
     let item_id = $(this).attr("item-id");
     let item_name = $(this).attr("data-name");
     let item_qty = $("#cart-" + item_id + "-qty").val();
     let item_row = $(this).attr("data-row");
     let item_min = $(this).attr("min");
+    let data_gia = $('#hihihihi').attr("gia");
     let data_price = $(this).attr("data-price");
     let total_price = item_qty * data_price;
     if (item_qty < item_min) {
@@ -164,6 +165,7 @@ $(".update-qty").on("keyup", function() {
             data: {
                 item_id: item_id,
                 item_qty: item_qty,
+                data_gia: data_gia,
                 item_row: item_row
             },
             success: function(data) {
