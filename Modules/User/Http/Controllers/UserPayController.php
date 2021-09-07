@@ -157,7 +157,7 @@ class UserPayController extends UserController
                 $combo_id = 0;
             };
         };
-        
+
         $order_data = [
             'user_id' => get_data_user('web'),
             'code_invoice' => $request->code_invoice,
@@ -172,7 +172,7 @@ class UserPayController extends UserController
             'combo_id' => $combo_id,
             'status' => 0,
             'total_vouchers' => $request->total_vouchers,
-            'total_money' => $request->total_all_pr,
+            'total_money' => $request->total_all_pr == 0 ? $request->total_cart : $request->total_all_pr,
             'total_vat' => $request->total_vat_cart,
             'total_no_vat' => $request->total_all_cart,
             'total_discount' => $request->total_discount,
@@ -273,32 +273,30 @@ class UserPayController extends UserController
             \Cart::destroy();
             $order_data_sucsses = Uni_Order::where('id', $idOrder)->where('user_id', get_data_user('web'))->first();
             // if ($order_data_sucsses->type_pay == 4) {
-                
+
             $url = '/thanh-toan/' . $idOrder;
             return $url;
-        
         }
     }
     public function getSuccsess(Request $request, $id)
     {
         $listCarts = \Cart::content();
-        if($listCarts){
+        if ($listCarts) {
             $order = Uni_Order::find($id);
-            $bank_info = BankInfo::where('status',1)->first();
-            $viewData=[
-                'bank_info'=>$bank_info,
-                'listCarts'=>$listCarts,
-                'order'=>$order
+            $bank_info = BankInfo::where('status', 1)->first();
+            $viewData = [
+                'bank_info' => $bank_info,
+                'listCarts' => $listCarts,
+                'order' => $order
             ];
             return view('user::pages.pay.succsess', $viewData);
         } else {
             return redirect('/');
         }
-        
     }
     public function processSuccsess(Request $request, $id)
     {
-        
+
         $message = 'Đơn hàng đã được gửi lên hệ thống';
         return $message;
     }
@@ -314,7 +312,7 @@ class UserPayController extends UserController
                         $message = '<span data-percent=0>Bạn đã sử dụng mã giảm giá này</span>';
                         return $message;
                     } else {
-                        $message = '<span class="text-success voucher-percent" data-percent='.$data_voucher->model_percent.'>Nhập mã giảm giá thành công</span>';
+                        $message = '<span class="text-success voucher-percent" data-percent=' . $data_voucher->model_percent . '>Nhập mã giảm giá thành công</span>';
                         return $message;
                     }
                 } else {
@@ -339,7 +337,6 @@ class UserPayController extends UserController
 
     public function processPayCart(Request $request, $id)
     {
-        
         $type_pay = $request->type_pay;
         $order = Uni_Order::find($id);
         if ($type_pay == 4) {
@@ -600,7 +597,6 @@ class UserPayController extends UserController
             $data['pay_node'] = $errorCode . '-' . $localMessage . '[' . $responseTime . ']';
             if ($errorCode == '0') {
                 $data['status'] = 2;
-                
             } else {
                 $data['status'] = 0;
             }

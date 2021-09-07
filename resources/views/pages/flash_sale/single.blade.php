@@ -65,11 +65,13 @@
                                                     <h5 class="card-title-cd text-dark"><a class="card-title-cd name-total-sale" href="{{ getSlugProduct(getSlugProductById($item->id)) }}">{{ getNameProduct($item->id) }}</a></h5>
                                                     <p class="text-primary">Số lượng sản phẩm : {{ $item->qty_sale }}</p>
                                                     <?php if (checkUid(get_data_user('web')) != null) { ?>
-                                                        <p class="text-primary"><del>{{ formatVnd(getPriceById($item->id) * $item->qty_sale) }}</del> <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
+                                                        <p class="text-primary"><del>{{ formatVnd(getPrice($item->id) * $item->qty_sale) }}</del> <span class="font_chu_mau_do"> 
+                                                            (Tiết kiệm: {{ 100-round(getPriceSale($item->id)*100/getPrice($item->id)) }}% )</span></p>
                                                         <p class="text-primary font-weight-bold price-total-sale">{{ 'Giá sale: '.formatVnd($item->price_subtotal) }}</p>
                                                         <?php } elseif (checkUid(get_data_user('web')) == null) { ?>
                                                         <?php if ($uni_flashsale->is_flash == 0) { ?>
-                                                            <p class="text-primary"><del>{{ formatVnd(getPriceById($item->id) * $item->qty_sale) }}</del> <span class="font_chu_mau_do">(Tiết kiệm: -{{ 100-round($item->price_sale*100/getPriceById($item->id)) }}% )</span></p>
+                                                            <p class="text-primary"><del>{{ formatVnd(getPrice($item->id) * $item->qty_sale) }}</del> <span class="font_chu_mau_do"> 
+                                                                (Tiết kiệm: {{ 100-round(getPriceSale($item->id)*100/getPrice($item->id)) }}% )</span></p>
                                                             <p class="text-primary price-total-sale">{{ 'Giá sale: '.formatVnd($item->price_subtotal) }}</p>
                                                         <?php } else { ?>
                                                             <p class="text-primary"></p>
@@ -86,9 +88,13 @@
                                             <button class=" w-25 text-center mx-auto btn-add-cart-sale a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-target="{{ get_data_user('web') == null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $uni_flashsale->id }}" type="button">Mua ngay</button>
                                         <?php } else {  ?>
                                             @if ($uni_flashsale->is_flash == 0 && get_data_user('web') != null)
-                                            <button class=" w-25 text-center mx-auto btn-add-cart-sale js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $uni_flashsale->id }}" type="button">Mua ngay</button>
+                                            <button class=" w-25 text-center mx-auto btn-add-cart-sale js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" 
+                                                data-uid="{{ get_data_user('web') }}" data-id="{{ $uni_flashsale->id }}" type="button">Mua ngay</button>
                                             @else
-                                            <button class=" w-25 text-center mx-auto btn-add-cart-sale redect-b2b" data-url = "{{ route('get.register.b2b') }}"  class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $uni_flashsale->id }}" type="button" type="button">Mua ngay</button>
+                                            <button class=" w-25 text-center mx-auto btn-add-cart-sale redect-b2b" data-url = "{{ route('get.register.b2b') }}"  
+                                            class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" 
+                                            data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" data-uid="{{ get_data_user('web') }}" 
+                                            data-id="{{ $uni_flashsale->id }}" type="button" type="button">Mua ngay</button>
 
                                             @endif
                                         <?php } ?>

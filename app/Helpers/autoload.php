@@ -160,7 +160,7 @@ function execPostRequest($url, $data)
      */
     function getPriceById($id)
     {
-        $price_view = App\Models\Uni_Product::where('id',$id)->pluck('view_price')->first();
+        $price_view = App\Models\Product_Size::where('id',$id)->pluck('price')->first();
         return $price_view;
     }
         /**
@@ -347,6 +347,18 @@ function execPostRequest($url, $data)
         return $subtotalTax;
       
     }
+               /**
+     * get size name.
+     * @param array $cart
+     * @return string array
+     */
+    function getVatProduct($id)
+    {
+        $product_vat = App\Models\Uni_Product::where('id',$id)->pluck('product_vat')->first();
+        
+        return $product_vat;
+      
+    }
     function checkParent($id)
     {
         $group_pid = App\Models\Uni_Category::where('parent_id',$id)->pluck('id');
@@ -426,7 +438,7 @@ function execPostRequest($url, $data)
         return $user;
     }
     function get_min_box($id){
-        $minbox = App\Models\Uni_Product::where('id',$id)->pluck('min_box')->first();
+        $minbox = App\Models\Product_Size::where('id',$id)->pluck('min_box')->first();
         return $minbox;
     }
     function count_fav($id){

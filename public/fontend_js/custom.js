@@ -96,8 +96,8 @@ $(".search_province").on("change", function() {
 $(".js-add-cart").on("click", function() {
     let URL = $(this).attr("data-url");
     let data_uid = $(this).attr("data-uid");
-    let data_qtyinbox = $(this).attr("data-qtyinbox");
-    let data_minbox = $(this).attr("data-minbox");
+    let data_qtyinbox = Number($(this).attr("data-qtyinbox"));
+    let data_minbox = Number($(this).attr("data-min-box"));
     let data_id = $(this).attr("data-id");
     let data_price_temp = $('.price-sale-preview' + data_id).text();
     let data_price = Number((data_price_temp.replaceAll('Giá:', '')).replaceAll('₫', '').replaceAll('.', ''));
@@ -392,7 +392,12 @@ $("#pay_success").on("click", function() {
     }
 });
 
+
 $("#default-success").on("click", function() {
+
+    $(this).html('<span class="spinner-border spinner-border-sm text-warning" role="status" aria-hidden="true"></span>' +
+        'Hệ thống đang xử lý...');
+    $(this).attr("disabled", "disabled");
     $('#wait').ajaxStart(function() {
         $(this).show();
     }).ajaxComplete(function() {

@@ -23,13 +23,18 @@ class UserShoppingCartController extends UserController
             if ($type == self::COMBO) {
                 // xử lý dữ liệu với san pham
                 $uni_combo = $this->checkCombo($id);
+               
+                $product_vat = 0;
+                foreach(json_decode($uni_combo->info_sale) as $item){
+                    $vat_per = getVatProduct($item->id);
+                    $product_vat += $item->price_subtotal * $vat_per/100;
+                }
                 $type_box = 'combo';
                 if (!$uni_combo) {
                     return response([
                         'status' => 404
                     ]);
                 }
-
                 $listCarts = \Cart::content();
                 // Kierm tra xem đã lưu san pham chưa
                 $checkExist = $listCarts->search(function ($cartItem) use ($id) {
@@ -47,8 +52,8 @@ class UserShoppingCartController extends UserController
                         'weight' => 1,
                         'options' => [
                             'images' => pare_url_file($uni_combo->thumbnail),
-                            'sale' => $type_box
-
+                            'sale' => $type_box,
+                            'product_vat' => $product_vat ,
 
                         ]
                     ]);
@@ -65,20 +70,20 @@ class UserShoppingCartController extends UserController
                 if ($uni_store != null) {
                     $price_cart = $request->data_qtyinbox * $request->data_price;
                     $type_box = 'store';
-                    $qty_cart = $uni_product->min_box;
+                    $qty_cart = $request->data_minbox;
+                    $product_vat = ($uni_product->product_vat * $price_cart * $qty_cart)/100;
                 } else {
                     $price_cart = $request->data_price;
                     $type_box = 'user';
                     $qty_cart = $request->qty_user;
+                    $product_vat = ($uni_product->product_vat * $price_cart * $qty_cart)/100;
                 }
                 if (!$uni_product) {
                     return response([
                         'status' => 404
                     ]);
                 }
-
                 $listCarts = \Cart::content();
-
                 // Kierm tra xem đã lưu khoá học chưa
                 $checkExist = $listCarts->search(function ($cartItem) use ($id) {
                     if ($cartItem->id == $id) return $id;
@@ -96,7 +101,7 @@ class UserShoppingCartController extends UserController
                         'options' => [
                             'images' => pare_url_file($uni_product->thumbnail),
                             'sale' => $type_box,
-                            'product_vat' => ($uni_product->product_vat * $price_cart * $qty_cart)/100 ,
+                            'product_vat' => $product_vat ,
 
                         ]
                     ]);

@@ -64,6 +64,7 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Sản Phẩm</th>
+                                    <th scope="col">Trọng lượng</th>
                                     <th scope="col">Số lượng có sẵn</th>
                                     <th scope="col">Giá bán hiện tại</th>
                                     <th scope="col">Số lượng sale</th>
@@ -78,28 +79,38 @@
                                     @foreach ($uni_product as $key => $item)
                                     <tr>
                                         <th scope="row">{{ $key+1 }}</th>
+                                        <td class="text-center">
+                                            <div class="form-group">
+                                                <input class="form-check-input" <?= isset($item->flash_sale) ? 'checked' : '' ?> data-sub="" data-nosub="" data-key={{ $key }} require type="checkbox" name="product_sale[{{ $item->id }}][id]" id="inlineCheckbox{{ $item->id }}" value="{{ $item->id }}">
+                                                <label class="form-check-label" for="inlineCheckbox{{ $item->id }}">{{ $item->name }}</label>
+                                            </div>
+                                        </td>
                                         <td>
                                             <div class="form-group">
                                                 <div class="js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                                                    <select name="product_size" class="form-control SlectBox">
+                                                    <select name="product_sale[{{ $item->id }}][product_size]" class="form-control SlectBox">
                                                         <option title="hide" value="0">Chọn trọng lượng</option>
-                                                        @foreach($uniSize as $keys => $items)
-                                                        <option title="hide" value="{{ $items->id }}">{{ $items->name }}</option>
+                                                        @foreach(getAllSizeName($item->id) as $keys => $items)
+                                                        <option title="hide" value="{{ $items }}">{{ getSizeName($items) }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>{{ $item->qty }}</td>
-                                        <td id="price_nosale_{{ $item->id }}">{{ $item->price }}</td>
+                                        <td id="price_nosale_{{ $item->id }}">{{ getPrice($item->id) }}</td>
                                         <td>
                                             <div class="form-group">
-                                                <input readonly="readonly" type="number" data-url="{{ route('uni_flashsale.edit',$item->id) }}" class="form-control keypress-count" id="qty_sale_{{ $item->id }}" data-id={{ $item->id }} data-key={{ $key }} name="product_sale[{{ $item->id }}][qty_sale]" value="{{ old('qty_sale', $item->flash_sale->qty_sale ?? '') }}">
+                                                <input readonly="readonly" type="number" data-url="{{ route('uni_flashsale.edit',$item->id) }}" class="form-control keypress-count" 
+                                                id="qty_sale_{{ $item->id }}" data-id={{ $item->id }} data-key={{ $key }} name="product_sale[{{ $item->id }}][qty_sale]" 
+                                                value="{{ old('qty_sale', $item->flash_sale->qty_sale ?? '') }}">
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <input readonly="readonly" type="number" data-url="{{ route('uni_flashsale.edit',$item->id) }}" class="form-control keypress-count" id="price_sale_{{ $item->id }}" data-id={{ $item->id }} data-key={{ $key }} name="product_sale[{{ $item->id }}][price_sale]" value="{{ old('price_sale', $item->flash_sale->price_sale ?? '') }}">
+                                                <input readonly="readonly" type="number" data-url="{{ route('uni_flashsale.edit',$item->id) }}" 
+                                                class="form-control keypress-count" id="price_sale_{{ $item->id }}" data-id={{ $item->id }} data-key={{ $key }} 
+                                                name="product_sale[{{ $item->id }}][price_sale]" value="{{ old('price_sale', $item->flash_sale->price_sale ?? '') }}">
                                             </div>
                                         </td>
                                         <td>

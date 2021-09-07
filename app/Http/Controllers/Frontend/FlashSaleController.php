@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Uni_FlashSale;
 use App\Models\Blog\Uni_Post;
 use App\Models\Uni_Product;
+use App\Models\Product_Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Models\Page;
@@ -16,7 +17,8 @@ class FlashSaleController extends Controller
     {
         
         $uid = get_data_user('web');
-        $product = Uni_Product::where('view_price_sale','!=',null)->orderBy('id', 'asc')->get();
+        $group_pid = Product_Size::where('price_sale','!=',0)->groupBy('product_id')->pluck('product_id');
+        $product = Uni_Product::whereIn('id',$group_pid)->orderBy('id', 'asc')->get();
         $count_show = count($product);
         $uni_flashsale_flash = Uni_FlashSale::where('is_flash',0)->get();
         $uni_flashsale_combo = Uni_FlashSale::where('is_flash',1)->get();

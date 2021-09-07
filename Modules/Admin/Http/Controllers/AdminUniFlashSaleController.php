@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
- use Modules\Admin\Http\Requests\AdminFlashSaleRequest;
+use Modules\Admin\Http\Requests\AdminFlashSaleRequest;
 
 class AdminUniFlashSaleController extends AdminController
 {
@@ -33,7 +33,7 @@ class AdminUniFlashSaleController extends AdminController
         $uni_product = Uni_Product::orderByDesc('id')->get();
         $edit_in = 'add';
         $uni_flashsale = [];
-        $type_buyOld =[];
+        $type_buyOld = [];
         $viewData = [
             'uni_product' => $uni_product,
             'uni_flashsale' => $uni_flashsale,
@@ -57,9 +57,9 @@ class AdminUniFlashSaleController extends AdminController
                 $product_sale[] = $item;
             }
         }
-        
+
         $data['info_sale'] = json_encode($product_sale);
-       
+
         $param = [
             "price_nosale" => $request->price_all_total,
             "name" => $request->name,
@@ -95,9 +95,9 @@ class AdminUniFlashSaleController extends AdminController
         $uniSize = Uni_Size::get();
         $type_buyOld = RelLevelStore::where('flash_id', $id)->pluck('level_store_id')->toArray() ?? [];
         $edit_in = 'edit';
-        foreach($uni_product as $key => $item){
-            foreach(json_decode($uni_flashsale->info_sale) as $keys => $items){
-                if($items->id == $item['id']){
+        foreach ($uni_product as $key => $item) {
+            foreach (json_decode($uni_flashsale->info_sale) as $keys => $items) {
+                if ($items->id == $item['id']) {
                     $item['flash_sale'] = $items;
                 }
             }
@@ -107,7 +107,7 @@ class AdminUniFlashSaleController extends AdminController
             'uni_product'       => $uni_product,
             'type_buy'       => $type_buy,
             'uniSize' => $uniSize,
-            'edit_in'       => $edit_in, 
+            'edit_in'       => $edit_in,
             'type_buyOld'       => $type_buyOld
         ];
 
@@ -121,9 +121,9 @@ class AdminUniFlashSaleController extends AdminController
             $data               = $request->except(['thumbnail', 'save', '_token']);
             $data['updated_at'] = Carbon::now();
             $product_sale = [];
-            
+
             foreach ($request->product_sale as $item) {
-                if (count($item) == 4) {
+                if (count($item) == 5) {
                     $product_sale[] = $item;
                 }
             }
@@ -132,24 +132,25 @@ class AdminUniFlashSaleController extends AdminController
                 $thumbnail = $request->thumbnail;
                 Storage::delete('public/uploads/' . $uni_flashsale->thumbnail);
             } else {
-                $thumbnail = $uni_flashsale->thumbnail;           
+                $thumbnail = $uni_flashsale->thumbnail;
             }
+
             
             $param = [
                 "type_buy" => $request->type_buy,
+                "price_nosale" => $request->price_all_total,
                 "name" => $request->name,
                 "slug" => $request->slug,
                 "is_flash" => $request->is_flash,
                 "desscription" => $request->desscription,
                 "price" => $request->price_all_subtotal,
-                "price_nosale" => $request->price_all_total,
+                "sale_off" => $request->sale_off,
                 "qty" => $request->qty,
                 "content" => $request->content,
                 "meta_title" => $request->meta_title,
                 "meta_desscription" => $request->meta_desscription,
                 "status" => $request->status,
-                "sale_off" => date("Y/m/d", strtotime($request->sale_off)),
-                "thumbnail" => $thumbnail,
+                "thumbnail" => $request->thumbnail,
                 "updated_at" => $data['updated_at'],
                 "info_sale" => $data['info_sale']
             ];
@@ -163,7 +164,7 @@ class AdminUniFlashSaleController extends AdminController
     {
         if ($request->ajax()) {
             $product = Uni_FlashSale::findOrFail($id);
-            if ($product) {             
+            if ($product) {
                 Storage::delete('public/uploads/' . $product->thumbnail);
                 $product->delete();
             }
@@ -187,5 +188,4 @@ class AdminUniFlashSaleController extends AdminController
             }
         }
     }
- 
 }

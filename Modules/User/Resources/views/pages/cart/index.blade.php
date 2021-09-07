@@ -464,12 +464,14 @@
                                         </span>
                                     </td>
                                     <input  class="input-text product_vat" type="hidden" value="{{ $item->options->product_vat * $item->price/100 }}">
-
                                     <td data-th="Qty">
                                         <div class="field qty">
                                             <div class="control qty" style="padding: 0!important">
                                                 <label for="cart-{{ $item->id }}-qty" style="display:flex">
-                                                    <input id="cart-{{ $item->id }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}" class="input-text qty update-qty" data-url="{{ route('get_user.updatecart',$item->id) }}" name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" size="4" min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" data-price="{{ $item->price }}" max="100" step="any" title="Qty">
+                                                    <input id="cart-{{ $item->id }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}" 
+                                                    class="input-text qty update-qty" data-url="{{ route('get_user.updatecart',$item->id) }}" 
+                                                    name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" size="4" min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" 
+                                                    data-price="{{ $item->price }}" max="100" step="any" title="Qty">
                                                     <span style="order:2;margin-top: 5px;margin-left: 5px">
                                                         <?php if ($item->options->sale == 'combo') {
                                                             echo 'combo';

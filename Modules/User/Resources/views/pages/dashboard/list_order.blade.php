@@ -39,7 +39,7 @@
                                 </thead>
                                 <tbody>
                                     <?php if (count($uni_order) > 0) { ?>
-                                        @forelse ($uni_order as $key => $item)                                       
+                                        @forelse ($uni_order as $key => $item)         
                                         <tr>
                                             <th scope="row">{{ $key+1 }}</th>
                                             <td class="text-left" data-id="{{ $item->id }}">
