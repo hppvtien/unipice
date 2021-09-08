@@ -29,12 +29,13 @@ class UserCartController extends Controller
     {
         \SEOMeta::setTitle('Giỏ hàng');
         
-        if ($request->item_qty) {
+        if ($request->data_qty) {
             // \Cart::update($request->item_row, $request->item_qty);
             \Cart::update(
                 $request->item_row,
                 [
                     'qty'=>$request->item_qty,
+                    'weight'=>round($request->data_size,2),
                     'options' => [
                         "images" => $request->data_image,
                         "sale" => $request->data_store,
@@ -43,6 +44,7 @@ class UserCartController extends Controller
                 ]
             );
             $listCarts = \Cart::content();
+            dd($listCarts);
             $view = view("user::pages.cart.include.cart_info", compact('listCarts'))->render();
             return $view;
         }

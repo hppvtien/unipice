@@ -152,6 +152,7 @@ $(".update-qty").on("change", function() {
     let item_name = $(this).attr("data-name");
     let item_qty = $("#cart-" + item_id + "-qty").val();
     let data_qty = $("#cart-" + item_id + "-qty").attr('data-qty');
+    let data_size = $("#cart-" + item_id + "-qty").attr('data-size');
     let item_row = $(this).attr("data-row");
     let item_min = $(this).attr("min");
     let data_price = $(this).attr("data-price");
@@ -172,6 +173,7 @@ $(".update-qty").on("change", function() {
                     item_id: item_id,
                     item_qty: item_qty,
                     data_price: data_price,
+                    data_size: data_size,
                     data_image: data_image,
                     data_store: data_store,
                     item_row: item_row
@@ -184,7 +186,7 @@ $(".update-qty").on("change", function() {
                     }
                     $("#cart-totals").html(data);
                     $("#price" + item_id).html(formatNumber(total_price + " đ"));
-                    location.reload();
+                    // location.reload();
                 }
             });
         });
@@ -864,18 +866,18 @@ $('.check-price').on('click', function() {
     let price_save_not_store = Number(100 - size_price_sale * 100 / size_price).toFixed(0);
     let price_save_store = Number(100 - size_price_sale_store * 100 / size_price).toFixed(0);
     let data_uid = $(this).attr('data-uid');
-    if(data_img != ''){
-        $('#image-slides').html('<li class="m-product-gallery__slide glide__slide glide__slide--active">'+
-        '<div class="m-product-gallery__img-wrapper">'+
-            '<img class="lazyload m-product-gallery__img" src="/storage/uploads_Product/'+ data_img +'">'+
-        '</div>'+
-        '</li>');
-    }else{
-        $('#image-slides').html('<li class="m-product-gallery__slide glide__slide glide__slide--active">'+
-        '<div class="m-product-gallery__img-wrapper">'+
-            '<img class="lazyload m-product-gallery__img" src="/images/default.jpg">'+
-        '</div>'+
-        '</li>');
+    if (data_img != '') {
+        $('#image-slides').html('<li class="m-product-gallery__slide glide__slide glide__slide--active">' +
+            '<div class="m-product-gallery__img-wrapper">' +
+            '<img class="lazyload m-product-gallery__img" src="/storage/uploads_Product/' + data_img + '">' +
+            '</div>' +
+            '</li>');
+    } else {
+        $('#image-slides').html('<li class="m-product-gallery__slide glide__slide glide__slide--active">' +
+            '<div class="m-product-gallery__img-wrapper">' +
+            '<img class="lazyload m-product-gallery__img" src="/images/default.jpg">' +
+            '</div>' +
+            '</li>');
     }
     if (data_uid == 1) {
         if (size_price_sale_store == 0) {

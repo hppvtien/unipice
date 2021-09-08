@@ -469,7 +469,7 @@
                                             <div class="control qty" style="padding: 0!important">
                                                 <label for="cart-{{ $item->id }}-qty" style="display:flex">
                                                     <input id="cart-{{ $item->id }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}" 
-                                                    class="input-text qty update-qty" data-url="{{ route('get_user.updatecart',$item->id) }}" 
+                                                    class="input-text qty update-qty" data-url="{{ route('get_user.updatecart',['id' => $item->id,'size_id' => $item->weight]) }}" data-size="{{ $item->weight }}"
                                                     name="cart[qty]" item-id="{{ $item->id }}" data-qty="{{ $item->qty }}" value="{{ $item->qty }}" type="number" size="4" min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" 
                                                     data-price="{{ $item->price }}" data-image="{{ $item->options->images }}" data-store="{{ $item->options->sale }}" max="100" step="any" title="Qty">
                                                     <span style="order:2;margin-top: 5px;margin-left: 5px">
