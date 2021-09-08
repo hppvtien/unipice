@@ -18,7 +18,7 @@
 
                                                 <div class="t-plp__container js-plp-container">
                                                     @include('pages.category._fillterBy')
-                                                    <div class="">
+                                                    <div class="uni-tex-cat">
                                                         <div class="row cat-desscription">
                                                             <div class="col-md-10">
                                                                 <p class="font-weight-bold" style="color: #000; background-color:transparent;font-size:20px;opacity: 1;">

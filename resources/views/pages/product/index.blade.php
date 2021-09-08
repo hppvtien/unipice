@@ -37,7 +37,7 @@
                                             <div class="m-product-gallery glide">
 
                                                 <div class="m-product-gallery__track glide__track">
-                                                    <ul class="m-product-gallery__slides glide__slides">
+                                                    <ul class="m-product-gallery__slides glide__slides" id="image-slides">
                                                         @if ($product->album != '[]' )
                                                         @foreach (json_decode($product->album) as $key => $item)
                                                         <li class="m-product-gallery__slide glide__slide glide__slide--active">
@@ -112,12 +112,13 @@
                                                                         <span class="text-danger paid-save" style="line-height: 3.5">
                                                                             @forelse ($product->size_product as $key => $size)
                                                                             <b class="border check-price check{{ $size['size_id'] }} {{ $key == 0 ? 'box-shadow-in' : '' }}" 
-                                                                            data-uid="{{ checkUid(get_data_user('web')) }}" data-size="{{ $size['size_id'] }}" 
+                                                                            data-uid="{{ checkUid(get_data_user('web')) }}" data-size="{{ $size['size_id'] }}" data-img="{{ $size['image'] }}"
                                                                             size-price="{{ $size['price'] }}" size-price-sale="{{ $size['price_sale'] }}" 
                                                                             <?php if (checkUid(get_data_user('web')) != null) { ?> 
                                                                                 size-price-sale-store="{{ $size['price_sale_store'] }}" 
                                                                                 size-qty-inbox="{{ $size['qty_in_box'] }}" 
-                                                                                size-min-box="{{ $size['min_box'] }}" <?php } ?> 
+                                                                                size-min-box="{{ $size['min_box'] }}"
+                                                                                data-img="{{ $size['image'] }}" <?php } ?> 
                                                                             style="padding: 15px 10px;cursor: pointer;">{{ getSizeName($size['size_id']) }}</b>
                                                                             @empty
 
@@ -309,8 +310,10 @@
                             <div data-block-plugin-id="inline_block:media_block" data-inline-block-uuid="ee168006-3fe9-4f1c-bbc5-ba42ddc90f9a" class="c-media-block c-media-block--template-">
                                 <div class="c-media-block__image-wrapper">
                                     <picture>
+                                        @if($slides_home_four1)
                                         <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($slides_home_four1->s_banner) }}" srcset="{{ pare_url_file($slides_home_four1->s_banner) }}">
                                         <img class=" lazyloaded" data-src="{{ pare_url_file($slides_home_four1->s_banner) }}" alt="{{ $slides_home_four1->s_name }}" src="{{ pare_url_file($slides_home_four1->s_banner) }}">
+                                        @endif
                                     </picture>
                                 </div>
 

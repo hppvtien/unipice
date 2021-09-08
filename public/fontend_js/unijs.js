@@ -7115,9 +7115,11 @@ shopTheRecipeCarousel.forEach((el) => { new ShopTheRecipeCarousel(el); });
             if (window.scrollY >= filterBarTop) {
                 filterBar.classList.add('t-plp__filter-bar--is-fixed');
                 template.style.paddingTop = filterBarHeight + 'px';
+                $(".uni-tex-cat").addClass("none");
             } else {
                 filterBar.classList.remove('t-plp__filter-bar--is-fixed');
                 template.style.paddingTop = 0;
+                $(".uni-tex-cat").removeClass("none");
             }
             if (minWidth(breakpoints.screenMl).matches) {
                 var style = getComputedStyle(container);

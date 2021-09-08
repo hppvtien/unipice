@@ -73,20 +73,7 @@ return [
 
             ]
         ],
-        [
-            'name' => 'Quản lý tin tức',
-            'class-icon' => 'la la-book-open',
-            'sub' => [
-                [
-                    'name' => 'Danh mục bài viết',
-                    'route' => 'get_admin.post_category.index'
-                ],
-                [
-                    'name' => 'Bài viết',
-                    'route' => 'get_admin.post.index'
-                ],
-            ]
-        ],
+       
         // [
         //     'name' => 'Quản lý cửa hàng',
         //     'class-icon' => 'la la-book-open',
@@ -156,19 +143,20 @@ return [
             ]
         ],
         [
-            'name' => 'Dữ liệu nền',
-            'class-icon' => 'la la-database',
+            'name' => 'Quản lý tin tức',
+            'class-icon' => 'la la-book-open',
             'sub' => [
                 [
-                    'name' => 'Slide',
-                    'route' => 'get_admin.slide.index'
+                    'name' => 'Danh mục bài viết',
+                    'route' => 'get_admin.post_category.index'
                 ],
                 [
-                    'name' => 'Web Setting',
-                    'route' => 'get_admin.configuration.index'
+                    'name' => 'Bài viết',
+                    'route' => 'get_admin.post.index'
                 ],
             ]
         ],
+       
         [
             'name' => 'Đánh giá và bình luận',
             'class-icon' => 'la la-database',
@@ -214,6 +202,20 @@ return [
                 [
                     'name' => 'Doanh thu',
                     'route' => 'get_admin.bill.index_order'
+                ],
+            ]
+        ],
+        [
+            'name' => 'Dữ liệu nền',
+            'class-icon' => 'la la-database',
+            'sub' => [
+                [
+                    'name' => 'Slide',
+                    'route' => 'get_admin.slide.index'
+                ],
+                [
+                    'name' => 'Web Setting',
+                    'route' => 'get_admin.configuration.index'
                 ],
             ]
         ],

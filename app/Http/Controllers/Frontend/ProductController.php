@@ -56,7 +56,8 @@ class ProductController extends Controller
                 'price_sale' => $size->price_sale,
                 'price_sale_store' => $size->price_sale_store,
                 'qty_in_box' => $size->qty_in_box,
-                'min_box' => $size->min_box
+                'min_box' => $size->min_box,
+                'image' => $size->image,
             ];
             array_push($size_product, $sizes);
         }

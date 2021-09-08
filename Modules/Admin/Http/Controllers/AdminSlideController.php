@@ -30,10 +30,8 @@ class AdminSlideController extends AdminController
 
     public function store(AdminSlideRequest $request)
     {
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['avatar','save','_token','s_avatar','s_banner']);
         $data['created_at'] = Carbon::now();
-
-
         $slideID = Slide::insertGetId($data);
         if($slideID)
         {
@@ -52,11 +50,11 @@ class AdminSlideController extends AdminController
 
     public function update(AdminSlideRequest $request, $id)
     {
-        $data = $request->except(['avatar','save','_token']);
+        $data = $request->except(['avatar','save','_token','s_avatar','s_banner']);
         $data['updated_at'] = Carbon::now();
         $slide = Slide::findOrFail($id);
         if($request->s_banner){
-            Storage::delete('public/uploads/'.$request->d_avatar);
+            Storage::delete('public/uploads/'.$request->s_avatar);
             $data['s_banner'] = $request->s_banner;
         } else{
             $data['s_banner'] = $slide->s_banner;

@@ -8,7 +8,7 @@
                         <img src="{{ pare_url_file($configuration->logo) }}" alt="Logo UniMall" class="img-fluid" style="width:40%">
                     </a>
                     <p class="footer-info-text">
-                        Công ty chúng tôi mang tầm cỡ quốc tế Baking soda baths are a great way to detox. Check out the benefits of baking soda baths and how to do one at home! Baking soda baths are a great way to detox
+                        {{ $configuration->	footer_description }}
                     </p>
 
                     <div class="row">

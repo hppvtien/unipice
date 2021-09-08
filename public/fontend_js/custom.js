@@ -855,6 +855,7 @@ $('.redect-b2b').on('click', function() {
 $('.check-price').on('click', function() {
     $('.paid-save').find('.box-shadow-in').removeClass('box-shadow-in');
     let size_id = $(this).attr('data-size');
+    let data_img = $(this).attr('data-img');
     let size_price = Number($(this).attr('size-price'));
     let size_price_sale = Number($(this).attr('size-price-sale'));
     let size_price_sale_store = Number($(this).attr('size-price-sale-store'));
@@ -863,6 +864,19 @@ $('.check-price').on('click', function() {
     let price_save_not_store = Number(100 - size_price_sale * 100 / size_price).toFixed(0);
     let price_save_store = Number(100 - size_price_sale_store * 100 / size_price).toFixed(0);
     let data_uid = $(this).attr('data-uid');
+    if(data_img != ''){
+        $('#image-slides').html('<li class="m-product-gallery__slide glide__slide glide__slide--active">'+
+        '<div class="m-product-gallery__img-wrapper">'+
+            '<img class="lazyload m-product-gallery__img" src="/storage/uploads_Product/'+ data_img +'">'+
+        '</div>'+
+        '</li>');
+    }else{
+        $('#image-slides').html('<li class="m-product-gallery__slide glide__slide glide__slide--active">'+
+        '<div class="m-product-gallery__img-wrapper">'+
+            '<img class="lazyload m-product-gallery__img" src="/images/default.jpg">'+
+        '</div>'+
+        '</li>');
+    }
     if (data_uid == 1) {
         if (size_price_sale_store == 0) {
             return false;
