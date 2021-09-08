@@ -96,6 +96,7 @@ $(".search_province").on("change", function() {
 $(".js-add-cart").on("click", function() {
     let URL = $(this).attr("data-url");
     let data_uid = $(this).attr("data-uid");
+    let data_size = $('.box-shadow-in').attr("data-size");
     let data_qtyinbox = Number($(this).attr("data-qtyinbox"));
     let data_minbox = Number($(this).attr("data-min-box"));
     let data_id = $(this).attr("data-id");
@@ -107,6 +108,7 @@ $(".js-add-cart").on("click", function() {
         url: URL,
         method: "get",
         data: {
+            data_size: data_size,
             qty_user: qty_user,
             data_price: data_price,
             data_id: data_id,

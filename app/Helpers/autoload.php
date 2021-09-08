@@ -244,9 +244,7 @@ function execPostRequest($url, $data)
     function getSizeName($id)
     {
         $sizeName = App\Models\Uni_Size::where('id',$id)->pluck('name')->first();
-        $typeName = App\Models\Uni_Size::where('id',$id)->pluck('type_size')->first();
-        $nameType = $sizeName.'/'.$typeName;
-        return $nameType;
+        return $sizeName;
     }
                /**
      * get percent.

@@ -441,11 +441,10 @@
                                             <span class="product-image-container" style="width:110px;">
                                                 <span class="product-image-wrapper" style="padding-bottom: 90%;">
                                                     <img class="product-image-photo" src="{{ $item->options->images }}" max-width="100%" max-height="100%" alt="{{ $item->name }}">
-                                                </span><br>
-                                                <span class="product-image-wrapper" style="padding-bottom: 20%;">
-                                                    <span class="value" itemprop="sku">{{ $item->name }}</span>
                                                 </span>
-                                            </span>
+                                            </span> <br>
+                                            <span class="font-weight-bold">{{ $item->name }}</span> <br>
+                                            <span>Khối lượng:  <b>{{ getSizeName($item->weight) }}</b></span>
                                         </a>
                                     </td>
                                     <td data-th="Price">
@@ -460,6 +459,7 @@
                                                         echo '/ thùng';
                                                     } ?>
                                                 </span>
+                                                
                                             </span>
                                         </span>
                                     </td>
@@ -498,6 +498,9 @@
                                             <span>x</span>
                                         </button>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"></td>
                                 </tr>
                                 @empty
 

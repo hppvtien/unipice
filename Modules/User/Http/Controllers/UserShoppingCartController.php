@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Models\Uni_Product;
+use App\Models\Product_Size;
 use App\Models\Uni_FlashSale;
 use App\Models\Uni_Store;
 use App\Models\Cart\Uni_Order_Nap;
@@ -18,7 +19,6 @@ class UserShoppingCartController extends UserController
     const SINGLE = 'single';
     public function processCart(Request $request, $id, $type)
     {
-        // dd($request->all());
         if ($request->ajax()) {
             if ($type == self::COMBO) {
                 // xử lý dữ liệu với san pham
@@ -65,6 +65,7 @@ class UserShoppingCartController extends UserController
                 ]);
             } else {
                 $uni_product = $this->checkProduct($id);
+                $product_size = $this->checkProductSize($id,$request->data_size);
                 $uni_store = $this->checkStore($request->data_uid);
                 $uni_spiceclub = $this->checkSpiceClub($request->data_uid);
                 if ($uni_store != null) {
@@ -78,26 +79,31 @@ class UserShoppingCartController extends UserController
                     $qty_cart = $request->qty_user;
                     $product_vat = ($uni_product->product_vat * $price_cart * $qty_cart)/100;
                 }
-                if (!$uni_product) {
+                if (!$product_size) {
                     return response([
                         'status' => 404
                     ]);
                 }
+                $data_size = round($request->data_size,2);
                 $listCarts = \Cart::content();
-                // Kierm tra xem đã lưu khoá học chưa
+               
+                // Kierm tra xem đã lưu san pham chưa
                 $checkExist = $listCarts->search(function ($cartItem) use ($id) {
                     if ($cartItem->id == $id) return $id;
                 });
+                $checkExistw = $listCarts->search(function ($cartItem) use ($data_size) {
+                    if ($cartItem->weight == $data_size) return $data_size;
+                });
 
                 // Nếu chưa có giỏ hàng thì mặc định thêm
-                if ($listCarts->isEmpty() || !$checkExist) {
+                if($listCarts->isEmpty() || $checkExist && !$checkExistw){
                     Log::info("[Cart]: Empty");
                     \Cart::add([
                         'id' => $id,
                         'name' => $uni_product->name,
                         'qty' => $qty_cart,
                         'price' => $price_cart,
-                        'weight' => 1,
+                        'weight' => $data_size,
                         'options' => [
                             'images' => pare_url_file($uni_product->thumbnail),
                             'sale' => $type_box,
@@ -109,7 +115,7 @@ class UserShoppingCartController extends UserController
                 $count_cart = count($listCarts);
                 return response([
                     'status' => 200,
-                    'message' => !$checkExist ? "Thêm sản phẩm thành công" : "Sản phẩm đã có trong giỏ",
+                    'message' => ($checkExist == $checkExistw) ? "Sản phẩm đã có trong giỏ" : "Thêm sản phẩm thành công",
                     'count' => $count_cart
                 ]);
             }
@@ -119,6 +125,10 @@ class UserShoppingCartController extends UserController
     protected function checkProduct($id)
     {
         return Uni_Product::find($id);
+    }
+    protected function checkProductSize($id,$size_id)
+    {
+        return Product_Size::where('product_id',$id)->where('size_id',$size_id)->first();
     }
 
     protected function checkCombo($id)
