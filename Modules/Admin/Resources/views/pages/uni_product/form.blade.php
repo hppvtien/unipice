@@ -132,7 +132,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1" class="required"> Trọng lượng <span>(*)</span></label>
                 <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                    <select name="size[]" class="form-control SlectBox SumoUnder js-select2" tabindex="-1" multiple>
+                    <select name="size[]" id="select2-weight" class="form-control SlectBox SumoUnder js-select2" tabindex="-1" multiple>
                         @foreach($uni_size as $size)
                         <option title="{{ $size->name }}" {{ in_array($size->id, $sizeOld) ? "selected" : "" }} value="{{ $size->id }}">{{ $size->name }}</option>
                         @endforeach

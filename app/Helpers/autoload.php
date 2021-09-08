@@ -237,6 +237,16 @@ function execPostRequest($url, $data)
         return $discount_spiceclub;
     }
                /**
+     * get size id.
+     * @param int $id
+     * @return string name
+     */
+    function getSizeId($id)
+    {
+        $sizeId = App\Models\Product_Size::where('product_id',$id)->pluck('size_id')->first();
+        return $sizeId;
+    }
+               /**
      * get size name.
      * @param int $id
      * @return string name
@@ -244,6 +254,7 @@ function execPostRequest($url, $data)
     function getSizeName($id)
     {
         $sizeName = App\Models\Uni_Size::where('id',$id)->pluck('name')->first();
+        $nameType = $sizeName;
         return $sizeName;
     }
                /**

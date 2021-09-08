@@ -96,7 +96,7 @@ class UserShoppingCartController extends UserController
                 });
 
                 // Nếu chưa có giỏ hàng thì mặc định thêm
-                if($listCarts->isEmpty() || $checkExist && !$checkExistw){
+                if($listCarts->isEmpty() || !$checkExist || !$checkExistw){
                     Log::info("[Cart]: Empty");
                     \Cart::add([
                         'id' => $id,

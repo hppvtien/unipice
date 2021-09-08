@@ -25,25 +25,33 @@ class UserCartController extends Controller
         \Cart::remove($request->item_row);
         return redirect()->route('get_user.cart');
     }
-    public function updateCart(Request $request){
-        // dd($request->all());
+    public function updateCart(Request $request)
+    {
         \SEOMeta::setTitle('Giỏ hàng');
-        \Cart::update($request->item_row,$request->item_qty);
-        if($request->item_qty){
+        
+        if ($request->item_qty) {
+            // \Cart::update($request->item_row, $request->item_qty);
             \Cart::update(
-                $request->item_row, [
-                'options' => [
-                    'product_vat' => $request->item_qty*getVatProduct($request->item_id)*$request->data_price/100
+                $request->item_row,
+                [
+                    'qty'=>$request->item_qty,
+                    'options' => [
+                        "images" => $request->data_image,
+                        "sale" => $request->data_store,
+                        'product_vat' => $request->item_qty * (getVatProduct($request->item_id) * $request->data_price / 100)
                     ]
-            ]);
+                ]
+            );
+            $listCarts = \Cart::content();
+            $view = view("user::pages.cart.include.cart_info", compact('listCarts'))->render();
+            return $view;
         }
         // \Cart::update($request->item_row,$request->item_qty*);
-        $listCarts = \Cart::content();
-        $view = view("user::pages.cart.include.cart_info",compact('listCarts'))->render();
-        return $view;
-        }
+        
+       
+    }
     public function generatePDF(Request $request)
-    {   
+    {
         $id = $request->data_id;
         $data_pdf = Uni_Order::find($id);
         $configuration = Configuration::first();

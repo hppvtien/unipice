@@ -145,14 +145,18 @@ $(document).on('ready', function() {
     });
     $('#total_vat_product').html(sum);
 });
-$(".update-qty").on("keyup", function() {
+$(".update-qty").on("change", function() {
+    $('.close-btn-ud').css({ "display": "block", "background": "rgba(192,192,192, 0.9)", "z-index": "99999999" }).slideDown('slow');
     let URL = $(this).attr("data-url");
     let item_id = $(this).attr("item-id");
     let item_name = $(this).attr("data-name");
     let item_qty = $("#cart-" + item_id + "-qty").val();
+    let data_qty = $("#cart-" + item_id + "-qty").attr('data-qty');
     let item_row = $(this).attr("data-row");
     let item_min = $(this).attr("min");
     let data_price = $(this).attr("data-price");
+    let data_image = $(this).attr("data-image");
+    let data_store = $(this).attr("data-store");
     let total_price = item_qty * data_price;
     if (item_qty < item_min) {
         $("#text-qtyerr" + item_id).text("Tối thiểu: " + item_min + " thùng").slideDown(this);
@@ -160,25 +164,35 @@ $(".update-qty").on("keyup", function() {
         $("#text-qtyerr" + item_id).text("Tối thiểu: " + item_min + " thùng").slideDown(this);
     } else {
         $("#text-qtyerr" + item_id).text("").slideUp();
-        $.ajax({
-            url: URL,
-            method: "get",
-            data: {
-                item_id: item_id,
-                item_qty: item_qty,
-                data_price: data_price,
-                item_row: item_row
-            },
-            success: function(data) {
-                function formatNumber(num) {
-                    return num
-                        .toString()
-                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+        $('#save-qty-product').on('click', function() {
+            $.ajax({
+                url: URL,
+                method: "get",
+                data: {
+                    item_id: item_id,
+                    item_qty: item_qty,
+                    data_price: data_price,
+                    data_image: data_image,
+                    data_store: data_store,
+                    item_row: item_row
+                },
+                success: function(data) {
+                    function formatNumber(num) {
+                        return num
+                            .toString()
+                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                    }
+                    $("#cart-totals").html(data);
+                    $("#price" + item_id).html(formatNumber(total_price + " đ"));
+                    location.reload();
                 }
-                $("#cart-totals").html(data);
-                $("#price" + item_id).html(formatNumber(total_price + " đ"));
-            }
+            });
         });
+        $('.close-btn-ud').on('click', function() {
+            $('.close-btn-ud').css("display", "none");
+            $("#cart-" + item_id + "-qty").val(data_qty);
+        });
+
     }
 });
 $("input.input-qty").each(function() {

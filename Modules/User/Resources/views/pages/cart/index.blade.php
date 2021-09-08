@@ -470,8 +470,8 @@
                                                 <label for="cart-{{ $item->id }}-qty" style="display:flex">
                                                     <input id="cart-{{ $item->id }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}" 
                                                     class="input-text qty update-qty" data-url="{{ route('get_user.updatecart',$item->id) }}" 
-                                                    name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" size="4" min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" 
-                                                    data-price="{{ $item->price }}" max="100" step="any" title="Qty">
+                                                    name="cart[qty]" item-id="{{ $item->id }}" data-qty="{{ $item->qty }}" value="{{ $item->qty }}" type="number" size="4" min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" 
+                                                    data-price="{{ $item->price }}" data-image="{{ $item->options->images }}" data-store="{{ $item->options->sale }}" max="100" step="any" title="Qty">
                                                     <span style="order:2;margin-top: 5px;margin-left: 5px">
                                                         <?php if ($item->options->sale == 'combo') {
                                                             echo 'combo';
@@ -522,21 +522,23 @@
         </div>
     </div>
 </main>
-<div style="z-index:999999" class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade show close-btn-ud" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true" style="padding-right: 17px;">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                Chi Tiết Gói Sale
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+            <div class="modal-header btn-danger">
+                <h5 class="modal-title text-white" id="exampleModalLabel">UNIMALL</h5>
+                <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-
+                <p>Chắc chắn bạn muốn thay đổi không ?</p>
             </div>
-
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-success" id="save-qty-product">Thay đổi</button>
+            </div>
         </div>
     </div>
 </div>
-
 @stop
