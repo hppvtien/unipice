@@ -153,6 +153,8 @@ $(".update-qty").on("keyup", function() {
     let item_row = $(this).attr("data-row");
     let item_min = $(this).attr("min");
     let data_price = $(this).attr("data-price");
+    let data_imgage = $(this).attr("data-image");
+    let data_store = $(this).attr("data-store");
     let total_price = item_qty * data_price;
     if (item_qty < item_min) {
         $("#text-qtyerr" + item_id).text("Tối thiểu: " + item_min + " thùng").slideDown(this);
@@ -167,6 +169,8 @@ $(".update-qty").on("keyup", function() {
                 item_id: item_id,
                 item_qty: item_qty,
                 data_price: data_price,
+                data_imgage: data_imgage,
+                data_store: data_store,
                 item_row: item_row
             },
             success: function(data) {

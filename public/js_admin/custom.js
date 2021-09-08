@@ -270,3 +270,6 @@ $('.lot_product').on('change', function() {
         $('#product_size_lot').val(product_size);
     });
 });
+$('#select2-weight').on('change', function() {
+    alert('ádasdsad');
+});

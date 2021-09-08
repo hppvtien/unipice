@@ -471,7 +471,7 @@
                                                     <input id="cart-{{ $item->id }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}" 
                                                     class="input-text qty update-qty" data-url="{{ route('get_user.updatecart',$item->id) }}" 
                                                     name="cart[qty]" item-id="{{ $item->id }}" value="{{ $item->qty }}" type="number" size="4" min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" 
-                                                    data-price="{{ $item->price }}" max="100" step="any" title="Qty">
+                                                    data-price="{{ $item->price }}" data-image="{{ $item->options->image }}" data-store="{{ $item->options->sale }}" max="100" step="any" title="Qty">
                                                     <span style="order:2;margin-top: 5px;margin-left: 5px">
                                                         <?php if ($item->options->sale == 'combo') {
                                                             echo 'combo';
