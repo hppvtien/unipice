@@ -27,13 +27,14 @@ class UserCartController extends Controller
     }
     public function updateCart(Request $request)
     {
-        // dd($request->all());
         \SEOMeta::setTitle('Giỏ hàng');
-        \Cart::update($request->item_row, $request->item_qty);
+        
         if ($request->item_qty) {
+            // \Cart::update($request->item_row, $request->item_qty);
             \Cart::update(
                 $request->item_row,
                 [
+                    'qty'=>$request->item_qty,
                     'options' => [
                         "images" => $request->data_image,
                         "sale" => $request->data_store,
@@ -41,11 +42,13 @@ class UserCartController extends Controller
                     ]
                 ]
             );
+            $listCarts = \Cart::content();
+            $view = view("user::pages.cart.include.cart_info", compact('listCarts'))->render();
+            return $view;
         }
         // \Cart::update($request->item_row,$request->item_qty*);
-        $listCarts = \Cart::content();
-        $view = view("user::pages.cart.include.cart_info", compact('listCarts'))->render();
-        return $view;
+        
+       
     }
     public function generatePDF(Request $request)
     {
