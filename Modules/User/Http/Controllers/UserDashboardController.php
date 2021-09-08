@@ -47,7 +47,7 @@ class UserDashboardController extends Controller
     {
         \SEOMeta::setTitle('Danh sách đơn hàng');
         $user_id = get_data_user('web');
-        $uni_order = Uni_Order::where('user_id', $user_id)->orderBy('id', 'asc')->get();
+        $uni_order = Uni_Order::where('user_id', $user_id)->orderBy('id', 'desc')->get();
         $viewData = [
             'uni_order' => $uni_order,
         ];
