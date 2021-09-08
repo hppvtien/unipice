@@ -37,7 +37,7 @@ class Uni_Order extends Model
             'class' => 'badge-success'
         ],
         self::STATUS_TRASH => [
-            'name' => 'Thùng rác',
+            'name' => 'Đã hủy',
             'class' => 'badge-dange'
         ],
         

@@ -7,7 +7,9 @@
 }
 
 /* == Google colors */
-
+.card-body {
+    color: #000000;
+}
 .cgg span:nth-child(1) {
     color: #4285f4;
 }
