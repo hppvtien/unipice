@@ -222,7 +222,7 @@
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 5%;">Stt</th>
-                                <th scope="col" style="width: 20%;">Tên sản phẩm</th>
+                                <th scope="col" style="width: 15%;">Tên sản phẩm</th>
                                 <th scope="col" style="width: 10%;">Số lượng</th>
                                 <th scope="col" style="width: 5%;">Đơn vị</th>
                                 <th scope="col" style="width: 10%;">Đơn giá</th>
@@ -234,12 +234,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $keys = 1;
+                            @endphp
                             @foreach (json_decode($data_pdf->cart_info) as $item)
                             <tr>
-                                <td>1</td>
+                                <td>{{ $keys ++ }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->qty }}</td>
-                                <td>lọ</td>
+                                <td>{{ getSizeNameType($item->weight) }}</td>
                                 <td>800.345</td>
                                 <td>1.600.000</td>
                                 <td>10%</td>

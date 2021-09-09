@@ -52,6 +52,16 @@ function execPostRequest($url, $data)
         return $getSlug;
     }
     /**
+     * get size name.
+     * @param int $weight
+     * @return string name type
+     */
+    function getSizeNameType($weight)
+    {
+        $sizeNameType = App\Models\Uni_Size::where('id',$weight)->pluck('type_size')->first();
+        return $sizeNameType;
+    }
+    /**
      * get slug product by ID.
      * @param int $id
      * @return string $slug

@@ -144,7 +144,6 @@
         if(group_buy == 0){
             $('.add-form-company .form-group').remove();
         };
-        
     });
 
     $('#views').on('click', function() {
@@ -184,10 +183,5 @@
             }
         });
     });
-
-
-    // 
 </script>
-
-
 </html>
