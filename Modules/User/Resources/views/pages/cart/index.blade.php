@@ -454,7 +454,7 @@
                                                     <?php if ($item->options->sale == 'combo') {
                                                         echo '/ combo';
                                                     } elseif ($item->options->sale == 'user') {
-                                                        echo '/ hộp';
+                                                        echo '/ lọ';
                                                     } else {
                                                         echo '/ thùng';
                                                     } ?>
@@ -476,7 +476,7 @@
                                                         <?php if ($item->options->sale == 'combo') {
                                                             echo 'combo';
                                                         } elseif ($item->options->sale == 'user') {
-                                                            echo 'hộp';
+                                                            echo 'lọ';
                                                         } else {
                                                             echo 'thùng';
                                                         } ?>

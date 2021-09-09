@@ -113,7 +113,7 @@
                                 <a href="{{ $item->slug }}" title="{{ $item->name }}" class="text-center">
                                     <img src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}">
                                 </a>
-                                <p><span class="text-warning font-weight-bold">SL/ Thùng:</span> {{ $item->qty_in_box }} hộp</p>
+                                <p><span class="text-warning font-weight-bold">SL/ Thùng:</span> {{ $item->qty_in_box }} lọ</p>
                                 <p><span class="text-warning font-weight-bold">SL mua tối thiểu:</span> {{ $item->min_box }} thùng</p>
                                 <p><span class="text-warning font-weight-bold">Giá:</span> {{ formatVnd($item->qty_in_box * $item->view_price_sale_store) }}/thùng</p>
                             </div>

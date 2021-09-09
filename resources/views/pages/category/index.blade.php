@@ -162,7 +162,7 @@
                                                                                         <a href="{{ $item->slug }}" title="{{ $item->name }}" class="text-center">
                                                                                             <img src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}">
                                                                                         </a>
-                                                                                        <p><span class="font-weight-bold" style="color:#ea7236">SL/ Thùng:</span> {{ getQtyInBox($item->id) }} hộp</p>
+                                                                                        <p><span class="font-weight-bold" style="color:#ea7236">SL/ Thùng:</span> {{ getQtyInBox($item->id) }} lọ</p>
                                                                                         <p><span class="font-weight-bold" style="color:#ea7236">SL mua tối thiểu:</span> {{ getMinBox($item->id) }} thùng</p>
                                                                                         <p><span class="font-weight-bold" style="color:#ea7236">Giá:</span> {{ formatVnd(getQtyInBox($item->id) * getPriceSaleStore($item->id)) }}/thùng</p>
                                                                                     </div>
