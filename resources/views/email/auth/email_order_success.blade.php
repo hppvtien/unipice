@@ -571,7 +571,7 @@
                      color: #3c4858;
                      ">
                   <div>
-                  <p style="font-size: 16px;margin-bottom: 10px!important;">Cám ơn Quý khách đã thanh toán  hóa đơn số {{ $uni_order['code_invoice'] }} theo số hóa đơn được tạo vào ngày {{ date_format($uni_order['created_at'], 'd-m-Y') }}.
+                  <p style="font-size: 16px;margin-bottom: 10px!important;">Cám ơn Quý khách đã thanh toán  đơn hàng số {{ $uni_order['code_invoice'] }} theo số đơn hàng được tạo vào ngày {{ date_format($uni_order['created_at'], 'd-m-Y') }}.
 </p>
                   </div>
                   <div style="text-align: justify;">
@@ -586,7 +586,7 @@
                   @endif</p>
                   </div>
                   <div style="text-align: justify;">
-                  <p style="font-size: 16px;margin-bottom: 10px!important;">Xem chi tiết hóa đơn: <a  style="color: #0b2d25;" href="{{ route('get_user.generatePDF', 'data_id='.$uni_order['id']) }}">Tại đây</a></p>
+                  <p style="font-size: 16px;margin-bottom: 10px!important;">Xem chi tiết đơn hàng: <a  style="color: #0b2d25;" href="{{ route('get_user.generatePDF', 'data_id='.$uni_order['id']) }}">Tại đây</a></p>
                   </div>
                    <div style="text-align: justify;">
                   <p style="text-align: center;font-size: 16px;margin-bottom: 10px!important;">Để nhận được nhiều đặc quyền với những ưu đãi hấp dẫn, bạn hãy tham gia trở thành thành viên của câu lạc bộ Spice Club của UniMall </p>

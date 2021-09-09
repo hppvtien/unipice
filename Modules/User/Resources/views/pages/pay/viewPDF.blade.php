@@ -236,7 +236,7 @@ div#myModal {
                                 <td>{{ $bill_data->method_paid }}</td>
                             </tr>
                             <tr>
-                                <td colspan="4">Mã hóa đơn: {{ $bill_data->method_invoice }}</td>
+                                <td colspan="4">Mã đơn hàng: {{ $bill_data->method_invoice }}</td>
                             </tr>
                             
                         </tbody>

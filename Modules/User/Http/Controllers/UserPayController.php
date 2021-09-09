@@ -349,7 +349,7 @@ class UserPayController extends UserController
             $vnp_Returnurl = route('get_user.result_vnpay');
 
             $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-            $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
+            $vnp_OrderInfo = "Thanh toán đơn hàng phí dich vụ";
             $vnp_OrderType = 'billpayment';
             $vnp_Amount = $order->total_money;
             $vnp_Amount = (int)(str_replace('đ', '', str_replace('.', '', $order->total_money)));
@@ -471,7 +471,7 @@ class UserPayController extends UserController
             ];
             $order->fill($data_mm)->save();
             $data_bill = Uni_Order::find($id);
-            Mail::to($data_bill['email'])->send(new EmailOrderCK($data_bill));
+            Mail::to($data_bill['email'])->cc(['info@unimall.vn'])->send(new EmailOrderCK($data_bill));
             \Cart::destroy();
             return '/user/don-hang';
         }

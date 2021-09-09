@@ -4,6 +4,8 @@
         <div class="col-lg-8">
             <div class="card  box-shadow-0">
                 <div class="card-body pt-3">
+                    <a href="{{ getProductById($uni_comment->product_id ?? '') }}" target="blank">
+                    <h4>Sản phẩm: {{ getNameProduct($uni_comment->product_id ?? '') }}</h4></a>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
                         <input type="text" class="form-control keypress-count"  value="{{ old('name', $uni_comment->name ?? '') }}"  name="name">
@@ -60,8 +62,8 @@
                         <label for="exampleInputEmail1"> Trạng thái <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                <option title="Public" value="1">Public</option>
-                                <option title="hide" value="0">Hide</option>
+                                <option title="hide" value="0" {{ ($uni_comment->status ?? 0) == 0 ? 'selected' : '' }}>Chưa trả lời</option>
+                                <option title="Public" value="1" {{ ($uni_comment->status ?? 0) == 1 ? 'selected' : '' }}>Đã trả lời</option>
                             </select>
                         </div>
                     </div>

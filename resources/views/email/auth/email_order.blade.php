@@ -56,9 +56,9 @@
                                                             <td style="font-size:14px; font-family:Arial,Helvetica,sans-serif, sans-serif; color:#3c4858;"><div>
 <div style="text-align: justify;"><span style="font-size:16px;">Xin chào khách hàng {{ $data_bill['customer_name'] }}</span></div>
 
-<div style="text-align: justify;"><span style="font-size:16px;">Quý khách đang có hóa đơn số {{ $data_bill['code_invoice'] }} theo số hóa đơn được tạo vào ngày {{ date_format($data_bill['created_at'], 'd-m-Y') }} đang ở trạng thái chưa thanh toán.</span></div>
+<div style="text-align: justify;"><span style="font-size:16px;">Quý khách đang có đơn hàng số {{ $data_bill['code_invoice'] }} theo số đơn hàng được tạo vào ngày {{ date_format($data_bill['created_at'], 'd-m-Y') }} đang ở trạng thái chưa thanh toán.</span></div>
 
-<div style="text-align: justify;"><span style="font-size:16px;">Quý khách có thể thanh toán từ bây giờ. Nếu quý khách đã đặt mua hàng và đây là hóa đơn gia hạn thì việc thanh toán trước ngày đến hạn thanh toán là {{date_format(date_create($data_bill['end_date']),"d/m/Y") }} sẽ giúp quý khách tránh bị lỡ hạn thanh toán.</span></div>
+<div style="text-align: justify;"><span style="font-size:16px;">Quý khách có thể thanh toán từ bây giờ. Nếu quý khách đã đặt mua hàng và đây là đơn hàng gia hạn thì việc thanh toán trước ngày đến hạn thanh toán là {{date_format(date_create($data_bill['end_date']),"d/m/Y") }} sẽ giúp quý khách tránh bị lỡ hạn thanh toán.</span></div>
 
 <div style="text-align: justify;"><span style="font-size:16px;">Tổng tiền phải thanh toán: {{ formatVnd($data_bill['total_money']) }}</span></div>
 

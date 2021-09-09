@@ -17,12 +17,12 @@
                                 <thead>
                                     <tr class="order-list-li">
                                         <th class="text-center" scope="col">#</th>
-                                        <th scope="col" class="text-center">Mã hóa đơn</th>
+                                        <th scope="col" class="text-center">Mã đơn hàng</th>
                                         <th scope="col" class="text-center">Ngày đặt</th>
                                         <th scope="col" class="text-center">Phương thức thanh toán</th>
                                         <th scope="col" class="text-center">Tổng tiền</th>
                                         <th scope="col" class="text-center">Trạng thái</th>
-                                        <th scope="col" class="text-center">Xuất hóa đơn</th>
+                                        <th scope="col" class="text-center">Xuất đơn hàng</th>
                                         <th scope="col" class="text-center">Hủy đơn</th>
                                     </tr>
                                 </thead>

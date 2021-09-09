@@ -158,11 +158,11 @@ return [
         ],
        
         [
-            'name' => 'Đánh giá và bình luận',
+            'name' => 'Đánh giá và Câu hỏi',
             'class-icon' => 'la la-database',
             'sub' => [
                 [
-                    'name' => 'Bình luận',
+                    'name' => 'Câu hỏi',
                     'route' => 'get_admin.uni_comment.index'
                 ],
                 [
@@ -186,8 +186,12 @@ return [
             'class-icon' => 'la la-database',
             'sub' => [
                 [
-                    'name' => 'Danh sách',
+                    'name' => 'Liên hệ',
                     'route' => 'get_admin.uni_contact.index'
+                ],
+                [
+                    'name' => 'Theo dõi bảng tin',
+                    'route' => 'get_admin.uni_contact.indexNew'
                 ],
             ]
         ],

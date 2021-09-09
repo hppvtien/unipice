@@ -671,7 +671,6 @@ textarea,
     -webkit-appearance: none;
     box-sizing: border-box;
     font-weight: normal;
-    border-radius: 50px;
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
 }

@@ -105,7 +105,7 @@ class RechargeController extends Controller
         $vnp_Returnurl = route('get_user.result_vnpay');
 
         $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-        $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
+        $vnp_OrderInfo = "Thanh toán đơn hàng phí dich vụ";
         $vnp_OrderType = 'billpayment';
         $vnp_Amount = (int)$order->price_nap * 100;
         $vnp_Locale = 'vn';

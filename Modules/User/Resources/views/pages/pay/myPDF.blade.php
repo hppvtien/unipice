@@ -45,7 +45,7 @@
             @endforeach
         </div>
     </div>
-    <h2 class="text-center text-info">Khách hàng vui lòng cung cấp thêm thông tin để xuất hóa đơn.</h2>
+    <h2 class="text-center text-info">Khách hàng vui lòng cung cấp thêm thông tin để xuất đơn hàng.</h2>
     <div class="container">
         @foreach($listCarts as $item)
         <form id="form-order" action="{{ route('get_user.downPDF') }}" method="get">
@@ -102,7 +102,7 @@
             <div class="container">
                 <!-- Trigger the modal with a button -->
                 <button type="button" class="btn btn-info btn-lg pdf-exp" id="views" data-toggle="modal" data-target="#myModal">Xem trước</button>
-                <button type="submit" class="btn btn-success btn-lg pdf-exp" id="export">Xuất hóa đơn</button>
+                <button type="submit" class="btn btn-success btn-lg pdf-exp" id="export">Xuất đơn hàng</button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">

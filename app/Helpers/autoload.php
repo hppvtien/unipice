@@ -51,6 +51,17 @@ function execPostRequest($url, $data)
         $getSlug = '/san-pham/'.$tring.'.html';
         return $getSlug;
     }
+    /**
+     * get slug product by ID.
+     * @param int $id
+     * @return string $slug
+     */
+    function getProductById($id)
+    {
+        $slug_product = App\Models\Uni_Product::where('id',$id)->pluck('slug')->first();
+        $getSlug = '/san-pham/'.$slug_product;
+        return $getSlug;
+    }
        /**
      * get slug product.
      * @param string $tring

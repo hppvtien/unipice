@@ -24,22 +24,18 @@ class AdminConfigurationController extends AdminController
  
     public function store(Request $request)
     {
-        // dd($request);
-        try {
-            $configuration = Configuration::firstOrNew(['email' => $request->email]);
-            $data = $request->except(['_token', 'save', 'email','avatar','d_avatar']);
-            if($request->logo){
-                Storage::delete('public/uploads/'.$request->d_avatar);
-                $data['logo'] = $request->logo;
-            } else{
-                $data['logo'] = $configuration->logo;
-            }
-            $configuration->fill($data)->update();
-            $this->showMessagesSuccess('Cập nhật thành công');
-        } catch (\Exception $exception) {
-            $this->showMessagesError('Cập nhật thất bại');
-            Log::error($exception->getMessage());
+        $configuration = Configuration::first();
+        $data = $request->except(['_token', 'save', 'email','avatar','d_avatar']);
+        if($request->logo){
+            Storage::delete('public/uploads/'.$request->d_avatar);
+            $data['logo'] = $request->logo;
+        } else{
+            $data['logo'] = $configuration->logo;
         }
+        $data['email'] = $request->email;
+        $configuration->fill($data)->update();
+        $this->showMessagesSuccess('Cập nhật thành công');
+  
         return redirect()->back();
     }
 }

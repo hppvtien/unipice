@@ -902,7 +902,7 @@ $('.check-price').on('click', function() {
             $('.price-preview-sale').html('Giá: ' + numberVnd(size_price_sale));
             $('.price-gg-gg').html(numberVnd(size_price));
             $('.price-save').html('(Tiết kiệm: -' + price_save_not_store + '%)');
-            $('.js-add-cart').attr( 'data-size','1000');
+            $('.js-add-cart').attr( 'data-size',size_id);
         }
     }
     // alert(data_uid+'-'+size_id + '-' + size_price + '-' + size_price_sale + '-' + size_price_sale_store);

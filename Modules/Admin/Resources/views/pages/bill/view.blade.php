@@ -89,10 +89,10 @@
         </div>
 
         <div class="modal-body">
-            <h2 class="text-center text-success">Thông tin hóa đơn</h2>
+            <h2 class="text-center text-success">Thông tin đơn hàng</h2>
             <div class="name_invoice">
-                <p><span class="title-cc">Mã hóa đơn:</span> {{ $bill_view->method_invoice }}</p>
-                <p><span class="title-cc">Ngày lập hóa đơn:</span> {{ $bill_view->created_at }}</p>
+                <p><span class="title-cc">Mã đơn hàng:</span> {{ $bill_view->method_invoice }}</p>
+                <p><span class="title-cc">Ngày lập đơn hàng:</span> {{ $bill_view->created_at }}</p>
                 <p><span class="title-cc">Tên khách hàng:</span> {{ $bill_view->method_customer }}</p>
                 <p><span class="title-cc">Địa chỉ khách hàng:</span> {{ $bill_view->method_address }}</p>
                 @if ($bill_view->group_buy == 1)

@@ -331,26 +331,61 @@
                                                                     <tbody><tr>
                                                                         <td style="font-size:14px; font-family:Arial,Helvetica,sans-serif, sans-serif; color:#3c4858;"><div>
     <div style="text-align: justify;"><span style="font-size:16px;">Xin chào khách hàng {{ $data_bill['customer_name'] }}</span></div>
+    @if ($data_bill['type_pay'] ==1)
+    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách đang có đơn hàng số <b>{{ $data_bill['code_invoice'] }}</b> theo số đơn hàng được tạo vào ngày {{ date_format($data_bill['created_at'], 'd-m-Y') }} đang ở trạng thái chưa thanh toán.</span></div>
     
-    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách đang có hóa đơn số <b>{{ $data_bill['code_invoice'] }}</b> theo số hóa đơn được tạo vào ngày {{ date_format($data_bill['created_at'], 'd-m-Y') }} đang ở trạng thái chưa thanh toán.</span></div>
-    
-    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách có thể thanh toán từ bây giờ. Nếu quý khách đã đặt mua hàng và đây là hóa đơn gia hạn thì việc thanh toán trước ngày đến hạn thanh toán là {{date_format(date_create($data_bill['end_date']),"d/m/Y") }} sẽ giúp quý khách tránh bị lỡ hạn thanh toán.</span></div>
-    
-    <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
-    
-    <div style="text-align: justify;"><span style="font-size:16px;">Hình thức thanh toán của quý khách là Chuyển khoản ngân hàng.</span></div>
+    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách có thể thanh toán từ bây giờ. Nếu quý khách đã đặt mua hàng và đây là đơn hàng gia hạn thì việc thanh toán trước ngày đến hạn thanh toán là {{date_format(date_create($data_bill['end_date']),"d/m/Y") }} sẽ giúp quý khách tránh bị lỡ hạn thanh toán.</span></div>
     
     <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
     
-    <div style="text-align: justify;"><span style="font-size:16px;">Tổng tiền phải thanh toán: <b>{{ formatVnd($data_bill['total_money']) }}</b></span></div>
+    <div style="text-align: justify;"><span style="font-size:16px;">Hình thức thanh toán của quý khách là: Chuyển khoản ngân hàng.
+    @else 
+    <div style="text-align: justify;"><span style="font-size:16px;">Cám ơn Quý Khách đã đặt hàng tại UniMall, </span></div>
+    
+    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách đang có đơn hàng số <b>{{ $data_bill['code_invoice'] }}</b>  được tạo vào ngày <b>{{ date_format($data_bill['created_at'], 'd-m-Y') }}</b> đang ở trạng thái chưa thanh toán.</span></div>
+    
+    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách sẽ được hệ thống UniMall cập nhật thông tin liên quan tới đơn hàng của mình như thời gian giao hàng, và tình trạng đơn hàng...</span></div>
+    
+    <div style="text-align: justify;"><span style="font-size:16px;">Hình thức thanh toán của quý khách là: COD
+    @endif </span></div>
+    
+    <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
+    
+    <div style="text-align: justify;"><span style="font-size:16px;">Tổng tiền phải thanh toán: @if ($data_bill['type_pay'] ==1)<b>{{ formatVnd($data_bill['total_money']) }}</b>@else <b>Khi nhận được hàng</b> @endif</span></div>
     
     <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
     
     <div style="text-align: justify;"><span style="font-size:16px;">Ngày đến hạn thanh toán: {{date_format(date_create($data_bill['end_date']),"d/m/Y") }}</span></div>
     
     <div style="text-align: justify;"><span style="font-size:16px;">Xem hoá đơn được đính kèm theo email này: <a href="{{ route('get_user.generatePDF', 'data_id='.$data_bill['id']) }}" download>Xem chi tiết</a></span></div>
-    </div>
+    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách đã là thành viên của Spice Club chưa? Với 50K ra nhập thành viên Spice Club ,  Quý khách sẽ được hưởng đặc quyền 5% khuyễn mãi dùng trọn đời và nhiều ưu đãi đặc biệt khác. </span></div>
+    <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
+</div>
     </td>
+  
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td valign="top" class="rnb-container-padding" align="left">
+                                
+                                                                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <th class="rnb-force-col" valign="top">
+                                                                                            <table cellpadding="0" border="0" align="center" cellspacing="0" class="rnb-btn-col-content" style="margin:auto; border-collapse: separate;">
+                                                                                                <tbody><tr>
+                                                                                                    <td width="auto" valign="middle" bgcolor="#ea7236" align="center" height="40" style="font-size:18px; font-family:Arial,Helvetica,sans-serif; color:#ffffff; font-weight:normal; padding-left:20px; padding-right:20px; vertical-align: middle; background-color:#ea7236;border-radius:4px;border-top:0px None #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000;">
+                                                                                                        <span style="color:#ffffff; font-weight:normal;">
+                                                                                                                <a style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank" href="{{ route('get.register.spiceclub') }}">Đăng ký thành viên Spice Club</a>
+                                                                                                            </span>
+                                                                                                    </td>
+                                                                                                </tr></tbody></table>
+                                                                                            <table border="0" valign="top" cellspacing="0" cellpadding="0" width="550" align="center" class="rnb-col-1">
+                                                                                            </table>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
                                                                     </tr>
                                                                     </tbody></table>
     
@@ -373,8 +408,9 @@
                     <![endif]-->
     
                 </div></td>
-        </tr><tr>
-    
+        </tr>
+        @if ($data_bill['type_pay'] ==1)
+        <tr>
             <td align="center" valign="top">
     
                 <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
@@ -433,8 +469,8 @@
                     <![endif]-->
                 
             </div></td>
-        </tr><tr>
-    
+        </tr>
+        <tr>
             <td align="center" valign="top">
     
                 <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
@@ -623,7 +659,9 @@
                     <![endif]-->
     
                 </div></td>
-        </tr><tr>
+        </tr>
+        @endif
+        <tr>
     
             <td align="center" valign="top">
     

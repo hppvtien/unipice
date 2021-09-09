@@ -12,7 +12,7 @@ class AdminUniContactController extends AdminController
 {
     public function index()
     {
-        $contact = Uni_Contact::orderByDesc('id')
+        $contact = Uni_Contact::where('is_newsletter', 0)->orderByDesc('id')
             ->paginate(20);
 
         $viewData = [
@@ -20,6 +20,15 @@ class AdminUniContactController extends AdminController
         ];
 
         return view('admin::pages.uni_contact.index', $viewData);
+    }
+    public function indexNew()
+    {
+        $contact = Uni_Contact::where('is_newsletter', 1)->orderByDesc('id')
+            ->paginate(20);
+        $viewData = [
+            'contact' => $contact
+        ];
+        return view('admin::pages.uni_contact.indexNew', $viewData);
     }
  
     public function update(Request $request)

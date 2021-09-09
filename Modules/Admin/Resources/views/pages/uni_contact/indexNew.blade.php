@@ -83,32 +83,20 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th style="width: 80%;">Nội dung</th>
+                                    <th style="width: 80%;">Email</th>
                                     <th>Trạng thái</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($contact as $item)
+                                @forelse($contact as $key => $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
+                                    <th scope="row">{{ $key+1 }}</th>
                                     <td>
-                                        <div class="existed-seo-meta">
-                                            <h5>{{ $item->subject }}</h5>
-                                            <span class="page-title-seo title_seo">{{ $item->message }}</span>
-                                            <div class="page-url-seo ws-nm">
-                                                <p><span class="slug"><i class="fa fa-user-circle" ></i> {{ $item->name }}</span> <span class="slug"><i class="fa fa-envelope" ></i> <a href="mailto:{{ $item->email }}">{{ $item->email }}</a></span> <span class="slug"><i class="fa fa-phone"></i> <a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></span></p>
-                                            </div>
-                                            <div class="ws-nm">
-                                                <span style="color: #70757a;"><i class="fa fa-calendar"></i> {{ $item->created_at }}</span>
-                                            </div>
-                                        </div>
+                                        <a href="javascript:;" title="{{ $item->email }}">{{ $item->email }}</a>
                                     </td>
                                     <td>
-                                        <label class="switch">
-                                            <input type="checkbox" class="v_status" data-ckb="{{ $item->id }}" {{ $item->status == 1 ?'checked':'' }}>
-                                            <span class="slider round"></span>
-                                        </label>
+                                        <span class="badge {{ $item->email_verified_at != NULL ? 'badge-success':'badge-danger' }}">{{ $item->email_verified_at != NULL ? 'Đã chek email':'Chưa chek email' }}</span>
                                     </td>
                                     <td>
                                         <a href="{{ route('get_admin.uni_contact.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
@@ -127,5 +115,24 @@
             </div>
         </div>
     </div>
+    <!-- row closed -->
 </div>
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Nội dung liên hệ</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 @stop

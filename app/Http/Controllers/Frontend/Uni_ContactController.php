@@ -10,6 +10,7 @@ use DB;
 use Mail;
 use Carbon\Carbon;
 use App\Mail\EmailNew;
+use App\Mail\EmailConTact;
 use Illuminate\Support\Str;
 use Modules\Admin\Http\Requests\AdminContactRequest;
 
@@ -33,7 +34,7 @@ class Uni_ContactController extends Controller
             $menu1[] = $l;
         }
 
-        $infomation = DB::table('configurations')->select('logo', 'name', 'address', 'email', 'hotline', 'facebook', 'youtube', 'twitter', 'instagram', 'footer_bottom')->get();
+        $infomation = DB::table('configurations')->select('logo', 'name', 'address', 'email', 'hotline', 'facebook', 'youtube', 'twitter', 'instagram', 'footer_bottom','footer_description')->get();
         $infomation1 = [];
         foreach ($infomation as $l) {
             $infomation1['name'] = $l->name;
@@ -46,6 +47,7 @@ class Uni_ContactController extends Controller
             $infomation1['twitter'] = $l->twitter;
             $infomation1['instagram'] = $l->instagram;
             $infomation1['footer_bottom'] = $l->footer_bottom;
+            $infomation1['footer_description'] = $l->footer_description;
         }
 
         $viewdata = [
@@ -61,15 +63,16 @@ class Uni_ContactController extends Controller
         $data = [
             'name' => $request->name,
             'email' => $request->email,
+            'subject' => $request->subject,
             'phone' => $request->phone,
             'message' => $request->message,
             "created_at" =>  Carbon::now(),
             "updated_at" => null,
         ];
         $id = Uni_Contact::insertGetId($data);
-
         if ($id) {
-            return 'Bạn đã gửi thành công!!!!';
+            Mail::to('info@unimall.vn')->send(new EmailConTact($data));
+            return 'Bạn đã gửi thành công!';
         }
     }
     public function getNewsLetters(Request $request)

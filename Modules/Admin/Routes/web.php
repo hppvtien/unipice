@@ -108,6 +108,7 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
     // --------------------------------------------------------------------------------------------------------------------
     Route::prefix('contact')->group(function (){
         Route::get('/', 'AdminUniContactController@index')->name('get_admin.uni_contact.index')->middleware('permission:uni_contact_index|full');
+        Route::get('/new', 'AdminUniContactController@indexNew')->name('get_admin.uni_contact.indexNew')->middleware('permission:uni_contact_index|full');
         Route::post('/', 'AdminUniContactController@update')->name('get_admin.uni_contact.edit')->middleware('permission:uni_contact_edit|full');
         Route::get('delete/{id}', 'AdminUniContactController@delete')->name('get_admin.uni_contact.delete')->middleware('permission:uni_contact_delete|full');
     });

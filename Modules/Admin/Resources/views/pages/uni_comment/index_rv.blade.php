@@ -82,25 +82,40 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nội dung đánh giá</th>
+                                    <th style="width: 70%;">Nội dung đánh giá</th>
+                                    <th >Sản phẩm</th>
                                     <th>Trạng thái</th>
-                                    <th>Ngày đánh giá</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @forelse($uni_comment as $item)
+                                @forelse($uni_comment as $key => $item)
+                               
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
-                                    <td>{{ $item->noi_dung_comment }}</td>
+                                    <th scope="row">{{ $key+1 }}</th>
+                                    <td>
+                                        <div class="existed-seo-meta">
+                                            <h5>{{ $item->title }}</h5>
+                                            <span class="page-title-seo title_seo">{{ $item->noi_dung_comment }}</span>
+                                            <div class="page-url-seo ws-nm">
+                                                <p><span class="slug"><i class="fa fa-user-circle" ></i> {{ $item->name }}</span> <span class="slug"><i class="fa fa-envelope" ></i> <a href="mailto:{{ $item->email }}">{{ $item->email }}</a></span> <span class="slug"><i class="fa fa-phone"></i> <a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></span></p>
+                                            </div>
+                                            <div class="ws-nm">
+                                                <span style="color: #70757a;"><i class="fa fa-calendar"></i> {{ $item->created_at }}</span>
+                                            </div>
+                                        </div>
+                                       
+                                    </td>
+                                    <td>
+                                        <a href="{{ getProductById($item->product_id) }}" target="blank">{{ getNameProduct($item->product_id) }}</a>
+                                    </td>
                                     <td>
                                         <label class="switch">
                                             <input type="checkbox" class="v_status" data-url="{{ route('get_admin.uni_comment.editrv') }}" data-ckb="{{ $item->id }}" {{ $item->status == 1 ?'checked':'' }}>
                                             <span class="slider round"></span>
                                         </label>
                                     </td>
-                                    <td>{{ $item->created_at }}</td>
                                     <td>
                                         <a href="{{ route('get_admin.uni_comment.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
                                     </td>
@@ -111,6 +126,9 @@
                             </tbody>
 
                         </table>
+                    </div>
+                    <div>
+                        {!! $uni_comment->links() !!}
                     </div>
                 </div>
             </div>

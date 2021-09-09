@@ -275,7 +275,7 @@
                                 <td>{{ formatVnd($data_pdf->total_money) }} </td>
                             </tr>
                             <tr>
-                                <td colspan="3">Mã hóa đơn: {{ $data_pdf->code_invoice }}</td>
+                                <td colspan="3">Mã đơn hàng: {{ $data_pdf->code_invoice }}</td>
                             </tr>
                             <tr>
                                 <td colspan="3"><i> Đây là đơn hàng tự động từ hệ thống của <b>UniMall.</b> Nếu có thắc mắc hãy liên hệ Hotline: <b>{{ $configuration->hotline }}</b> . <br>

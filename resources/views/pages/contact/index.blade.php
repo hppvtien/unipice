@@ -18,7 +18,7 @@
                                             Liên Hệ Chúng Tôi Ngay
                                         </h2>
                                         <p>
-                                            {{ $info['footer_bottom'] }}
+                                            {{ $info['footer_description'] }}
                                         </p>
                                     </div>
 
