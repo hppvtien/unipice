@@ -61,6 +61,6 @@ class UserCartController extends Controller
         ];
         // return view('user::pages.pay.downPDF', $data);
         $pdf = \PDF::loadView('user::pages.pay.downPDF', $data);
-        return $pdf->download('don-hang.pdf');
+        return $pdf->download('don-hang-'.$data_pdf->code_invoice.'.pdf');
     }
 }

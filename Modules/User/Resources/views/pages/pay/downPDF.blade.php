@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: DejaVu Sans;
-            font-size: 12px;
+            font-size: 10px;
             color: #122a67;
             letter-spacing: 1px;
            color: #0b2d25;
@@ -221,17 +221,31 @@
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">Tên sản phẩm</th>
-                                <th scope="col">Sô lượng</th>
-                                <th scope="col">Đơn giá</th>
+                                <th scope="col" style="width: 5%;">Stt</th>
+                                <th scope="col" style="width: 20%;">Tên sản phẩm</th>
+                                <th scope="col" style="width: 10%;">Số lượng</th>
+                                <th scope="col" style="width: 5%;">Đơn vị</th>
+                                <th scope="col" style="width: 10%;">Đơn giá</th>
+                                <th scope="col" style="width: 10%;">Thành tiền</th>
+                                <th scope="col" style="width: 10%;">Thuế suất GTGT</th>
+                                <th scope="col" style="width: 10%;">Tiền thuế</th>
+                                <th scope="col" style="width: 15%;">Cộng</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (json_decode($data_pdf->cart_info) as $item)
                             <tr>
+                                <td>1</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->qty }}</td>
-                                <td>{{ formatVnd($item->price) }}</td>
+                                <td>lọ</td>
+                                <td>800.345</td>
+                                <td>1.600.000</td>
+                                <td>10%</td>
+                                <td>500.000</td>
+                                <td>22.000.000</td>
+                                
                             </tr>
                             @endforeach
                             <tr>
