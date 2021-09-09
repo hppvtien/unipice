@@ -11,7 +11,7 @@
             <tr class="totals sub">
                 <th class="mark" scope="row">VAT</th>
                 <td class="amount">
-                    <span class="price" data-th="Subtotal" id="total_vat_product">{{ subtotalTax(\Cart::content()) }} đ</span>
+                    <span class="price" data-th="Subtotal" id="total_vat_product">{{ formatVnd(subtotalTax(\Cart::content())) }} đ</span>
                 </td>
             </tr>
             @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')))

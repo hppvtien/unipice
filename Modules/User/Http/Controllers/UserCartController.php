@@ -27,6 +27,7 @@ class UserCartController extends Controller
     }
     public function updateCart(Request $request)
     {
+        // dd($request->all());
         \SEOMeta::setTitle('Giỏ hàng');
         
         if ($request->item_qty) {
@@ -34,7 +35,12 @@ class UserCartController extends Controller
             \Cart::update(
                 $request->item_row,
                 [
+                    'rowId'=>$request->item_row,
+                    'id'=>$request->item_id,
+                    'name'=>getNameProduct($request->item_id),
                     'qty'=>$request->item_qty,
+                    'price'=>$request->data_price,
+                    'weight'=>round($request->data_size,2),
                     'options' => [
                         "images" => $request->data_image,
                         "sale" => $request->data_store,

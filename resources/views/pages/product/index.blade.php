@@ -173,8 +173,8 @@
                                                                         <br>
 
 
-                                                                        <span class="a-price price-single price-preview" style="font-size: 1rem !important;">
-                                                                            Giá / Sản phẩm: {{ $product['size_product'][0]['price_sale_store'] == null ? 'liên hệ': formatVnd($product['size_product'][0]['price_sale_store']) }}
+                                                                        <span class="a-price price-single " style="font-size: 1rem !important;">
+                                                                            Giá / Sản phẩm: <span class="price-sale-preview{{ $product->id }} price-preview">{{ $product['size_product'][0]['price_sale_store'] == null ? 'liên hệ': formatVnd($product['size_product'][0]['price_sale_store']) }}</span>
                                                                         </span>
                                                                         <?php if ($product->qty) { ?>
                                                                             <span class="text-dark float-right line-height-single4"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
@@ -234,7 +234,7 @@
                                                             <?php if ($product->qty != null) { ?>
                                                                 <?php if (checkUid(get_data_user('web')) != null) { ?>
                                                                     <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
-                                                                        <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-id="{{ $product->id }}" data-min-box="{{ $product['size_product'][0]['min_box'] }}" data-qtyinbox="{{ $product['size_product'][0]['price_sale_store'] }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
+                                                                        <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-size="{{ getSizeId($product->id) }}" data-id="{{ $product->id }}" data-min-box="{{ getMinBox($product->id) }}" data-qtyinbox="{{ getQtyInBox($product->id) }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
                                                                     </div>
                                                                 <?php } else { ?>
                                                                     <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">

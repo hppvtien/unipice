@@ -754,7 +754,7 @@
                                                         <div class="product-item-name-block">
                                                             <div class="details-qty">
                                                                 <span class="label">Vat: </span>
-                                                                <span class="value" id="total-vat-cart">{{ \Cart::tax(0,0,'.') }} ₫</span>
+                                                                <span class="value" id="total-vat-cart">{{ formatVnd(subtotalTax(\Cart::content())) }} ₫</span>
                                                             </div>
                                                         </div>
                                                     </li>
@@ -784,9 +784,9 @@
                                                             <div class="details-qty">
                                                                 <span class="label">Tổng đơn hàng: </span>
                                                                 @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')) != null)
-                                                                <span class="value" id="total-cart"><span>{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span></span>
+                                                                <span class="value" id="total-cart"><span>{{ formatVnd(((int)Cart::subtotal(0,0,'') + (int)subtotalTax(\Cart::content())*(1-(getDiscount()[0])/100))) }}</span></span>
                                                                 @else
-                                                                <span class="value" id="total-cart"><span>{{ formatVnd((int)Cart::total(0,0,'')) }}</span></span>
+                                                                <span class="value" id="total-cart"><span>{{ formatVnd((int)Cart::subtotal(0,0,'') + (int)subtotalTax(\Cart::content())) }}</span></span>
                                                                 @endif
                                                             </div>
                                                         </div>
