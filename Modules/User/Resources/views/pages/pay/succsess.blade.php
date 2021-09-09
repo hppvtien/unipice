@@ -556,19 +556,20 @@
                             </tr>
                             @empty
                             @endforelse
+                            @if ($order->total_vouchers != null)
                             <tr>
                                 <td colspan="1" class="font-weight-bold">Phiếu giảm giá</td>
                                 <td colspan="1" class="font-weight-bold">{{ $order->vouchers }}</td>
                                 <td colspan="1" class="font-weight-bold">{{ getPercentVouchers($order->vouchers) }}%</td>
                                 <td><span>{{ formatVnd($order->total_vouchers) }} </span></td>
                             </tr>
+                            @else
+                                
+                            @endif
+                            
                             <tr>
                                 <td colspan="3" class="font-weight-bold">Tổng tiền</td>
                                 <td><span>{{ formatVnd($order->total_no_vat) }} </span></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="font-weight-bold">VAT</td>
-                                <td><span>{{ formatVnd($order->total_vat) }} </span></td>
                             </tr>
                             @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')) != null)
                             <tr>
@@ -578,10 +579,15 @@
                             @else
                             @endif
                             <tr>
+                                <td colspan="3" class="font-weight-bold">VAT</td>
+                                <td><span>{{ formatVnd($order->total_vat) }} </span></td>
+                            </tr>
+                            <tr>
                                 <td colspan="3" class="font-weight-bold">Tổng Đơn Hàng</td>
                                 <td><span>{{ formatVnd($order->total_no_vat + $order->total_vat) }}</span></td>
                             </tr>
-                            <tr>
+                            @if ($order->total_ship != null)
+                                <tr>
                                 <td colspan="3" class="font-weight-bold">Phí ship</td>
                                 <td><span>{{ formatVnd($order->total_ship) }}</span></td>
                             </tr>
@@ -589,6 +595,12 @@
                                 <td colspan="3" class="font-weight-bold">Tổng Đơn Hàng + ship</td>
                                 <td><span>{{ formatVnd($order->total_money) }}</span></td>
                             </tr>
+                            @else
+                            <tr>
+                                <td colspan="3" class="font-weight-bold">Tổng Đơn Hàng phải thanh toán</td>
+                                <td><span>{{ formatVnd($order->total_money) }}</span></td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>

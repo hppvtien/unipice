@@ -27,14 +27,19 @@ class UserCartController extends Controller
     }
     public function updateCart(Request $request)
     {
+        // dd($request->all());
         \SEOMeta::setTitle('Giỏ hàng');
         
-        if ($request->data_qty) {
+        if ($request->item_qty) {
             // \Cart::update($request->item_row, $request->item_qty);
             \Cart::update(
                 $request->item_row,
                 [
+                    'rowId'=>$request->item_row,
+                    'id'=>$request->item_id,
+                    'name'=>getNameProduct($request->item_id),
                     'qty'=>$request->item_qty,
+                    'price'=>$request->data_price,
                     'weight'=>round($request->data_size,2),
                     'options' => [
                         "images" => $request->data_image,
@@ -44,7 +49,6 @@ class UserCartController extends Controller
                 ]
             );
             $listCarts = \Cart::content();
-            dd($listCarts);
             $view = view("user::pages.cart.include.cart_info", compact('listCarts'))->render();
             return $view;
         }

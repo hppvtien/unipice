@@ -397,9 +397,9 @@
                                         </th>
                                         <td class="amount" data-th="Order Total">
                                             @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')))
-                                            <strong><span class="price">{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span></strong>
+                                            <strong><span class="price">{{ formatVnd(((int)Cart::subtotal(0,0,'') + (int)subtotalTax(\Cart::content())*(1-(getDiscount()[0])/100))) }}</span></strong>
                                             @else
-                                            <strong><span class="price">{{ formatVnd((int)Cart::total(0,0,'')) }}</span></strong>
+                                            <strong><span class="price">{{ formatVnd((int)Cart::subtotal(0,0,'') + (int)subtotalTax(\Cart::content())) }}</span></strong>
                                             @endif
 
                                         </td>
@@ -467,8 +467,8 @@
                                     <td data-th="Qty">
                                         <div class="field qty">
                                             <div class="control qty" style="padding: 0!important">
-                                                <label for="cart-{{ $item->id }}-qty" style="display:flex">
-                                                    <input id="cart-{{ $item->id }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}" 
+                                                <label for="cart-{{ $item->id }}-{{ $item->weight }}-qty" style="display:flex">
+                                                    <input id="cart-{{ $item->id }}-{{ $item->weight }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}" 
                                                     class="input-text qty update-qty" data-url="{{ route('get_user.updatecart',['id' => $item->id,'size_id' => $item->weight]) }}" data-size="{{ $item->weight }}"
                                                     name="cart[qty]" item-id="{{ $item->id }}" data-qty="{{ $item->qty }}" value="{{ $item->qty }}" type="number" size="4" min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" 
                                                     data-price="{{ $item->price }}" data-image="{{ $item->options->images }}" data-store="{{ $item->options->sale }}" max="100" step="any" title="Qty">

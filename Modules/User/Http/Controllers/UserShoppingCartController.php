@@ -109,7 +109,7 @@ class UserShoppingCartController extends UserController
                             'sale' => $type_box,
                             'product_vat' => $product_vat ,
 
-                        ]
+                        ],
                     ]);
                 }
                 $count_cart = count($listCarts);
