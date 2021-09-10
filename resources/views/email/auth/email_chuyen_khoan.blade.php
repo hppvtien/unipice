@@ -567,7 +567,6 @@
                                             </tr>
                                             <tr>
                                                 <td valign="top" class="rnb-container-padding" align="left">
-                                                    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách đã là thành viên của Spice Club chưa? Với 50K ra nhập thành viên Spice Club ,  Quý khách sẽ được hưởng đặc quyền 5% khuyễn mãi dùng trọn đời và nhiều ưu đãi đặc biệt khác. </span></div>
                                                     <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
                                                     <table width="100%" border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container">
                                                         <tbody>

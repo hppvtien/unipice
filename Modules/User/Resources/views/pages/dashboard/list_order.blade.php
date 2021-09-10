@@ -115,12 +115,12 @@
                                                 @if ($item->status == 0 && Carbon\Carbon::now() < $item->created_at->subHours(-24))
                                                     <!-- Button trigger modal -->
                                                     <button type="button" style="margin-top: 10px;" class="btn btn-danger" data-toggle="modal"
-                                                        data-target="#exampleModals">
+                                                        data-target="#exampleModal0">
                                                         <i class="fa fa-trash text-white"></i>
                                                     </button>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModals" tabindex="-1"
+                                                    <div class="modal fade" id="exampleModal0" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -143,12 +143,12 @@
                                                    
                                                 @elseif($item->status == 3)
                                                     <button type="button" style="margin-top: 10px;" class="btn btn-success"
-                                                        data-toggle="modal" data-target="#exampleModal">
+                                                        data-toggle="modal" data-target="#ms3">
                                                         <i class="fa fa-commenting-o"></i>
                                                     </button>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                    <div class="modal fade" id="ms3" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -169,12 +169,12 @@
                                                     </div>
                                                     @else
                                                     <button type="button" style="margin-top: 10px;" class="btn btn-info"
-                                                        data-toggle="modal" data-target="#exampleModal">
+                                                        data-toggle="modal" data-target="#exampleModaln">
                                                         <i class="fa fa-clock-o text-white"></i>
                                                     </button>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                    <div class="modal fade" id="exampleModaln" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -189,7 +189,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Đơn hàng của bạn đã được hệ thống chấp nhận và đang
+                                                                    <p>Đơn hàng của bạn đã được hệ thống chấp nhận hoặc đang
                                                                         xử lý.</p>
                                                                 </div>
                                                             </div>
