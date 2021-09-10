@@ -101,7 +101,7 @@ $(".js-add-cart").on("click", function() {
     let data_minbox = Number($(this).attr("data-min-box"));
     let data_id = $(this).attr("data-id");
     let data_price_temp = $('.price-sale-preview' + data_id).text();
-    let data_price = Number((data_price_temp.replaceAll('Giá:','')).replaceAll('₫','').replaceAll('.',''));
+    let data_price = Number((data_price_temp.replaceAll('Giá:', '')).replaceAll('₫', '').replaceAll('.', ''));
     let data_count = $(this).attr("data-count");
     let qty_user = $("#js-qty" + data_id).val();
     $.ajax({
@@ -147,17 +147,17 @@ $(document).on('ready', function() {
 });
 $(".update-qty").on("change", function() {
     $('.close-btn-ud').css({ "display": "block", "background": "rgba(192,192,192, 0.9)", "z-index": "99999999" }).slideDown('slow');
-    
+
     let item_id = $(this).attr("item-id");
     let data_size = $(this).attr("data-size");
-    let URL = $("#cart-"+item_id +"-"+data_size+"-qty").attr("data-url");
-    let item_qty = $("#cart-"+item_id +"-"+data_size+"-qty").val();
-    let data_qty = $("#cart-"+item_id +"-"+data_size+"-qty").attr('data-qty');
-    let item_row = $("#cart-"+item_id +"-"+data_size+"-qty").attr("data-row");
-    let item_min = $("#cart-"+item_id +"-"+data_size+"-qty").attr("min");
-    let data_price = $("#cart-"+item_id +"-"+data_size+"-qty").attr("data-price");
-    let data_image = $("#cart-"+item_id +"-"+data_size+"-qty").attr("data-image");
-    let data_store = $("#cart-"+item_id +"-"+data_size+"-qty").attr("data-store");
+    let URL = $("#cart-" + item_id + "-" + data_size + "-qty").attr("data-url");
+    let item_qty = $("#cart-" + item_id + "-" + data_size + "-qty").val();
+    let data_qty = $("#cart-" + item_id + "-" + data_size + "-qty").attr('data-qty');
+    let item_row = $("#cart-" + item_id + "-" + data_size + "-qty").attr("data-row");
+    let item_min = $("#cart-" + item_id + "-" + data_size + "-qty").attr("min");
+    let data_price = $("#cart-" + item_id + "-" + data_size + "-qty").attr("data-price");
+    let data_image = $("#cart-" + item_id + "-" + data_size + "-qty").attr("data-image");
+    let data_store = $("#cart-" + item_id + "-" + data_size + "-qty").attr("data-store");
     let total_price = item_qty * data_price;
     if (item_qty < item_min) {
         $("#text-qtyerr" + item_id).text("Tối thiểu: " + item_min + " thùng").slideDown(this);
@@ -186,7 +186,7 @@ $(".update-qty").on("change", function() {
                     }
                     $("#cart-totals").html(data);
                     $("#price" + item_id).html(formatNumber(total_price + " đ"));
-                    location.reload();
+                    // location.reload();
                 }
             });
         });
@@ -889,9 +889,9 @@ $('.check-price').on('click', function() {
             $('.price-gg-gg').html(numberVnd(size_price));
             $('#qty-in-box-store').html(size_qty_inbox + ' sản phẩm');
             $('#min-box-store').html(size_min_box + ' thùng');
-            $('.js-add-cart').attr( 'data-size',size_id);
-            $('.js-add-cart').attr( 'data-qtyinbox',size_qty_inbox);
-            $('.js-add-cart').attr( 'data-min-box',size_min_box);
+            $('.js-add-cart').attr('data-size', size_id);
+            $('.js-add-cart').attr('data-qtyinbox', size_qty_inbox);
+            $('.js-add-cart').attr('data-min-box', size_min_box);
         }
 
     } else {
@@ -902,7 +902,7 @@ $('.check-price').on('click', function() {
             $('.price-preview-sale').html('Giá: ' + numberVnd(size_price_sale));
             $('.price-gg-gg').html(numberVnd(size_price));
             $('.price-save').html('(Tiết kiệm: -' + price_save_not_store + '%)');
-            $('.js-add-cart').attr( 'data-size',size_id);
+            $('.js-add-cart').attr('data-size', size_id);
         }
     }
     // alert(data_uid+'-'+size_id + '-' + size_price + '-' + size_price_sale + '-' + size_price_sale_store);

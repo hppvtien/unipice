@@ -275,7 +275,6 @@ function execPostRequest($url, $data)
     function getSizeName($id)
     {
         $sizeName = App\Models\Uni_Size::where('id',$id)->pluck('name')->first();
-        $nameType = $sizeName;
         return $sizeName;
     }
                /**

@@ -367,7 +367,6 @@
                         <div class="table-wrapper">
                             <table class="data table totals">
                                 <tbody>
-
                                     <tr class="totals sub">
                                         <th class="mark" scope="row">Tổng tiền</th>
                                         <td class="amount">
@@ -444,20 +443,14 @@
                                                 </span>
                                             </span> <br>
                                             <span class="font-weight-bold">{{ $item->name }}</span> <br>
-                                            <span>Khối lượng:  <b>{{ getSizeName($item->weight) }}</b></span>
+                                            <span>Khối lượng:  <b>{{ getSizeName($item->weight) }} / {{ getSizeNameType(round($item->weight,0)) }}</b></span>
                                         </a>
                                     </td>
                                     <td data-th="Price">
                                         <span class="price-excluding-tax" data-label="Excl. Tax">
                                             <span class="cart-price">
                                                 <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ formatVnd($item->price) }}
-                                                    <?php if ($item->options->sale == 'combo') {
-                                                        echo '/ combo';
-                                                    } elseif ($item->options->sale == 'user') {
-                                                        echo '/ hộp';
-                                                    } else {
-                                                        echo '/ thùng';
-                                                    } ?>
+                                                  
                                                 </span>
                                                 
                                             </span>
@@ -472,15 +465,7 @@
                                                     class="input-text qty update-qty" data-url="{{ route('get_user.updatecart',['id' => $item->id,'size_id' => $item->weight]) }}" data-size="{{ $item->weight }}"
                                                     name="cart[qty]" item-id="{{ $item->id }}" data-qty="{{ $item->qty }}" value="{{ $item->qty }}" type="number" size="4" min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" 
                                                     data-price="{{ $item->price }}" data-image="{{ $item->options->images }}" data-store="{{ $item->options->sale }}" max="100" step="any" title="Qty">
-                                                    <span style="order:2;margin-top: 5px;margin-left: 5px">
-                                                        <?php if ($item->options->sale == 'combo') {
-                                                            echo 'combo';
-                                                        } elseif ($item->options->sale == 'user') {
-                                                            echo 'hộp';
-                                                        } else {
-                                                            echo 'thùng';
-                                                        } ?>
-                                                    </span>
+                                                
                                                 </label>
                                                 <div class="text-danger" id="text-qtyerr{{ $item->id }}"></div>
                                             </div>

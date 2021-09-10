@@ -119,7 +119,7 @@
                                                                                 size-qty-inbox="{{ $size['qty_in_box'] }}" 
                                                                                 size-min-box="{{ $size['min_box'] }}"
                                                                                 data-img="{{ $size['image'] }}" <?php } ?> 
-                                                                            style="padding: 15px 10px;cursor: pointer;">{{ getSizeName($size['size_id']) }}g</b>
+                                                                            style="padding: 15px 10px;cursor: pointer;">{{ getSizeName($size['size_id']) }}</b>
                                                                             @empty
 
                                                                             @endforelse
