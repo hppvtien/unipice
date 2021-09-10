@@ -603,7 +603,7 @@
                                     <div class="field _required" name="shippingAddress.fax">
                                         <div class="control">
                                             <div class="m-text-input  ">
-                                                <input class="a-text-input m-text-input__input" require value="{{ checkUid(get_data_user('web')) != null ? $store->store_phone : $uni_user->phone }}" type="text" name="phone" aria-invalid="false" id="phoneck">
+                                                <input class="a-text-input m-text-input__input" require value="{{ checkUid(get_data_user('web')) != null ? $store->store_phone : get_data_user('web','phone') }}" type="text" name="phone" aria-invalid="false" id="phoneck">
                                                 <label class="a-form-label m-text-input__label" for="phoneck">
                                                     <span>Số điện thoại</span>
                                                 </label>

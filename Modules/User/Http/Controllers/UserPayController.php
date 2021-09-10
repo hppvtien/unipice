@@ -450,7 +450,6 @@ class UserPayController extends UserController
             if ($momo_Url) {
                 $data_mm = [
                     'user_id' => get_data_user('web'),
-                    'phone' => $request->method_phone,
                     'type_pay' => $type_pay,
                     'pay_code' => $orderId,
                     'pay_node' =>  $orderInfo,
@@ -465,7 +464,6 @@ class UserPayController extends UserController
         } else {
             $data_mm = [
                 'user_id' => get_data_user('web'),
-                'phone' => $request->method_phone,
                 'type_pay' => $type_pay,
                 'end_date' => Carbon::now()->subDay(-3),
             ];
