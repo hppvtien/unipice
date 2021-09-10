@@ -76,45 +76,55 @@ return [
 
     ],
     'pay_type' => [
+        0=>[
+            'name' => 'Chưa hoàn thành đặt hàng',
+            'type' => '0',
+            'class' => '',
+            'bank' => '',
+            'account' => '',
+            'address' => '',
+            'hotline' => '',
+            'email' => ''
+        ],
         1=>[
             'name' => 'Chuyển khoản',
             'type' => '1',
             'class' => '',
-            'bank' => 'Vib - Ngân Hàng Quốc Tế',
-            'account' => '111444555522',
-            'address' => 'Hai Phong',
-            'hotline' => '096999888',
-            'email' => 'thacmac@gmail.com'
+            'bank' => '',
+            'account' => '',
+            'address' => '',
+            'hotline' => '',
+            'email' => ''
         ],
         2=>[
             'name' => 'COD',
             'type' => '2',
             'class' => '',
             'bank' => 'Thanh toán khi nhận hàng',
-            'account' => '111444555522',
-            'address' => 'Hai Phong',
-            'hotline' => '096999888',
-            'email' => 'thacmac@gmail.com'
+            'account' => '',
+            'address' => '',
+            'hotline' => '',
+            'email' => ''
         ],
         3=>[
             'name' => 'MOMO',
             'type' => '3',
             'class' => '',
             'bank' => 'Bạn phải có tài khoản Momo',
-            'account' => '111444555522',
-            'address' => 'Hai Phong',
-            'hotline' => '096999888',
-            'email' => 'thacmac@gmail.com'
+            'account' => '',
+            'address' => '',
+            'hotline' => '',
+            'email' => ''
         ],
         4=>[
             'name' => 'VNPAY',
             'type' => '4',
             'class' => '',
             'bank' => 'Bạn phải có tài khoản VNPay',
-            'account' => '111444555522',
-            'address' => 'Hai Phong',
-            'hotline' => '096999888',
-            'email' => 'thacmac@gmail.com'
+            'account' => '',
+            'address' => '',
+            'hotline' => '',
+            'email' => ''
         ],
     ]
 

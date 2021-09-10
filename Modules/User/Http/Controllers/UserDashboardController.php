@@ -13,6 +13,8 @@ use App\Models\Product_Category;
 use DB;
 use Psy\Util\Str;
 use Sentry;
+use Mail;
+use App\Mail\UserOrderDelete;
 use App\Models\Favourite;
 use App\Models\Uni_FlashSale;
 use Carbon\Carbon;
@@ -214,9 +216,11 @@ class UserDashboardController extends Controller
     // Xóa đơn abc jav
     public function delete_order(Request $request)
     {
-        $uni_delete_order = Uni_Order::where('id', $request->data_id)->first();
+        $uni_order = Uni_Order::where('id', $request->data_id)->first();
             $storle['status'] = 3;
-            $uni_delete_order->fill($storle)->save();
-
+            $uni_order->fill($storle)->save();
+        if($uni_order){
+            Mail::to($uni_order['email'])->cc(['info@unimall.vn','tlead01@gmail.com'])->send(new UserOrderDelete($uni_order));
+        }
     }
 }

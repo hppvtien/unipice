@@ -534,7 +534,7 @@
                         <p class="font-weight-bold"><span class="text-info">Ngân hàng: {{ $bank_info->name }}</span></p> 
                         <p class="font-weight-bold"><span class="text-info">Chi nhánh: {{ $bank_info->address }}</span></p>
                         <p class="font-weight-bold"><span class="text-info">Số tài khoản: {{ $bank_info->account }}</span></p>
-                        <p class="font-weight-bold"><span class="text-info">Chủ tài khoản:: {{ $bank_info->master }}</span></p>
+                        <p class="font-weight-bold"><span class="text-info">Chủ tài khoản: {{ $bank_info->master }}</span></p>
                         <p class="font-weight-bold"><span class="text-info">Điện thoại hỗ trợ: {{ $bank_info->hotline }}</span></p>
                         <p class="font-weight-bold"><span class="text-info">Email hỗ trợ: {{ $bank_info->email }}</span></p>
                         <p class="font-weight-bold"><span class="text-info">Nội dung chuyển khoản: Thanh toan don hang #SC{{ $order->id }} email {{get_data_user('web','email')}}</span></p>

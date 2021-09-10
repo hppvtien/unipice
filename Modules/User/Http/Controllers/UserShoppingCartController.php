@@ -79,7 +79,7 @@ class UserShoppingCartController extends UserController
                     $qty_cart = $request->qty_user;
                     $product_vat = ($uni_product->product_vat * $price_cart * $qty_cart)/100;
                 }
-                if (!$product_size) {
+                if (!$uni_product) {
                     return response([
                         'status' => 404
                     ]);

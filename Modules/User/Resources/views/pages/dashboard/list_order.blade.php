@@ -98,8 +98,7 @@
                                                 </td>
                                             @else
                                                 <td class="text-center"><a class="btn btn-info w-75"
-                                                        href="{{ route('get_user.paysuccsess', $item->id) }}">Đơn hàng
-                                                        chưa thanh toán</a></td>
+                                                        href="{{ route('get_user.paysuccsess', $item->id) }}">Chưa hoàn thành đặt hàng</a></td>
                                             @endif
                                             <td class="text-center">{{ formatVnd($item->total_money) }} </td>
                                             <td class="text-center"><span
@@ -115,7 +114,7 @@
                                             <td class="text-center">
                                                 @if ($item->status == 0 && Carbon\Carbon::now() < $item->created_at->subHours(-24))
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" style="margin-top: 10px;" class="btn btn-info" data-toggle="modal"
+                                                    <button type="button" style="margin-top: 10px;" class="btn btn-danger" data-toggle="modal"
                                                         data-target="#exampleModals">
                                                         <i class="fa fa-trash text-white"></i>
                                                     </button>
@@ -142,7 +141,33 @@
                                                         </div>
                                                     </div>
                                                    
-                                                @else
+                                                @elseif($item->status == 3)
+                                                    <button type="button" style="margin-top: 10px;" class="btn btn-success"
+                                                        data-toggle="modal" data-target="#exampleModal">
+                                                        <i class="fa fa-commenting-o"></i>
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                        role="dialog" aria-labelledby="exampleModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" style="color: #000000"
+                                                                        id="exampleModalLabel">Hệ thống đã tiếp nhận yêu cầu hủy đơn của bạn!</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Đơn hàng của bạn đã được hệ thống xử lý hủy đơn.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @else
                                                     <button type="button" style="margin-top: 10px;" class="btn btn-info"
                                                         data-toggle="modal" data-target="#exampleModal">
                                                         <i class="fa fa-clock-o text-white"></i>
@@ -164,13 +189,12 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Đơn hàng của bạn đã được hệ thông chập nhận và đang
+                                                                    <p>Đơn hàng của bạn đã được hệ thống chấp nhận và đang
                                                                         xử lý.</p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 @endif
                                             </td>
                                         </tr>

@@ -217,11 +217,6 @@
     
         <tbody><tr>
             <td align="center" valign="top">
-            <!--[if gte mso 9]>
-                            <table align="center" border="0" cellspacing="0" cellpadding="0" width="590" style="width:590px;">
-                            <tr>
-                            <td align="center" valign="top" width="590" style="width:590px;">
-                            <![endif]-->
                 <table border="0" cellpadding="0" cellspacing="0" width="590" class="templateContainer" style="max-width:590px!important; width: 590px;">
             <tbody><tr>
     
@@ -247,15 +242,6 @@
             <td align="center" valign="top">
     
                 <div style="background-color: rgb(11, 45, 37); border-radius: 0px;">
-                    
-                    <!--[if mso]>
-                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-                    <tr>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    <td valign="top" width="590" style="width:590px;">
-                    <![endif]-->
                     <table class="rnb-del-min-width" width="100%" cellpadding="0" border="0" cellspacing="0" style="min-width:590px;" name="Layout_1" id="Layout_1">
                     <tbody><tr>
                         <td class="rnb-del-min-width" align="center" valign="top" style="min-width:590px;">
@@ -286,30 +272,13 @@
                         </td>
                     </tr>
                 </tbody></table>
-                <!--[if mso]>
-                    </td>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    </tr>
-                    </table>
-                    <![endif]-->
-                
+               
             </div></td>
         </tr><tr>
     
             <td align="center" valign="top">
     
                 <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
-                
-                    <!--[if mso]>
-                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-                    <tr>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    <td valign="top" width="590" style="width:590px;">
-                    <![endif]-->
                     <table class="rnb-del-min-width" width="100%" cellpadding="0" border="0" cellspacing="0" style="min-width:100%;" name="Layout_8">
                     <tbody><tr>
                         <td class="rnb-del-min-width" align="center" valign="top">
@@ -330,7 +299,7 @@
     
                                                                     <tbody><tr>
                                                                         <td style="font-size:14px; font-family:Arial,Helvetica,sans-serif, sans-serif; color:#3c4858;"><div>
-    <div style="text-align: justify;"><span style="font-size:16px;">Xin chào khách hàng {{ $data_bill['customer_name'] }}</span></div>
+    <div style="text-align: justify;"><span style="font-size:16px;">Xin chào khách hàng <b>{{ $data_bill['customer_name'] }}</b></span></div>
     @if ($data_bill['type_pay'] ==1)
     <div style="text-align: justify;"><span style="font-size:16px;">Quý khách đang có đơn hàng số <b>{{ $data_bill['code_invoice'] }}</b> theo số đơn hàng được tạo vào ngày {{ date_format($data_bill['created_at'], 'd-m-Y') }} đang ở trạng thái chưa thanh toán.</span></div>
     
@@ -354,39 +323,16 @@
     <div style="text-align: justify;"><span style="font-size:16px;">Tổng tiền phải thanh toán: @if ($data_bill['type_pay'] ==1)<b>{{ formatVnd($data_bill['total_money']) }}</b>@else <b>Khi nhận được hàng</b> @endif</span></div>
     
     <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
-    
+    @if ($data_bill['type_pay'] ==1)
     <div style="text-align: justify;"><span style="font-size:16px;">Ngày đến hạn thanh toán: {{date_format(date_create($data_bill['end_date']),"d/m/Y") }}</span></div>
-    
+    @endif
     <div style="text-align: justify;"><span style="font-size:16px;">Xem hoá đơn được đính kèm theo email này: <a href="{{ route('get_user.generatePDF', 'data_id='.$data_bill['id']) }}" download>Xem chi tiết</a></span></div>
-    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách đã là thành viên của Spice Club chưa? Với 50K ra nhập thành viên Spice Club ,  Quý khách sẽ được hưởng đặc quyền 5% khuyễn mãi dùng trọn đời và nhiều ưu đãi đặc biệt khác. </span></div>
-    <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
+    
 </div>
     </td>
   
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td valign="top" class="rnb-container-padding" align="left">
-                                
-                                                                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container">
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <th class="rnb-force-col" valign="top">
-                                                                                            <table cellpadding="0" border="0" align="center" cellspacing="0" class="rnb-btn-col-content" style="margin:auto; border-collapse: separate;">
-                                                                                                <tbody><tr>
-                                                                                                    <td width="auto" valign="middle" bgcolor="#ea7236" align="center" height="40" style="font-size:18px; font-family:Arial,Helvetica,sans-serif; color:#ffffff; font-weight:normal; padding-left:20px; padding-right:20px; vertical-align: middle; background-color:#ea7236;border-radius:4px;border-top:0px None #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000;">
-                                                                                                        <span style="color:#ffffff; font-weight:normal;">
-                                                                                                                <a style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank" href="{{ route('get.register.spiceclub') }}">Đăng ký thành viên Spice Club</a>
-                                                                                                            </span>
-                                                                                                    </td>
-                                                                                                </tr></tbody></table>
-                                                                                            <table border="0" valign="top" cellspacing="0" cellpadding="0" width="550" align="center" class="rnb-col-1">
-                                                                                            </table>
-                                                                                        </th>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </td>
-                                                                    </tr>
+                                                                    
                                                                     </tbody></table>
     
                                                                 </th></tr>
@@ -398,15 +344,7 @@
                                         </tbody></table>
                         </td>
                     </tr>
-                </tbody></table><!--[if mso]>
-                    </td>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    </tr>
-                    </table>
-                    <![endif]-->
-    
+                </tbody></table>
                 </div></td>
         </tr>
         @if ($data_bill['type_pay'] ==1)
@@ -414,16 +352,7 @@
             <td align="center" valign="top">
     
                 <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
-                    
-                    <!--[if mso]>
-                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-                    <tr>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    <td valign="top" width="590" style="width:590px;">
-                    <![endif]-->
-                
+                  
                     <table width="100%" cellpadding="0" border="0" cellspacing="0" name="Layout_2" id="Layout_2"><tbody><tr>
                         <td align="center" valign="top"><a href="#" name="Layout_2"></a>
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" class="rnb-container" bgcolor="#ffffff" style="height: 0px; background-color: rgb(255, 255, 255); border-radius: 0px; border-collapse: separate; padding-left: 20px; padding-right: 20px;"><tbody><tr>
@@ -459,30 +388,13 @@
                         </td>
                     </tr>
     
-                </tbody></table><!--[if mso]>
-                    </td>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    </tr>
-                    </table>
-                    <![endif]-->
-                
+                </tbody></table>
             </div></td>
         </tr>
         <tr>
             <td align="center" valign="top">
     
                 <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
-                
-                    <!--[if mso]>
-                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-                    <tr>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    <td valign="top" width="590" style="width:590px;">
-                    <![endif]-->
                     <table class="rnb-del-min-width" width="100%" cellpadding="0" border="0" cellspacing="0" style="min-width:100%;" name="Layout_9">
                     <tbody><tr>
                         <td class="rnb-del-min-width" align="center" valign="top">
@@ -516,31 +428,13 @@
                                         </tbody></table>
                         </td>
                     </tr>
-                </tbody></table><!--[if mso]>
-                    </td>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    </tr>
-                    </table>
-                    <![endif]-->
-    
+                </tbody></table>
                 </div></td>
         </tr><tr>
     
             <td align="center" valign="top">
     
                 <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
-                    
-                    <!--[if mso]>
-                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-                    <tr>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    <td valign="top" width="590" style="width:590px;">
-                    <![endif]-->
-                
                     <table width="100%" cellpadding="0" border="0" cellspacing="0" name="Layout_10" id="Layout_10"><tbody><tr>
                         <td align="center" valign="top"><a href="#" name="Layout_10"></a>
                             <table border="0" width="100%" cellpadding="0" cellspacing="0" class="rnb-container" bgcolor="#ffffff" style="height: 0px; background-color: rgb(255, 255, 255); border-radius: 0px; border-collapse: separate; padding-left: 20px; padding-right: 20px;"><tbody><tr>
@@ -576,30 +470,13 @@
                         </td>
                     </tr>
     
-                </tbody></table><!--[if mso]>
-                    </td>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    </tr>
-                    </table>
-                    <![endif]-->
-                
+                </tbody></table>
             </div></td>
         </tr><tr>
     
             <td align="center" valign="top">
     
                 <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
-                
-                    <!--[if mso]>
-                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-                    <tr>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    <td valign="top" width="590" style="width:590px;">
-                    <![endif]-->
                     <table class="rnb-del-min-width" width="100%" cellpadding="0" border="0" cellspacing="0" style="min-width:100%;" name="Layout_11">
                     <tbody><tr>
                         <td class="rnb-del-min-width" align="center" valign="top">
@@ -649,32 +526,79 @@
                                         </tbody></table>
                         </td>
                     </tr>
-                </tbody></table><!--[if mso]>
-                    </td>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    </tr>
-                    </table>
-                    <![endif]-->
-    
+                </tbody></table>
                 </div></td>
         </tr>
         @endif
         <tr>
-    
             <td align="center" valign="top">
-    
                 <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
-                
-                    <!--[if mso]>
-                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-                    <tr>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    <td valign="top" width="590" style="width:590px;">
-                    <![endif]-->
+                    <table class="rnb-del-min-width" width="100%" cellpadding="0" border="0" cellspacing="0" style="min-width:100%;" name="Layout_11">
+                    <tbody><tr>
+                        <td class="rnb-del-min-width" align="center" valign="top">
+                            <a href="#" name="Layout_11"></a>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="rnb-container" bgcolor="#ffffff" style="background-color: rgb(255, 255, 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; border-radius: 0px; border-bottom: 0px none rgb(200, 200, 200);">
+    
+                                            <tbody><tr>
+                                                <td height="0" style="font-size:1px; line-height:0px; mso-hide: all;">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" class="rnb-container-padding" align="left">
+    
+                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container">
+                                                        <tbody><tr>
+                                                            <th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top">
+    
+                                                                <table border="0" valign="top" cellspacing="0" cellpadding="0" width="100%" align="left" class="rnb-col-1">
+    
+                                                                    <tbody><tr>
+                                                                        <td style="font-size:14px; font-family:Arial,Helvetica,sans-serif, sans-serif; color:#3c4858;"><div>
+                                                                            <div style="text-align: justify;"><span style="font-size:16px;">Quý khách đã là thành viên của Spice Club chưa? Với 50K ra nhập thành viên Spice Club ,  Quý khách sẽ được hưởng đặc quyền 5% khuyễn mãi dùng trọn đời và nhiều ưu đãi đặc biệt khác. </span></div>
+                                                                            <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
+                                                                         </td>
+                                                                    </tr>
+                                                                    </tbody></table>
+    
+                                                                </th></tr>
+                                                    </tbody></table></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="20" style="font-size:1px; line-height:20px; mso-hide: all;">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" class="rnb-container-padding" align="left">
+                                                    <div style="text-align: justify;"><span style="font-size:16px;">Quý khách đã là thành viên của Spice Club chưa? Với 50K ra nhập thành viên Spice Club ,  Quý khách sẽ được hưởng đặc quyền 5% khuyễn mãi dùng trọn đời và nhiều ưu đãi đặc biệt khác. </span></div>
+                                                    <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
+                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th class="rnb-force-col" valign="top">
+                                                                    <table cellpadding="0" border="0" align="center" cellspacing="0" class="rnb-btn-col-content" style="margin:auto; border-collapse: separate;">
+                                                                        <tbody><tr>
+                                                                            <td width="auto" valign="middle" bgcolor="#ea7236" align="center" height="40" style="font-size:18px; font-family:Arial,Helvetica,sans-serif; color:#ffffff; font-weight:normal; padding-left:20px; padding-right:20px; vertical-align: middle; background-color:#ea7236;border-radius:4px;border-top:0px None #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000;">
+                                                                                <span style="color:#ffffff; font-weight:normal;">
+                                                                                        <a style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank" href="{{ route('get.register.spiceclub') }}">Đăng ký thành viên Spice Club</a>
+                                                                                    </span>
+                                                                            </td>
+                                                                        </tr></tbody></table>
+                                                                    <table border="0" valign="top" cellspacing="0" cellpadding="0" width="550" align="center" class="rnb-col-1">
+                                                                    </table>
+                                                                </th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+                </div></td>
+        </tr>
+        <tr>
+            <td align="center" valign="top">
+                <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
                     <table class="rnb-del-min-width" width="100%" cellpadding="0" border="0" cellspacing="0" style="min-width:100%;" name="Layout_13">
                     <tbody><tr>
                         <td class="rnb-del-min-width" align="center" valign="top">
@@ -710,15 +634,7 @@
                                         </tbody></table>
                         </td>
                     </tr>
-                </tbody></table><!--[if mso]>
-                    </td>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    </tr>
-                    </table>
-                    <![endif]-->
-    
+                </tbody></table>
                 </div></td>
         </tr><tr>
     
@@ -824,15 +740,6 @@
             <td align="center" valign="top">
     
                 <div style="background-color: rgb(255, 255, 255); border-radius: 0px;">
-                
-                    <!--[if mso]>
-                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-                    <tr>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    <td valign="top" width="590" style="width:590px;">
-                    <![endif]-->
                     <table class="rnb-del-min-width" width="100%" cellpadding="0" border="0" cellspacing="0" style="min-width:100%;" name="Layout_14">
                     <tbody><tr>
                         <td class="rnb-del-min-width" align="center" valign="top">
@@ -872,22 +779,10 @@
                                         </tbody></table>
                         </td>
                     </tr>
-                </tbody></table><!--[if mso]>
-                    </td>
-                    <![endif]-->
-                    
-                    <!--[if mso]>
-                    </tr>
-                    </table>
-                    <![endif]-->
-    
+                </tbody></table>
                 </div></td>
         </tr></tbody></table>
-                <!--[if gte mso 9]>
-                            </td>
-                            </tr>
-                            </table>
-                            <![endif]-->
+             
                             </td>
             </tr>
             </tbody></table>
