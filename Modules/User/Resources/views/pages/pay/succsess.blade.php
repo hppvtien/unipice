@@ -518,7 +518,7 @@
                                 <th colspan="2">
                                     <div class="field _required pay_type row">
                                         @foreach (config('cart.pay_type') as $key => $item)
-                                            @if ($key != 0)
+                                            @if ($key > 0 && $key < 3 )
                                                 <div class="col-6 validContainer addressOption selected m-radio-button">
                                                     <input type="radio"
                                                         class="validAddress m-radio-button__input input-type-cart"

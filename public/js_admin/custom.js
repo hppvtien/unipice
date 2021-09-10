@@ -270,3 +270,24 @@ $('.lot_product').on('change', function() {
         $('#product_size_lot').val(product_size);
     });
 });
+$('#update-weight').on('click', function() {
+    let tesst = $('#js-select2 .select2-selection__rendered').text();
+    let data_url = $(this).attr('data-url');
+    let data_id = $(this).attr('data-id');
+    $.ajax({
+        url: data_url,
+        type: "post",
+        dataType: "text",
+        data: {
+            tesst: tesst,
+            data_id: data_id
+        },
+        success: function(result) {
+            $('#show-vsize').html(result);
+        },
+        error: function(result) {
+            console.log(result, +'ssssss');
+        }
+    });
+    return false;
+});

@@ -91,10 +91,5 @@
     <script src="{{ asset('plugin/ckfinder/ckfinder.js') }}"></script>
     @yield('scriptck')
 </body>
-<script>
-    $('#js-select2').on('click', function() {
-    let tesst = $(this).find('select2-container .selection .select2-selection').text();
-    alert(tesst);
-});
-</script>
+
 </html>

@@ -145,10 +145,13 @@ $(document).on('ready', function() {
     });
     $('#total_vat_product').html(sum);
 });
-$(".update-qty").on("change", function() {
-    $('.close-btn-ud').css({ "display": "block", "background": "rgba(192,192,192, 0.9)", "z-index": "99999999" }).slideDown('slow');
+$("#updưate-cart").on("click", function() {
+    // $('.close-btn-ud').css({ "display": "block", "background": "rgba(192,192,192, 0.9)", "z-index": "99999999" }).slideDown('slow');
 
     let item_id = $(this).attr("item-id");
+    let item_i3d = $("input[name='cart[qty][]']").val()
+    console.log(item_i3d);
+    return false;
     let data_size = $(this).attr("data-size");
     let URL = $("#cart-" + item_id + "-" + data_size + "-qty").attr("data-url");
     let item_qty = $("#cart-" + item_id + "-" + data_size + "-qty").val();
@@ -171,12 +174,7 @@ $(".update-qty").on("change", function() {
                 method: "get",
                 data: {
                     item_id: item_id,
-                    item_qty: item_qty,
-                    data_price: data_price,
-                    data_size: data_size,
-                    data_image: data_image,
-                    data_store: data_store,
-                    item_row: item_row
+
                 },
                 success: function(data) {
                     function formatNumber(num) {

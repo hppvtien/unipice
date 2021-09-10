@@ -124,6 +124,7 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function() {
         Route::get('import/{id}', 'AdminUniProductController@importview')->name('get_admin.uni_product.import');
         Route::post('import/{id}', 'AdminUniProductController@import');
         Route::post('/search_ajax', 'AdminUniProductController@search_ajax')->name('get_admin.uni_product.search_ajax');
+        Route::post('/update-weight', 'AdminUniProductController@updateWeight')->name('get_admin.uni_product.update_weight');
     });
     Route::prefix('uni_category')->group(function (){
         Route::get('/', 'AdminUniCategoryController@index')->name('get_admin.uni_category.index')->middleware('permission:uni_category_index|full');

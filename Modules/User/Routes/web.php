@@ -57,10 +57,10 @@ Route::middleware('checkLoginUser')->group(function() {
     Route::post('thanh-toan.html', 'UserPayController@getPaySuccsess')->name('get_user.postpay');
     Route::post('fee-ship-ghn', 'UserPayController@getFeeShipGHN')->name('get_user.feeshipghn');
     Route::get('fee-ship', 'UserPayController@getFeeShip')->name('get_user.feeship');
-    Route::post('gio-hang.html', 'UserPayController@check_vouchers')->name('get_user.check_vouchers');
+    // Route::post('gio-hang.html', 'UserPayController@check_vouchers')->name('get_user.check_vouchers');
     Route::get('hoan-tat-don-hang.html', 'UserPayController@getSuccsess')->name('get_user.paysuccsess'); 
     Route::get('gio-hang.html', 'UserCartController@index')->name('get_user.cart');
-    Route::get('update-gio-hang/{id}/{size_id}', 'UserCartController@updateCart')->name('get_user.updatecart');
+    Route::post('gio-hang.html', 'UserCartController@updateCart')->name('get_user.updatecart');
     Route::get('xoa-san-pham', 'UserCartController@deletecart')->name('get_user.deletecart');
     Route::get('thanh-toan/{id}', 'UserPayController@getSuccsess')->name('get_user.paysuccsess'); 
     Route::post('thanh-toan/{id}', 'UserPayController@processPayCart')->name('post_user.paysuccsess'); 

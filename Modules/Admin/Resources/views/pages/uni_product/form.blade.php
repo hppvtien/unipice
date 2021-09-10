@@ -1,15 +1,4 @@
-<style>
-    li.select2-selection__choice {
-    padding-left: 20px!important;
-}
 
-span.select2-selection__choice__remove {
-    color: #fff!important;
-    opacity: 1;
-    font-size: 20px!important;
-    top: -5px!important;
-}
-</style>
 <form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
     @csrf
     <div class="row">
@@ -97,10 +86,6 @@ span.select2-selection__choice__remove {
                             </div>
                         </div>
                     </div>
-
-
-
-
                     {{-- <div class="form-group">
                         <label for="exampleInputEmail1" class="required"> Màu sắc <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
@@ -128,7 +113,7 @@ span.select2-selection__choice__remove {
             </div>
             <input type="hidden" class="form-control" name="albumold" value="{{ old('album', $uni_product->album ?? '') }}">
             @if ($uni_product)
-            <div class="row" style="padding-top:10px; margin-bottom: 10px;">
+            <div class="row">
                 @forelse (json_decode($uni_product->album) as $item)
                 <div class="col-2" data-rm="{{ $item }}" style="margin-bottom: 10px;position: relative; ">
                     <span class="close-img js-delete" data-url="{{ route('get_admin.uni_product.delete_album') }}" data-id="{{ $uni_product->id }}" album-data="{{ $item }}" style="position:absolute"><i class="la la-trash"></i></span>
@@ -154,7 +139,10 @@ span.select2-selection__choice__remove {
                 <span class="text-danger">{{ $errors->first('size') }}</span>
                 @endif
             </div>
-            <div class="form-group ">
+            <div class="form-group text-center" style="margin-bottom: 0;">
+                <button class="btn btn-success" id="update-weight" data-id="{{ $uni_product->id }}" data-url="{{ route('get_admin.uni_product.update_weight') }}">Cập nhật form trọng lượng</button>
+            </div>
+            <div class="form-group" id="show-vsize">
                 @foreach($data_size as $key => $v_size)
                 <div class="row" style="padding: 20px 0px 20px;
                 border-bottom: 1px solid #e8e7e7;">
@@ -347,4 +335,5 @@ span.select2-selection__choice__remove {
         filebrowserFlashUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}",
     });
 </script>
+
 @stop

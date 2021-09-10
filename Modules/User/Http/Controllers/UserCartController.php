@@ -27,31 +27,31 @@ class UserCartController extends Controller
     }
     public function updateCart(Request $request)
     {
-        // dd($request->all());
-        \SEOMeta::setTitle('Giỏ hàng');
+        dd($request->all());
+        // \SEOMeta::setTitle('Giỏ hàng');
         
-        if ($request->item_qty) {
-            // \Cart::update($request->item_row, $request->item_qty);
-            \Cart::update(
-                $request->item_row,
-                [
-                    'rowId'=>$request->item_row,
-                    'id'=>$request->item_id,
-                    'name'=>getNameProduct($request->item_id),
-                    'qty'=>$request->item_qty,
-                    'price'=>$request->data_price,
-                    'weight'=>round($request->data_size,2),
-                    'options' => [
-                        "images" => $request->data_image,
-                        "sale" => $request->data_store,
-                        'product_vat' => $request->item_qty * (getVatProduct($request->item_id) * $request->data_price / 100)
-                    ]
-                ]
-            );
-            $listCarts = \Cart::content();
-            $view = view("user::pages.cart.include.cart_info", compact('listCarts'))->render();
-            return $view;
-        }
+        // if ($request->item_qty) {
+        //     // \Cart::update($request->item_row, $request->item_qty);
+        //     \Cart::update(
+        //         $request->item_row,
+        //         [
+        //             'rowId'=>$request->item_row,
+        //             'id'=>$request->item_id,
+        //             'name'=>getNameProduct($request->item_id),
+        //             'qty'=>$request->item_qty,
+        //             'price'=>$request->data_price,
+        //             'weight'=>round($request->data_size,2),
+        //             'options' => [
+        //                 "images" => $request->data_image,
+        //                 "sale" => $request->data_store,
+        //                 'product_vat' => $request->item_qty * (getVatProduct($request->item_id) * $request->data_price / 100)
+        //             ]
+        //         ]
+        //     );
+        //     $listCarts = \Cart::content();
+        //     $view = view("user::pages.cart.include.cart_info", compact('listCarts'))->render();
+        //     return $view;
+        // }
         // \Cart::update($request->item_row,$request->item_qty*);
         
        
