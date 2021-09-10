@@ -192,7 +192,7 @@
 
                 <div class="header-modal">
                     <div class="logo">
-                        <img width="100%" alt="Unispice" itemprop="logo" src="{{ pare_url_file($configuration->logo) }}">
+                        <img width="100%" alt="UniMall" itemprop="logo" src="{{ pare_url_file($configuration->logo) }}">
                     </div>
                     <div class="info-adsmo">
                         <p><span class="title-cc">Đơn vị bán hàng:</span> {{ $configuration->name }}</p>
@@ -207,11 +207,10 @@
 
             <div class="modal-body">
                 <div class="name_invoice">
-                    <p><span class="title-cc" style="font-size: 20px;letter-spacing:3px">Invoice:</span> {{ $data_pdf->code_invoice }}</p>
-                    <p><span class="title-cc">Invoice Date:</span> {{ $data_pdf->created_at->format('d-m-Y') }}</p>
+                    <p><span class="title-cc" style="font-size: 20px;letter-spacing:3px">Đơn hàng:</span> {{ $data_pdf->code_invoice }}</p>
+                    <p><span class="title-cc">Ngày:</span> {{ $data_pdf->created_at->format('d-m-Y') }}</p>
                 </div>
                 <div class="name_invoice">
-                    <h2 style="margin-top: 0;color:#fff;letter-spacing:3px;font-size:20px">Invoice To</h2>
                     <p><span class="title-cc">Tên khách hàng:</span> {{ $data_pdf->customer_name }}</p>
                     <p><span class="title-cc">Địa chỉ khách hàng:</span> {{ $data_pdf->address }}</p>
                     <p><span class="title-cc">Số điện thoại:</span> {{ $data_pdf->phone }}</p>
@@ -228,7 +227,7 @@
                                 <th scope="col" style="width: 10%;">Đơn giá</th>
                                 <th scope="col" style="width: 10%;">Thành tiền</th>
                                 <th scope="col" style="width: 10%;">Thuế suất GTGT</th>
-                                <th scope="col" style="width: 10%;">Tiền thuế</th>
+                                <th scope="col" style="width: 5%;">Tiền thuế</th>
                                 <th scope="col" style="width: 15%;">Cộng</th>
 
                             </tr>
@@ -243,48 +242,40 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->qty }}</td>
                                 <td>{{ getSizeNameType($item->weight) }}</td>
-                                <td>800.345</td>
-                                <td>1.600.000</td>
-                                <td>10%</td>
-                                <td>500.000</td>
-                                <td>22.000.000</td>
+                                <td>{{ formatVnd($item->price) }}</td>
+                                <td>{{ formatVnd($item->qty * $item->price) }}</td>
+                                <td>{{ getVatProduct($item->id) }}%</td>
+                                <td>
+                                    @if ($item->options->product_vat)
+                                    {{ formatVnd($item->options->product_vat) }}
+                                    @else
+                                        0
+                                    @endif
+                                </td>
+                                <td>{{ formatVnd($item->qty * $item->price + $item->options->product_vat) }}</td>
                                 
                             </tr>
                             @endforeach
                             <tr>
-                                <td colspan="2">Tổng tiền( Total amount )</td>
-                                <td>{{ formatVnd($data_pdf->total_no_vat) }} </td>
-                            </tr>
-                            <tr>
-                                <td colspan="1">Thuế GTGT (VAT Rate): 10%</td>
-                                <td colspan="1">Tiền Thuế GTGT (VAT amount)</td>
-                                <td>{{ formatVnd($data_pdf->total_vat) }} </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">Phí ship</td>
+                                <td colspan="8">Phí Ship</td>
                                 <td>{{ formatVnd($data_pdf->total_ship) }} </td>
                             </tr>
                             <tr>
-                                <td colspan="2">Ưu đãi</td>
+                                <td colspan="8">Ưu đãi</td>
                                 <td>{{ formatVnd($data_pdf->total_discount) }} </td>
                             </tr>
                             <tr>
-                                <td colspan="2">Tổng tiền thanh toán</td>
+                                <td colspan="5">TỔNG CỘNG TIỀN THANH TOÁN</td>
+                                <td>{{ formatVnd($data_pdf->total_no_vat) }} </td>
+                                <td></td>
+                                <td>{{ formatVnd($data_pdf->total_vat) }} </td>
                                 <td>{{ formatVnd($data_pdf->total_money) }} </td>
                             </tr>
-
-                            <tr>
-                                <td colspan="2">Tổng cộng tiền thanh toán (Grand total)</td>
-                                <td>{{ formatVnd($data_pdf->total_money) }} </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">Mã đơn hàng: {{ $data_pdf->code_invoice }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><i> Đây là đơn hàng tự động từ hệ thống của <b>UniMall.</b> Nếu có thắc mắc hãy liên hệ Hotline: <b>{{ $configuration->hotline }}</b> . <br>
+                           <tr>
+                            <td colspan="9"><i> Đây là đơn hàng tự động từ hệ thống của <b>UniMall.</b> Nếu có thắc mắc hãy liên hệ Hotline: <b>{{ $configuration->hotline }}</b> . <br>
                                 Hoặc email: <b>{{ $configuration->email }}</b></i>
                                 </td>
-                            </tr>
+                           </tr>
                         </tbody>
                     </table>
 
