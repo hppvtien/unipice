@@ -14,8 +14,8 @@
                         <input type="text" class="form-control keypress-count" disabled data-title-seo=".title_seo" value="{{ old('taxcode', $uni_order->taxcode ?? '') }}" name="taxcode">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="required">Ghi chú người mua <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" disabled data-title-seo=".title_seo" value="{{ old('pay_note', $uni_order->pay_note ?? '') }}" name="pay_note">
+                        <label for="exampleInputEmail1" class="required">Địa chỉ nhận hàng <span>(*)</span></label>
+                        <input type="text" class="form-control keypress-count" disabled data-title-seo=".title_seo" value="{{ old('pay_note', $uni_order->address ?? '') }}" name="address">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Số điện thoại <span>(*)</span></label>
@@ -45,9 +45,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                    $keys = 1;
+                                @endphp
                                 @forelse(json_decode($uni_order->cart_info) as $item)
                                     <tr>
-                                        <th scope="row">{{ $item->id }}</th>
+                                        <th scope="row">{{ $keys ++ }}</th>
                                         <td style="width: 10%;">
                                             <img class="ad-product" style="width: 70%;" src="{{ $item->options->images }}"  alt="{{ $item->name }}">
                                         </td>

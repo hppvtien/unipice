@@ -571,7 +571,7 @@
                      color: #3c4858;
                      ">
                   <div>
-                  <p style="font-size: 16px;margin-bottom: 10px!important;">Cám ơn Quý khách đã thanh toán  đơn hàng số {{ $uni_order['code_invoice'] }} theo số đơn hàng được tạo vào ngày {{ date_format($uni_order['created_at'], 'd-m-Y') }}.
+                  <p style="font-size: 16px;margin-bottom: 10px!important;">Cám ơn Quý khách đã thanh toán đơn hàng số <b>{{ $uni_order['code_invoice'] }}</b> theo số đơn hàng được tạo vào ngày <b>{{ date_format($uni_order['created_at'], 'd-m-Y') }}</b>.
 </p>
                   </div>
                   <div style="text-align: justify;">
@@ -810,7 +810,7 @@
                      color: #3c4858;
                      ">
                   <div>
-                  <p style="font-size: 16px;margin-bottom: 10px!important;">Nếu quý khách gặp bất kỳ thắc mắc hay câu hỏi nào , vui lòng liên hệ với UniMall qua Hotline:0356 105 899 oặc gửi email về hotro@unimall.vn để được hỗ trợ tốt nhất.
+                  <p style="font-size: 16px;margin-bottom: 10px!important;">Nếu quý khách gặp bất kỳ thắc mắc hay câu hỏi nào , vui lòng liên hệ với UniMall qua Hotline:<b>0356 105 899</b> hoặc gửi email về <b>hotro@unimall.vn</b> để được hỗ trợ tốt nhất.
                     </p>
                   </div>
                  
