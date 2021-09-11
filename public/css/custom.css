@@ -1156,6 +1156,29 @@ span.number-prd {
     }
 }
 
+.menu_class_menu {
+    display: none;
+}
+
+.hotline-header {
+    margin-top: 20%!important;
+}
+
+.btn-all-product {
+    background: #0b2d25!important;
+    border: none;
+    color: #fff!important;
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 1420px) {
+    .header-phone-numbers .phone-number {
+        font-size: 1.5em!important;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     .card-text {
         height: 84px;
@@ -1188,6 +1211,46 @@ span.number-prd {
 }
 
 @media screen and (max-width: 768px) {
+    .text-crs-homepage {
+        position: absolute;
+        background: #0b2d25;
+        opacity: .6;
+        top: 30%;
+        width: 100%;
+    }
+    .c-homepage-hero-carousel__img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    a.c-homepage-hero-carousel__cta {
+        display: block;
+        width: 50%!important;
+        margin: auto;
+        color: #fff!important;
+        background: rgb(11, 45, 37, 1)!important;
+        /* opacity: 1; */
+        border: 2px solid #fd7e14;
+        border-radius: 5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 10px;
+    }
+    .c-media-block-aligned--reverse-bg {
+        padding-top: 20px;
+    }
+    h2.c-homepage-hero-carousel__headline {
+        font-size: 28px;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        text-align: center;
+        color: #fff!important;
+        opacity: 1;
+    }
+    .c-homepage-hero-carousel__slide {
+        margin-bottom: 20px;
+    }
     .card-text {
         height: 50px;
         overflow: hidden
@@ -1195,9 +1258,6 @@ span.number-prd {
     .img-post-salesigle {
         width: 100%;
     }
-}
-
-@media screen and (max-width: 768px) {
     .group-write {
         display: block;
         margin-bottom: 10px!important;
@@ -1215,6 +1275,9 @@ span.number-prd {
 }
 
 @media screen and (max-width: 576px) {
+    .text-crs-homepage {
+        top: 20%;
+    }
     button.a-btn.a-btn--primary.m-product-card__add-to-cart-btn {
         width: 50%!important;
     }
