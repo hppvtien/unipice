@@ -45,6 +45,14 @@
                         <label for="exampleInputEmail1" class="required">Instagram <span>(*)</span></label>
                         <input type="text" class="form-control"  value="{{ old('instagram', $configuration->instagram ?? '') }}" name="instagram" >
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Linkedin <span>(*)</span></label>
+                        <input type="text" class="form-control"  value="{{ old('linkedin', $configuration->linkedin ?? '') }}" name="linkedin" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="required">Pinterest <span>(*)</span></label>
+                        <input type="text" class="form-control"  value="{{ old('pinterest', $configuration->pinterest ?? '') }}" name="pinterest" >
+                    </div>
 
                 </div>
             </div>

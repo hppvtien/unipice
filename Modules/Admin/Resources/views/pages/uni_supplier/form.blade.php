@@ -61,8 +61,10 @@
                         <label for="exampleInputEmail1"> Trạng thái <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                <option title="Public" value="1">Public</option>
-                                <option title="hide" value="0">Hide</option>
+                                <option title="hide" {{ ($uni_supplier->status ?? 0) == 0 ? 'selected' : '' }} value="0">
+                                    No Active</option>
+                                <option title="Public" {{ ($uni_supplier->status ?? 1) == 1 ? 'selected' : '' }}
+                                    value="1">Active</option>
                             </select>
                         </div>
                     </div>

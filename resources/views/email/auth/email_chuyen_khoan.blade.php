@@ -320,7 +320,7 @@
     
     <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
     
-    <div style="text-align: justify;"><span style="font-size:16px;">Tổng tiền phải thanh toán: @if ($data_bill['type_pay'] ==1)<b>{{ formatVnd($data_bill['total_money']) }}</b>@else <b>Khi nhận được hàng</b> @endif</span></div>
+    <div style="text-align: justify;"><span style="font-size:16px;">Tổng tiền phải thanh toán: @if ($data_bill['type_pay'] ==1)<b>{{ formatVnd($data_bill['total_money']) }}</b>@else <b>{{ formatVnd($data_bill['total_money']) }} khi nhận được hàng</b> @endif</span></div>
     
     <div style="text-align: justify;"><span style="font-size:16px;">&nbsp;</span></div>
     @if ($data_bill['type_pay'] ==1)
