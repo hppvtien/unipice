@@ -33,7 +33,7 @@
                             <img src="{{ asset('img/brand/32_VN.png') }}" alt="">
                         </li>
                     </ul>
-                    <a href="tel:{{ $configuration->hotline }}"><span id="" class="phone-number"><i class="fa fa-phone"></i> {{ formatPhoneNumber($configuration->hotline) }}</span></a>
+                    <a href="tel:{{ $configuration->hotline }}" class="hotline-header"><span id="" class="phone-number"><i class="fa fa-phone"></i> {{ formatPhoneNumber($configuration->hotline) }}</span></a>
                 </div>
                 <ul class="site-header-cart-v2 menu">
                     <li class="cart-content ">

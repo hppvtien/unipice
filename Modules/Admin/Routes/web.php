@@ -204,7 +204,8 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function () {
     Route::prefix('export')->group(function () {
         // Route::get('file-import-export', [UserController::class, 'fileImportExport']);
         // Route::post('file-import', [UserController::class, 'fileImport'])->name('file-import');
-        Route::get('file-export', 'UsersExport@fileExport')->name('file-export');
+        Route::get('file-import-export', 'UserExportController@fileImportExport')->name('fileImportExport');
+        Route::get('file-export', 'UserExportController@fileExport')->name('file-export');
     });
 
 

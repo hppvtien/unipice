@@ -17,19 +17,17 @@
                                         <div
                                             class="c-homepage-hero-carousel__slides glide__slides layout-builder__add-block">
                                             @forelse ($slides as $key => $item)
-                                                <div data-block-plugin-id="inline_block:homepage_hero_carousel_item"
-                                                    data-inline-block-uuid="dcedd143-f654-430c-a5d1-f473232bdea8"
-                                                    class="c-homepage-hero-carousel__slide">
+                                                <div class="c-homepage-hero-carousel__slide">
                                                     <div class="c-homepage-hero-carousel__overlay-img-wrapper">
                                                         <img class="c-homepage-hero-carousel__overlay-img lazyload"
                                                             data-src="{{ pare_url_file($item->s_banner) }}"
                                                             alt="{{ $item->s_name }}">
                                                     </div>
-                                                    <div class="c-homepage-hero-carousel__overlay-content">
+                                                    <div class="c-homepage-hero-carousel__overlay-content text-crs-homepage">
                                                         <div class="c-homepage-hero-carousel__content">
                                                             <h2 class="c-homepage-hero-carousel__headline">
                                                                 {{ $item->s_name }}</h2>
-                                                            <a class="a-btn a-btn--secondary c-homepage-hero-carousel__cta"
+                                                            <a class="a-btn c-homepage-hero-carousel__cta btn-all-product"
                                                                 href="{{ $item->s_link }}"
                                                                 title="{{ $item->s_name }}">Tất cả sản phẩm</a>
                                                         </div>
