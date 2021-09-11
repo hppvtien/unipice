@@ -25,36 +25,35 @@ class UserCartController extends Controller
         \Cart::remove($request->item_row);
         return redirect()->route('get_user.cart');
     }
+    public function deleteAllCart(Request $request)
+    {
+        if($request){
+            \Cart::destroy();
+            $url_rd = '/san-pham.html';
+        }
+        return $url_rd;
+        
+    }
     public function updateCart(Request $request)
     {
-        dd($request->all());
-        // \SEOMeta::setTitle('Giỏ hàng');
         
-        // if ($request->item_qty) {
-        //     // \Cart::update($request->item_row, $request->item_qty);
-        //     \Cart::update(
-        //         $request->item_row,
-        //         [
-        //             'rowId'=>$request->item_row,
-        //             'id'=>$request->item_id,
-        //             'name'=>getNameProduct($request->item_id),
-        //             'qty'=>$request->item_qty,
-        //             'price'=>$request->data_price,
-        //             'weight'=>round($request->data_size,2),
-        //             'options' => [
-        //                 "images" => $request->data_image,
-        //                 "sale" => $request->data_store,
-        //                 'product_vat' => $request->item_qty * (getVatProduct($request->item_id) * $request->data_price / 100)
-        //             ]
-        //         ]
-        //     );
-        //     $listCarts = \Cart::content();
-        //     $view = view("user::pages.cart.include.cart_info", compact('listCarts'))->render();
-        //     return $view;
-        // }
-        // \Cart::update($request->item_row,$request->item_qty*);
+        $listCarts = \Cart::content();
+        foreach ($request->cart['qty'] as $key => $item) {
+            \Cart::update(
+                $key,
+                [
+                    'qty' => (int)$item[0],
+                    'options' => [
+                        "images" => $listCarts[$key]->options['images'],
+                        "sale" => $listCarts[$key]->options['sale'],
+                        'product_vat' => (int)$item[0] * (getVatProduct($listCarts[$key]->id) * $listCarts[$key]->price / 100)
+                    ]
+                ]
+            );
+        }
         
-       
+        return redirect()->route('get_user.cart');
+
     }
     public function generatePDF(Request $request)
     {
@@ -67,6 +66,6 @@ class UserCartController extends Controller
         ];
         // return view('user::pages.pay.downPDF', $data);
         $pdf = \PDF::loadView('user::pages.pay.downPDF', $data);
-        return $pdf->download('don-hang-'.$data_pdf->code_invoice.'.pdf');
+        return $pdf->download('don-hang-' . $data_pdf->code_invoice . '.pdf');
     }
 }

@@ -1,6 +1,6 @@
 @extends('pages.layouts.app_master_frontend') @section('contents')
+<?php \Cart::destroy(); ?>
 <main role="main">
-
     <div class="layout-content">
         <div class="region region-content">
             <div data-drupal-messages-fallback class="hidden"></div>
