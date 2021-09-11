@@ -1,4 +1,3 @@
-
 <form class="form-horizontal" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
     @csrf
     <div class="row">
@@ -47,6 +46,7 @@
                         <span class="text-danger">{{ $errors->first('category') }}</span>
                         @endif
                     </div>
+
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required"> Tags <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
@@ -60,6 +60,7 @@
                         <span class="text-danger">{{ $errors->first('tags') }}</span>
                         @endif
                     </div>
+
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
@@ -104,9 +105,6 @@
                 <input type="number" class="form-control" name="order" value="{{ old('order', $uni_product->order ?? '0') }}">
                 <span class="d-block text-warning">Thứ thự được sắp xếp từ bé đến lớn</span>
             </div>
-
-
-
             <div class="form-group">
                 <label for="exampleInputEmail1">Album ảnh</label>
                 <input type="file" class="form-control" name="album[]" value="" multiple>
@@ -140,7 +138,7 @@
                 @endif
             </div>
             <div class="form-group text-center" style="margin-bottom: 0;">
-                <button class="btn btn-success" id="update-weight" data-id="{{ $uni_product->id }}" data-url="{{ route('get_admin.uni_product.update_weight') }}">Cập nhật form trọng lượng</button>
+                <button class="btn btn-success" id="update-weight" data-id="{{ old('order', $uni_product->id ?? '0') }}" data-url="{{ route('get_admin.uni_product.update_weight') }}">Cập nhật form trọng lượng</button>
             </div>
             <div class="form-group" id="show-vsize">
                 @foreach($data_size as $key => $v_size)
