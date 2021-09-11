@@ -221,6 +221,10 @@ return [
                     'name' => 'Web Setting',
                     'route' => 'get_admin.configuration.index'
                 ],
+                [
+                    'name' => 'Banking',
+                    'route' => 'get_admin.bank_info.index'
+                ],
             ]
         ],
         [
@@ -239,10 +243,7 @@ return [
                     'name' => 'Quản trị viên',
                     'route' => 'get_admin.account.index'
                 ],
-                [
-                    'name' => 'Banking',
-                    'route' => 'get_admin.bank_info.index'
-                ],
+               
             ]
         ],
 
