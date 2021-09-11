@@ -102,8 +102,10 @@
                         <label for="exampleInputEmail1"> Trạng thái <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="status" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                <option title="Public" value="1">Public</option>
-                                <option title="hide" value="0">Hide</option>
+                                <option title="hide" {{ ($trade->status ?? 0) == 0 ? 'selected' : '' }} value="0">
+                                    No Active</option>
+                                <option title="Public" {{ ($trade->status ?? 1) == 1 ? 'selected' : '' }}
+                                    value="1">Active</option>
                             </select>
                         </div>
                     </div>
@@ -112,7 +114,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Ảnh </label>
+                        <label for="exampleInputEmail1"> Ảnh</label>
                         <input type="hidden" name="delete_thumbnail" value="{{ old('delete_thumbnail', $trade->banner ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="banner" id="avatar_uploads">

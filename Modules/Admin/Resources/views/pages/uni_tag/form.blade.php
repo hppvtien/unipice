@@ -86,7 +86,7 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Type <span>(*)</span></label>
+                        <label for="exampleInputEmail1"> Trạng thái <span>(*)</span></label>
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button"
                             aria-expanded="true">
                             <select name="type" class="form-control SlectBox SumoUnder" tabindex="-1">

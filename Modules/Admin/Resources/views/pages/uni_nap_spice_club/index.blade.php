@@ -22,10 +22,10 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Info</th>
-                                        <th>PRICE</th>
-                                        <th>TYPE PAY</th>
-                                        <th>STATUS</th>
-                                        <th>Action</th>
+                                        <th>Số tiền</th>
+                                        <th>Hình thức thanh toán</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -6,42 +6,34 @@
                 <div class="col-md-12 mt-5">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="page-title-wrapper c-contact-information__heading">
-                                <h1 class="page-title">
-                                    <span class="base" data-ui-id="page-title-wrapper">{{ $info['name'] }}</span>
-                                </h1>
-                            </div>
                             <div data-content-type="row" data-appearance="full-bleed" data-enable-parallax="0" data-parallax-speed="0.5" data-background-images="{}" data-background-type="image" data-video-loop="true" data-video-play-only-visible="true" data-video-lazy-load="true" data-video-fallback-src="" data-element="main" style="justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;">
                                 <div data-content-type="html" data-appearance="default" data-element="main" style="border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;" data-decoded="true">
                                     <div class="c-contact-information__block">
-                                        <h2 class="c-contact-information__block-heading">
-                                            Liên Hệ Chúng Tôi Ngay
-                                        </h2>
-                                        <p>
-                                            {{ $info['footer_description'] }}
-                                        </p>
+                                        <h1 class="c-contact-information__block-heading">
+                                            Liên Hệ UniMall
+                                        </h1>
                                     </div>
 
                                     <div class="c-contact-information__block">
-                                        <h2 class="c-contact-information__block-heading">
-                                            Địa Chỉ
-                                        </h2>
+                                        
                                         <p>
-                                            {{ $info['hotline'] }}
+                                            <b><i class="fa fa-building"></i></b> {{ $info['name'] }}
                                         </p>
                                         <p>
-                                            {{ $info['email'] }}
+                                            <b><i class="fa fa-map-marker" ></i></b> {{ $info['address'] }}
                                         </p>
                                         <p>
-                                            {{ $info['address'] }}
+                                            <b><i class="fa fa-envelope-o" ></i></b> {{ $info['email'] }}
                                         </p>
-
+                                        <p>
+                                            <b><i class="fa fa-volume-control-phone" ></i></b> {{ $info['hotline'] }}
+                                        </p>
                                     </div>
 
                                     <div class="c-contact-information__block" id="menu1abcd">
-                                        <h2 class="c-contact-information__block-heading">
-                                            Mạng Xã Hội
-                                        </h2>
+                                        <div class="uni-contact">
+                                            Kết nối với UniMall
+                                        </div>
                                         <div class="link_share_contact">
 
                                             <!-- facebook -->
@@ -50,22 +42,19 @@
                                             <!-- twitter -->
                                             <a class="twitter" href="{{ $info['twitter'] }}" target="blank" rel="nofollow"><i class="fa fa-twitter"></i></a>
 
-                                            <!-- google plus -->
-                                            <a class="googleplus" href="https://plus.google.com/share?url=url" target="blank" rel="nofollow"><i class="fa fa-google-plus"></i></a>
-
                                             <!-- linkedin -->
-                                            <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=url&title=title&source=source" target="blank" rel="nofollow"><i class="fa fa-linkedin"></i></a>
+                                            <a class="linkedin" href="{{ $info['linkedin'] }}" target="blank" rel="nofollow"><i class="fa fa-linkedin"></i></a>
 
                                             <!-- pinterest -->
-                                            <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" target="blank" rel="nofollow"><i class="fa fa-pinterest-p"></i></a>
+                                            <a class="pinterest" href="{{ $info['pinterest'] }}" target="blank" rel="nofollow"><i class="fa fa-pinterest-p"></i></a>
 
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6" style="background: #0b2d25;">
-                            <img id="VISFXT1" style="width: 100%; height: auto;margin-top: 20%;" src="{{ pare_url_file($info['logo']) }}" alt="{{ $info['name'] }}">
+                        <div class="col-md-6" style="">
+                            <img id="VISFXT1" style="width: 100%; height: auto;margin-top: 20px;" src="{{ asset('/images/icon_menu/anh-lien-he.jpg') }}" alt="{{ $info['name'] }}">
                         </div>
                     </div>
                 </div>

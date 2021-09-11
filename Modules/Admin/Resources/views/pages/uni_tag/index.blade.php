@@ -27,9 +27,8 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>SEO</th>
-                                        <th>Type</th>
-                                        <th>Time</th>
-                                        <th>Action</th>
+                                        <th>Kiểu</th>
+                                        <th>Hành động</th>
                                     </tr>
                                 </thead>
 
@@ -57,7 +56,6 @@
                                             <p><span class="slug">Blog</span></p>
                                             @endif
                                         </td>
-                                        <td>{{ $item->created_at }}</td>
                                         <td>
                                             <a href="{{ route('get_admin.uni_tag.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                             <a href="{{ route('get_admin.uni_tag.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>

@@ -22,43 +22,45 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Info</th>
-                                        <th>Money</th>
-{{--                                        <th>Type</th>--}}
-                                        <th>Status</th>
-                                        <th>Time</th>
-                                        <th>Action</th>
+                                        <th>Số tiền</th>
+                                        <th>Hình thức thanh toán</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($uni_order as $item)
+                                @forelse($uni_order as $key => $item)
+                                
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>
-                                            <p><span>Name</span> <span>{{ $item->user->name ?? "[N\A]" }}</span></p>
-                                            <p><span>Email</span> <span>{{ $item->user->email ?? "[N\A]" }}</span></p>
+                                            <p><span>Name: </span> <span class="text-success">{{ $item->name }}</span></p>
+                                            <p><span>Email: </span> <span class="text-success">{{ $item->email }}</span></p>
                                         </td>
                                         <td>
-                                            <b>{{ number_format($item->t_total_money,0,',','.') }} đ</b>
+                                            <b>{{ $item->price_nap }} đ</b>
                                         </td>
-{{--                                        <td>--}}
-{{--                                            <span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span>--}}
-{{--                                        </td>--}}
+                                        <td>
+                                            {{ config('cart.pay_type')[$item->type_pay]['name'] }}
+                                        </td>
+                                        
                                         <td>
                                             <span class="badge {{ $item->getStatus($item->status)['class']  }}">{{ $item->getStatus($item->status)['name']  }}</span>
                                         </td>
                                         <td>
-                                            {{ $item->created_at }}
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('get_admin.uni_order.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
-                                            <a href="{{ route('get_admin.uni_order.delete', $item->id) }}" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>
+                                            <a href="{{ route('get_admin.uni_spice_club.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
+                                            <a href="{{ route('get_admin.uni_spice_club.movetrash', $item->id) }}" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>
                                         </td>
                                     </tr>
                                 @empty
                                 @endforelse
+                               
                                 </tbody>
+                                
                             </table>
+                            
                         </div>
+                        
                     </div>
                 </div>
             </div>

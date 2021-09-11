@@ -54,7 +54,7 @@
                                             <span class="badge badge-info">{{ $item->order }}</span>
                                         </td>
                                         <td>
-                                            <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-default' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
+                                            <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
                                         </td>
                                         <td>
                                             <a href="{{ route('get_admin.post_category.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>

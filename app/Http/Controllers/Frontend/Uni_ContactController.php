@@ -34,7 +34,7 @@ class Uni_ContactController extends Controller
             $menu1[] = $l;
         }
 
-        $infomation = DB::table('configurations')->select('logo', 'name', 'address', 'email', 'hotline', 'facebook', 'youtube', 'twitter', 'instagram', 'footer_bottom','footer_description')->get();
+        $infomation = DB::table('configurations')->select('logo', 'name', 'address', 'email', 'hotline', 'facebook', 'youtube', 'twitter', 'instagram', 'footer_bottom','footer_description','pinterest','linkedin')->get();
         $infomation1 = [];
         foreach ($infomation as $l) {
             $infomation1['name'] = $l->name;
@@ -46,6 +46,8 @@ class Uni_ContactController extends Controller
             $infomation1['youtube'] = $l->youtube;
             $infomation1['twitter'] = $l->twitter;
             $infomation1['instagram'] = $l->instagram;
+            $infomation1['linkedin'] = $l->linkedin;
+            $infomation1['pinterest'] = $l->pinterest;
             $infomation1['footer_bottom'] = $l->footer_bottom;
             $infomation1['footer_description'] = $l->footer_description;
         }

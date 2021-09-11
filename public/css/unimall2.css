@@ -544,16 +544,21 @@ a.text-muted:focus {
 }
 
 .link_share_contact a {
-    width: 50px;
-    height: 50px;
+    border-radius: 40px;
+    width: 41px;
+    height: 41px;
     display: inline-block;
-    margin: 8px;
-    font-size: 24px;
+    margin: 7px;
+    font-size: 17px;
     color: #fff;
     opacity: 0.75;
     transition: opacity 0.15s linear;
 }
-
+.uni-contact {
+    font-size: 16px;
+    color: #0D2B25;
+    font-weight: 600;
+}
 .can_le_trai {
     text-align: left;
 }
