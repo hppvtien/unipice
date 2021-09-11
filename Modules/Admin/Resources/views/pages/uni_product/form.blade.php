@@ -138,7 +138,7 @@
                 @endif
             </div>
             <div class="form-group text-center" style="margin-bottom: 0;">
-                <button class="btn btn-success" id="update-weight" data-id="{{ old('order', $uni_product->id ?? '0') }}" data-url="{{ route('get_admin.uni_product.update_weight') }}">Cập nhật form trọng lượng</button>
+                <button class="btn btn-success" id="update-weight" data-id="{{ old('order', $uni_product->id ?? '0') }}" data-url="{{ route('get_admin.uni_product.update_weight') }}">Cập nhật trọng lượng</button>
             </div>
             <div class="form-group" id="show-vsize">
                 @foreach($data_size as $key => $v_size)
