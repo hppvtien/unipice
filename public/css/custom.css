@@ -1215,6 +1215,9 @@ span.number-prd {
 }
 
 @media screen and (max-width: 576px) {
+    button.a-btn.a-btn--primary.m-product-card__add-to-cart-btn {
+        width: 50%!important;
+    }
     #show-product {
         display: block;
     }
@@ -1278,4 +1281,25 @@ span.number-prd {
     letter-spacing: 1px!important;
     background: rgb(11, 45, 37, .9)!important;
     border: none!important;
+}
+
+.single-bg-sl {
+    --color-foreground: #FFF;
+    --color-accent: #137f62;
+    --color-background: #78be4c;
+    position: relative;
+    padding-top: 48px;
+    background-color: var(--color-foreground);
+    padding-bottom: 25px;
+}
+
+.c-media-block-banner {
+    --height: 450px!important;
+    height: var(--height);
+    width: 100%;
+}
+
+.c-media-block__image-edit {
+    height: calc(var(--height));
+    width: 100%;
 }

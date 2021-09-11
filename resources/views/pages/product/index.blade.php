@@ -307,8 +307,8 @@
                     @include('pages.product.product_hotpic')
                     <div class="layout layout--onecol">
                         <div class="layout__region layout__region--content">
-                            <div data-block-plugin-id="inline_block:media_block" data-inline-block-uuid="ee168006-3fe9-4f1c-bbc5-ba42ddc90f9a" class="c-media-block c-media-block--template-">
-                                <div class="c-media-block__image-wrapper">
+                            <div class="c-media-block c-media-block--template- c-media-block-banner">
+                                <div class="c-media-block__image-wrapper c-media-block__image-edit">
                                     <picture>
                                         @if($slides_home_four1)
                                         <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($slides_home_four1->s_banner) }}" srcset="{{ pare_url_file($slides_home_four1->s_banner) }}">
@@ -318,7 +318,7 @@
                                 </div>
 
                                 <div class="c-media-block__content">
-                                    <div class="c-media-block__headline">Baking soda baths are a great way to detox. Check out the benefits of baking soda baths and how to do one at home!</div>
+                                    <div class="c-media-block__headline">Baking soda baths are a great way to detox. Check out the benefits benefits of baking soda baths and how to do one at home!</div>
                                 </div>
                             </div>
 

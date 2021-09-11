@@ -1,8 +1,8 @@
 <div class="non-visible layout layout--onecol">
-    <div class="c-categories-slider layout layout--onecol not-padding-top">
+    <div class="c-categories-slider layout layout--onecol not-padding-top single-bg-sl">
 
         <div class="layout__region layout__region--heading">
-            <div class="c-categories-slider__heading-wrapper layout-builder__add-block">
+            <div class="c-categories-slider__heading-wrapper layout-builder__add-block single-bg-sl">
 
 
                 <div class="m-heading">
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="layout__region layout__region--content">
-            <div class="c-categories-slider__container js-swiper-container">
+            <div class="c-categories-slider__container js-swiper-container single-bg-sl">
                 <ul class="c-categories-slider__slider js-swiper-wrapper">
                     @forelse ($product_fav as $key => $item)
                     <li class="c-categories-slider__item js-swiper-slide">

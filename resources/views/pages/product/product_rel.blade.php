@@ -1,12 +1,12 @@
 @if ($product_related)
 <div class="non-visible layout layout--onecol">
-    <div class="c-categories-slider layout layout--onecol">
+    <div class="c-categories-slider layout layout--onecol single-bg-sl">
 
         <div class="layout__region layout__region--heading">
-            <div class="c-categories-slider__heading-wrapper layout-builder__add-block">
+            <div class="c-categories-slider__heading-wrapper layout-builder__add-block single-bg-sl">
 
 
-                <div class="m-heading">
+                <div class="m-heading w-100 mw-100" id="max">
                     <h3 class="m-heading__headline">
                         Bạn cũng có thể thích
                     </h3>
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="layout__region layout__region--content">
-            <div class="c-categories-slider__container js-swiper-container">
+            <div class="c-categories-slider__container js-swiper-container single-bg-sl">
                 <ul class="c-categories-slider__slider js-swiper-wrapper">
                     @forelse ($product_related as $key => $item)
                     <li class="c-categories-slider__item js-swiper-slide">
