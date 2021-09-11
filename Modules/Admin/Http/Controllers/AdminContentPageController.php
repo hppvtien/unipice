@@ -13,7 +13,7 @@ use Modules\Admin\Http\Requests\AdminPageRequest;
 
 class AdminContentPageController extends AdminController
 {
-    public function create($id)
+    public function create()
     {
       
         return view('admin::pages.content_page.create');

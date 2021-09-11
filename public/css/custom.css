@@ -292,6 +292,10 @@ a.ahr-text {
 }
 
 @media screen and (max-width:768px) {
+    .pading-uni {
+        padding: 10px;
+
+    }
     .can_tren_duoi {
         width: 50%;
         margin: 25px 0;

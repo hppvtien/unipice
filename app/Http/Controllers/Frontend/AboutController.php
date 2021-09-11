@@ -33,6 +33,12 @@ class AboutController extends Controller
         $menu1 = Uni_Category::where('parent_id', '=', 0)->whereNotIn('id', [2,5,8])->get();
         $content_page_1 = Content_Page::where('page_id',$page->id)->where('order',0)->first();
         $content_page_2 = Content_Page::where('page_id',$page->id)->where('order',1)->first();
+        $content_page_3 = Content_Page::where('page_id',$page->id)->where('order',2)->first();
+        $content_page_4 = Content_Page::where('page_id',$page->id)->where('order',3)->first();
+        $content_page_5 = Content_Page::where('page_id',$page->id)->where('order',4)->first();
+        $blog_post = Uni_Post::where('status', 1)
+        ->orderBy('id', 'asc')
+        ->limit(4)->get();
         // dd($content_page_1);
         $viewdata = [
             'page'=>$page,
@@ -40,6 +46,10 @@ class AboutController extends Controller
             'menu1' => $menu1,
             'content_page_1' => $content_page_1,
             'content_page_2' => $content_page_2,
+            'content_page_3' => $content_page_3,
+            'content_page_4' => $content_page_4,
+            'content_page_5' => $content_page_5,
+            'blog_post' => $blog_post,
         ];
         return view('pages.about.index', $viewdata);
     }

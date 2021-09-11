@@ -6,14 +6,14 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Name <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count"  value="{{ old('name', $content_pages->name ?? '') }}" data-slug=".slug" name="name">
+                        <input type="text" class="form-control"  value="{{ old('name', $content_pages->name ?? '') }}"  name="name">
                         @if($errors->first('name'))
                         <span class="text-danger">{{ $errors->first('name') }}</span>
                         @endif
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Description <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count"  name="desscription" value="{{ old('desscription', $content_pages->desscription ?? '') }}">
+                        <input type="text" class="form-control"  name="desscription" value="{{ old('desscription', $content_pages->desscription ?? '') }}">
                         @if($errors->first('desscription'))
                         <span class="text-danger">{{ $errors->first('desscription') }}</span>
                         @endif
@@ -33,14 +33,14 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Name button <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count"  value="{{ old('name', $content_pages->name_but ?? '') }}" data-slug=".slug" name="name_but">
+                        <input type="text" class="form-control"  value="{{ old('name', $content_pages->name_but ?? '') }}" name="name_but">
                         @if($errors->first('name_but'))
                         <span class="text-danger">{{ $errors->first('name_but') }}</span>
                         @endif
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Url button <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count"  value="{{ old('name', $content_pages->url_but ?? '') }}" data-slug=".slug" name="url_but">
+                        <input type="text" class="form-control"  value="{{ old('name', $content_pages->url_but ?? '') }}" name="url_but">
                         @if($errors->first('url_but'))
                         <span class="text-danger">{{ $errors->first('url_but') }}</span>
                         @endif

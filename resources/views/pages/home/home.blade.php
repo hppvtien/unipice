@@ -186,7 +186,8 @@
 
 
                                     <div data-block-plugin-id="inline_block:heading"
-                                        data-inline-block-uuid="d1afec60-3051-47e9-bbe4-b98b39a88db8" class="m-heading">
+                                        data-inline-block-uuid="d1afec60-3051-47e9-bbe4-b98b39a88db8"
+                                        class="m-heading">
                                         <h2 class="m-heading__headline">
                                             Danh mục sản phẩm của chúng tôi.
                                         </h2>
@@ -307,7 +308,8 @@
 
 
                                     <div data-block-plugin-id="inline_block:heading"
-                                        data-inline-block-uuid="4d501cc7-7465-4b33-9a6e-cdf57fdc8e77" class="m-heading">
+                                        data-inline-block-uuid="4d501cc7-7465-4b33-9a6e-cdf57fdc8e77"
+                                        class="m-heading">
                                         <h2 class="m-heading__headline">
                                             Sản phẩm mới nhất
                                         </h2>
@@ -538,27 +540,33 @@
                     {{-- blog --}}
                     <div class="layout__region layout__region--content uni-magin-top-but">
                         <div class="container container-uni">
-                            <div data-block-plugin-id="inline_block:heading"
-                                        data-inline-block-uuid="4d501cc7-7465-4b33-9a6e-cdf57fdc8e77" class="m-heading">
-                                        <h2 class="m-heading__headline">
-                                            Gia vị & Cuộc sống
-                                        </h2>
-                                    </div>
-                            <div class="row">
-                                @foreach ($blog_post as $item)
-                                <div class="col-12 col-md-6 col-lg-3">
-                                    <a class="" href="{{ getSlugPost($item->slug) }}" title="{{ $item->name }}">
-                                        <div class="mt-3 mb-3 uni-blog-home-img">
-                                            <picture>
-                                                <source data-srcset="{{ pare_url_file($item->thumbnail) }}"
-                                                    srcset="{{ pare_url_file($item->thumbnail) }}">
-                                                <img class=" ls-is-cached lazyloaded" data-src="" width="100%" alt="{{ $item->name }}">
-                                            </picture>
-                                            <div class="uni-blog-home"><p>{{ $item->name }}</p></div>
-                                        </div>
-                                    </a>
+                            <div class="pading-uni">
+                                <div data-block-plugin-id="inline_block:heading"
+                                    data-inline-block-uuid="4d501cc7-7465-4b33-9a6e-cdf57fdc8e77" class="m-heading">
+                                    <h2 class="m-heading__headline">
+                                        Gia vị & Cuộc sống
+                                    </h2>
                                 </div>
-                                @endforeach
+                                <div class="row">
+                                    @foreach ($blog_post as $item)
+                                        <div class="col-12 col-md-6 col-lg-3">
+                                            <a class="" href=" {{ getSlugPost($item->slug) }}"
+                                                title="{{ $item->name }}">
+                                                <div class="mt-3 mb-3 uni-blog-home-img">
+                                                    <picture>
+                                                        <source data-srcset="{{ pare_url_file($item->thumbnail) }}"
+                                                            srcset="{{ pare_url_file($item->thumbnail) }}">
+                                                        <img class=" ls-is-cached lazyloaded" data-src="" width="100%"
+                                                            alt="{{ $item->name }}">
+                                                    </picture>
+                                                    <div class="uni-blog-home">
+                                                        <p>{{ $item->name }}</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>

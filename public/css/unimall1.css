@@ -130,7 +130,9 @@
     left: 0;
     right: 0;
 }
-
+.uni-dang-ky-b2b::before {
+    background-color: #ffffff;
+}
 .about .about-img {
     position: relative;
     transition: .5s;
