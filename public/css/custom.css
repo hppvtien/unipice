@@ -15,12 +15,16 @@
     padding-right: 20px;
     width: auto;
 }
-.uni-m-accordion::before, .uni-m-accordion::after {
+
+.uni-m-accordion::before,
+.uni-m-accordion::after {
     background-color: #0b2d25 !important;
 }
+
 .uni-tex-cat.none {
     display: none;
 }
+
 .fil-uni {
     margin-top: 76px;
 }
@@ -1266,4 +1270,12 @@ span.number-prd {
         right: -5px;
         font-size: 22px;
     }
+}
+
+.show-more-about {
+    margin-bottom: 40px!important;
+    padding: 5px 30px!important;
+    letter-spacing: 1px!important;
+    background: rgb(11, 45, 37, .9)!important;
+    border: none!important;
 }

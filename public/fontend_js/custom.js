@@ -918,3 +918,7 @@ $('.check-price').on('click', function() {
     }
     // alert(data_uid+'-'+size_id + '-' + size_price + '-' + size_price_sale + '-' + size_price_sale_store);
 });
+$('.render-slug').on('click', function() {
+    let data_slug = $(this).attr('data-slug');
+    $('.show-more-about').attr('href', data_slug);
+});

@@ -516,11 +516,11 @@ function execPostRequest($url, $data)
     }
 
     function get_product_cat($id_cat){
-        $mang = App\Models\Product_Category::where('category_id', '=', $id_cat)->pluck('product_id');
+        $mang = App\Models\Product_Category::where('category_id', '=', $id_cat)->limit(10)->pluck('product_id');
         return $mang;
     }
 
     function get_product_id($id_product){
-        $mang = App\Models\Uni_Product::select('name','slug','id','thumbnail','desscription')->where('id','=',$id_product)->get();
+        $mang = App\Models\Uni_Product::where('id',$id_product)->limit(10)->get();
         return $mang;
     }
