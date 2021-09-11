@@ -103,7 +103,7 @@
                                             </td>
                                             <td>
                                                 <label class="switch">
-                                                    <input type="checkbox" class="v_status"
+                                                    <input type="checkbox" class="v_status" data-url=""
                                                         data-ckb="{{ $item->id }}"
                                                         {{ $item->status == 1 ? 'checked' : '' }}>
                                                     <span class="slider round"></span>

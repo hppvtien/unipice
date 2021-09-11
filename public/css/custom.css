@@ -1211,6 +1211,9 @@ span.number-prd {
 }
 
 @media screen and (max-width: 768px) {
+    .c-homepage-hero-carousel__overlay-content {
+        padding: 20px 20px!important;
+    }
     .text-crs-homepage {
         position: absolute;
         background: #0b2d25;

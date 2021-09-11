@@ -18,6 +18,8 @@
                         <li class="menu-item"><a href="{{ route('get.spice_club') }}">Spice Club</a></li>
                         <li class="menu-item"><a rel="nofollow" href="{{ route('get.find') }}">Tìm Cửa hàng</a></li>
                         <li class="menu-item"><a href="{{ route('get.about') }}">Giới Thiệu</a></li>
+                        <li class="menu-item"><a href="tel:0356105899" class="hotline-header"><span id="" class="phone-number"><i class="fa fa-phone"></i> 0356.105.899</span></a></li>
+
                     </ul>
                 </div>
 
