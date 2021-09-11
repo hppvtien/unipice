@@ -129,23 +129,31 @@
                 </div>
             </div>
         </div>
-        <div class="section-full bg-white">
-
-            <div class="row manu-box-reverse sp0">
-                <div class="col-lg-6 p-lg-5 pading_about">
-                    <div class="menu-box">
-                        <div class="section-head style-2">
-                            <h2 class="title">{{ $content_page_2->name }}</h2>
+        <section id="about" class="about uni-dang-ky-b2b ">
+            <div class="content-inner can_trai_phai">
+                <div class="container-fluid" data-aos="fade-up">
+                    <div class="row">
+                        <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="about-img">
+                                <img src="{{ pare_url_file($content_page_1->thumbnail) }}"
+                                    alt="{{ $content_page_1->name }}">
+                            </div>
                         </div>
-                        <p>{!! $content_page_2->content !!}</p>
+                        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="about-img" style="padding: 50px;">
+                            <h3>{{ $content_page_2->name }}</h3>
+                            <p class="fst-italic">
+                                {!! $content_page_2->content !!}
+                            </p>
+                        </div>
+                        </div>
+                        
                     </div>
-                </div>
-                <div class="col-lg-6 p-lg-5 pading_about">
-                    <img src="{{ pare_url_file($content_page_2->thumbnail) }}" alt="{{ $content_page_2->name }}"
-                        class="img-cover" width="100%" />
+
                 </div>
             </div>
-        </div>
+        </section>
+
         @php
             $i = 0;
             $m = 0;
@@ -215,60 +223,99 @@
 
         </div>
         
-        <section id="about" class="about"
-            style="background: url({{ pare_url_file($page->p_banner) }}) center center;   background-repeat: no-repeat, repeat;background-size: cover;">
+        <section id="about" class="about uni-dang-ky-b2b ">
             <div class="content-inner can_trai_phai">
                 <div class="container-fluid" data-aos="fade-up">
                     <div class="row">
-                        <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="about-img">
-                                <img src="{{ pare_url_file($content_page_1->thumbnail) }}"
-                                    alt="{{ $content_page_1->name }}">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                            <h1 class="mau_chu">Hợp tác cùng phát triển</h1>
+                        <div class="col-lg-6 pt-4 pt-lg-0" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="about-img" style="padding: 50px;">
+                            <h3>{{ $content_page_3->name }}</h3>
                             <p class="fst-italic">
-                                UNISPICE là một trong những thương hiệu của Công ty TNHH UNIKERY, chuyên nghiên cứu & phát
-                                triển sản phẩm gia vị thực phẩm. Chúng tôi mang đến sản phẩm gia vị và thực phẩm độc đáo,
-                                chất lượng cao được sản xuất trên dây chuyền công nghệ hiện đại cùng hệ thống quản lý chất
-                                lượng đạt tiêu chuẩn quốc tế ISO 9001:2015, FSSC, Sedex, và Halal. UNISPICE không chỉ là sự
-                                lựa chọn tuyệt vời cho những món ăn ngon hấp dẫn, mà còn mang đến trải nghiệm, khám phá văn
-                                hóa ẩm thực đa dạng, phong phú và tiện lợi cho cuộc sống hiện đại.
+                                {!! $content_page_3->content !!}
                             </p>
-                            <a class="a-btn a-btn--primary" href="#">Đăng Ký Đại Lý</a>
+                            <a class="a-btn a-btn--primary" href="{{ $content_page_3->url_but }}">{{ $content_page_3->name_but }}</a>
+                        </div>
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="about-img" style="padding: 50px;">
+                            <h3 >{{ $content_page_4->name }}</h3>
+                            <p class="fst-italic">
+                                {!! $content_page_4->content !!}
+                            </p>
+                            <a class="a-btn a-btn--primary" href="{{ $content_page_4->url_but }}">{{ $content_page_4->name_but }}</a>
+                        </div>
                         </div>
                     </div>
 
                 </div>
             </div>
         </section>
+
+       {{-- blog --}}
+       <div class="layout__region layout__region--content ">
         <div class="layout layout--onecol">
             <div class="layout__region layout__region--content">
-                <div data-block-plugin-id="inline_block:media_block"
-                    data-inline-block-uuid="ee168006-3fe9-4f1c-bbc5-ba42ddc90f9a"
-                    class="c-media-block c-media-block--template-">
-                    <div class="c-media-block__image-wrapper">
-                        <picture>
-                            <source media="(min-width: 768px)"
-                                data-srcset="/storage/uploads/gia-vi-hoan-chinh-1629283621.jpg">
-                            <img class="lazyload single-bg-sl"
-                                data-src="/storage/uploads/gia-vi-hoan-chinh-1629283621.jpg"
-                                alt="sdgfsdgs">
-                        </picture>
-                    </div>
+                <div class="c-media-block-aligned">
+                    <div class="c-media-block-aligned__content-wrapper">
+                        <div class="c-media-block-aligned m-media-block-aligned">
+                            <div class="m-media-block-aligned__image-wrapper">
+                                <picture>
+                                    <source media="(min-width: 768px)"
+                                        data-srcset="{{ pare_url_file($content_page_5->thumbnail) }}">
+                                    <img class="lazyload"
+                                        data-src="{{ pare_url_file($content_page_5->thumbnail) }}"
+                                        alt="{{ $content_page_5->name }}">
+                                </picture>
+                            </div>
 
-                    <div class="c-media-block__content">
-                        <div class="c-media-block__headline">
-                            <h3>TRỞ THÀNH THÀNH VIÊN
-                                SPICE CLUB</h3>
-                            <p> UNISPICE là một trong những thương hiệu của Công ty TNHH UNIKERY, chuyên nghiên cứu & phát
-                                triển sản phẩm gia vị thực phẩm.</p>
+                            <div class="m-media-block-aligned__content">
+                                <div class="m-heading ">
+                                    <h2 class="m-heading__headline">{{ $content_page_5->name }}
+                                    </h2>
+                                    <div class="m-heading__cta">
+                                        <a href="{{ $content_page_5->url_but }}"><span
+                                                class="m-heading__cta--text">{{ $content_page_5->name_but }}</span>
+                                            <span class="icon-arrow"></span></a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
+        <div class="container container-uni">
+            <div class="pading-uni uni-magin-top-but">
+                <div data-block-plugin-id="inline_block:heading"
+                    data-inline-block-uuid="4d501cc7-7465-4b33-9a6e-cdf57fdc8e77" class="m-heading">
+                    <h2 class="m-heading__headline">
+                        Gia vị & Cuộc sống
+                    </h2>
+                </div>
+                <div class="row">
+                    @foreach ($blog_post as $item)
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <a class="" href=" {{ getSlugPost($item->slug) }}"
+                                title="{{ $item->name }}">
+                                <div class="mt-3 mb-3 uni-blog-home-img">
+                                    <picture>
+                                        <source data-srcset="{{ pare_url_file($item->thumbnail) }}"
+                                            srcset="{{ pare_url_file($item->thumbnail) }}">
+                                        <img class=" ls-is-cached lazyloaded" data-src="" width="100%"
+                                            alt="{{ $item->name }}">
+                                    </picture>
+                                    <div class="uni-blog-home">
+                                        <p>{{ $item->name }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- blog --}}
     </main>
 @stop
