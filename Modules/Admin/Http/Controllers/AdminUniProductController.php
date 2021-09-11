@@ -201,6 +201,8 @@ class AdminUniProductController extends AdminController
         } else {
             $size_del = array_diff($check_exits, $request->size);
             foreach ($size_del as $del_size_id) {
+                $product_size_sel = Product_Size::where('product_id', $id)->where('size_id', $del_size_id)->first();
+                Storage::delete('public/uploads_Product/' . $product_size_sel->image);
                 ProductSize::where('product_id', $id)->where('size_id', $del_size_id)->delete();
             }
 

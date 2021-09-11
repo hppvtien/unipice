@@ -48,7 +48,7 @@
                     <div class="views-field views-field-search-api-rendered-item" style="transform-origin: 0px 0px;"><span class="field-content">
                             <div data-product-name="{{ $item->name }}" data-product-sku="{{ $item->id }}" class="m-product-card">
                                 <div class="m-product-card__content-wrapper">
-                                    <a class="m-product-card__img-wrapper" href="{{ $item->slug }}" title="{{ $item->name }}">
+                                    <a class="m-product-card__img-wrapper" href="{{ getSlugProduct($item->slug) }}" title="{{ $item->name }}">
                                         <img class="m-product-card__img ls-is-cached lazyloaded" data-src="{{ pare_url_file($item->thumbnail) }}" alt="{{ $item->name }}" src="{{ pare_url_file($item->thumbnail) }}">
                                     </a>
                                     <a class="fav-product">
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="m-product-card__info">
                                     <div class="m-combined-product-name group-product">
-                                        <a class="m-combined-product-name__link product-name-fio uni-css-title" href="{{ $item->slug }}">
+                                        <a class="m-combined-product-name__link product-name-fio uni-css-title" href="{{ getSlugProduct($item->slug) }}">
                                             <span class="a-folio">
                                                 {{ $item->name }}
                                             </span>
