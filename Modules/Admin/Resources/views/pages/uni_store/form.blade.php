@@ -66,7 +66,7 @@
                         <input type="file" class="form-control" name="store_album[]" value="" multiple>
                     </div>
                     <input type="hidden" class="form-control" name="albumold" multiple value="{{ old('store_album', $uni_store->store_album ?? '') }}">
-                    @if($uni_store)
+                    @if($uni_store->store_album != NULL)
                         <div class="row" style="border: 1px solid;padding-top:10px">
                             @forelse (json_decode($uni_store->store_album) as $key => $item)
                             <div class="col-3" data-rm="{{ $item }}" data-key="{{ $key }}" style="margin-bottom: 10px;position: relative; ">
@@ -74,9 +74,7 @@
                                 <img src="/storage/uploads_store/{{ $item }}" class="card-img-top" alt="...">
                             </div>
                             @empty
-
                             @endforelse
-
                         </div>
                         @else
                         @endif
@@ -97,11 +95,11 @@
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Status <span>(*)</span></label>
+                        <label for="exampleInputEmail1"> Trạng thái <span>(*)</span></label> 
                         <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
                             <select name="store_status" class="form-control SlectBox SumoUnder" tabindex="-1">
-                                <option title="hide" value="0">No Active</option>
-                                <option title="Public" value="1">Active</option>
+                                <option title="hide" value="0" {{ ($uni_store->store_status ?? 0) == 0 ? 'selected' : '' }}>Không duyệt</option>
+                                <option title="Public" value="1" {{ ($uni_store->store_status ?? 0) == 1 ? 'selected' : '' }}>Đã duyệt</option>
                             </select>
                         </div>
                     </div>

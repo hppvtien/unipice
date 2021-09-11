@@ -36,29 +36,131 @@
                         </div>
                     </form>
                 </div>
-                <div class="dropdown nav-item main-header-notification">
-                    <a class="new nav-link" href="empty#">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                        </svg>
-                        <span class=" pulse"></span>
-                    </a>
+                <div class="dropdown nav-item main-header-message ">
+                    <a class="new nav-link" href="index.html#"><svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span class=" pulse-danger"></span></a>
                     <div class="dropdown-menu">
                         <div class="menu-header-content bg-primary text-left">
                             <div class="d-flex">
-                                <h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">Đơn hàng</h6>
-                                <span class="badge badge-pill badge-warning ml-auto my-auto float-right">Đơn hàng chưa check</span>
+                                <h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">Liên hệ</h6>
+                                <span class="badge badge-pill badge-warning ml-auto my-auto float-right">Đánh dấu đã kiểm tra</span>
                             </div>
-                            <p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">Hiện tại có đơn hàng</p>
                         </div>
+                        <div class="main-message-list chat-scroll">
+                            <a class="d-flex p-3 border-bottom" href="{{ route('get_admin.uni_comment.index_rv')}}">
+                                <div class="notifyimg bg-success">
+                                    <i class="la la-check-circle text-white"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Đánh giá sản phẩm</h5>
+                                    <div class="notification-subtext">{{ alertStar(0) }} Đánh giá mới</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a class="d-flex p-3 border-bottom" href="{{ route('get_admin.uni_comment.index')}}">
+                                <div class="notifyimg bg-danger">
+                                    <i class="la la-question-circle text-white"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Câu hỏi sản phẩm</h5>
+                                    <div class="notification-subtext">{{ alertQuestion(0) }} câu hỏi mới</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a class="d-flex p-3 border-bottom" href="{{ route('get_admin.uni_contact.index')}}">
+                                <div class="notifyimg bg-info">
+                                    <i class="la la-send text-white"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Yêu cầu liên hệ</h5>
+                                    <div class="notification-subtext">{{ alertContact(0) }} yêu cầu mới</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a class="d-flex p-3 border-bottom" href="{{ route('get_admin.uni_contact.indexNew')}}">
+                                <div class="notifyimg bg-warning">
+                                    <i class="la la-envelope-open text-white" ></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Email nhận theo dõi</h5>
+                                    <div class="notification-subtext">{{ alertSubscribe(0) }} Email mới</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="dropdown nav-item main-header-notification">
+                    <a class="new nav-link" href="index.html#">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class=" pulse"></span></a>
+                    <div class="dropdown-menu">
                         <div class="menu-header-content bg-primary text-left">
                             <div class="d-flex">
-                                <h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">Thông báo</h6>
-                                <span class="badge badge-pill badge-warning ml-auto my-auto float-right">Liên hệ chưa xác nhận</span>
+                                <h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">Thông báo mới</h6>
+                                <span class="badge badge-pill badge-warning ml-auto my-auto float-right">Đánh dấu tất cả đã đọc</span>
                             </div>
-                            <p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">Có  tin nhắn liên hệ</p>
                         </div>
+                        <div class="main-notification-list Notification-scroll">
+                            
+                            <a class="d-flex p-3 border-bottom" href="{{ route('get_admin.uni_order.index')}}">
+                                <div class="notifyimg bg-success">
+                                    <i class="la la-shopping-basket text-white"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Đơn hàng mới</h5>
+                                    <div class="notification-subtext">{{ alertCountOrder(0) }} đơn hàng</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a class="d-flex p-3 border-bottom" href="{{ route('get_admin.uni_spice_club.index')}}">
+                                <div class="notifyimg bg-danger">
+                                    <i class="la la-usd text-white"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Nạp tiền mới Spice Club</h5>
+                                    <div class="notification-subtext">{{ alertCountOrderNap(0) }} đơn nạp</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a class="d-flex p-3 border-bottom" href="{{ route('get_admin.user.index')}}">
+                                <div class="notifyimg bg-warning">
+                                    <i class="la la-user-check text-white"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Khách hàng chưa xác minh</h5>
+                                    <div class="notification-subtext">{{ alertUser(0) }} khách hàng</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a class="d-flex p-3 border-bottom" href="{{ route('get_admin.user.store_index')}}">
+                                <div class="notifyimg bg-primary">
+                                    <i class="la la-user-check text-white"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Duyệt tài khoản đại lý</h5>
+                                    <div class="notification-subtext">{{ alertStoreDK(0) }} yêu cầu duyệt</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                           
+                        </div>
+                        
                     </div>
                 </div>
                

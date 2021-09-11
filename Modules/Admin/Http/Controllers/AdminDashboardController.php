@@ -22,10 +22,11 @@ class AdminDashboardController extends Controller
         $contact_show = Uni_Contact::where('created_at', '=', date_format(Carbon::now(), 'Y-m-d'))->limit(6)->get();
         $user = User::get();
         $uni_store = Uni_Store::orderBy('poin_store','desc')->where('end_date', '<', date_format(Carbon::now(), 'Y-m-d'))->limit(5)->get();
-        $order = Uni_Order::get();
-        $order_new = Uni_Order::limit(5)->get();
+        $order = Uni_Order::where('status',0)->get();
+        $order_new = Uni_Order::where('status','!=',3)->limit(10)->get();
         $order_success = Uni_Order::where('status',2)->get();
-        $order_cancel = Uni_Order::where('status',4)->get();
+        $order_cancel = Uni_Order::where('status',3)->get();
+        $order_pendding = Uni_Order::where('status',1)->get();
         $viewData = [
             'contact' => $contact,
             'contact_show' => $contact_show,
@@ -34,7 +35,8 @@ class AdminDashboardController extends Controller
             'order_new' => $order_new,
             'order_cancel' => $order_cancel,
             'order_success' => $order_success,
-            'uni_store' => $uni_store
+            'uni_store' => $uni_store,
+            'order_pendding' => $order_pendding,
         ];
         return view('admin::index', $viewData);
     }

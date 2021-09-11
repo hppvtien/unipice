@@ -124,12 +124,16 @@
                             <label><span class="bg-primary"></span>Tiếp nhận</label>
                         </div>
                         <div>
+                            <h4>{{ count($order_pendding) }}</h4>
+                            <label><span class="bg-warning"></span>Kiểm tra và gửi hàng</label>
+                        </div>
+                        <div>
                             <h4>{{ count($order_success) }}</h4>
-                            <label><span class="bg-danger"></span>Hoàn thành</label>
+                            <label><span class="bg-success"></span>Hoàn thành</label>
                         </div>
                         <div>
                             <h4>{{ count($order_cancel) }}</h4>
-                            <label><span class="bg-warning"></span>Hủy đơn</label>
+                            <label><span class="bg-danger"></span>Hủy đơn</label>
                         </div>
                     </div>
                     <div id="bar" class="sales-bar mt-4"></div>
@@ -175,7 +179,6 @@
                     <h4 class="card-title mb-1">Đơn hàng mới nhất</h4>
                     <i class="mdi mdi-dots-horizontal text-gray"></i>
                 </div>
-                <span class="tx-12 tx-muted mb-3 ">Đơn hàng mới nhất trong ngày.</span>
                 <div class="table-responsive country-table">
                     <table class="table table-striped table-bordered mb-0 text-sm-nowrap text-lg-nowrap text-xl-nowrap">
                         <thead>

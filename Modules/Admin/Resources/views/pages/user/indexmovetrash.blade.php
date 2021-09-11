@@ -21,28 +21,35 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Khách hàng</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Action</th>
+                                    <th>Ngày đăng ký</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($users as $item)
+                                @foreach($users as $key => $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
+                                    <th scope="row">{{ $key+1 }}</th>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
+                                    <td>{{ $item->created_at }}</td>
+                                    <td><span class="badge badge-danger">Đã hủy</span></td>
                                     <td>
                                         <a href="{{ route('get_admin.user.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
-                                        <a href="{{ route('get_admin.user.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
+                                        <a href="{{ route('get_admin.user.movetrash', $item->id) }}" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>
                                     </td>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div>
+                        {!! $users->links() !!}
                     </div>
                 </div>
             </div>

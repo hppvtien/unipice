@@ -5,7 +5,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">Thành viên mua lẻ</h4>
+                <h4 class="content-title mb-0 my-auto">Khách hàng mua lẻ</h4>
                 <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ index</span>
             </div>
         </div>
@@ -21,19 +21,23 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Khách hàng</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Action</th>
+                                    <th>Ngày đăng ký</th>
+                                    <th>Xác minh email</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($users as $item)
+                                @foreach($users as $key => $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
+                                    <th scope="row">{{ $key+1 }}</th>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
+                                    <td>{{ $item->created_at }}</td>
+                                    <td><span class="badge {{ $item->email_verified_at != NULL ? 'badge-success':'badge-danger'; }}">{{ $item->email_verified_at != NULL ? 'Đã xác minh':'Chưa xác minh' }}</span></td>
                                     <td>
                                         <a href="{{ route('get_admin.user.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                         <a href="{{ route('get_admin.user.movetrash', $item->id) }}" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>

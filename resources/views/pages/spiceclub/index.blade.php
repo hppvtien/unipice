@@ -296,6 +296,20 @@
                         </div>
                         <div class="layout layout--onecol">
                             <div class="layout__region layout__region--content">
+                                <div data-block-plugin-id="inline_block:cta_banner"
+                                    data-inline-block-uuid="728e2342-c0b1-413a-a643-7ad65411c78a"
+                                    style="--illustration-top:url({{ pare_url_file($page->p_banner) }})"
+                                    class="c-cta-banner c-cta-banner--torn-edge c-cta-banner--isLight c-cta-banner--illustrations c-cta-banner--bgImg">
+                                    <div class="c-cta-banner__content">
+                                        <span class="c-cta-banner__heading">Tham Gia Club Để Nhận Ưu Đãi!</span>
+                                        <p class="c-cta-banner__subheading"></p>
+                                        <a class="a-btn a-btn--primary" href="/dang-ky-spice-club">Đăng Ký</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layout layout--onecol">
+                            <div class="layout__region layout__region--content">
                                 <div class="t-membership-b2c__faq">
                                     <div class="layout layout--onecol c-faq-accordion">
                                         <div class="c-faq-accordion__heading">
@@ -356,20 +370,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="layout layout--onecol">
-                            <div class="layout__region layout__region--content">
-                                <div data-block-plugin-id="inline_block:cta_banner"
-                                    data-inline-block-uuid="728e2342-c0b1-413a-a643-7ad65411c78a"
-                                    style="--illustration-top:url({{ pare_url_file($page->p_banner) }})"
-                                    class="c-cta-banner c-cta-banner--torn-edge c-cta-banner--isLight c-cta-banner--illustrations c-cta-banner--bgImg">
-                                    <div class="c-cta-banner__content">
-                                        <span class="c-cta-banner__heading">Tham Gia Club Để Nhận Ưu Đãi!</span>
-                                        <p class="c-cta-banner__subheading"></p>
-                                        <a class="a-btn a-btn--primary" href="/dang-ky-spice-club">Đăng Ký</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="layout layout--onecol">
                             <div class="layout__region layout__region--content">
                             </div>

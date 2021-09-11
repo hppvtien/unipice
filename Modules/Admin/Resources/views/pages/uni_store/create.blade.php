@@ -11,7 +11,7 @@
             </div>
             <div class="d-flex my-xl-auto right-content">
                 <div class="pr-1 mb-3 mb-xl-0">
-                    <a href="{{ route('get_admin.uni_store.index') }}" class="btn btn-danger mr-2">Quay lại <i class="la la-undo"></i></a>
+                    <a href="{{ route('get_admin.user.store_index') }}" class="btn btn-danger mr-2">Quay lại <i class="la la-undo"></i></a>
                 </div>
             </div>
         </div>
