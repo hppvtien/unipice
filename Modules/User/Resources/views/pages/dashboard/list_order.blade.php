@@ -31,66 +31,9 @@
                                     @forelse ($uni_order as $key => $item)
                                         <tr>
                                             <th scope="row">{{ $key + 1 }}</th>
-                                            <td class="text-left" data-id="{{ $item->id }}">
-                                                <a type="button" class="btn text-primary mx-auto" data-toggle="modal"
-                                                    data-target="#exampleModal{{ $item->id }}">
-                                                    {{ $item->code_invoice }}
-                                                </a>
+                                            <td class="text-left">
+                                                {{ $item->code_invoice }}
                                             </td>
-                                            <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
-                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header btn-success">
-                                                            <h5 class="modal-title text-white" id="exampleModalLabel">Đơn
-                                                                hàng: {{ $item->code_invoice }}</h5>
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="row">
-                                                                <div class="col-1 text-info">#</div>
-                                                                <div class="col-4 text-info">Sản phẩm</div>
-                                                                <div class="col-3 text-info">Số lượng</div>
-                                                                <div class="col-4 text-info">Giá sản phẩm</div>
-                                                            </div>
-                                                            <?php $stt_p = 0; ?>
-                                                            @foreach (json_decode($item->cart_info) as $keys => $items)
-                                                                <div class="row"
-                                                                    style="margin-top: 10px;margin-bottom: 10px;">
-                                                                    <div class="col-1 text-info">{{ $stt_p++ }}</div>
-                                                                    <div class="col-4">{{ $items->name }}</div>
-                                                                    <div class="col-3">{{ $items->qty }}</div>
-                                                                    <div class="col-4">
-                                                                        {{ formatVnd($items->price) }}</div>
-                                                                </div>
-                                                            @endforeach
-                                                            <div class="row btn-success text-center" style="padding: 10px;">
-                                                                <h6 class="modal-title text-white ">Thông tin liên lạc</h6>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p></p>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <p><span class="text-success">Đại chỉ</span>
-                                                                        :{{ $item->address }}</p>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <p><span class="text-success">Số điện thoại</span>
-                                                                        :{{ $item->phone }}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Đóng</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <td class="text-center">{{ $item->created_at }}</td>
                                             @if ($item->type_pay != null)
                                                 <td class="text-center"><a class="btn btn-success w-75"

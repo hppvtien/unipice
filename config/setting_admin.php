@@ -11,7 +11,7 @@ return [
             'class-icon' => 'la la-user',
             'sub' => [
                 [
-                    'name' => 'Thành viên mua lẻ',
+                    'name' => 'Khách hàng mua lẻ',
                     'route' => 'get_admin.user.index'
                 ],
                 [
@@ -113,7 +113,7 @@ return [
                     'route' => 'get_admin.uni_order.index'
                 ],
                 [
-                    'name' => 'Đơn hàng rác',
+                    'name' => 'Đơn hàng đã hủy',
                     'route' => 'get_admin.uni_order.trash'
                 ]
             ]
@@ -134,7 +134,7 @@ return [
         ],
         [
             'name' => 'Quản lý Page',
-            'class-icon' => 'la la-cart-arrow-down',
+            'class-icon' => 'la la-book-open',
             'sub' => [
                 [
                     'name' => 'Danh sách',

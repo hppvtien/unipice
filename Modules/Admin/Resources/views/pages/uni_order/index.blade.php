@@ -73,7 +73,7 @@
                                 @forelse($uni_order as $key => $item)
 
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
+                                    <th scope="row">{{ $key +1 }}</th>
                                     <td>
                                         <p><span>Họ tên: </span> <span class="text-success">{{ $item->user->name ?? "[N\A]" }}</span></p>
                                         <p><span>Email: </span> <span class="text-success">{{ $item->user->email ?? "[N\A]" }}</span></p>

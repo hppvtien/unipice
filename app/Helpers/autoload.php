@@ -221,6 +221,84 @@ function execPostRequest($url, $data)
         $numb_order = count($order_Isday);
         return $numb_order;
     }
+/**
+     * get price.
+     * @param int $status
+     * @return int $numb_order
+     */
+    function alertCountOrder($status = 0)
+    {
+        $order_Isday = App\Models\Cart\Uni_Order::where('status',$status)->get();
+        $numb_order = count($order_Isday);
+        return $numb_order;
+    }
+    /**
+     * get price.
+     * @param int $status
+     * @return int $numb_order_nap
+     */
+    function alertCountOrderNap($status = 0)
+    {
+        $order_Isday = App\Models\Cart\Uni_Order_Nap::where('status',$status)->get();
+        $numb_order = count($order_Isday);
+        return $numb_order;
+    }
+    /**
+     * get price.
+     * @param int $status
+     * @return int $user chưa xác minh
+     */
+    function alertUser()
+    {
+        $order_Isday = App\Models\User::where('email_verified_at', '=',NULL)->get();
+        $numb_order = count($order_Isday);
+        return $numb_order;
+    }
+     /**
+     * get price.
+     * @param int $status
+     * @return int Xác minh đại lý
+     */
+    function alertStoreDK()
+    {
+        $order_Isday = App\Models\Uni_Store::where('store_status',0)->get();
+        $numb_order = count($order_Isday);
+        return $numb_order;
+    }
+     /**
+     * get price.
+     * @param int $status
+     * @return int Star và Question
+     */
+    function alertStar()
+    {
+        $order_Isday = App\Models\Uni_Comment::where('type', 'review')->where('status',0)->get();
+        $alertStat = count($order_Isday);
+        return $alertStat;
+    }
+    function alertQuestion()
+    {
+        $order_Isday = App\Models\Uni_Comment::where('type', 'question')->where('status',0)->get();
+        $alertQuestion = count($order_Isday);
+        return $alertQuestion;
+    }
+       /**
+     * get price.
+     * @param int $status
+     * @return int Contact và Theo dõi
+     */
+    function alertContact()
+    {
+        $order_Isday = App\Models\Uni_Contact::where('is_newsletter', 0)->where('status',0)->get();
+        $alertContact = count($order_Isday);
+        return $alertContact;
+    }
+    function alertSubscribe()
+    {
+        $order_Isday = App\Models\Uni_Contact::where('is_newsletter', 1)->where('status',0)->get();
+        $alertSubscribe = count($order_Isday);
+        return $alertSubscribe;
+    }
             /**
      * get price.
      * @param int $day
@@ -449,7 +527,15 @@ function execPostRequest($url, $data)
         return $checkUid;
     }
     function checkUidSpiceClub($id){
-        $checkUid = App\Models\Cart\Uni_order_nap::where('user_id',$id)->where('status',0)->pluck('id')->first();
+        $checkUid = App\Models\Cart\Uni_Order_Nap::where('user_id',$id)->where('status',0)->pluck('id')->first();
+        return $checkUid;
+    }
+    function checkUidSpiceClubPay($id){
+        $checkUid = App\Models\Cart\Uni_Order_Nap::where('user_id',$id)->where('status',2)->pluck('id')->first();
+        return $checkUid;
+    }
+    function checkUserStore($id){
+        $checkUid = App\Models\Uni_Store::where('user_id',$id)->where('store_status',1)->pluck('id')->first();
         return $checkUid;
     }
     function checkExitsUid($id){

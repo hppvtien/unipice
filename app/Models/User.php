@@ -18,11 +18,11 @@ class User extends Authenticatable
     public $statusGlobal;
     protected $u_status = [
         self::STATUS_DEFAULT => [
-            'name' => 'Đang hoạt động',
+            'name' => 'Khóa tài khoản',
             'class' => 'badge-default'
         ],
         self::STATUS_PROCESS => [
-            'name' => 'Khóa tài khoản',
+            'name' => 'Đang hoạt động',
             'class' => 'badge-success'
         ],
     ];

@@ -21,13 +21,15 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Tên cửa hàng</th>
+                                    <th>Họ tên</th>
+                                    <th>Thông tin đại lý</th>
+                                    <th>Trạng thái đại lý</th>
                                     <th>Cấp bậc</th>
                                     <th>Tổng điểm</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Action</th>
+                                    <th>Xác minh email</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,10 +42,16 @@
                                     @else
                                     <td>Đại lý chưa cập nhật thông tin</td>
                                     @endif
+                                    <td>@if (checkUserStore($item->id))
+                                        <span class="badge badge-success">Đã duyệt</span>
+                                        @else
+                                        <span class="badge badge-danger">Chưa duyệt</span>
+                                        @endif</td>
                                     <td>{{ getTypeStore($item->id) }}</td>
                                     <td>{{ getPoinStore($item->id) }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
+                                    <td><span class="badge {{ $item->email_verified_at != null ? 'badge-success' : 'badge-danger' }}">{{ $item->email_verified_at != null ? 'Đã xác minh' : 'Chưa xác minh' }}</span></td>
                                     <td>
                                         <a href="{{ route('get_admin.user.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                         <a href="{{ route('get_admin.user.movetrash', $item->id) }}" class="btn btn-xs btn-danger"><i class="la la-trash"></i></a>

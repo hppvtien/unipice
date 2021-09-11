@@ -13,10 +13,10 @@
                 <div class="primary-navigation">
                     <ul id="menu-main-menu" class="menu nav-menu" aria-expanded="false">
                         @if (!get_data_user('web'))
-                        <li class="menu-item"><a href="{{ route('get.register.b2b') }}">B2B</a></li>
+                        <li class="menu-item"><a rel="nofollow" href="{{ route('get.register.b2b') }}">B2B</a></li>
                         @endif
                         <li class="menu-item"><a href="{{ route('get.spice_club') }}">Spice Club</a></li>
-                        <li class="menu-item"><a href="{{ route('get.find') }}">Tìm Cửa hàng</a></li>
+                        <li class="menu-item"><a rel="nofollow" href="{{ route('get.find') }}">Tìm Cửa hàng</a></li>
                         <li class="menu-item"><a href="{{ route('get.about') }}">Giới Thiệu</a></li>
                     </ul>
                 </div>
