@@ -229,7 +229,7 @@
                                                     <div id="row" style="margin-bottom: 30px;">
                                                         <div class="m-product-card__content-wrapper row fix-btn-cart">
                                                             <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
-                                                                <button style="display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn " data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user( 'web') !=null ? get_data_user( 'web') : 0 }} onclick="{{ get_data_user('web') !=null ? 'check_my_favorites_add(this)' : 'unset' }};" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">Yêu thích</button>
+                                                                <button style="display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn " data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" my-id="{{ $product->id }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user( 'web') !=null ? get_data_user( 'web') : 0 }} onclick="check_my_favorites_add(this)" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">Yêu thích</button>
                                                             </div>
                                                             <?php if ($product->qty != null) { ?>
                                                                 <?php if (checkUid(get_data_user('web')) != null) { ?>
@@ -343,6 +343,40 @@
 @stop
 
 @section('js_product_comment_review')
+<script>
+    function check_my_favorites_add(my_id) {
+        var title = $(my_id).attr('my-id');
+        var uid = $(my_id).attr('data-uid');
+
+        $.get("{{ route('get_user.myfavorites_add') }}", {
+                id: title
+            })
+            .done(function(data) {
+                if (data.count != 0) {
+                    $('#count-fav').html('<div class="c-header__minicart-count count-fav" style="bottom: -10px;right: -5px"><span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;" id="js-count-favorite">' + data.count + '</span>' +
+                        '</div>');
+                } else {
+                    $('#count-fav').html('');
+                }
+
+                if (data.message == 'add') {
+                    $('#toast-container').html(' <div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Sản phẩm được thêm vào danh sách yêu thích</div></div>'), 4000;
+                    setTimeout(function() {
+                        $('.toast-success').remove();
+                    }, 2000);
+                    $('#red_heart' + title).addClass('red');
+                } else {
+                    $('#toast-container').html(' <div class="toast toast-warning" aria-live="assertive" style=""><div class="toast-message">Sản phẩm được xóa khỏi danh sách yêu thích</div></div>'), 4000;
+                    setTimeout(function() {
+                        $('.toast-warning').remove();
+                    }, 2000);
+                    console.log(data);
+                    $('#red_heart' + title).removeClass('red');
+                };
+
+            });
+    }
+</script>
 <script>
     $('#show_viet_danh_gia').click(function() {
         $("#News").slideToggle("slow");
