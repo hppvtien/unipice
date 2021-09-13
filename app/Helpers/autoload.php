@@ -103,6 +103,16 @@ function execPostRequest($url, $data)
         return $getSlug;
     }
         /**
+     * get slug police post.
+     * @param string $tring
+     * @return string $slug
+     */
+    function getSlugPolice($tring)
+    {
+        $getSlug = '/thoa-thuan-su-dung/'.$tring;
+        return $getSlug;
+    }
+        /**
      * get slug category post.
      * @param string $tring
      * @return string $slug
@@ -608,5 +618,17 @@ function execPostRequest($url, $data)
 
     function get_product_id($id_product){
         $mang = App\Models\Uni_Product::where('id',$id_product)->limit(10)->get();
+        return $mang;
+    }
+    function get_permissionid($user_id){
+        $mang = \DB::table('role_has_permissions')->where('role_id',$user_id)->pluck('permission_id');
+        return $mang;
+    }
+    function get_permissionroute($id){
+        $mang = \DB::table('permissions')->whereIn('id',$id)->pluck('name');
+        return $mang;
+    }
+    function get_permissionrname($route){
+        $mang = \DB::table('permissions')->where('name',$route)->pluck('description')->first();
         return $mang;
     }

@@ -36,9 +36,8 @@
 
     <!-- End Switcher -->
     <!-- Loader -->
-    <div id="global-loader">
-        <img src="{{ asset('img/loader.svg') }}" class="loader-img" alt="Loader">
-    </div>
+ 
+
     <!-- /Loader -->
     <!-- main-sidebar -->
     @include('admin::components._inc_sidebar')
@@ -57,7 +56,7 @@
     @include('admin::components._inc_footer')
     <!-- JQuery min js -->
     <script src="{{ asset('js_admin/jquery.min.js') }}"></script>
- 
+
     <script src="{{ asset('js_admin/moment.js') }}"></script>
     <script src="{{ asset('js_admin/apexcharts.js') }}"></script>
     <script src="{{ asset('js_admin/index.js') }}"></script>
@@ -68,7 +67,7 @@
     <script src="{{ asset('js_admin/select2.min.js') }}"></script>
     <script src="{{ asset('js_admin/custom.js') }}"></script>
 
-  
+
     <script>
         $("#meta_title").keyup(function() {
             $("#count_title").text("Ký tự: " + ($(this).val().length) + " (Tiêu đề seo 50 - 70 ký tự)");

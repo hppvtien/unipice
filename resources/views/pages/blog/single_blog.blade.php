@@ -126,7 +126,8 @@
                                   <div class="row">
                                     @foreach ($blog_post1 as $item)
                                     <div class="col-lg-3">
-                                      <a class="" href="san-pham-01">
+                                    
+                                      <a class="" href="{{ $blog_post_cat != 9 ? getSlugPost($item->slug) : getSlugPolice($item->slug) }}">
                                         <div class="mt-3 mb-3">
                                             <picture>
                                                 <source data-srcset="{{ pare_url_file($item->thumbnail) }}">

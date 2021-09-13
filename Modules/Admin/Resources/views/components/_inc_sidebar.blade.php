@@ -8,24 +8,35 @@
     </div>
     <div class="main-sidemenu">
         <ul class="side-menu">
-            @foreach(config('setting_admin.sidebar') as $menus)
-                <li class="slide">
-                    <a class="side-menu__item" {{ isset($menus['sub']) ? 'data-toggle=slide' : '' }}
-                       href="{{  isset($menus['sub']) ? '#' : route($menus['route']) }}" title="{{ $menus['name'] }}">
-                        <span class="side-menu__label"><i class="{{ $menus['class-icon'] }}"></i> {{ $menus['name'] }}</span>
-                        @if(isset($menus['sub']))
+            @if (get_permissionroute(get_permissionid(get_data_user('admins')))[0] == 'full')
+                @foreach(config('setting_admin.sidebar') as $menus)
+                    <li class="slide">
+                        <a class="side-menu__item" {{ isset($menus['sub']) ? 'data-toggle=slide' : '' }} href="{{  isset($menus['sub']) ? '#' : route($menus['route']) }}" title="{{ $menus['name'] }}">
+                            <span class="side-menu__label"><i class="{{ $menus['class-icon'] }}"></i> {{ $menus['name'] }}</span>
+                            @if(isset($menus['sub']))
                             <i class="fa fa-chevron-down"></i>
-                        @endif
-                    </a>
-                    @if(isset($menus['sub']))
+                            @endif
+                        </a>
+                        @if(isset($menus['sub']))
                         <ul class="slide-menu">
                             @foreach($menus['sub'] as $menu)
-                                <li><a class="slide-item" href="{{ route($menu['route']) }}" title="{{ $menu['name'] }}"> {{ $menu['name'] }}</a></li>
+                            <li><a class="slide-item" href="{{ route($menu['route']) }}" title="{{ $menu['name'] }}"> {{ $menu['name'] }}</a></li>
                             @endforeach
                         </ul>
-                    @endif
+                        @endif
+                    </li>
+            
+                @endforeach
+            @else
+                @foreach (get_permissionroute(get_permissionid(get_data_user('admins'))) as $item)
+                <li class="slide">
+                    <a class="side-menu__item" href="/admin/{{ $item }}">
+                        {{ get_permissionrname($item) }}
+                    </a>
+                 
                 </li>
-            @endforeach
+                @endforeach
+            @endif
         </ul>
     </div>
 </aside>
