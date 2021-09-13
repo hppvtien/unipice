@@ -1027,6 +1027,7 @@ a.btn-km {
     margin: 10px auto 0 auto;
     border-radius: 5px;
     text-align: center;
+    color: #fff;
 }
 
 a.btn-km:hover {

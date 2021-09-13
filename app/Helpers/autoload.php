@@ -103,6 +103,16 @@ function execPostRequest($url, $data)
         return $getSlug;
     }
         /**
+     * get slug police post.
+     * @param string $tring
+     * @return string $slug
+     */
+    function getSlugPolice($tring)
+    {
+        $getSlug = '/thoa-thuan-su-dung/'.$tring;
+        return $getSlug;
+    }
+        /**
      * get slug category post.
      * @param string $tring
      * @return string $slug

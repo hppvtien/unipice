@@ -73,6 +73,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('bai-viet', 'BlogHomeController@index')->name('get_blog.home');
     Route::post('bai-viet', 'BlogHomeController@fillter_post');
     Route::get('bai-viet/{slug}', 'BlogHomeController@SingleBlog')->name('get_blog.single_blog');
+    Route::get('thoa-thuan-su-dung/{slug}', 'BlogHomeController@SinglePolice')->name('get_blog.single_police');
     Route::post('bai-viet/{slug}/add_comment_post', 'BlogHomeController@add_comment_post')->name('get_blog.add_comment_post');
     Route::get('danh-muc-bai-viet/{slug}', 'BlogHomeController@SingleCat')->name('get_blog.single_cat');
     Route::get('thoa-thuan-su-dung', 'BlogHomeController@ThoaThuan')->name('get.thoa_thuan_su_dung');

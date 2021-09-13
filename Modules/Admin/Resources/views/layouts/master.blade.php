@@ -41,6 +41,7 @@
     </div>
     <!-- /Loader -->
     <!-- main-sidebar -->
+    
     @include('admin::components._inc_sidebar')
     <!-- main-sidebar -->
     <!-- main-content -->

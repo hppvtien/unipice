@@ -51,11 +51,11 @@ class BlogHomeController extends Controller
     }
     public function SingleBlog($slug)
     {   
-
         $post_category = Uni_PostCategory::where('status',1)->orderByDesc('id')->get();
         $slide = Slide::where('s_type',7)->first();
         $blog_post = Uni_Post::where('slug',$slug)->first();
-        $blog_post1 = Uni_Post::where('status',1)->orderByDesc('id')->limit(8)->get();
+        $blog_post_cat = Uni_Post::where('slug',$slug)->orderByDesc('id')->pluck('category_id')->first();
+        $blog_post1 = Uni_Post::where('category_id',$blog_post_cat)->orderByDesc('id')->limit(8)->get();
         $user_ids = get_data_user('web');
 
         $current_cate = Uni_PostCategory::where('id',$blog_post->category_id)->first();
@@ -78,9 +78,11 @@ class BlogHomeController extends Controller
             'blog_post_id' => $blog_post->id,
             'user_ids' => $user_ids,
             'slug' => $slug,
+            'blog_post_cat' => $blog_post_cat,
         ];
         return view('pages.blog.single_blog',$viewdata);
     }
+    
 
     public function add_comment_post(Request $request)
     {
@@ -120,10 +122,12 @@ class BlogHomeController extends Controller
             'slide' => $slide,
             'current_cate' => $current_cate
         ];
+        
         return view('pages.blog.single_cat', $viewData);
     }
     public function ThoaThuan()
     {
+        
         $cat_ids = Uni_PostCategory::where('id', 9)->first();
         $blog_posts  = Uni_Post::where('status', 0)->get();
         $viewData = [
@@ -131,6 +135,39 @@ class BlogHomeController extends Controller
             'cat_ids' => $cat_ids,
         ];
         return view('pages.blog.thoa_thuan', $viewData);
+    }
+    public function SinglePolice($slug)
+    {   
+        $post_category = Uni_PostCategory::where('status',1)->orderByDesc('id')->get();
+        $slide = Slide::where('s_type',7)->first();
+        $blog_post = Uni_Post::where('slug',$slug)->first();
+        $blog_post_cat = Uni_Post::where('slug',$slug)->orderByDesc('id')->pluck('category_id')->first();
+        $blog_post1 = Uni_Post::where('category_id',$blog_post_cat)->orderByDesc('id')->limit(8)->get();
+        $user_ids = get_data_user('web');
+
+        $current_cate = Uni_PostCategory::where('id',$blog_post->category_id)->first();
+
+        \SEOMeta::setTitle($blog_post->meta_title);
+        \SEOMeta::setDescription($blog_post->meta_desscription);
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription($blog_post->meta_desscription);
+        \OpenGraph::setTitle($blog_post->meta_title);
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
+        \OpenGraph::addImage(URL::to('').pare_url_file($blog_post->thumbnail));
+
+        $viewdata = [
+            'blog_post'=>$blog_post,
+            'blog_post1' => $blog_post1,
+            'post_category'=>$post_category,
+            'slide' => $slide,
+            'current_cate' => $current_cate,
+            'blog_post_id' => $blog_post->id,
+            'user_ids' => $user_ids,
+            'slug' => $slug,
+            'blog_post_cat' => $blog_post_cat,
+        ];
+        return view('pages.blog.single_blog',$viewdata);
     }
 
 }
