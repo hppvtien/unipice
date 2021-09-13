@@ -292,6 +292,7 @@
                         <input type="hidden" name="delete_thumbnail" value="{{ old('meta_keyword', $uni_flashsale->thumbnail ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="thumbnail" id="avatar_uploads">
+                        <span class="d-block text-warning">Kích thước 396px X 297px</span>
                     </div>
                     @if(isset($uni_flashsale->thumbnail))
                     <p>
@@ -303,3 +304,16 @@
         </div>
     </div>
 </form>
+@section('scriptck')
+<script>
+    CKEDITOR.replace('article-ckeditor', {
+        filebrowserBrowseUrl: "{{ asset('ckfinder/ckfinder.html') }}",
+        filebrowserImageBrowseUrl: "{{ asset('/plugin/ckfinder/ckfinder.html?type=Images') }}",
+        filebrowserFlashBrowseUrl: "{{ asset('/plugin/ckfinder/ckfinder.html?type=Flash') }}",
+        filebrowserUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}",
+        filebrowserImageUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}",
+        filebrowserFlashUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}",
+    });
+</script>
+
+@stop

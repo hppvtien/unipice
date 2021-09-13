@@ -95,6 +95,7 @@
                         <label for="exampleInputEmail1">Ảnh </label>
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="p_banner" id="avatar_uploads">
+                        <span class="d-block text-warning">Kích thước 1440px X 380px</span>
                     </div>
                     @if(isset($pages->p_banner))
                     <p>

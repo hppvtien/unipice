@@ -19,8 +19,8 @@
                         <label class="a-form-label m-text-input__label" for="method_date">Hình thức thanh toán</label>
                         <select class="custom-select" id="method_date" name="type_pay" onchange="chanFunctionMethodTran()" >
                             <option value="1">Chuyển khoản ngân hàng</option>
-                            <option value="4">Thanh toán VNPAY</option>
-                            <option value="2">Thanh toán MOMO</option>
+                            {{-- <option value="4">Thanh toán VNPAY</option>
+                            <option value="2">Thanh toán MOMO</option> --}}
                         </select>
                     </div>
                 </div>

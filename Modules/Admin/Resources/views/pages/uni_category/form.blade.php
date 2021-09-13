@@ -61,14 +61,26 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Hình ảnh icon <span>(*)</span></label>
                         <input type="file" class="form-control" name="icon_thumb" value="">
+                        <span class="d-block text-warning">Kích thước 228px X 228px</span>
                     </div>
-
+                    @if (isset($uni_cate->icon_thumb))
+                    <p>
+                        <img src="{{ pare_url_file_product($uni_cate->icon_thumb) }}" alt=""
+                            style="width: 10%;height: auto;background: #0b2d25;">
+                    </p>
+                @endif
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Hình ảnh thumbnail trang chủ
                             <span>(*)</span></label>
                         <input type="file" class="form-control" name="thumbnail" value="">
+                        <span class="d-block text-warning">Kích thước 228px X 228px</span>
                     </div>
-
+                    @if (isset($uni_cate->thumbnail))
+                    <p>
+                        <img src="{{ pare_url_file_product($uni_cate->thumbnail) }}" alt=""
+                            style="width: 10%;height: auto;">
+                    </p>
+                @endif
                 </div>
             </div>
             <div class="card  box-shadow-0">
@@ -155,6 +167,7 @@
                             value="{{ old('delete_thumbnail', $uni_cate->banner ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="banner" id="avatar_uploads">
+                        <span class="d-block text-warning">Kích thước 1440px X 380px</span>
                     </div>
                     @if (isset($uni_cate->banner))
                         <p>

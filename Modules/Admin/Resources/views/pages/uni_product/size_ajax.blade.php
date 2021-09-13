@@ -54,11 +54,13 @@
                     <label for="exampleInputEmail1">Ảnh</label>
                     <input type="file" class="form-control" name="image[{{ $v_size->size_id }}]" value="{{ old('image', $v_size->image ?? '') }}">
                     <input type="hidden" name="image[{{ $v_size->size_id }}]" value="">
+                    <span class="d-block text-warning">Kích thước 700px X 760px</span>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-2" style="margin-bottom: 10px;position: relative; ">
+    
         <img src="{{ pare_url_file_product($v_size->image) }}" class="card-img-top" alt="...">
     </div>
 </div>

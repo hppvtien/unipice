@@ -20,27 +20,27 @@
 .uni-m-accordion::after {
     background-color: #0b2d25 !important;
 }
-
+.secondary a span {
+    color: #0b2d25;
+}
+.secondary a span:hover {
+    color: #000000;
+}
 .uni-tex-cat.none {
     display: none;
 }
-
 .fil-uni {
     margin-top: 76px;
 }
-
 .uni-css-img {
     width: 50%;
 }
-
 .container-uni {
     max-width: 1500px !important;
 }
-
 .uni-magin-top-but {
     margin: 150px 0px 60px;
 }
-
 .uni-blog-home-img img:hover {
     opacity: 1.0;
     -webkit-transform: scale(1.0) rotate( -5deg);

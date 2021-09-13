@@ -59,7 +59,7 @@
                         <span class="d-block text-warning">Thứ thự được sắp xếp từ bé đến lớn</span>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Ảnh Banner </label>
+                        <label for="exampleInputEmail1">Ảnh  </label>
                         <input type="file" class="form-control" name="banner" value="">
                     </div>
                     <input type="hidden" class="form-control" name="bannerold"
@@ -141,6 +141,7 @@
                             value="{{ old('delete_thumbnail', $postcategory->thumbnail ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="thumbnail" id="avatar_uploads">
+                        <span class="d-block text-warning">Kích thước 1440px X 380px</span>
                     </div>
                     @if (isset($postcategory->thumbnail))
                         <p>

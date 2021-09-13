@@ -108,6 +108,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Album ảnh</label>
                 <input type="file" class="form-control" name="album[]" value="" multiple>
+                <span class="d-block text-warning">Kích thước 700px X 760px</span>
             </div>
             <input type="hidden" class="form-control" name="albumold" value="{{ old('album', $uni_product->album ?? '') }}">
             @if ($uni_product)
@@ -197,6 +198,7 @@
                                     <label for="exampleInputEmail1">Ảnh</label>
                                     <input type="file" class="form-control" name="image[{{ $v_size->size_id }}]" value="{{ old('image', $v_size->image ?? '') }}">
                                     <input type="hidden" name="image[{{ $v_size->size_id }}]" value="">
+                                    <span class="d-block text-warning">Kích thước 700px X 760px</span>
                                 </div>
                             </div>
                         </div>
@@ -311,6 +313,7 @@
                     <input type="hidden" name="delete_thumbnail" value="{{ old('meta_keyword', $uni_product->thumbnail ?? '') }}">
                     <input type="file" class="filepond" data-type="avatar" name="avatar">
                     <input type="hidden" name="thumbnail" id="avatar_uploads">
+                    <span class="d-block text-warning">Kích thước 700px X 760px</span>
                 </div>
                 @if(isset($uni_product->thumbnail))
                 <p>
