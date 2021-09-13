@@ -632,3 +632,22 @@ function execPostRequest($url, $data)
         $mang = \DB::table('permissions')->where('name',$route)->pluck('description')->first();
         return $mang;
     }
+    function getSlugper($str){
+        $index_url = "_index";
+        $create_url = "_create";
+        $edit_url = "_edit";
+        $delete_url = "_delete";
+        if(strpos($str,$index_url)){
+            $mang = explode($index_url,$str)[0];
+        } 
+        elseif (strpos($str,$create_url)){
+            $mang = explode($create_url,$str)[0];
+        }
+        elseif (strpos($str,$edit_url)){
+            $mang = explode($edit_url,$str)[0];
+        }
+        elseif (strpos($str,$delete_url)){
+            $mang = explode($delete_url,$str)[0];
+        }
+        return $mang;
+    }

@@ -30,10 +30,10 @@
             @else
                 @foreach (get_permissionroute(get_permissionid(get_data_user('admins'))) as $item)
                 <li class="slide">
-                    <a class="side-menu__item" href="/admin/{{ $item }}">
-                        {{ get_permissionrname($item) }}
+                    <a class="side-menu__item" href="/admin/{{ getSlugper($item) }}">
+                        <span class="side-menu__label"> {{ get_permissionrname($item) }}</span>
+                        
                     </a>
-                 
                 </li>
                 @endforeach
             @endif
