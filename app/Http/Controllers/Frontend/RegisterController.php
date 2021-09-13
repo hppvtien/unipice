@@ -221,14 +221,7 @@ class RegisterController extends Controller
                 $this->showforgetpassword();
                 return redirect()->route('get.forgetpassword');
             } else {
-                $pass_reset_id = PasswordResett::get();
-                foreach($pass_reset_id as $item){
-                    if ($item->user_id == $user_re->id) {
-                        $item->delete();
-                    } else {
-                        abort(404);
-                    }
-                }
+                PasswordResett::where('user_id', $user_re->id)->delete();
                 $user_re->update([
                     'password' => bcrypt($request->re_password)
                 ]);

@@ -365,7 +365,7 @@ class AdminUniProductController extends AdminController
                     'price_sale_store'    => $size_price_sale_store == null ? 0 : $size_price_sale_store[$item],
                     'min_box'    => $min_box == null ? 0 : $min_box[$item],
                     'qty_in_box'    => $qty_in_box == null ? 0 : $qty_in_box[$item],
-                    'image'    => $image == null ? 0 : $image[$item],
+                    'image'    => $image == null ? null : $image[$item],
                 ]);
             }
         }
@@ -496,7 +496,7 @@ class AdminUniProductController extends AdminController
                     'price_sale_store'    => 0,
                     'qty_in_box'    => 0,
                     'min_box'    => 0,
-                    'image'    => 'NULL',
+                    'image'    => null,
                 ];
                 Product_Size::insert($param_size);
             }

@@ -197,6 +197,7 @@
                         <input type="hidden" name="delete_thumbnail" value="{{ old('delete_thumbnail', $uni_post->thumbnail ?? '') }}">
                         <input type="file" class="filepond" data-type="avatar" name="avatar">
                         <input type="hidden" name="thumbnail" id="avatar_uploads">
+                        <span class="d-block text-warning">Kích thước 600px X 500px</span>
                     </div>
                     @if(isset($uni_post->thumbnail))
                     <p>
