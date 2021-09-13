@@ -31,6 +31,12 @@
                                                 for="firstname"><span>Số điện thoại</span></label>
                                         </div>
                                     </div>
+                                    <div class="field field-name-firstname required">
+                                        <div class="m-text-input m-text-input--placeholder-label control">
+                                            <input type="text" id="address" name="address" value="" title="phone" class="a-text-input m-text-input__input input-text required-entry">
+                                            <label class="a-form-label m-text-input__label label" for="firstname"><span>Địa chỉ</span></label>
+                                        </div>
+                                    </div>
                                     <div class="m-checkbox field choice become_associate_member">
                                         <input type="checkbox" name="type"
                                             title="Become An Associate Member" value="1" id="associate_member_request"
@@ -66,6 +72,16 @@
                                             <label for="password-confirmation"
                                                 class="a-form-label m-text-input__label label"><span>Nhập lại mật khẩu</span></label>
                                         </div>
+                                    </div>
+                                    <div class="m-checkbox field choice become_associate_member">
+                                        <input type="checkbox" name="type_apply"
+                                            title="Become An Associate Member" value="" id="associate_member_requestww"
+                                            class="m-checkbox__input checkbox">
+                                        <label for="associate_member_requestww" class="label">
+                                            <div class="m-checkbox__square"></div>
+                                            <span class="m-checkbox__text-label">Tôi đồng ý với <span><a class="d-inline police-rg" href="{{ route('get.thoa_thuan_su_dung') }}">Điều khoản sử dụng</a></span></span>
+                                        </label>
+                                        <p class="warning-err font_chu_mau_do"></p>
                                     </div>
                                 </fieldset>
                                 <div class="actions-toolbar">

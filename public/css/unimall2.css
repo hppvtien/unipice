@@ -554,11 +554,13 @@ a.text-muted:focus {
     opacity: 0.75;
     transition: opacity 0.15s linear;
 }
+
 .uni-contact {
     font-size: 16px;
     color: #0D2B25;
     font-weight: 600;
 }
+
 .can_le_trai {
     text-align: left;
 }
@@ -663,6 +665,15 @@ span.rigister-text {
     color: #fff;
 }
 
+a.police-rg {
+    color: unset!important;
+}
+
+a.police-rg:hover {
+    text-decoration: underline!important;
+    color: #fd7e14!important;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="url"],
@@ -692,7 +703,8 @@ textarea,
     width: 100%;
 }
 
-#formRegister #phone {
+#formRegister #phone,
+#formRegister #address {
     color: #000;
     outline: none;
     border: 1px solid #000;

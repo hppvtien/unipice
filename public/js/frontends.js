@@ -20059,24 +20059,33 @@
                 register: function register() {
                     $("body").on("click", ".js-register", function(event) {
                         var URL = $("#formRegister").attr('action');
-                        event.preventDefault();
-                        $(".gd-danger").remove();
-                        $.ajax({
-                            url: URL,
-                            method: "POST",
-                            data: $('#formRegister').serialize(),
-                            success: function success(results) {
-                                if (results.status === 200) {
-                                    toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success(results.message);
-                                }
-                            },
-                            error: function error(xhr) {
-                                $('#validation-errors').html('');
-                                $.each(xhr.responseJSON.errors, function(field_name, error) {
-                                    $("#formRegister").find('[name=' + field_name + ']').after('<span class="text-strong gd-danger">' + error + '</span>');
-                                });
-                            }
+                        var product_size = 0;
+                        $('#associate_member_requestww:checked').each(function() {
+                            product_size = 1;
                         });
+                        if (product_size == 0) {
+                            $('.warning-err').text('Bạn có đồng ý với điều khoản của chúng tôi không ?');
+                            return false;
+                        } else {
+                            event.preventDefault();
+                            $(".gd-danger").remove();
+                            $.ajax({
+                                url: URL,
+                                method: "POST",
+                                data: $('#formRegister').serialize(),
+                                success: function success(results) {
+                                    if (results.status === 200) {
+                                        toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success(results.message);
+                                    }
+                                },
+                                error: function error(xhr) {
+                                    $('#validation-errors').html('');
+                                    $.each(xhr.responseJSON.errors, function(field_name, error) {
+                                        $("#formRegister").find('[name=' + field_name + ']').after('<span class="text-strong gd-danger">' + error + '</span>');
+                                    });
+                                }
+                            });
+                        }
                     });
                 },
                 login: function login() {
