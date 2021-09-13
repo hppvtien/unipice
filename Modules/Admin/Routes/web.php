@@ -202,10 +202,11 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function () {
         Route::get('delete/{id}', 'AdminUniFlashSaleController@delete')->name('get_admin.uni_flashsale.delete')->middleware('permission:uni_flashsale_delete|full');
     });
     Route::prefix('export')->group(function () {
-        // Route::get('file-import-export', [UserController::class, 'fileImportExport']);
-        // Route::post('file-import', [UserController::class, 'fileImport'])->name('file-import');
         Route::get('file-import-export', 'UserExportController@fileImportExport')->name('fileImportExport');
         Route::get('file-export', 'UserExportController@fileExport')->name('file-export');
+        Route::get('file-export-news', 'UserExportController@fileExportNews')->name('file-export-news');
+        Route::get('file-export-review', 'UserExportController@fileExportReview')->name('file-export-review');
+        Route::get('file-export-question', 'UserExportController@fileExportQuestion')->name('file-export-question');
     });
 
 

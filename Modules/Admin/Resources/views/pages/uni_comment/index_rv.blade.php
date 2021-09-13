@@ -9,6 +9,11 @@
                 <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ Danh sách</span>
             </div>
         </div>
+        <div class="my-auto">
+            <div class="d-flex">
+                <a class="btn btn-success" href="{{ route('file-export-review') }}">Xuất mail đánh giá</a>
+            </div>
+        </div>
     </div>
     <!-- breadcrumb -->
     <style>

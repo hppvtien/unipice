@@ -7,6 +7,10 @@
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">Liên hệ</h4>
                 <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ Danh sách</span>
+            </div>
+        </div>
+        <div class="my-auto">
+            <div class="d-flex">
                 <a class="btn btn-success" href="{{ route('file-export') }}">Export data</a>
             </div>
         </div>
@@ -107,7 +111,7 @@
                                     </td>
                                     <td>
                                         <label class="switch">
-                                            <input type="checkbox" class="v_status" data-ckb="{{ $item->id }}" {{ $item->status == 1 ?'checked':'' }}>
+                                            <input type="checkbox" class="v_status" data-ckb="{{ $item->id }}"  data-url="{{ route('get_admin.uni_contact.edit') }}" {{ $item->status == 1 ?'checked':'' }} >
                                             <span class="slider round"></span>
                                         </label>
                                     </td>

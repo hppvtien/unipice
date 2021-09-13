@@ -9,7 +9,11 @@
                     <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ Danh sách</span>
                 </div>
             </div>
-
+            <div class="my-auto">
+            <div class="d-flex">
+            <a class="btn btn-success" href="{{ route('file-export-news') }}">Export data</a>
+            </div>
+        </div>
         </div>
         <style>
             .switch {
@@ -103,7 +107,7 @@
                                             </td>
                                             <td>
                                                 <label class="switch">
-                                                    <input type="checkbox" class="v_status" data-url=""
+                                                    <input type="checkbox" class="v_status" data-url="{{ route('get_admin.uni_contact.edit') }}"
                                                         data-ckb="{{ $item->id }}"
                                                         {{ $item->status == 1 ? 'checked' : '' }}>
                                                     <span class="slider round"></span>

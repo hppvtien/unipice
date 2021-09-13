@@ -231,7 +231,6 @@ $('.keypress-count').on('change', function() {
 $('.v_status').on('change', function() {
     let v_id = $(this).attr('data-ckb');
     let data_url = $(this).attr('data-url');
-    alert(data_url);
     $.ajax({
         url: data_url,
         type: "post",
