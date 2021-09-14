@@ -226,8 +226,8 @@
                                 <th scope="col" style="width: 5%;">Đơn vị</th>
                                 <th scope="col" style="width: 10%;">Đơn giá</th>
                                 <th scope="col" style="width: 10%;">Thành tiền</th>
-                                <th scope="col" style="width: 10%;">Thuế suất GTGT</th>
-                                <th scope="col" style="width: 5%;">Tiền thuế</th>
+                                {{-- <th scope="col" style="width: 10%;">Thuế suất GTGT</th> --}}
+                                {{-- <th scope="col" style="width: 5%;">Tiền thuế</th> --}}
                                 <th scope="col" style="width: 15%;">Cộng</th>
 
                             </tr>
@@ -244,35 +244,35 @@
                                 <td>{{ getSizeNameType($item->weight) }}</td>
                                 <td>{{ formatVnd($item->price) }}</td>
                                 <td>{{ formatVnd($item->qty * $item->price) }}</td>
-                                <td>{{ getVatProduct($item->id) }}%</td>
-                                <td>
+                                {{-- <td>{{ getVatProduct($item->id) }}%</td> --}}
+                                {{-- <td>
                                     @if ($item->options->product_vat)
                                     {{ formatVnd($item->options->product_vat) }}
                                     @else
                                         0
                                     @endif
-                                </td>
+                                </td> --}}
                                 <td>{{ formatVnd($item->qty * $item->price + $item->options->product_vat) }}</td>
                                 
                             </tr>
                             @endforeach
                             <tr>
-                                <td colspan="8">Phí Ship</td>
+                                <td colspan="6">Phí Ship</td>
                                 <td>{{ formatVnd($data_pdf->total_ship) }} </td>
                             </tr>
                             <tr>
-                                <td colspan="8">Ưu đãi</td>
+                                <td colspan="6">Ưu đãi</td>
                                 <td>{{ formatVnd($data_pdf->total_discount) }} </td>
                             </tr>
                             <tr>
-                                <td colspan="5">TỔNG CỘNG TIỀN THANH TOÁN</td>
+                                <td colspan="5">TỔNG CỘNG TIỀN THANH TOÁN (Đã bao gồm VAT nếu có)</td>
                                 <td>{{ formatVnd($data_pdf->total_no_vat) }} </td>
-                                <td></td>
-                                <td>{{ formatVnd($data_pdf->total_vat) }} </td>
+                                {{-- <td></td> --}}
+                                {{-- <td>{{ formatVnd($data_pdf->total_vat) }} </td> --}}
                                 <td>{{ formatVnd($data_pdf->total_money) }} </td>
                             </tr>
                            <tr>
-                            <td colspan="9"><i> Đây là đơn hàng tự động từ hệ thống của <b>UniMall.</b> Nếu có thắc mắc hãy liên hệ Hotline: <b>{{ $configuration->hotline }}</b> . <br>
+                            <td colspan="7"><i> Đây là đơn hàng tự động từ hệ thống của <b>UniMall.</b> Nếu có thắc mắc hãy liên hệ Hotline: <b>{{ $configuration->hotline }}</b> . <br>
                                 Hoặc email: <b>{{ $configuration->email }}</b></i>
                                 </td>
                            </tr>

@@ -2,11 +2,6 @@
 return [
     'sidebar' => [
         [
-            'name' => 'Tổng quan',
-            'route' => 'get_admin.dashboard',
-            'class-icon' => 'la la-tachometer-alt'
-        ],
-        [
             'name' => 'Quản lý khách hàng',
             'class-icon' => 'la la-user',
             'sub' => [
@@ -28,6 +23,12 @@ return [
                 ],
             ]
         ],
+        [
+            'name' => 'Tổng quan',
+            'route' => 'get_admin.dashboard',
+            'class-icon' => 'la la-tachometer-alt'
+        ],
+        
         [
             'name' => 'Tags',
             'class-icon' => 'la la-database',
