@@ -567,7 +567,7 @@
                                 </tr>
                             @empty
                             @endforelse
-                            @if ($order->total_vouchers != null)
+                            @if ($order->total_vouchers != 0)
                                 <tr>
                                     <td colspan="1" class="font-weight-bold">Phiếu giảm giá</td>
                                     <td colspan="1" class="font-weight-bold">{{ $order->vouchers }}</td>
@@ -590,10 +590,10 @@
                                 </tr>
                             @else
                             @endif
-                            <tr>
+                            {{-- <tr>
                                 <td colspan="3" class="font-weight-bold">VAT</td>
                                 <td><span>{{ formatVnd($order->total_vat) }} </span></td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <td colspan="3" class="font-weight-bold">Tổng Đơn Hàng</td>
                                 <td><span>{{ formatVnd($order->total_no_vat + $order->total_vat) }}</span></td>

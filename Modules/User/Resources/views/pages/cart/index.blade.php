@@ -373,12 +373,12 @@
                                             <span class="price" data-th="Subtotal">{{ \Cart::subtotal(0,0,'.') }} đ</span>
                                         </td>
                                     </tr>
-                                    <tr class="totals sub">
+                                    {{-- <tr class="totals sub">
                                         <th class="mark" scope="row">VAT</th>
                                         <td class="amount">
                                             <span class="price" data-th="Subtotal" id="total_vat_product">{{ formatVnd(subtotalTax(\Cart::content())) }} </span>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                     @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')))
                                     <tr class="totals sub">
                                         <th class="mark" scope="row">Ưu đãi SpiceClub</th>
@@ -402,6 +402,11 @@
                                             @endif
 
                                         </td>
+                                    </tr>
+                                    <tr class="grand totals">
+                                        <th colspan="2" class="amount font_chu_mau_do">
+                                          <b><i> Tổng đơn hàng đã bao gồm VAT nếu có. </i></b>
+                                        </th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -534,23 +539,5 @@
         </div>
     </div>
 </div>
-{{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">UNIMALL</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <p>Chắc chắn bạn muốn thay đổi không ?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-success">Thay đổi</button>
-        </div>
-      </div>
-    </div>
-  </div> --}}
+
 @stop

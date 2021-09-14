@@ -33,7 +33,6 @@
 
 <body class="main-body app sidebar-mini">
     <!-- Start Switcher -->
-
     <!-- End Switcher -->
     <!-- Loader -->
     <!-- /Loader -->

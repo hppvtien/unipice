@@ -74,7 +74,7 @@
                                         </div>
                                     </div>
                                     <div class="m-checkbox field choice become_associate_member">
-                                        <input type="checkbox" name="type_apply"
+                                        <input type="checkbox"
                                             title="Become An Associate Member" value="" id="associate_member_requestww"
                                             class="m-checkbox__input checkbox">
                                         <label for="associate_member_requestww" class="label">

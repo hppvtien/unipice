@@ -549,7 +549,7 @@
                                                     </label>
                                                     <div class="row w-100">
                                                         <div class="col-8">
-                                                            <input class="a-text-input m-text-input__input w-100" require value="" type="text" name="vouchers" aria-invalid="false" id="vouchers" placeholder="Nhập mã giảm giá !!!">
+                                                            <input class="a-text-input m-text-input__input w-100" require value="" type="text" name="vouchers" aria-invalid="false" id="vouchers" placeholder="Nhập mã giảm giá nếu có !!!">
                                                             <span class="messager_check font_chu_mau_do text-center error-input">
                                                                 <span data-percent=0></span>
                                                             </span>
@@ -750,14 +750,14 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="product-item">
+                                                    {{-- <li class="product-item">
                                                         <div class="product-item-name-block">
                                                             <div class="details-qty">
                                                                 <span class="label">Vat: </span>
                                                                 <span class="value" id="total-vat-cart">{{ formatVnd(subtotalTax(\Cart::content())) }} ₫</span>
                                                             </div>
                                                         </div>
-                                                    </li>
+                                                    </li> --}}
 
                                                     <li class="product-item">
                                                         <div class="product-item-name-block">

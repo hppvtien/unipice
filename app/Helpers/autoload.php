@@ -363,7 +363,7 @@ function getSizeId($id)
 function getSizeName($id)
 {
     $sizeName = App\Models\Uni_Size::where('id', $id)->pluck('name')->first();
-    return $sizeName;
+    return $sizeName.'g';
 }
 /**
  * get percent.
@@ -646,7 +646,7 @@ function permissionShow($user_id)
 {
     $role_id = \DB::table('model_has_roles')->where('model_id', $user_id)->pluck('role_id')->first();
     $gr_permission_id = \DB::table('role_has_permissions')->where('role_id', $role_id)->pluck('permission_id');
-    $permissions = \DB::table('permissions')->whereIn('id', $gr_permission_id)->groupBy('group_permission')->get();
+    $permissions = \DB::table('permissions')->whereIn('id', $gr_permission_id)->get();
     $sidebars = [];
     foreach ($permissions as $key => $item) {
         if (strpos($item->name, '_index')) {
@@ -663,14 +663,11 @@ function permissionShowHide($user_id)
 {
     $role_id = \DB::table('model_has_roles')->where('model_id', $user_id)->pluck('role_id')->first();
     $gr_permission_id = \DB::table('role_has_permissions')->where('role_id', $role_id)->pluck('permission_id');
-    $permissions = \DB::table('permissions')->whereIn('id', $gr_permission_id)->groupBy('group_permission')->pluck('name');
+    $permissions = \DB::table('permissions')->whereIn('id', $gr_permission_id)->pluck('name');
     
     return $permissions;
 }
-function permissionCheck($arr,$route)
-{
-    return array_search($route,$arr,$strict = FALSE);
-}
+
 
 
 
