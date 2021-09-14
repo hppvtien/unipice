@@ -8,7 +8,7 @@
     </div>
     <div class="main-sidemenu">
         <ul class="side-menu">
-            @if (get_permissionroute(get_permissionid(get_data_user('admins')))[0] == 'full')
+            @if (permissionShow(get_data_user('admins'))[0] == "full")
                 @foreach(config('setting_admin.sidebar') as $menus)
                     <li class="slide">
                         <a class="side-menu__item" {{ isset($menus['sub']) ? 'data-toggle=slide' : '' }} href="{{  isset($menus['sub']) ? '#' : route($menus['route']) }}" title="{{ $menus['name'] }}">
@@ -25,17 +25,27 @@
                         </ul>
                         @endif
                     </li>
-            
                 @endforeach
             @else
-                @foreach (get_permissionroute(get_permissionid(get_data_user('admins'))) as $item)
-                <li class="slide">
-                    <a class="side-menu__item" href="/admin/{{ getSlugper($item) }}">
-                        <span class="side-menu__label"> {{ get_permissionrname($item) }}</span>
-                        
-                    </a>
-                </li>
-                @endforeach
+            {{-- @foreach(permissionShow(get_data_user('admins')) as $menus) --}}
+           
+           
+           
+            @foreach(config('setting_admin.sidebar') as $menus)
+            @if (permissionCheck($menus['route'],permissionShow(get_data_user('admins'))))
+                
+            asdasdasdas
+            @else
+                
+            @endif
+        @endforeach
+        
+
+
+
+
+         
+        {{-- @endforeach --}}
             @endif
         </ul>
     </div>

@@ -36,9 +36,8 @@
 
     <!-- End Switcher -->
     <!-- Loader -->
- 
-
     <!-- /Loader -->
+    {{-- @if (permissionCheck($menus['route'],permissionShow(get_data_user('admins')))) --}}
     <!-- main-sidebar -->
     @include('admin::components._inc_sidebar')
     <!-- main-sidebar -->
