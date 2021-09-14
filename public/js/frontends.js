@@ -20076,6 +20076,7 @@
                                 success: function success(results) {
                                     if (results.status === 200) {
                                         toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success(results.message);
+                                        return false;
                                     }
                                 },
                                 error: function error(xhr) {
