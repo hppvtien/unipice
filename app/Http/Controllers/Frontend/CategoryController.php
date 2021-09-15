@@ -76,6 +76,7 @@ class CategoryController extends Controller
     public function trade_mark($slug)
     {
         $trade_id = Uni_Trade::where('slug', $slug)->pluck('id')->first();
+        $trade_current = Uni_Trade::where('slug', $slug)->first();
         $trade = Uni_Trade::get();
         $categories = Uni_Category::get();
         $group_id_product = Product_Trade::where('trade_id', $trade_id)->pluck('product_id');
@@ -84,7 +85,6 @@ class CategoryController extends Controller
         $grp_id_cmt = Uni_Comment::where('star', '>', 4)->where('status', 1)->pluck('product_id');
         $product_hotreview = Uni_Product::whereIn('id', $grp_id_cmt)->orderBy('id', 'asc')->limit(12)->get();
         $count_product = count($group_id_product);
-       
         // \SEOMeta::setTitle($category->meta_title);
         // \SEOMeta::setDescription($category->meta_desscription);
         // \SEOMeta::setCanonical(\Request::url());
@@ -96,6 +96,7 @@ class CategoryController extends Controller
         
         $uid = get_data_user('web');
         $viewdata = [
+            'trade_current' => $trade_current,
             'product_hotreview' => $product_hotreview,
             'product' => $product,
             'product_rel' => $product_rel,

@@ -88,15 +88,15 @@ class UserShoppingCartController extends UserController
                 $listCarts = \Cart::content();
                
                 // Kierm tra xem đã lưu san pham chưa
-                $checkExist = $listCarts->search(function ($cartItem) use ($id) {
-                    if ($cartItem->id == $id) return $id;
+                $checkExist = $listCarts->search(function ($cartItem) use ($data_size,$id) {
+                    if ($cartItem->weight == $data_size && $cartItem->id == $id) 
+                    return $id;
                 });
-                $checkExistw = $listCarts->search(function ($cartItem) use ($data_size) {
-                    if ($cartItem->weight == $data_size) return $data_size;
-                });
-
+                // $checkExistw = $listCarts->search(function ($cartItem) use ($data_size) {
+                //     if ($cartItem->weight == $data_size) return $data_size;
+                // });
                 // Nếu chưa có giỏ hàng thì mặc định thêm
-                if($listCarts->isEmpty() || !$checkExist || !$checkExistw){
+                if($listCarts->isEmpty() || !$checkExist){
                     Log::info("[Cart]: Empty");
                     \Cart::add([
                         'id' => $id,
@@ -115,7 +115,7 @@ class UserShoppingCartController extends UserController
                 $count_cart = count($listCarts);
                 return response([
                     'status' => 200,
-                    'message' => ($checkExist == $checkExistw) ? "Sản phẩm đã có trong giỏ" : "Thêm sản phẩm thành công",
+                    'message' => $checkExist ? "Sản phẩm đã có trong giỏ" : "Thêm sản phẩm thành công",
                     'count' => $count_cart
                 ]);
             }

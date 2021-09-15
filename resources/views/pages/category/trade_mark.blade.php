@@ -37,10 +37,10 @@
                                                         <div class="row cat-desscription">
                                                             <div class="col-md-10">
                                                                 <p class="font-weight-bold" style="color: #000; background-color:transparent;font-size:20px;opacity: 1;">
-                                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci minima dolorem harum aut hic nobis libero quaerat modi, vel dolore magni. Aut dicta iusto, numquam praesentium excepturi in harum dolor.
+                                                                    {{ $trade_current->desscription }}
                                                                 </p>
                                                                 <p style="color: #000; background-color:transparent; text-align:justify;opacity: 1;">
-                                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est assumenda corrupti deserunt nisi iste, rem consectetur temporibus et incidunt hic odit cum numquam dignissimos voluptates adipisci tempore distinctio magni architecto.
+                                                                    {{ $trade_current->content }}
                                                                 </p>
 
                                                             </div>
