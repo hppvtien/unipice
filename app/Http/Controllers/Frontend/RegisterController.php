@@ -194,7 +194,7 @@ class RegisterController extends Controller
     {
         $pass_reset = PasswordResett::where('reset_code', $reset_code)->first();
         $user_re = User::where('id', $pass_reset->user_id)->first();
-        if (!$pass_reset || Carbon::now()->subMinutes(50) > $pass_reset->created_at) {
+        if (!$pass_reset || Carbon::now()->subMinutes(20) > $pass_reset->created_at) {
             $this->showtimeforget();
             return redirect()->route('get.forgetpassword');
         } else {

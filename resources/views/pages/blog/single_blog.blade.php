@@ -116,7 +116,7 @@
                     
                                     <div class="m-heading">
                                         <h3 class="m-heading__headline">
-                                            Tin Tức Liên Quan
+                                            Có thể bạn quan tâm
                                         </h3>
                                     </div>
                                 </div>

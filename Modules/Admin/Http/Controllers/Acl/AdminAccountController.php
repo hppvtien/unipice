@@ -81,7 +81,7 @@ class AdminAccountController extends Controller
         $data = $request->except(['_token','roles','password']);
         if($request->password) 
         $data['password'] = bcrypt($request->password);
-
+        Admin::find($id)->update($data);
         $admin = Admin::find($id);
         $roles = $request->roles;
         if($roles)
@@ -99,8 +99,14 @@ class AdminAccountController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            Admin::findOrFail($id)->delete();
+            return response()->json([
+                'status' => 200,
+                'message' => 'Xoá dữ liệu thành công'
+            ]);
+        }
     }
 }

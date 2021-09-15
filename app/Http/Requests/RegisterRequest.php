@@ -22,6 +22,7 @@ class RegisterRequest extends FormRequest
             'name'     => 'required|min:6|max:20',
             'email'    => 'required|email|unique:users',
             'phone'    => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9|max:11',
+            'address'    => 'required',
             'password' => [
                 'required',
                 'string',
@@ -48,6 +49,7 @@ class RegisterRequest extends FormRequest
             'phone.min' => 'Số điện thoại phải có ít nhất 9 lý tự',
             'phone.max' => 'Số điện thoại chỉ được tối đa 11 ký tự',
             'phone.regex' => 'Số điện thoại chỉ được nhập số từ 0 - 9',
+            'address.required' => 'Dữ liệu không được để trống',
             'password.required' => 'Dữ liệu không được để trống',
             'password.min' => 'Mật khẩu phải có ít nhất 10 ký tự',
             'password.regex' =>  [

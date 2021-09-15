@@ -2,7 +2,7 @@
 
 namespace Modules\Admin\Http\Controllers;
 
-use App\Models\Uni_supplier;
+use App\Models\Uni_Supplier;
 use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class AdminUniSupplierController extends AdminController
     public function index()
     {
        
-        $uni_supplier = Uni_supplier::orderByDesc('id')
+        $uni_supplier = Uni_Supplier::orderByDesc('id')
             ->paginate(20);
        
         $viewData = [
@@ -35,7 +35,7 @@ class AdminUniSupplierController extends AdminController
         $data = $request->except(['avatar','save','_token','banner','delete_thumbnail']);
         $data['created_at'] = Carbon::now();
 
-        $menuID = Uni_supplier::insertGetId($data);
+        $menuID = Uni_Supplier::insertGetId($data);
         if($menuID)
         {
             $this->showMessagesSuccess();
@@ -47,14 +47,14 @@ class AdminUniSupplierController extends AdminController
 
     public function edit($id)
     {
-        $uni_supplier = Uni_supplier::findOrFail($id);
+        $uni_supplier = Uni_Supplier::findOrFail($id);
         // $uni_supplier = Uni_supplier::orderByDesc('id')->get();
         return view('admin::pages.uni_supplier.update',compact('uni_supplier'));
     }
 
     public function update(AdminUniSupplierRequest $request, $id)
     {
-        $uni_supplier = Uni_supplier::findOrFail($id);
+        $uni_supplier = Uni_Supplier::findOrFail($id);
         $data = $request->except(['avatar','save','_token','banner','delete_thumbnail']);
         $data['updated_at'] = Carbon::now();
         if ($request->banner){
@@ -76,7 +76,7 @@ class AdminUniSupplierController extends AdminController
     {
         if($request->ajax())
         {
-            $menu = Uni_supplier::findOrFail($id);
+            $menu = Uni_Supplier::findOrFail($id);
             if ($menu)
             {
                 Storage::delete('public/uploads/'.$menu->banner);
