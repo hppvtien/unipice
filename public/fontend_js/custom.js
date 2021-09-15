@@ -879,18 +879,20 @@ $('.check-price').on('click', function() {
     let price_save_store = Number(100 - size_price_sale_store * 100 / size_price).toFixed(0);
     let data_uid = $(this).attr('data-uid');
     if (data_img != '') {
-        $('#image-slides').html('<li class="m-product-gallery__slide glide__slide glide__slide--active">' +
-            '<div class="m-product-gallery__img-wrapper">' +
-            '<img class="lazyload m-product-gallery__img" src="/storage/uploads_Product/' + data_img + '">' +
-            '</div>' +
-            '</li>');
+        $('#image-slides').html('<ul class="m-product-gallery__slides glide__slides"><li class="m-product-gallery__slide glide__slide glide__slide--active">' +
+        '<div class="m-product-gallery__img-wrapper">' +
+        '<img class="lazyload m-product-gallery__img" data-src="/storage/uploads/' + data_img + '" src="/storage/uploads/' + data_img + '"  data-zoom="/storage/uploads/' + data_img + '">' +
+        '</div>' +
+        '</li></ul>');
     } else {
-        $('#image-slides').html('<li class="m-product-gallery__slide glide__slide glide__slide--active">' +
+        $('#image-slides').html('<ul class="m-product-gallery__slides glide__slides"><li class="m-product-gallery__slide glide__slide glide__slide--active">' +
             '<div class="m-product-gallery__img-wrapper">' +
             '<img class="lazyload m-product-gallery__img" src="/images/default.jpg">' +
             '</div>' +
-            '</li>');
+            '</li></ul>');
     }
+
+
     if (data_uid) {
         if (size_price_sale_store == 0) {
             return false;

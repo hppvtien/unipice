@@ -35,8 +35,8 @@
 
                                             <div class="m-product-gallery glide glide--ltr glide--carousel glide--swipeable">
 
-                                                <div class="m-product-gallery__track glide__track" data-glide-el="track">
-                                                    <ul class="m-product-gallery__slides glide__slides" id="image-slides">
+                                                <div class="m-product-gallery__track glide__track" data-glide-el="track" id="image-slides">
+                                                    <ul class="m-product-gallery__slides glide__slides">
                                                         @if ($product->album != '[]' )
                                                         @foreach (json_decode($product->album) as $key => $item)
                                                         <li class="m-product-gallery__slide glide__slide glide__slide--{{ $key == 0 ? 'active': 'clone' }}">
