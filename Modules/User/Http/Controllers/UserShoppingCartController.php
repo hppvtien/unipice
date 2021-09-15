@@ -23,7 +23,7 @@ class UserShoppingCartController extends UserController
             if ($type == self::COMBO) {
                 // xử lý dữ liệu với san pham
                 $uni_combo = $this->checkCombo($id);
-               
+
                 $product_vat = 0;
                 foreach(json_decode($uni_combo->info_sale) as $item){
                     $vat_per = getVatProduct($item->id);
@@ -86,10 +86,10 @@ class UserShoppingCartController extends UserController
                 }
                 $data_size = round($request->data_size,2);
                 $listCarts = \Cart::content();
-               
+
                 // Kierm tra xem đã lưu san pham chưa
                 $checkExist = $listCarts->search(function ($cartItem) use ($data_size,$id) {
-                    if ($cartItem->weight == $data_size && $cartItem->id == $id) 
+                    if ($cartItem->weight == $data_size && $cartItem->id == $id)
                     return $id;
                 });
                 // $checkExistw = $listCarts->search(function ($cartItem) use ($data_size) {

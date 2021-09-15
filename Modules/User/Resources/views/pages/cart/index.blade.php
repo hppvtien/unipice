@@ -341,6 +341,7 @@
         }
     }
 </style>
+
 <main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
     <div class="page-title-wrapper">
         <h1 class="page-title">
@@ -379,7 +380,7 @@
                                             <span class="price" data-th="Subtotal" id="total_vat_product">{{ formatVnd(subtotalTax(\Cart::content())) }} </span>
                                         </td>
                                     </tr> --}}
-                                    @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')))
+                                    @if (get_data_user('web','type') == 2 && checkUidSpiceClubPay(get_data_user('web')))
                                     <tr class="totals sub">
                                         <th class="mark" scope="row">Ưu đãi SpiceClub</th>
                                         <td class="amount">
@@ -392,11 +393,11 @@
 
                                     <tr class="grand totals">
                                         <th class="mark" scope="row">
-                                            <strong>Tổng đơn hàng</strong>
+                                            <strong>Tổng (tạm tính)</strong>
                                         </th>
                                         <td class="amount" data-th="Order Total">
-                                            @if (get_data_user('web','type') == 2 && checkUidSpiceClub(get_data_user('web')))
-                                            <strong><span class="price">{{ formatVnd(((int)Cart::subtotal(0,0,'') + (int)subtotalTax(\Cart::content())*(1-(getDiscount()[0])/100))) }}</span></strong>
+                                            @if (get_data_user('web','type') == 2 && checkUidSpiceClubPay(get_data_user('web')))
+                                            <strong><span class="price">{{ formatVnd(((int)Cart::subtotal(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100)) }}</span></strong>
                                             @else
                                             <strong><span class="price">{{ formatVnd((int)Cart::subtotal(0,0,'') + (int)subtotalTax(\Cart::content())) }}</span></strong>
                                             @endif
@@ -404,8 +405,8 @@
                                         </td>
                                     </tr>
                                     <tr class="grand totals">
-                                        <th colspan="2" class="amount font_chu_mau_do">
-                                          <b><i> Tổng đơn hàng đã bao gồm VAT nếu có. </i></b>
+                                        <th colspan="2" class="title ">
+                                          <i> Tổng đơn hàng đã bao gồm VAT (nếu có). </i>
                                         </th>
                                     </tr>
                                 </tbody>
@@ -457,7 +458,7 @@
                                                 <span class="price" id="hihihihi" gia="{{ $item->price }}">{{ formatVnd($item->price) }}
 
                                                 </span>
-                                                
+
                                             </span>
                                         </span>
                                     </td>
@@ -466,9 +467,9 @@
                                         <div class="field qty">
                                             <div class="control qty" style="padding: 0!important">
                                                 <label for="cart-{{ $item->id }}-{{ $item->weight }}-qty" style="display:flex">
-                                                    <input id="cart-{{ $item->id }}-{{ $item->weight }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}" 
+                                                    <input id="cart-{{ $item->id }}-{{ $item->weight }}-qty" style="width: 4.5em;padding: 5px 0px!important;height: 30px;text-align: center;" data-row="{{ $item->rowId }}"
                                                     class="input-text qty update-qty" data-size="{{ $item->weight }}"
-                                                    name="cart[qty][{{ $item->rowId }}][]" item-id="{{ $item->id }}" data-qty="{{ $item->qty }}" value="{{ $item->qty }}" type="number" size="4" min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}" 
+                                                    name="cart[qty][{{ $item->rowId }}][]" item-id="{{ $item->id }}" data-qty="{{ $item->qty }}" value="{{ $item->qty }}" type="number" size="4" min="{{ checkUid(get_data_user('web')) != null ? get_min_box($item->id):''  }}"
                                                     data-price="{{ $item->price }}" data-image="{{ $item->options->images }}" data-store="{{ $item->options->sale }}" max="100" step="any" title="Qty">
                                                 </label>
                                                 <div class="text-danger" id="text-qtyerr{{ $item->id }}"></div>
@@ -503,7 +504,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+
                     </div>
                     <div class="cart main actions">
                         <div class="cart-actions">

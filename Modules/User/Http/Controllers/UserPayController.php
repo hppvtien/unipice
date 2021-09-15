@@ -38,7 +38,7 @@ class UserPayController extends UserController
             'uni_user' => $uni_user,
             'listCarts' => $listCarts
         ];
-        // \Cart::destroy();    
+        // \Cart::destroy();
         // dd($viewData);
         return view('user::pages.pay.index', $viewData);
     }
@@ -259,8 +259,8 @@ class UserPayController extends UserController
                         "note": "Khối lượng tính cước tối đa: 1.00 kg",
                         "value": 3000000,
                         "transport": "fly",
-                        "pick_option":"cod",      
-                        "deliver_option" : "xteam",  
+                        "pick_option":"cod",
+                        "deliver_option" : "xteam",
                         "pick_session" : 2,
                         "tags": [ 1]
                     }
@@ -342,7 +342,7 @@ class UserPayController extends UserController
         if ($type_pay == 4) {
             session(['cost_id' => $id]);
             session(['url_prev' => url()->previous()]);
-            $vnp_TmnCode = "I007EUZ2"; //Mã website tại VNPAY 
+            $vnp_TmnCode = "I007EUZ2"; //Mã website tại VNPAY
             $vnp_HashSecret = "VOTYNULEGABAXIXGKRZDIUPLAFLOEQUG"; //Chuỗi bí mật
             $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
 

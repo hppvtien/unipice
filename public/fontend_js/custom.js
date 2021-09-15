@@ -96,7 +96,7 @@ $(".search_province").on("change", function() {
 $(".js-add-cart").on("click", function() {
     let URL = $(this).attr("data-url");
     let data_uid = $(this).attr("data-uid");
-    let data_size = $('.box-shadow-in').attr("data-size");
+    let data_size = $(this).attr("data-size");
     let data_qtyinbox = Number($(this).attr("data-qtyinbox"));
     let data_minbox = Number($(this).attr("data-min-box"));
     let data_id = $(this).attr("data-id");
@@ -308,7 +308,7 @@ $("#pay_success").on("click", function() {
 
     $('.error-input').html('');
 
-    if (check_store == 1) {
+    if (check_store) {
         $.ajax({
             url: data_url,
             method: "post",
@@ -395,7 +395,7 @@ $("#pay_success").on("click", function() {
                 total_vat_cart: total_vat_cart,
                 total_cart: total_cart,
                 total_all_pr: total_all_pr,
-                spice_discount: spice_discount,
+                total_discount: spice_discount,
                 fee_ship: fee_ship,
                 province_name_to: province_name_to,
                 code_invoice: code_invoice,
@@ -874,6 +874,7 @@ $('.check-price').on('click', function() {
     let size_price_sale_store = Number($(this).attr('size-price-sale-store'));
     let size_qty_inbox = Number($(this).attr('size-qty-inbox'));
     let size_min_box = Number($(this).attr('size-min-box'));
+
     let price_save_not_store = Number(100 - size_price_sale * 100 / size_price).toFixed(0);
     let price_save_store = Number(100 - size_price_sale_store * 100 / size_price).toFixed(0);
     let data_uid = $(this).attr('data-uid');
@@ -890,7 +891,7 @@ $('.check-price').on('click', function() {
             '</div>' +
             '</li>');
     }
-    if (data_uid == 1) {
+    if (data_uid) {
         if (size_price_sale_store == 0) {
             return false;
         } else {

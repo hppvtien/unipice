@@ -560,7 +560,7 @@
                             @forelse ($carts as $key => $item)
                                 <tr>
                                     <td><a href="javascript:;" data-id-sale="{{ $item['id'] }}" class="ahr-text"
-                                            onclick="get_product_sale(this);"><span>{{ $item['name'] }}</span></a></td>
+                                            onclick="get_product_sale(this);"><span>{{ $item['name'] }} <b>({{ getSizeName($item['weight']) }})</b></span></a></td>
                                     <td><span>{{ formatVnd($item['price']) }} </span></td>
                                     <td><span>{{ $item['qty'] }}</span></td>
                                     <td><span>{{ formatVnd($item['subtotal']) }}</span></td>
@@ -583,7 +583,7 @@
                                 <td colspan="3" class="font-weight-bold">Tổng tiền</td>
                                 <td><span>{{ formatVnd($order->total_no_vat) }} </span></td>
                             </tr>
-                            @if (get_data_user('web', 'type') == 2 && checkUidSpiceClub(get_data_user('web')) != null)
+                            @if (get_data_user('web', 'type') == 2 && checkUidSpiceClubPay(get_data_user('web')) != null)
                                 <tr>
                                     <td colspan="3" class="font-weight-bold">Ưu đãi SpiceClub</td>
                                     <td><span>-{{ formatVnd($order->total_discount) }} </span></td>
@@ -595,7 +595,7 @@
                                 <td><span>{{ formatVnd($order->total_vat) }} </span></td>
                             </tr> --}}
                             <tr>
-                                <td colspan="3" class="font-weight-bold">Tổng Đơn Hàng</td>
+                                <td colspan="3" class="font-weight-bold">Tổng (tạm tính)</td>
                                 <td><span>{{ formatVnd($order->total_no_vat + $order->total_vat) }}</span></td>
                             </tr>
                             @if ($order->total_ship != null)

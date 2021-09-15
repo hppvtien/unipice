@@ -33,9 +33,9 @@
                                     <div class="c-product-overview">
                                         <div class="c-product-overview__content-wrapper">
 
-                                            <div class="m-product-gallery glide">
+                                            <div class="m-product-gallery glide glide--ltr glide--carousel glide--swipeable">
 
-                                                <div class="m-product-gallery__track glide__track">
+                                                <div class="m-product-gallery__track glide__track" data-glide-el="track">
                                                     <ul class="m-product-gallery__slides glide__slides" id="image-slides">
                                                         @if ($product->album != '[]' )
                                                         @foreach (json_decode($product->album) as $key => $item)
@@ -110,14 +110,14 @@
                                                                         </span><br>
                                                                         <span class="text-danger paid-save" style="line-height: 3.5">
                                                                             @forelse ($product->size_product as $key => $size)
-                                                                            <b class="border check-price check{{ $size['size_id'] }} {{ $key == 0 ? 'box-shadow-in' : '' }}" 
+                                                                            <b class="border check-price check{{ $size['size_id'] }} {{ $key == 0 ? 'box-shadow-in' : '' }}"
                                                                             data-uid="{{ checkUid(get_data_user('web')) }}" data-size="{{ $size['size_id'] }}" data-img="{{ $size['image'] }}"
-                                                                            size-price="{{ $size['price'] }}" size-price-sale="{{ $size['price_sale'] }}" 
-                                                                            <?php if (checkUid(get_data_user('web')) != null) { ?> 
-                                                                                size-price-sale-store="{{ $size['price_sale_store'] }}" 
-                                                                                size-qty-inbox="{{ $size['qty_in_box'] }}" 
+                                                                            size-price="{{ $size['price'] }}" size-price-sale="{{ $size['price_sale'] }}"
+                                                                            <?php if (checkUid(get_data_user('web')) != null) { ?>
+                                                                                size-price-sale-store="{{ $size['price_sale_store'] }}"
+                                                                                size-qty-inbox="{{ $size['qty_in_box'] }}"
                                                                                 size-min-box="{{ $size['min_box'] }}"
-                                                                                data-img="{{ $size['image'] }}" <?php } ?> 
+                                                                                data-img="{{ $size['image'] }}" <?php } ?>
                                                                             style="padding: 15px 10px;cursor: pointer;">{{ getSizeName($size['size_id']) }}</b>
                                                                             @empty
 
