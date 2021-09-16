@@ -142,10 +142,10 @@ class AdminUniOrderController extends AdminController
         } elseif ($data['status'] == 2) {
             $order_poin = (int)(str_replace('.','',$uni_order->total_money));
             $data['order_poin'] = $order_poin / 1000000;
-            if (checkUid($uni_order->user_id) != null) {
+            if (checkUid($uni_order->user_id)) {
                 $uni_store = Uni_Store::where('user_id', $uni_order->user_id)->first();
                 $data_store['poin_store'] = $uni_store->poin_store + $data['order_poin'];
-                
+
             }
         }
         $uni_order->fill($data)->update();
@@ -176,7 +176,7 @@ class AdminUniOrderController extends AdminController
         } else {
             $uni_order = Uni_Order::get();
         }
-        
+
         if($uni_order){
             $html = view('admin::pages.uni_order.index_ajax', compact('uni_order'))->render();
         } else {
@@ -184,5 +184,5 @@ class AdminUniOrderController extends AdminController
         }
         return $html;
     }
-   
+
 }
