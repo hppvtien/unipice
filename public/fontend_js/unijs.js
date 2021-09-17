@@ -2677,7 +2677,7 @@ function A(t) { return "jscomp_symbol_" + (t || "") + B++ }! function(t) {
         focusAt: 0,
         gap: 10,
         loop: true,
-        autoplay: 10000,
+        autoplay: 1000,
         hoverpause: !0,
         keyboard: !0,
         bound: !1,

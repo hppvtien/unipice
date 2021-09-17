@@ -39,7 +39,7 @@
                                                     <ul class="m-product-gallery__slides glide__slides">
                                                         @if ($product->album != '[]' )
                                                         @foreach (json_decode($product->album) as $key => $item)
-                                                        <li class="m-product-gallery__slide glide__slide glide__slide--{{ $key == 0 ? 'active': 'clone' }}">
+                                                        <li class="m-product-gallery__slide glide__slide glide__slide--{{ $key == 0 ? 'active': 'clone' }}" data-glide-autoplay="60000">
                                                             <div class="m-product-gallery__img-wrapper">
                                                                 <img class="lazyload m-product-gallery__img" data-src="{{ pare_url_file_product($item) }}" src="{{ pare_url_file_product($item) }}" alt="{{ $product->name }}" data-zoom="{{ pare_url_file_product($item) }}">
                                                             </div>
