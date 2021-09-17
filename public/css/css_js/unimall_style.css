@@ -10689,7 +10689,9 @@ a.text-light:focus {
 .text-dark {
     color: #343a40!important
 }
-
+.text-des-sing-pro {
+    color: #0b2d25!important
+}
 a.text-dark:hover,
 a.text-dark:focus {
     color: #121416!important

@@ -77,6 +77,14 @@ class CategoryController extends Controller
     {
         $trade_id = Uni_Trade::where('slug', $slug)->pluck('id')->first();
         $trade_current = Uni_Trade::where('slug', $slug)->first();
+        \SEOMeta::setTitle($trade_current->meta_title);
+        \SEOMeta::setDescription($trade_current->meta_desscription);
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription($trade_current->meta_desscription);
+        \OpenGraph::setTitle($trade_current->meta_title);
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
+        \OpenGraph::addImage(URL::to('').pare_url_file($trade_current->banner));
         $trade = Uni_Trade::get();
         $categories = Uni_Category::get();
         $group_id_product = Product_Trade::where('trade_id', $trade_id)->pluck('product_id');
@@ -85,14 +93,7 @@ class CategoryController extends Controller
         $grp_id_cmt = Uni_Comment::where('star', '>', 4)->where('status', 1)->pluck('product_id');
         $product_hotreview = Uni_Product::whereIn('id', $grp_id_cmt)->orderBy('id', 'asc')->limit(12)->get();
         $count_product = count($group_id_product);
-        // \SEOMeta::setTitle($category->meta_title);
-        // \SEOMeta::setDescription($category->meta_desscription);
-        // \SEOMeta::setCanonical(\Request::url());
-        // \OpenGraph::setDescription($category->meta_desscription);
-        // \OpenGraph::setTitle($category->meta_title);
-        // \OpenGraph::setUrl(\Request::url());
-        // \OpenGraph::addProperty('type', 'articles');
-        // \OpenGraph::addImage(URL::to('').pare_url_file($category->thumbnail));
+        
         
         $uid = get_data_user('web');
         $viewdata = [

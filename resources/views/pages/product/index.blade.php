@@ -91,8 +91,8 @@
 
                                                                 <span class="m-price-lockup__price">
                                                                     <span class="a-folio text-dark text-lowercase font-weight-normal">
-                                                                        {{ $product->desscription }}
-                                                                    </span> <br>
+                                                                        <p style="text-align: justify">{{ $product->desscription }}</p>
+                                                                    </span>
                                                                     <span class="m-product-overview__price-wrapper d-block">
                                                                         <span class="a-product-name a-title-des text-dark">
                                                                             Thương hiệu:
@@ -278,7 +278,7 @@
                         <div class="layout layout--onecol">
                             <div class="container">
                                 <div>
-                                    <p class="font-weight-bold text-dark">Mô tả về sản phẩm</p>
+                                    <p class="font-weight-bold text-des-sing-pro">Mô tả về sản phẩm</p>
                                 </div>
                                 <div>
                                     {!! $product->content !!}
