@@ -479,8 +479,6 @@
                                                 @empty
 
                                                 @endforelse
-
-
                                             </ul>
                                             <div
                                                 class="a-carousel-indicator a-carousel-indicator--no-bullets a-carousel-indicator--arrows c-products-slider__arrows">

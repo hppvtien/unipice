@@ -661,7 +661,6 @@ $(".print_pdf").on("click", function() {
             data_id: data_id
         },
         success: function(result) {
-            console.log(result);
             window.open("/in-pdf.html?data_id=" + data_id + "");
             // $('#myModal').html(result);
         },
@@ -879,13 +878,15 @@ $('.check-price').on('click', function() {
     let price_save_store = Number(100 - size_price_sale_store * 100 / size_price).toFixed(0);
     let data_uid = $(this).attr('data-uid');
     if (data_img != '') {
-        $('#image-slides').html('<ul class="m-product-gallery__slides glide__slides"><li class="m-product-gallery__slide glide__slide glide__slide--active">' +
-        '<div class="m-product-gallery__img-wrapper">' +
-        '<img class="lazyload m-product-gallery__img" data-src="/storage/uploads_Product/' + data_img + '" src="/storage/uploads_Product/' + data_img + '"  data-zoom="/storage/uploads_Product/' + data_img + '">' +
-        '</div>' +
-        '</li></ul>');
+        $('#image-slides').attr('data-glide-el', 'controls');
+        $('#image-slides').html('<ul class"m-product-gallery__slides glide__slides"><li class="m-product-gallery__slide glide__slide glide__slide--clone" data-glide-autoplay="6000000">' +
+            '<div class="m-product-gallery__img-wrapper">' +
+            '<img class="lazyload m-product-gallery__img" data-src="/storage/uploads/' + data_img + '" src="/storage/uploads/' + data_img + '"  data-zoom="/storage/uploads/' + data_img + '">' +
+            '</div>' +
+            '</li></ul>');
     } else {
-        $('#image-slides').html('<ul class="m-product-gallery__slides glide__slides"><li class="m-product-gallery__slide glide__slide glide__slide--active">' +
+        $('#image-slides').attr('data-glide-el', 'controls');
+        $('#image-slides').html('<ul class="m-product-gallery__slides glide__slides"><li class="m-product-gallery__slide glide__slide glide__slide--clone" data-glide-autoplay="60000">>' +
             '<div class="m-product-gallery__img-wrapper">' +
             '<img class="lazyload m-product-gallery__img" src="/images/default.jpg">' +
             '</div>' +
@@ -894,29 +895,30 @@ $('.check-price').on('click', function() {
 
 
     if (data_uid) {
+        $('.check' + size_id).addClass('box-shadow-in');
+        $('.price-save').html('(Tiết kiệm: -' + price_save_store + '%)');
+        $('.price-gg-gg').html(numberVnd(size_price));
+        $('#qty-in-box-store').html(size_qty_inbox + ' sản phẩm');
+        $('#min-box-store').html(size_min_box + ' thùng');
+        $('.js-add-cart').attr('data-size', size_id);
+        $('.js-add-cart').attr('data-qtyinbox', size_qty_inbox);
+        $('.js-add-cart').attr('data-min-box', size_min_box);
         if (size_price_sale_store == 0) {
-            return false;
+            $('.price-preview').html('Giá: ' + numberVnd(size_price));
         } else {
-            $('.check' + size_id).addClass('box-shadow-in');
             $('.price-preview').html(numberVnd(size_price_sale_store));
-            $('.price-save').html('(Tiết kiệm: -' + price_save_store + '%)');
-            $('.price-gg-gg').html(numberVnd(size_price));
-            $('#qty-in-box-store').html(size_qty_inbox + ' sản phẩm');
-            $('#min-box-store').html(size_min_box + ' thùng');
-            $('.js-add-cart').attr('data-size', size_id);
-            $('.js-add-cart').attr('data-qtyinbox', size_qty_inbox);
-            $('.js-add-cart').attr('data-min-box', size_min_box);
         }
 
     } else {
+        $('.check' + size_id).addClass('box-shadow-in');
+
+        $('.price-gg-gg').html(numberVnd(size_price));
+        $('.price-save').html('(Tiết kiệm: -' + price_save_not_store + '%)');
+        $('.js-add-cart').attr('data-size', size_id);
         if (size_price_sale == 0) {
-            return false;
+            $('.price-preview-sale').html('Giá: ' + numberVnd(size_price));
         } else {
-            $('.check' + size_id).addClass('box-shadow-in');
             $('.price-preview-sale').html('Giá: ' + numberVnd(size_price_sale));
-            $('.price-gg-gg').html(numberVnd(size_price));
-            $('.price-save').html('(Tiết kiệm: -' + price_save_not_store + '%)');
-            $('.js-add-cart').attr('data-size', size_id);
         }
     }
     // alert(data_uid+'-'+size_id + '-' + size_price + '-' + size_price_sale + '-' + size_price_sale_store);

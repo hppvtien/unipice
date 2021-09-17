@@ -209,6 +209,22 @@ $('#type_pay').on('change', function() {
     });
 
 });
+$('#pay_status').on('change', function() {
+    let status_pay = $('#pay_status').find(":selected").val();
+    let data_url = $('#search_k').attr('data-url');
+    $.ajax({
+        url: data_url,
+        method: "post",
+        data: {
+            status_pay: status_pay
+        },
+        success: function(result) {
+            $('#show-search').html(result);
+
+        },
+    });
+
+});
 $('.keypress-count').on('change', function() {
     var from_date = $("input[name='from_date']").val();
     var to_date = $("input[name='to_date']").val();

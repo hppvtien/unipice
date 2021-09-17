@@ -28,7 +28,7 @@ return [
             'route' => 'get_admin.dashboard',
             'class-icon' => 'la la-tachometer-alt'
         ],
-        
+
         [
             'name' => 'Tags',
             'class-icon' => 'la la-database',
@@ -59,10 +59,6 @@ return [
                     'name' => 'Trọng lượng',
                     'route' => 'get_admin.uni_size.index'
                 ],
-                // [
-                //     'name' => 'Màu sắc',
-                //     'route' => 'get_admin.uni_color.index'
-                // ],
                 [
                     'name' => 'Nhà cung cấp',
                     'route' => 'get_admin.uni_supplier.index'
@@ -74,7 +70,7 @@ return [
 
             ]
         ],
-       
+
         // [
         //     'name' => 'Quản lý cửa hàng',
         //     'class-icon' => 'la la-book-open',
@@ -157,7 +153,7 @@ return [
                 ],
             ]
         ],
-       
+
         [
             'name' => 'Đánh giá và Câu hỏi',
             'class-icon' => 'la la-database',
@@ -208,6 +204,7 @@ return [
                     'name' => 'Doanh thu',
                     'route' => 'get_admin.bill.index_order'
                 ],
+
             ]
         ],
         [
@@ -244,7 +241,7 @@ return [
                     'name' => 'Quản trị viên',
                     'route' => 'get_admin.account.index'
                 ],
-               
+
             ]
         ],
 
