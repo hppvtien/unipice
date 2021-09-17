@@ -12,8 +12,8 @@
                             <div class="layout__region layout__region--content">
                                 <div class="c-page-header c-page-header--light">
                                     <picture class="c-page-header__image">
-                                        <source media="(min-width: 1024px)" data-srcset="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" srcset="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
-                                        <img class=" lazyloaded" data-src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" alt="Danh sách các gói khuyến mãi của chúng tôi" src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
+                                        <source media="(min-width: 1024px)" data-srcset="{{ pare_url_file_product($cat_id->banner) }}" srcset="{{ pare_url_file_product($cat_id->banner) }}">
+                                        <img class=" lazyloaded" data-src="{{ pare_url_file_product($cat_id->banner) }}" alt="Danh sách các gói khuyến mãi của chúng tôi" src="{{ pare_url_file_product($cat_id->banner) }}">
                                     </picture>
 
                                     <div class="c-page-header__content">
@@ -31,7 +31,7 @@
                                                 <a class="a-anchor" href="/">Home</a>
                                             </li>
                                             <li class="m-breadcrumb__item m-breadcrumb__item--active">
-                                                <a class="a-anchor" aria-current="page">Khuyến mại</a>
+                                                <a class="a-anchor" aria-current="page">Khuyến mãi</a>
                                             </li>
                                         </ol>
                                     </nav>
@@ -74,7 +74,7 @@
 
                                 <div class="container">
                                     <!-- <h2 title="products" class="page_heading text-center font-weight-bold">
-                                        Sản phẩm đang được khuyến mại
+                                        Sản phẩm đang được khuyến mãi
                                     </h2> -->
                                     <div class="col-md-12 padding-set0">
                                         <div class="t-plp__grid js-plp-grid show-product" id="show-product">

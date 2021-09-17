@@ -91,7 +91,7 @@
                                 @endforelse
                                 <li>
                                     <a href="{{ route('get.flashsale') }}" >
-                                        <img style="float: left;padding: 5px;" width="30px" src="/storage/uploads_Product/khuyen-mai-1627644111.png" alt="Khuyến mại">Khuyến mại
+                                        <img style="float: left;padding: 5px;" width="30px" src="/storage/uploads_Product/khuyen-mai-1627644111.png" alt="Khuyến mãi">Khuyến mãi
                                     </a>
                                 </li>
                             </ul>

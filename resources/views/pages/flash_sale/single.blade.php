@@ -32,7 +32,7 @@
                                                 <a class="a-anchor" href="/">Home</a>
                                             </li>
                                             <li class="m-breadcrumb__item">
-                                                <a href="{{ route('get.flashsale') }}" class="a-anchor">Khuyến mại</a>
+                                                <a href="{{ route('get.flashsale') }}" class="a-anchor">Khuyến mãi</a>
                                             </li>
                                             <li class="m-breadcrumb__item m-breadcrumb__item--active">
                                                 <a class="a-anchor" aria-current="page">{{ $uni_flashsale->name }}</a>
