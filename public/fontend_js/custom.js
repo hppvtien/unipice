@@ -878,14 +878,14 @@ $('.check-price').on('click', function() {
     let price_save_store = Number(100 - size_price_sale_store * 100 / size_price).toFixed(0);
     let data_uid = $(this).attr('data-uid');
     if (data_img != '') {
-        $('#image-slider').attr('data-glide-el', 'untrack');
-        $('#image-slides').html('<ul style="transition: unset!important; transform: unset!important;"><li>' +
+        $('#image-slides').attr('data-glide-el', '');
+        $('#image-slides').html('<ul class"m-product-gallery__slides glide__slides"><li class="m-product-gallery__slide glide__slide glide__slide--clone">' +
             '<div class="m-product-gallery__img-wrapper">' +
             '<img class="lazyload m-product-gallery__img" data-src="/storage/uploads/' + data_img + '" src="/storage/uploads/' + data_img + '"  data-zoom="/storage/uploads/' + data_img + '">' +
             '</div>' +
             '</li></ul>');
     } else {
-        $('#image-slider').attr('data-glide-el', 'untrack');
+        $('#image-slides').attr('data-glide-el', '');
         $('#image-slides').html('<ul class="m-product-gallery__slides glide__slides"><li class="m-product-gallery__slide glide__slide glide__slide--clone">' +
             '<div class="m-product-gallery__img-wrapper">' +
             '<img class="lazyload m-product-gallery__img" src="/images/default.jpg">' +
