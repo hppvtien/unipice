@@ -140,8 +140,6 @@ class AdminUniProductController extends AdminController
     }
     public function update(AdminUniProductRequest $request, $id)
     {
-        dd( $id);
-        dd($request->all());
         $uni_product             = Uni_Product::findOrFail($id);
         $product_albumOld = json_decode(Uni_Product::where('id', $id)->pluck('album')->first());
         $data               = $request->except(['thumbnail', 'save', '_token', 'album']);

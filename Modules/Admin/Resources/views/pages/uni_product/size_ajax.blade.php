@@ -10,7 +10,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Giá bán lẻ</div>
                         </div>
-                        <input type="text" name="size_price[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán lẻ" value="{{ $v_size->price }}">
+                        <input type="text" name="size_price[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán lẻ" value="{{ old('price', $v_size->price ?? '0') }}">
                     </div>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Giá bán sale</div>
                         </div>
-                        <input type="text" name="size_price_sale[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán sale" value="{{ $v_size->price_sale }}">
+                        <input type="text" name="size_price_sale[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán sale" value="{{ old('price_sale', $v_size->price_sale ?? '0') }}">
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Giá bán đại lý</div>
                         </div>
-                        <input type="text" name="size_price_sale_store[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán đại lý" value="{{ $v_size->price_sale_store }}">
+                        <input type="text" name="size_price_sale_store[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán đại lý" value="{{ old('price_sale_store', $v_size->price_sale_store ?? '0') }}">
                     </div>
                 </div>
             </div>
@@ -38,21 +38,21 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="required">Số lượng sản phẩm / thùng<span>(*)</span></label>
-                    <input type="number" class="form-control" name="qty_in_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ $v_size->qty_in_box }}">
+                    <input type="number" class="form-control" name="qty_in_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ old('qty_in_box[]', $v_size->qty_in_box ?? '0') }}">
                     <span class="d-block text-warning">Số lượng trên một thùng</span>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="required">Số lượng thùng tối thiểu để được giá đại lý <span>(*)</span></label>
-                    <input type="number" class="form-control" name="min_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ $v_size->min_box }}">
+                    <input type="number" class="form-control" name="min_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ old('min_box[]', $v_size->min_box ?? '0') }}">
                     <span class="d-block text-warning">Số lượng thùng tối thiểu để được giá đại lý</span>
                 </div>
             </div>
             <div class="col-4">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Ảnh</label>
-                    <input type="file" class="form-control" name="image[{{ $v_size->size_id }}]" value="{{ old('image', $v_size->image ?? '') }}">
+                    <input type="file" class="form-control" name="image[{{ $v_size->size_id }}]" value="{{ old('image[]', $v_size->image ?? '') }}">
                     <input type="hidden" name="image[{{ $v_size->size_id }}]" value="">
                     <span class="d-block text-warning">Kích thước 700px X 760px</span>
                 </div>
