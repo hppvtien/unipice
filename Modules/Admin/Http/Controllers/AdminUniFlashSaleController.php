@@ -46,7 +46,7 @@ class AdminUniFlashSaleController extends AdminController
         return view('admin::pages.uni_flashsale.create', $viewData);
     }
 
-    public function store(Request $request)
+    public function store(AdminFlashSaleRequest $request)
     {
         // dd($request->all());
         $data                 = $request->except(['thumbnail', 'save', '_token']);

@@ -4,7 +4,6 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Product_Size;
 use App\Models\Uni_Product;
-use App\Models\Uni_Color;
 use App\Models\Uni_LotProduct;
 use App\Models\Uni_Size;
 use App\Models\Uni_Tag;
@@ -13,7 +12,6 @@ use App\Models\Uni_Category;
 use App\Models\ProductCategory;
 use App\Models\ProductTag;
 use App\Models\ProductTrade;
-use App\Models\ProductColor;
 use App\Models\ProductSize;
 use App\Models\ProductLotProduct;
 use App\Service\Seo\RenderUrlSeoCourseService;
@@ -30,15 +28,8 @@ class AdminUniProductController extends AdminController
 {
     public function index()
     {
-        // dd($request->all());
-        $uni_product = Uni_Product::orderByDesc('id')->get();
-        // $uni_color = Uni_Color::orderByDesc('id')->get();
-        // $uni_lotproduct = Uni_LotProduct::orderByDesc('id')->get();
-        // $uni_size = Uni_Size::orderByDesc('id')->get();
-        // $uni_tag = Uni_Tag::orderByDesc('id')->get();
-        // $uni_trade = Uni_Trade::orderByDesc('id')->get();
-        // $uni_category = Uni_Category::orderByDesc('id')->get();
 
+        $uni_product = Uni_Product::orderByDesc('id')->get();
         $viewData = [
             'uni_product' => $uni_product
         ];
@@ -76,8 +67,7 @@ class AdminUniProductController extends AdminController
         return view('admin::pages.uni_product.create', $viewData);
     }
 
-    // public function store(AdminUniProductRequest $request)
-    public function store(Request $request)
+    public function store(AdminUniProductRequest $request)
     {
         $data                 = $request->except(['thumbnail', 'save', '_token', 'tags', 'album', 'avatar']);
         if ($request->album) {
@@ -92,7 +82,7 @@ class AdminUniProductController extends AdminController
         $param = [
             'name' => $request->name,
             'slug' => $request->slug,
-            'product_vat' => $request->product_vat,
+            'product_vat' => 0,
             'desscription' => $request->desscription,
             'content' => $request->content,
             'created_at' => Carbon::now(),
@@ -148,12 +138,13 @@ class AdminUniProductController extends AdminController
         ];
         return view('admin::pages.uni_product.update', $viewData);
     }
-    // public function update(AdminUniProductRequest $request, $id)
-    public function update(Request $request, $id)
+    public function update(AdminUniProductRequest $request, $id)
     {
+        dd( $id);
+        dd($request->all());
         $uni_product             = Uni_Product::findOrFail($id);
         $product_albumOld = json_decode(Uni_Product::where('id', $id)->pluck('album')->first());
-        $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album']);
+        $data               = $request->except(['thumbnail', 'save', '_token', 'album']);
         if ($request->album) {
             $album = [];
             foreach ($request->album as $item) {
@@ -173,7 +164,7 @@ class AdminUniProductController extends AdminController
         $param = [
             'name' => $request->name,
             'slug' => $request->slug,
-            'product_vat' => $request->product_vat,
+            'product_vat' => 0,
             'desscription' => $request->desscription,
             'content' => $request->content,
             'updated_at' => Carbon::now(),
@@ -272,7 +263,7 @@ class AdminUniProductController extends AdminController
         ];
         return view('admin::pages.uni_product.import', $viewData);
     }
-    public function import(AdminLotRequest $request, $id)
+    public function import(Request $request, $id)
     {
         // dd($request->all());
         $uni_product             = Uni_Product::findOrFail($id);

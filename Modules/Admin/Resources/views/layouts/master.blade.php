@@ -83,6 +83,14 @@
                 $("#count_des").removeClass('text-success').addClass('text-danger')
             }
         });
+        $("#desscription").keyup(function() {
+            $("#count_desscription").text("Ký tự: " + ($(this).val().length) + " (Mô tả từ 200 -> 300 ký tự)");
+            if ($(this).val().length >= 200 && $(this).val().length <= 300) {
+                $("#count_desscription").removeClass('text-danger').addClass('text-success')
+            } else {
+                $("#count_desscription").removeClass('text-success').addClass('text-danger')
+            }
+        });
     </script>
     <script src="{{ asset('plugin/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('plugin/ckfinder/ckfinder.js') }}"></script>

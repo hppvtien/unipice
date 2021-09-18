@@ -20,10 +20,11 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Mô tả <span>(*)</span></label>
-                        <input type="text" class="form-control keypress-count" data-desscription-seo=".meta_desscription" name="desscription" value="{{ old('desscription', $uni_product->desscription ?? '') }}">
+                        <textarea name="desscription" id="desscription" class="form-control keypress-count" data-desscription-seo=".meta_desscription" cols="30" rows="3">{{ old('desscription', $uni_product->desscription ?? '') }}</textarea>
                         @if($errors->first('desscription'))
                         <span class="text-danger">{{ $errors->first('desscription') }}</span>
                         @endif
+                        <span class="text-danger" id="count_desscription"></span>
                     </div>
 
                     <div class="form-group">
@@ -47,22 +48,25 @@
                         @endif
                     </div>
 
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" class="required"> Tags <span>(*)</span></label>
-                        <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
-                            <select name="tags[]" class="form-control  SumoUnder js-select2" tabindex="-1" multiple>
-                                @foreach($uni_tag as $tag)
-                                <option title="{{ $tag->name }}" {{ in_array($tag->id, $tagOld) ? "selected" : "" }} value="{{ $tag->id }}">{{ $tag->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        @if($errors->first('tags'))
-                        <span class="text-danger">{{ $errors->first('tags') }}</span>
-                        @endif
-                    </div>
+                   
 
                     <div class="row">
-                        <div class="col-6">
+                         <div class="col-9">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="required"> Tags <span>(*)</span></label>
+                                <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
+                                    <select name="tags[]" class="form-control  SumoUnder js-select2" tabindex="-1" multiple>
+                                        @foreach($uni_tag as $tag)
+                                        <option title="{{ $tag->name }}" {{ in_array($tag->id, $tagOld) ? "selected" : "" }} value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @if($errors->first('tags'))
+                                <span class="text-danger">{{ $errors->first('tags') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-3">
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="required"> Thương hiệu <span>(*)</span></label>
                                 <div class="SumoSelect js-sumo-select sumo_somename" tabindex="0" role="button" aria-expanded="true">
@@ -77,15 +81,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1" class="required">VAT <span>(*)</span></label>
-                                <input type="number" class="form-control keypress-count" value="{{ old('product_vat', $uni_product->product_vat ?? '') }}" name="product_vat">
-                                @if($errors->first('product_vat'))
-                                <span class="text-danger">{{ $errors->first('product_vat') }}</span>
-                                @endif
-                            </div>
-                        </div>
+                       
                     </div>
                     {{-- <div class="form-group">
                         <label for="exampleInputEmail1" class="required"> Màu sắc <span>(*)</span></label>
@@ -115,7 +111,8 @@
             <div class="row">
                 @forelse (json_decode($uni_product->album) as $item)
                 <div class="col-2" data-rm="{{ $item }}" style="margin-bottom: 10px;position: relative; ">
-                    <span class="close-img js-delete" data-url="{{ route('get_admin.uni_product.delete_album') }}" data-id="{{ $uni_product->id }}" album-data="{{ $item }}" style="position:absolute"><i class="la la-trash"></i></span>
+                    <span class="close-img js-delete" data-url="{{ route('get_admin.uni_product.delete_album') }}" 
+                    data-id="{{ $uni_product->id }}" album-data="{{ $item }}" style="position:absolute"><i class="la la-trash"></i></span>
                     <img src="/storage/uploads_Product/{{ $item }}" class="card-img-top" alt="...">
                 </div>
                 @empty
@@ -142,11 +139,13 @@
                 <button class="btn btn-success" id="update-weight" data-id="{{ old('order', $uni_product->id ?? '0') }}" data-url="{{ route('get_admin.uni_product.update_weight') }}">Cập nhật trọng lượng</button>
             </div>
             <div class="form-group" id="show-vsize">
-                @foreach($data_size as $key => $v_size)
+                @forelse($data_size as $key => $v_size)
                 <div class="row" style="padding: 20px 0px 20px;
                 border-bottom: 1px solid #e8e7e7;">
                     <div class="col-10">
-                        <h5 class="btn-info text-center w-25 mx-auto" style="padding: 5px;margin-top:10px">Trọng lượng: {{ getSizeName($v_size->size_id) }}</h5>
+                        <h5 class="btn-info text-center w-25 mx-auto" style="padding: 5px;margin-top:10px">
+                            Trọng lượng: {{ getSizeName($v_size->size_id) }}
+                        </h5>
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="form-group">
@@ -154,7 +153,9 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">Giá bán lẻ</div>
                                         </div>
-                                        <input type="text" name="size_price[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán lẻ" value="{{ $v_size->price }}">
+                                        <input type="text" name="size_price[{{ $v_size->size_id }}]" class="form-control" 
+                                        id="inlineForm{{ $v_size->id }}" 
+                                        placeholder="Giá bán lẻ" value="{{ old('price', $v_size->price ?? '0') }}">
                                     </div>
                                 </div>
                             </div>
@@ -164,7 +165,9 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">Giá bán sale</div>
                                         </div>
-                                        <input type="text" name="size_price_sale[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán sale" value="{{ $v_size->price_sale }}">
+                                        <input type="text" name="size_price_sale[{{ $v_size->size_id }}]" class="form-control" 
+                                        id="inlineForm{{ $v_size->id }}" placeholder="Giá bán sale" 
+                                        value="{{ old('price_sale', $v_size->price_sale ?? '0') }}">
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +177,9 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">Giá bán đại lý</div>
                                         </div>
-                                        <input type="text" name="size_price_sale_store[{{ $v_size->size_id }}]" class="form-control" id="inlineForm{{ $v_size->id }}" placeholder="Giá bán đại lý" value="{{ $v_size->price_sale_store }}">
+                                        <input type="text" name="size_price_sale_store[{{ $v_size->size_id }}]" class="form-control" 
+                                        id="inlineForm{{ $v_size->id }}" placeholder="Giá bán đại lý" 
+                                        value="{{ old('price_sale_store', $v_size->price_sale_store ?? '0') }}">
                                     </div>
                                 </div>
                             </div>
@@ -182,21 +187,26 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="required">Số lượng sản phẩm / thùng<span>(*)</span></label>
-                                    <input type="number" class="form-control" name="qty_in_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ $v_size->qty_in_box }}">
+                                    <input type="number" class="form-control" name="qty_in_box[{{ $v_size->size_id }}]" 
+                                    id="inlineForm{{ $v_size->id }}"
+                                    value="{{ old('qty_in_box', $v_size->qty_in_box ?? '0') }}">
                                     <span class="d-block text-warning">Số lượng trên một thùng</span>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="required">Số lượng thùng tối thiểu để được giá đại lý <span>(*)</span></label>
-                                    <input type="number" class="form-control" name="min_box[{{ $v_size->size_id }}]" id="inlineForm{{ $v_size->id }}" value="{{ $v_size->min_box }}">
+                                    <input type="number" class="form-control" name="min_box[{{ $v_size->size_id }}]" 
+                                    id="inlineForm{{ $v_size->id }}" 
+                                    value="{{ old('min_box', $v_size->min_box ?? '0') }}">
                                     <span class="d-block text-warning">Số lượng thùng tối thiểu để được giá đại lý</span>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Ảnh</label>
-                                    <input type="file" class="form-control" name="image[{{ $v_size->size_id }}]" value="{{ old('image', $v_size->image ?? '') }}">
+                                    <input type="file" class="form-control" name="image[{{ $v_size->size_id }}]" 
+                                    value="{{ old('image', $v_size->image ?? '') }}">
                                     <input type="hidden" name="image[{{ $v_size->size_id }}]" value="">
                                     <span class="d-block text-warning">Kích thước 700px X 760px</span>
                                 </div>
@@ -207,7 +217,8 @@
                         <img src="{{ pare_url_file_product($v_size->image) }}" class="card-img-top" alt="...">
                     </div>
                 </div>
-                @endforeach
+                @empty
+                @endforelse
             </div>
         </div>
     </div>
