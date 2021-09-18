@@ -27,6 +27,14 @@ class ProductController extends Controller
         $noi_dung_comment = Uni_Comment::where('product_id', '=', $id_product)->where('type_comment', 'product')->where('status', 1)->where('type', 'review')->get();
         $noi_dung_question = Uni_Comment::where('product_id', '=', $id_product)->where('type_comment', 'product')->where('status', 1)->where('type', 'question')->get();
         $product = Uni_Product::where('slug', $slug)->first();
+        \SEOMeta::setTitle($product->meta_title);
+        \SEOMeta::setDescription($product->meta_desscription);
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription($product->meta_desscription);
+        \OpenGraph::setTitle($product->meta_title);
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
+        \OpenGraph::addImage(URL::to('').pare_url_file($product->thumbnail));
         $trade_id = Product_Trade::where('product_id', $id_product)->pluck('trade_id')->first();
         $size_id = Product_Size::where('product_id', $id_product)->pluck('size_id')->first();
         $cat_grid = Product_Category::where('product_id', $id_product)->pluck('category_id');

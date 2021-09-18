@@ -881,7 +881,7 @@ $('.check-price').on('click', function() {
         $('#image-slides').attr('data-glide-el', 'controls');
         $('#image-slides').html('<ul class"m-product-gallery__slides glide__slides"><li class="m-product-gallery__slide glide__slide glide__slide--clone" data-glide-autoplay="6000000">' +
             '<div class="m-product-gallery__img-wrapper">' +
-            '<img class="lazyload m-product-gallery__img" data-src="/storage/uploads/' + data_img + '" src="/storage/uploads/' + data_img + '"  data-zoom="/storage/uploads/' + data_img + '">' +
+            '<img class="lazyload m-product-gallery__img" data-src="/storage/uploads_Product/' + data_img + '" src="/storage/uploads_Product/' + data_img + '"  data-zoom="/storage/uploads_Product/' + data_img + '">' +
             '</div>' +
             '</li></ul>');
     } else {

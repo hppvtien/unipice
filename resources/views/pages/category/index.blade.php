@@ -24,9 +24,9 @@
                                                                 <p class="font-weight-bold" style="color: #000; background-color:transparent;font-size:20px;opacity: 1;">
                                                                     {{ $category->desscription }}
                                                                 </p>
-                                                                <p style="color: #000; background-color:transparent; text-align:justify;opacity: 1;">
+                                                                <div style="color: #000; background-color:transparent; text-align:justify;opacity: 1;">
                                                                     {!! $category->content !!}
-                                                                </p>
+                                                                </div>
 
                                                             </div>
                                                             <div class="col-md-2" style="background-image: url({{ asset('/images/icon_menu/Spice-Header-2.png') }}); background-size: contain;

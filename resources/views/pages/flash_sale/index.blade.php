@@ -12,8 +12,8 @@
                             <div class="layout__region layout__region--content">
                                 <div class="c-page-header c-page-header--light">
                                     <picture class="c-page-header__image">
-                                        <source media="(min-width: 1024px)" data-srcset="{{ pare_url_file_product($cat_id->banner) }}" srcset="{{ pare_url_file_product($cat_id->banner) }}">
-                                        <img class=" lazyloaded" data-src="{{ pare_url_file_product($cat_id->banner) }}" alt="Danh sách các gói khuyến mãi của chúng tôi" src="{{ pare_url_file_product($cat_id->banner) }}">
+                                        <source media="(min-width: 1024px)" data-srcset="{{ pare_url_file($cat_id->banner) }}" srcset="{{ pare_url_file($cat_id->banner) }}">
+                                        <img class=" lazyloaded" data-src="{{ pare_url_file($cat_id->banner) }}" alt="Danh sách các gói khuyến mãi của chúng tôi" src="{{ pare_url_file($cat_id->banner) }}">
                                     </picture>
 
                                     <div class="c-page-header__content">

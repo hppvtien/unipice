@@ -3,6 +3,7 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Models\Uni_Supplier;
+use App\Models\Uni_LotProduct;
 use App\Service\Seo\RenderUrlSeoBLogService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -81,6 +82,7 @@ class AdminUniSupplierController extends AdminController
             {
                 Storage::delete('public/uploads/'.$menu->banner);
                 $menu->delete();
+                Uni_LotProduct::where('supplier_id', $id)->delete();
             }
             return response()->json([
                 'status' => 200,
