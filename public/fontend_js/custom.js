@@ -96,6 +96,7 @@ $(".search_province").on("change", function() {
 $(".js-add-cart").on("click", function() {
     let URL = $(this).attr("data-url");
     let data_uid = $(this).attr("data-uid");
+    let data_href = $(this).attr("data-href");
     let data_size = $(this).attr("data-size");
     let data_qtyinbox = Number($(this).attr("data-qtyinbox"));
     let data_minbox = Number($(this).attr("data-min-box"));
@@ -104,39 +105,44 @@ $(".js-add-cart").on("click", function() {
     let data_price = Number((data_price_temp.replaceAll('Giá:', '')).replaceAll('₫', '').replaceAll('.', ''));
     let data_count = $(this).attr("data-count");
     let qty_user = $("#js-qty" + data_id).val();
-    $.ajax({
-        url: URL,
-        method: "get",
-        data: {
-            data_size: data_size,
-            qty_user: qty_user,
-            data_price: data_price,
-            data_id: data_id,
-            data_uid: data_uid,
-            data_qtyinbox: data_qtyinbox,
-            data_minbox: data_minbox
-        },
-        success: function(data) {
-            $(".count-cart-s")
-                .addClass("c-header__minicart-count")
-                .html(
-                    '<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">' +
-                    data.count +
-                    '</span>'
-                );
-            if (data.status === 200) {
-                $("#toast-container").html(
-                        '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' +
-                        data.message +
-                        '</div></div>'
-                    ),
-                    4000;
-                setTimeout(function() {
-                    $(".toast-success").remove();
-                }, 2000);
+    if (data_href == '') {
+        $.ajax({
+            url: URL,
+            method: "get",
+            data: {
+                data_size: data_size,
+                qty_user: qty_user,
+                data_price: data_price,
+                data_id: data_id,
+                data_uid: data_uid,
+                data_qtyinbox: data_qtyinbox,
+                data_minbox: data_minbox
+            },
+            success: function(data) {
+                $(".count-cart-s")
+                    .addClass("c-header__minicart-count")
+                    .html(
+                        '<span style="font-size: 15px;margin: auto;text-align: center;padding-left: 5px;">' +
+                        data.count +
+                        '</span>'
+                    );
+                if (data.status === 200) {
+                    $("#toast-container").html(
+                            '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">' +
+                            data.message +
+                            '</div></div>'
+                        ),
+                        4000;
+                    setTimeout(function() {
+                        $(".toast-success").remove();
+                    }, 2000);
+                }
             }
-        }
-    });
+        });
+    } else {
+        window.location.href = data_href;
+    }
+
 });
 $(document).on('ready', function() {
     var sum = 0;
@@ -150,8 +156,6 @@ $("#updaưte-cart").on("click", function() {
 
     let item_id = $(this).attr("item-id");
     let item_i3d = $("input[name='cart[qty][]']").val()
-    console.log(item_i3d);
-    return false;
     let data_size = $(this).attr("data-size");
     let URL = $("#cart-" + item_id + "-" + data_size + "-qty").attr("data-url");
     let item_qty = $("#cart-" + item_id + "-" + data_size + "-qty").val();
@@ -878,10 +882,7 @@ $('.check-price').on('click', function() {
     let price_save_not_store = Number(100 - size_price_sale * 100 / size_price).toFixed(0);
     let price_save_store = Number(100 - size_price_sale_store * 100 / size_price).toFixed(0);
     let data_uid = $(this).attr('data-uid');
-    if (size_qty != 0) {
-        $('.js-add-cart').text('Thêm giỏ hàng');
-        $('.js-add-cart').attr('href', '/lien-he');
-    }
+
     if (data_img != '') {
         $('#image-slides').attr('data-glide-el', 'controls');
         $('#image-slides').html('<ul class"m-product-gallery__slides glide__slides"><li class="m-product-gallery__slide glide__slide glide__slide--clone" data-glide-autoplay="6000000">' +
@@ -898,6 +899,13 @@ $('.check-price').on('click', function() {
             '</li></ul>');
     }
 
+    if (size_qty == 0) {
+        $('.js-add-cart').text('Liên hệ');
+        $('.js-add-cart').attr('data-href', '/lien-he');
+    } else {
+        $('.js-add-cart').text('Thêm giỏ hàng');
+        $('.js-add-cart').attr('data-href', '');
+    }
 
     if (data_uid) {
         $('.check' + size_id).addClass('box-shadow-in');
@@ -916,7 +924,6 @@ $('.check-price').on('click', function() {
 
     } else {
         $('.check' + size_id).addClass('box-shadow-in');
-
         $('.price-gg-gg').html(numberVnd(size_price));
         $('.price-save').html('(Tiết kiệm: -' + price_save_not_store + '%)');
         $('.js-add-cart').attr('data-size', size_id);

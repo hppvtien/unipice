@@ -170,8 +170,6 @@
                                                                             (Tiết kiệm: -{{ 100-round($product['size_product'][0]['price_sale_store']*100/$product['size_product'][0]['price']) }}% )
                                                                         </span>
                                                                         <br>
-
-
                                                                         <span class="a-price price-single " style="font-size: 1rem !important;">
                                                                             Giá / Sản phẩm: <span class="price-sale-preview{{ $product->id }} price-preview">{{ $product['size_product'][0]['price_sale_store'] == null ? 'liên hệ': formatVnd($product['size_product'][0]['price_sale_store']) }}</span>
                                                                         </span>
@@ -236,7 +234,7 @@
                                                                         <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" 
                                                                         data-size="{{ getSizeId($product->id) }}" data-id="{{ $product->id }}" data-min-box="{{ getMinBox($product->id) }}" 
                                                                         data-qtyinbox="{{ getQtyInBox($product->id) }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" 
-                                                                        data-uid="{{ get_data_user('web') }}" type="button">
+                                                                        data-uid="{{ get_data_user('web') }}" type="button" data-href="">
                                                                         Thêm giỏ hàng
                                                                     </button>
                                                                     </div>
@@ -246,7 +244,7 @@
                                                                         data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" 
                                                                         class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" 
                                                                         data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" 
-                                                                        data-id="{{ $product->id }}" type="button">
+                                                                        data-id="{{ $product->id }}" type="button" data-href="">
                                                                             Thêm giỏ hàng
                                                                         </button>
                                                                     </div>
