@@ -173,6 +173,8 @@ Route::prefix('admin')->middleware('checkLoginAdmin')->group(function () {
         Route::get('update/{id}', 'AdminUniLotProductController@edit')->name('get_admin.uni_lotproduct.edit')->middleware('permission:uni_lotproduct_edit|full');
         Route::post('update/{id}', 'AdminUniLotProductController@update');
         Route::get('delete/{id}', 'AdminUniLotProductController@delete')->name('get_admin.uni_lotproduct.delete')->middleware('permission:uni_lotproduct_delete|full');
+        Route::get('lot-import/{id}', 'AdminUniLotProductController@importview')->name('get_admin.uni_lotproduct.import');
+        Route::post('lot-import/{id}', 'AdminUniLotProductController@import');
     });
     Route::prefix('uni_tag')->group(function () {
         Route::get('/', 'AdminUniTagController@index')->name('get_admin.uni_tag.index')->middleware('permission:uni_tag_index|full');

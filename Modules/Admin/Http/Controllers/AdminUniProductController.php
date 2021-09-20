@@ -232,6 +232,7 @@ class AdminUniProductController extends AdminController
     }
     public function importview($id)
     {
+        $uni_product_import= Uni_Product::where('id', $id)->first();
         $uni_lotproduct     = Uni_LotProduct::where('product_id', $id)->orderby('created_at', 'asc')->get();
         $uni_product = '';
         foreach ($uni_lotproduct as $key => $item) {
@@ -258,7 +259,8 @@ class AdminUniProductController extends AdminController
         $viewData = [
             'uni_product'       => $uni_product,
             'uni_lotproduct'       => $uni_lotproduct,
-            'import_history'       => $import_history
+            'import_history'       => $import_history,
+            'uni_product_import'       => $uni_product_import,
         ];
         return view('admin::pages.uni_product.import', $viewData);
     }

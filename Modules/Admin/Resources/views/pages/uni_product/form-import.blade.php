@@ -64,7 +64,7 @@
                         </table>
                     </div>
                     <div class="bg-primary">
-                        <h3 class="text-light h3-title">Thông tin nhập sản phẩm</h3>
+                        <h3 class="text-light h3-title">Số lượng xuất bán</h3>
                     </div>
                     <input type="hidden" name="product_size" id="product_size_lot" value="">
                     <input type="hidden" name="product_id" value="{{ old('product_id', $uni_lotproduct[0]->product_id ?? '') }}">
@@ -82,7 +82,7 @@
                 <div class="card-body pt-3">
                     <div class="form-group">
                         <h2>
-                            Lịch sử nhập sản phẩm để bán
+                            Lịch sử nhập số lượng bán sản phẩm {{ $uni_product_import->name }}
                         </h2>
                     </div>
                     <div class="form-group">

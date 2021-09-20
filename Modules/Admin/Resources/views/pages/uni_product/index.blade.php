@@ -32,8 +32,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>SEO</th>
-                                    <th>Số lượng</th>
+                                    <th style="width: 70%;">SEO</th>
+                                    <th>Nhập lô</th>
+                                    <th>Xuất lô</th>
                                     <th>Trạng thái</th>
                                     <th>Hành động</th>
                                 </tr>
@@ -57,7 +58,10 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="badge badge-info">{{ $item->qty }}</span>
+                                        <a href="{{ route('get_admin.uni_lotproduct.import', $item->id) }}" class="btn btn-xs btn-info"><i class="fa fa-upload"></i></a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('get_admin.uni_product.import', $item->id) }}" class="btn btn-xs btn-success"><i class="la la-file-import"></i></a>
                                     </td>
                                     <td>
                                         <span class="badge {{ $item->status == 1 ? 'badge-success':'badge-danger' }}">{{ $item->status == 1 ? 'Active':'Not-Active' }}</span>
@@ -65,7 +69,6 @@
                                     <td>
                                         <a href="{{ route('get_admin.uni_product.edit', $item->id) }}" class="btn btn-xs btn-info"><i class="la la-edit"></i></a>
                                         <a href="{{ route('get_admin.uni_product.delete', $item->id) }}" class="btn btn-xs js-delete btn-danger"><i class="la la-trash"></i></a>
-                                        <a href="{{ route('get_admin.uni_product.import', $item->id) }}" class="btn btn-xs btn-success"><i class="la la-file-import"></i></a>
                                     </td>
                                 </tr>
                                 @empty

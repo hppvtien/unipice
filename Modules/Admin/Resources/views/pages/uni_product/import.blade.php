@@ -5,8 +5,7 @@
         <div class="breadcrumb-header justify-content-between">
             <div class="my-auto">
                 <div class="d-flex">
-                    <h4 class="content-title mb-0 my-auto">Nhập sản phẩm</h4>
-                    <span class="text-muted mt-1 tx-13 ml-2 mb-0">/ Import</span>
+                    <h4 class="content-title mb-0 my-auto">Xuất số lượng bán sản phẩm {{ $uni_product_import->name }}</h4>
                 </div>
             </div>
             <div class="d-flex my-xl-auto right-content">
