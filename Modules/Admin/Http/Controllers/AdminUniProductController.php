@@ -143,7 +143,7 @@ class AdminUniProductController extends AdminController
     {
         $uni_product             = Uni_Product::findOrFail($id);
         $product_albumOld = json_decode(Uni_Product::where('id', $id)->pluck('album')->first());
-        $data               = $request->except(['thumbnail', 'save', '_token', 'album']);
+        $data               = $request->except(['thumbnail', 'save', '_token', 'tags', 'album', 'avatar']);
         if ($request->album) {
             $album = [];
             foreach ($request->album as $item) {
