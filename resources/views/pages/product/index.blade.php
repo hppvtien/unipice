@@ -106,13 +106,13 @@
                                                                     </span>
                                                                     <span class="m-product-overview__price-wrapper d-block">
                                                                         <span class="a-product-name a-title-des text-dark">
-                                                                            Khối lượng tĩnh:
+                                                                            Khối lượng tịnh:
                                                                         </span><br>
                                                                         <span class="text-danger paid-save" style="line-height: 3.5">
                                                                             @forelse ($product->size_product as $key => $size)
                                                                             <b class="border check-price check{{ $size['size_id'] }} {{ $key == 0 ? 'box-shadow-in' : '' }}"
                                                                             data-uid="{{ checkUid(get_data_user('web')) }}" data-size="{{ $size['size_id'] }}" data-img="{{ $size['image'] }}"
-                                                                            size-price="{{ $size['price'] }}" size-price-sale="{{ $size['price_sale'] }}"
+                                                                            size-price="{{ $size['price'] }}" size-price-sale="{{ $size['price_sale'] }}" size-qty="{{ $size['qty'] }}"
                                                                             <?php if (checkUid(get_data_user('web')) != null) { ?>
                                                                                 size-price-sale-store="{{ $size['price_sale_store'] }}"
                                                                                 size-qty-inbox="{{ $size['qty_in_box'] }}"
@@ -203,11 +203,7 @@
                                                                             </span>
                                                                         </span>
                                                                         @endif
-                                                                        <!--<?php if ($product->qty) { ?>
-                                                                <span class="a-price text-success sigle line-height-single4"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
-                                                                <?php } else { ?>
-                                                                <span class="text-dark float-right line-height-single4"><i class="fa fa-phone" aria-hidden="true"></i>Liên hệ</span>
-                                                                <?php } ?>-->
+                                                                      
 
                                                                         <span class="row">
                                                                             <div class="buttons_added col-12 text-center">
@@ -228,16 +224,29 @@
                                                     <div id="row" style="margin-bottom: 30px;">
                                                         <div class="m-product-card__content-wrapper row fix-btn-cart">
                                                             <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
-                                                                <button style="display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn " data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" my-id="{{ $product->id }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user( 'web') !=null ? get_data_user( 'web') : 0 }} onclick="check_my_favorites_add(this)" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">Yêu thích</button>
+                                                                <button style="display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn " 
+                                                                data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" my-id="{{ $product->id }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" 
+                                                                data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user( 'web') !=null ? get_data_user( 'web') : 0 }} 
+                                                                onclick="check_my_favorites_add(this)" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" 
+                                                                data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">Yêu thích</button>
                                                             </div>
-                                                            <?php if ($product->qty != null) { ?>
+                                                            <?php if ($product->size_product[0]['qty'] != 0) { ?>
                                                                 <?php if (checkUid(get_data_user('web')) != null) { ?>
                                                                     <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
-                                                                        <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" data-size="{{ getSizeId($product->id) }}" data-id="{{ $product->id }}" data-min-box="{{ getMinBox($product->id) }}" data-qtyinbox="{{ getQtyInBox($product->id) }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
+                                                                        <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" 
+                                                                        data-size="{{ getSizeId($product->id) }}" data-id="{{ $product->id }}" data-min-box="{{ getMinBox($product->id) }}" 
+                                                                        data-qtyinbox="{{ getQtyInBox($product->id) }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" 
+                                                                        data-uid="{{ get_data_user('web') }}" type="button">
+                                                                        Thêm giỏ hàng
+                                                                    </button>
                                                                     </div>
                                                                 <?php } else { ?>
                                                                     <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
-                                                                        <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" data-size="{{ getSizeId($product->id) }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">
+                                                                        <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" data-size="{{ getSizeId($product->id) }}" 
+                                                                        data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" 
+                                                                        class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" 
+                                                                        data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" 
+                                                                        data-id="{{ $product->id }}" type="button">
                                                                             Thêm giỏ hàng
                                                                         </button>
                                                                     </div>
@@ -247,8 +256,6 @@
                                                                     <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn contact-btn" type="button" rel="nofollow">Liên hệ</a>
                                                                 </div>
                                                             <?php } ?>
-
-
                                                         </div>
                                                     </div>
                                                     <!-- Review :: this should be removed -->

@@ -123,7 +123,7 @@
             @endif
 
             <div class="form-group">
-                <label for="exampleInputEmail1" class="required"> Trọng lượng <span>(*)</span></label>
+                <label for="exampleInputEmail1" class="required"> Khối lượng tịnh <span>(*)</span></label>
                 <div class="SumoSelect js-sumo-select sumo_somename" id="js-select2" tabindex="0" role="button" aria-expanded="true">
                     <select name="size[]" id="select2-weight" class="form-control SumoUnder js-select2" tabindex="-1" multiple>
                         @foreach($uni_size as $size)
@@ -136,16 +136,17 @@
                 @endif
             </div>
             <div class="form-group text-center" style="margin-bottom: 0;">
-                <button class="btn btn-success" id="update-weight" data-id="{{ old('order', $uni_product->id ?? '0') }}" data-url="{{ route('get_admin.uni_product.update_weight') }}">Cập nhật trọng lượng</button>
+                <button class="btn btn-success" id="update-weight" data-id="{{ old('order', $uni_product->id ?? '0') }}" data-url="{{ route('get_admin.uni_product.update_weight') }}">Cập nhật khối lượng tịnh</button>
             </div>
             <div class="form-group" id="show-vsize">
                 @forelse($data_size as $key => $v_size)
                 <div class="row" style="padding: 20px 0px 20px;
                 border-bottom: 1px solid #e8e7e7;">
                     <div class="col-10">
-                        <h5 class="btn-info text-center w-25 mx-auto" style="padding: 5px;margin-top:10px">
-                            Trọng lượng: {{ getSizeName($v_size->size_id) }}
-                        </h5>
+                        <p class="btn-info text-center w-25 mx-auto" style="padding: 5px;margin-top:10px">
+                            <b> Khối lượng tịnh:</b> {{ getSizeName($v_size->size_id) }} <br>
+                            <b> Số lượng:</b> {{ $v_size->qty }} sản phẩm
+                        </p>
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="form-group">
