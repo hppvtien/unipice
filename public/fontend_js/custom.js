@@ -917,7 +917,6 @@ $('.check-price').on('click', function() {
         $('.js-add-cart-qty').attr('data-target', '.login-js');
         $('.js-add-cart-qty').attr('data-toggle', 'modal');
     }
-
     if (data_uid) {
         $('.check' + size_id).addClass('box-shadow-in');
         $('.price-save').html('(Tiết kiệm: -' + price_save_store + '%)');
