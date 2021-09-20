@@ -900,11 +900,22 @@ $('.check-price').on('click', function() {
     }
 
     if (size_qty == 0) {
-        $('.js-add-cart').text('Liên hệ');
-        $('.js-add-cart').attr('data-href', '/lien-he');
+        $('.js-add-cart-qty').text('Liên hệ');
+        $('.js-add-cart-qty').attr('data-href', '/lien-he');
+        $('.js-add-cart-qty').attr('data-target', '');
+        $('.js-add-cart-qty').attr('data-toggle', '');
+        $('.js-add-cart-qty').on('click', function() {
+            var data_href = $(this).attr('data-href');
+            if (data_href != '') {
+                window.location.href = data_href;
+            }
+
+        });
     } else {
-        $('.js-add-cart').text('Thêm giỏ hàng');
-        $('.js-add-cart').attr('data-href', '');
+        $('.js-add-cart-qty').text('Thêm giỏ hàng');
+        $('.js-add-cart-qty').attr('data-href', '');
+        $('.js-add-cart-qty').attr('data-target', '.login-js');
+        $('.js-add-cart-qty').attr('data-toggle', 'modal');
     }
 
     if (data_uid) {
