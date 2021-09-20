@@ -390,6 +390,16 @@ function getPrice($id)
  * @param int $price
  * @return int price
  */
+function getQtyProductSize($id,$size_id)
+{
+    $sizePrice = App\Models\Product_Size::where('product_id', $id)->where('size_id',$size_id)->pluck('qty')->first();
+    return $sizePrice;
+}
+/**
+ * get size name.
+ * @param int $price
+ * @return int price
+ */
 function getPriceSale($id)
 {
     $sizePrice = App\Models\Product_Size::where('product_id', $id)->pluck('price_sale')->first();

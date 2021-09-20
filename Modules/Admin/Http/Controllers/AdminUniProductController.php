@@ -21,6 +21,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Modules\Admin\Http\Requests\AdminLotRequest;
+use Modules\Admin\Http\Requests\AdminImportRequest;
 use Modules\Admin\Http\Requests\AdminUniProductRequest;
 use phpDocumentor\Reflection\Types\Null_;
 
@@ -261,21 +262,20 @@ class AdminUniProductController extends AdminController
         ];
         return view('admin::pages.uni_product.import', $viewData);
     }
-    public function import(AdminLotRequest $request, $id)
+    public function import(AdminImportRequest $request, $id)
     {
-        // dd($request->all());
         $uni_product             = Uni_Product::findOrFail($id);
         $product_size = Product_Size::where('product_id', $id)->where('size_id', $request->product_size)->first();
+        
         $data               = $request->except(['save', '_token']);
         $qty_import = (int)$request->qty;
-
+       
         $qty_product = 0;
-        if ($product_size->qty == 0) {
-            $qty_product += $qty_import;
+        if ($product_size->qty) {
+            $qty_product =$product_size->qty + $qty_import;
         } else {
             $qty_product = $product_size->qty + $qty_import;
         };
-
         if ($request->lotproduct_id) {
             $param = [
                 'qty' => $qty_product

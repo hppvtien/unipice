@@ -873,10 +873,15 @@ $('.check-price').on('click', function() {
     let size_price_sale_store = Number($(this).attr('size-price-sale-store'));
     let size_qty_inbox = Number($(this).attr('size-qty-inbox'));
     let size_min_box = Number($(this).attr('size-min-box'));
+    let size_qty = Number($(this).attr('size-qty'));
 
     let price_save_not_store = Number(100 - size_price_sale * 100 / size_price).toFixed(0);
     let price_save_store = Number(100 - size_price_sale_store * 100 / size_price).toFixed(0);
     let data_uid = $(this).attr('data-uid');
+    if (size_qty != 0) {
+        $('.js-add-cart').text('Thêm giỏ hàng');
+        $('.js-add-cart').attr('href', '/lien-he');
+    }
     if (data_img != '') {
         $('#image-slides').attr('data-glide-el', 'controls');
         $('#image-slides').html('<ul class"m-product-gallery__slides glide__slides"><li class="m-product-gallery__slide glide__slide glide__slide--clone" data-glide-autoplay="6000000">' +
