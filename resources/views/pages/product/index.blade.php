@@ -231,7 +231,7 @@
                                                             <?php if ($product->size_product[0]['qty'] != 0) { ?>
                                                                 <?php if (checkUid(get_data_user('web')) != null) { ?>
                                                                     <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
-                                                                        <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" 
+                                                                        <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="js-add-cart-qty a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart" 
                                                                         data-size="{{ getSizeId($product->id) }}" data-id="{{ $product->id }}" data-min-box="{{ getMinBox($product->id) }}" 
                                                                         data-qtyinbox="{{ getQtyInBox($product->id) }}" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" 
                                                                         data-uid="{{ get_data_user('web') }}" type="button" data-href="">
@@ -242,7 +242,7 @@
                                                                     <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
                                                                         <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" data-size="{{ getSizeId($product->id) }}" 
                                                                         data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" 
-                                                                        class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" 
+                                                                        class="js-add-cart-qty a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" 
                                                                         data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" 
                                                                         data-id="{{ $product->id }}" type="button" data-href="">
                                                                             Thêm giỏ hàng

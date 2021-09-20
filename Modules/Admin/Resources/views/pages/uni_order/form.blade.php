@@ -96,6 +96,7 @@
                     </div>
                 </div>
             </div>
+            @if($uni_order->status != 4)
             <div class="card  box-shadow-0 ">
                 <div class="card-body pt-3">
                     <div class="form-group">
@@ -110,6 +111,8 @@
                     </div>
                 </div>
             </div>
+            @endif
+
         </div>
     </div>
 </form>

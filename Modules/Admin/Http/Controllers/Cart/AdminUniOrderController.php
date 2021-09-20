@@ -3,6 +3,7 @@
 namespace Modules\Admin\Http\Controllers\Cart;
 
 use App\Models\Cart\Uni_Order;
+use App\Models\Product_Size;
 use App\Models\Uni_Store;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
@@ -64,9 +65,14 @@ class AdminUniOrderController extends AdminController
     public function update(Request $request, $id)
     {
         $uni_order = Uni_Order::findOrFail($id);
-
         $data['status'] = $request->status;
         if ($data['status'] == 1) {
+            foreach(json_decode($uni_order['cart_info']) as $items){
+                
+                $product_size = Product_Size::where('product_id',(int)$items->id)->where('size_id',(int)$items->weight)->first();
+                $data_productsize['qty'] = $product_size->qty - $items->qty;
+                $product_size->fill($data_productsize)->update();
+            }
             if ($uni_order->method_ship == 1) {
                 $curl_creat_ = curl_init('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create');
                 curl_setopt($curl_creat_, CURLOPT_CUSTOMREQUEST, "POST");
@@ -104,6 +110,14 @@ class AdminUniOrderController extends AdminController
                 curl_close($curl_ghtk);
             }
         } else if ($data['status'] == 4) {
+            foreach(json_decode($uni_order['cart_info']) as $items){
+                $product_size = Product_Size::where('product_id',(int)$items->id)->where('size_id',(int)$items->weight)->first();
+                if($product_size){
+                    $data_productsize['qty'] = $product_size->qty + $items->qty; 
+                    $product_size->fill($data_productsize)->update();
+                }
+          
+            }
             if ($uni_order->method_ship == 1) {
                 $order_del = '{"order_codes":["' . $uni_order->order_code . '"]}';
                 // dd($order_del);
@@ -145,7 +159,7 @@ class AdminUniOrderController extends AdminController
             if (checkUid($uni_order->user_id)) {
                 $uni_store = Uni_Store::where('user_id', $uni_order->user_id)->first();
                 $data_store['poin_store'] = $uni_store->poin_store + $data['order_poin'];
-
+                $uni_store->fill($data_store)->update();
             }
         }
         $uni_order->fill($data)->update();
