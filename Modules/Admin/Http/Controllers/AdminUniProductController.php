@@ -255,7 +255,7 @@ class AdminUniProductController extends AdminController
                 $item['key_lot'] = $key + 1;
             }
         }
-        $import_history     = ProductLotProduct::where('product_id', $id)->get();
+        $import_history     = ProductLotProduct::where('product_id', $id)->orderByDesc('created_at')->get();
         $viewData = [
             'uni_product'       => $uni_product,
             'uni_lotproduct'       => $uni_lotproduct,
@@ -304,7 +304,7 @@ class AdminUniProductController extends AdminController
         $product_size->fill($param)->save();
         $this->syncLotProduct($id, $request->lotproduct_id, $request->qty, $request->product_size);
         $this->showMessagesSuccess();
-        return redirect()->route('get_admin.uni_product.index');
+        return redirect()->route('get_admin.uni_product.import',$id);
     }
     protected function syncLotProduct($productID, $lot_product, $product_qty, $product_size)
     {
