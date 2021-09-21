@@ -92,7 +92,7 @@
                                                                                             <span class="a-price font-weight-bold price-sale-preview{{ $item->id }}">
                                                                                                 {{ formatVnd(getPriceSaleStore($item->id)) }}
                                                                                             </span>
-                                                                                            <?php if ($item->qty) { ?>
+                                                                                            <?php if (checkQtyProduct($item->id) > 0) { ?>
                                                                                                 <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
                                                                                             <?php } else { ?>
                                                                                                 <span class="a-price text-dark product-notnull"><i class="fa fa-phone" aria-hidden="true"></i>Liên hệ</span>
@@ -114,10 +114,10 @@
                                                                                             <span class="a-price font-weight-bold price-sale-preview{{ $item->id }}">
                                                                                                 {{ formatVnd(getPriceSale($item->id)) }}
                                                                                             </span>
-                                                                                            <?php if ($item->qty) { ?>
+                                                                                            <?php if (checkQtyProduct($item->id) > 0) { ?>
                                                                                                 <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
                                                                                             <?php } else { ?>
-                                                                                                <span class="a-price text-info product-notnull"><i class="fa fa-phone"></i>Liên hệ</span>
+                                                                                                <span class="a-price text-info product-notnull"><i class="fa fa-phone"></i>Lissssên hệ</span>
                                                                                             <?php } ?>
                                                                                             <span class="row">
                                                                                                 <div class="buttons_added add-qty col-12">
@@ -137,7 +137,7 @@
                                                                                             <span class="a-price font-weight-bold price-sale-preview{{ $item->id }}">
                                                                                                 {{ formatVnd(getPrice($item->id)) }}
                                                                                             </span>
-                                                                                            <?php if ($item->qty) { ?>
+                                                                                            <?php if (checkQtyProduct($item->id) > 0) { ?>
 
                                                                                                 <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
 
@@ -166,14 +166,15 @@
                                                                                         <p><span class="font-weight-bold" style="color:#ea7236">SL mua tối thiểu:</span> {{ getMinBox($item->id) }} thùng</p>
                                                                                         <p><span class="font-weight-bold" style="color:#ea7236">Giá:</span> {{ formatVnd(getQtyInBox($item->id) * getPriceSaleStore($item->id)) }}/thùng</p>
                                                                                     </div>
-                                                                                    <?php if ($item->qty == null) { ?>
+                                                                                    
+                                                                                    <?php if (checkQtyProduct($item->id) == 0) { ?>
                                                                                         <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn contact-btn" type="button" rel="nofollow">Liên hệ</a>
                                                                                     <?php } else { ?>
                                                                                         <button class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn js-add-cart box-shadow-in" data-size="{{ getSizeId($item->id) }}" data_href="" data-id="{{ $item->id }}" data-min-box="{{ getMinBox($item->id) }}" data-qtyinbox="{{ getQtyInBox($item->id) }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" type="button">Thêm giỏ hàng</button>
                                                                                     <?php } ?>
 
                                                                                 <?php } else { ?>
-                                                                                    <?php if ($item->qty == null) { ?>
+                                                                                    <?php if (checkQtyProduct($item->id) == 0) { ?>
                                                                                         <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn contact-btn" type="button" rel="nofollow">Liên hệ</a>
                                                                                     <?php } else { ?>
                                                                                         <form>

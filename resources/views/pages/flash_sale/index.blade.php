@@ -116,7 +116,7 @@
                                                                         <span class="a-price font-weight-bold price-sale-preview{{ $item->id }}">
                                                                             {{ formatVnd(getPriceSale($item->id)) }}
                                                                         </span>
-                                                                        <?php if ($item->qty) { ?>
+                                                                        <?php if (checkQtyProduct($item->id) > 0) { ?>
                                                                             <span class="a-price text-success product-notnull"><i class="fa fa-check" aria-hidden="true"></i>Còn hàng</span>
                                                                         <?php } else { ?>
                                                                             <span class="a-price text-info product-notnull"><i class="fa fa-phone"></i>Liên hệ</span>
@@ -132,11 +132,11 @@
                                                                     </span>
                                                                 </div>
                                                                 <div class="m-combined-product-name group-product group-product-cart">
-                                                                    <?php if ($item->qty == null) { ?>
+                                                                    <?php if (checkQtyProduct($item->id) == 0) { ?>
                                                                         <a href="{{ route('get.uni_contact') }}" class="text-white a-btn a-btn--primary m-product-card__add-to-cart-btn contact-btn" type="button" rel="nofollow">Liên hệ</a>
                                                                     <?php } else { ?>
                                                                         <form>
-                                                                            <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
+                                                                            <button class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" data-href="" data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" data-url="{{ route('get_user.cart.add',['id' => $item->id,'type' => 'single']) }}" data-uid="{{ get_data_user('web') }}" data-id="{{ $item->id }}" type="button">Thêm giỏ hàng</button>
 
                                                                         </form>
                                                                     <?php } ?>

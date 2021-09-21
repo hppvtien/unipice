@@ -514,7 +514,7 @@
                             <span class="estimated-price" style="font-size: 22px;text-transform: uppercase;font-weight: 500;color:red">{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span>
 
                             @else
-                            <span class="estimated-price" style="font-size: 22px;text-transform: uppercase;font-weight: 500;color:red">{{ formatVnd((int)Cart::total(0,0,'')) }}</span>
+                            <span class="estimated-price" style="font-size: 22px;text-transform: uppercase;font-weight: 500;color:red">{{ formatVnd((int)Cart::subtotal(0,0,'')) }}</span>
 
                             @endif
                         </div>
@@ -786,7 +786,7 @@
                                                                 @if (get_data_user('web','type') == 2 && checkUidSpiceClubPay(get_data_user('web')))
                                                                 <span class="value" id="total-cart"><span>{{ formatVnd((int)Cart::total(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100) }}</span></span>
                                                                 @else
-                                                                <span class="value" id="total-cart"><span>{{ formatVnd((int)Cart::subtotal(0,0,'') + (int)subtotalTax(\Cart::content())) }}</span></span>
+                                                                <span class="value" id="total-cart"><span>{{ formatVnd((int)Cart::subtotal(0,0,'')) }}</span></span>
                                                                 @endif
                                                             </div>
                                                         </div>

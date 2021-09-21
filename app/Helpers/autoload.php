@@ -195,6 +195,16 @@ function getPriceById($id)
     return $price_view;
 }
 /**
+ * check qty.
+ * @param int $id
+ * @return float $price 11.222
+ */
+function checkQtyProduct($id)
+{
+    $check_qty = App\Models\Product_Size::where('product_id', $id)->pluck('qty')->first();
+        return $check_qty; 
+}
+/**
  * get price.
  * @param int $pricesale,$price
  * @return float $price_view 11.222
@@ -362,7 +372,7 @@ function getSizeId($id)
  */
 function getSizeName($id)
 {
-    $sizeName = App\Models\Uni_Size::where('id', $id)->pluck('name')->first();
+    $sizeName = App\Models\Uni_Size::where('id', $id)->orderByRaw('name','asc')->pluck('name')->first();
     return $sizeName.'g';
 }
 /**
@@ -382,7 +392,7 @@ function getPercentVouchers($code)
  */
 function getPrice($id)
 {
-    $sizePrice = App\Models\Product_Size::where('product_id', $id)->pluck('price')->first();
+    $sizePrice = App\Models\Product_Size::where('product_id', $id)->orderBy('price','asc')->pluck('price')->first();
     return $sizePrice;
 }
 /**
@@ -392,7 +402,7 @@ function getPrice($id)
  */
 function getQtyProductSize($id,$size_id)
 {
-    $sizePrice = App\Models\Product_Size::where('product_id', $id)->where('size_id',$size_id)->pluck('qty')->first();
+    $sizePrice = App\Models\Product_Size::where('product_id', $id)->where('size_id',$size_id)->orderBy('price','asc')->pluck('qty')->first();
     return $sizePrice;
 }
 /**
@@ -402,7 +412,7 @@ function getQtyProductSize($id,$size_id)
  */
 function getPriceSale($id)
 {
-    $sizePrice = App\Models\Product_Size::where('product_id', $id)->pluck('price_sale')->first();
+    $sizePrice = App\Models\Product_Size::where('product_id', $id)->orderBy('price','asc')->pluck('price_sale')->first();
     return $sizePrice;
 }
 /**
@@ -412,9 +422,10 @@ function getPriceSale($id)
  */
 function getPriceSaleStore($id)
 {
-    $sizePrice = App\Models\Product_Size::where('product_id', $id)->pluck('price_sale_store')->first();
+    $sizePrice = App\Models\Product_Size::where('product_id', $id)->orderBy('price','asc')->pluck('price_sale_store')->first();
     return $sizePrice;
 }
+
 /**
  * get size Price.
  * @param int $uid,$price,$price_sale,$price_sale_store
@@ -422,7 +433,7 @@ function getPriceSaleStore($id)
  */
 function getQtyInBox($id)
 {
-    $sizePrice = App\Models\Product_Size::where('product_id', $id)->pluck('qty_in_box')->first();
+    $sizePrice = App\Models\Product_Size::where('product_id', $id)->orderBy('price','asc')->pluck('qty_in_box')->first();
     return $sizePrice;
 }
 /**
@@ -432,7 +443,7 @@ function getQtyInBox($id)
  */
 function getMinBox($id)
 {
-    $sizePrice = App\Models\Product_Size::where('product_id', $id)->pluck('min_box')->first();
+    $sizePrice = App\Models\Product_Size::where('product_id', $id)->orderBy('price','asc')->pluck('min_box')->first();
     return $sizePrice;
 }
 /**
@@ -456,7 +467,7 @@ function getPricePercent($uid, $price, $price_sale, $price_sale_store)
  */
 function getAllSizeName($id)
 {
-    $sizeName = App\Models\Product_Size::where('product_id', $id)->pluck('size_id');
+    $sizeName = App\Models\Product_Size::where('product_id', $id)->orderBy('price','asc')->pluck('size_id');
     return $sizeName;
 }
 /**

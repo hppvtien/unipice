@@ -285,7 +285,6 @@ class AdminUniProductController extends AdminController
         } else {
             $this->showMessagesError();
         }
-        $uni_product->fill($param)->save();
         $uni_lotproduct     = Uni_LotProduct::findOrFail($request->lotproduct_id);
         if ($uni_lotproduct->export_qty) {
             $export_qty = json_decode($uni_lotproduct->export_qty);

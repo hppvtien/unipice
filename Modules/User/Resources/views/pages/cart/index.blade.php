@@ -399,7 +399,7 @@
                                             @if (get_data_user('web','type') == 2 && checkUidSpiceClubPay(get_data_user('web')))
                                             <strong><span class="price">{{ formatVnd(((int)Cart::subtotal(0,0,'') - (int)Cart::total(0,0,'')*(getDiscount()[0])/100)) }}</span></strong>
                                             @else
-                                            <strong><span class="price">{{ formatVnd((int)Cart::subtotal(0,0,'') + (int)subtotalTax(\Cart::content())) }}</span></strong>
+                                            <strong><span class="price">{{ formatVnd((int)Cart::subtotal(0,0,'')) }}</span></strong>
                                             @endif
 
                                         </td>
@@ -449,7 +449,9 @@
                                                 </span>
                                             </span> <br>
                                             <span class="font-weight-bold">{{ $item->name }}</span> <br>
+                                            @if($item->options->sale != 'combo')
                                             <span>Khối lượng:  <b>{{ getSizeName($item->weight) }} / {{ getSizeNameType(round($item->weight,0)) }}</b></span>
+                                            @endif
                                         </a>
                                     </td>
                                     <td data-th="Price">

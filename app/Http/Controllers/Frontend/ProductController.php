@@ -55,10 +55,16 @@ class ProductController extends Controller
         $count_bl1 = $count_bl->count();
         $count_ch = Uni_Comment::where('product_id', '=', $id_product)->where('type', '=', 'question')->get();
         $count_ch1 = $count_ch->count();
-        $data_size_product = Product_Size::where('product_id', $id_product)->get();
+        // $data_size_product = Product_Size::where('product_id', $id_product)->get();
+        $data_size_product = Product_Size::where('product_id', $id_product)
+        ->join('uni_size', function ($join) {
+            $join->on('product_size.size_id', '=', 'uni_size.id');
+        })
+        ->orderby('name','asc')->get();
         $size_product = [];
         foreach ($data_size_product as $size) {
             $sizes = [
+                'size_name' => (int)getSizeName($size->size_id),
                 'size_id' => $size->size_id,
                 'price' => $size->price,
                 'qty' => $size->qty,
