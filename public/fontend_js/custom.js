@@ -97,6 +97,8 @@ $(".js-add-cart").on("click", function() {
     let URL = $(this).attr("data-url");
     let data_uid = $(this).attr("data-uid");
     let data_href = $(this).attr("data-href");
+    // alert(data_href);
+    // return false;
     let data_size = $(this).attr("data-size");
     let data_qtyinbox = Number($(this).attr("data-qtyinbox"));
     let data_minbox = Number($(this).attr("data-min-box"));
@@ -105,7 +107,7 @@ $(".js-add-cart").on("click", function() {
     let data_price = Number((data_price_temp.replaceAll('Giá:', '')).replaceAll('₫', '').replaceAll('.', ''));
     let data_count = $(this).attr("data-count");
     let qty_user = $("#js-qty" + data_id).val();
-    if (data_href == '') {
+    if (data_href == '' || data_href == undefined) {
         $.ajax({
             url: URL,
             method: "get",
@@ -918,6 +920,8 @@ $('.check-price').on('click', function() {
         $('.js-add-cart-qty').attr('data-toggle', 'modal');
     }
     if (data_uid) {
+        $('.js-add-cart-qty').attr('data-target', '');
+        $('.js-add-cart-qty').attr('data-toggle', '');
         $('.check' + size_id).addClass('box-shadow-in');
         $('.price-save').html('(Tiết kiệm: -' + price_save_store + '%)');
         $('.price-gg-gg').html(numberVnd(size_price));
