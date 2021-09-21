@@ -920,8 +920,8 @@ $('.check-price').on('click', function() {
         $('.js-add-cart-qty').attr('data-toggle', 'modal');
     }
     if (data_uid) {
-        $('.js-add-cart-qty').attr('data-target', '');
-        $('.js-add-cart-qty').attr('data-toggle', '');
+        $('.js-add-cart').attr('data-target', '');
+        $('.js-add-cart').attr('data-toggle', '');
         $('.check' + size_id).addClass('box-shadow-in');
         $('.price-save').html('(Tiết kiệm: -' + price_save_store + '%)');
         $('.price-gg-gg').html(numberVnd(size_price));

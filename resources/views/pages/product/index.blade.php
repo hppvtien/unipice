@@ -91,7 +91,7 @@
 
                                                                 <span class="m-price-lockup__price">
                                                                     <span class="a-folio text-dark text-lowercase font-weight-normal">
-                                                                        <p style="text-align: justify">{{ $product->desscription }}</p>
+                                                                        <p style="text-align: justify; text-transform: initial;">{{ $product->desscription }}</p>
                                                                     </span>
                                                                     <span class="m-product-overview__price-wrapper d-block">
                                                                         <span class="a-product-name a-title-des text-dark">
