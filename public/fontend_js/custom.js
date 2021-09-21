@@ -937,6 +937,8 @@ $('.check-price').on('click', function() {
         }
 
     } else {
+        $('.js-add-cart').attr('data-target', '');
+        $('.js-add-cart').attr('data-toggle', '');
         $('.check' + size_id).addClass('box-shadow-in');
         $('.price-gg-gg').html(numberVnd(size_price));
         $('.price-save').html('(Tiết kiệm: -' + price_save_not_store + '%)');
