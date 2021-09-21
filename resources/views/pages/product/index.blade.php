@@ -225,7 +225,8 @@
                                                                 <button style="display:block;width:100%;margin-bottom:10px" class="a-btn a-btn--primary m-product-card__add-to-cart-btn " 
                                                                 data-target="{{ get_data_user('web') ==null ? '.login-js' :'' }}" my-id="{{ $product->id }}" data-toggle="{{ get_data_user('web') == null ? 'modal' :'' }}" 
                                                                 data-uid="{{ get_data_user('web') != null ? get_data_user('web') : 0 }}" {{ get_data_user( 'web') !=null ? get_data_user( 'web') : 0 }} 
-                                                                onclick="check_my_favorites_add(this)" data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" 
+                                                                onclick="{{ get_data_user('web') !=null ? 'check_my_favorites_add(this)' : 'unset' }};"
+                                                                data-url="{{ route('get_user.cart.add',['id' => $product->id,'type' => 'single']) }}" 
                                                                 data-uid="{{ get_data_user('web') }}" data-id="{{ $product->id }}" type="button">Yêu thích</button>
                                                             </div>
                                                             <?php if ($product->size_product[0]['qty'] != 0) { ?>
