@@ -72,7 +72,7 @@ class AdminUniLotProductController extends AdminController
         if($lotproductID)
         {
             $this->showMessagesSuccess();
-            return redirect()->route('get_admin.uni_product.import',$id);
+            return redirect()->route('get_admin.uni_lotproduct.import',$id);
         }
         $this->showMessagesError();
         return  redirect()->back();
