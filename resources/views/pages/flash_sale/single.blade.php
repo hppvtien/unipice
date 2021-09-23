@@ -12,8 +12,8 @@
                             <div class="layout__region layout__region--content">
                                 <div class="c-page-header c-page-header--light">
                                     <picture class="c-page-header__image">
-                                        <source media="(min-width: 1024px)" data-srcset="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" srcset="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
-                                        <img class=" lazyloaded" data-src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg" alt="blogs-1440x380-1626419645.jpg" src="/storage/uploads/frontier-prime-cuts-1440x660-1627696550.jpg">
+                                        <source media="(min-width: 1024px)" data-srcset="{{ asset('/images/banner_page/banner-combo-03.jpg') }}" srcset="{{ asset('/images/banner_page/banner-combo-03.jpg') }}">
+                                        <img class=" lazyloaded" data-src="{{ asset('/images/banner_page/banner-combo-03.jpg') }}" alt="{{ $uni_flashsale->name }}" src="{{ asset('/images/banner_page/banner-combo-03.jpg') }}">
                                     </picture>
 
                                     <div class="c-page-header__content">
@@ -49,7 +49,7 @@
                                         Chi tiết gói sale: {{ $uni_flashsale->name }}
                                     </p>
                                     <p title="products" class="page_heading font-weight-nomal">
-                                        Mô tả: {!! $uni_flashsale->content !!}
+                                       {!! $uni_flashsale->content !!}
                                     </p>
                                     <div class="row group-sale mt-5 mb-5 p-5">
                                         <h3 class="title-product-sale">Sản phẩm trong gói sale</h3>
@@ -91,7 +91,7 @@
                                             <button class=" w-25 text-center mx-auto btn-add-cart-sale js-add-cart" data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" 
                                                 data-uid="{{ get_data_user('web') }}" data-id="{{ $uni_flashsale->id }}" type="button">Mua ngay</button>
                                             @else
-                                            <button class=" w-25 text-center mx-auto btn-add-cart-sale redect-b2b" data-url = "{{ route('get.register.b2b') }}"  
+                                            <button class=" w-25 text-center mx-auto btn-add-cart-sale redect-b2b" data-url = "{{ route('get.login') }}"  
                                             class="a-btn a-btn--primary m-product-card__add-to-cart-btn {{ get_data_user('web') != null ? 'js-add-cart':'' }}" 
                                             data-url="{{ route('get_user.cart.add',['id' => $uni_flashsale->id,'type' => 'combo']) }}" data-uid="{{ get_data_user('web') }}" 
                                             data-id="{{ $uni_flashsale->id }}" type="button" type="button">Mua ngay</button>

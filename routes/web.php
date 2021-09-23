@@ -22,7 +22,7 @@ Route::get('/c', function () {
     $run = Artisan::call('cache:clear');
     $run = Artisan::call('route:clear');
     $run = Artisan::call('config:cache');
-    $run = Artisan::call('storage:link');
+    // $run = Artisan::call('storage:link');
 
     return 'FINISHED';
 });

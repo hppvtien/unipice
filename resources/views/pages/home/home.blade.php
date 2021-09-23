@@ -448,13 +448,12 @@
                                                             </div>
                                                             <div class="m-mini-product-card__info">
                                                                 <div class="m-combined-product-name">
-                                                                    <span class="a-folio font_chu_home"
-                                                                        style="--color-brand: var(--color-simply-organic)">
-                                                                        {{ $item->name }}
-                                                                    </span>
-                                                                    <br>
-                                                                    <span class="a-product-name">
-                                                                        {{ desscription_cut($item->desscription, 60) }}
+                                                                    <div class="m-category-card__caption">
+                                                                        <span
+                                                                            class="m-category-card__caption-text">{{ $item->name }}</span>
+                                                                    </div>
+                                                                    <span class="a-product-name card-text">
+                                                                        {{ $item->desscription }}
                                                                     </span>
                                                                 </div>
                                                                 <div class="m-mini-product-card__price">
