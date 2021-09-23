@@ -92,7 +92,83 @@ $(".search_province").on("change", function() {
         }
     });
 });
+$(".js-add-contact").on("click", function() {
+    var product_name_contact = $(this).attr('data-name-product');
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    $('.product_contact').html(product_name_contact);
+    $('.js-contact-product').on('click', function() {
+        var name_pid = $('.name_pid').val();
+        var phone_pid = $('.phone_pid').val();
+        var email_pid = $('#email_pid').val();
+        var email_check = re.test(email_pid);
+        var content_pid = $('#content_pid').val();
+        var data_url = $(this).attr('data-url-ct');
+        if (email_check == false) {
+            $("#toast-container").html(
+                    '<div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">Vui lòng kiểm tra lại thông tin!!</div></div>'
+                ),
+                4000;
+            setTimeout(function() {
+                $(".toast-error").remove();
+            }, 2000);
+        } else {
+            if (name_pid == '') {
+                $('#name_contact').html('Bạn chưa nhập thông tin Họ tên');
 
+                if (email_pid == '') {
+                    $('#email_contact').html('Bạn chưa nhập thông tin email');
+                }
+                if (phone_pid == '') {
+                    $('#phone_contact').html('Bạn chưa nhập số điện thoại');
+                }
+                if (content_pid == '') {
+                    $('#message_contact').html('Bạn chưa nhập nội dung liên hệ!!!');
+                }
+                return false;
+            } else {
+                if (email_pid == '') {
+                    $('#email_contact').html('Bạn chưa nhập thông tin email');
+                    return false;
+                }
+                if (phone_pid == '') {
+                    $('#phone_contact').html('Bạn chưa nhập số điện thoại');
+                    return false;
+                }
+                if (content_pid == '') {
+                    $('#message_contact').html('Bạn chưa nhập nội dung liên hệ!!!');
+                    return false;
+                }
+
+            }
+            $(this).html('<span class="spinner-border spinner-border-sm text-warning" role="status" aria-hidden="true"></span>' +
+                'Đang gửi...');
+            $(this).attr("disabled", "disabled");
+            $.ajax({
+                url: data_url,
+                method: "POST",
+                data: {
+                    name: name_pid,
+                    phone: phone_pid,
+                    message: product_name_contact,
+                    email: email_pid,
+                    subject: content_pid,
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('.configform')[0].reset();
+                    $("#toast-container").html(
+                            '<div class="toast toast-success" aria-live="assertive" style=""><div class="toast-message">Đã gửi thành công!!</div></div>'
+                        ),
+                        4000;
+                    setTimeout(function() {
+                        $(".toast-success").remove();
+                    }, 2000);
+                    location.reload();
+                }
+            });
+        }
+    });
+});
 $(".js-add-cart").on("click", function() {
     let URL = $(this).attr("data-url");
     let data_uid = $(this).attr("data-uid");

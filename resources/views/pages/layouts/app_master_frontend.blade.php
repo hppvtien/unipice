@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="vi">
+
 <head>
     {!! SEO::generate() !!}
     <meta charset="UTF-8">
@@ -8,7 +9,7 @@
     <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
     <link rel="icon" href="{{ asset('img/brand/favicon.png') }}" type="image/x-icon" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="stylesheet" href="{{ asset('css/css_js/bootstrap.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/css_js/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frontends.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css_js/font-awesome.css') }}" />
@@ -17,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/unimall2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css_js/css_header_menu/style.css') }}">
     @yield('css_js_spice_club')
-    <link rel="stylesheet" href="{{ asset('css/css_js/custom.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/css_js/custom.css') }}">
     @if(session('toastr'))
     <script>
         var TYPE_MESSAGES = "{{ session('toastr.type') }}"
@@ -165,6 +166,58 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-block">
+                <h5 class="modal-title text-dark text-center" id="exampleModalLabel">Liên hệ về sản phẩm <br> <span class="product_contact text-success"></span></h5>
+              
+            </div>
+            <div class="modal-body">
+                <div class="form-create-account-box">
+                    <form class="form create account form-create-account configform" action="" method="POST" id="formRegister">
+                        @csrf
+                        <fieldset class="fieldsets create info">
+                            <div class="field field-name-firstname required">
+                                <div class="m-text-input m-text-input--placeholder-label control">
+                                    <input type="text" id="name" name="name_pid" value="" title="name" class="a-text-input m-text-input__input input-text required-entry name_pid">
+                                    <label class="a-form-label m-text-input__label label" for="firstname"><span>Họ và tên</span></label>
+                                    <span class="font_chu_mau_do error-input" id="name_contact"></span>
+                                </div>
+                            </div>
+                            <div class="field field-name-firstname required">
+                                <div class="m-text-input m-text-input--placeholder-label control">
+                                    <input type="text" id="phone" name="phone_pid" value="" title="phone" class="phone_pid a-text-input m-text-input__input input-text required-entry">
+                                    <label class="a-form-label m-text-input__label label" for="firstname"><span>Số điện thoại</span></label>
+                                    <span class="font_chu_mau_do error-input" id="phone_contact"></span>
+                                </div>
+                            </div>
+                            <div class="field required">
+                                <div class="m-text-input m-text-input--placeholder-label control">
+                                    <input type="email" name="email_pid" id="email_pid" value="" title="Email" class="a-text-input m-text-input__input input-text js-placeholder-label-not-empty">
+                                    <label for="email_address" class="a-form-label m-text-input__label label"><span>Email</span></label>
+                                    <span class="font_chu_mau_do error-input" id="email_contact"></span>
+                                </div>
+                            </div>
+                            <div class="field required">
+                            <label for="content_pid" style="margin-top: 10px;" class="a-form-label"><span>Nội dung</span></label>
+                                <div class="control">
+                                
+                                    <textarea name="" id="content_pid" cols="30" rows="5" name="content_pid"></textarea>
+                                    <span class="font_chu_mau_do error-input" id="message_contact"></span>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-info js-contact-product font-weight-bold" data-url-ct="{{ route('post.uni_contact') }}">Gửi liên hệ</button>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- CONTACT JS  -->
     <!-- revolution JS FILES -->
     <script src="{{ asset('fontend_js/jquery.min.js') }}"></script>
@@ -227,4 +280,5 @@
     </script>
     @yield('js_product_comment_review')
 </body>
+
 </html>

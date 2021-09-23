@@ -252,7 +252,8 @@
                                                                 <?php } ?>
                                                             <?php } else { ?>
                                                                 <div class="m-product-card__add-to-cart col-md-12 col-lg-6" style="opacity: 1;display:block;position: unset;pointer-events: auto;">
-                                                                    <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="js-add-cart-qty a-btn a-btn--primary m-product-card__add-to-cart-btn" type="button" data-href="{{ route('get.uni_contact') }}">
+                                                                    <button style="padding: 16px 10px;display:block;width:100%;margin-bottom:10px" class="js-add-cart-qty a-btn a-btn--primary m-product-card__add-to-cart-btn" type="button" data-href="{{ route('get.uni_contact') }}"  
+                                                                    data-name-product="{{ $product->name }}" data-id-prd="{{ $product->id }}" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                                                                         Liên hệ
                                                                     </button>
                                                                 </div>
