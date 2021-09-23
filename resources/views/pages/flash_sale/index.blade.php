@@ -196,8 +196,8 @@
                                 <div class="banner-flash">
                                     <div class="c-page-header c-page-header--centered c-page-header--light">
                                         <picture class="c-page-header__image">
-                                            <source media="(min-width: 1024px)" data-srcset="{{ asset('/images/banner_page/membership-hero-desktop.png') }}" srcset="{{ asset('/images/banner_page/membership-hero-desktop.png') }}">
-                                            <img class=" lazyloaded" data-src="{{ asset('/images/banner_page/membership-hero-desktop.png') }}" alt="Khuyến mãi đặc biệt cho đại lý" src="{{ asset('/images/banner_page/membership-hero-desktop.png') }}">
+                                            <source media="(min-width: 1024px)" data-srcset="{{ asset('/images/banner_page/banner-combo-01.jpg') }}" srcset="{{ asset('/images/banner_page/banner-combo-01.jpg') }}">
+                                            <img class=" lazyloaded" data-src="{{ asset('/images/banner_page/banner-combo-01.jpg') }}" alt="Khuyến mãi đặc biệt cho đại lý" src="{{ asset('/images/banner_page/banner-combo-01.jpg') }}">
                                         </picture>
 
                                         <div class="c-page-header__content">
@@ -240,8 +240,8 @@
                                 <div class="banner-flash">
                                     <div class="c-page-header c-page-header--centered c-page-header--light">
                                         <picture class="c-page-header__image">
-                                            <source media="(min-width: 1024px)" data-srcset="{{ asset('/images/banner_page/membership-hero-desktop.png') }}" srcset="{{ asset('/images/banner_page/membership-hero-desktop.png') }}">
-                                            <img class=" lazyloaded" data-src="{{ asset('/images/banner_page/membership-hero-desktop.png') }}" alt="Trở thành đại lý" src="{{ asset('/images/banner_page/membership-hero-desktop.png') }}">
+                                            <source media="(min-width: 1024px)" data-srcset="{{ asset('/images/banner_page/banner-combo-01.jpg') }}" srcset="{{ asset('/images/banner_page/banner-combo-01.jpg') }}">
+                                            <img class=" lazyloaded" data-src="{{ asset('/images/banner_page/banner-combo-01.jpg') }}" alt="Trở thành đại lý" src="{{ asset('/images/banner_page/banner-combo-01.jpg') }}">
                                         </picture>
 
                                         <div class="c-page-header__content">

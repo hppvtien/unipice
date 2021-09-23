@@ -322,7 +322,7 @@
                                 </div>
 
                                 <div class="c-media-block__content">
-                                    <div class="c-media-block__headline">Baking soda baths are a great way to detox. Check out the benefits benefits of baking soda baths and how to do one at home!</div>
+                                    <div class="c-media-block__headline">{{ $slides_home_four1->s_desscription }}</div>
                                 </div>
                             </div>
 

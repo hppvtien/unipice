@@ -10,6 +10,7 @@ use App\Models\Page;
 use App\Models\Product_Category;
 use App\Models\Product_Trade;
 use App\Models\Uni_Comment;
+use App\Models\System\Slide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
@@ -18,6 +19,7 @@ class CategoryController extends Controller
     public function index($slug)
     {
         $cat_id = Uni_Category::where('slug', $slug)->pluck('id')->first();
+        $banner = Slide::where('s_type', 8)->first();
         $category = Uni_Category::where('id', $cat_id)->first();
         $trade = Uni_Trade::get();
         $categories = Uni_Category::get();
@@ -46,12 +48,14 @@ class CategoryController extends Controller
             'count_product' => $count_product,
             'trade' => $trade,
             'categories' => $categories,
-            'uid' => $uid
+            'uid' => $uid,
+            'banner' => $banner,
         ];
         return view('pages.category.index', $viewdata);
     }
     public function all_product()
     {
+        $banner = Slide::where('s_type', 8)->first();
         $page = Page::where('p_slug','tat-ca-san-pham.html')->first();
         $trade = Uni_Trade::get();
         $categories = Uni_Category::where('parent_id',0)->where('status',1)->get();
@@ -69,12 +73,14 @@ class CategoryController extends Controller
             'page' => $page,
             'trade' => $trade,
             'categories' => $categories,
-            'uid' => $uid
+            'uid' => $uid,
+            'banner' => $banner,
         ];
         return view('pages.category.all_product', $viewdata);
     }
     public function trade_mark($slug)
     {
+        $banner = Slide::where('s_type', 8)->first();
         $trade_id = Uni_Trade::where('slug', $slug)->pluck('id')->first();
         $trade_current = Uni_Trade::where('slug', $slug)->first();
         \SEOMeta::setTitle($trade_current->meta_title);
@@ -104,7 +110,8 @@ class CategoryController extends Controller
             'count_product' => $count_product,
             'trade' => $trade,
             'categories' => $categories,
-            'uid' => $uid
+            'uid' => $uid,
+            'banner' => $banner,
         ];
         return view('pages.category.trade_mark', $viewdata);
     }

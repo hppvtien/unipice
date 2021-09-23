@@ -50,7 +50,7 @@ class ProductController extends Controller
         $product_related = Uni_Product::whereIn('id', $grp_id)->where('status', 1)->orderBy('id', 'asc')->get();
         $grp_id_cmt = Uni_Comment::where('star', '>', 4)->where('status', 1)->pluck('product_id');
         $product_fav = Uni_Product::whereIn('id', $grp_id_cmt)->where('status', 1)->orderBy('id', 'asc')->limit(8)->get();
-        $slides_home_four1 = Slide::where('s_type', Slide::STATUS_TYPE_COMBO)->first();
+        $slides_home_four1 = Slide::where('s_type', 9)->first();
         $count_bl = Uni_Comment::where('product_id', '=', $id_product)->where('type', '=', 'review')->get();
         $count_bl1 = $count_bl->count();
         $count_ch = Uni_Comment::where('product_id', '=', $id_product)->where('type', '=', 'question')->get();

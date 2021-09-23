@@ -28,7 +28,7 @@
                                     <span class="m-category-card__caption-text">{{ $item->name }}</span>
                                 </div>
                                 <div class="m-category-card__caption">
-                                    <p>{{ desscription_cut($item->desscription,60) }}</p>
+                                    <p class="card-text">{{ $item->desscription }}</p>
                                 </div>
                             </div>
                         </a>

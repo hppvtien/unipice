@@ -2338,10 +2338,13 @@ Contact
 .copyright {
     background-color: #104438;
 }
-
+.copyright p {
+    color: #fff;
+}
 .copyright span,
 .copyright a {
-    color: #fff;
+    display: inline-block;
+    color: #ea7236;
     -webkit-transition: all 0.3s linear;
     -o-transition: all 0.3s linear;
     transition: all 0.3s linear;

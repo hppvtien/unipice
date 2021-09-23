@@ -98,18 +98,17 @@
                                                                         {{ $item->name }}
                                                                     </span>
                                                                     <br>
-                                                                    <span class="a-product-name">
-                                                                        {{ desscription_cut($item->desscription, 60) }}
+                                                                    <span class="a-product-name card-text-uni">
+                                                                        {{ $item->desscription }}
                                                                     </span>
                                                                 </div>
                                                                 <span
                                                                     class="a-product-unit m-expandable-product-card__unit">
-                                                                    @if ($item->price)
-                                                                        {{ $item->price }} VND
-                                                                    @else
-                                                                        Đang cập nhật
-                                                                    @endif
-
+                                                                    @if (getPrice($item->id))
+                                                                    {{ formatVnd(getPrice($item->id)) }}
+                                                                @else
+                                                                    Đang cập nhật
+                                                                @endif
                                                                 </span>
                                                             </div>
                                                             <div class="m-expandable-product-card__info-right">
@@ -118,11 +117,11 @@
                                                                     <span class="m-price-lockup__price"
                                                                         style="display: none">
                                                                         <span class="a-price">
-                                                                            @if ($item->price)
-                                                                                {{ $item->price }} VND
-                                                                            @else
-                                                                                Đang cấp nhật
-                                                                            @endif
+                                                                            @if (getPrice($item->id))
+                                                                            {{ formatVnd(getPrice($item->id)) }}
+                                                                        @else
+                                                                            Đang cập nhật
+                                                                        @endif
                                                                         </span>
                                                                     </span>
                                                                 </div>
@@ -220,7 +219,7 @@
                                                                 class="m-category-card__caption-text">{{ $item->name }}</span>
                                                         </div>
                                                         <div class="m-category-card__caption">
-                                                            <p>{{ desscription_cut($item->desscription, 60) }}</p>
+                                                            <p class="card-text">{{ $item->desscription }}</p>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -338,7 +337,7 @@
                                                                 class="m-category-card__caption-text">{{ $item->name }}</span>
                                                         </div>
                                                         <div class="m-category-card__caption">
-                                                            <p>{{ desscription_cut($item->desscription, 60) }}</p>
+                                                            <p class="card-text">{{ $item->desscription }}</p>
                                                         </div>
                                                     </div>
                                                 </a>

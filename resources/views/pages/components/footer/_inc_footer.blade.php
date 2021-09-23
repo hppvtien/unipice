@@ -44,22 +44,22 @@
                         <h3>Theo Dõi Ngay</h3>
                         <ul>
                             <li>
-                                <a href="{{ $configuration->facebook }}">
+                                <a  rel="nofollow" target="_blank" href="{{ $configuration->facebook }}">
                                     <i class="fa fa-facebook"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ $configuration->twitter }}">
+                                <a  rel="nofollow" target="_blank" href="{{ $configuration->twitter }}">
                                     <i class="fa fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ $configuration->youtube }}">
+                                <a  rel="nofollow" target="_blank" href="{{ $configuration->youtube }}">
                                     <i class="fa fa-youtube"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ $configuration->instagram }}">
+                                <a  rel="nofollow" target="_blank" href="{{ $configuration->instagram }}">
                                     <i class="fa fa-instagram"></i>
                                 </a>
                             </li>
@@ -171,7 +171,7 @@
             <div class="row">
                 <div class="col-md-6 col-xs-12  pl-md-5 padding_top_footer_1">
                     <ul class="menu_foooter_2">
-                        <li><a href="javascript:;" rel="nofollow">{{ $configuration->footer_bottom }}</a></li>
+                        <li>{!! $configuration->footer_bottom !!}</li>
                     </ul>
                 </div>
                 <div class="col-md-6 col-xs-12 pr-md-5">

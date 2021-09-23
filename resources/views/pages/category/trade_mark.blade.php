@@ -273,13 +273,13 @@
                                         <div data-block-plugin-id="inline_block:media_block" data-inline-block-uuid="ee168006-3fe9-4f1c-bbc5-ba42ddc90f9a" class="c-media-block c-media-block--template-">
                                             <div class="c-media-block__image-wrapper">
                                                 <picture>
-                                                    <source media="(min-width: 768px)" data-srcset="/storage/uploads/cm-hero-1627696924.png" srcset="/storage/uploads/cm-hero-1627696924.png">
-                                                    <img class=" ls-is-cached lazyloaded" data-src="/storage/uploads/cm-hero-1627696924.png" alt="Baking soda baths are a great way to detox. Check out the benefits of baking soda baths and how to do one at home!" src="/storage/uploads/cm-hero-1627696924.png">
+                                                    <source media="(min-width: 768px)" data-srcset="{{ pare_url_file($banner->s_banner) }}" srcset="{{ pare_url_file($banner->s_banner) }}">
+                                                    <img class=" ls-is-cached lazyloaded" data-src="{{ pare_url_file($banner->s_banner) }}" alt="{{ $banner->s_name }}" src="{{ pare_url_file($banner->s_banner) }}">
                                                 </picture>
                                             </div>
 
                                             <div class="c-media-block__content">
-                                                <div class="c-media-block__headline">Baking soda baths are a great way to detox. Check out the benefits of baking soda baths and how to do one at home!</div>
+                                                <div class="c-media-block__headline">{{ $banner->s_desscription }}</div>
 
 
                                             </div>

@@ -65,7 +65,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="required">Content <span>(*)</span></label>
-                        <textarea name="footer_bottom" class="form-control" id="" cols="30" rows="3">{!! old('footer_bottom', $configuration->footer_bottom ?? '') !!}</textarea>
+                        <textarea name="footer_bottom" class="form-control" id="article-ckeditor" cols="30" rows="3">{!! old('footer_bottom', $configuration->footer_bottom ?? '') !!}</textarea>
                     </div>
                 </div>
             </div>
@@ -99,3 +99,16 @@
         </div>
     </div>
 </form>
+@section('scriptck')
+<script>
+    CKEDITOR.replace('article-ckeditor', {
+        filebrowserBrowseUrl: "{{ asset('ckfinder/ckfinder.html') }}",
+        filebrowserImageBrowseUrl: "{{ asset('/plugin/ckfinder/ckfinder.html?type=Images') }}",
+        filebrowserFlashBrowseUrl: "{{ asset('/plugin/ckfinder/ckfinder.html?type=Flash') }}",
+        filebrowserUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}",
+        filebrowserImageUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}",
+        filebrowserFlashUploadUrl: "{{ asset('/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}",
+    });
+</script>
+
+@stop
