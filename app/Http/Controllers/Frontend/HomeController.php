@@ -64,7 +64,7 @@ class HomeController extends Controller
         $trade = Uni_Trade::where('status', 1)
             ->orderBy('id', 'asc')
             ->get();
-        $product_groupId = Product_Trade::where('trade_id', 1)
+        $product_groupId = Product_Trade::where('trade_id', 3)
             ->pluck('product_id');
         $product_trade = Uni_Product::whereIn('id', $product_groupId)
         ->orderBy('id', 'asc')
