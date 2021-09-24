@@ -39,8 +39,8 @@
                                   </ol>
                               </nav>
                               </div>
-                              <div class="col-md-12 col-lg-6">
-                                <div id="share2" class="mt-lg-5 mb-lg-5 pl-lg-5">
+                              <div class="col-md-12 col-lg-6 " >
+                                <div id="share2" class="mt-lg-5 mb-lg-5 pt-lg-3">
 
                                   <!-- facebook -->
                                   <a class="facebook" href="https://www.facebook.com/share.php?u={{ route('get_blog.single_blog', $blog_post->slug) }}&title={{ $blog_post->name }}" target="blank" rel="nofollow"><i class="fa fa-facebook"></i></a>
@@ -61,49 +61,9 @@
                         </div>
                         <div class="layout layout--onecol">
                             <div class="container">
-                                <div class="col-md-12">
-                                  <p>{{ $blog_post->desscription }}</p>
+                                <div class="col-md-12 mb-lg-5 content-uni">
                                       {!! $blog_post->content !!}
                                 </div>
-
-                                
-
-                                <!--<div class="col-md-12">
-                                          <div class="col-md-12 bootstrap snippets">
-                                              <div class="panel">
-                                                  <div class="panel-body">
-                                                      <textarea id="noi_dung_commnet" class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
-                                                      <div class="mar-top clearfix">
-                                                          <button onclick="add_comment_user_blog(this);" blog_id="{{ $blog_post_id }}" user_id="{{ $user_ids }}" class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Share</button>
-                                                          <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
-                                                          <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
-                                                          <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
-                                                      </div>
-              
-                                                      <script>
-                                                          function add_comment_user_blog(id){
-                                                              var user_id = $(id).attr('user_id');
-                                                              var blog_id = $(id).attr('blog_id');
-                                                              var noi_dung_commnet = $('#noi_dung_commnet').val();
-              
-                                                              $.post( "{{ route('get_blog.add_comment_post',['slug'=>$slug]) }}", { user_id: user_id, blog_id: blog_id, noi_dung_commnet: noi_dung_commnet })
-                                                                          .done(function( data ) {
-                                                                              alert(data);
-                                                                              location.reload();  
-                                                                      });
-                                                             
-                                                          }
-                                                      </script>
-              
-                                                  </div>
-                                              </div>
-                                              <div class="panel">
-                                                  <div class="panel-body">
-
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>-->
                             </div>
                         </div>
 

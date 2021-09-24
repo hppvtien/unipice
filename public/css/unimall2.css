@@ -450,16 +450,20 @@ a.text-muted:focus {
     top: 30%;
     transform: translateY(-50%);
 }
-
-#share2 {
-    width: 100%;
-    text-align: center;
+.content-uni p {
+    color: #000;
 }
-
-
+.content-uni a {
+    color: #ea7236;
+    display: contents;
+}
+.content-uni a:hover {
+    color: #000;
+}
 /* buttons */
 
 #share2 a {
+    text-align: center;
     width: 40px;
     height: 40px;
     display: inline-block;
@@ -467,6 +471,7 @@ a.text-muted:focus {
     color: #fff;
     opacity: 0.75;
     transition: opacity 0.15s linear;
+    float: right;
 }
 
 #share2 a:hover {

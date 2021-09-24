@@ -16,7 +16,7 @@
                                                 <a class="a-anchor" href="/">Home</a>
                                             </li>
                                             <li class="m-breadcrumb__item">
-                                                <a class="a-anchor" href="/{{ getSlugCategory($cat_data->slug) }}">{{ $cat_data->name }}</a>
+                                                <a class="a-anchor" href="{{ getSlugCategory($cat_data->slug) }}">{{ $cat_data->name }}</a>
                                             </li>
                                             <li class="m-breadcrumb__item">
                                                 <a class="a-anchor" href="{{ getSlugProduct($product->slug) }}"> {{ $product->name }} </a>

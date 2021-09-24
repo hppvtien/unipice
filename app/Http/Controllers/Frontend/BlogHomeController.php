@@ -129,6 +129,14 @@ class BlogHomeController extends Controller
     {
         
         $cat_ids = Uni_PostCategory::where('id', 9)->first();
+        \SEOMeta::setTitle($cat_ids->meta_title);
+        \SEOMeta::setDescription($cat_ids->meta_desscription);
+        \SEOMeta::setCanonical(\Request::url());
+        \OpenGraph::setDescription($cat_ids->meta_desscription);
+        \OpenGraph::setTitle($cat_ids->meta_title);
+        \OpenGraph::setUrl(\Request::url());
+        \OpenGraph::addProperty('type', 'articles');
+        \OpenGraph::addImage(URL::to('').pare_url_file($cat_ids->thumbnail));
         $blog_posts  = Uni_Post::where('status', 0)->get();
         $viewData = [
             'blog_posts' => $blog_posts,

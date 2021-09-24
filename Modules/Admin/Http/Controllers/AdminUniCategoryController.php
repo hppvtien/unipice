@@ -114,6 +114,10 @@ class AdminUniCategoryController extends AdminController
                 Storage::delete('public/uploads_Product/'.$uni_category->thumbnail);
                 $uni_category->delete();
             }
+            $product_category = ProductCategory::where('category_id',$id)->pluck('id');
+            if($product_category){
+                ProductCategory::where('category_id', $id)->delete();
+            }
             return response()->json([
                 'status' => 200,
                 'message' => 'Xoá dữ liệu thành công'

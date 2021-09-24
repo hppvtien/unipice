@@ -169,12 +169,12 @@
     <div class="copyright">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-6 col-xs-12  pl-md-5 padding_top_footer_1">
+                <div class="col-md-6 col-xs-12 pt-lg-3 pl-md-5 padding_top_footer_1">
                     <ul class="menu_foooter_2">
                         <li>{!! $configuration->footer_bottom !!}</li>
                     </ul>
                 </div>
-                <div class="col-md-6 col-xs-12 pr-md-5">
+                <div class="col-md-6 col-xs-12 pt-lg-3 pr-md-5">
                     <ul class="menu_foooter_1">
                         <li><a target="_blank" rel="nofollow" href="{{ route('get.thoa_thuan_su_dung') }}">Thỏa thuận sử dụng</a></li>
                         <li><a target="_blank" rel="nofollow" href="{{ route('get.chinh_sach_bao_mat') }}">Chính sách bảo mật</a></li>
